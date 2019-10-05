@@ -9,10 +9,22 @@ interface ILangSelectProps {
 }
 
 const languageList = [
-    // {
-    //     name: 'Russian',
-    //     value: 'ru',
-    // },
+    {
+        name: 'Русский',
+        value: 'ru',
+    },
+    {
+        name: 'Українська',
+        value: 'uk',
+    },
+    {
+        name: 'Česky',
+        value: 'cs',
+    },
+    {
+        name: 'Polski',
+        value: 'pl',
+    },
     {
         name: 'English',
         value: 'en',

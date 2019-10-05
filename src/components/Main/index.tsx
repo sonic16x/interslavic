@@ -71,7 +71,8 @@ export class Main extends React.Component<{}, IMainState> {
                 </div>
                 <Results
                     text={this.state.fromText}
-                    language={this.state.from}
+                    from={this.state.from}
+                    to={this.state.to}
                     searchType={this.state.searchType}
                 />
             </>

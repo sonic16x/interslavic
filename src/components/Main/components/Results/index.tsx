@@ -4,17 +4,18 @@ import './index.scss';
 
 interface IResultsProps {
     text: string;
-    language: string;
+    from: string;
+    to: string;
     searchType: string;
 }
 
 export class Results extends React.Component<IResultsProps> {
     public render() {
-        const { text, language, searchType } = this.props;
+        const { text, from, to, searchType } = this.props;
         if (!text) {
             return '';
         }
-        const results = transalte(text, language, searchType);
+        const results = transalte(text, from, to, searchType);
         return (
             <div className={'results'}>
                 {results.map((item: any, i) => {
