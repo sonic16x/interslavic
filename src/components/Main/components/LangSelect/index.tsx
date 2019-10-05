@@ -36,7 +36,7 @@ export class LangSelect extends React.Component<ILangSelectProps> {
         return (
             <div className={'input-group langSelect'}>
                 {this.renderLangPart('from')}
-                <div className={'input-group-append langItem changeDir'}>
+                <div className={'langItem changeDir'}>
                     <button
                         type={'button'}
                         style={{textDecoration: 'none'}}
@@ -54,13 +54,13 @@ export class LangSelect extends React.Component<ILangSelectProps> {
         const langCode = this.props[dir];
         if (langCode === 'ins') {
             return (
-                <div className={'input-group-append langItem ins'}>
-                    <label className={'input-group-append input-group-text langItem'}>Interslavic</label>
+                <div className={'langItem ins'}>
+                    <label className={'input-group-text langItem'}>Interslavic</label>
                 </div>
             );
         }
         return (
-            <div className={'input-group-append langItem'}>
+            <div className={'langItem another'}>
                 <Selector
                     options={languageList}
                     value={langCode}

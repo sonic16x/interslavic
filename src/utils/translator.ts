@@ -1,6 +1,7 @@
 import cyrillicToLatin from 'cyrillic-to-latin';
-import latinToCyrillic from 'latin-to-cyrillic';
+// import latinToCyrillic from 'latin-to-cyrillic';
 import { latinToIpa } from './latinToIpa';
+import { transliterate } from './legacy';
 import words from './words.json';
 
 const searchTypes = {
@@ -13,8 +14,18 @@ function normalize(text) {
     return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\W/g, '').replace(/ /, '');
 }
 
-function prepareTranslate(text): string {
-    return latinToCyrillic(text);
+function getCyrillic(text, flavorisationType): string {
+    if (!text) {
+        return '';
+    }
+    return transliterate(text, 5, flavorisationType, 0, 1);
+}
+
+function getLatin(text, flavorisationType): string {
+    if (!text) {
+        return '';
+    }
+    return transliterate(text, 1, flavorisationType, 0, 1);
 }
 
 const langIndexes = {
@@ -26,7 +37,8 @@ const langIndexes = {
     pl: 10,
 };
 
-export function transalte(inputText: string, from: string, to: string, searchType: string): any[] {
+export function transalte(
+    inputText: string, from: string, to: string, searchType: string, flavorisationType: string): any[] {
     // const header = [
     //     'slo',
     //     'add',
@@ -40,7 +52,7 @@ export function transalte(inputText: string, from: string, to: string, searchTyp
     //     'cs',
     //     'pl',
     // ];
-    let text = inputText;
+    let text = inputText.toLowerCase();
     if (from === 'ins') {
         text = cyrillicToLatin(text);
         text = normalize(text);
@@ -59,22 +71,22 @@ export function transalte(inputText: string, from: string, to: string, searchTyp
     if (from === 'ins') {
         return result.map((item) => ({
             translate: item[langIndexes[to]],
-            original: item[0],
-            originalCyrillic: prepareTranslate(item[0]),
-            originalAdd: item[1],
-            originalAddCyrillic: prepareTranslate(item[1]),
+            original: getLatin(item[0], flavorisationType),
+            originalCyrillic: getCyrillic(item[0], flavorisationType),
+            originalAdd: getLatin(item[1], flavorisationType),
+            originalAddCyrillic: getCyrillic(item[1], flavorisationType),
             pos: item[2],
         }));
     } else {
         return result.map((item) => ({
-            translateCyrillic: prepareTranslate(item[0]),
-            translate: item[0],
-            add: item[1],
-            addCyrillic: prepareTranslate(item[1]),
+            translateCyrillic: getCyrillic(item[0], flavorisationType),
+            translate: getLatin(item[0], flavorisationType),
+            add: getLatin(item[1], flavorisationType),
+            addCyrillic: getCyrillic(item[1], flavorisationType),
             pos: item[2],
             original: item[langIndexes[from]],
             sameLanguages: item[5],
-            ipa: latinToIpa(item[0]),
+            ipa: latinToIpa(getLatin(item[0], flavorisationType)),
         }));
     }
 }

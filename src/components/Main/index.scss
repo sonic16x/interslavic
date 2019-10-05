@@ -15,21 +15,13 @@
   overflow: hidden;
 }
 
-.langSelect {
+.flav {
   display: flex;
-  justify-content: space-between;
-}
-
-.langItem {
-  flex-shrink: 1;
-  flex-grow: 10000;
-}
-.changeDir button {
-  width: 100%;
-  font-weight: bold;
-}
-.ins label {
-  width: 100%;
-  background: #fff;
-  border-radius: .25rem !important;
+  label {
+    margin-right: 15px;
+    margin-left: 5px;
+    margin-bottom: 0;
+    line-height: 2.1rem;
+    font-size: 1.1rem;
+  }
 }

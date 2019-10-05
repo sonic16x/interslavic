@@ -6,16 +6,17 @@ interface IResultsProps {
     text: string;
     from: string;
     to: string;
+    flavorisationType: string;
     searchType: string;
 }
 
 export class Results extends React.Component<IResultsProps> {
     public render() {
-        const { text, from, to, searchType } = this.props;
+        const { text, from, to, searchType, flavorisationType } = this.props;
         if (!text) {
             return '';
         }
-        const results = transalte(text, from, to, searchType);
+        const results = transalte(text, from, to, searchType, flavorisationType);
         return (
             <div className={'results'}>
                 {results.map((item: any, i) => {

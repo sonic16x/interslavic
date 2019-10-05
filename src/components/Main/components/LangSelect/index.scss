@@ -1,3 +1,20 @@
-.changeLang {
-  text-decoration: none;
+.ins label {
+  text-align: start;
+  width: 100%;
+  background: #fff;
+  border-radius: .25rem !important;
+}
+.ins, .another {
+  width: 40%;
+}
+.langItem {
+  display: inline-block;
+}
+.changeDir {
+  width: 20%;
+  text-align: center;
+  button {
+    font-weight: bold;
+    text-decoration: none;
+  }
 }
