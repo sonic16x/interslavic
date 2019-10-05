@@ -20,11 +20,7 @@
     "cyrillic-to-latin": "^2.0.0",
     "latin-to-cyrillic": "^1.0.1",
     "react": "^16.1.1",
-    "react-accessible-accordion": "^2.4.5",
-    "react-dom": "^16.1.1",
-    "request": "^2.88.0",
-    "text-to-ipa": "^1.0.0",
-    "transliteration": "^2.1.7"
+    "react-dom": "^16.1.1"
   },
   "devDependencies": {
     "@types/jasmine": "^3.4.0",
