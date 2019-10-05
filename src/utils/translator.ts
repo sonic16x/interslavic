@@ -10,7 +10,7 @@ const searchTypes = {
 };
 
 function normalize(text) {
-    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /, '');
+    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\u02b9/g, '').replace(/ /, '');
 }
 
 function prepareTranslate(text, spellingType): string {
