@@ -11,7 +11,6 @@ interface IMainState {
     to: string;
     fromText: string;
     searchType: string;
-    spellingType: string;
     info: boolean;
 }
 
@@ -30,17 +29,6 @@ const searchTypes = [
     },
 ];
 
-const spellingTypes = [
-    {
-        name: 'Latin',
-        value: 'latin',
-    },
-    {
-        name: 'Cyrillic',
-        value: 'cyrillic',
-    },
-];
-
 export class Main extends React.Component<{}, IMainState> {
     constructor(props) {
         super(props);
@@ -49,7 +37,6 @@ export class Main extends React.Component<{}, IMainState> {
             to: 'ins',
             fromText: '',
             searchType: 'full',
-            spellingType: 'latin',
             info: false,
         };
     }
@@ -72,12 +59,6 @@ export class Main extends React.Component<{}, IMainState> {
                         onSelect={(searchType) => this.setState({searchType})}
                     />
                     <br/>
-                    <LineSelector
-                        options={spellingTypes}
-                        value={this.state.spellingType}
-                        onSelect={(spellingType) => this.setState({spellingType})}
-                    />
-                    <br/>
                     <div className={'input-group input-group-lg'}>
                         <input
                             placeholder={'Type word here'}
@@ -92,7 +73,6 @@ export class Main extends React.Component<{}, IMainState> {
                     text={this.state.fromText}
                     language={this.state.from}
                     searchType={this.state.searchType}
-                    spellingType={this.state.spellingType}
                 />
             </>
         );

@@ -6,16 +6,15 @@ interface IResultsProps {
     text: string;
     language: string;
     searchType: string;
-    spellingType: string;
 }
 
 export class Results extends React.Component<IResultsProps> {
     public render() {
-        const { text, language, searchType, spellingType } = this.props;
+        const { text, language, searchType } = this.props;
         if (!text) {
             return '';
         }
-        const results = transalte(text, language, searchType, spellingType);
+        const results = transalte(text, language, searchType);
         return (
             <div className={'results'}>
                 {results.map((item: any, i) => {
@@ -23,16 +22,44 @@ export class Results extends React.Component<IResultsProps> {
                         <div className={'card resultCard shadow'} key={i}>
                             <div className={'card-body'}>
                                 <h5 className={'card-title'}>
-                                    {item.translate}{item.add ? ` ${item.add}` : ''}&nbsp;{this.renderIpa(item)}
+                                    {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
                                 </h5>
                                 <h6 className={'card-subtitle mb-2 text-muted'}>{item.pos}</h6>
-                                {item.original ? <p className={'card-text'}>{item.original}</p> : ''}
+                                {item.original ? <p className={'card-text'}>{this.renderOriginal(item)}</p> : ''}
                             </div>
                         </div>
                     );
                 })}
             </div>
         );
+    }
+    private renderOriginal(item) {
+        let latin = item.original;
+        if (item.originalAdd) {
+            latin += ` ${item.originalAdd}`;
+        }
+        let cyrillic = item.originalCyrillic;
+        if (item.originalAddCyrillic) {
+            cyrillic += ` ${item.originalAddCyrillic}`;
+        }
+        if (latin && cyrillic) {
+            return `${latin}/${cyrillic}`;
+        }
+        return latin;
+    }
+    private renderTranslate(item) {
+        let latin = item.translate;
+        if (item.add) {
+            latin += ` ${item.add}`;
+        }
+        let cyrillic = item.translateCyrillic;
+        if (item.addCyrillic) {
+            cyrillic += ` ${item.addCyrillic}`;
+        }
+        if (latin && cyrillic) {
+            return `${latin}/${cyrillic}`;
+        }
+        return latin;
     }
     private renderIpa(item) {
         if (item.ipa) {
