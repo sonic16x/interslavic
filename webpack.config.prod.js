@@ -18,7 +18,7 @@ module.exports = {
     output: {
       path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
       publicPath: './',
-      filename: 'index.js'
+      filename: '[hash].js'
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -80,7 +80,7 @@ module.exports = {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(srcPath, 'index.html'),
-        filename: '[hash].html',
+        filename: 'index.html',
         path: outputPath
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
