@@ -1,0 +1,33 @@
+#app {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.container {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  /* for Firefox */
+  min-height: 0;
+  overflow: hidden;
+}
+
+.langSelect {
+  display: flex;
+  justify-content: space-between;
+}
+
+.langItem {
+  flex-shrink: 1;
+  flex-grow: 10000;
+}
+.changeDir button {
+  width: 100%;
+}
+.ins label {
+  width: 100%;
+  background: #fff;
+}

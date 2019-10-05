@@ -1,0 +1,27 @@
+{
+  "extends": ["tslint:recommended", "tslint-react"],
+  "rules": {
+    "jsx-wrap-multiline": false,
+    "jsx-no-lambda": false,
+    "quotemark": [true, "single"],
+    "object-literal-sort-keys": false,
+    "no-bitwise": false,
+    "jsx-no-multiline-js": false,
+    "no-shadowed-variable": false,
+    "indent": [true, "spaces", 2],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
+    ]
+  },
+  "formatter": "stylish"
+}

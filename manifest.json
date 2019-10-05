@@ -1,0 +1,15 @@
+{
+  "short_name": "MEDŽUSLOVJANSKY SLOVNIK",
+  "name": "MEDŽUSLOVJANSKY SLOVNIK",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#343a40",
+  "display": "standalone",
+  "theme_color": "#343a40"
+}
