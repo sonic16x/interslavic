@@ -12,15 +12,19 @@ interface ILineSelectorProps {
     onSelect: (value: string) => void;
 }
 
-interface ILineSelectorState {}
-
-export class LineSelector extends React.Component<ILineSelectorProps, ILineSelectorState> {
+export class LineSelector extends React.Component<ILineSelectorProps> {
     public render() {
         return (
             <ul className={'nav nav-pills nav-fill'}>
                 {this.props.options.map(({name, value}, i) => (
                     <li className={'nav-item'} key={i}>
-                        <a className={'nav-link' + (value === this.props.value ? ' active' : '')} href='#' onClick={() => this.props.onSelect(value)}>{name}</a>
+                        <a
+                            className={'nav-link' + (value === this.props.value ? ' active shadow' : '')}
+                            href='#'
+                            onClick={() => this.props.onSelect(value)}
+                        >
+                            {name}
+                        </a>
                     </li>
                 ))}
             </ul>

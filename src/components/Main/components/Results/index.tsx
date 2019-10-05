@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './index.scss';
 import { transalte } from 'utils/translator';
+import './index.scss';
 
 interface IResultsProps {
     text: string;
@@ -9,15 +9,7 @@ interface IResultsProps {
     spellingType: string;
 }
 
-interface IResultsState {}
-
-export class Results extends React.Component<IResultsProps, IResultsState> {
-    private renderIpa(item) {
-        if (item.ipa) {
-            return <span className={'text-muted'}>[{item.ipa}]</span>;
-        }
-        return '';
-    }
+export class Results extends React.Component<IResultsProps> {
     public render() {
         const { text, language, searchType, spellingType } = this.props;
         if (!text) {
@@ -27,11 +19,12 @@ export class Results extends React.Component<IResultsProps, IResultsState> {
         return (
             <div className={'results'}>
                 {results.map((item: any, i) => {
-                    console.log(item.ipa);
                     return (
                         <div className={'card resultCard shadow'} key={i}>
                             <div className={'card-body'}>
-                                <h5 className={'card-title'}>{item.translate}{item.add ? ` ${item.add}` : ''}&nbsp;{this.renderIpa(item)}</h5>
+                                <h5 className={'card-title'}>
+                                    {item.translate}{item.add ? ` ${item.add}` : ''}&nbsp;{this.renderIpa(item)}
+                                </h5>
                                 <h6 className={'card-subtitle mb-2 text-muted'}>{item.pos}</h6>
                                 {item.original ? <p className={'card-text'}>{item.original}</p> : ''}
                             </div>
@@ -40,5 +33,11 @@ export class Results extends React.Component<IResultsProps, IResultsState> {
                 })}
             </div>
         );
+    }
+    private renderIpa(item) {
+        if (item.ipa) {
+            return <span className={'text-muted'}>[{item.ipa}]</span>;
+        }
+        return '';
     }
 }

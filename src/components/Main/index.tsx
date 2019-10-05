@@ -1,12 +1,10 @@
 import * as React from 'react';
-import './index.scss';
 import { Header } from './components/Header';
+import { InfoPage } from './components/InfoPage';
 import { LangSelect } from './components/LangSelect';
 import { LineSelector } from './components/LineSelector';
 import { Results } from './components/Results';
-import { InfoPage } from './components/InfoPage';
-
-interface IMainProps {}
+import './index.scss';
 
 interface IMainState {
     from: string;
@@ -43,7 +41,7 @@ const spellingTypes = [
     },
 ];
 
-export class Main extends React.Component<IMainProps, IMainState> {
+export class Main extends React.Component<{}, IMainState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,7 +60,11 @@ export class Main extends React.Component<IMainProps, IMainState> {
                 <Header showInfo={() => this.setState({info: true})}/>
                 <div className={'container shadow'}>
                     <br/>
-                    <LangSelect from={this.state.from} to={this.state.to} onSelect={(from, to) => this.setState({from, to})}/>
+                    <LangSelect
+                        from={this.state.from}
+                        to={this.state.to}
+                        onSelect={(from, to) => this.setState({from, to})}
+                    />
                     <br/>
                     <LineSelector
                         options={searchTypes}
@@ -78,7 +80,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
                     <br/>
                     <div className={'input-group input-group-lg'}>
                         <input
-                            placeholder={'Type text here'}
+                            placeholder={'Type word here'}
                             type={'text'}
                             className={'form-control'}
                             onChange={(e) => this.setState({fromText: e.target.value})}

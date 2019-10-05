@@ -1,7 +1,7 @@
-import { words } from './words';
-import latinToCyrillic from 'latin-to-cyrillic';
 import cyrillicToLatin from 'cyrillic-to-latin';
+import latinToCyrillic from 'latin-to-cyrillic';
 import { latinToIpa } from './latinToIpa';
+import { words } from './words';
 
 const searchTypes = {
     full: (item, text) => normalize(item) === text,
@@ -10,7 +10,7 @@ const searchTypes = {
 };
 
 function normalize(text) {
-    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /, '');
 }
 
 function prepareTranslate(text, spellingType): string {
@@ -30,10 +30,11 @@ export function transalte(inputText: string, lang: string, searchType: string, s
     //     'lex',
     //     'sla',
     // ];
-    let text = normalize(inputText);
+    let text = inputText;
     if (spellingType === 'cyrillic') {
         text = cyrillicToLatin(text);
     }
+    text = normalize(text);
     if (lang === 'ins') {
         const result = words.filter((item) => item[0].split(',').some((sp) => searchTypes[searchType](sp, text)));
         return result.map((item) => ({
