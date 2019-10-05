@@ -80,7 +80,7 @@ module.exports = {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(srcPath, 'index.html'),
-        filename: 'index.html',
+        filename: '[hash].html',
         path: outputPath
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
