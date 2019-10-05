@@ -17,7 +17,9 @@ export class InfoPage extends React.Component<IInfoPageProps, IInfoPageState> {
                     <p className={'card-text'}>
                         Using dictionary from <a target={'_blank'} href={'http://steen.free.fr/interslavic/dynamic_dictionary.html'}>http://steen.free.fr/interslavic/dynamic_dictionary.html</a>
                         <br/>
-                        Author <a href={'email:cherebedov.sergey@gmail.com'}>cherebedov.sergey@gmail.com</a>
+                        Author <a target={'_blank'} href={'email:cherebedov.sergey@gmail.com'}>cherebedov.sergey@gmail.com</a>
+                        <br/>
+                        Github <a target={'_blank'} href={'https://github.com/scherebedov/interslavic'}>https://github.com/scherebedov/interslavic</a>
                     </p>
                     <button type={'button'} className={'btn btn-primary'} onClick={() => this.props.onClose()}>Go back</button>
                 </div>
