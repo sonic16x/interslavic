@@ -1,14 +1,14 @@
 {
-  "short_name": "MEDŽUSLOVJANSKY SLOVNIK",
-  "name": "MEDŽUSLOVJANSKY SLOVNIK",
+  "short_name": "Medžuslovjansky slovnik",
+  "name": "Medžuslovjansky slovnik",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "https://scherebedov.github.io/interslavic/icon.png",
       "type": "image/png",
       "sizes": "256x256"
     }
   ],
-  "start_url": "",
+  "start_url": "https://scherebedov.github.io/interslavic/index.html",
   "background_color": "#343a40",
   "display": "standalone",
   "theme_color": "#343a40"
