@@ -86,6 +86,8 @@ export function translate(
         .filter((item) => {
             return item[headerIndexes.get(from)]
                 .split(',')
+                .map((s) => s.split('-'))
+                .flat()
                 .map((l) => l.replace(/ /, ''))
                 .some((sp) => searchTypes[searchType](from === 'ins' ? normalize(sp) : sp.toLowerCase(), text))
                 ;
