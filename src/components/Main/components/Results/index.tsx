@@ -8,6 +8,7 @@ interface IResultsProps {
     to: string;
     flavorisationType: string;
     searchType: string;
+    wordList: string[][];
 }
 
 export class Results extends React.Component<IResultsProps> {
@@ -16,7 +17,7 @@ export class Results extends React.Component<IResultsProps> {
         if (!text) {
             return '';
         }
-        const results = translate(text, from, to, searchType, flavorisationType);
+        const results = translate(text, from, to, searchType, flavorisationType, this.props.wordList);
 
         return (
             <div className={'results'}>

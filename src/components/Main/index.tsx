@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Checkbox } from './components/Checkbox';
 import { Header } from './components/Header';
 import { InfoPage } from './components/InfoPage';
 import { LangSelect } from './components/LangSelect';
 import { LineSelector } from './components/LineSelector';
+import { Loader } from './components/Loader';
 import { Results } from './components/Results';
 import { Selector } from './components/Selector';
 import './index.scss';
@@ -16,6 +16,7 @@ interface IMainState {
     flavorisationType: string;
     info: boolean;
     scientific: boolean;
+    wordList?: string[][];
 }
 
 const searchTypes = [
@@ -56,6 +57,8 @@ const flavorisationTypes = [
     },
 ];
 
+const wordsListUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSwmAFvs2FmTYZfaS6VMe3X0VbvuKCs5F94YbvcyRfD070GZ0eNvYZAZXoPuZyT4s6Wqho2wyVzeeeu/pub?gid=1987833874&single=true&output=tsv';
+
 export class Main extends React.Component<{}, IMainState> {
     constructor(props) {
         super(props);
@@ -68,8 +71,20 @@ export class Main extends React.Component<{}, IMainState> {
             info: false,
             scientific: false,
         };
+        this.loadWordsList();
+    }
+    private loadWordsList() {
+        fetch(wordsListUrl)
+            .then((res) => res.text())
+            .then((data) => {
+                const wordList = data.split('\n').map((l) => l.split('\t'));
+                this.setState({wordList});
+            });
     }
     public render() {
+        if (!this.state.wordList) {
+            return <Loader title={'Loading dictionary'}/>;
+        }
         return (
             <>
                 {this.state.info ? <InfoPage onClose={() => this.setState({info: false})}/> : ''}
@@ -111,6 +126,7 @@ export class Main extends React.Component<{}, IMainState> {
                     from={this.state.from}
                     to={this.state.to}
                     searchType={this.state.searchType}
+                    wordList={this.state.wordList}
                     flavorisationType={this.state.flavorisationType}
                 />
             </>

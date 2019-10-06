@@ -1,6 +1,5 @@
 import { latinToIpa } from './latinToIpa';
 import { transliterate } from './legacy';
-import words from './words.json';
 
 const searchTypes = {
     full: (item, text) => item === text,
@@ -95,7 +94,8 @@ function getField(item, fieldName) {
 }
 
 export function translate(
-    inputText: string, from: string, to: string, searchType: string, flavorisationType: string): any[] {
+    inputText: string, from: string, to: string, searchType: string, flavorisationType: string, wordList: string[][],
+): any[] {
     let text = inputText.toLowerCase();
     if (from === 'ins') {
         // Translate from cyrillic to latin
@@ -104,6 +104,8 @@ export function translate(
     }
 
     const distMap = new WeakMap();
+
+    const words = wordList.slice(1);
 
     const result = words
         // .filter((item) => item[headerIndexes.get(from)]) // Filter for null values
