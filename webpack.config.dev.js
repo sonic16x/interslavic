@@ -83,6 +83,9 @@ module.exports = {
       filename: 'index.html',
       path: outputPath
     }),
+    new webpack.DefinePlugin({
+      HASH_ID: JSON.stringify('dev')
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new CopyPlugin([

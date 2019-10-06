@@ -5,10 +5,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
+const uuidv4 = require('uuid/v4');
 
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
+const bundleId = uuidv4().replace(/-/g, '');
 
 module.exports = {
   devtool: 'source-map',
@@ -18,7 +20,7 @@ module.exports = {
   output: {
     path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: './',
-    filename: '[hash].js'
+    filename: `${bundleId}.js`
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -85,7 +87,8 @@ module.exports = {
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      HASH_ID: JSON.stringify(bundleId),
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new CopyPlugin([
