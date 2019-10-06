@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { transalte } from 'utils/translator';
+import { translate } from 'utils/translator';
 import './index.scss';
 
 interface IResultsProps {
@@ -16,7 +16,7 @@ export class Results extends React.Component<IResultsProps> {
         if (!text) {
             return '';
         }
-        const results = transalte(text, from, to, searchType, flavorisationType);
+        const results = translate(text, from, to, searchType, flavorisationType);
         return (
             <div className={'results'}>
                 {results.map((item: any, i) => {
