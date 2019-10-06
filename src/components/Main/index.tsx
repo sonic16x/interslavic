@@ -105,7 +105,6 @@ export class Main extends React.Component<{}, IMainState> {
                             value={this.state.flavorisationType}
                         />
                     </div>
-                    <br/>
                 </div>
                 <Results
                     text={this.state.fromText}
