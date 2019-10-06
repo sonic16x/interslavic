@@ -1,5 +1,3 @@
-import cyrillicToLatin from 'cyrillic-to-latin';
-// import latinToCyrillic from 'latin-to-cyrillic';
 import { latinToIpa } from './latinToIpa';
 import { transliterate } from './legacy';
 import words from './words.json';
@@ -54,7 +52,8 @@ export function transalte(
     // ];
     let text = inputText.toLowerCase();
     if (from === 'ins') {
-        text = cyrillicToLatin(text);
+        // Translate from cyrillic to latin
+        text = transliterate(text, 1, 3, 0, 1);
         text = normalize(text);
     }
 
@@ -64,7 +63,7 @@ export function transalte(
             return item[langIndexes[from]]
                 .split(',')
                 .map((l) => l.replace(/ /, ''))
-                .some((sp) => searchTypes[searchType](from === 'ins' ? normalize(sp) : sp, text))
+                .some((sp) => searchTypes[searchType](from === 'ins' ? normalize(sp) : sp.toLowerCase(), text))
                 ;
         });
 
