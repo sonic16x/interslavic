@@ -18,12 +18,40 @@ const languageList = [
         value: 'uk',
     },
     {
+        name: 'Беларуская',
+        value: 'be',
+    },
+    {
         name: 'Česky',
         value: 'cs',
     },
     {
         name: 'Polski',
         value: 'pl',
+    },
+    {
+        name: 'Slovenský',
+        value: 'sk',
+    },
+    {
+        name: 'Slovenščina',
+        value: 'sl',
+    },
+    {
+        name: 'Български',
+        value: 'bg',
+    },
+    {
+        name: 'Hrvatski',
+        value: 'hr',
+    },
+    {
+        name: 'Српски',
+        value: 'sr',
+    },
+    {
+        name: 'Македонски',
+        value: 'mk',
     },
     {
         name: 'English',

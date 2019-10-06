@@ -26,30 +26,31 @@ function getLatin(text, flavorisationType): string {
     return transliterate(text, 1, flavorisationType, 0, 1);
 }
 
-const langIndexes = {
-    ins: 0,
-    en: 4,
-    ru: 7,
-    uk: 8,
-    cs: 9,
-    pl: 10,
-};
+const header = [
+    'ins',
+    'add',
+    'pos',
+    'slo',
+    'en',
+    'lex',
+    'sla',
+    'ru',
+    'uk',
+    'cs',
+    'pl',
+    'sk',
+    'sl',
+    'bg',
+    'hr',
+    'sr',
+    'mk',
+    'be',
+];
+
+const headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
 
 export function transalte(
     inputText: string, from: string, to: string, searchType: string, flavorisationType: string): any[] {
-    // const header = [
-    //     'slo',
-    //     'add',
-    //     'pos',
-    //     'slo',
-    //     'eng',
-    //     'lex',
-    //     'sla',
-    //     'ru',
-    //     'uk',
-    //     'cs',
-    //     'pl',
-    // ];
     let text = inputText.toLowerCase();
     if (from === 'ins') {
         // Translate from cyrillic to latin
@@ -58,9 +59,9 @@ export function transalte(
     }
 
     const result = words
-        .filter((item) => item[langIndexes[from]])
+        .filter((item) => item[headerIndexes.get(from)])
         .filter((item) => {
-            return item[langIndexes[from]]
+            return item[headerIndexes.get(from)]
                 .split(',')
                 .map((l) => l.replace(/ /, ''))
                 .some((sp) => searchTypes[searchType](from === 'ins' ? normalize(sp) : sp.toLowerCase(), text))
@@ -69,7 +70,7 @@ export function transalte(
 
     if (from === 'ins') {
         return result.map((item) => ({
-            translate: item[langIndexes[to]],
+            translate: item[headerIndexes.get(to)],
             original: getLatin(item[0], flavorisationType),
             originalCyrillic: getCyrillic(item[0], flavorisationType),
             originalAdd: getLatin(item[1], flavorisationType),
@@ -83,7 +84,7 @@ export function transalte(
             add: getLatin(item[1], flavorisationType),
             addCyrillic: getCyrillic(item[1], flavorisationType),
             pos: item[2],
-            original: item[langIndexes[from]],
+            original: item[headerIndexes.get(from)],
             sameLanguages: item[5],
             ipa: latinToIpa(getLatin(item[0], flavorisationType)),
         }));
