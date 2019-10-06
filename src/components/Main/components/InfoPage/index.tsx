@@ -10,7 +10,8 @@ export class InfoPage extends React.Component<IInfoPageProps> {
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/scherebedov/interslavic';
         const source = 'http://steen.free.fr/interslavic/dynamic_dictionary.html';
-        const buildHash = document.getElementsByTagName('script')[0].src.split('/').pop().split('.').shift();
+        const buildHash = Array.prototype.slice.call(document.getElementsByTagName('script'))
+            .find(({src}) => src.indexOf('scherebedov') !== -1).src.split('/').pop().split('.').shift();
         return (
             <div className={'card infoPage'}>
                 <img src={'logo.png'} className={'card-img shadow'} alt={'logo'}/>
