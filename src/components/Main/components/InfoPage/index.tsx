@@ -14,6 +14,7 @@ export class InfoPage extends React.Component<IInfoPageProps> {
         const source = 'http://steen.free.fr/interslavic/dynamic_dictionary.html';
         const sourceEmail = 'wenedyk@yahoo.co.uk';
         const sourceName = 'Jan van Steenbergen';
+        const tableUrl = 'https://docs.google.com/spreadsheets/d/14b7B41A847_PDD6S3dFBOVBIkt_Cdxnt1m4e6NjrWP0/edit?usp=sharing';
 
         return (
             <div className={'card infoPage'}>
@@ -25,6 +26,8 @@ export class InfoPage extends React.Component<IInfoPageProps> {
                         Using dictionary from <a target={'_blank'} href={source}>{source}</a>
                         <p>Author of Interslavic/English dictionary:</p>
                         <a href={`email:${sourceEmail}`}>{sourceName}&nbsp;({sourceEmail})</a>
+                        <hr/>
+                        <a target={'_blank'} href={tableUrl}>Table with translations</a>
                         <hr/>
                         <p>Developer</p>
                         <a target={'_blank'} href={`email:${email}`}>{email}</a>
