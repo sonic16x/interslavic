@@ -50,18 +50,42 @@ const header = [
     'be',
 ];
 
-function levDist(s, t) {
-    if (!s.length) {
-        return t.length;
+function levenshteinDistance(a, b) {
+    if (a.length === 0) {
+        return b.length;
     }
-    if (!t.length) {
-        return s.length;
+    if (b.length === 0) {
+        return a.length;
     }
 
-    return Math.min(
-        (levDist(s.substring(1), t) + 1),
-        (levDist(t.substring(1), s) + 1),
-        (levDist(s.substring(1), t.substring(1)) + (s[0] !== t[0] ? 1 : 0)));
+    const matrix = [];
+
+    // increment along the first column of each row
+    let i;
+    for (i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
+
+    // increment each column in the first row
+    let j;
+    for (j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
+
+    // Fill in the rest of the matrix
+    for (i = 1; i <= b.length; i++) {
+        for (j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, // substitution
+                    Math.min(matrix[i][j - 1] + 1, // insertion
+                        matrix[i - 1][j] + 1)); // deletion
+            }
+        }
+    }
+
+    return matrix[b.length][a.length];
 }
 
 const headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
@@ -84,7 +108,7 @@ export function translate(
     const result = words
         // .filter((item) => item[headerIndexes.get(from)]) // Filter for null values
         .filter((item) => {
-            return item[headerIndexes.get(from)]
+            return getField(item, from)
                 .split(',')
                 .map((s) => s.split('-'))
                 .flat()
@@ -93,8 +117,21 @@ export function translate(
                 ;
         })
         .map((item) => {
-            const str = from === 'ins' ? normalize(item[0]) : item[0].toLowerCase();
-            const dist = levDist(str, text);
+            const dist = getField(item, from)
+                .split(',')
+                .map((s) => s.split('-'))
+                .flat()
+                .reduce((acc, l) => {
+                    const wws = l.replace(/ /, '').toLowerCase();
+                    const lDist = levenshteinDistance(text, (from === 'ins' ? normalize(wws) : wws));
+                    if (acc === false) {
+                        return lDist;
+                    }
+                    if (lDist < acc) {
+                        return lDist;
+                    }
+                    return acc;
+                }, false);
             distMap.set(item, dist);
             return item;
         })
