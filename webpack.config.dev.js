@@ -10,7 +10,6 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
 
 module.exports = {
   entry: [
-    'eventsource-polyfill', // necessary for hot reloading with IE
     './src/index.tsx'
   ],
   output: {
