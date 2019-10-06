@@ -17,11 +17,9 @@ export class Results extends React.Component<IResultsProps> {
             return '';
         }
         const results = translate(text, from, to, searchType, flavorisationType);
-        const childrenOfApp = document.getElementById('app');
-        const height = childrenOfApp.children[0].clientHeight + childrenOfApp.children[1].clientHeight;
 
         return (
-            <div className={'results'} style={{height: window.innerHeight - height}}>
+            <div className={'results'}>
                 {results.map((item: any, i) => {
                     return (
                         <div className={'card resultCard shadow'} key={i}>
