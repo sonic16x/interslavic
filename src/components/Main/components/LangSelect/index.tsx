@@ -80,9 +80,9 @@ export class LangSelect extends React.Component<ILangSelectProps> {
     }
     private renderLangPart(dir: string) {
         const langCode = this.props[dir];
-        if (langCode === 'ins') {
+        if (langCode === 'isv') {
             return (
-                <div className={'langItem ins'}>
+                <div className={'langItem isv'}>
                     <label className={'input-group-text langItem'}>Interslavic</label>
                 </div>
             );

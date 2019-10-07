@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { initDictionary } from 'utils/translator';
 import { Header } from './components/Header';
 import { InfoPage } from './components/InfoPage';
 import { LangSelect } from './components/LangSelect';
@@ -16,7 +17,7 @@ interface IMainState {
     flavorisationType: string;
     info: boolean;
     scientific: boolean;
-    wordList?: string[][];
+    isLoading: boolean;
 }
 
 const searchTypes = [
@@ -64,12 +65,13 @@ export class Main extends React.Component<{}, IMainState> {
         super(props);
         this.state = {
             from: 'en',
-            to: 'ins',
+            to: 'isv',
             fromText: '',
             searchType: 'full',
             flavorisationType: '3',
             info: false,
             scientific: false,
+            isLoading: true,
         };
         this.loadWordsList();
     }
@@ -78,11 +80,12 @@ export class Main extends React.Component<{}, IMainState> {
             .then((res) => res.text())
             .then((data) => {
                 const wordList = data.split('\n').map((l) => l.split('\t'));
-                this.setState({wordList});
+                this.setState({isLoading: false});
+                initDictionary(wordList);
             });
     }
     public render() {
-        if (!this.state.wordList) {
+        if (this.state.isLoading) {
             return <Loader title={'Loading dictionary'}/>;
         }
         return (
@@ -126,7 +129,6 @@ export class Main extends React.Component<{}, IMainState> {
                     from={this.state.from}
                     to={this.state.to}
                     searchType={this.state.searchType}
-                    wordList={this.state.wordList}
                     flavorisationType={this.state.flavorisationType}
                 />
             </>

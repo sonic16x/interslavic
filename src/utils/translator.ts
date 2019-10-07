@@ -34,26 +34,9 @@ function getLatin(text, flavorisationType): string {
     return transliterate(text, 1, flavorisationType, 0, 1);
 }
 
-const header = [
-    'ins', // Word in interslavic.
-    'addition', // Addition to word in interslavic.
-    'partOfSpeech', // Part of speech for en.
-    'type', // Archaisms, Neologisms, Slavicisms.
-    'en',
-    'sameInLanguages', // Languages where this word looks the same.
-    'genesis', // S - Slavic, I - International, D/G - German, E - English, F - French, T - Turkish.
-    'ru',
-    'uk',
-    'cs',
-    'pl',
-    'sk',
-    'sl',
-    'bg',
-    'hr',
-    'sr',
-    'mk',
-    'be',
-];
+let header;
+let words;
+let headerIndexes;
 
 function levenshteinDistance(a, b) {
     if (a.length === 0) {
@@ -93,17 +76,21 @@ function levenshteinDistance(a, b) {
     return matrix[b.length][a.length];
 }
 
-const headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
-
 function getField(item, fieldName) {
     return item[headerIndexes.get(fieldName)];
 }
 
+export function initDictionary(wordList: string[][]) {
+    header = wordList.shift();
+    words = wordList;
+    headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
+}
+
 export function translate(
-    inputText: string, from: string, to: string, searchType: string, flavorisationType: string, wordList: string[][],
+    inputText: string, from: string, to: string, searchType: string, flavorisationType: string,
 ): any[] {
     let text = inputText.toLowerCase();
-    if (from === 'ins') {
+    if (from === 'isv') {
         // Translate from cyrillic to latin
         text = transliterate(text, 1, 3, 0, 1);
         text = normalize(text);
@@ -111,17 +98,19 @@ export function translate(
 
     const distMap = new WeakMap();
 
-    const words = wordList.slice(1);
-
     const result = words
-        // .filter((item) => item[headerIndexes.get(from)]) // Filter for null values
         .filter((item) => {
-            return getField(item, from)
+            const fromField = getField(item, from);
+            const toField = getField(item, to);
+            if (fromField === '!' || toField === '!') {
+                return false;
+            }
+            return fromField
                 .split(',')
                 .map((s) => s.split('-'))
                 .flat()
                 .map((l) => l.replace(/ /, ''))
-                .some((sp) => searchTypes[searchType](from === 'ins' ? normalize(sp) : sp.toLowerCase(), text))
+                .some((sp) => searchTypes[searchType](from === 'isv' ? normalize(sp) : sp.toLowerCase(), text))
                 ;
         })
         .map((item) => {
@@ -131,7 +120,7 @@ export function translate(
                 .flat()
                 .reduce((acc, l) => {
                     const wws = l.replace(/ /, '').toLowerCase();
-                    const lDist = levenshteinDistance(text, (from === 'ins' ? normalize(wws) : wws));
+                    const lDist = levenshteinDistance(text, (from === 'isv' ? normalize(wws) : wws));
                     if (acc === false) {
                         return lDist;
                     }
@@ -147,9 +136,9 @@ export function translate(
         .slice(0, 50)
     ;
 
-    if (from === 'ins') {
+    if (from === 'isv') {
         return result.map((item) => {
-            const ins = getField(item, 'ins');
+            const ins = getField(item, 'isv');
             const add = getField(item, 'addition');
             const translate = getField(item, to);
             return {
@@ -164,7 +153,7 @@ export function translate(
         });
     } else {
         return result.map((item) => {
-            const ins = getField(item, 'ins');
+            const ins = getField(item, 'isv');
             const add = getField(item, 'addition');
             const original = getField(item, from);
             return {
