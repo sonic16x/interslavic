@@ -91,6 +91,7 @@ module.exports = {
       {from: './manifest.json', to: 'manifest.json'},
       {from: './icon192.png', to: 'icon192.png'},
       {from: './icon512.png', to: 'icon512.png'},
+      {from: './src/serviceWorker.js', to: 'serviceWorker.js'},
     ]),
     new Dotenv({
       path: './.env.local',

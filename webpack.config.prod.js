@@ -95,6 +95,7 @@ module.exports = {
       {from: './icon192.png', to: 'icon192.png'},
       {from: './icon512.png', to: 'icon512.png'},
       {from: './logo.png', to: 'logo.png'},
+      {from: './src/serviceWorker.js', to: 'serviceWorker.js'},
     ]),
     new ExtractTextPlugin('style.css'),
     new webpack.LoaderOptionsPlugin({
