@@ -11,7 +11,13 @@ function normalize(text) {
     if (!text) {
         return '';
     }
-    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\W/g, '').replace(/ /, '');
+    return text
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\W/g, '')
+        .replace(/ /, '')
+    ;
 }
 
 function getCyrillic(text, flavorisationType): string {
@@ -145,27 +151,31 @@ export function translate(
         return result.map((item) => {
             const ins = getField(item, 'ins');
             const add = getField(item, 'addition');
+            const translate = getField(item, to);
             return {
-                translate: getField(item, to),
+                translate: translate.replace(/!/, ''),
                 original: getLatin(ins, flavorisationType),
                 originalCyrillic: getCyrillic(ins, flavorisationType),
                 originalAdd: getLatin(add, flavorisationType),
                 originalAddCyrillic: getCyrillic(add, flavorisationType),
                 pos: getField(item, 'partOfSpeech'),
+                checked: translate[0] !== '!',
             };
         });
     } else {
         return result.map((item) => {
             const ins = getField(item, 'ins');
             const add = getField(item, 'addition');
+            const original = getField(item, from);
             return {
                 translateCyrillic: getCyrillic(ins, flavorisationType),
                 translate: getLatin(ins, flavorisationType),
                 add: getLatin(add, flavorisationType),
                 addCyrillic: getCyrillic(add, flavorisationType),
                 pos: getField(item, 'partOfSpeech'),
-                original: getField(item, from),
+                original: original.replace(/!/, ''),
                 ipa: latinToIpa(getLatin(ins, flavorisationType)),
+                checked: original[0] !== '!',
             };
         });
     }

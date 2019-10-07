@@ -21,9 +21,10 @@ export class Results extends React.Component<IResultsProps> {
 
         return (
             <div className={'results'}>
-                {results.map((item: any, i) => {
+                    {results.map((item: any, i) => {
                     return (
                         <div className={'card resultCard shadow'} key={i}>
+                            {this.renderCheked(item)}
                             <div className={'card-body'}>
                                 <h5 className={'card-title'}>
                                     {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
@@ -36,6 +37,13 @@ export class Results extends React.Component<IResultsProps> {
                 })}
             </div>
         );
+    }
+    private renderCheked({checked}) {
+        if (checked) {
+            return <span className={'badge checked shadow badge-success'}>Checked by human</span>;
+        } else {
+            return <span className={'badge checked shadow badge-danger'}>Automatic translate</span>;
+        }
     }
     private renderOriginal(item) {
         let latin = item.original;
