@@ -37,6 +37,7 @@ function getLatin(text, flavorisationType): string {
 let header;
 let words;
 let headerIndexes;
+const isnToLatinMap = new Map();
 
 function levenshteinDistance(a, b) {
     if (a.length === 0) {
@@ -80,10 +81,29 @@ function getField(item, fieldName) {
     return item[headerIndexes.get(fieldName)];
 }
 
+function isvToEngLatin(text) {
+    const latin = isnToLatinMap.get(text);
+    if (!latin) {
+        return normalize(getLatin(text, 3));
+    }
+    return latin;
+}
+
 export function initDictionary(wordList: string[][]) {
     header = wordList.shift();
     words = wordList;
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
+    words.forEach((item) => {
+        const isvWord = item[0];
+        isnToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
+        item[0].split(',')
+            .map((s) => s.split('-'))
+            .flat()
+            .map((l) => {
+                const wws = l.replace(/ /, '');
+                isnToLatinMap.set(wws, normalize(getLatin(wws, 3)));
+            });
+    });
 }
 
 export function translate(
@@ -92,7 +112,7 @@ export function translate(
     let text = inputText.toLowerCase();
     if (from === 'isv') {
         // Translate from cyrillic to latin
-        text = transliterate(text, 1, 3, 0, 1);
+        text = getLatin(text, 3);
         text = normalize(text);
     }
 
@@ -110,7 +130,7 @@ export function translate(
                 .map((s) => s.split('-'))
                 .flat()
                 .map((l) => l.replace(/ /, ''))
-                .some((sp) => searchTypes[searchType](from === 'isv' ? normalize(sp) : sp.toLowerCase(), text))
+                .some((sp) => searchTypes[searchType](from === 'isv' ? isvToEngLatin(sp) : sp.toLowerCase(), text))
                 ;
         })
         .map((item) => {
@@ -120,7 +140,7 @@ export function translate(
                 .flat()
                 .reduce((acc, l) => {
                     const wws = l.replace(/ /, '').toLowerCase();
-                    const lDist = levenshteinDistance(text, (from === 'isv' ? normalize(wws) : wws));
+                    const lDist = levenshteinDistance(text, (from === 'isv' ? isvToEngLatin(wws) : wws));
                     if (acc === false) {
                         return lDist;
                     }
