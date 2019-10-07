@@ -39,9 +39,9 @@ export class Results extends React.Component<IResultsProps> {
     }
     private renderCheked({checked}) {
         if (checked) {
-            return <span className={'badge checked shadow badge-success'}>Checked by human</span>;
+            return <span className={'badge checked shadow badge-success'}>Verified</span>;
         } else {
-            return <span className={'badge checked shadow badge-danger'}>Automatic translate</span>;
+            return <span className={'badge checked shadow badge-danger'}>Auto-translation</span>;
         }
     }
     private renderOriginal(item) {
