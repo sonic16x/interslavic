@@ -126,6 +126,8 @@ export class Main extends React.Component<{}, IMainState> {
                 const wordList = data.split('\n').map((l) => l.split('\t'));
                 this.setState({isLoading: false});
                 initDictionary(wordList);
-            });
+            })
+            .catch(() => this.loadWordsList())
+        ;
     }
 }
