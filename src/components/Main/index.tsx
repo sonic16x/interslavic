@@ -127,7 +127,7 @@ export class Main extends React.Component<{}, IMainState> {
                 this.setState({isLoading: false});
                 initDictionary(wordList);
             })
-            .catch(() => this.loadWordsList())
+            .catch(() => setTimeout(() => this.loadWordsList(), 500))
         ;
     }
 }
