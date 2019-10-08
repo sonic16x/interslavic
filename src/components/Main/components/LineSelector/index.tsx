@@ -34,14 +34,13 @@ export class LineSelector extends React.Component<ILineSelectorProps> {
                         className={'nav-link active shadow slide'}
                         href='#'
                     >
-                        {this.props.options[index].name}
+                        &nbsp;
                     </a>
                 </li>
                 {this.props.options.map(({name, value}, i) => (
                     <li className={'nav-item'} key={i} ref={this.liRefs[value]}>
                         <a
-                            className={'nav-link'}
-                            // className={'nav-link' + (value === this.props.value ? ' active shadow' : '')}
+                            className={'nav-link' + (value === this.props.value ? ' activeItem' : '')}
                             href='#'
                             onClick={() => this.props.onSelect(value)}
                         >

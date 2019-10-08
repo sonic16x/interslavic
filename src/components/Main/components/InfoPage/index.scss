@@ -6,9 +6,10 @@
   left: 0;
   z-index: 100;
   background: #fff;
+  overflow: auto;
   img {
     width: 50%;
-    margin: 50px auto;
+    margin: 1rem auto 0 auto;
   }
   p {
     margin-bottom: 0;

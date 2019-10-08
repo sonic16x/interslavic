@@ -43,8 +43,8 @@ export class InfoPage extends React.Component<IInfoPageProps> {
                     >
                         Go back
                     </button>
-                    <p className={'fixed-bottom text-muted buildHash'}>{HASH_ID}</p>
                 </div>
+                <p className={'text-muted buildHash'}>{HASH_ID}</p>
             </div>
         );
     }
