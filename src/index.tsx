@@ -24,6 +24,7 @@ function gtag(...args){
 if (process.env.NODE_ENV === 'production') {
     const script = document.createElement('script');
     script.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-B3K87B1ZBD');
+    document.head.appendChild(script);
     window.dataLayer = window.dataLayer || [];
 
     gtag('js', new Date());
