@@ -109,7 +109,7 @@ export function initDictionary(wordList: string[][]) {
 export function translate(
     inputText: string, from: string, to: string, searchType: string, flavorisationType: string,
 ): any[] {
-    let text = inputText.toLowerCase();
+    let text = inputText.toLowerCase().replace(/ /, '');
     if (from === 'isv') {
         // Translate from cyrillic to latin
         text = getLatin(text, 3);
@@ -126,6 +126,8 @@ export function translate(
                 return false;
             }
             return fromField
+                .replace(/!/, '')
+                .replace(/ /, '')
                 .split(',')
                 .map((s) => s.split('-'))
                 .flat()
