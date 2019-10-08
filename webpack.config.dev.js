@@ -83,7 +83,8 @@ module.exports = {
       path: outputPath
     }),
     new webpack.DefinePlugin({
-      HASH_ID: JSON.stringify('dev')
+      HASH_ID: JSON.stringify('dev'),
+      'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

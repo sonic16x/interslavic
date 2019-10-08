@@ -13,6 +13,13 @@ if ('serviceWorker' in navigator) {
         });
 }
 
+declare const ga: (a: string, b: string, c?: string) => void;
+
+if (process.env.NODE_ENV === 'production') {
+    ga('create', 'G-B3K87B1ZBD', 'auto');
+    ga('send', 'pageview');
+}
+
 render(
     <Main />,
     document.getElementById('app'),
