@@ -25,7 +25,7 @@ export class InfoPage extends React.Component<IInfoPageProps> {
                     <div className={'card-text'}>
                         <hr/>
                         Using dictionary from <a target={'_blank'} href={source}>{source}</a>
-                        <p>Author of Interslavic/English dictionary:</p>
+                        <p>Author of Interslavic/English/Polish dictionary:</p>
                         <a href={`email:${sourceEmail}`}>{sourceName}&nbsp;({sourceEmail})</a>
                         <hr/>
                         <a target={'_blank'} href={tableUrl}>Table with translations</a>
