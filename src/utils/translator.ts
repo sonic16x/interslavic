@@ -131,7 +131,7 @@ export function translate(
                 .split(',')
                 .map((s) => s.split('-'))
                 .flat()
-                .map((l) => l.replace(/ /, ''))
+                // .map((l) => l.replace(/ /, ''))
                 .some((sp) => searchTypes[searchType](from === 'isv' ? isvToEngLatin(sp) : sp.toLowerCase(), text))
                 ;
         })
