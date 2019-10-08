@@ -3,12 +3,13 @@ import './index.scss';
 
 interface ILoaderProps {
     title: string;
+    isLoading: boolean;
 }
 
 export class Loader extends React.Component<ILoaderProps> {
     public render() {
         return (
-            <div className={'loaderContainer'}>
+            <div className={'loaderContainer' + (this.props.isLoading ? ' loading' : '')}>
                 <div className={'spinner-border text-primary'} role={'status'}>
                     <span className={'sr-only'}>{this.props.title}</span>
                 </div>

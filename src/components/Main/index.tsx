@@ -75,22 +75,11 @@ export class Main extends React.Component<{}, IMainState> {
         };
         this.loadWordsList();
     }
-    private loadWordsList() {
-        fetch(wordsListUrl)
-            .then((res) => res.text())
-            .then((data) => {
-                const wordList = data.split('\n').map((l) => l.split('\t'));
-                this.setState({isLoading: false});
-                initDictionary(wordList);
-            });
-    }
     public render() {
-        if (this.state.isLoading) {
-            return <Loader title={'Loading dictionary'}/>;
-        }
         return (
             <>
-                {this.state.info ? <InfoPage onClose={() => this.setState({info: false})}/> : ''}
+                <Loader title={'Loading dictionary'} isLoading={this.state.isLoading}/>
+                <InfoPage onClose={() => this.setState({info: false})} isVisible={this.state.info}/>
                 <Header showInfo={() => this.setState({info: true})}/>
                 <div className={'container shadow'}>
                     <br/>
@@ -133,5 +122,14 @@ export class Main extends React.Component<{}, IMainState> {
                 />
             </>
         );
+    }
+    private loadWordsList() {
+        fetch(wordsListUrl)
+            .then((res) => res.text())
+            .then((data) => {
+                const wordList = data.split('\n').map((l) => l.split('\t'));
+                this.setState({isLoading: false});
+                initDictionary(wordList);
+            });
     }
 }

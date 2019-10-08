@@ -1,0 +1,8 @@
+.lineSelector {
+  .back {
+    position: absolute;
+    width: 33%;
+    pointer-events: none;
+    transition: 0.05s;
+  }
+}

@@ -3,6 +3,7 @@ import './index.scss';
 
 interface IInfoPageProps {
     onClose: () => void;
+    isVisible: boolean;
 }
 
 declare const HASH_ID: string;
@@ -17,7 +18,7 @@ export class InfoPage extends React.Component<IInfoPageProps> {
         const tableUrl = 'https://docs.google.com/spreadsheets/d/14b7B41A847_PDD6S3dFBOVBIkt_Cdxnt1m4e6NjrWP0/edit?usp=sharing';
 
         return (
-            <div className={'card infoPage'}>
+            <div className={'card infoPage' + (this.props.isVisible ? ' show' : '')}>
                 <img src={'logo.png'} className={'card-img shadow'} alt={'logo'}/>
                 <div className={'card-body'}>
                     <h5 className={'card-title'}>Info page</h5>
@@ -37,7 +38,7 @@ export class InfoPage extends React.Component<IInfoPageProps> {
                     </div>
                     <button
                         type={'button'}
-                        className={'btn btn-primary'}
+                        className={'btn btn-primary shadow'}
                         onClick={() => this.props.onClose()}
                     >
                         Go back

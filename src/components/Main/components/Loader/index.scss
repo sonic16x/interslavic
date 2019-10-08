@@ -4,11 +4,19 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: #fff;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 100;
+  &.loading {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 @keyframes spinner-border {
