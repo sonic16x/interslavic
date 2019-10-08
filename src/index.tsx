@@ -13,11 +13,22 @@ if ('serviceWorker' in navigator) {
         });
 }
 
-declare const ga: (a: string, b: string, c?: string) => void;
+declare global {
+    interface Window { dataLayer: any[]; }
+}
+
+function gtag(...args){
+    window.dataLayer.push(...args);
+}
 
 if (process.env.NODE_ENV === 'production') {
-    ga('create', 'G-B3K87B1ZBD', 'auto');
-    ga('send', 'pageview');
+    const script = document.createElement('script');
+    script.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-B3K87B1ZBD');
+    window.dataLayer = window.dataLayer || [];
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-B3K87B1ZBD');
 }
 
 render(
