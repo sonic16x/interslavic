@@ -9,10 +9,9 @@
 .container {
   display: flex;
   flex-direction: column;
-
-  /* for Firefox */
   overflow: hidden;
-  min-height: 276px;
+  min-height: 245px;
+  justify-content: space-evenly;
 }
 
 .flav {

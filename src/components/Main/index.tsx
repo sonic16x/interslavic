@@ -82,19 +82,16 @@ export class Main extends React.Component<{}, IMainState> {
                 <InfoPage onClose={() => this.setState({info: false})} isVisible={this.state.info}/>
                 <Header showInfo={() => this.setState({info: true})}/>
                 <div className={'container shadow'}>
-                    <br/>
                     <LangSelect
                         from={this.state.from}
                         to={this.state.to}
                         onSelect={(from, to) => this.setState({from, to})}
                     />
-                    <br/>
                     <LineSelector
                         options={searchTypes}
                         value={this.state.searchType}
                         onSelect={(searchType) => this.setState({searchType})}
                     />
-                    <br/>
                     <div className={'input-group input-group-lg'}>
                         <input
                             placeholder={'Type word here'}
@@ -103,7 +100,6 @@ export class Main extends React.Component<{}, IMainState> {
                             onChange={(e) => this.setState({fromText: e.target.value})}
                         />
                     </div>
-                    <br/>
                     <div className={'flav'}>
                         <label>Flavorisation</label>
                         <Selector
