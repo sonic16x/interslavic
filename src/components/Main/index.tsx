@@ -22,12 +22,12 @@ interface IMainState {
 
 const searchTypes = [
     {
-        name: 'Entire',
-        value: 'full',
-    },
-    {
         name: 'Begin',
         value: 'begin',
+    },
+    {
+        name: 'Entire',
+        value: 'full',
     },
     {
         name: 'Any',
@@ -67,7 +67,7 @@ export class Main extends React.Component<{}, IMainState> {
             from: 'en',
             to: 'isv',
             fromText: '',
-            searchType: 'full',
+            searchType: 'begin',
             flavorisationType: '3',
             info: false,
             scientific: false,
