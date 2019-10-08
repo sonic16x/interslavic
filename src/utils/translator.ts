@@ -15,6 +15,24 @@ function normalize(text) {
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .replace(/\W/g, '')
+        ;
+}
+
+function filterCyryllic(text) {
+    return text.replace(/[ąáä]/g, 'a')
+        .replace(/[ćč]/g, 'c')
+        .replace(/[ďđ]/g, 'd')
+        .replace(/[ęéě]/g, 'e')
+        .replace(/[í]/g, 'i')
+        .replace(/[łĺľ]/g, 'l')
+        .replace(/[ńň]/g, 'n')
+        .replace(/[óô]/g, 'o')
+        .replace(/[řŕ]/g, 'r')
+        .replace(/[śš]/g, 's')
+        .replace(/[ť]/g, 't')
+        .replace(/[úů]/g, 'u')
+        .replace(/[ý]/g, 'y')
+        .replace(/[źżž]/g, 'z')
     ;
 }
 
@@ -86,6 +104,18 @@ function isvToEngLatin(text) {
         return normalize(getLatin(text, 3));
     }
     return latin;
+}
+
+function searchPrepare(lang, text) {
+    if (lang === 'isv') {
+        return isvToEngLatin(text);
+    }
+
+    if (['cs', 'pl', 'sk', 'sl', 'hr'].indexOf(lang) !== -1) {
+        text = filterCyryllic(text);
+    }
+
+    return text.toLowerCase();
 }
 
 export function initDictionary(wordList: string[][]) {
