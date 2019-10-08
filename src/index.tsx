@@ -23,13 +23,13 @@ function gtag(...args){
 
 if (process.env.NODE_ENV === 'production') {
     const script = document.createElement('script');
-    script.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-B3K87B1ZBD');
+    script.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=UA-149580301-1');
     document.head.appendChild(script);
     window.dataLayer = window.dataLayer || [];
 
     gtag('js', new Date());
 
-    gtag('config', 'G-B3K87B1ZBD');
+    gtag('config', 'UA-149580301-1');
 }
 
 render(
