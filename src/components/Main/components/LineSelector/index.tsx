@@ -12,14 +12,26 @@ interface ILineSelectorProps {
     onSelect: (value: string) => void;
 }
 
-export class LineSelector extends React.Component<ILineSelectorProps> {
+interface ILineSelectorState {
+    initial: boolean;
+}
+
+export class LineSelector extends React.Component<ILineSelectorProps, ILineSelectorState> {
     private liRefs;
     constructor(props) {
         super(props);
+        this.state = {
+            initial: true,
+        };
         this.liRefs = {};
         props.options.forEach(({value}) => {
             this.liRefs[value] = React.createRef();
         });
+    }
+    public componentDidMount() {
+        if (this.state.initial === true) {
+            this.setState({initial: false});
+        }
     }
     public render() {
         const index = this.props.options.map(({value}) => value).indexOf(this.props.value);
