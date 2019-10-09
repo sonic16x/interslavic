@@ -89,6 +89,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
       HASH_ID: JSON.stringify(bundleId),
+      DATE: JSON.stringify(new Date().toISOString()),
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new CopyPlugin(['static']),

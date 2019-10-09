@@ -8,6 +8,7 @@ import { mainReducer } from 'reducers';
 /* tslint:disable */
 declare global {
     const HASH_ID: string;
+    const DATE: string;
     interface Window {
         HASH_ID: string;
         dataLayer: any[];
