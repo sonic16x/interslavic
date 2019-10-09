@@ -12,11 +12,9 @@ function normalize(text) {
         return '';
     }
     return text
-        .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .replace(/\W/g, '')
-        .replace(/ /, '')
     ;
 }
 
@@ -91,17 +89,21 @@ function isvToEngLatin(text) {
 
 export function initDictionary(wordList: string[][]) {
     header = wordList.shift();
-    words = wordList;
+    words = wordList.map((line) => {
+        return line.map((item, i) => {
+            if (['partOfSpeech', 'type', 'sameInLanguages', 'genesis'].indexOf(header[i]) === -1) {
+                return item.replace(/ /, '').toLowerCase();
+            }
+            return item;
+        });
+    });
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
     words.forEach((item) => {
         const isvWord = item[0];
         isnToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
-        item[0].split(',')
-            .map((s) => s.split('-'))
-            .flat()
-            .map((l) => {
-                const wws = l.replace(/ /, '');
-                isnToLatinMap.set(wws, normalize(getLatin(wws, 3)));
+        item[0].split(/,|-/)
+            .map((item) => {
+                isnToLatinMap.set(item, normalize(getLatin(item, 3)));
             });
     });
 }
@@ -125,8 +127,7 @@ export function translate(
     let text = inputText.toLowerCase().replace(/ /, '');
     if (from === 'isv') {
         // Translate from cyrillic to latin
-        text = getLatin(text, 3);
-        text = normalize(text);
+        text = isvToEngLatin(text);
     }
 
     const distMap = new WeakMap();
@@ -140,22 +141,15 @@ export function translate(
             }
             return fromField
                 .replace(/!/, '')
-                .replace(/ /, '')
-                .split(',')
-                .map((s) => s.split('-'))
-                .flat()
-                // .map((l) => l.replace(/ /, ''))
-                .some((sp) => searchTypes[searchType](from === 'isv' ? isvToEngLatin(sp) : sp.toLowerCase(), text))
+                .split(/,|-/)
+                .some((sp) => searchTypes[searchType](from === 'isv' ? isvToEngLatin(sp) : sp, text))
                 ;
         })
         .map((item) => {
             const dist = getField(item, from)
-                .split(',')
-                .map((s) => s.split('-'))
-                .flat()
-                .reduce((acc, l) => {
-                    const wws = l.replace(/ /, '').toLowerCase();
-                    const lDist = levenshteinDistance(text, (from === 'isv' ? isvToEngLatin(wws) : wws));
+                .split(/,|-/)
+                .reduce((acc, item) => {
+                    const lDist = levenshteinDistance(text, (from === 'isv' ? isvToEngLatin(item) : item));
                     if (acc === false) {
                         return lDist;
                     }

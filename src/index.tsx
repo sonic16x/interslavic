@@ -5,16 +5,16 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { mainReducer } from 'reducers';
 
+/* tslint:disable */
 declare global {
     const HASH_ID: string;
     interface Window {
-        HASH_ID: string,
+        HASH_ID: string;
         dataLayer: any[];
         __REDUX_DEVTOOLS_EXTENSION__: any;
     }
 }
 
-/* tslint:disable */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register(`./sw.${HASH_ID}.js`)
         .then((registration) => {
