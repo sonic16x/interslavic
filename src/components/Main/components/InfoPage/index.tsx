@@ -8,8 +8,6 @@ interface IInfoPageProps {
     isVisible: boolean;
 }
 
-declare const HASH_ID: string;
-
 class InfoPage extends React.Component<IInfoPageProps> {
     public render() {
         const email = 'cherebedov.sergey@gmail.com';

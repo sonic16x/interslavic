@@ -3,19 +3,23 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src/');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
+const bundleId = 'dev';
 
 module.exports = {
-  entry: [
-    './src/index.tsx'
-  ],
+  entry: {
+    index: './src/index',
+    sw: './src/sw',
+  },
   output: {
-    path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
+    path: outputPath,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: `[name].${bundleId}.js`,
+    globalObject: 'this'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -83,17 +87,13 @@ module.exports = {
       path: outputPath
     }),
     new webpack.DefinePlugin({
-      HASH_ID: JSON.stringify('dev'),
       'process.env.NODE_ENV': JSON.stringify('development'),
+      HASH_ID: JSON.stringify(bundleId),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new CopyPlugin([
-      {from: './manifest.json', to: 'manifest.json'},
-      {from: './icon192.png', to: 'icon192.png'},
-      {from: './icon512.png', to: 'icon512.png'},
-      {from: './src/serviceWorker.js', to: 'serviceWorker.js'},
-    ]),
+    new CopyPlugin(['static']),
+    new WriteFilePlugin(),
     new Dotenv({
       path: './.env.local',
       safe: true,

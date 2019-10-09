@@ -5,9 +5,18 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { mainReducer } from 'reducers';
 
+declare global {
+    const HASH_ID: string;
+    interface Window {
+        HASH_ID: string,
+        dataLayer: any[];
+        __REDUX_DEVTOOLS_EXTENSION__: any;
+    }
+}
+
 /* tslint:disable */
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./serviceWorker.js')
+    navigator.serviceWorker.register(`./sw.${HASH_ID}.js`)
         .then((registration) => {
             console.log('Registration successful, scope is:', registration.scope);
         })
@@ -16,11 +25,7 @@ if ('serviceWorker' in navigator) {
         });
 }
 
-declare global {
-    interface Window { dataLayer: any[]; }
-}
-
-function gtag(...args){
+function gtag(...args) {
     window.dataLayer.push(...args);
 }
 
@@ -35,7 +40,13 @@ if (process.env.NODE_ENV === 'production') {
     gtag('config', 'UA-149580301-1');
 }
 
-const store = createStore(mainReducer);
+function reduxDevTools() {
+    if (process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__) {
+        return window.__REDUX_DEVTOOLS_EXTENSION__();
+    }
+}
+
+const store = createStore(mainReducer, reduxDevTools());
 
 render(
     <Provider store={store}>

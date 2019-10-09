@@ -50,6 +50,7 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
-    "webpack-hot-middleware": "^2.20.0"
+    "webpack-hot-middleware": "^2.20.0",
+    "write-file-webpack-plugin": "^4.5.1"
   }
 }
