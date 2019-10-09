@@ -1,4 +1,4 @@
-import { translate, ITransalteResult } from 'utils/translator';
+import { translate, ITranslateResult } from 'utils/translator';
 
 import {
     SEARCH_TYPE,
@@ -19,7 +19,7 @@ export interface IMainState {
     flavorisationType: string;
     showInfo: boolean;
     isLoading: boolean;
-    results: ITransalteResult[];
+    results: ITranslateResult[];
 }
 
 const defaultState = {

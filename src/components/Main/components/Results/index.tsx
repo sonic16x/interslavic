@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ITransalteResult } from 'utils/translator';
+import { ITranslateResult } from 'utils/translator';
 import './index.scss';
 
 interface IResultsProps {
-    results: ITransalteResult[];
+    results: ITranslateResult[];
 }
 
 class Results extends React.Component<IResultsProps> {
-    public renderResultItem(item: ITransalteResult, i: number) {
+    public renderResultItem(item: ITranslateResult, i: number) {
         return (
             <div className={'card resultCard shadow'} key={i}>
                 {this.renderCheked(item)}
@@ -30,7 +30,7 @@ class Results extends React.Component<IResultsProps> {
 
         return (
             <div className={'results'}>
-                {results.map((item: ITransalteResult, i) => this.renderResultItem(item, i))}
+                {results.map((item: ITranslateResult, i) => this.renderResultItem(item, i))}
             </div>
         );
     }

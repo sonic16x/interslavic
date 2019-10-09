@@ -106,7 +106,7 @@ export function initDictionary(wordList: string[][]) {
     });
 }
 
-export interface ITransalteResult {
+export interface ITranslateResult {
     translate: string;
     translateCyrillic: string;
     original: string;
