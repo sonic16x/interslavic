@@ -18,7 +18,7 @@ function normalize(text) {
         ;
 }
 
-function filterCyryllic(text) {
+function filterLatin(text) {
     return text.replace(/[ąáä]/g, 'a')
         .replace(/[ćč]/g, 'c')
         .replace(/[ďđ]/g, 'd')
@@ -33,7 +33,7 @@ function filterCyryllic(text) {
         .replace(/[úů]/g, 'u')
         .replace(/[ý]/g, 'y')
         .replace(/[źżž]/g, 'z')
-    ;
+        ;
 }
 
 function getCyrillic(text, flavorisationType): string {
@@ -112,7 +112,7 @@ function searchPrepare(lang, text) {
     }
 
     if (['cs', 'pl', 'sk', 'sl', 'hr'].indexOf(lang) !== -1) {
-        text = filterCyryllic(text);
+        text = filterLatin(text);
     }
 
     return text.toLowerCase();
