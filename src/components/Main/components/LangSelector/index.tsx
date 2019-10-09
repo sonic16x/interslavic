@@ -108,8 +108,8 @@ class LangSelector extends React.Component<ILangSelectorProps> {
     }
 }
 
-function mapStateToProps({from, to}) {
-    return {from, to};
+function mapStateToProps({lang}) {
+    return { ...lang };
 }
 
 function mapDispatchToProps(dispatch) {
