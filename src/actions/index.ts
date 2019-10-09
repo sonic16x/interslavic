@@ -1,23 +1,15 @@
 import { initDictionary } from 'utils/translator';
 
-export const FROM = 'FROM';
-export const TO = 'TO';
+export const LANG = 'LANG';
 export const FROM_TEXT = 'FROM_TEXT';
 export const SEARCH_TYPE = 'SEARCH_TYPE';
 export const FLAVORISATION_TYPE = 'FLAVORISATION_TYPE';
 export const SHOW_INFO = 'SHOW_INFO';
 export const IS_LOADING = 'IS_LOADING';
 
-export function fromAction(data: string) {
+export function langAction(data: {from: string, to: string}) {
     return {
-        type: FROM,
-        data,
-    };
-}
-
-export function toAction(data: string) {
-    return {
-        type: TO,
+        type: LANG,
         data,
     };
 }
