@@ -1,133 +1,54 @@
 import * as React from 'react';
-import { initDictionary } from 'utils/translator';
-import { Header } from './components/Header';
-import { InfoPage } from './components/InfoPage';
-import { LangSelect } from './components/LangSelect';
-import { LineSelector } from './components/LineSelector';
+import { connect } from 'react-redux';
+import Header from './components/Header';
+import InfoPage from './components/InfoPage';
+import LangSelector from './components/LangSelector';
 import { Loader } from './components/Loader';
-import { Results } from './components/Results';
-import { Selector } from './components/Selector';
+import Results from './components/Results';
+import InputText from './components/InputText';
+import FlavorisationSelector from './components/FlavorisationSelector';
+import SearchTypeSelector from './components/SearchTypeSelector';
 import './index.scss';
+import { fetchDictionary } from 'actions';
 
-interface IMainState {
-    from: string;
-    to: string;
-    fromText: string;
-    searchType: string;
-    flavorisationType: string;
-    info: boolean;
-    scientific: boolean;
+interface IMainProps {
     isLoading: boolean;
+    loadWordsList: (url) => void;
 }
-
-const searchTypes = [
-    {
-        name: 'Begin',
-        value: 'begin',
-    },
-    {
-        name: 'Entire',
-        value: 'full',
-    },
-    {
-        name: 'Any',
-        value: 'some',
-    },
-];
-
-const flavorisationTypes = [
-    {
-        name: 'Naučny MS',
-        value: '2',
-    },
-    {
-        name: 'Medžuslovjansky',
-        value: '3',
-    },
-    {
-        name: 'Slovianto',
-        value: '4',
-    },
-    {
-        name: 'Sěverny variant',
-        value: 'S',
-    },
-    {
-        name: 'Južny variant',
-        value: 'J',
-    },
-];
 
 const wordsListUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSwmAFvs2FmTYZfaS6VMe3X0VbvuKCs5F94YbvcyRfD070GZ0eNvYZAZXoPuZyT4s6Wqho2wyVzeeeu/pub?gid=1987833874&single=true&output=tsv';
 
-export class Main extends React.Component<{}, IMainState> {
+class Main extends React.Component<IMainProps> {
     constructor(props) {
         super(props);
-        this.state = {
-            from: 'en',
-            to: 'isv',
-            fromText: '',
-            searchType: 'begin',
-            flavorisationType: '3',
-            info: false,
-            scientific: false,
-            isLoading: true,
-        };
-        this.loadWordsList();
+        this.props.loadWordsList(wordsListUrl);
     }
     public render() {
         return (
             <>
-                <Loader title={'Loading dictionary'} isLoading={this.state.isLoading}/>
-                <InfoPage onClose={() => this.setState({info: false})} isVisible={this.state.info}/>
-                <Header showInfo={() => this.setState({info: true})}/>
+                <Loader title={'Loading dictionary'} isLoading={this.props.isLoading}/>
+                <InfoPage/>
+                <Header/>
                 <div className={'container shadow'}>
-                    <LangSelect
-                        from={this.state.from}
-                        to={this.state.to}
-                        onSelect={(from, to) => this.setState({from, to})}
-                    />
-                    <LineSelector
-                        options={searchTypes}
-                        value={this.state.searchType}
-                        onSelect={(searchType) => this.setState({searchType})}
-                    />
-                    <div className={'input-group input-group-lg'}>
-                        <input
-                            placeholder={'Type word here'}
-                            type={'text'}
-                            className={'form-control'}
-                            onChange={(e) => this.setState({fromText: e.target.value})}
-                        />
-                    </div>
-                    <div className={'flav'}>
-                        <label>Flavorisation</label>
-                        <Selector
-                            options={flavorisationTypes}
-                            onSelect={(flavorisationType) => this.setState({flavorisationType})}
-                            value={this.state.flavorisationType}
-                        />
-                    </div>
+                    <LangSelector/>
+                    <SearchTypeSelector/>
+                    <InputText/>
+                    <FlavorisationSelector/>
                 </div>
-                <Results
-                    text={this.state.fromText}
-                    from={this.state.from}
-                    to={this.state.to}
-                    searchType={this.state.searchType}
-                    flavorisationType={this.state.flavorisationType}
-                />
+                <Results/>
             </>
         );
     }
-    private loadWordsList() {
-        fetch(wordsListUrl)
-            .then((res) => res.text())
-            .then((data) => {
-                const wordList = data.split('\n').map((l) => l.split('\t'));
-                this.setState({isLoading: false});
-                initDictionary(wordList);
-            })
-            .catch(() => location.reload())
-        ;
-    }
 }
+
+function mapStateToProps({ isLoading }) {
+    return { isLoading };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        loadWordsList: (url) => fetchDictionary(url)(dispatch),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

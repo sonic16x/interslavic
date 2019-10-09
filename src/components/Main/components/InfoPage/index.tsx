@@ -1,14 +1,16 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import './index.scss';
+import { showInfoAction } from 'actions';
 
 interface IInfoPageProps {
-    onClose: () => void;
+    close: () => void;
     isVisible: boolean;
 }
 
 declare const HASH_ID: string;
 
-export class InfoPage extends React.Component<IInfoPageProps> {
+class InfoPage extends React.Component<IInfoPageProps> {
     public render() {
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/scherebedov/interslavic';
@@ -39,7 +41,7 @@ export class InfoPage extends React.Component<IInfoPageProps> {
                     <button
                         type={'button'}
                         className={'btn btn-primary shadow'}
-                        onClick={() => this.props.onClose()}
+                        onClick={() => this.props.close()}
                     >
                         Go back
                     </button>
@@ -49,3 +51,17 @@ export class InfoPage extends React.Component<IInfoPageProps> {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        isVisible: state.showInfo,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        close: () => dispatch(showInfoAction(false)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InfoPage);

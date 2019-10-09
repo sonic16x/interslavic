@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Selector } from '../Selector';
 import './index.scss';
+import { fromAction, toAction } from 'actions';
 
-interface ILangSelectProps {
+interface ILangSelectorProps {
     from: string;
     to: string;
     onSelect: (from: string, to: string) => void;
@@ -59,7 +61,7 @@ const languageList = [
     },
 ];
 
-export class LangSelect extends React.Component<ILangSelectProps> {
+class LangSelector extends React.Component<ILangSelectorProps> {
     public render() {
         return (
             <div className={'input-group langSelect'}>
@@ -105,3 +107,18 @@ export class LangSelect extends React.Component<ILangSelectProps> {
         );
     }
 }
+
+function mapStateToProps({from, to}) {
+    return {from, to};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onSelect: (from, to) => {
+            dispatch(fromAction(from));
+            dispatch(toAction(to));
+        },
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LangSelector);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { translate } from 'utils/translator';
 import './index.scss';
 
@@ -10,7 +11,7 @@ interface IResultsProps {
     searchType: string;
 }
 
-export class Results extends React.Component<IResultsProps> {
+class Results extends React.Component<IResultsProps> {
     public render() {
         const { text, from, to, searchType, flavorisationType } = this.props;
         if (!text) {
@@ -20,20 +21,18 @@ export class Results extends React.Component<IResultsProps> {
 
         return (
             <div className={'results'}>
-                    {results.map((item: any, i) => {
-                    return (
-                        <div className={'card resultCard shadow'} key={i}>
-                            {this.renderCheked(item)}
-                            <div className={'card-body'}>
-                                <h5 className={'card-title'}>
-                                    {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
-                                </h5>
-                                <h6 className={'card-subtitle mb-2 text-muted'}>{item.pos}</h6>
-                                {item.original ? <p className={'card-text'}>{this.renderOriginal(item)}</p> : ''}
-                            </div>
+                {results.map((item: any, i) => (
+                    <div className={'card resultCard shadow'} key={i}>
+                        {this.renderCheked(item)}
+                        <div className={'card-body'}>
+                            <h5 className={'card-title'}>
+                                {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
+                            </h5>
+                            <h6 className={'card-subtitle mb-2 text-muted'}>{item.pos}</h6>
+                            {item.original ? <p className={'card-text'}>{this.renderOriginal(item)}</p> : ''}
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
         );
     }
@@ -79,3 +78,15 @@ export class Results extends React.Component<IResultsProps> {
         return '';
     }
 }
+
+function mapStateToProps({fromText, from, to, flavorisationType, searchType}) {
+    return {
+        text: fromText,
+        from,
+        to,
+        flavorisationType,
+        searchType,
+    };
+}
+
+export default connect(mapStateToProps)(Results);
