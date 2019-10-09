@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Selector } from '../Selector';
 import './index.scss';
-import { fromAction, toAction } from 'actions';
+import { langAction } from 'actions';
 
 interface ILangSelectorProps {
     from: string;
@@ -115,8 +115,7 @@ function mapStateToProps({from, to}) {
 function mapDispatchToProps(dispatch) {
     return {
         onSelect: (from, to) => {
-            dispatch(fromAction(from));
-            dispatch(toAction(to));
+            dispatch(langAction({from, to}));
         },
     };
 }
