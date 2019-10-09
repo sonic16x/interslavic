@@ -12,14 +12,15 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const bundleId = uuidv4().replace(/-/g, '');
 
 module.exports = {
-  devtool: 'source-map',
-  entry: [
-    './src/index'
-  ],
+  mode: 'production',
+  entry: {
+    index: './src/index',
+    sw: './src/sw',
+  },
   output: {
-    path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
-    publicPath: './',
-    filename: `${bundleId}.js`
+    path: outputPath,
+    publicPath: '/',
+    filename: `[name].${bundleId}.js`
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -90,13 +91,7 @@ module.exports = {
       HASH_ID: JSON.stringify(bundleId),
     }),
     new webpack.NoEmitOnErrorsPlugin(),
-    new CopyPlugin([
-      {from: './manifest.json', to: 'manifest.json'},
-      {from: './icon192.png', to: 'icon192.png'},
-      {from: './icon512.png', to: 'icon512.png'},
-      {from: './logo.png', to: 'logo.png'},
-      {from: './src/serviceWorker.js', to: 'serviceWorker.js'},
-    ]),
+    new CopyPlugin(['static']),
     new ExtractTextPlugin('style.css'),
     new webpack.LoaderOptionsPlugin({
       debug: true

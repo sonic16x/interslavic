@@ -60,14 +60,14 @@ export function mainReducer(state: IMainState = defaultState, action) {
                 ...newState,
                 [actionTypeFieldMap[type]]: data,
             };
-        default:
-            if (needUpdateResult) {
-                const { fromText, lang, flavorisationType, searchType } = newState;
-                newState = {
-                    ...newState,
-                    results: fromText ? translate(fromText, lang.from, lang.to, searchType, flavorisationType) : [],
-                };
-            }
+    }
+    if (needUpdateResult) {
+        const { fromText, lang, flavorisationType, searchType } = newState;
+        const results = fromText ? translate(fromText, lang.from, lang.to, searchType, flavorisationType) : [];
+        newState = {
+            ...newState,
+            results,
+        };
     }
     return newState;
 }

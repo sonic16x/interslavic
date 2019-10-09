@@ -1,7 +1,8 @@
+/* tslint:disable */
 self.addEventListener('install', (event) => {
-  // Perform some task
+  console.log('install');
 });
 
 self.addEventListener('activate', (event) => {
-  // Perform some task
+    console.log('activate');
 });
