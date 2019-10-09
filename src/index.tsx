@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { Main } from './components/Main';
+import Main from './components/Main';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { mainReducer } from 'reducers';
 
 /* tslint:disable */
 if ('serviceWorker' in navigator) {
@@ -32,7 +35,11 @@ if (process.env.NODE_ENV === 'production') {
     gtag('config', 'UA-149580301-1');
 }
 
+const store = createStore(mainReducer);
+
 render(
-    <Main />,
+    <Provider store={store}>
+        <Main />
+    </Provider>,
     document.getElementById('app'),
 );

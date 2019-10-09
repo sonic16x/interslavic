@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import './index.scss';
+import { showInfoAction } from 'actions';
 
 interface IHeaderProps {
     showInfo: () => void;
 }
 
-export class Header extends React.Component<IHeaderProps> {
+class Header extends React.Component<IHeaderProps> {
     public render() {
         return (
             <nav className={'navbar navbar-dark bg-dark shadow'}>
@@ -24,3 +26,11 @@ export class Header extends React.Component<IHeaderProps> {
         );
     }
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        showInfo: () => dispatch(showInfoAction(true)),
+    };
+}
+
+export default connect(null, mapDispatchToProps)(Header);
