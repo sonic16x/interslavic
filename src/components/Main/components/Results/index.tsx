@@ -1,38 +1,36 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { translate } from 'utils/translator';
+import { ITransalteResult } from 'utils/translator';
 import './index.scss';
 
 interface IResultsProps {
-    text: string;
-    from: string;
-    to: string;
-    flavorisationType: string;
-    searchType: string;
+    results: ITransalteResult[];
 }
 
 class Results extends React.Component<IResultsProps> {
+    public renderResultItem(item: ITransalteResult, i: number) {
+        return (
+            <div className={'card resultCard shadow'} key={i}>
+                {this.renderCheked(item)}
+                <div className={'card-body'}>
+                    <h5 className={'card-title'}>
+                        {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
+                    </h5>
+                    <h6 className={'card-subtitle mb-2 text-muted'}>{item.pos}</h6>
+                    {item.original ? <p className={'card-text'}>{this.renderOriginal(item)}</p> : ''}
+                </div>
+            </div>
+        );
+    }
     public render() {
-        const { text, from, to, searchType, flavorisationType } = this.props;
-        if (!text) {
+        const { results } = this.props;
+        if (!results || !results.length) {
             return '';
         }
-        const results = translate(text, from, to, searchType, flavorisationType);
 
         return (
             <div className={'results'}>
-                {results.map((item: any, i) => (
-                    <div className={'card resultCard shadow'} key={i}>
-                        {this.renderCheked(item)}
-                        <div className={'card-body'}>
-                            <h5 className={'card-title'}>
-                                {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
-                            </h5>
-                            <h6 className={'card-subtitle mb-2 text-muted'}>{item.pos}</h6>
-                            {item.original ? <p className={'card-text'}>{this.renderOriginal(item)}</p> : ''}
-                        </div>
-                    </div>
-                ))}
+                {results.map((item: ITransalteResult, i) => this.renderResultItem(item, i))}
             </div>
         );
     }
@@ -79,14 +77,8 @@ class Results extends React.Component<IResultsProps> {
     }
 }
 
-function mapStateToProps({fromText, from, to, flavorisationType, searchType}) {
-    return {
-        text: fromText,
-        from,
-        to,
-        flavorisationType,
-        searchType,
-    };
+function mapStateToProps({results}) {
+    return { results };
 }
 
 export default connect(mapStateToProps)(Results);

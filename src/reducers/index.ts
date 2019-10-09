@@ -1,3 +1,5 @@
+import { translate, ITransalteResult } from 'utils/translator';
+
 import {
     FROM,
     TO,
@@ -16,6 +18,7 @@ export interface IMainState {
     flavorisationType: string;
     showInfo: boolean;
     isLoading: boolean;
+    results: ITransalteResult[];
 }
 
 const defaultState = {
@@ -26,6 +29,7 @@ const defaultState = {
     flavorisationType: '3',
     showInfo: false,
     isLoading: true,
+    results: [],
 };
 
 const actionTypeFieldMap = {
@@ -40,6 +44,14 @@ const actionTypeFieldMap = {
 
 export function mainReducer(state: IMainState = defaultState, action) {
     const { type, data } = action;
+    if (type === FROM_TEXT) {
+        const { from, to, flavorisationType, searchType } = state;
+        return {
+            ...state,
+            fromText: data,
+            results: data ? translate(data, from, to, searchType, flavorisationType) : [],
+        };
+    }
     return {
         ...state,
         [actionTypeFieldMap[type]]: data,
