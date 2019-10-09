@@ -2,8 +2,8 @@ import { latinToIpa } from './latinToIpa';
 import { transliterate } from './legacy';
 
 const searchTypes = {
-    full: (item, text) => item === text,
     begin: (item, text) => item.indexOf(text) === 0,
+    full: (item, text) => item === text,
     some: (item, text) => item.indexOf(text) !== -1,
 };
 
@@ -106,6 +106,19 @@ export function initDictionary(wordList: string[][]) {
     });
 }
 
+export interface ITransalteResult {
+    translate: string;
+    translateCyrillic: string;
+    original: string;
+    originalAdd?: string;
+    originalAddCyrillic?: string;
+    add: string;
+    addCyrillic: string;
+    pos: string;
+    ipa?: string;
+    checked: boolean;
+}
+
 export function translate(
     inputText: string, from: string, to: string, searchType: string, flavorisationType: string,
 ): any[] {
@@ -165,8 +178,8 @@ export function translate(
             const translate = getField(item, to);
             return {
                 translate: translate.replace(/!/, ''),
-                original: getLatin(ins, flavorisationType),
                 originalCyrillic: getCyrillic(ins, flavorisationType),
+                original: getLatin(ins, flavorisationType),
                 originalAdd: getLatin(add, flavorisationType),
                 originalAddCyrillic: getCyrillic(add, flavorisationType),
                 pos: getField(item, 'partOfSpeech'),
@@ -179,12 +192,12 @@ export function translate(
             const add = getField(item, 'addition');
             const original = getField(item, from);
             return {
-                translateCyrillic: getCyrillic(ins, flavorisationType),
                 translate: getLatin(ins, flavorisationType),
+                translateCyrillic: getCyrillic(ins, flavorisationType),
+                original: original.replace(/!/, ''),
                 add: getLatin(add, flavorisationType),
                 addCyrillic: getCyrillic(add, flavorisationType),
                 pos: getField(item, 'partOfSpeech'),
-                original: original.replace(/!/, ''),
                 ipa: latinToIpa(getLatin(ins, flavorisationType)),
                 checked: original[0] !== '!',
             };
