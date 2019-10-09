@@ -50,11 +50,8 @@ export function mainReducer(state: IMainState = defaultState, action) {
     let needUpdateResult = false;
     switch (type) {
         case LANG:
-            needUpdateResult = true;
         case SEARCH_TYPE:
-            needUpdateResult = true;
         case FROM_TEXT:
-            needUpdateResult = true;
         case FLAVORISATION_TYPE:
             needUpdateResult = true;
         case SHOW_INFO:
