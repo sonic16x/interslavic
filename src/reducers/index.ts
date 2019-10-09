@@ -13,7 +13,7 @@ export interface IMainState {
     lang: {
         from: string;
         to: string;
-    },
+    };
     fromText: string;
     searchType: string;
     flavorisationType: string;
