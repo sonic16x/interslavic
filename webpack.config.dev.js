@@ -17,7 +17,7 @@ module.exports = {
   },
   output: {
     path: outputPath,
-    publicPath: '/',
+    publicPath: './',
     filename: `[name].${bundleId}.js`,
     globalObject: 'this'
   },
