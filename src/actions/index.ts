@@ -1,50 +1,52 @@
 import { initDictionary } from 'utils/translator';
 
-export const LANG = 'LANG';
-export const FROM_TEXT = 'FROM_TEXT';
-export const SEARCH_TYPE = 'SEARCH_TYPE';
-export const FLAVORISATION_TYPE = 'FLAVORISATION_TYPE';
-export const SHOW_INFO = 'SHOW_INFO';
-export const IS_LOADING = 'IS_LOADING';
+export enum ActionTypes {
+    LANG = 'LANG',
+    FROM_TEXT = 'FROM_TEXT',
+    SEARCH_TYPE = 'SEARCH_TYPE',
+    FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
+    SHOW_INFO = 'SHOW_INFO',
+    IS_LOADING = 'IS_LOADING',
+}
 
 export function langAction(data: {from: string, to: string}) {
     return {
-        type: LANG,
+        type: ActionTypes.LANG,
         data,
     };
 }
 
 export function fromTextAction(data: string) {
     return {
-        type: FROM_TEXT,
+        type: ActionTypes.FROM_TEXT,
         data,
     };
 }
 
 export function searchTypeAction(data: string) {
     return {
-        type: SEARCH_TYPE,
+        type: ActionTypes.SEARCH_TYPE,
         data,
     };
 }
 
 export function flavorisationTypeAction(data: string) {
     return {
-        type: FLAVORISATION_TYPE,
+        type: ActionTypes.FLAVORISATION_TYPE,
         data,
     };
 }
 
 export function showInfoAction(data: boolean) {
     return {
-        type: SHOW_INFO,
+        type: ActionTypes.SHOW_INFO,
         data,
     };
 }
 
 export function isLoadingAction(data: boolean) {
     return {
-        type: IS_LOADING,
+        type: ActionTypes.IS_LOADING,
         data,
     };
 }

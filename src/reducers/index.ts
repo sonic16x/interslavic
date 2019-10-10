@@ -1,13 +1,5 @@
 import { translate, ITranslateResult } from 'utils/translator';
-
-import {
-    SEARCH_TYPE,
-    FROM_TEXT,
-    FLAVORISATION_TYPE,
-    SHOW_INFO,
-    IS_LOADING,
-    LANG,
-} from 'actions';
+import { ActionTypes } from 'actions';
 
 export interface IMainState {
     lang: {
@@ -36,26 +28,25 @@ const defaultState = {
 };
 
 const actionTypeFieldMap = {
-    [SEARCH_TYPE]: 'searchType',
-    [FROM_TEXT]: 'fromText',
-    [FLAVORISATION_TYPE]: 'flavorisationType',
-    [SHOW_INFO]: 'showInfo',
-    [IS_LOADING]: 'isLoading',
-    [LANG]: 'lang',
+    [ActionTypes.SEARCH_TYPE]: 'searchType',
+    [ActionTypes.FROM_TEXT]: 'fromText',
+    [ActionTypes.FLAVORISATION_TYPE]: 'flavorisationType',
+    [ActionTypes.SHOW_INFO]: 'showInfo',
+    [ActionTypes.IS_LOADING]: 'isLoading',
+    [ActionTypes.LANG]: 'lang',
 };
 
-export function mainReducer(state: IMainState = defaultState, action) {
-    const { type, data } = action;
+export function mainReducer(state: IMainState = defaultState, { type, data }) {
     let newState = state;
     let needUpdateResult = false;
     switch (type) {
-        case LANG:
-        case SEARCH_TYPE:
-        case FROM_TEXT:
-        case FLAVORISATION_TYPE:
+        case ActionTypes.LANG:
+        case ActionTypes.SEARCH_TYPE:
+        case ActionTypes.FROM_TEXT:
+        case ActionTypes.FLAVORISATION_TYPE:
             needUpdateResult = true;
-        case SHOW_INFO:
-        case IS_LOADING:
+        case ActionTypes.SHOW_INFO:
+        case ActionTypes.IS_LOADING:
             newState = {
                 ...newState,
                 [actionTypeFieldMap[type]]: data,
