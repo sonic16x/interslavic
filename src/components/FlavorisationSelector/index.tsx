@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
 import { flavorisationTypeAction } from 'actions';
-import { Selector } from '../Selector';
+import { Selector } from 'components/Selector';
 
 interface IFlavorisationSelectorProps {
     flavorisationType: string;

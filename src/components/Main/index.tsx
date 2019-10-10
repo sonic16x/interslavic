@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Header from './components/Header';
-import InfoPage from './components/InfoPage';
-import LangSelector from './components/LangSelector';
-import { Loader } from './components/Loader';
-import Results from './components/Results';
-import InputText from './components/InputText';
-import FlavorisationSelector from './components/FlavorisationSelector';
-import SearchTypeSelector from './components/SearchTypeSelector';
+import Header from 'components/Header';
+import InfoPage from 'components/InfoPage';
+import LangSelector from 'components/LangSelector';
+import { Loader } from 'components/Loader';
+import Results from 'components/Results';
+import InputText from 'components/InputText';
+import FlavorisationSelector from 'components/FlavorisationSelector';
+import SearchTypeSelector from 'components/SearchTypeSelector';
 import './index.scss';
 import { fetchDictionary } from 'actions';
 
