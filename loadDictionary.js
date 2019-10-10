@@ -3,4 +3,9 @@ const fs = require('fs');
 
 const url = process.env.DICTIONARY_URL;
 
-request(url, (err, res) => fs.writeFileSync('./dist/dictionary.csv', res.body));
+console.log('URL', url);
+
+request(url, (err, res) => {
+  console.log('RESULT', err, res);
+  fs.writeFileSync('./dist/dictionary.csv', res.body);
+});
