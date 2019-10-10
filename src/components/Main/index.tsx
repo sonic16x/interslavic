@@ -13,15 +13,13 @@ import { fetchDictionary } from 'actions';
 
 interface IMainProps {
     isLoading: boolean;
-    loadWordsList: (url) => void;
+    loadDictionary: () => void;
 }
-
-const wordsListUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSwmAFvs2FmTYZfaS6VMe3X0VbvuKCs5F94YbvcyRfD070GZ0eNvYZAZXoPuZyT4s6Wqho2wyVzeeeu/pub?gid=1987833874&single=true&output=tsv';
 
 class Main extends React.Component<IMainProps> {
     constructor(props) {
         super(props);
-        this.props.loadWordsList(wordsListUrl);
+        this.props.loadDictionary();
     }
     public render() {
         return (
@@ -47,7 +45,7 @@ function mapStateToProps({ isLoading }) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadWordsList: (url) => fetchDictionary(url)(dispatch),
+        loadDictionary: () => fetchDictionary('dictionary.csv')(dispatch),
     };
 }
 
