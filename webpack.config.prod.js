@@ -12,7 +12,9 @@ const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const bundleId = uuidv4().replace(/-/g, '');
 
-fs.mkdirSync('./dist');
+if (!fs.existsSync('./dist')) {
+  fs.mkdirSync('./dist');
+}
 fs.writeFileSync('./dist/lastBuildId.txt', bundleId);
 
 module.exports = {
