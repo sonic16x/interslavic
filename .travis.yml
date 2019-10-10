@@ -5,10 +5,6 @@ cache:
   directories:
     - node_modules
 
-env:
-  global:
-    - DICTIONARY_URL=$DICTIONARY_URL
-
 before_deploy:
   - "npm run build"
 
