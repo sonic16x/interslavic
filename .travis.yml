@@ -3,13 +3,14 @@ node_js: stable
 
 cache:
   directories:
-  - node_modules
+    - node_modules
 
 env:
-- DICTIONARY_URL=$DICTIONARY_URL
+  global:
+    - DICTIONARY_URL=$DICTIONARY_URL
 
 before_deploy:
-- "npm run build"
+  - "npm run build"
 
 deploy:
   provider: pages
