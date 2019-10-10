@@ -27,6 +27,11 @@ export class LineSelector extends React.Component<ILineSelectorProps, ILineSelec
         props.options.forEach(({value}) => {
             this.liRefs[value] = React.createRef();
         });
+        this.resizeCallback = this.resizeCallback.bind(this);
+        window.addEventListener('resize', this.resizeCallback);
+    }
+    public componentWillUnmount() {
+        window.removeEventListener('resize', this.resizeCallback);
     }
     public componentDidMount() {
         if (this.state.initial === true) {
@@ -67,5 +72,8 @@ export class LineSelector extends React.Component<ILineSelectorProps, ILineSelec
         return this.props.options
             .slice(0, index).reduce((acc, {value}) => (acc + this.liRefs[value].current.clientWidth), 0)
         ;
+    }
+    private resizeCallback() {
+        this.setState({initial: false});
     }
 }
