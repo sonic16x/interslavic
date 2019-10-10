@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
@@ -10,6 +11,9 @@ const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const bundleId = uuidv4().replace(/-/g, '');
+
+fs.mkdirSync('./dist');
+fs.writeFileSync('./dist/lastBuildId.txt', bundleId);
 
 module.exports = {
   mode: 'production',
