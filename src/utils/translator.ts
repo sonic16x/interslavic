@@ -110,28 +110,41 @@ function isvToEngLatin(text) {
 function searchPrepare(lang, text) {
     const lowerCaseText = text.toLowerCase();
 
-    if (lang === 'isv') {
-        return isvToEngLatin(lowerCaseText);
-    }
-
-    if (['cs', 'pl', 'sk', 'sl', 'hr'].indexOf(lang) !== -1) {
-        return filterLatin(lowerCaseText);
+    switch (lowerCaseText) {
+        case 'isv':
+            return isvToEngLatin(lowerCaseText);
+        case 'cs':
+        case 'pl':
+        case 'sk':
+        case 'sl':
+        case 'hr':
+            return filterLatin(lowerCaseText);
+        case 'ru':
+            return lowerCaseText.replace(/[ё]/g, 'е')
+                ;
     }
 
     return lowerCaseText;
 }
 
 function inputTextPrepare(lang, inputText) {
-    let text = inputText.toLowerCase().replace(/ /, '');
-    if (lang === 'isv') {
-        // Translate from cyrillic to latin
-        text = isvToEngLatin(text);
+    const lowerCaseText = inputText.toLowerCase().replace(/ /, '');
+
+    switch (lowerCaseText) {
+        case 'isv':
+            return isvToEngLatin(lowerCaseText);
+        case 'cs':
+        case 'pl':
+        case 'sk':
+        case 'sl':
+        case 'hr':
+            return filterLatin(lowerCaseText);
+        case 'ru':
+            return lowerCaseText.replace(/[ё]/g, 'е')
+                ;
     }
 
-    if (['cs', 'pl', 'sk', 'sl', 'hr'].indexOf(lang) !== -1) {
-        text = filterLatin(text);
-    }
-    return text;
+    return lowerCaseText;
 }
 
 export function initDictionary(wordList: string[][]) {
