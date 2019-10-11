@@ -8,7 +8,7 @@
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' -t stylish --fix",
-    "build": "cross-env NODE_ENV=production webpack && node loadDictionary.js"
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "main": "",
   "pre-commit": [

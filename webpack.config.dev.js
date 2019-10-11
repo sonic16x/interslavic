@@ -10,8 +10,6 @@ const srcPath = path.resolve(__dirname, './src/');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
 const bundleId = 'dev';
 
-require('./loadDictionary');
-
 module.exports = {
   entry: {
     index: './src/index',

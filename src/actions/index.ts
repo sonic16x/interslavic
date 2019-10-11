@@ -60,6 +60,7 @@ export function fetchDictionary(wordsListUrl) {
                 dispatch(isLoadingAction(false));
                 initDictionary(wordList);
             })
+            .catch(() => location.reload(true))
         ;
     };
 }
