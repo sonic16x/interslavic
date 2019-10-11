@@ -18,7 +18,8 @@
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-redux": "^7.1.1",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "serbian-transliteration": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^11.11.7",
