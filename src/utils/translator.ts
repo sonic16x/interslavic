@@ -201,7 +201,7 @@ export function translate(
                 return false;
             }
             return fromField
-                .replace(/!/, '')
+                .replace(/^!/, '')
                 .split(splitPattern)
                 .some((sp) => searchTypes[searchType](searchPrepare(from, sp), text))
                 ;
@@ -232,7 +232,7 @@ export function translate(
             const add = getField(item, 'addition');
             const translate = getField(item, to);
             return {
-                translate: translate.replace(/!/, ''),
+                translate: translate.replace(/^!/, ''),
                 originalCyrillic: getCyrillic(ins, flavorisationType),
                 original: getLatin(ins, flavorisationType),
                 originalAdd: getLatin(add, flavorisationType),
@@ -249,7 +249,7 @@ export function translate(
             return {
                 translate: getLatin(ins, flavorisationType),
                 translateCyrillic: getCyrillic(ins, flavorisationType),
-                original: original.replace(/!/, ''),
+                original: original.replace(/^!/, ''),
                 add: getLatin(add, flavorisationType),
                 addCyrillic: getCyrillic(add, flavorisationType),
                 pos: getField(item, 'partOfSpeech'),
