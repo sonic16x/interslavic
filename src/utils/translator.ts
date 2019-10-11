@@ -2,9 +2,9 @@ import { latinToIpa } from './latinToIpa';
 import { transliterate } from './legacy';
 
 const searchTypes = {
-    begin: (item, text) => item.toLowerCase().indexOf(text) === 0,
-    full: (item, text) => item.toLowerCase() === text,
-    some: (item, text) => item.toLowerCase().indexOf(text) !== -1,
+    begin: (item, text) => item.indexOf(text) === 0,
+    full: (item, text) => item === text,
+    some: (item, text) => item.indexOf(text) !== -1,
 };
 
 function normalize(text) {
@@ -107,15 +107,30 @@ function isvToEngLatin(text) {
 }
 
 function searchPrepare(lang, text) {
+    const lowerCaseText = text.toLowerCase();
+
     if (lang === 'isv') {
-        return isvToEngLatin(text);
+        return isvToEngLatin(lowerCaseText);
+    }
+
+    if (['cs', 'pl', 'sk', 'sl', 'hr'].indexOf(lang) !== -1) {
+        return filterLatin(lowerCaseText);
+    }
+
+    return lowerCaseText;
+}
+
+function inputTextPrepare(lang, inputText) {
+    let text = inputText.toLowerCase().replace(/ /, '');
+    if (lang === 'isv') {
+        // Translate from cyrillic to latin
+        text = isvToEngLatin(text);
     }
 
     if (['cs', 'pl', 'sk', 'sl', 'hr'].indexOf(lang) !== -1) {
         text = filterLatin(text);
     }
-
-    return text.toLowerCase();
+    return text;
 }
 
 export function initDictionary(wordList: string[][]) {
@@ -171,12 +186,10 @@ export interface ITranslateResult {
 export function translate(
     inputText: string, from: string, to: string, searchType: string, flavorisationType: string,
 ): any[] {
-    let text = inputText.toLowerCase().replace(/ /, '');
-    if (from === 'isv') {
-        // Translate from cyrillic to latin
-        text = isvToEngLatin(text);
+    const text = inputTextPrepare(from, inputText);
+    if (!text) {
+        return [];
     }
-
     const distMap = new WeakMap();
 
     const result = words
@@ -189,16 +202,14 @@ export function translate(
             return fromField
                 .replace(/!/, '')
                 .split(/,|-/)
-                .some((sp) => searchTypes[searchType](from === 'isv' ? isvToEngLatin(sp) : sp, text))
+                .some((sp) => searchTypes[searchType](searchPrepare(from, sp), text))
                 ;
         })
         .map((item) => {
             const dist = getField(item, from)
                 .split(/,|-/)
                 .reduce((acc, item) => {
-                    const lowerCaseItem = item.toLowerCase();
-                    const preparedItem = from === 'isv' ? isvToEngLatin(lowerCaseItem) : lowerCaseItem;
-                    const lDist = levenshteinDistance(text, preparedItem);
+                    const lDist = levenshteinDistance(text, searchPrepare(from, item));
                     if (acc === false) {
                         return lDist;
                     }

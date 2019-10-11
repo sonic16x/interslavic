@@ -54,7 +54,7 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
     }
     if (needUpdateResult) {
         const { fromText, lang, flavorisationType, searchType } = newState;
-        const results = fromText ? translate(fromText, lang.from, lang.to, searchType, flavorisationType) : [];
+        const results = translate(fromText, lang.from, lang.to, searchType, flavorisationType);
         newState = {
             ...newState,
             results,
