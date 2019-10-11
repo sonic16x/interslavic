@@ -110,7 +110,7 @@ function isvToEngLatin(text) {
 function searchPrepare(lang, text) {
     const lowerCaseText = text.toLowerCase();
 
-    switch (lowerCaseText) {
+    switch (lang) {
         case 'isv':
             return isvToEngLatin(lowerCaseText);
         case 'cs':
@@ -120,17 +120,17 @@ function searchPrepare(lang, text) {
         case 'hr':
             return filterLatin(lowerCaseText);
         case 'ru':
-            return lowerCaseText.replace(/[ё]/g, 'е')
-                ;
+            return lowerCaseText.replace(/[ё]/g, 'е');
+        default:
+            return lowerCaseText;
     }
 
-    return lowerCaseText;
 }
 
 function inputTextPrepare(lang, inputText) {
     const lowerCaseText = inputText.toLowerCase().replace(/ /, '');
 
-    switch (lowerCaseText) {
+    switch (lang) {
         case 'isv':
             return isvToEngLatin(lowerCaseText);
         case 'cs':
@@ -140,11 +140,11 @@ function inputTextPrepare(lang, inputText) {
         case 'hr':
             return filterLatin(lowerCaseText);
         case 'ru':
-            return lowerCaseText.replace(/[ё]/g, 'е')
-                ;
+            return lowerCaseText.replace(/[ё]/g, 'е');
+        default:
+            return lowerCaseText;
     }
 
-    return lowerCaseText;
 }
 
 export function initDictionary(wordList: string[][]) {
