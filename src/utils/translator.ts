@@ -2,9 +2,9 @@ import { latinToIpa } from './latinToIpa';
 import { transliterate } from './legacy';
 
 const searchTypes = {
-    begin: (item, text) => item.indexOf(text) === 0,
-    full: (item, text) => item === text,
-    some: (item, text) => item.indexOf(text) !== -1,
+    begin: (item, text) => item.toLowerCase().indexOf(text) === 0,
+    full: (item, text) => item.toLowerCase() === text,
+    some: (item, text) => item.toLowerCase().indexOf(text) !== -1,
 };
 
 function normalize(text) {
@@ -92,7 +92,7 @@ export function initDictionary(wordList: string[][]) {
     words = wordList.map((line) => {
         return line.map((item, i) => {
             if (['partOfSpeech', 'type', 'sameInLanguages', 'genesis'].indexOf(header[i]) === -1) {
-                return item.replace(/ /, '').toLowerCase();
+                return item.replace(/ /, '');
             }
             return item;
         });
@@ -149,7 +149,9 @@ export function translate(
             const dist = getField(item, from)
                 .split(/,|-/)
                 .reduce((acc, item) => {
-                    const lDist = levenshteinDistance(text, (from === 'isv' ? isvToEngLatin(item) : item));
+                    const lowerCaseItem = item.toLowerCase();
+                    const preparedItem = from === 'isv' ? isvToEngLatin(lowerCaseItem) : lowerCaseItem;
+                    const lDist = levenshteinDistance(text, preparedItem);
                     if (acc === false) {
                         return lDist;
                     }
