@@ -35,6 +35,7 @@ function getLatin(text, flavorisationType): string {
 let header;
 let words;
 let headerIndexes;
+const percentsOfChecked = {};
 const isnToLatinMap = new Map();
 
 function levenshteinDistance(a, b) {
@@ -88,10 +89,10 @@ function isvToEngLatin(text) {
 }
 
 export function initDictionary(wordList: string[][]) {
-    header = wordList.shift();
+    header = wordList.shift().map((l) => l.replace(/\W/g, ''));
     words = wordList.map((line) => {
         return line.map((item, i) => {
-            if (['partOfSpeech', 'type', 'sameInLanguages', 'genesis'].indexOf(header[i]) === -1) {
+            if (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition'].indexOf(header[i]) === -1) {
                 return item.replace(/ /, '');
             }
             return item;
@@ -106,6 +107,22 @@ export function initDictionary(wordList: string[][]) {
                 isnToLatinMap.set(item, normalize(getLatin(item, 3)));
             });
     });
+    calculatePercentsOfTranslated();
+}
+
+function calculatePercentsOfTranslated() {
+    const langsList = header.filter(
+        (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition'].indexOf(item) === -1),
+    );
+    langsList.forEach((fieldName) => {
+        const notChecked = words.filter((item) => getField(item, fieldName)[0] === '!');
+        const count = (1 - notChecked.length / words.length) * 100;
+        percentsOfChecked[fieldName] = count.toFixed(1);
+    });
+}
+
+export function getPercentsOfTranslated() {
+    return percentsOfChecked;
 }
 
 export interface ITranslateResult {
