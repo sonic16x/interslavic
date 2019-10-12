@@ -108,8 +108,7 @@ function isvToEngLatin(text) {
 }
 
 function searchPrepare(lang, text) {
-    const lowerCaseText = text.toLowerCase().replace(/ /, '');
-
+    const lowerCaseText = text.toLowerCase().replace(/ /g, '');
     switch (lang) {
         case 'isv':
             return isvToEngLatin(lowerCaseText);
@@ -124,7 +123,6 @@ function searchPrepare(lang, text) {
         default:
             return lowerCaseText;
     }
-
 }
 
 export function initDictionary(wordList: string[][]) {
