@@ -108,27 +108,7 @@ function isvToEngLatin(text) {
 }
 
 function searchPrepare(lang, text) {
-    const lowerCaseText = text.toLowerCase();
-
-    switch (lang) {
-        case 'isv':
-            return isvToEngLatin(lowerCaseText);
-        case 'cs':
-        case 'pl':
-        case 'sk':
-        case 'sl':
-        case 'hr':
-            return filterLatin(lowerCaseText);
-        case 'ru':
-            return lowerCaseText.replace(/[ё]/g, 'е');
-        default:
-            return lowerCaseText;
-    }
-
-}
-
-function inputTextPrepare(lang, inputText) {
-    const lowerCaseText = inputText.toLowerCase().replace(/ /, '');
+    const lowerCaseText = text.toLowerCase().replace(/ /, '');
 
     switch (lang) {
         case 'isv':
@@ -149,15 +129,8 @@ function inputTextPrepare(lang, inputText) {
 
 export function initDictionary(wordList: string[][]) {
     header = wordList.shift().map((l) => l.replace(/\W/g, ''));
-    words = wordList.map((line) => {
-        return line.map((item, i) => {
-            if (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition'].indexOf(header[i]) === -1) {
-                return item.replace(/ /, '');
-            }
-            return item;
-        });
-    });
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
+    words = wordList;
     words.forEach((item) => {
         const isvWord = item[0];
         isnToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
@@ -200,7 +173,7 @@ export interface ITranslateResult {
 export function translate(
     inputText: string, from: string, to: string, searchType: string, flavorisationType: string,
 ): any[] {
-    const text = inputTextPrepare(from, inputText);
+    const text = searchPrepare(from, inputText);
     if (!text) {
         return [];
     }
