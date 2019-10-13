@@ -1,36 +1,70 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
-import { showInfoAction } from 'actions';
+import { setPageAction, toggleMenuAction } from 'actions';
 
 interface IHeaderProps {
-    showInfo: () => void;
+    toggleMenu: (isVisible: boolean) => void;
+    setPage: (page: string) => void;
+    page: string;
+    menuIsVisible: boolean;
 }
+
+const pages = [
+    {
+        name: 'Translator',
+        value: 'translator',
+    },
+    {
+        name: 'Info',
+        value: 'info',
+    },
+];
 
 class Header extends React.Component<IHeaderProps> {
     public render() {
         return (
-            <nav className={'navbar navbar-dark bg-dark shadow'}>
+            <nav className={'navbar navbar-dark bg-dark shadow header'}>
                 <span className={'navbar-brand'}>
                     <img src={'logo.png'} height={'30'} className={'d-inline-block align-center logo'} alt={'logo'}/>
                     Medžuslovjansky slovnik
                 </span>
                 <button
                     type={'button'}
-                    className={'btn btn-primary rounded-circle info'}
-                    onClick={() => this.props.showInfo()}
+                    className={'showMenu'}
+                    data-active={this.props.menuIsVisible}
+                    onClick={() => this.props.toggleMenu(!this.props.menuIsVisible)}
                 >
-                    i
+                    <span />
                 </button>
+                <div className={'navMenu' + (this.props.menuIsVisible ? ' menuIsVisible' : '')}>
+                    <ul className={'navbar-nav mr-auto'}>
+                        {pages.map(((link, i) => this.renderLink(this.props.page, link, i)))}
+                    </ul>
+                </div>
             </nav>
+        );
+    }
+
+    private renderLink(page, {name, value}, i) {
+        const isActive = page === value;
+        return (
+            <li className={'nav-item'} key={i}>
+                <a className={'nav-link' + (isActive ? ' active' : '')} href={'#'} onClick={() => this.props.setPage(value)}>{name}</a>
+            </li>
         );
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        showInfo: () => dispatch(showInfoAction(true)),
+        toggleMenu: (isVisible) => dispatch(toggleMenuAction(isVisible)),
+        setPage: (page) => dispatch(toggleMenuAction(false)) && dispatch(setPageAction(page)),
     };
 }
 
-export default connect(null, mapDispatchToProps)(Header);
+function mapStateToProps({menuIsVisible, page}) {
+    return {menuIsVisible, page};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
