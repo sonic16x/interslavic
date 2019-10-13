@@ -2,7 +2,6 @@ import * as React from 'react';
 import './index.scss';
 
 interface IGrammarProps {
-    header: string[];
     data: string[][];
 }
 
@@ -10,7 +9,6 @@ export default class extends React.Component<IGrammarProps> {
     public render() {
         return (
             <table className={'customTable'}>
-                <thead>{this.renderHeader()}</thead>
                 <tbody>{this.renderBody()}</tbody>
             </table>
         );
@@ -58,7 +56,7 @@ export default class extends React.Component<IGrammarProps> {
             .map(({str, attrs}, i) => (
                 <td
                     key={i}
-                    className={Object.keys(attrs).join(' ')}
+                    className={Object.keys(attrs).filter((w) => w !== 'w').join(' ')}
                     colSpan={attrs.w}
                     dangerouslySetInnerHTML={{__html: str}}
                 />
@@ -67,13 +65,5 @@ export default class extends React.Component<IGrammarProps> {
 
     private renderBody() {
         return this.props.data.map((row, i) => <tr key={i}>{this.renderRow(row)}</tr>);
-    }
-
-    private renderHeader() {
-        return (
-            <tr>
-                {this.renderRow(this.props.header)}
-            </tr>
-        );
     }
 }
