@@ -6,9 +6,6 @@
   margin-left: auto;
   background: #fff;
   overflow: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   transition: opacity 0.2s ease-in-out;
   pointer-events: none;
   opacity: 0;
@@ -19,4 +16,5 @@
     height: calc(100% - 60px);
     max-height: calc(100% - 60px);
   }
+  text-align: center;
 }
