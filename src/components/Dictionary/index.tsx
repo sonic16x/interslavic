@@ -7,14 +7,14 @@ import InputText from 'components/InputText';
 import FlavorisationSelector from 'components/FlavorisationSelector';
 import Results from 'components/Results';
 
-interface ITranslatorProps {
+interface IDictionaryProps {
     isVisible: boolean;
 }
 
-class Translator extends React.Component<ITranslatorProps> {
+class Dictionary extends React.Component<IDictionaryProps> {
     public render() {
         return (
-            <div className={'translator' + (this.props.isVisible ? ' show' : '')}>
+            <div className={'dictionary' + (this.props.isVisible ? ' show' : '')}>
                 <div className={'controls shadow'}>
                     <LangSelector/>
                     <SearchTypeSelector/>
@@ -29,8 +29,8 @@ class Translator extends React.Component<ITranslatorProps> {
 
 function mapStateToProps({page, isLoading}) {
     return {
-        isVisible: page === 'translator' && !isLoading,
+        isVisible: page === 'dictionary' && !isLoading,
     };
 }
 
-export default connect(mapStateToProps)(Translator);
+export default connect(mapStateToProps)(Dictionary);

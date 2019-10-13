@@ -9,7 +9,7 @@ export interface IMainState {
     fromText: string;
     searchType: string;
     flavorisationType: string;
-    page: 'translator' | 'info';
+    page: string;
     isLoading: boolean;
     menuIsVisible: boolean;
     results: ITranslateResult[];
@@ -23,7 +23,7 @@ const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     flavorisationType: '3',
-    page: 'translator',
+    page: 'dictionary',
     isLoading: true,
     menuIsVisible: false,
     results: [],

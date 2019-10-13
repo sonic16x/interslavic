@@ -89,5 +89,5 @@ $animationDuration: 0.1s;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 80%;
+  width: calc(100% - 4rem);
 }
