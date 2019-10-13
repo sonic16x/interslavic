@@ -1,17 +1,10 @@
-.logo {
-  margin-right: 10px;
-}
-
-.info {
-  width: 38px;
-  height: 38px;
-  position: absolute;
-  right: 15px;
-}
-
-.navbar-brand {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 89%;
+.flav {
+  display: flex;
+  label {
+    margin-right: 15px;
+    margin-left: 5px;
+    margin-bottom: 0;
+    line-height: 2.1rem;
+    font-size: 1.1rem;
+  }
 }

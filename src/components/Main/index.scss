@@ -3,25 +3,6 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  display: flex;
-  flex-direction: column;
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  min-height: 245px;
-  justify-content: space-evenly;
-  z-index: 1;
-}
-
-.flav {
-  display: flex;
-  label {
-    margin-right: 15px;
-    margin-left: 5px;
-    margin-bottom: 0;
-    line-height: 2.1rem;
-    font-size: 1.1rem;
-  }
+  //display: flex;
+  //flex-direction: column;
 }

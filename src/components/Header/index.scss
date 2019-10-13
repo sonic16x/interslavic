@@ -2,16 +2,91 @@
   margin-right: 10px;
 }
 
-.info {
-  width: 38px;
-  height: 38px;
-  position: absolute;
-  right: 15px;
+$lineWidth: 0.2rem;
+$lineLength: 1.6rem;
+$baseMargin: 0.5rem;
+$animationDuration: 0.2s;
+
+@mixin changeState {
+  transition:
+          transform $animationDuration linear,
+          margin $animationDuration linear,
+          background-color $animationDuration linear
+  ;
+}
+
+.showMenu {
+  &:focus {
+    outline:0;
+  }
+  border: 1px solid #555;
+  border-radius: 0.25rem;
+  box-sizing: content-box;
+  padding: 0.2rem;
+
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  width: $lineLength;
+  height: $lineLength;
+
+  &>span {
+    display: block;
+    width: $lineLength;
+    height: $lineWidth;
+    background-color: #fff;
+    position: relative;
+    @include changeState;
+    &::before, &::after {
+      @include changeState;
+      display: block;
+      content: '';
+      position: absolute;
+      width: $lineLength;
+      height: $lineWidth;
+      background-color: #fff;
+    }
+    &::after {
+      margin-top: -$baseMargin;
+    }
+    &::before {
+      margin-top: $baseMargin;
+    }
+  }
+
+  &[data-active='true'] {
+    &>span {
+      background-color: rgba(0, 0, 0, 0);
+      &::before, &::after {
+        margin-top: 0;
+      }
+      &::after {
+        transform: rotate(-45deg);
+      }
+      &::before {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.navMenu {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height $animationDuration / 2 linear, opacity $animationDuration / 2 linear;
+}
+
+.navMenu.menuIsVisible {
+  max-height: 500px;
+  opacity: 1;
 }
 
 .navbar-brand {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 89%;
+  width: 80%;
 }

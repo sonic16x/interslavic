@@ -9,12 +9,13 @@ export interface IMainState {
     fromText: string;
     searchType: string;
     flavorisationType: string;
-    showInfo: boolean;
+    page: 'translator' | 'info';
     isLoading: boolean;
+    menuIsVisible: boolean;
     results: ITranslateResult[];
 }
 
-const defaultState = {
+const defaultState: IMainState = {
     lang: {
         from: 'en',
         to: 'isv',
@@ -22,8 +23,9 @@ const defaultState = {
     fromText: '',
     searchType: 'begin',
     flavorisationType: '3',
-    showInfo: false,
+    page: 'translator',
     isLoading: true,
+    menuIsVisible: false,
     results: [],
 };
 
@@ -31,8 +33,9 @@ const actionTypeFieldMap = {
     [ActionTypes.SEARCH_TYPE]: 'searchType',
     [ActionTypes.FROM_TEXT]: 'fromText',
     [ActionTypes.FLAVORISATION_TYPE]: 'flavorisationType',
-    [ActionTypes.SHOW_INFO]: 'showInfo',
+    [ActionTypes.SET_PAGE]: 'page',
     [ActionTypes.IS_LOADING]: 'isLoading',
+    [ActionTypes.TOGGLE_MENU]: 'menuIsVisible',
     [ActionTypes.LANG]: 'lang',
 };
 
@@ -45,7 +48,8 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
         case ActionTypes.FROM_TEXT:
         case ActionTypes.FLAVORISATION_TYPE:
             needUpdateResult = true;
-        case ActionTypes.SHOW_INFO:
+        case ActionTypes.SET_PAGE:
+        case ActionTypes.TOGGLE_MENU:
         case ActionTypes.IS_LOADING:
             newState = {
                 ...newState,

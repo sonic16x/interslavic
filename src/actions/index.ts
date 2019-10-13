@@ -5,7 +5,8 @@ export enum ActionTypes {
     FROM_TEXT = 'FROM_TEXT',
     SEARCH_TYPE = 'SEARCH_TYPE',
     FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
-    SHOW_INFO = 'SHOW_INFO',
+    SET_PAGE = 'SET_PAGE',
+    TOGGLE_MENU = 'TOGGLE_MENU',
     IS_LOADING = 'IS_LOADING',
 }
 
@@ -37,9 +38,16 @@ export function flavorisationTypeAction(data: string) {
     };
 }
 
-export function showInfoAction(data: boolean) {
+export function setPageAction(data: string) {
     return {
-        type: ActionTypes.SHOW_INFO,
+        type: ActionTypes.SET_PAGE,
+        data,
+    };
+}
+
+export function toggleMenuAction(data: boolean) {
+    return {
+        type: ActionTypes.TOGGLE_MENU,
         data,
     };
 }
