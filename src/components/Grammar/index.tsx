@@ -11,13 +11,13 @@ interface IGrammarProps {
 
 class Grammar extends React.Component<IGrammarProps> {
     public render() {
-        const tableHeader = [
-            '&nbsp@bt#bl',
-            'jednina@w=2#d',
-            'množina@w=2#d',
-            'dvojina@w=2#d',
-        ];
-        const tableData = [
+        const table1 = [
+            [
+                '&nbsp@bt#bl',
+                'jednina@w=2#d',
+                'množina@w=2#d',
+                'dvojina@w=2#d',
+            ],
             [
                 'N@d#bb',
                 'brat@br',
@@ -86,7 +86,7 @@ class Grammar extends React.Component<IGrammarProps> {
             <div className={'container grammar' + (this.props.isVisible ? ' show' : '')}>
                 <h4>MEDŽUSLOVJANSKY JEZYK</h4>
                 <p>abeceda i pravopisanje</p>
-                <Table header={tableHeader} data={tableData}/>
+                <Table data={table1}/>
             </div>
         );
     }

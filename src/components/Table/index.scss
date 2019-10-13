@@ -1,8 +1,10 @@
-.customTable {
+table.customTable {
   margin: 0 auto;
   font-weight: bold;
   text-align: start;
+  font-size: 3vw;
   th, td {
+    white-space: nowrap;
     box-sizing: border-box;
     border: 3px solid #9E9E9E;
     &.B {
