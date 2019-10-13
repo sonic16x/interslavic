@@ -1,0 +1,22 @@
+.grammar {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #fff;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+  max-height: 0;
+  &.show {
+    opacity: 1;
+    pointer-events: all;
+    height: calc(100% - 60px);
+    max-height: calc(100% - 60px);
+  }
+}

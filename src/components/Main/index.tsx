@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header';
-import InfoPage from 'components/InfoPage';
+import About from 'components/About';
 import { Loader } from 'components/Loader';
-import Translator from 'components/Translator';
+import Dictionary from 'components/Dictionary';
+import Grammar from 'components/Grammar';
 import './index.scss';
 import { fetchDictionary } from 'actions';
 
@@ -24,8 +25,9 @@ class Main extends React.Component<IMainProps> {
             <>
                 <Loader title={'Loading dictionary'} isLoading={this.props.isLoading}/>
                 <Header/>
-                <InfoPage/>
-                <Translator/>
+                <About/>
+                <Dictionary/>
+                <Grammar/>
             </>
         );
     }

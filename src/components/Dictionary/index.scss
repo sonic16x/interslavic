@@ -1,4 +1,4 @@
-.translator {
+.dictionary {
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -24,5 +24,29 @@
     min-height: 245px;
     justify-content: space-evenly;
     z-index: 1;
+  }
+}
+
+@media (min-width: 576px) {
+  .controls {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .controls {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .controls {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .controls {
+    max-width: 1140px;
   }
 }

@@ -1,4 +1,6 @@
 .resultCard {
+  margin: 0 auto;
+  width: 100%;
   margin-bottom: 15px;
   .card-body {
     padding-top: 1.5rem;
@@ -16,5 +18,30 @@
   overflow: auto;
   padding: 15px;
   margin-bottom: 45px;
+  display: flex;
+  flex-direction: column;
 }
 
+@media (min-width: 576px) {
+  .resultCard {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .resultCard {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .resultCard {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .resultCard {
+    max-width: 1140px;
+  }
+}

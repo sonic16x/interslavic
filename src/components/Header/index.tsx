@@ -12,12 +12,16 @@ interface IHeaderProps {
 
 const pages = [
     {
-        name: 'Translator',
-        value: 'translator',
+        name: 'Dictionary',
+        value: 'dictionary',
     },
     {
-        name: 'Info',
-        value: 'info',
+        name: 'Grammar basics',
+        value: 'grammar',
+    },
+    {
+        name: 'About',
+        value: 'about',
     },
 ];
 
