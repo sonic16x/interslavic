@@ -5,7 +5,7 @@
 $lineWidth: 0.2rem;
 $lineLength: 1.6rem;
 $baseMargin: 0.5rem;
-$animationDuration: 0.2s;
+$animationDuration: 0.1s;
 
 @mixin changeState {
   transition:
@@ -23,6 +23,7 @@ $animationDuration: 0.2s;
   border-radius: 0.25rem;
   box-sizing: content-box;
   padding: 0.2rem;
+  z-index: 10;
 
   background: none;
   color: inherit;
@@ -76,7 +77,7 @@ $animationDuration: 0.2s;
 .navMenu {
   max-height: 0;
   opacity: 0;
-  transition: max-height $animationDuration / 2 linear, opacity $animationDuration / 2 linear;
+  transition: max-height $animationDuration linear, opacity $animationDuration linear;
 }
 
 .navMenu.menuIsVisible {

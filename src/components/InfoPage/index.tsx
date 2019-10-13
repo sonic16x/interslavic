@@ -19,29 +19,33 @@ class InfoPage extends React.Component<IInfoPageProps> {
 
         return (
             <div className={'infoPage' + (this.props.isVisible ? ' show' : '')}>
-                <img src={'logo.png'} className={'card-img shadow'} alt={'logo'}/>
-                <h5>Info page</h5>
-                <hr/>
-                Using dictionary from <a target={'_blank'} href={source}>{source}</a>
-                <p>Author of Interslavic/English/Polish dictionary:</p>
-                <a href={`email:${sourceEmail}`}>{sourceName}&nbsp;({sourceEmail})</a>
-                <hr/>
-                <a target={'_blank'} href={tableUrl}>Table with translations</a>
-                <hr/>
-                <p>Developer</p>
-                <a target={'_blank'} href={`email:${email}`}>{email}</a>
-                <hr/>
-                Source code (Github) <a target={'_blank'} href={github}>{github}</a>
-                <hr/>
-                <button
-                    type={'button'}
-                    className={'btn btn-primary shadow'}
-                    onClick={() => this.props.close()}
-                >
-                    Go back
-                </button>
-                <p className={'text-muted buildHash'}>{HASH_ID}</p>
-                <p className={'text-muted buildHash'}>{DATE}</p>
+                <div className={'common'}>
+                    <img src={'logo.png'} className={'card-img shadow'} alt={'logo'}/>
+                    <h5>Info page</h5>
+                    <hr/>
+                    Using dictionary from <a target={'_blank'} href={source}>{source}</a>
+                    <p>Author of Interslavic/English/Polish dictionary:</p>
+                    <a href={`email:${sourceEmail}`}>{sourceName}&nbsp;({sourceEmail})</a>
+                    <hr/>
+                    <a target={'_blank'} href={tableUrl}>Table with translations</a>
+                    <hr/>
+                    <p>Developer</p>
+                    <a target={'_blank'} href={`email:${email}`}>{email}</a>
+                    <hr/>
+                    Source code (Github) <a target={'_blank'} href={github}>{github}</a>
+                    <hr/>
+                    <button
+                        type={'button'}
+                        className={'btn btn-primary shadow'}
+                        onClick={() => this.props.close()}
+                    >
+                        Go back
+                    </button>
+                </div>
+                <div className={'devInfo'}>
+                    <p className={'text-muted buildHash'}>{HASH_ID}</p>
+                    <p className={'text-muted buildHash'}>{DATE}</p>
+                </div>
             </div>
         );
     }
