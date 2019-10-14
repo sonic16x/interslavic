@@ -95,7 +95,7 @@ class Grammar extends React.Component<IGrammarProps> {
                     '{з}r@bt;s',
                     '{ж}r@bt;s',
                 ],
-            ]
+            ];
 
         const tableBrat =
             [
@@ -568,22 +568,22 @@ class Grammar extends React.Component<IGrammarProps> {
                 [
                     'ě@s',
                     'Е',
-                    'Ѣ'
+                    'Ѣ',
                 ],
                 [
                     'šč@s',
                     'ШЧ',
-                    'Щ'
+                    'Щ',
                 ],
                 [
                     'ja@s',
                     'ЈА',
-                    'Я'
+                    'Я',
                 ],
                 [
                     'ju@s',
                     'ЈУ',
-                    'Ю'
+                    'Ю',
                 ],
             ];
 
@@ -599,7 +599,7 @@ class Grammar extends React.Component<IGrammarProps> {
                     'na@d',
                     'va@d',
                     'kto@d',
-                    'čto@d'
+                    'čto@d',
                 ],
                 [
                     'N@d;bb',
@@ -611,7 +611,7 @@ class Grammar extends React.Component<IGrammarProps> {
                     'na@bb',
                     'va@bb',
                     'kto',
-                    'čto@bb'
+                    'čto@bb',
                 ],
                 [
                     'A@d;bb',
@@ -623,7 +623,7 @@ class Grammar extends React.Component<IGrammarProps> {
                     'na@bt',
                     'va@bt',
                     'kogo@bb;b',
-                    'čto@bt'
+                    'čto@bt',
                 ],
                 [
                     'G@d;bb',
@@ -686,6 +686,76 @@ class Grammar extends React.Component<IGrammarProps> {
                     '&nbsp@d',
                 ],
             ];
+        const tableTojTaTo =
+            [
+                [
+                    '&nbsp@bt;bl',
+                    'm.ž. jedn.@d',
+                    'm.n. jedn.@d',
+                    'ž. jedn.@d',
+                    's. jedn.@d',
+                    'm.ž.m.@d',
+                    'm.n.m. ž.m. s.m.@d',
+                    'dvojina@d',
+                ],
+                [
+                    'N@d;bb',
+                    't-{o}pj@w=2',
+                    't-{a}r',
+                    't-{o}p@',
+                    't-{i}b@s',
+                    't-{e}g@bb;s',
+                    't-{e}g@bb',
+                ],
+                [
+                    'A@d;bb',
+                    't-{o}pg{o}p@bb;b',
+                    't-{o}pj@bt',
+                    't-{u}p@s',
+                    't-{o}p@bt;s',
+                    't-{y}bh@bb;B',
+                    't-{e}g@bt;s',
+                    't-{e}g@bt',
+                ],
+                [
+                    'G@d;bb',
+                    't-{o}pg{o}p@w=2;b',
+                    't-{o}pj@bt;b',
+                    't-{o}pg{o}p@b',
+                    't-{y}bh@w=2;bb;B',
+                    't-{u}p@bb;b',
+                ],
+                [
+                    'L@d;bb',
+                    't-{o}pm@w=2;bb;g',
+                    't-{o}pj@bb;g',
+                    't-{o}pm@bb;g',
+                    't-{y}bh@w=2;bt;B',
+                    't-{u}p@bt;b',
+                ],
+                [
+                    'D@d;bb',
+                    't-{o}pm{u}p@w=2;bt;g',
+                    't-{o}pj@bt;g',
+                    't-{o}pm{u}p@bt;g',
+                    't-{y}bm@w=2;bb;R',
+                    't-{y}bm{a}r@bb;r',
+                ],
+                [
+                    'I@d;bb',
+                    't-{y}bm@w=2;r',
+                    't-{o}pj{u}p@r',
+                    't-{y}bm@r',
+                    't-{y}bm@w=2;bt;R',
+                    't-{y}bm{a}r@bt;r',
+                ],
+                [
+                    'V@d',
+                    'ty{!}s@w=4;s',
+                    'vy{!}s@w=2;S',
+                    'va{!}s@s'
+                ],
+            ];
         return (
             <div className={'container grammar' + (this.props.isVisible ? ' show' : '')}>
                 <h4>MEDŽUSLOVJANSKY JEZYK</h4>
@@ -700,6 +770,7 @@ class Grammar extends React.Component<IGrammarProps> {
                 <Table data={tableNauc} />
                 <Table data={tableKir} />
                 <Table data={tableMest} />
+                <Table data={tableTojTaTo} />
             </div>
         );
     }
