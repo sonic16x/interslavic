@@ -37,7 +37,7 @@ export default class extends React.Component<IGrammarProps> {
         if (!rawAttrs) {
             rawAttrs = '';
         }
-        rawAttrs.split('#').forEach((rawExp) => {
+        rawAttrs.split(';').forEach((rawExp) => {
             const exp = rawExp.split('=');
             if (exp.length === 1) {
                 exp.push(true);
