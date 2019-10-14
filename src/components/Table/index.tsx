@@ -19,7 +19,7 @@ export default class extends React.Component<IGrammarProps> {
             return rawStr;
         }
         let result = rawStr;
-        const res = rawStr.match(/\{\w+\}+\w{1}/g);
+        const res = rawStr.match(/\{[^<>{}]+\}+[\w]{1}/g);
         if (!res || !res.length) {
             return result;
         }
