@@ -7,6 +7,7 @@ table.customTable {
     white-space: nowrap;
     box-sizing: border-box;
     border: 3px solid #9E9E9E;
+    text-align:center;
     &.B {
       background: #90CAF9;
     }
@@ -25,9 +26,20 @@ table.customTable {
     &.r {
       background: #ffcdd2;
     }
+    &.S {
+      background: #E0E0E0;
+    }
+    &.s {
+      background: #EEEEEE;
+    }
 
     &.d {
       background: #BDBDBD;
+      color: #fff;
+      text-align: center;
+    }
+    &.D {
+      background: #424242;
       color: #fff;
       text-align: center;
     }
@@ -44,6 +56,9 @@ table.customTable {
       }
       &.b {
         color: #3F51B5;
+      }
+      &.s {
+        color: #9E9E9E;
       }
     }
 
