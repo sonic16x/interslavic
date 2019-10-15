@@ -86,9 +86,8 @@
   "tableBrat": [
     [
       "&nbsp@bt;bl;br;bb",
-      "BRAT (živ.) GRAD (neživ.)@bt;bl;br;w=2",
-      "&nbsp@bt;bl;br;w=2",
-      "mužsky tvrdy vzor@bt;bl;br;w=2"
+      "BRAT (živ.) GRAD (neživ.)@bt;bl;br;w=3;ts",
+      "mužsky tvrdy vzor@bt;bl;br;w=3;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -163,9 +162,8 @@
   "tableMuz": [
     [
       "&nbsp@bt;bl;br;bb",
-      "MUŽ (živ.) NOŽ (neživ.)@bt;bl;br;w=2",
-      "&nbsp@bt;bl;br;w=2",
-      "mužsky mekky vzor@bt;bl;br;w=2"
+      "MUŽ (živ.) NOŽ (neživ.)@bt;bl;br;w=3;ts",
+      "mužsky mekky vzor@bt;bl;br;w=3;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -242,8 +240,8 @@
       "&nbsp@bt;bl;br;bb",
       "ŽENA@bt;bl;br",
       "DUŠA@bt;bl;br",
-      "&nbsp@bt;bl;br;w=2",
-      "ženske tvrdy i mekky vzory@bt;bl;br;w=2"
+      "&nbsp@bt;bl;br;",
+      "ženske tvrdy i mekky vzory@bt;bl;br;w=3;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -318,7 +316,7 @@
   "tableKost": [
     [
       "&nbsp@bt;bl;br;bb",
-      "KOST (MYŠ, RADOST, PET, ŠEST, DESET, OČI, UŠI, ...)@bt;bl;br;w=4",
+      "KOST (MYŠ,RADOST,PET,ŠEST,DESET...)@bt;bl;br;w=4",
       "žensky sogl. vzor@bt;bl;br"
     ],
     [
@@ -389,8 +387,8 @@
       "&nbsp@bt;bl;br;bb",
       "SĚLO@bt;bl;br",
       "POLJE@bt;bl;br",
-      "&nbsp@bt;bl;br;w=2",
-      "srědne tvrdy i mekky vzory@bt;bl;br;w=2"
+      "&nbsp@bt;bl;br",
+      "srědne tvrdy i mekky vzory@bt;bl;br;w=3;te"
     ],
     [
       "&nbsp@bt;bl",

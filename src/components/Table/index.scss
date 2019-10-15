@@ -4,10 +4,11 @@ table.customTable {
   margin: 0 auto;
   font-weight: bold;
   text-align: start;
+  width: 100%;
   th, td {
     white-space: nowrap;
     box-sizing: border-box;
-    border: 3px solid #9E9E9E;
+    border: 2px solid #9E9E9E;
     text-align: center;
     &.B {
       background: #90CAF9;
@@ -32,6 +33,14 @@ table.customTable {
     }
     &.s {
       background: #EEEEEE;
+    }
+
+    &.ts {
+      text-align: start;
+    }
+
+    &.te {
+      text-align: end;
     }
 
     &.d {
