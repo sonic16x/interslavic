@@ -30,7 +30,7 @@ class Grammar extends React.Component<IGrammarProps> {
                 <Table data={tables.tableKost} />
                 <Table data={tables.tableSelo} />
                 <Table data={tables.tableDen} />
-                <p>naučno pravopisanje v slovniku i cirilica</p>
+                <Text>{`{naučno pravopisanje v slovniku i cirilica}[B]`}</Text>
                 <div className={'tablesRow'}>
                     <Table fontSize={'2.7vw'} data={tables.tableNauc1} />
                     <Table fontSize={'2.7vw'} data={tables.tableNauc2} />
