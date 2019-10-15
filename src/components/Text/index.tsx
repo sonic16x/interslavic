@@ -23,10 +23,23 @@ export function parseStr(rawStr) {
     return matchStr(result) ? parseStr(result) : result.split('\n').join('<br/>');
 }
 
-export default class extends React.PureComponent {
+interface ITextProps {
+    align?: 'start' | 'center' | 'end';
+    indent?: string;
+}
+
+export default class extends React.PureComponent<ITextProps> {
     public render() {
+        const style = {
+            textAlign: this.props.align || 'start',
+            textIndent: this.props.indent,
+        };
         return (
-            <p className={'customText'} dangerouslySetInnerHTML={{__html: parseStr(this.props.children)}} />
+            <p
+                style={style}
+                className={'customText'}
+                dangerouslySetInnerHTML={{__html: parseStr(this.props.children)}}
+            />
         );
     }
 }
