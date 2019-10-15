@@ -83,7 +83,7 @@ class Grammar extends React.Component<IGrammarProps> {
                 <Text align={'center'}>{`{zaimeniky}[B]`}</Text>
                 <Table data={tables.tableMest} />
                 <Table data={tables.tableTojTaTo} fontSize={'2.5vw'} />
-                {/*ON ONA ONO TABLE*/}
+                <Table data={tables.tableOnOnaOno} fontSize={'2.3vw'} />
                 <Text>
                     {`Mekky	vzor klonjenja {(-{e}[g]g{o}[p], -{e}[g]m{u}[p], ...)}[B] imajut zaimeniky:
                         {MOJ-MOJA-MOJE, TVOJ-TVOJA-TVOJE, NAŠ-NAŠA-NAŠE, VAŠ-VAŠA-VAŠE,
@@ -91,6 +91,7 @@ class Grammar extends React.Component<IGrammarProps> {
                         Tvar {n}[r]- pišemo toliko v padežah s prědlogom:
                         {slyšu jego, rabotaju za {n}[r]j{e}[g]go, idu s {n}[r]j{i}[b]m{i}[b], pišu j{e}[g]m{u}[p], idu k {n}[r]j{e}[g]m{u}[p]}[B]`}
                 </Text>
+                <Text align={'center'}>{`{pridavniky}[B]`}</Text>
             </div>
         );
     }
