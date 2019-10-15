@@ -10,7 +10,7 @@ interface IGrammarProps {
 export default class extends React.Component<IGrammarProps> {
     public render() {
         return (
-            <table className={'customTable'} style={{fontSize: this.props.fontSize || '3vw'}}>
+            <table className={'customTable'} style={{fontSize: this.props.fontSize || '0.7rem'}}>
                 <tbody>{this.renderBody()}</tbody>
             </table>
         );
