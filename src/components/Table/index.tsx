@@ -1,38 +1,24 @@
 import * as React from 'react';
 import './index.scss';
+import { parseStr } from 'components/Text';
 
 interface IGrammarProps {
     data: string[][];
+    fontSize?: string;
 }
 
 export default class extends React.Component<IGrammarProps> {
     public render() {
         return (
-            <table className={'customTable'}>
+            <table className={'customTable'} style={{fontSize: this.props.fontSize || '3vw'}}>
                 <tbody>{this.renderBody()}</tbody>
             </table>
         );
     }
 
-    private parseStr(rawStr) {
-        if (!rawStr) {
-            return rawStr;
-        }
-        let result = rawStr;
-        const res = rawStr.match(/\{[^<>{}]+\}+[\w]{1}/g);
-        if (!res || !res.length) {
-            return result;
-        }
-        res.forEach((item) => {
-            const [str, color] = item.split('}');
-            result = result.replace(item, `<span class="${color}">${str.slice(1)}</span>`);
-        });
-        return result;
-    }
-
     private parseItem(raw): { str: string, attrs: any } {
         let [str, rawAttrs] = raw.split('@');
-        str = this.parseStr(str);
+        str = parseStr(str);
         const attrs = {};
         if (!rawAttrs) {
             rawAttrs = '';

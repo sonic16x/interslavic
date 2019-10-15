@@ -1,0 +1,26 @@
+@mixin customText {
+  span {
+    &.p {
+      color: #9C27B0;
+    }
+    &.r {
+      color: #f44336;
+    }
+    &.g {
+      color: #4CAF50;
+    }
+    &.b {
+      color: #3F51B5;
+    }
+    &.s {
+      color: #9E9E9E;
+    }
+    &.B {
+      font-weight: bold;
+    }
+  }
+}
+
+.customText {
+  @include customText;
+}
