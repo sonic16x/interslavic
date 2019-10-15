@@ -1023,5 +1023,106 @@
       "naj-bogat-{y}[b]",
       "naj-dra{g}[r]-{y}[b]"
     ]
+  ],
+  "tableImeti": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "IMĚTI@bl;bt;br",
+      "&nbsp@bl;bt;br",
+      "tvrdy -{e}[g]š vzor@bl;bt;br"
+    ],
+    [
+      "&nbsp@bt;bl;bb",
+      "infinitiv@d",
+      "im-{ě}[g]-ti@w=2"
+    ],
+    [
+      "&nbsp@bt;bl;bb",
+      "L-participij@d",
+      "im-{ě}[g]-l im-{ě}[g]-la im-{ě}[g]-lo im-{ě}[g]-li im-{ě}[g]-le@w=2"
+    ],
+    [
+      "&nbsp@bt;bl;bb",
+      "glagolno ime@d",
+      "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2"
+    ],
+    [
+      "sučno vrěme (tvrde glagoly možut imati sučny koren nerovny s korenom infinitiva)@w=4;D"
+    ],
+    [
+      "&nbsp@d",
+      "jednina@d",
+      "množina@d",
+      "dvojina@d"
+    ],
+    [
+      "1@d",
+      "{imaj}[r]-{u}[p]@b",
+      "{imaj}[r]-{e}[g]mo@b",
+      "{imaj}[r]-{e}[g]vě@s"
+    ],
+    [
+      "2@d",
+      "{imaj}[r]-{e}[g]š@b",
+      "{imaj}[r]-{e}[g]te@b",
+      "{imaj}[r]-{e}[g]ta@s"
+    ],
+    [
+      "3@d",
+      "{imaj}[r]-{e}[g]@b",
+      "{imaj}[r]-{u}[p]t@B",
+      "{imaj}[r]-{e}[g]te@s"
+    ],
+    [
+      "&nbsp@d;bb;br;w=2",
+      "aktivny sučny participij@d;bb",
+      "{imaj}[r]-{u}[p]či {≈ jesmy}[s]@B"
+    ],
+    [
+      "&nbsp@d;bt;br;w=2",
+      "pasivny sučny participij@d;bt",
+      "{imaj}[r]-{e}[g]my {≈ sučny}[s]@b"
+    ],
+    [
+      "imperativ@w=2;d",
+      "{imaj}[r]{!}[s] {imaj}[r]-mo{!}[s] {imaj}[r]-te{!}[s]@w=2;r"
+    ],
+    [
+      "prošlo vrěme (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D"
+    ],
+    [
+      "&nbsp@d",
+      "jednina@d",
+      "množina@d",
+      "dvojina@d"
+    ],
+    [
+      "1@d",
+      "im-{ě}[g]-h",
+      "im-{ě}[g]-hmo",
+      "im-{ě}[g]-hova@s"
+    ],
+    [
+      "2@d",
+      "im-{ě}[g]-še",
+      "im-{ě}[g]-šte",
+      "im-{ě}[g]-šta@s"
+    ],
+    [
+      "3@d",
+      "im-{ě}[g]-še",
+      "im-{ě}[g]-hu",
+      "im-{ě}[g]-šte@s"
+    ],
+    [
+      "&nbsp@d;bb;w=2",
+      "aktivny prošly participij@d;bb",
+      "im-{ě}[g]-vši {≈ b-y-ty}[s]"
+    ],
+    [
+      "&nbsp@d;bt;w=2",
+      "pasivny prošly participij@d;bt",
+      "im-{ě}[g]-ny {≈ b-y-vši}[s]@r"
+    ]
   ]
 }
