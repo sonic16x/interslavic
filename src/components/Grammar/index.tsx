@@ -92,6 +92,9 @@ class Grammar extends React.Component<IGrammarProps> {
                         {slyšu jego, rabotaju za {n}[r]j{e}[g]go, idu s {n}[r]j{i}[b]m{i}[b], pišu j{e}[g]m{u}[p], idu k {n}[r]j{e}[g]m{u}[p]}[B]`}
                 </Text>
                 <Text align={'center'}>{`{pridavniky}[B]`}</Text>
+                <Table data={tables.tableDobry} fontSize={'2.3vw'} />
+                <Table data={tables.tableSvezi} fontSize={'2.3vw'} />
+                <Table data={tables.tableGradacija} fontSize={'2.3vw'} />
             </div>
         );
     }
