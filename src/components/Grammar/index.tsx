@@ -104,6 +104,7 @@ class Grammar extends React.Component<IGrammarProps> {
                     <Text>
                         {`{kračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]`}
                     </Text>
+                    <Table data={tables.tableImeti} />
                 </div>
             </div>
         );
