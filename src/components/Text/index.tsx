@@ -1,20 +1,26 @@
 import * as React from 'react';
 import './index.scss';
 
+function matchStr(str) {
+    return str.match(/\{[^{}]+\}+\[[^<>{}]+\]/g);
+}
+
 export function parseStr(rawStr) {
     if (!rawStr) {
         return rawStr;
     }
     let result = rawStr;
-    const res = rawStr.match(/\{[^<>{}]+\}+[\w]{1}/g);
+    const res = matchStr(rawStr);
     if (!res || !res.length) {
         return result;
     }
     res.forEach((item) => {
-        const [str, color] = item.split('}');
-        result = result.replace(item, `<span class="${color}">${str.slice(1)}</span>`);
+        const [str, params] = item.split('}[');
+        const text = str.slice(1);
+        const classList = params.slice(0, -1).split(',').join(' ');
+        result = result.replace(item, `<span class="${classList}">${text}</span>`);
     });
-    return result;
+    return matchStr(result) ? parseStr(result) : result.split('\n').join('<br/>');
 }
 
 export default class extends React.PureComponent {
