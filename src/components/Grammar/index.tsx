@@ -18,12 +18,12 @@ class Grammar extends React.Component<IGrammarProps> {
                 <h4>MEDŽUSLOVJANSKY JEZYK</h4>
                 <Text>{`{abeceda i pravopisanje}[B]`}</Text>
                 <Table data={tables.tableAbeceda} fontSize={'3.5vw'} />
-                <Text>{`
-                    V latinici i cirilici jest možno vměsto {y}[b,B] pisati prosto {i}[b,B] i vměsto {ě}[g] pisati prosto {e}[g].
+                <Text>
+                    {`V latinici i cirilici jest možno vměsto {y}[b,B] pisati prosto {i}[b,B] i vměsto {ě}[g] pisati prosto {e}[g].
                     Napr. {r{y}[b]ba→r{i}[b]ba r{ě}[g]ka→r{e}[g]ka}[B]
                     Palatizacija i eufonija: {{k}[r]→{č}[r], {h}[r]→{š}[r], {g}[r]→{ž}[r], {c}[r]{j}[p]→{č}[r], {s}[r]{j}[p]→{š}[r], {zj}[r]→{ž}[r]}[B]
-                    Napr.: {Grě{k}[r]→grě{č}[r]sky pra{h}[r]→pra{š}[r]ny Bo{g}[r]→bo{ž}[r]sky pro{s}[r]{ju}[p]→pro{š}[r]{u}[p]}[B]
-                `}</Text>
+                    Napr.: {Grě{k}[r]→grě{č}[r]sky pra{h}[r]→pra{š}[r]ny Bo{g}[r]→bo{ž}[r]sky pro{s}[r]{ju}[p]→pro{š}[r]{u}[p]}[B]`}
+                </Text>
                 <Table data={tables.tableBrat} />
                 <Table data={tables.tableMuz} />
                 <Table data={tables.tableZena} />
