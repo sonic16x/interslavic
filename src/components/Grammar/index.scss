@@ -17,4 +17,11 @@
     max-height: calc(100% - 60px);
   }
   text-align: center;
+  p {
+    margin-bottom: 0.3rem;
+  }
+  .tablesRow {
+    display: flex;
+    flex-direction: row;
+  }
 }

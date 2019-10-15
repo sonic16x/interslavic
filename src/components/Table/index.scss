@@ -1,13 +1,14 @@
+@import "../Text/index.scss";
+
 table.customTable {
   margin: 0 auto;
   font-weight: bold;
   text-align: start;
-  font-size: 3vw;
   th, td {
     white-space: nowrap;
     box-sizing: border-box;
     border: 3px solid #9E9E9E;
-    text-align:center;
+    text-align: center;
     &.B {
       background: #90CAF9;
     }
@@ -44,23 +45,7 @@ table.customTable {
       text-align: center;
     }
 
-    span {
-      &.p {
-        color: #9C27B0;
-      }
-      &.r {
-        color: #f44336;
-      }
-      &.g {
-        color: #4CAF50;
-      }
-      &.b {
-        color: #3F51B5;
-      }
-      &.s {
-        color: #9E9E9E;
-      }
-    }
+    @include customText;
 
     &.bt {
       border-top-color: transparent;
