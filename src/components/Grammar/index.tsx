@@ -15,17 +15,18 @@ class Grammar extends React.Component<IGrammarProps> {
     public render() {
         return (
             <div className={'container grammar' + (this.props.isVisible ? ' show' : '')}>
-                <h4>MEDŽUSLOVJANSKY JEZYK</h4>
+                <br/>
+                <h3>MEDŽUSLOVJANSKY JEZYK</h3>
                 <Text align={'center'}>{`{abeceda i pravopisanje}[B]`}</Text>
                 <Table fontSize={'3.5vw'} data={tables.tableAbeceda} />
                 <Text>
-                    {`V latinici i cirilici jest možno vměsto {y}[b,B] pisati prosto {i}[b,B] i vměsto {ě}[g] pisati prosto {e}[g].
+                    {`V latinici i cirilici jest možno vměsto {y}[b,B] pisati prosto {i}[b,B] i vměsto {ě}[g,B] pisati prosto {e}[g,B].
                     Napr. {r{y}[b]ba→r{i}[b]ba r{ě}[g]ka→r{e}[g]ka}[B]
                     Palatizacija i eufonija: {{k}[r]→{č}[r], {h}[r]→{š}[r], {g}[r]→{ž}[r], {c}[r]{j}[p]→{č}[r], {s}[r]{j}[p]→{š}[r], {zj}[r]→{ž}[r]}[B]
                     Napr.: {Grě{k}[r]→grě{č}[r]sky pra{h}[r]→pra{š}[r]ny Bo{g}[r]→bo{ž}[r]sky pro{s}[r]{ju}[p]→pro{š}[r]{u}[p]}[B]`}
                 </Text>
                 <Text indent={'0.5rem'}>
-                    {`{1.}[B,m] Staroslovjansko jatj={ѣ}[g]={ě}[g] se može pisati bez diakritiky kako ie ili prosto e.
+                    {`{1.}[B,m] Staroslovjansko jatj={ѣ}[g,B]={ě}[g,B] se može pisati bez diakritiky kako ie ili prosto e.
                          Podobno {č}[r,B], {š}[r,B], {ž}[r,B] se mogut pisati kako {cz}[r,B], {sz}[r,B], {zs}[r,B].`}
                 </Text>
                 <Text indent={'0.5rem'}>
@@ -47,14 +48,13 @@ class Grammar extends React.Component<IGrammarProps> {
                         Ostalne objekty sut {neživotne}[i] (od pytanija ČTO) i imajut v jednině akuzativ
                         rovny s nominativom.
                       napr.: {gospod peče {hlěb}[r].}[B] ({hlěb}[r,B] ne može pečti = jest neživotny)
-                      {gospod vidi {člověka}[r]}[B]. ({člověk}[r,B] može viděti = jest životny)
-                    `}
+                      {gospod vidi {člověka}[r]}[B]. ({člověk}[r,B] može viděti = jest životny)`}
                 </Text>
                 <Text>
                     {`Slova mužskogo roda zakončeni na -{a}[r] imajut v jednině klonjenje po tvrdom
                             vzoru {žena}[r,B] ili mekkom vzoru {duša}[r,B], ale v množině i dvojině imajut normalny
                             mužsky vzor.
-                            napr.: {vladyk-{a}[r], vladyk-{y}[b], vladyk-{ě}[g], vladyk-{u}[p], vladyk-{o}[p],}[B] ... (jednina)
+                            napr.: {vladyk-{a}[r], vladyk-{y}[b], vladyk-{ě}[g,B], vladyk-{u}[p], vladyk-{o}[p],}[B] ... (jednina)
                             {vladyk-{i}[b], vladyk-{ov}[p], vladyk-{a}[r]m, vladyk-{a}[r]m{i}[b],}[B] ... (množina)`}
                 </Text>
                 <Table fontSize={'2.7vw'} data={tables.tableZena} />
