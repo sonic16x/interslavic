@@ -773,5 +773,74 @@
       "vy{!}[s]@w=2;S",
       "va{!}[s]@s"
     ]
+  ],
+  "tableOnOnaOno": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "ON ONA ONO@bt;bl;br;w=2",
+      "&nbsp@bt;bl;br;w=4",
+      "mekky vzor@bt;bl;br"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "m.ž. jedn.@d",
+      "m.n. jedn.@d",
+      "ž. jedn.@d",
+      "s. jedn.@d",
+      "m.ž.m.@d",
+      "m.n.m. ž.m. s.m.@d",
+      "dvojina@d"
+    ],
+    [
+      "N@d;bb",
+      "on@w=2",
+      "on-{a}[r]",
+      "on-{o}[p]@",
+      "on-{i}[b]@s",
+      "on-{e}[g]@bb;s",
+      "on-{e}[g]@bb"
+    ],
+    [
+      "A@d;bb",
+      "(n)j-{e}[g]g{o}[p]@bb;b",
+      "(n)j-{e}[g]j@s",
+      "(n)j-{u}[p]@S",
+      "(n)j-{e}[g]@s",
+      "(n)j-{i}[g]h@bb;B",
+      "(n)j-{e}[g]@s",
+      "(n)j-{e}[g]@"
+    ],
+    [
+      "G@d;bb",
+      "(n)j-{e}[g]g{o}[p]@w=2;b",
+      "(n)j-{e}[g]j@b",
+      "(n)j-{e}[p]g{o}[p]@b",
+      "(n)j-{i}[b]h@w=2;bb;B",
+      "(n)j-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "(n)j-{e}[p]m@w=2;bb;g",
+      "(n)j-{e}[p]j@bb;g",
+      "(n)j-{e}[p]m@bb;g",
+      "(n)j-{i}[b]h@w=2;bt;B",
+      "(n)j-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "(n)j-{e}[p]m{u}[p]@w=2;bt;g",
+      "(n)j-{e}[p]j@bt;g",
+      "(n)j-{e}[p]m{u}[p]@bt;g",
+      "(n)j-{i}[b]m@w=2;bb;R",
+      "(n)j-{i}[b]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "(n)j-{i}[b]m@w=2;r",
+      "(n)j-{e}[p]j{u}[p]@r",
+      "(n)j-{i}[b]m@r",
+      "(n)j-{i}[b]m{i}[g]@w=2;bt;R",
+      "(n)j-{i}[b]m{a}[r]@bt;r"
+    ]
   ]
 }
