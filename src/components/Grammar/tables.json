@@ -386,6 +386,13 @@
   ],
   "tableSelo": [
     [
+      "&nbsp@bt;bl;br;bb",
+      "SĚLO@bt;bl;br",
+      "POLJE@bt;bl;br",
+      "&nbsp@bt;bl;br;w=2",
+      "srědne tvrdy i mekky vzory@bt;bl;br;w=2"
+    ],
+    [
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
@@ -456,6 +463,12 @@
     ]
   ],
   "tableDen": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "N- -R- -T-@bt;bl;br",
+      "&nbsp@bt;bl;br;bb;w=2",
+      "specialne vzory@bt;bl;br;bb"
+    ],
     [
       "&nbsp@bt;bl",
       "jednina@w=4;d"
@@ -687,6 +700,12 @@
     ]
   ],
   "tableTojTaTo": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "TOJ TA TO@bt;bl;br;w=2",
+      "&nbsp@bt;bl;br;w=4",
+      "tvrdy vzor@bt;bl;br"
+    ],
     [
       "&nbsp@bt;bl",
       "m.ž. jedn.@d",
