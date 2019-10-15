@@ -802,45 +802,228 @@
     ],
     [
       "A@d;bb",
-      "(n)j-{e}[g]g{o}[p]@bb;b",
-      "(n)j-{e}[g]j@s",
-      "(n)j-{u}[p]@S",
-      "(n)j-{e}[g]@s",
-      "(n)j-{i}[g]h@bb;B",
-      "(n)j-{e}[g]@s",
-      "(n)j-{e}[g]@"
+      "{(}[s]n{)}[s]j-{e}[g]g{o}[p]@bb;b",
+      "{(}[s]n{)}[s]j-{e}[g]j@s",
+      "{(}[s]n{)}[s]j-{u}[p]@S",
+      "{(}[s]n{)}[s]j-{e}[g]@s",
+      "{(}[s]n{)}[s]j-{i}[g]h@bb;B",
+      "{(}[s]n{)}[s]j-{e}[g]@s",
+      "{(}[s]n{)}[s]j-{e}[g]@"
     ],
     [
       "G@d;bb",
-      "(n)j-{e}[g]g{o}[p]@w=2;b",
-      "(n)j-{e}[g]j@b",
-      "(n)j-{e}[p]g{o}[p]@b",
-      "(n)j-{i}[b]h@w=2;bb;B",
-      "(n)j-{u}[p]@bb;b"
+      "{(}[s]n{)}[s]j-{e}[g]g{o}[p]@w=2;b",
+      "{(}[s]n{)}[s]j-{e}[g]j@b",
+      "{(}[s]n{)}[s]j-{e}[p]g{o}[p]@b",
+      "{(}[s]n{)}[s]j-{i}[b]h@w=2;bb;B",
+      "{(}[s]n{)}[s]j-{u}[p]@bb;b"
     ],
     [
       "L@d;bb",
-      "(n)j-{e}[p]m@w=2;bb;g",
-      "(n)j-{e}[p]j@bb;g",
-      "(n)j-{e}[p]m@bb;g",
-      "(n)j-{i}[b]h@w=2;bt;B",
-      "(n)j-{u}[p]@bt;b"
+      "{(}[s]n{)}[s]j-{e}[p]m@w=2;bb;g",
+      "{(}[s]n{)}[s]j-{e}[p]j@bb;g",
+      "{(}[s]n{)}[s]j-{e}[p]m@bb;g",
+      "{(}[s]n{)}[s]j-{i}[b]h@w=2;bt;B",
+      "{(}[s]n{)}[s]j-{u}[p]@bt;b"
     ],
     [
       "D@d;bb",
-      "(n)j-{e}[p]m{u}[p]@w=2;bt;g",
-      "(n)j-{e}[p]j@bt;g",
-      "(n)j-{e}[p]m{u}[p]@bt;g",
-      "(n)j-{i}[b]m@w=2;bb;R",
-      "(n)j-{i}[b]m{a}[r]@bb;r"
+      "{(}[s]n{)}[s]j-{e}[p]m{u}[p]@w=2;bt;g",
+      "{(}[s]n{)}[s]j-{e}[p]j@bt;g",
+      "{(}[s]n{)}[s]j-{e}[p]m{u}[p]@bt;g",
+      "{(}[s]n{)}[s]j-{i}[b]m@w=2;bb;R",
+      "{(}[s]n{)}[s]j-{i}[b]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
-      "(n)j-{i}[b]m@w=2;r",
-      "(n)j-{e}[p]j{u}[p]@r",
-      "(n)j-{i}[b]m@r",
-      "(n)j-{i}[b]m{i}[g]@w=2;bt;R",
-      "(n)j-{i}[b]m{a}[r]@bt;r"
+      "{(}[s]n{)}[s]j-{i}[b]m@w=2;r",
+      "{(}[s]n{)}[s]j-{e}[p]j{u}[p]@r",
+      "{(}[s]n{)}[s]j-{i}[b]m@r",
+      "{(}[s]n{)}[s]j-{i}[b]m{i}[g]@w=2;bt;R",
+      "{(}[s]n{)}[s]j-{i}[b]m{a}[r]@r"
+    ]
+  ],
+  "tableDobry": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "DOBRY@bt;bl;br;w=2",
+      "&nbsp@bt;bl;br;w=4",
+      "mekky vzor@bt;bl;br"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "m.ž. jedn.@d",
+      "m.n. jedn.@d",
+      "ž. jedn.@d",
+      "s. jedn.@d",
+      "m.ž.m.@d",
+      "m.n.m. ž.m. s.m.@d",
+      "dvojina@d"
+    ],
+    [
+      "N@d;bb",
+      "dobr-{y}[b]@w=2",
+      "dobr-{a}[r]",
+      "dobr-{o}[p]@bb",
+      "dobr-{i}[b]@s",
+      "dobr-{e}[g]@bb;s",
+      "dobr-{e}[g]@bb"
+    ],
+    [
+      "A@d;bb",
+      "dobr-{o}[p]g{o}[p]@bb;b",
+      "dobr-{y}[b]@bt",
+      "dobr-{u}[p]",
+      "dobr-{o}[p]@bt",
+      "dobr-{y}[b]h@bb;B",
+      "dobr-{e}[g]@bt;s",
+      "dobr-{e}[g]@bt"
+    ],
+    [
+      "G@d;bb",
+      "dobr-{o}[p]g{o}[p]@w=2;b",
+      "dobr-{o}[p]j@b",
+      "dobr-{o}[p]g{o}[p]@b",
+      "dobr-{y}[b]h@w=2;bb;B",
+      "dobr-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "dobr-{o}[p]m@w=2;bb;g",
+      "dobr-{o}[p]j@bb;g",
+      "dobr-{o}[p]m@bb;g",
+      "dobr-{y}[b]h@w=2;B",
+      "dobr-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "dobr-{o}[p]m{u}[p]@w=2;bt;g",
+      "dobr-{o}[p]j@bt;g",
+      "dobr-{o}[p]m{u}[p]@bt;g",
+      "dobr-{y}[b]m@w=2;bb;R",
+      "dobr-{y}[b]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "dobr-{y}[b]m@w=2;r",
+      "dobr-{o}[p]j{u}[p]@r",
+      "dobr-{y}[b]m@r",
+      "dobr-{y}[b]m{i}[g]@w=2;bt;R",
+      "dobr-{y}[b]m{a}[r]@r"
+    ],   
+    [
+      "V@d",
+      "dobr-{y}[b]{!}[s]@w=2;s",
+      "dobr-{a}[r]{!}[s]@s",
+      "dobr-{o}[p]{!}[s]@s",
+      "dobr-{i}[b]{!}[s]@S",
+      "dobr-{e}[g]{!}[s]@S",
+      "dobr-{e}[g]{!}[s]@s"
+    ]
+  ],
+  "tableSvezi": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "DOBRY@bt;bl;br;w=2",
+      "&nbsp@bt;bl;br;w=4",
+      "tvrdy vzor@bt;bl;br"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "m.ž. jedn.@d",
+      "m.n. jedn.@d",
+      "ž. jedn.@d",
+      "s. jedn.@d",
+      "m.ž.m.@d",
+      "m.n.m. ž.m. s.m.@d",
+      "dvojina@d"
+    ],
+    [
+      "N@d;bb",
+      "svěž-{i}[b]@w=2",
+      "svěž-{a}[r]",
+      "svěž-{e}[g]@bb",
+      "svěž-{i}[b]@s",
+      "svěž-{e}[g]@bb;s",
+      "svěž-{e}[g]@bb"
+    ],
+    [
+      "A@d;bb",
+      "svěž-{e}[p]g{o}[p]@bb;b",
+      "svěž-{i}[b]@bt",
+      "svěž-{u}[p]",
+      "svěž-{e}[g]@bt",
+      "svěž-{i}[b]h@bb;B",
+      "svěž-{e}[g]@bt;s",
+      "svěž-{e}[g]@bt"
+    ],
+    [
+      "G@d;bb",
+      "svěž-{e}[g]g{o}[p]@w=2;b",
+      "svěž-{e}[g]j@b",
+      "svěž-{e}[g]g{o}[p]@b",
+      "svěž-{i}[b]h@w=2;bb;B",
+      "svěž-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "svěž-{e}[g]m@w=2;bb;g",
+      "svěž-{e}[g]j@bb;g",
+      "svěž-{e}[g]m@bb;g",
+      "svěž-{i}[b]h@w=2;B",
+      "svěž-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "svěž-{e}[g]m{u}[p]@w=2;bt;g",
+      "svěž-{e}[g]j@bt;g",
+      "svěž-{e}[g]m{u}[p]@bt;g",
+      "svěž-{i}[b]m@w=2;bb;R",
+      "svěž-{i}[b]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "svěž-{i}[b]m@w=2;r",
+      "svěž-{e}[p]j{u}[p]@r",
+      "svěž-{i}[b]m@r",
+      "svěž-{i}[b]m{i}[g]@w=2;bt;R",
+      "svěž-{i}[b]m{a}[r]@r"
+    ],
+    [
+      "V@d",
+      "svěž-{i}[b]{!}[s]@w=2;s",
+      "svěž-{a}[r]{!}[s]@s",
+      "svěž-{e}[g]{!}[s]@s",
+      "svěž-{i}[b]{!}[s]@S",
+      "svěž-{e}[g]{!}[s]@S",
+      "svěž-{e}[g]{!}[s]@s"
+    ]
+  ],
+  "tableGradacija": [
+    [
+      "GRADACIJA@bt;bl",
+      "bez palatizacije@d",
+      "s palatizacijeju do č,š,ž@d"
+    ],
+    [
+      "superlativ@d",
+      "naj-bogat-{ě}[g]jš-{i}[b] {(iz ...)}[s]",
+      "naj-dra{ž}[r]-{e}[g]jš-{i}[b] {(iz ...)}[s]"
+    ],
+    [
+      "komparativ@d",
+      "bogat-{ě}[g]jš-{i}[b] {(od ...)}[s]",
+      "dra{ž}[r]-{e}[g]jš-{i}[b] {(od ...)}[s]"
+    ],
+    [
+      "indikativ@d",
+      "bogat-{y}[b]",
+      "dra{g}[r]-{y}[b]"
+    ],
+    [
+      "augmentativ@d",
+      "naj-bogat-{y}[b]",
+      "naj-dra{g}[r]-{y}[b]"
     ]
   ]
 }
