@@ -95,6 +95,9 @@ class Grammar extends React.Component<IGrammarProps> {
                 <Table data={tables.tableDobry} fontSize={'2.3vw'} />
                 <Table data={tables.tableSvezi} fontSize={'2.3vw'} />
                 <Table data={tables.tableGradacija} fontSize={'2.3vw'} />
+                <Text>
+                    {`{kračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]`}
+                </Text>
             </div>
         );
     }
