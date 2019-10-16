@@ -1058,7 +1058,10 @@
       "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2"
     ],
     [
-      "sučno vrěme (tvrde glagoly možut imati sučny koren nerovny s korenom infinitiva)@w=4;D"
+      "sučno vrěme (tvrde glagoly možut imati sučny koren @w=4;D;bb;ts"
+    ],
+    [
+      "nerovny s korenom infinitiva)@w=4;D;bt;ts"
     ],
     [
       "&nbsp@d",
@@ -1099,7 +1102,10 @@
       "{imaj}[r]{!}[s] {imaj}[r]-mo{!}[s] {imaj}[r]-te{!}[s]@w=2;r"
     ],
     [
-      "prošlo vrěme (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D"
+      "prošlo vrěme@w=4;D;bb"
+    ],
+    [
+      "(infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bt"
     ],
     [
       "&nbsp@d",
@@ -1159,7 +1165,10 @@
       "var-j{e}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2"
     ],
     [
-      "sučno vrěme (tvrde glagoly možut imati sučny koren nerovny s korenom infinitiva)@w=4;D"
+      "sučno vrěme (tvrde glagoly možut imati sučny koren @w=4;D;bb"
+    ],
+    [
+      "nerovny s korenom infinitiva)@w=4;D;bt"
     ],
     [
       "&nbsp@d",
@@ -1200,7 +1209,10 @@
       "var-{i}[b]{!}[s] var-{i}[b]mo{!}[s] var-{i}[b]te{!}[s]@w=2;r"
     ],
     [
-      "prošlo vrěme (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D"
+      "prošlo vrěme(infinitivny koren i samoglasnik iz @w=4;D;bb"
+    ],
+    [
+      "infinitivnogo zakončenja)@w=4;D;bt"
     ],
     [
       "&nbsp@d",
