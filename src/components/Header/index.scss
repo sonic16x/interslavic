@@ -91,3 +91,7 @@ $animationDuration: 0.1s;
   white-space: nowrap;
   width: calc(100% - 4rem);
 }
+
+.header {
+  z-index: 100;
+}
