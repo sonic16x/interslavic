@@ -702,7 +702,7 @@
       "&nbsp@bt;bl;br;bb",
       "TOJ TA TO@bt;bl;br;w=2",
       "&nbsp@bt;bl;br;w=4",
-      "tvrdy vzor@bt;bl;br"
+      "tvrdy vzor@bt;bl;br;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -780,7 +780,7 @@
       "&nbsp@bt;bl;br;bb",
       "ON ONA ONO@bt;bl;br;w=2",
       "&nbsp@bt;bl;br;w=4",
-      "mekky vzor@bt;bl;br"
+      "mekky vzor@bt;bl;br;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -857,7 +857,7 @@
       "&nbsp@bt;bl;br;bb",
       "DOBRY@bt;bl;br;w=2",
       "&nbsp@bt;bl;br;w=4",
-      "tvrdy vzor@bt;bl;br"
+      "tvrdy vzor@bt;bl;br;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -935,7 +935,7 @@
       "&nbsp@bt;bl;br;bb",
       "SVĚŽI@bt;bl;br;w=2",
       "&nbsp@bt;bl;br;w=4",
-      "mekky vzor@bt;bl;br"
+      "mekky vzor@bt;bl;br;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -1017,22 +1017,22 @@
     [
       "superlativ@d",
       "naj-bogat-{ě}[g]jš-{i}[b] {(iz ...)}[s]",
-      "naj-draž-{e}[g]jš-{i}[b] {(iz ...)}[s]"
+      "naj-dra{ž}[k]-{e}[g]jš-{i}[b] {(iz ...)}[s]"
     ],
     [
       "komparativ@d",
       "bogat-{ě}[g]jš-{i}[b] {(od ...)}[s]",
-      "draž-{e}[g]jš-{i}[b] {(od ...)}[s]"
+      "dra{ž}[k]-{e}[g]jš-{i}[b] {(od ...)}[s]"
     ],
     [
       "indikativ@d",
-      "bogat-{y}[b]",
-      "drag-{y}[b]"
+      "bogat-{y}[b]@s",
+      "dra{g}[k]-{y}[b]@s"
     ],
     [
       "augmentativ@d",
       "naj-bogat-{y}[b]",
-      "naj-drag-{y}[b]"
+      "naj-dra{g}[k]-{y}[b]"
     ]
   ],
   "tableImeti": [
@@ -1040,22 +1040,22 @@
       "&nbsp@bt;bl;br;bb",
       "IMĚTI@bl;bt;br",
       "&nbsp@bl;bt;br",
-      "tvrdy -{e}[g]š vzor@bl;bt;br"
+      "tvrdy -{e}[g]š vzor@bl;bt;br;te"
     ],
     [
       "&nbsp@bt;bl;bb",
       "infinitiv@d",
-      "im-{ě}[g]-ti@w=2"
+      "im-{ě}[g]-ti@w=2;ts"
     ],
     [
       "&nbsp@bt;bl;bb",
       "L-participij@d",
-      "im-{ě}[g]-l im-{ě}[g]-la im-{ě}[g]-lo im-{ě}[g]-li im-{ě}[g]-le@w=2"
+      "im-{ě}[g]-l, im-{ě}[g]-la, im-{ě}[g]-lo, im-{ě}[g]-li, im-{ě}[g]-le@w=2;ts"
     ],
     [
       "&nbsp@bt;bl;bb",
       "glagolno ime@d",
-      "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2"
+      "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
     [
       "sučno vrěme (tvrde glagoly možut imati sučny koren @w=4;D;bb;ts"
@@ -1071,35 +1071,35 @@
     ],
     [
       "1@d",
-      "{imaj}[r]-{u}[p]@b",
-      "{imaj}[r]-{e}[g]mo@b",
-      "{imaj}[r]-{e}[g]vě@s"
+      "{imaj}[k]-{u}[p]@b",
+      "{imaj}[k]-{e}[g]mo@b",
+      "{imaj}[k]-{e}[g]vě@s"
     ],
     [
       "2@d",
-      "{imaj}[r]-{e}[g]š@b",
-      "{imaj}[r]-{e}[g]te@b",
-      "{imaj}[r]-{e}[g]ta@s"
+      "{imaj}[k]-{e}[g]š@b",
+      "{imaj}[k]-{e}[g]te@b",
+      "{imaj}[k]-{e}[g]ta@s"
     ],
     [
       "3@d",
-      "{imaj}[r]-{e}[g]@b",
-      "{imaj}[r]-{u}[p]t@B",
-      "{imaj}[r]-{e}[g]te@s"
+      "{imaj}[k]-{e}[g]@b",
+      "{imaj}[k]-{u}[p]t@B",
+      "{imaj}[k]-{e}[g]te@s"
     ],
     [
       "&nbsp@d;bb;br;w=2",
       "aktivny sučny participij@d;bb",
-      "{imaj}[r]-{u}[p]či {≈ jesmy}[s]@B"
+      "{imaj}[k]-{u}[p]či {≈ jesmy}[s]@B"
     ],
     [
       "&nbsp@d;bt;br;w=2",
-      "pasivny sučny participij@d;bt",
-      "{imaj}[r]-{e}[g]my {≈ sučny}[s]@b"
+      "pasivny sučny participij@d;bt;te",
+      "{imaj}[k]-{e}[g]my {≈ sučny}[s]@b"
     ],
     [
       "imperativ@w=2;d",
-      "{imaj}[r]{!}[s] {imaj}[r]-mo{!}[s] {imaj}[r]-te{!}[s]@w=2;r"
+      "{imaj}[k]{!}[s] {imaj}[k]-mo{!}[s] {imaj}[k]-te{!}[s]@w=2;r"
     ],
     [
       "prošlo vrěme@w=4;D;bb"
@@ -1138,7 +1138,7 @@
     ],
     [
       "&nbsp@d;bt;w=2",
-      "pasivny prošly participij@d;bt",
+      "pasivny prošly participij@d;bt;te",
       "im-{ě}[g]-ny {≈ b-y-vši}[s]@r"
     ]
   ],
@@ -1147,22 +1147,22 @@
       "&nbsp@bt;bl;br;bb",
       "VARITI@bl;bt;br",
       "&nbsp@bl;bt;br",
-      "mekky -iš vzor@bl;bt;br"
+      "mekky -iš vzor@bl;bt;br;te"
     ],
     [
       "&nbsp@bt;bl;bb",
       "infinitiv@d",
-      "var-{i}[b]-ti@w=2"
+      "var-{i}[b]-ti@w=2;ts"
     ],
     [
       "&nbsp@bt;bl;bb",
       "L-participij@d",
-      "var-{i}[b]-l var-{i}[b]-la var-{i}[b]-lo var-{i}[b]-li var-{i}[b]-le@w=2"
+      "var-{i}[b]-l, var-{i}[b]-la, var-{i}[b]-lo, var-{i}[b]-li, var-{i}[b]-le@w=2;ts"
     ],
     [
       "&nbsp@bt;bl;bb",
       "glagolno ime@d",
-      "var-j{e}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2"
+      "var-j{e}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
     [
       "sučno vrěme (tvrde glagoly možut imati sučny koren @w=4;D;bb"
@@ -1178,7 +1178,7 @@
     ],
     [
       "1@d",
-      "var-{ju}[p]-{(}[s]var-{i}[b]-m{)}[s]@b",
+      "var-{ju}[p] {(}[s]var-{i}[b]m{)}[s]@b",
       "var-{i}[b]mo@b",
       "var-{i}[b]vě@s"
     ],
@@ -1201,7 +1201,7 @@
     ],
     [
       "&nbsp@d;bt;br;w=2",
-      "pasivny sučny participij@d;bt",
+      "pasivny sučny participij@d;bt;te",
       "var-{i}[b]my@b"
     ],
     [
@@ -1245,7 +1245,7 @@
     ],
     [
       "&nbsp@d;bt;w=2",
-      "pasivny prošly participij@d;bt",
+      "pasivny prošly participij@d;bt;te",
       "var-j{e}[g]-ny@r"
     ]
   ],
@@ -1295,17 +1295,17 @@
   [
     "&nbsp@bt;bl;bb",
     "infinitiv@d",
-    "b-{y}[b]-ti@w=2"
+    "b-{y}[b]-ti@w=2;ts"
   ],
   [
     "&nbsp@bt;bl;bb",
     "L-participij@d",
-    "b-{y}[b]-l, b-{y}[b]-la, b-{y}[b]-lo, b-{y}[b]-li, b-{y}[b]-le@w=2"
+    "b-{y}[b]-l, b-{y}[b]-la, b-{y}[b]-lo, b-{y}[b]-li, b-{y}[b]-le@w=2;ts"
   ],
   [
     "&nbsp@bt;bl;bb",
     "glagolno ime@d",
-    "b-{y}[b]-tje {(od prošlogo pasivnogo participija)}[s]@w=2"
+    "b-{y}[b]-tje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
   ],
   [
     "buduče vrěme@w=4;D"
@@ -1318,35 +1318,35 @@
   ],
   [
     "1@d",
-    "{bud}[r]-{u}[p]@b",
-    "{bud}[r]-{e}[g]mo@b",
-    "{bud}[r]-{e}[g]vě@s"
+    "{bud}[k]-{u}[p]@b",
+    "{bud}[k]-{e}[g]mo@b",
+    "{bud}[k]-{e}[g]vě@s"
   ],
   [
     "2@d",
-    "{bud}[r]-{e}[g]š@b",
-    "{bud}[r]-{e}[g]te@b",
-    "{bud}[r]-{e}[g]ta@s"
+    "{bud}[k]-{e}[g]š@b",
+    "{bud}[k]-{e}[g]te@b",
+    "{bud}[k]-{e}[g]ta@s"
   ],
   [
     "3@d",
-    "{bud}[r]-{e}[g]@b",
-    "{bud}[r]-{u}[p]t@B",
-    "{bud}[r]-{e}[g]te@s"
+    "{bud}[k]-{e}[g]@b",
+    "{bud}[k]-{u}[p]t@B",
+    "{bud}[k]-{e}[g]te@s"
   ],
   [
     "&nbsp@d;bb;br;w=2",
     "aktivny buduči participij@d;bb",
-    "{bud}[r]-{u}[p]či {≈ jesmy}[s]@B"
+    "{bud}[k]-{u}[p]či {≈ jesmy}[s]@B"
   ],
   [
     "&nbsp@d;bt;br;w=2",
-    "pasivny buduči participij@d;bt",
-    "{bud}[r]-{e}[g]my {≈ sučny}[s]@b"
+    "pasivny buduči participij@d;bt;te",
+    "{bud}[k]-{e}[g]my {≈ sučny}[s]@b"
   ],
   [
     "imperativ@w=2;d",
-    "{bud}[r]-{i}[b]{!}[s] {bud}[r]-{i}[b]mo{!}[s] {bud}[r]-{i}[b]te{!}[s]@w=2;r"
+    "{bud}[k]-{i}[b]{!}[s] {bud}[k]-{i}[b]mo{!}[s] {bud}[k]-{i}[b]te{!}[s]@w=2;r"
   ],
   [
     "sučno vrěme@w=4;D"
@@ -1359,31 +1359,31 @@
   ],
   [
     "1@d",
-    "{jesm}[r]@b",
-    "{jesmo}[r]@b",
-    "{jesvě}[r]@s"
+    "{jesm}[k]@b",
+    "{jesmo}[k]@b",
+    "{jesvě}[k]@s"
   ],
   [
     "2@d",
-    "{jesi}[r]@b",
-    "{jeste}[r]@b",
-    "{jesta}[r]@s"
+    "{jesi}[k]@b",
+    "{jeste}[k]@b",
+    "{jesta}[k]@s"
   ],
   [
     "3@d",
-    "{jest}[r]{=}[s]{je}[r]@b",
-    "{sut}[r]@B",
-    "{jeste}[r]@s"
+    "{jest}[k]{=}[s]{je}[k]@b",
+    "{sut}[k]@B",
+    "{jeste}[k]@s"
   ],
   [
     "&nbsp@d;bb;br;w=2",
     "aktivny sučny participij@d;bb",
-    "{sučny}[r] {≈ imaj-emy}[s]@B"
+    "{sučny}[k] {≈ imaj-emy}[s]@B"
   ],
   [
     "&nbsp@d;bt;br;w=2",
-    "pasivny sučny participij@d;bt",
-    "{jesmy}[r] {≈ imaj-uči}[s]@b"
+    "pasivny sučny participij@d;bt;te",
+    "{jesmy}[k] {≈ imaj-uči}[s]@b"
   ],
   [
     "prošlo vrěme@w=4;D"
@@ -1419,7 +1419,7 @@
   ],
   [
     "&nbsp@d;bt;w=2",
-    "pasivny prošly participij@d;bt",
+    "pasivny prošly participij@d;bt;te",
     "b-{y}[b]-ty {≈ im-ě-vši}[s]@r"
   ],
     [
@@ -1459,22 +1459,22 @@
     [
       "superlativ@d",
       "naj-bogat-{ě}[g]j{e}[g] {(iz ...)}[s]",
-      "naj-draž-{e}[g]j{e}[g] {(iz ...)}[s]"
+      "naj-dra{ž}[k]-{e}[g]j{e}[g] {(iz ...)}[s]"
     ],
     [
       "komparativ@d",
       "bogat-{ě}[g]j-{e}[g] {(od ...)}[s]",
-      "draž-{e}[g]j-{e}[g] {(od ...)}[s]"
+      "dra{ž}[k]-{e}[g]j-{e}[g] {(od ...)}[s]"
     ],
     [
       "indikativ@d",
       "bogat-{o}[p]",
-      "drag-{o}[p]"
+      "dra{g}[k]-{o}[p]"
     ],
     [
       "augmentativ@d",
       "naj-bogat-{o}[p]",
-      "naj-drag-{o}[p]"
+      "naj-dra{g}[k]-{o}[p]"
     ]
   ],
   "tablePredlogy": [
@@ -1518,19 +1518,19 @@
     ],
     [
       "3@d",
-      "{tri}[r]",
+      "{tri}[k]",
       "13@d",
       "{trinadset}[g]",
       "23@d",
-      "dvadeset {tri}[r]"
+      "dvadeset {tri}[k]"
     ],
     [
       "4@d",
-      "{četyri}[r]",
+      "{četyri}[k]",
       "14@d",
       "{četyrinadset}[g]",
       "24@d",
-      "dvadeset {četyri}[r]"
+      "dvadeset {četyri}[k]"
     ],
     [
       "5@d",
@@ -1634,7 +1634,7 @@
       "800@d",
       "{osmsto}[b]",
       "10^6@d",
-      "{milion}[r]"
+      "{milion}[k]"
     ],
     [
       "90@d",
@@ -1642,7 +1642,7 @@
       "900@d",
       "{devetsto}[b]",
       "10^9@d",
-      "{bilion}[r]"
+      "{bilion}[k]"
     ],
     [
       "100@d",
@@ -1650,7 +1650,7 @@
       "1000@d",
       "{tyseč}[g]",
       "0@d",
-      "nula"
+      "{nula}[r]"
     ],
     [
       "&nbsp@w=6;bl;br"
@@ -1673,7 +1673,7 @@
     ],
     [
       "3@d",
-      "{tretji}[r] {(mekky vzor)}[s]",
+      "{tretji}[k] {(mekky vzor)}[s]",
       "30@d",
       "tridesety",
       "201@d",
@@ -1763,24 +1763,24 @@
       "lj@bb"
     ],
     [
-      "{Ⰰ}[r]@bt;s",
-      "{б}[r]@bt;s",
-      "{ц}[r]@bt;s",
-      "{ч}[r]@bt;s",
-      "{д}[r]@bt;s",
-      "{дь}[r]@bt;s",
-      "{дж}[r]@bt;s",
-      "{е}[r]@w=2;bt;s",
-      "{ф}[r]@bt;s",
-      "{г}[r]@bt;s",
-      "{х}[r]@bt;s",
-      "{и}[r]@bt;s",
-      "{j}[r]@bt;s",
-      "{я}[r]@bt;s",
-      "{ю}[r]@bt;s",
-      "{к}[r]@bt;s",
-      "{л}[r]@bt;s",
-      "{ль}[r]@bt;s"
+      "{Ⰰ}[k]@bt;s",
+      "{Ⰱ}[k]@bt;s",
+      "{Ⱌ}[k]@bt;s",
+      "{Ⱍ}[k]@bt;s",
+      "{Ⰴ}[k]@bt;s",
+      "{ⰄⰠ}[k]@bt;s",
+      "{ⰄⰆ}[k]@bt;s",
+      "{Ⰵ}[k]@w=2;bt;s",
+      "{Ⱇ}[k]@bt;s",
+      "{Ⰳ}[k]@bt;s",
+      "{Ⱈ}[k]@bt;s",
+      "{Ⱛ}[k]@bt;s",
+      "{Ⱐ}[k]@bt;s",
+      "{Ⱑ}[k]@bt;s",
+      "{Ⱓ}[k]@bt;s",
+      "{Ⰽ}[k]@bt;s",
+      "{Ⰾ}[k]@bt;s",
+      "{ⰎⰠ}[k]@bt;s"
     ],
     [
       "m@bb",
@@ -1804,24 +1804,24 @@
       "ž@bb"
     ],
     [
-      "{м}[r]@bt;s",
-      "{н}[r]@bt;s",
-      "{нь}[r]@bt;s",
-      "{о}[r]@bt;s",
-      "{п}[r]@bt;s",
-      "{к}[r]@bt;s",
-      "{р}[r]@bt;s",
-      "{с}[r]@bt;s",
-      "{ш}[r]@bt;s",
-      "{щ}[r]@bt;s",
-      "{т}[r]@bt;s",
-      "{ть}[r]@bt;s",
-      "{у}[r]@bt;s",
-      "{в}[r]@w=2;bt;s",
-      "{кс}[r]@bt;s",
-      "{ы}[r]@bt;s",
-      "{з}[r]@bt;s",
-      "{ж}[r]@bt;s"
+      "{Ⰿ}[k]@bt;s",
+      "{ⰐⰐ}[k]@bt;s",
+      "{ⰐⰠ}[k]@bt;s",
+      "{Ⱁ}[k]@bt;s",
+      "{Ⱂ}[k]@bt;s",
+      "{Ⰽ}[k]@bt;s",
+      "{Ⱃ}[k]@bt;s",
+      "{Ⱄ}[k]@bt;s",
+      "{Ⱎ}[k]@bt;s",
+      "{Ⱋ}[k]@bt;s",
+      "{Ⱅ}[k]@bt;s",
+      "{ⰕⰠ}[k]@bt;s",
+      "{Ⱆ}[k]@bt;s",
+      "{Ⰲ}[k]@w=2;bt;s",
+      "{ⰍⰔ}[k]@bt;s",
+      "{ⰟⰊ}[k]@bt;s",
+      "{Ⰷ}[k]@bt;s",
+      "{Ⰶ}[k]@bt;s"
     ]
   ]
 }
