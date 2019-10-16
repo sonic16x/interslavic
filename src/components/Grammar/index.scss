@@ -24,7 +24,13 @@
     display: flex;
     flex-direction: row;
   }
-  .empty {
-    display: none;
+  .title {
+    text-align: center;
+    font-weight: bold;
+    color: #455A64;
+    font-size: 1.3rem;
+  }
+  .link {
+    padding: 0.3rem 1.25rem;
   }
 }

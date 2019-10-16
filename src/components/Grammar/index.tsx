@@ -13,11 +13,35 @@ interface IGrammarProps {
 
 class Grammar extends React.Component<IGrammarProps> {
     public render() {
+        const titles = [
+            {value: 'abeceda', name: 'abeceda i pravopisanje'},
+            {value: 'imeniky', name: 'imeniky'},
+            {value: 'nauchno', name: 'naučno pravopisanje v slovniku i cirilica'},
+            {value: 'zaimeniky', name: 'zaimeniky'},
+            {value: 'pridavniky', name: 'pridavniky'},
+            {value: 'glagoly', name: 'glagoly'},
+            {value: 'byti', name: 'neredny glagol BYTI'},
+            {value: 'vedeti', name: 'neredne glagoly VĚDĚTI, DATI, IDTI, JESTI'},
+            {value: 'prislovniky', name: 'prislovniky'},
+            {value: 'predlogy', name: 'prědlogy'},
+            {value: 'ciselniky', name: 'čiselniky'},
+            {value: 'sovezniky', name: 'sovezniky'},
+            {value: 'castice', name: 'častice'},
+            {value: 'medzuslovniky', name: 'medžuslovniky'},
+            {value: 'podredne', name: 'podredne izrěčenja'},
+            {value: 'glagoljica', name: 'glagoljica'},
+        ];
         return (
             <div className={'grammar' + (this.props.isVisible ? ' show' : '')}>
                 <br/>
                 <h3>MEDŽUSLOVJANSKY JEZYK</h3>
-                <Text align={'center'}>{`{abeceda i pravopisanje}[B]`}</Text>
+                <p className={'title content'}>Sodržanje</p>
+                <div className={'list-group'}>
+                    {titles.map(({value, name}, i) => (
+                        <a className={'list-group-item link'} key={i} href={`#${value}`}>{name}</a>
+                    ))}
+                </div>
+                {this.renderTitle(titles, 'abeceda')}
                 <Table data={tables.tableAbeceda} />
                 <Text>
                     {`V latinici i cirilici jest možno vměsto {y}[b,B] pisati prosto {i}[b,B] i vměsto {ě}[g,B] pisati prosto {e}[g,B].
@@ -39,7 +63,7 @@ class Grammar extends React.Component<IGrammarProps> {
                         rovno v vsih padežah. Englijske, latinske i grečske slova imajut svoje orig.
                         pravopisanje ale s medžuslovjanskymi zakončenjami ({architektura}[r,B], {biologija}[r,B] ...).`}
                 </Text>
-                <Text align={'center'}>{'{imeniky}[B]'}</Text>
+                {this.renderTitle(titles, 'imeniky')}
                 <Table data={tables.tableBrat} />
                 <Table data={tables.tableMuz} />
                 <Text>
@@ -74,13 +98,13 @@ class Grammar extends React.Component<IGrammarProps> {
                         Medžuslovjansky jezyk koristi nestale {[{e}[g]/·] i [{o}[p]/·]}[B] :
                         {ot{e}[g]c, od·ca Decemb{e}[g]r, Decemb·ra član{o}[p]k, član·ka p{e}[g]s, p·sa}[B] ...`}
                 </Text>
-                <Text align={'center'}>{`{naučno pravopisanje v slovniku i cirilica}[B]`}</Text>
+                {this.renderTitle(titles, 'nauchno')}
                 <div className={'tablesRow'}>
                     <Table data={tables.tableNauc1} />
                     <Table data={tables.tableNauc2} />
                     <Table data={tables.tableKir} />
                 </div>
-                <Text align={'center'}>{`{zaimeniky}[B]`}</Text>
+                {this.renderTitle(titles, 'zaimeniky')}
                 <Table data={tables.tableMest} />
                 <Table data={tables.tableTojTaTo} />
                 <Table data={tables.tableOnOnaOno} />
@@ -91,7 +115,7 @@ class Grammar extends React.Component<IGrammarProps> {
                         Tvar {n}[r]- pišemo toliko v padežah s prědlogom:
                         {slyšu jego, rabotaju za {n}[r]j{e}[g]go, idu s {n}[r]j{i}[b]m{i}[b], pišu j{e}[g]m{u}[p], idu k {n}[r]j{e}[g]m{u}[p]}[B]`}
                 </Text>
-                <Text align={'center'}>{`{pridavniky}[B]`}</Text>
+                {this.renderTitle(titles, 'pridavniky')}
                 <Table data={tables.tableDobry} />
                 <Table data={tables.tableSvezi} />
                 <br/>
@@ -99,7 +123,7 @@ class Grammar extends React.Component<IGrammarProps> {
                 <Text>
                     {`{kračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]`}
                 </Text>
-                <Text align={'center'}>{`{glagoly}[B]`}</Text>
+                {this.renderTitle(titles, 'glagoly')}
                 <Table data={tables.tableImeti} />
                 <Text>
                     {`Pasivny prošly participij tvrdyh glagolov {–{i}[b]ti –{e}[g]ti –{u}[p]ti –yti}[B] jest {–{i}[b]ty –{e}[g]ty –{u}[p]ty –{y}[b]ty:}[B]
@@ -120,9 +144,9 @@ class Grammar extends React.Component<IGrammarProps> {
                     {`Aktivne glagolne participija možut tvoriti aktivny sučny i aktivny prošly
                         prislovniky: {dělati → dělaj-{u}[p]-č, děl-{a}[r]-v variti → var-{e}[g]-č, var-{i}[b]-v}[B]`}
                 </Text>
-                <Text align={'center'}>{`{neredny glagol BYTI}[B]`}</Text>
+                {this.renderTitle(titles, 'byti')}
                 <Table data={tables.tableByti} />
-                <Text align={'center'}>{`{neredne glagoly VĚDĚTI, DATI, IDTI, JESTI}[B]`}</Text>
+                {this.renderTitle(titles, 'vedeti')}
                 <Text>
                     {`{věděti, věděnje – věm, věš, vě, věmo, věte, vědut ... věděl, věděh ... vědi!, vědite!
                             dati, danje – dam, daš, da, damo, date, dadut ... dal, dah ... daj! dajte!
@@ -130,7 +154,7 @@ class Grammar extends React.Component<IGrammarProps> {
                             jesti, jedenje – jedu, jedeš, jede, jedemo, jedete, jedut ... jedl, jedeh ... jedi!, jedite!}[B]
                              {(krasti, kradenje – kradu, kradeš, krade, krademo ... kradl, kradeh ... kradi!, ...)}[s]`}
                 </Text>
-                <Text align={'center'}>{`{prislovniky}[B]`}</Text>
+                {this.renderTitle(titles, 'prislovniky')}
                 <Text>
                     {`Poslě tvrdyh soglasnikov jest zakončenje -{o}[p], poslě mekkyh č š ž j jest -{e}[g].
                             napr.: dobr-{o}[p] bystr-{o}[p] už-{e}[g] daž-{e}[g] menš-{e}[g]
@@ -138,9 +162,9 @@ class Grammar extends React.Component<IGrammarProps> {
                             napr.: pridavnik {poljsk{y}[b],{a}[r],{o}[p]}[B] → prislovnik {poljsk{y}[b]}[B]`}
                 </Text>
                 <Table data={tables.tableGradacija2} />
-                <Text align={'center'}>{`{prědlogy}[B]`}</Text>
+                {this.renderTitle(titles, 'predlogy')}
                 <Table data={tables.tablePredlogy} />
-                <Text align={'center'}>{`{čiselniky}[B]`}</Text>
+                {this.renderTitle(titles, 'ciselniky')}
                 <Table data={tables.tableNumbers} />
                 <Text>
                     {`{25 746}[B] = dvadeset pet	tyseč sedmset četyrideset šest.
@@ -149,25 +173,28 @@ class Grammar extends React.Component<IGrammarProps> {
                             {jedin, jednogo (TOJ)}[B] pet, peti... 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 (KOST)
                             nula, nuly (ŽENA) sto, sta (SĚLO) tyseč, tyseči (KOST) milion, miliona (GRAD) `}
                 </Text>
-                <Text align={'center'}>{`{sovezniky}[B]`}</Text>
+                {this.renderTitle(titles, 'sovezniky')}
                 <Table data={tables.tableSovezniky} />
-                <Text align={'center'}>{`{častice}[B]`}</Text>
+                {this.renderTitle(titles, 'castice')}
                 <Text>
                     {`soglašenja: {da, ej}[B] odpora: {ne, ni}[B] pytanja: {li}[B] naglašenja: {ako ... potom ... inako}[B]`}
                 </Text>
-                <Text align={'center'}>{`{medžuslovniky}[B]`}</Text>
+                {this.renderTitle(titles, 'medzuslovniky')}
                 <Text>
                     {`{oh! ah! uva! lutě!}[B]«značenje medžuslovnika takože imajut vse izrěčenja v navodnikah» `}
                 </Text>
-                <Text align={'center'}>{`{podredne izrěčenja}[B]`}</Text>
+                {this.renderTitle(titles, 'podredne')}
                 <Text>
                     {`{..., kde ... ..., ktoromu..., tako ..., kako ... toliko ..., koliko ... ..., že ...}[B]
                             tvary {iže, jegože, jimže}[B], ... sut relativne zaimeniky od on, ona, ono `}
                 </Text>
-                <Text align={'center'}>{`{glagoljica}[B]`}</Text>
+                {this.renderTitle(titles, 'glagoljica')}
                 <Table data={tables.tableGlagoljica} />
             </div>
         );
+    }
+    private renderTitle(titles, id) {
+        return <p className={'title'} id={id}>{titles.find(({value}) => (value === id)).name}</p>;
     }
 }
 
