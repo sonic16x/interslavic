@@ -22,24 +22,24 @@
       "lj@bb"
     ],
     [
-      "{а}[r]@bt;s",
-      "{б}[r]@bt;s",
-      "{ц}[r]@bt;s",
-      "{ч}[r]@bt;s",
-      "{д}[r]@bt;s",
-      "{дь}[r]@bt;s",
-      "{дж}[r]@bt;s",
-      "{е}[r]@w=2;bt;s",
-      "{ф}[r]@bt;s",
-      "{г}[r]@bt;s",
-      "{х}[r]@bt;s",
-      "{и}[r]@bt;s",
-      "{j}[r]@bt;s",
-      "{я}[r]@bt;s",
-      "{ю}[r]@bt;s",
-      "{к}[r]@bt;s",
-      "{л}[r]@bt;s",
-      "{ль}[r]@bt;s"
+      "{а}[k]@bt;s",
+      "{б}[k]@bt;s",
+      "{ц}[k]@bt;s",
+      "{ч}[k]@bt;s",
+      "{д}[k]@bt;s",
+      "{дь}[k]@bt;s",
+      "{дж}[k]@bt;s",
+      "{е}[k]@w=2;bt;s",
+      "{ф}[k]@bt;s",
+      "{г}[k]@bt;s",
+      "{х}[k]@bt;s",
+      "{и}[k]@bt;s",
+      "{j}[k]@bt;s",
+      "{я}[k]@bt;s",
+      "{ю}[k]@bt;s",
+      "{к}[k]@bt;s",
+      "{л}[k]@bt;s",
+      "{ль}[k]@bt;s"
     ],
     [
       "m@bb",
@@ -63,24 +63,24 @@
       "ž@bb"
     ],
     [
-      "{м}[r]@bt;s",
-      "{н}[r]@bt;s",
-      "{нь}[r]@bt;s",
-      "{о}[r]@bt;s",
-      "{п}[r]@bt;s",
-      "{к}[r]@bt;s",
-      "{р}[r]@bt;s",
-      "{с}[r]@bt;s",
-      "{ш}[r]@bt;s",
-      "{щ}[r]@bt;s",
-      "{т}[r]@bt;s",
-      "{ть}[r]@bt;s",
-      "{у}[r]@bt;s",
-      "{в}[r]@w=2;bt;s",
-      "{кс}[r]@bt;s",
-      "{ы}[r]@bt;s",
-      "{з}[r]@bt;s",
-      "{ж}[r]@bt;s"
+      "{м}[k]@bt;s",
+      "{н}[k]@bt;s",
+      "{нь}[k]@bt;s",
+      "{о}[k]@bt;s",
+      "{п}[k]@bt;s",
+      "{к}[k]@bt;s",
+      "{р}[k]@bt;s",
+      "{с}[k]@bt;s",
+      "{ш}[k]@bt;s",
+      "{щ}[k]@bt;s",
+      "{т}[k]@bt;s",
+      "{ть}[k]@bt;s",
+      "{у}[k]@bt;s",
+      "{в}[k]@w=2;bt;s",
+      "{кс}[k]@bt;s",
+      "{ы}[k]@bt;s",
+      "{з}[k]@bt;s",
+      "{ж}[k]@bt;s"
     ]
   ],
   "tableBrat": [
@@ -251,73 +251,73 @@
     ],
     [
       "N@d;bb",
-      "žen-{a}[r]@br",
-      "duš-{a}[r]@bl",
-      "žen-{y}[g]@br;bb;s",
-      "duš-{e}[g]@bl;bb;s",
-      "žen-{ě}[g]@br;bb",
-      "duš-{i}[b]@bl;bb"
+      "žen-{a}[r]",
+      "duš-{a}[r]",
+      "žen-{y}[g]@bb;s",
+      "duš-{e}[g]@bb;s",
+      "žen-{ě}[g]@bb",
+      "duš-{i}[b]@bb"
     ],
     [
       "A@d;bb",
-      "žen-{u}[p]@br;r",
-      "duš-{u}[p]@bl;r",
-      "žen-{y}[b]@br;bt;s",
-      "duš-{e}[g]@bl;bt;s",
-      "žen-{ě}[g]@br;bt;bt",
-      "duš-{i}[b]@bl;bt;bt"
+      "žen-{u}[p]@r",
+      "duš-{u}[p]@r",
+      "žen-{y}[b]@bt;s",
+      "duš-{e}[g]@bt;s",
+      "žen-{ě}[g]@bt;bt",
+      "duš-{i}[b]@bt;bt"
     ],
     [
       "G@d;bb",
-      "žen-{y}[b]@br;b",
-      "duš-{e}[g]@bl;b",
+      "žen-{y}[b]@b",
+      "duš-{e}[g]@b",
       "žen@br;B",
-      "duš{(-}[s]{e}[g]j{)}[s]@bl;B",
-      "žen-{u}[p]@br;bb;b",
-      "duš-{u}[p]@bl;bb;b"
+      "duš{(-}[s]{e}[g]j{)}[s]@B",
+      "žen-{u}[p]@bb;b",
+      "duš-{u}[p]@bb;b"
     ],
     [
       "L@d;bb",
-      "žen-{ě}[g]@br;bb;g",
-      "duš-{i}[b]@bl;bb;g",
-      "žen-{a}[r]h@br;G",
-      "duš-{a}[r]h@bl;G",
-      "žen-{u}[p]@br;bt;b",
-      "duš-{u}[p]@bl;bt;b"
+      "žen-{ě}[g]@bb;g",
+      "duš-{i}[b]@bb;g",
+      "žen-{a}[r]h@G",
+      "duš-{a}[r]h@G",
+      "žen-{u}[p]@bt;b",
+      "duš-{u}[p]@bt;b"
     ],
     [
       "D@d;bb",
-      "žen-{ě}[g]@br;bt;g",
-      "duš-{i}[b]@bl;bt;g",
-      "žen-{a}[r]m@br;bb;R",
-      "duš-{a}[r]m@bl;bb;R",
-      "žen-{a}[r]m{a}[r]@br;bb;r",
-      "duš-{a}[r]m{a}[r]@bl;bb;r"
+      "žen-{ě}[g]@bt;g",
+      "duš-{i}[b]@bt;g",
+      "žen-{a}[r]m@bb;R",
+      "duš-{a}[r]m@bb;R",
+      "žen-{a}[r]m{a}[r]@bb;r",
+      "duš-{a}[r]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
-      "žen-{oju}[p]@br;r",
-      "duš-{e}[g]{ju}[p]@bl;r",
-      "žen-{a}[r]m{i}[b]@br;R",
-      "duš-{a}[r]m{i}[b]@bl;R",
-      "žen-{a}[r]m{a}[r]@br;r",
-      "duš-{a}[r]m{a}[r]@bl;r"
+      "žen-{oju}[p]@R",
+      "duš-{e}[g]{ju}[p]@R",
+      "žen-{a}[r]m{i}[b]@R",
+      "duš-{a}[r]m{i}[b]@R",
+      "žen-{a}[r]m{a}[r]@r",
+      "duš-{a}[r]m{a}[r]@r"
     ],
     [
       "V@d",
-      "žen-{o}[p]{!}[s]@br;s",
-      "duš-{e}[g]{!}[s] {(-}[s]o{!}[p]{)}[s]@bl;s",
-      "žen-{y}[b]{!}[s]@br;S",
-      "duš-{e}[g]{!}[s]@bl;S",
-      "žen-{ě}[g]{!}[s]@br;s",
-      "duš-{i}[b]{!}[s]!@bl;s"
+      "žen-{o}[p]{!}[s]@s",
+      "duš-{e}[g]{!}[s] {(-}[s]{o}[p]{!)}[s]@s",
+      "žen-{y}[b]{!}[s]@S",
+      "duš-{e}[g]{!}[s]@S",
+      "žen-{ě}[g]{!}[s]@s",
+      "duš-{i}[b]{!}[s]@s"
     ]
   ],
   "tableKost": [
     [
       "&nbsp@bt;bl;br;bb",
-      "KOST (MYŠ,RADOST,PET,ŠEST,DESET...)@bt;bl;br;w=4",
-      "žensky sogl. vzor@bt;bl;br"
+      "KOST (MYŠ,RADOST,PET,ŠEST,DESET...)@bt;bl;br;w=4;ts",
+      "žensky sogl. vzor@bt;bl;br;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -327,59 +327,59 @@
     ],
     [
       "N@d;bb",
-      "kost@br;bb",
-      "deset@bl;bb",
-      "kost-{i}[g]g@br;bb;s",
-      "oč-{i}[g]@bl;bb;s",
-      "kost-{i}[g]g@bb"
+      "kost@bb",
+      "deset@bb",
+      "kost-{i}[b]@bb;s",
+      "oč-{i}[b]@bb;s",
+      "kost-{i}[b]@bb"
     ],
     [
       "A@d;bt",
-      "kost@br;bt",
-      "deset@bl;bt",
-      "kost-{i}[g]@br;bt;s",
-      "oč-{i}[g]@bl;bt;s",
-      "kost-{i}[g]@bt"
+      "kost@bt",
+      "deset@bt",
+      "kost-{i}[b]@bt;s",
+      "oč-{i}[b]@bt;s",
+      "kost-{i}[b]@bt"
     ],
     [
       "G@d;bb",
-      "kost-{i}[b]@br;b",
-      "deset-{i}[b]@bl;b",
-      "kost-{ij}[g]@br;B",
-      "oč-{ij}[g]@bl;B",
+      "kost-{i}[b]@b",
+      "deset-{i}[b]@b",
+      "kost-{ij}[b]@B",
+      "oč-{ij}[b]@B",
       "kost-{ju}[p]@bb;b"
     ],
     [
       "L@d;bb",
-      "kost-{i}[b]@br;bb;g",
-      "deset-{i}[b]@bl;bb;g",
-      "kost-{ja}[r]h@br;G",
-      "oč-{a}[r]h@bl;G",
+      "kost-{i}[b]@bb;g",
+      "deset-{i}[b]@bb;g",
+      "kost-{ja}[r]h@G",
+      "oč-{a}[r]h@G",
       "kost-{ju}[p]@bt;b"
     ],
     [
       "D@d;bb",
-      "kost-{i}[b]@br;bt;g",
-      "deset-{i}[b]@bl;bt;g",
-      "kost-{ja}[r]m@br;bb;R",
-      "oč-{a}[r]m@bl;bb;R",
+      "kost-{i}[b]@bt;g",
+      "deset-{i}[b]@bt;g",
+      "kost-{ja}[r]m@bb;R",
+      "oč-{a}[r]m@bb;R",
       "kost-{ja}[r]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
-      "kost-{ju}[p]@br;r",
-      "deset-{ju}[p]@bl;r",
-      "kost-{ja}[r]m{i}[b]@br;bt;R",
-      "oč-{a}[r]m{i}[r]@bl;bt;R",
+      "kost-{ju}[p]@r",
+      "deset-{ju}[p]@r",
+      "kost-{ja}[r]m{i}[b]@bt;R",
+      "oč-{a}[r]m{i}[b]@bt;R",
       "kost-{ja}[r]m{a}[r]@bt;r"
     ],
     [
       "V@d",
-      "kost-{i}[b]{!}[s]@br;s",
-      "deset-{i}[b]{!}[s]@bl;s",
-      "kost-{i}[b]{!}[s]@br;S",
-      "oč-{i}[b]{!}[s]@bl;S",
-      "kost-{i}[g]{!}[s]@s"
+      "kost-{i}[b]{!}[s]@s",
+      "deset-{i}[b]{!}[s]@s",
+      "kost-{i}[b]{!}[s]@S",
+      "oč-{i}[b]{!}[s]@S",
+      "kost-{i}[b]{!}[s]@s"
     ]
   ],
   "tableSelo": [
@@ -398,66 +398,66 @@
     ],
     [
       "N@d;bb",
-      "sěl-{o}[p]@br;bb",
-      "polj-{e}[g]@bl;bb",
-      "sěl-{a}[r]@br;bb;s",
-      "polj-{a}[r]@bl;bb;s",
-      "sěl-{ě}[g]@br;bb",
-      "polj-{i}[b]@bl;bb"
+      "sěl-{o}[p]@bb",
+      "polj-{e}[g]@bb",
+      "sěl-{a}[r]@bb;s",
+      "polj-{a}[r]@bb;s",
+      "sěl-{ě}[g]@bb",
+      "polj-{i}[b]@bb"
     ],
     [
       "A@d;bb",
-      "sěl-{o}[p]@br;bt",
-      "polj-{e}[g]@bl;bt",
-      "sěl-{a}[r]@br;bt;s",
-      "polj-{a}[r]@bl;bt;s",
-      "sěl-{ě}[g]@br;bt",
-      "polj-{i}[b]@bl;bt"
+      "sěl-{o}[p]@bt",
+      "polj-{e}[g]@bt",
+      "sěl-{a}[r]@bt;s",
+      "polj-{a}[r]@bt;s",
+      "sěl-{ě}[g]@bt",
+      "polj-{i}[b]@bt"
     ],
     [
       "G@d;bb",
-      "sěl-{a}[r]@br;b",
-      "polj-{a}[r]@bl;b",
-      "sěl@br;B",
-      "polj{(-}[s]{e}[g]j{)}[s]@bl;B",
-      "sěl-{u}[p]@br;bb;b",
-      "polj-{u}[p]@bl;bb;b"
+      "sěl-{a}[r]@b",
+      "polj-{a}[r]@b",
+      "sěl@B",
+      "polj{(-}[s]{e}[g]j{)}[s]@B",
+      "sěl-{u}[p]@bb;b",
+      "polj-{u}[p]@bb;b"
     ],
     [
       "L@d;bb",
-      "sěl-{u}[p]@br;bb;g",
-      "polj-{u}[p]@bl;bb;g",
-      "sěl-{a}[r]h@br;G",
-      "polj-{a}[r]h@bl;G",
-      "sěl-{u}[p]@br;bt;b",
-      "polj-{u}[p]@bl;bt;b"
+      "sěl-{u}[p]@bb;g",
+      "polj-{u}[p]@bb;g",
+      "sěl-{a}[r]h@G",
+      "polj-{a}[r]h@G",
+      "sěl-{u}[p]@bt;b",
+      "polj-{u}[p]@bt;b"
     ],
     [
       "D@d;bb",
-      "sěl-{u}[p]@br;bt;g",
-      "polj-{u}[p]@bl;bt;g",
-      "sěl-{a}[r]m@br;bb;R",
-      "polj-{a}[r]m@bl;bb;R",
-      "sěl-{a}[r]m{a}[r]@br;bb;r",
-      "polj-{a}[r]m{a}[r]@bl;bb;r"
+      "sěl-{u}[p]@bt;g",
+      "polj-{u}[p]@bt;g",
+      "sěl-{a}[r]m@bb;R",
+      "polj-{a}[r]m@bb;R",
+      "sěl-{a}[r]m{a}[r]@bb;r",
+      "polj-{a}[r]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
-      "sěl-{o}[p]m@br;r",
-      "polj-{e}[g]m@bl;r",
-      "sěl-{a}[r]m{i}[b]@br;bt;R",
-      "polj-{a}[r]m{i}[b]@bl;bt;R",
-      "sěl-{a}[r]m{a}[r]@br;bt;r",
-      "polj-{a}[r]m{a}[r]@bl;bt;r"
+      "sěl-{o}[p]m@r",
+      "polj-{e}[g]m@r",
+      "sěl-{a}[r]m{i}[b]@bt;R",
+      "polj-{a}[r]m{i}[b]@bt;R",
+      "sěl-{a}[r]m{a}[r]@bt;r",
+      "polj-{a}[r]m{a}[r]@bt;r"
     ],
     [
       "V@d",
-      "sěl-{o}[p]{!}[s]@br;s",
-      "polj-{e}[g]{!}[s]@bl;s",
-      "sěl-{a}[r]{!}[s]@br;S",
-      "polj-{a}[r]{!}[s]@bl;S",
-      "sěl-{ě}[g]{!}[s]@br;s",
-      "polj-{i}[b]{!}[s]@bl;s"
+      "sěl-{o}[p]{!}[s]@s",
+      "polj-{e}[g]{!}[s]@s",
+      "sěl-{a}[r]{!}[s]@S",
+      "polj-{a}[r]{!}[s]@S",
+      "sěl-{ě}[g]{!}[s]@s",
+      "polj-{i}[b]{!}[s]@s"
     ]
   ],
   "tableDen": [
@@ -465,7 +465,7 @@
       "&nbsp@bt;bl;br;bb",
       "N- -R- -T-@bt;bl;br",
       "&nbsp@bt;bl;br;bb;w=2",
-      "specialne vzory@bt;bl;br;bb"
+      "specialne vzory@bt;bl;br;bb;te"
     ],
     [
       "&nbsp@bt;bl",
@@ -508,10 +508,10 @@
     ],
     [
       "I@d;bb",
-      "dn-{e}[g]m@p",
-      "im-{e}[g]n-{e}[g]m@p",
-      "mat-{e}[g]r-{ju}[p]@p",
-      "dět-{e}[g]t-{e}[g]m@p"
+      "dn-{e}[g]m@r",
+      "im-{e}[g]n-{e}[g]m@r",
+      "mat-{e}[g]r-{ju}[p]@r",
+      "dět-{e}[g]t-{e}[g]m@r"
     ],
     [
       "V@d",
@@ -718,7 +718,7 @@
       "N@d;bb",
       "t-{o}[p]j@w=2",
       "t-{a}[r]",
-      "t-{o}[p]@",
+      "t-{o}[p]@bb",
       "t-{i}[b]@s",
       "t-{e}[g]@bb;s",
       "t-{e}[g]@bb"
@@ -728,7 +728,7 @@
       "t-{o}[p]g{o}[p]@bb;b",
       "t-{o}[p]j@bt",
       "t-{u}[p]@s",
-      "t-{o}[p]@bt;s",
+      "t-{o}[p]@bt",
       "t-{y}[b]h@bb;B",
       "t-{e}[g]@bt;s",
       "t-{e}[g]@bt"
@@ -1690,5 +1690,89 @@
       "0@d",
       "nulty"
     ]
-  ]
+  ],
+  "glagolica": [
+      [
+        "a@bb",
+        "b@bb",
+        "c@bb",
+        "č@bb",
+        "d@bb",
+        "dj@bb",
+        "dž@bb",
+        "e@bb",
+        "ě@bb",
+        "f@bb",
+        "g@bb",
+        "h@bb",
+        "i@bb",
+        "j@bb",
+        "ja@bb",
+        "ju@bb",
+        "k@bb",
+        "l@bb",
+        "lj@bb"
+      ],
+      [
+        "{Ⰰ}[r]@bt;s",
+        "{б}[r]@bt;s",
+        "{ц}[r]@bt;s",
+        "{ч}[r]@bt;s",
+        "{д}[r]@bt;s",
+        "{дь}[r]@bt;s",
+        "{дж}[r]@bt;s",
+        "{е}[r]@w=2;bt;s",
+        "{ф}[r]@bt;s",
+        "{г}[r]@bt;s",
+        "{х}[r]@bt;s",
+        "{и}[r]@bt;s",
+        "{j}[r]@bt;s",
+        "{я}[r]@bt;s",
+        "{ю}[r]@bt;s",
+        "{к}[r]@bt;s",
+        "{л}[r]@bt;s",
+        "{ль}[r]@bt;s"
+      ],
+      [
+        "m@bb",
+        "n@bb",
+        "nj@bb",
+        "o@bb",
+        "p@bb",
+        "q@bb",
+        "r@bb",
+        "s@bb",
+        "š@bb",
+        "šč@bb",
+        "t@bb",
+        "tj@bb",
+        "u@bb",
+        "v@bb",
+        "w@bb",
+        "x@bb",
+        "y@bb",
+        "z@bb",
+        "ž@bb"
+      ],
+      [
+        "{м}[r]@bt;s",
+        "{н}[r]@bt;s",
+        "{нь}[r]@bt;s",
+        "{о}[r]@bt;s",
+        "{п}[r]@bt;s",
+        "{к}[r]@bt;s",
+        "{р}[r]@bt;s",
+        "{с}[r]@bt;s",
+        "{ш}[r]@bt;s",
+        "{щ}[r]@bt;s",
+        "{т}[r]@bt;s",
+        "{ть}[r]@bt;s",
+        "{у}[r]@bt;s",
+        "{в}[r]@w=2;bt;s",
+        "{кс}[r]@bt;s",
+        "{ы}[r]@bt;s",
+        "{з}[r]@bt;s",
+        "{ж}[r]@bt;s"
+      ]
+    ]
 }
