@@ -1006,22 +1006,22 @@
     [
       "superlativ@d",
       "naj-bogat-{ě}[g]jš-{i}[b] {(iz ...)}[s]",
-      "naj-dra{ž}[r]-{e}[g]jš-{i}[b] {(iz ...)}[s]"
+      "naj-draž-{e}[g]jš-{i}[b] {(iz ...)}[s]"
     ],
     [
       "komparativ@d",
       "bogat-{ě}[g]jš-{i}[b] {(od ...)}[s]",
-      "dra{ž}[r]-{e}[g]jš-{i}[b] {(od ...)}[s]"
+      "draž-{e}[g]jš-{i}[b] {(od ...)}[s]"
     ],
     [
       "indikativ@d",
       "bogat-{y}[b]",
-      "dra{g}[r]-{y}[b]"
+      "drag-{y}[b]"
     ],
     [
       "augmentativ@d",
       "naj-bogat-{y}[b]",
-      "naj-dra{g}[r]-{y}[b]"
+      "naj-drag-{y}[b]"
     ]
   ],
   "tableImeti": [
@@ -1224,6 +1224,471 @@
       "&nbsp@d;bt;w=2",
       "pasivny prošly participij@d;bt",
       "var-j{e}[g]-ny@r"
+    ]
+  ],
+  "tableVremena":[
+    [
+      "GLAGOLNE vrěmena@bt;bl",
+      "neizvršene glagoly@d",
+      "izvršene glagoly@d"
+    ],
+    [
+      "buduče vrěme@D",
+      "budu pisati@r",
+      "budu napisati {(}[s]napišu{)}[s]@r"
+    ],
+    [
+      "prědbuduče vrěme@d",
+      "budu pisal@R",
+      "budu napisal@R"
+    ],
+    [
+      "sučno vrěme@D",
+      "pišu@b",
+      "-@b"
+    ],
+    [
+      "prědsučno vrěme@d",
+      "jesm pisal@B",
+      "jesm napisal@B"
+    ],
+    [
+      "prošlo vrěme@D",
+      "pisah@",
+      "napisah@"
+    ],
+    [
+      "prědprošlo vrěme@d",
+      "běh pisal@S",
+      "běh napisal@S"
+    ]
+  ],
+  "tableByti": [
+  [
+    "&nbsp@bt;bl;br;bb",
+    "BYTI@bl;bt;br",
+    "&nbsp@bl;bt;br;w=2"
+  ],
+  [
+    "&nbsp@bt;bl;bb",
+    "infinitiv@d",
+    "b-{y}[b]-ti@w=2"
+  ],
+  [
+    "&nbsp@bt;bl;bb",
+    "L-participij@d",
+    "b-{y}[b]-l, b-{y}[b]-la, b-{y}[b]-lo, b-{y}[b]-li, b-{y}[b]-le@w=2"
+  ],
+  [
+    "&nbsp@bt;bl;bb",
+    "glagolno ime@d",
+    "b-{y}[b]-tje {(od prošlogo pasivnogo participija)}[s]@w=2"
+  ],
+  [
+    "buduče vrěme@w=4;D"
+  ],
+  [
+    "&nbsp@d",
+    "jednina@d",
+    "množina@d",
+    "dvojina@d"
+  ],
+  [
+    "1@d",
+    "{bud}[r]-{u}[p]@b",
+    "{bud}[r]-{e}[g]mo@b",
+    "{bud}[r]-{e}[g]vě@s"
+  ],
+  [
+    "2@d",
+    "{bud}[r]-{e}[g]š@b",
+    "{bud}[r]-{e}[g]te@b",
+    "{bud}[r]-{e}[g]ta@s"
+  ],
+  [
+    "3@d",
+    "{bud}[r]-{e}[g]@b",
+    "{bud}[r]-{u}[p]t@B",
+    "{bud}[r]-{e}[g]te@s"
+  ],
+  [
+    "&nbsp@d;bb;br;w=2",
+    "aktivny buduči participij@d;bb",
+    "{bud}[r]-{u}[p]či {≈ jesmy}[s]@B"
+  ],
+  [
+    "&nbsp@d;bt;br;w=2",
+    "pasivny buduči participij@d;bt",
+    "{bud}[r]-{e}[g]my {≈ sučny}[s]@b"
+  ],
+  [
+    "imperativ@w=2;d",
+    "{bud}[r]-{i}[b]{!}[s] {bud}[r]-{i}[b]mo{!}[s] {bud}[r]-{i}[b]te{!}[s]@w=2;r"
+  ],
+  [
+    "sučno vrěme@w=4;D"
+  ],
+  [
+    "&nbsp@d",
+    "jednina@d",
+    "množina@d",
+    "dvojina@d"
+  ],
+  [
+    "1@d",
+    "{jesm}[r]@b",
+    "{jesmo}[r]@b",
+    "{jesvě}[r]@s"
+  ],
+  [
+    "2@d",
+    "{jesi}[r]@b",
+    "{jeste}[r]@b",
+    "{jesta}[r]@s"
+  ],
+  [
+    "3@d",
+    "{jest}[r]{=}[s]{je}[r]@b",
+    "{sut}[r]@B",
+    "{jeste}[r]@s"
+  ],
+  [
+    "&nbsp@d;bb;br;w=2",
+    "aktivny sučny participij@d;bb",
+    "{sučny}[r] {≈ imaj-emy}[s]@B"
+  ],
+  [
+    "&nbsp@d;bt;br;w=2",
+    "pasivny sučny participij@d;bt",
+    "{jesmy}[r] {≈ imaj-uči}[s]@b"
+  ],
+  [
+    "prošlo vrěme@w=4;D"
+  ],
+  [
+    "&nbsp@d",
+    "jednina@d",
+    "množina@d",
+    "dvojina@d"
+  ],
+  [
+    "1@d",
+    "b-{ě}[g]-h",
+    "b-{ě}[g]-hmo",
+    "b-{ě}[g]-hova@s"
+  ],
+  [
+    "2@d",
+    "b-{ě}[g]-še",
+    "b-{ě}[g]-šte",
+    "b-{ě}[g]-šta@s"
+  ],
+  [
+    "3@d",
+    "b-{ě}[g]-še{=}[s]b-{ě}[g]",
+    "b-{ě}[g]-hu",
+    "b-{ě}[g]-šte@s"
+  ],
+  [
+    "&nbsp@d;bb;w=2",
+    "aktivny prošly participij@d;bb",
+    "by-{y}[b]-vši {≈ im-ě-ny}[s]"
+  ],
+  [
+    "&nbsp@d;bt;w=2",
+    "pasivny prošly participij@d;bt",
+    "b-{y}[b]-ty {≈ im-ě-vši}[s]@r"
+  ],
+    [
+      "kondicional@w=4;D"
+    ],
+    [
+      "&nbsp@d",
+      "jednina@d",
+      "množina@d",
+      "dvojina@d"
+    ],
+    [
+      "1@d",
+      "b-{y}[b]-h",
+      "b-{y}[b]-hmo",
+      "b-{y}[b]-hova@s"
+    ],
+    [
+      "2@d",
+      "b-{y}[b]-s",
+      "b-{y}[b]-ste",
+      "b-{y}[b]-sta@s"
+    ],
+    [
+      "3@d",
+      "b-{y}[b]",
+      "b-{y}[b]-hu{=}[s]b-{y}[b]",
+      "b-{y}[b]-ste@s"
+    ]
+  ],
+  "tableGradacija2": [
+    [
+      "GRADACIJA@bt;bl",
+      "bez palatizacije@d",
+      "s palatizacijeju do č,š,ž@d"
+    ],
+    [
+      "superlativ@d",
+      "naj-bogat-{ě}[g]j{e}[g] {(iz ...)}[s]",
+      "naj-draž-{e}[g]j{e}[g] {(iz ...)}[s]"
+    ],
+    [
+      "komparativ@d",
+      "bogat-{ě}[g]j-{e}[g] {(od ...)}[s]",
+      "draž-{e}[g]j-{e}[g] {(od ...)}[s]"
+    ],
+    [
+      "indikativ@d",
+      "bogat-{o}[p]",
+      "drag-{o}[p]"
+    ],
+    [
+      "augmentativ@d",
+      "naj-bogat-{o}[p]",
+      "naj-drag-{o}[p]"
+    ]
+  ],
+  "tableNumbers": [
+    [
+      "1@d",
+      "jedin,jedna,jedno",
+      "11@d",
+      "{jedinnadset}[g]",
+      "21@d",
+      "dvadeset jedin"
+    ],
+    [
+      "2@d",
+      "{dva, dvě, dvě}[p]",
+      "12@d",
+      "{dvanadset}[g]",
+      "22@d",
+      "dvadeset {dva}[p]"
+    ],
+    [
+      "3@d",
+      "{tri}[r]",
+      "13@d",
+      "{trinadset}[g]",
+      "23@d",
+      "dvadeset {tri}[r]"
+    ],
+    [
+      "4@d",
+      "{četyri}[r]",
+      "14@d",
+      "{četyrinadset}[g]",
+      "24@d",
+      "dvadeset {četyri}[r]"
+    ],
+    [
+      "5@d",
+      "{pet}[g]",
+      "15@d",
+      "{petnadset}[g]",
+      "25@d",
+      "dvadeset {pet}[g]"
+    ],
+    [
+      "6@d",
+      "{šest}[g]",
+      "16@d",
+      "{šestnadset}[g]",
+      "26@d",
+      "dvadeset {šest}[g]"
+    ],
+    [
+      "7@d",
+      "{sedm}[g]",
+      "17@d",
+      "{sedmnadset}[g]",
+      "27@d",
+      "dvadeset {sedm}[g]"
+    ],
+    [
+      "8@d",
+      "{osm}[g]",
+      "18@d",
+      "{osmnadset}[g]",
+      "28@d",
+      "dvadeset {osm}[g]"
+    ],
+    [
+      "9@d",
+      "{devet}[g]",
+      "19@d",
+      "{devetnadset}[g]",
+      "29@d",
+      "dvadeset {devet}[g]"
+    ],
+    [
+      "10@d",
+      "{deset}[g]",
+      "110@d",
+      "{sto deset}[g]",
+      "1100@d",
+      "tyseč {sto}[b]"
+    ],
+    [
+      "20@d",
+      "{dvadeset}[g]",
+      "200@d",
+      "{dvěsto}[b]",
+      "2000@d",
+      "dva {tyseč}[g]"
+    ],
+    [
+      "30@d",
+      "{trideset}[g]",
+      "300@d",
+      "{tristo}[b]",
+      "3000@d",
+      "tri {tyseč}[g]"
+    ],
+    [
+      "40@d",
+      "{četyrideset}[g]",
+      "400@d",
+      "{četyristo}[b]",
+      "4000@d",
+      "četyri {tyseč}[g]"
+    ],
+    [
+      "50@d",
+      "{petdeset}[g]",
+      "500@d",
+      "{petsto}[b]",
+      "5000@d",
+      "pet {tyseč}[g]"
+    ],
+    [
+      "60@d",
+      "{šestdeset}[g]",
+      "600@d",
+      "{šeststo}[b]",
+      "6000@d",
+      "šest {tyseč}[g]"
+    ],
+    [
+      "70@d",
+      "{sedmdeset}[g]",
+      "700@d",
+      "{sedmsto}[b]",
+      "7000@d",
+      "sedm {tyseč}[g]"
+    ],
+    [
+      "80@d",
+      "{osmdeset}[g]",
+      "800@d",
+      "{osmsto}[b]",
+      "10^6@d",
+      "{milion}[r]"
+    ],
+    [
+      "90@d",
+      "{devetdeset}[g]",
+      "900@d",
+      "{devetsto}[b]",
+      "10^9@d",
+      "{bilion}[r]"
+    ],
+    [
+      "100@d",
+      "{sto}[b]",
+      "1000@d",
+      "{tyseč}[g]",
+      "0@d",
+      "nula"
+    ],
+    [
+      "&nbsp@w=6;bl;br"
+    ],
+    [
+      "1@d",
+      "prvy",
+      "11@d",
+      "jedinnadsety",
+      "21@d",
+      "dvadeset prvy"
+    ],
+    [
+      "2@d",
+      "vtory",
+      "20@d",
+      "dvadesety",
+      "200@d",
+      "dvěsotny"
+    ],
+    [
+      "3@d",
+      "{tretji}[r] {(mekky vzor)}[s]",
+      "30@d",
+      "tridesety",
+      "201@d",
+      "dvěsto prvy"
+    ],
+    [
+      "4@d",
+      "četvrty",
+      "40@d",
+      "četyridesety",
+      "210@d",
+      "dvěsto desety"
+    ],
+    [
+      "5@d",
+      "pety",
+      "50@d",
+      "petdesety",
+      "5000@d",
+      "pet tysečny"
+    ],
+    [
+      "6@d",
+      "šesty",
+      "60@d",
+      "šestdesety",
+      "6000@d",
+      "šest tysečny"
+    ],
+    [
+      "7@d",
+      "sedmy",
+      "70@d",
+      "sedmdesety",
+      "7000@d",
+      "sedm tysečny"
+    ],
+    [
+      "8@d",
+      "osmy",
+      "80@d",
+      "osmdesety",
+      "10^6@d",
+      "milionty"
+    ],
+    [
+      "9@d",
+      "devety",
+      "90@d",
+      "devetdesety",
+      "10^9@d",
+      "bilionty"
+    ],
+    [
+      "10@d",
+      "desety",
+      "100@d",
+      "sotny",
+      "0@d",
+      "nulty"
     ]
   ]
 }

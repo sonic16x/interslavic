@@ -118,6 +118,10 @@ class Grammar extends React.Component<IGrammarProps, IGrammarState> {
                     </Text>
                     <Table data={tables.tableImeti} />
                     <Table data={tables.tableVariti} />
+                    <Table data={tables.tableVremena} />
+                    <Table data={tables.tableByti} />
+                    <Table data={tables.tableGradacija2} />
+                    <Table data={tables.tableNumbers} />
                 </Columns>
             </div>
         );
