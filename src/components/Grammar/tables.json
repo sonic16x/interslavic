@@ -727,7 +727,7 @@
       "A@d;bb",
       "t-{o}[p]g{o}[p]@bb;b",
       "t-{o}[p]j@bt",
-      "t-{u}[p]@s",
+      "t-{u}[p]@b",
       "t-{o}[p]@bt",
       "t-{y}[b]h@bb;B",
       "t-{e}[g]@bt;s",
@@ -736,7 +736,7 @@
     [
       "G@d;bb",
       "t-{o}[p]g{o}[p]@w=2;b",
-      "t-{o}[p]j@bt;b",
+      "t-{o}[p]j@bb;g",
       "t-{o}[p]g{o}[p]@b",
       "t-{y}[b]h@w=2;bb;B",
       "t-{u}[p]@bb;b"
@@ -744,7 +744,7 @@
     [
       "L@d;bb",
       "t-{o}[p]m@w=2;bb;g",
-      "t-{o}[p]j@bb;g",
+      "t-{o}[p]j@bb;bt;g",
       "t-{o}[p]m@bb;g",
       "t-{y}[b]h@w=2;bt;B",
       "t-{u}[p]@bt;b"
@@ -767,9 +767,12 @@
     ],
     [
       "V@d",
-      "ty{!}[s]@w=4;s",
-      "vy{!}[s]@w=2;S",
-      "va{!}[s]@s"
+      "{t-oj!}[s]@w=2;s",
+      "{t-a!}[s]@s",
+      "{t-o!}[s]@s",
+      "{t-i!}[s]@s",
+      "{t-e!}[s]@s",
+      "{t-e!}[s]@s"
     ]
   ],
   "tableOnOnaOno": [
@@ -802,7 +805,7 @@
       "A@d;bb",
       "{(}[s]n{)}[s]j-{e}[g]g{o}[p]@bb;b",
       "{(}[s]n{)}[s]j-{e}[g]j@s",
-      "{(}[s]n{)}[s]j-{u}[p]@S",
+      "{(}[s]n{)}[s]j-{u}[p]@b",
       "{(}[s]n{)}[s]j-{e}[g]@s",
       "{(}[s]n{)}[s]j-{i}[g]h@bb;B",
       "{(}[s]n{)}[s]j-{e}[g]@s",
@@ -811,34 +814,42 @@
     [
       "G@d;bb",
       "{(}[s]n{)}[s]j-{e}[g]g{o}[p]@w=2;b",
-      "{(}[s]n{)}[s]j-{e}[g]j@b",
-      "{(}[s]n{)}[s]j-{e}[p]g{o}[p]@b",
+      "{(}[s]n{)}[s]j-{e}[g]j@g;bb",
+      "{(}[s]n{)}[s]j-{e}[g]g{o}[p]@b",
       "{(}[s]n{)}[s]j-{i}[b]h@w=2;bb;B",
       "{(}[s]n{)}[s]j-{u}[p]@bb;b"
     ],
     [
       "L@d;bb",
-      "{(}[s]n{)}[s]j-{e}[p]m@w=2;bb;g",
-      "{(}[s]n{)}[s]j-{e}[p]j@bb;g",
-      "{(}[s]n{)}[s]j-{e}[p]m@bb;g",
+      "{(}[s]n{)}[s]j-{e}[g]m@w=2;bb;g",
+      "{(}[s]n{)}[s]j-{e}[g]j@bb;;bt;g",
+      "{(}[s]n{)}[s]j-{e}[g]m@bb;g",
       "{(}[s]n{)}[s]j-{i}[b]h@w=2;bt;B",
       "{(}[s]n{)}[s]j-{u}[p]@bt;b"
     ],
     [
       "D@d;bb",
-      "{(}[s]n{)}[s]j-{e}[p]m{u}[p]@w=2;bt;g",
-      "{(}[s]n{)}[s]j-{e}[p]j@bt;g",
-      "{(}[s]n{)}[s]j-{e}[p]m{u}[p]@bt;g",
+      "{(}[s]n{)}[s]j-{e}[g]m{u}[p]@w=2;bt;g",
+      "{(}[s]n{)}[s]j-{e}[g]j@bt;g",
+      "{(}[s]n{)}[s]j-{e}[g]m{u}[p]@bt;g",
       "{(}[s]n{)}[s]j-{i}[b]m@w=2;bb;R",
       "{(}[s]n{)}[s]j-{i}[b]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
       "{(}[s]n{)}[s]j-{i}[b]m@w=2;r",
-      "{(}[s]n{)}[s]j-{e}[p]j{u}[p]@r",
+      "{(}[s]n{)}[s]j-{e}[g]j{u}[p]@r",
       "{(}[s]n{)}[s]j-{i}[b]m@r",
       "{(}[s]n{)}[s]j-{i}[b]m{i}[g]@w=2;bt;R",
       "{(}[s]n{)}[s]j-{i}[b]m{a}[r]@r"
+    ],
+    [
+      "V@d",
+      "{-}[s]@w=2;s",
+      "{-}[s]@s",
+      "{-}[s]@s",
+      "{-}[s]@w=2;s",
+      "{-}[s]@s"
     ]
   ],
   "tableDobry": [
@@ -871,7 +882,7 @@
       "A@d;bb",
       "dobr-{o}[p]g{o}[p]@bb;b",
       "dobr-{y}[b]@bt",
-      "dobr-{u}[p]",
+      "dobr-{u}[p]@b",
       "dobr-{o}[p]@bt",
       "dobr-{y}[b]h@bb;B",
       "dobr-{e}[g]@bt;s",
@@ -880,7 +891,7 @@
     [
       "G@d;bb",
       "dobr-{o}[p]g{o}[p]@w=2;b",
-      "dobr-{o}[p]j@b",
+      "dobr-{o}[p]j@g;bb",
       "dobr-{o}[p]g{o}[p]@b",
       "dobr-{y}[b]h@w=2;bb;B",
       "dobr-{u}[p]@bb;b"
@@ -888,7 +899,7 @@
     [
       "L@d;bb",
       "dobr-{o}[p]m@w=2;bb;g",
-      "dobr-{o}[p]j@bb;g",
+      "dobr-{o}[p]j@bb;bt;g",
       "dobr-{o}[p]m@bb;g",
       "dobr-{y}[b]h@w=2;B",
       "dobr-{u}[p]@bt;b"
@@ -947,9 +958,9 @@
     ],
     [
       "A@d;bb",
-      "svěž-{e}[p]g{o}[p]@bb;b",
+      "svěž-{e}[g]g{o}[p]@bb;b",
       "svěž-{i}[b]@bt",
-      "svěž-{u}[p]",
+      "svěž-{u}[p]@b",
       "svěž-{e}[g]@bt",
       "svěž-{i}[b]h@bb;B",
       "svěž-{e}[g]@bt;s",
@@ -958,7 +969,7 @@
     [
       "G@d;bb",
       "svěž-{e}[g]g{o}[p]@w=2;b",
-      "svěž-{e}[g]j@b",
+      "svěž-{e}[g]j@g;bb",
       "svěž-{e}[g]g{o}[p]@b",
       "svěž-{i}[b]h@w=2;bb;B",
       "svěž-{u}[p]@bb;b"
@@ -966,7 +977,7 @@
     [
       "L@d;bb",
       "svěž-{e}[g]m@w=2;bb;g",
-      "svěž-{e}[g]j@bb;g",
+      "svěž-{e}[g]j@bb;bt;g",
       "svěž-{e}[g]m@bb;g",
       "svěž-{i}[b]h@w=2;B",
       "svěž-{u}[p]@bt;b"
@@ -982,7 +993,7 @@
     [
       "I@d;bb",
       "svěž-{i}[b]m@w=2;r",
-      "svěž-{e}[p]j{u}[p]@r",
+      "svěž-{e}[g]j{u}[p]@r",
       "svěž-{i}[b]m@r",
       "svěž-{i}[b]m{i}[g]@w=2;bt;R",
       "svěž-{i}[b]m{a}[r]@r"
