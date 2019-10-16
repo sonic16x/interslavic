@@ -54,28 +54,26 @@ export default class extends React.Component<IColumnsProps> {
             const { count, children } = this.props;
             return splitUp(children, count);
         }
-        const elements = [];
-        let count = 0;
+        const elementsHeight = [];
         Array.from(this.containerRef.current.children).forEach((column: any) => {
-            count += column.children.length;
-            Array.from(column.children).forEach((item: any) => elements.push(item.offsetHeight));
+            Array.from(column.children).forEach((item: any) => elementsHeight.push(item.offsetHeight));
         });
-        const totalHeight = elements.reduce((acc, item) => (acc + item), 0);
+        const totalHeight = elementsHeight.reduce((acc, item) => (acc + item), 0);
         const columnHeight = Math.ceil(totalHeight / this.props.count);
-        let temp = 0;
-        let index = 0;
+        let tempHeight = 0;
+        let columnIndex = 0;
         const columns = [];
-        elements.forEach((height, i) => {
-            if (temp >= columnHeight) {
-                temp = height;
-                index++;
+        elementsHeight.forEach((height, i) => {
+            if (tempHeight >= columnHeight) {
+                tempHeight = height;
+                columnIndex++;
             } else {
-                temp += height;
+                tempHeight += height;
             }
-            if (!columns[index]) {
-                columns[index] = [];
+            if (!columns[columnIndex]) {
+                columns[columnIndex] = [];
             }
-            columns[index].push(this.props.children[i]);
+            columns[columnIndex].push(this.props.children[i]);
         });
         return columns;
     }
