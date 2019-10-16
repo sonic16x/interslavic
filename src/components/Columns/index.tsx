@@ -50,8 +50,11 @@ export default class extends React.Component<IColumnsProps> {
         );
     }
     private getColumns() {
+        const { count, children } = this.props;
+        if (count === 1) {
+            return [children];
+        }
         if (!this.containerRef.current) {
-            const { count, children } = this.props;
             return splitUp(children, count);
         }
         const elementsHeight = [];
