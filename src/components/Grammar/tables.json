@@ -1454,6 +1454,28 @@
       "naj-drag-{o}[p]"
     ]
   ],
+  "tablePredlogy": [
+    [
+      "s genitivom:@bt;br;bb;bl;ts",
+      "{bez, iz, do, od, u, kromě, poslě, vně, radi, ...}[B]@bt;br;bb;bl;ts"
+    ],
+    [
+      "s dativom:@bt;br;bb;bl;ts",
+      "{k, protiv, ...}[B]@bt;br;bb;bl;ts"
+    ],
+    [
+      "s akuzativom:@bt;br;bb;bl;ts",
+      "{nad, pod, prěd, črěz, v, za, na, vně, medžu, mimo, ... }[B]@bt;br;bb;bl;ts"
+    ],
+    [
+      "s lokativom:@bt;br;bb;bl;ts",
+      "{o, po, pri, v, na, ...}[B]@bt;br;bb;bl;ts"
+    ],
+    [
+      "s instrumentalom:@bt;br;bb;bl;ts",
+      "{s, nad, pod, prěd, za, medžu, ...}[B]@bt;br;bb;bl;ts"
+    ]
+  ],
   "tableNumbers": [
     [
       "1@d",
@@ -1691,88 +1713,92 @@
       "nulty"
     ]
   ],
-  "glagolica": [
-      [
-        "a@bb",
-        "b@bb",
-        "c@bb",
-        "č@bb",
-        "d@bb",
-        "dj@bb",
-        "dž@bb",
-        "e@bb",
-        "ě@bb",
-        "f@bb",
-        "g@bb",
-        "h@bb",
-        "i@bb",
-        "j@bb",
-        "ja@bb",
-        "ju@bb",
-        "k@bb",
-        "l@bb",
-        "lj@bb"
-      ],
-      [
-        "{Ⰰ}[r]@bt;s",
-        "{б}[r]@bt;s",
-        "{ц}[r]@bt;s",
-        "{ч}[r]@bt;s",
-        "{д}[r]@bt;s",
-        "{дь}[r]@bt;s",
-        "{дж}[r]@bt;s",
-        "{е}[r]@w=2;bt;s",
-        "{ф}[r]@bt;s",
-        "{г}[r]@bt;s",
-        "{х}[r]@bt;s",
-        "{и}[r]@bt;s",
-        "{j}[r]@bt;s",
-        "{я}[r]@bt;s",
-        "{ю}[r]@bt;s",
-        "{к}[r]@bt;s",
-        "{л}[r]@bt;s",
-        "{ль}[r]@bt;s"
-      ],
-      [
-        "m@bb",
-        "n@bb",
-        "nj@bb",
-        "o@bb",
-        "p@bb",
-        "q@bb",
-        "r@bb",
-        "s@bb",
-        "š@bb",
-        "šč@bb",
-        "t@bb",
-        "tj@bb",
-        "u@bb",
-        "v@bb",
-        "w@bb",
-        "x@bb",
-        "y@bb",
-        "z@bb",
-        "ž@bb"
-      ],
-      [
-        "{м}[r]@bt;s",
-        "{н}[r]@bt;s",
-        "{нь}[r]@bt;s",
-        "{о}[r]@bt;s",
-        "{п}[r]@bt;s",
-        "{к}[r]@bt;s",
-        "{р}[r]@bt;s",
-        "{с}[r]@bt;s",
-        "{ш}[r]@bt;s",
-        "{щ}[r]@bt;s",
-        "{т}[r]@bt;s",
-        "{ть}[r]@bt;s",
-        "{у}[r]@bt;s",
-        "{в}[r]@w=2;bt;s",
-        "{кс}[r]@bt;s",
-        "{ы}[r]@bt;s",
-        "{з}[r]@bt;s",
-        "{ж}[r]@bt;s"
-      ]
+  "tableSovezniky": [
+    ["sojednjenja:@bt;br;bb;bl;ts", "{i, ni ... ni r}[B]@bt;br;bb;bl;ts", "razlučenja:@bt;br;bb;bl;ts", "{ili, i ili}[B]@bt;br;bb;bl;ts", "popisanja:@bt;br;bb;bl;ts", "{že}[B]@bt;br;bb;bl;ts"],
+    ["odpora:@bt;br;bb;bl;ts", "{ale, no}[B]@bt;br;bb;bl;ts", "pričiny:@bt;br;bb;bl;ts", "{bo, zatože}[B]@bt;br;bb;bl;ts", "smysla:@bt;br;bb;bl;ts", "{da}[B]@bt;br;bb;bl;ts"]
+  ],
+  "tableGlagoljica": [
+    [
+      "a@bb",
+      "b@bb",
+      "c@bb",
+      "č@bb",
+      "d@bb",
+      "dj@bb",
+      "dž@bb",
+      "e@bb",
+      "ě@bb",
+      "f@bb",
+      "g@bb",
+      "h@bb",
+      "i@bb",
+      "j@bb",
+      "ja@bb",
+      "ju@bb",
+      "k@bb",
+      "l@bb",
+      "lj@bb"
+    ],
+    [
+      "{Ⰰ}[r]@bt;s",
+      "{б}[r]@bt;s",
+      "{ц}[r]@bt;s",
+      "{ч}[r]@bt;s",
+      "{д}[r]@bt;s",
+      "{дь}[r]@bt;s",
+      "{дж}[r]@bt;s",
+      "{е}[r]@w=2;bt;s",
+      "{ф}[r]@bt;s",
+      "{г}[r]@bt;s",
+      "{х}[r]@bt;s",
+      "{и}[r]@bt;s",
+      "{j}[r]@bt;s",
+      "{я}[r]@bt;s",
+      "{ю}[r]@bt;s",
+      "{к}[r]@bt;s",
+      "{л}[r]@bt;s",
+      "{ль}[r]@bt;s"
+    ],
+    [
+      "m@bb",
+      "n@bb",
+      "nj@bb",
+      "o@bb",
+      "p@bb",
+      "q@bb",
+      "r@bb",
+      "s@bb",
+      "š@bb",
+      "šč@bb",
+      "t@bb",
+      "tj@bb",
+      "u@bb",
+      "v@bb",
+      "w@bb",
+      "x@bb",
+      "y@bb",
+      "z@bb",
+      "ž@bb"
+    ],
+    [
+      "{м}[r]@bt;s",
+      "{н}[r]@bt;s",
+      "{нь}[r]@bt;s",
+      "{о}[r]@bt;s",
+      "{п}[r]@bt;s",
+      "{к}[r]@bt;s",
+      "{р}[r]@bt;s",
+      "{с}[r]@bt;s",
+      "{ш}[r]@bt;s",
+      "{щ}[r]@bt;s",
+      "{т}[r]@bt;s",
+      "{ть}[r]@bt;s",
+      "{у}[r]@bt;s",
+      "{в}[r]@w=2;bt;s",
+      "{кс}[r]@bt;s",
+      "{ы}[r]@bt;s",
+      "{з}[r]@bt;s",
+      "{ж}[r]@bt;s"
     ]
+  ]
 }
