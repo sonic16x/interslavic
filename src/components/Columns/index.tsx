@@ -39,12 +39,6 @@ export default class extends React.Component<IColumnsProps> {
         super(props);
         this.containerRef = React.createRef();
     }
-    // public componentDidUpdate() {
-    //
-    // }
-    // public shouldComponentUpdate(prevProps) {
-    //     return prevProps.count !== this.props.count;
-    // }
     public render() {
         const columns = this.getColumns();
         return (
@@ -72,16 +66,16 @@ export default class extends React.Component<IColumnsProps> {
         let index = 0;
         const columns = [];
         elements.forEach((height, i) => {
-            temp += height;
             if (temp >= columnHeight) {
-                temp = 0;
+                temp = height;
                 index++;
             } else {
-                if (!columns[index]) {
-                    columns[index] = [];
-                }
-                columns[index].push(this.props.children[i]);
+                temp += height;
             }
+            if (!columns[index]) {
+                columns[index] = [];
+            }
+            columns[index].push(this.props.children[i]);
         });
         return columns;
     }
