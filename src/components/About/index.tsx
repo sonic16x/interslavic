@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
-import { setPageAction } from 'actions';
 
 interface IAboutProps {
-    close: () => void;
     isVisible: boolean;
 }
 
@@ -35,7 +33,7 @@ class About extends React.Component<IAboutProps> {
                     <button
                         type={'button'}
                         className={'btn btn-primary shadow'}
-                        onClick={() => this.props.close()}
+                        onClick={() => window.history.back()}
                     >
                         Go back
                     </button>
@@ -55,10 +53,4 @@ function mapStateToProps({page, isLoading}) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        close: () => dispatch(setPageAction('dictionary')),
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapStateToProps)(About);
