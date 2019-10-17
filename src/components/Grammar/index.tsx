@@ -8,7 +8,6 @@ import Text from 'components/Text';
 import Card from 'components/Card';
 
 interface IGrammarProps {
-    close: () => void;
     isVisible: boolean;
 }
 
@@ -267,11 +266,4 @@ function mapStateToProps({page, isLoading}) {
         isVisible: page === 'grammar' && !isLoading,
     };
 }
-
-function mapDispatchToProps(dispatch) {
-    return {
-        close: () => dispatch(setPageAction('dictionary')),
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Grammar);
+export default connect(mapStateToProps)(Grammar);

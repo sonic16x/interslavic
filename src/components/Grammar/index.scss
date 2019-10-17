@@ -52,6 +52,9 @@
   table.customTable {
     font-size: 0.55rem;
   }
+  a.list-group-item {
+    transition: color 75ms linear, background-color 75ms linear;
+  }
 }
 
 @media (min-width: 395px) {
@@ -85,6 +88,7 @@
     left: 10px;
     z-index: 50;
     .selected {
+      transition: color 75ms linear, background-color 75ms linear;
       z-index: 2;
       color: #fff;
       background-color: #007bff;
