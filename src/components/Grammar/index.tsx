@@ -25,7 +25,7 @@ const titles = {
     medzuslovniky: 'Medžuslovniky',
     podredne: 'Podredne izrěčenja',
     naucno: 'Naučno pravopisanje i kirilica',
-    glagoljica: 'Glagoljica',
+    glagolica: 'Glagolica',
     podrobnosti: 'Podrobne pravila (linki)',
 };
 
@@ -93,7 +93,7 @@ class Grammar extends React.Component<IGrammarProps> {
                         <Table data={tables.tableBrat} />
                         <Table data={tables.tableMuz} />
                         <Text>
-                            {`Mužske objekty, ktore aktivno dělajut někaky proces, sut {životne}[i] (od pytanja KTO?) i po tutoj pričině imajut akuzativ rovny s genitivom.`}
+                            {`Mužske objekty, ktore aktivno dělajut někaky proces, sut {životne}[i] (od pytanja KTO?) i po tutoj pričině imajut akuzativ ravny s genitivom.`}
                         </Text>
                         <Text>
                             {`Ostalne objekty sut {neživotne}[i] (od pytanija ČTO) i imajut v jednině akuzativ ravny s nominativom.
@@ -113,7 +113,7 @@ class Grammar extends React.Component<IGrammarProps> {
                             {`Vse čiselniky zakončene na soglasniky –{T}[B] i –{Č}[B] ({PET}[B], {ŠEST}[B], ... {DESET}[B], {TRINADSET}[B], ... {DVADESET}[B], {TYSEČ}[B]) imajut klonjenje kako {KOST}[B] v jednině: {šest, šest-{i}[b], šest-j{u}[p]}[B] ...`}
                         </Text>
                         <Text>
-                            {`Dualne slova {OKO}[B], {UHO}[B] imajut dual rovne s množinoju vzora {KOST}[B] s palatizovanym korenom: {oč-{i}[b], oč-{ij}[b], oč-{a}[r]m}[B] ... {uš-{i}[b], uš-{i}[b]j, uš-{a}[r]m}[B] ... where {čj,šj,žj → č,š,ž}[B].`}
+                            {`Dualne slova {OKO}[B], {UHO}[B] imajut dual ravne s množinoju vzora {KOST}[B] s palatizovanym korenom: {oč-{i}[b], oč-{ij}[b], oč-{a}[r]m}[B] ... {uš-{i}[b], uš-{i}[b]j, uš-{a}[r]m}[B] ... where {čj,šj,žj → č,š,ž}[B].`}
                         </Text>
                         <Table data={tables.tableSelo} />
                         <Table data={tables.tableDen} />
@@ -163,7 +163,7 @@ class Grammar extends React.Component<IGrammarProps> {
                             stj→šč (koristiti, korišču, koristiš, koriščeny)}[B]`}
                         </Text>
                         <Text>
-                            {`Pasivny prošly participij	vsih ostalnyh glagolov {–{a}[r]ti –{ě}[g]ti –▪ti jest –{a}[r]ny –{ě}[g]ny – {e}[g]ny:
+                            {`Pasivny prošly participij	vsih ostalnyh glagolov {–{a}[r]ti –{ě}[g]ti –▪ti jest –{a}[r]ny –{ě}[g]ny –{e}[g]ny:
                             dělati→dělany, pekti→pek–eny→pečeny ...}[B]`}
                         </Text>
                         <Table data={tables.tableVremena} />
@@ -244,7 +244,7 @@ class Grammar extends React.Component<IGrammarProps> {
                             <Table data={tables.tableKir} />
                         </div>
                     </Card>
-                    <Card title={titles.glagoljica} id={'glagoljica'}>
+                    <Card title={titles.glagolica} id={'glagolica'}>
                         <Table data={tables.tableGlagoljica} />
                     </Card>
                     <Card title={titles.podrobnosti} id={'podrobnosti'}>
