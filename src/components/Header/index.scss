@@ -95,3 +95,23 @@ $animationDuration: 0.1s;
 .header {
   z-index: 90;
 }
+
+@media (min-width: 600px) {
+  .showMenu {
+    display: none;
+  }
+  .navMenu {
+    opacity: 1;
+    max-height: initial;
+    ul {
+      width: 100%;
+      flex-direction: row;
+      li {
+        margin-left: 10px;
+      }
+    }
+  }
+  .navbar-brand {
+    width: auto;
+  }
+}

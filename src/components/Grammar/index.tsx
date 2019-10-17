@@ -210,7 +210,7 @@ class Grammar extends React.Component<IGrammarProps> {
                     <Card title={titles.glagoljica} id={'glagoljica'}>
                         <Table data={tables.tableGlagoljica} />
                     </Card>
-                    <br/>
+                    {/*<br/>*/}
                     <br/>
                     <br/>
                 </div>

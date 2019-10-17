@@ -6,7 +6,6 @@ export enum ActionTypes {
     SEARCH_TYPE = 'SEARCH_TYPE',
     FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
     SET_PAGE = 'SET_PAGE',
-    TOGGLE_MENU = 'TOGGLE_MENU',
     IS_LOADING = 'IS_LOADING',
 }
 
@@ -41,13 +40,6 @@ export function flavorisationTypeAction(data: string) {
 export function setPageAction(data: string) {
     return {
         type: ActionTypes.SET_PAGE,
-        data,
-    };
-}
-
-export function toggleMenuAction(data: boolean) {
-    return {
-        type: ActionTypes.TOGGLE_MENU,
         data,
     };
 }
