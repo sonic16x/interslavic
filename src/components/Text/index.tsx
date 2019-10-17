@@ -12,7 +12,7 @@ export function parseStr(rawStr) {
     let result = rawStr;
     const res = matchStr(rawStr);
     if (!res || !res.length) {
-        return result.split('\n').join('<br/>');;
+        return result.split('\n').join('<br/>');
     }
     res.forEach((item) => {
         const [str, params] = item.split('}[');

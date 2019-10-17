@@ -26,7 +26,7 @@ const titles = {
     podredne: 'Podredne izrěčenja',
     naucno: 'Naučno pravopisanje i kirilica',
     glagoljica: 'Glagoljica',
-    podrobnosti: 'Podrobne pravila (linki)'
+    podrobnosti: 'Podrobne pravila (linki)',
 };
 
 class Grammar extends React.Component<IGrammarProps> {
@@ -50,7 +50,7 @@ class Grammar extends React.Component<IGrammarProps> {
             <div className={'grammarContainer'} onScroll={this.onScroll} ref={this.containerRef}>
                 <div className={'grammar' + (this.props.isVisible ? ' show' : '')}>
                     <br/>
-                    <h3>ABECEDA I PRAVOPISANIJE</h3>
+                    <h3>ABECEDA I PRAVOPISANJE</h3>
                     <h4>Osnovna gramatika medžuslovjanskogo jezyka</h4>
                     <br/>
                     <Card title={'Sodržanje'} id={'content'}>
@@ -98,13 +98,13 @@ class Grammar extends React.Component<IGrammarProps> {
                         </Text>
                         <Text>
                             {`Ostalne objekty sut {neživotne}[i] (od pytanija ČTO) i imajut v jednině akuzativ ravny s nominativom.
-                            {Napriměr:}[i] 
+                            {Napriměr:}[i]
                                - {gospod peče {hlěb}[k].}[B] ({hlěb}[k,B] ne može pečti = jest neživotny)
                                - {gospod vidi {člověka}[k]}[B]. ({člověk}[k,B] može viděti = jest životny)`}
                         </Text>
                         <Text>
                             {`Slova mužskogo roda zakončeni na -{a}[r,B] imajut v jednině klonjenje po tvrdom vzoru {žena}[k,B] ili mekkom vzoru {duša}[k,B], ale v množině i dvojině imajut normalny mužsky vzor.
-                             {Napriměr:}[i] 
+                             {Napriměr:}[i]
                                - {vladyk-{a}[r], vladyk-{y}[b], vladyk-{ě}[g,B], vladyk-{u}[p], vladyk-{o}[p],}[B] ... (jednina)
                                - {vladyk-{i}[b], vladyk-{ov}[p], vladyk-{a}[r]m, vladyk-{a}[r]m{i}[b],}[B] ... (množina)`}
                         </Text>
@@ -123,7 +123,7 @@ class Grammar extends React.Component<IGrammarProps> {
                             - {dn-{i}[b]=kost-{i}[b], imen-{a}[r]=polj-{a}[r], mater-{e}[g]=duš-{e}[g], dět-{i}[b]=kost-{i}[b]}[B], ...`}
                         </Text>
                         <Text>
-                            {`Medžuslovjansky jezyk koristi nestale {[{e}[g]/·] i [{o}[p]/·]}[B]: 
+                            {`Medžuslovjansky jezyk koristi nestale {[{e}[g]/·] i [{o}[p]/·]}[B]:
                             - {ot{e}[g]c - od·ca, Decemb{e}[g]r - Decemb·ra, član{o}[p]k - član·ka, p{e}[g]s - p·sa}[B] ...`}
                         </Text>
                     </Card>
@@ -157,10 +157,10 @@ class Grammar extends React.Component<IGrammarProps> {
                         </Text>
                         <Table data={tables.tableVariti} />
                         <Text>
-                            {`Pasivny	prošly	participij	mekkyh	glagolov jest {–j{e}[g]ni –j{e}[g]na –j{e}[g]no}[B], 
-                            ale {dj→dž (viděti, vidžu, vidiš, vidženy), 
+                            {`Pasivny	prošly	participij	mekkyh	glagolov jest {–j{e}[g]ni –j{e}[g]na –j{e}[g]no}[B],
+                            ale {dj→dž (viděti, vidžu, vidiš, vidženy),
                             tj→č (vratiti, vraču, vratiš, vračeny)
-                            sj→š (prositi, prošu, prosiš, prošeny), 
+                            sj→š (prositi, prošu, prosiš, prošeny),
                             stj→šč (koristiti, korišču, koristiš, koriščeny)}[B]`}
                         </Text>
                         <Text>
@@ -169,8 +169,8 @@ class Grammar extends React.Component<IGrammarProps> {
                         </Text>
                         <Table data={tables.tableVremena} />
                         <Text>
-                            {`Aktivne glagolne participija možut tvoriti aktivny sučny i aktivny prošly prislovniky: 
-                            {dělati → {dělaj}[k]-{u}[p]-č, děl-{a}[r]-v 
+                            {`Aktivne glagolne participija možut tvoriti aktivny sučny i aktivny prošly prislovniky:
+                            {dělati → {dělaj}[k]-{u}[p]-č, děl-{a}[r]-v
                              variti → var-{e}[g]-č, var-{i}[b]-v}[B]`}
                         </Text>
                     </Card>
@@ -209,14 +209,14 @@ class Grammar extends React.Component<IGrammarProps> {
                             {25 746}[B] = dvadeset pet tyseč sedmset četyrideset šesty.`}
                         </Text>
                         <Text>
-                            {`{{dva, dvoh, dvom, dvoma}[r] 
+                            {`{{dva, dvoh, dvom, dvoma}[r]
                             {tri, trěh, trěm, trěmi}[k]
                             {četyri, četyrěh, četyrěm, četyrěmi}[k]
                             jedin, jednogo (TOJ)
                             {pet, peti... 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 (KOST)}[g]
                             {nula, nuly (ŽENA)}[p]
                             {sto, sta (SĚLO)}[b]
-                            {tyseč, tyseči (KOST)}[g] 
+                            {tyseč, tyseči (KOST)}[g]
                             milion, miliona (GRAD)}[B]`}
                         </Text>
                     </Card>
