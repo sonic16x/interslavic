@@ -1,6 +1,7 @@
 .resultCard {
   margin: 0 auto;
   width: 100%;
+  max-width: 600px;
   margin-bottom: 15px;
   .card-body {
     padding-top: 1.5rem;
@@ -21,7 +22,7 @@
   display: flex;
   flex-direction: column;
 }
-
+/*
 @media (min-width: 576px) {
   .resultCard {
     max-width: 540px;
@@ -30,18 +31,18 @@
 
 @media (min-width: 768px) {
   .resultCard {
-    max-width: 720px;
+    max-width: 600px;
   }
-}
-
-@media (min-width: 992px) {
-  .resultCard {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .resultCard {
-    max-width: 1140px;
-  }
-}
+}*/
+//
+//@media (min-width: 992px) {
+//  .resultCard {
+//    max-width: 760px;
+//  }
+//}
+//
+//@media (min-width: 1200px) {
+//  .resultCard {
+//    max-width: 1140px;
+//  }
+//}
