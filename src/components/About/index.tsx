@@ -20,7 +20,7 @@ class About extends React.Component<IAboutProps> {
         return (
             <div className={'about' + (this.props.isVisible ? ' show' : '')}>
                 <div className={'common'}>
-                    <img src={'logo.png'} className={'card-img shadow'} alt={'logo'}/>
+                    <br/>
                     Using dictionary from <a target={'_blank'} href={source}>{source}</a>
                     <p>Author of Interslavic/English/Polish dictionary:</p>
                     <a href={`email:${sourceEmail}`}>{sourceName}&nbsp;({sourceEmail})</a>
