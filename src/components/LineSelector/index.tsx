@@ -59,7 +59,10 @@ export class LineSelector extends React.Component<ILineSelectorProps, ILineSelec
                         <a
                             className={'nav-link' + (value === this.props.value ? ' activeItem' : '')}
                             href='#'
-                            onClick={() => this.props.onSelect(value)}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                this.props.onSelect(value);
+                            }}
                         >
                             {name}
                         </a>
