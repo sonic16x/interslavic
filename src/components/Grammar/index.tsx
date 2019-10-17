@@ -240,6 +240,9 @@ class Grammar extends React.Component<IGrammarProps, IGrammarState> {
         );
     }
     private onScroll() {
+        if (window.innerWidth < 1160) {
+            return;
+        }
         const scrollPosition = this.containerRef.current.scrollTop;
         let activeId;
         let minDistance = Number.MAX_SAFE_INTEGER;
