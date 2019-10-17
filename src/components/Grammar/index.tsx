@@ -42,7 +42,6 @@ class Grammar extends React.Component<IGrammarProps> {
     public componentDidUpdate() {
         if (!this.titleElements) {
             this.titleElements = Object.keys(titles).map((id) => document.getElementById(id));
-            document.getElementById(this.getLinkId(this.activeId)).classList.add('selected');
         }
     }
     public render() {
@@ -267,7 +266,7 @@ class Grammar extends React.Component<IGrammarProps> {
         );
     }
     private onScroll() {
-        if (window.innerWidth < 1160) {
+        if (window.innerWidth < 1055) {
             return;
         }
         const scrollPosition = this.containerRef.current.scrollTop;

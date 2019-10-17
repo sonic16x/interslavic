@@ -43,13 +43,21 @@
       .card-body {
         padding: 0;
       }
+      z-index: 50;
+      .selected {
+        transition: color 75ms linear, background-color 75ms linear;
+        z-index: 2;
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+      }
     }
     margin-bottom: 1rem;
     .card-body {
       padding: 0.5rem;
     }
   }
-  max-width: 800px;
+  max-width: 1024px;
   table.customTable {
     font-size: 0.55rem;
   }
@@ -82,22 +90,28 @@
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1055px) {
   .card#content {
     position: absolute;
     top: 70px;
-    left: 10px;
-    z-index: 50;
-    .selected {
-      transition: color 75ms linear, background-color 75ms linear;
-      z-index: 2;
-      color: #fff;
-      background-color: #007bff;
-      border-color: #007bff;
-    }
+    left: calc(50% - 525px);
   }
   .grammar {
-    padding-left: 340px;
+    padding-left: 245px;
+    max-width: calc(1024px - 235px);
+    box-sizing: content-box;
+  }
+}
+
+@media (min-width: 1530px) {
+  .card#content {
+    position: absolute;
+    top: 70px;
+    left: calc(50% - 512px - 250px);
+  }
+  .grammar {
+    max-width: 1024px;
+    padding-left: 0 !important;
     box-sizing: content-box;
   }
 }
