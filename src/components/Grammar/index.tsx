@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
-import { setPageAction } from 'actions';
 import Table from 'components/Table';
 import tables from './tables.json';
 import Text from 'components/Text';
@@ -9,10 +8,6 @@ import Card from 'components/Card';
 
 interface IGrammarProps {
     isVisible: boolean;
-}
-
-interface IGrammarState {
-    activeId: string;
 }
 
 const titles = {
@@ -34,20 +29,20 @@ const titles = {
     glagoljica: 'glagoljica',
 };
 
-class Grammar extends React.Component<IGrammarProps, IGrammarState> {
+class Grammar extends React.Component<IGrammarProps> {
     private containerRef;
     private titleElements;
+    private activeId;
     constructor(props) {
         super(props);
-        this.state = {
-            activeId: 'abeceda',
-        };
+        this.activeId = 'abeceda';
         this.containerRef = React.createRef();
         this.onScroll = this.onScroll.bind(this);
     }
     public componentDidUpdate() {
         if (!this.titleElements) {
             this.titleElements = Object.keys(titles).map((id) => document.getElementById(id));
+            document.getElementById(this.getLinkId(this.activeId)).classList.add('selected');
         }
     }
     public render() {
@@ -61,8 +56,9 @@ class Grammar extends React.Component<IGrammarProps, IGrammarState> {
                         <div className={'list-group list-group-flush'}>
                             {Object.keys(titles).map((id, i) => (
                                 <a
-                                    className={'list-group-item link' + (id === this.state.activeId ? ' selected' : '')}
+                                    className={'list-group-item link'}
                                     key={i}
+                                    id={this.getLinkId(id)}
                                     href={`#${id}`}
                                 >
                                     {titles[id]}
@@ -258,9 +254,14 @@ class Grammar extends React.Component<IGrammarProps, IGrammarState> {
                 activeId = id;
             }
         }
-        if (activeId !== this.state.activeId) {
-            this.setState({activeId});
+        if (activeId !== this.activeId) {
+            document.getElementById(this.getLinkId(this.activeId)).classList.remove('selected');
+            document.getElementById(this.getLinkId(activeId)).classList.add('selected');
+            this.activeId = activeId;
         }
+    }
+    private getLinkId(id) {
+        return `link_${id}`;
     }
 }
 
