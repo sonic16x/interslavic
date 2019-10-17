@@ -76,3 +76,16 @@
     }
   }
 }
+
+@media (min-width: 1160px) {
+  .card#content {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    z-index: 50;
+  }
+  .grammar {
+    padding-left: 340px;
+    box-sizing: content-box;
+  }
+}

@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
-import { setPageAction, toggleMenuAction } from 'actions';
+import { setPageAction } from 'actions';
 
 interface IHeaderProps {
-    toggleMenu: (isVisible: boolean) => void;
     setPage: (page: string) => void;
     page: string;
+}
+
+interface IHeaderState {
     menuIsVisible: boolean;
 }
 
@@ -25,7 +27,13 @@ const pages = [
     },
 ];
 
-class Header extends React.Component<IHeaderProps> {
+class Header extends React.Component<IHeaderProps, IHeaderState> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuIsVisible: false,
+        };
+    }
     public render() {
         return (
             <nav className={'navbar navbar-dark bg-dark shadow header'}>
@@ -36,12 +44,12 @@ class Header extends React.Component<IHeaderProps> {
                 <button
                     type={'button'}
                     className={'showMenu'}
-                    data-active={this.props.menuIsVisible}
-                    onClick={() => this.props.toggleMenu(!this.props.menuIsVisible)}
+                    data-active={this.state.menuIsVisible}
+                    onClick={() => this.setState({menuIsVisible: !this.state.menuIsVisible})}
                 >
                     <span />
                 </button>
-                <div className={'navMenu' + (this.props.menuIsVisible ? ' menuIsVisible' : '')}>
+                <div className={'navMenu' + (this.state.menuIsVisible ? ' menuIsVisible' : '')}>
                     <ul className={'navbar-nav mr-auto'}>
                         {pages.map(((link, i) => this.renderLink(this.props.page, link, i)))}
                     </ul>
@@ -49,7 +57,10 @@ class Header extends React.Component<IHeaderProps> {
             </nav>
         );
     }
-
+    private setPage(page) {
+        this.props.setPage(page);
+        this.setState({menuIsVisible: false});
+    }
     private renderLink(page, {name, value}, i) {
         const isActive = page === value;
         return (
@@ -57,7 +68,7 @@ class Header extends React.Component<IHeaderProps> {
                 <a
                     className={'nav-link' + (isActive ? ' active' : '')}
                     href={'#'}
-                    onClick={() => this.props.setPage(value)}
+                    onClick={() => this.setPage(value)}
                 >
                     {name}
                 </a>
@@ -68,13 +79,12 @@ class Header extends React.Component<IHeaderProps> {
 
 function mapDispatchToProps(dispatch) {
     return {
-        toggleMenu: (isVisible) => dispatch(toggleMenuAction(isVisible)),
-        setPage: (page) => dispatch(toggleMenuAction(false)) && dispatch(setPageAction(page)),
+        setPage: (page) => dispatch(setPageAction(page)),
     };
 }
 
 function mapStateToProps({menuIsVisible, page}) {
-    return {menuIsVisible, page};
+    return {page};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
