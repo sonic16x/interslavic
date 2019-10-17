@@ -270,4 +270,5 @@ function mapStateToProps({page, isLoading}) {
         isVisible: page === 'grammar' && !isLoading,
     };
 }
+
 export default connect(mapStateToProps)(Grammar);
