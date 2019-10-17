@@ -2,7 +2,7 @@ import * as React from 'react';
 import './index.scss';
 
 function matchStr(str) {
-    return str.match(/\{[^{}]+\}+\[[^<>{}]+\]/g);
+    return str.match(/\{[^{}]+\}+\[[\w,]+\]/g);
 }
 
 export function parseStr(rawStr) {
@@ -12,7 +12,7 @@ export function parseStr(rawStr) {
     let result = rawStr;
     const res = matchStr(rawStr);
     if (!res || !res.length) {
-        return result;
+        return result.split('\n').join('<br/>');;
     }
     res.forEach((item) => {
         const [str, params] = item.split('}[');
@@ -20,7 +20,7 @@ export function parseStr(rawStr) {
         const classList = params.slice(0, -1).split(',').join(' ');
         result = result.replace(item, `<span class="${classList}">${text}</span>`);
     });
-    return matchStr(result) ? parseStr(result) : result.split('\n').join('<br/>');
+    return parseStr(result);
 }
 
 interface ITextProps {
