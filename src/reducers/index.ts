@@ -60,12 +60,14 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
         case ActionTypes.FLAVORISATION_TYPE:
             needUpdateResult = true;
         case ActionTypes.SET_PAGE:
-            window.history.pushState({}, document.title, data);
         case ActionTypes.IS_LOADING:
             newState = {
                 ...newState,
                 [actionTypeFieldMap[type]]: data,
             };
+    }
+    if (ActionTypes.SET_PAGE === type) {
+        window.history.pushState({}, document.title, data);
     }
     if (needUpdateResult) {
         const { fromText, lang, flavorisationType, searchType } = newState;

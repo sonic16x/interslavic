@@ -65,13 +65,12 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
         const isActive = page === value;
         return (
             <li className={'nav-item'} key={i}>
-                <a
-                    className={'nav-link' + (isActive ? ' active' : '')}
-                    href={'#'}
+                <button
+                    className={'btn btn-link nav-link' + (isActive ? ' active' : '')}
                     onClick={() => this.setPage(value)}
                 >
                     {name}
-                </a>
+                </button>
             </li>
         );
     }
