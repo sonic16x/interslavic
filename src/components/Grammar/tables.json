@@ -1053,7 +1053,7 @@
       "im-{ě}[g]-l, im-{ě}[g]-la, im-{ě}[g]-lo, im-{ě}[g]-li, im-{ě}[g]-le@w=2;ts"
     ],
     [
-      "&nbsp@bt;bl;bb",
+      "&nbsp@bt;bl",
       "glagolno ime@d",
       "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
@@ -1147,7 +1147,7 @@
       "&nbsp@bt;bl;br;bb",
       "VARITI@bl;bt;br",
       "&nbsp@bl;bt;br",
-      "mekky -iš vzor@bl;bt;br;te"
+      "mekky -{i}[b]š vzor@bl;bt;br;te"
     ],
     [
       "&nbsp@bt;bl;bb",
@@ -1160,7 +1160,7 @@
       "var-{i}[b]-l, var-{i}[b]-la, var-{i}[b]-lo, var-{i}[b]-li, var-{i}[b]-le@w=2;ts"
     ],
     [
-      "&nbsp@bt;bl;bb",
+      "&nbsp@bt;bl",
       "glagolno ime@d",
       "var-j{e}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
@@ -1303,7 +1303,7 @@
     "b-{y}[b]-l, b-{y}[b]-la, b-{y}[b]-lo, b-{y}[b]-li, b-{y}[b]-le@w=2;ts"
   ],
   [
-    "&nbsp@bt;bl;bb",
+    "&nbsp@bt;bl",
     "glagolno ime@d",
     "b-{y}[b]-tje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
   ],
