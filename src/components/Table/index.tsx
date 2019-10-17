@@ -4,13 +4,12 @@ import { parseStr } from 'components/Text';
 
 interface IGrammarProps {
     data: string[][];
-    fontSize?: string;
 }
 
 export default class extends React.Component<IGrammarProps> {
     public render() {
         return (
-            <table className={'customTable'} style={{fontSize: this.props.fontSize || '0.55rem'}}>
+            <table className={'customTable'}>
                 <tbody>{this.renderBody()}</tbody>
             </table>
         );
