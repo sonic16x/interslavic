@@ -12,28 +12,48 @@ interface IGrammarProps {
     isVisible: boolean;
 }
 
-class Grammar extends React.Component<IGrammarProps> {
-    public render() {
-        const titles = {
-            abeceda: 'abeceda i pravopisanje',
-            imeniky: 'imeniky',
-            nauchno: 'naučno pravopisanje v slovniku i cirilica',
-            zaimeniky: 'zaimeniky',
-            pridavniky: 'pridavniky',
-            glagoly: 'glagoly',
-            byti: 'neredny glagol BYTI',
-            vedeti: 'neredne glagoly VĚDĚTI, DATI, IDTI, JESTI',
-            prislovniky: 'prislovniky',
-            predlogy: 'prědlogy',
-            ciselniky: 'čiselniky',
-            sovezniky: 'sovezniky',
-            castice: 'častice',
-            medzuslovniky: 'medžuslovniky',
-            podredne: 'podredne izrěčenja',
-            glagoljica: 'glagoljica',
+interface IGrammarState {
+    activeId: string;
+}
+
+const titles = {
+    abeceda: 'abeceda i pravopisanje',
+    imeniky: 'imeniky',
+    nauchno: 'naučno pravopisanje v slovniku i cirilica',
+    zaimeniky: 'zaimeniky',
+    pridavniky: 'pridavniky',
+    glagoly: 'glagoly',
+    byti: 'neredny glagol BYTI',
+    vedeti: 'neredne glagoly VĚDĚTI, DATI, IDTI, JESTI',
+    prislovniky: 'prislovniky',
+    predlogy: 'prědlogy',
+    ciselniky: 'čiselniky',
+    sovezniky: 'sovezniky',
+    castice: 'častice',
+    medzuslovniky: 'medžuslovniky',
+    podredne: 'podredne izrěčenja',
+    glagoljica: 'glagoljica',
+};
+
+class Grammar extends React.Component<IGrammarProps, IGrammarState> {
+    private containerRef;
+    private titleElements;
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeId: 'abeceda',
         };
+        this.containerRef = React.createRef();
+        this.onScroll = this.onScroll.bind(this);
+    }
+    public componentDidUpdate() {
+        if (!this.titleElements) {
+            this.titleElements = Object.keys(titles).map((id) => document.getElementById(id));
+        }
+    }
+    public render() {
         return (
-            <div className={'grammarContainer'}>
+            <div className={'grammarContainer'} onScroll={this.onScroll} ref={this.containerRef}>
                 <div className={'grammar' + (this.props.isVisible ? ' show' : '')}>
                     <br/>
                     <h3>MEDŽUSLOVJANSKY JEZYK</h3>
@@ -41,7 +61,13 @@ class Grammar extends React.Component<IGrammarProps> {
                     <Card title={'Sodržanje'} id={'content'}>
                         <div className={'list-group list-group-flush'}>
                             {Object.keys(titles).map((id, i) => (
-                                <a className={'list-group-item link'} key={i} href={`#${id}`}>{titles[id]}</a>
+                                <a
+                                    className={'list-group-item link' + (id === this.state.activeId ? ' selected' : '')}
+                                    key={i}
+                                    href={`#${id}`}
+                                >
+                                    {titles[id]}
+                                </a>
                             ))}
                         </div>
                     </Card>
@@ -210,12 +236,29 @@ class Grammar extends React.Component<IGrammarProps> {
                     <Card title={titles.glagoljica} id={'glagoljica'}>
                         <Table data={tables.tableGlagoljica} />
                     </Card>
-                    {/*<br/>*/}
-                    <br/>
-                    <br/>
                 </div>
             </div>
         );
+    }
+    private onScroll() {
+        const scrollPosition = this.containerRef.current.scrollTop;
+        let activeId;
+        let minDistance = Number.MAX_SAFE_INTEGER;
+        const diff = this.containerRef.current.offsetTop + 100;
+        const distance = {};
+        this.titleElements.forEach((item) => {
+            const id = item.getAttribute('id');
+            distance[id] = Math.abs((item.offsetTop - diff) - scrollPosition);
+        });
+        for (const id in distance) {
+            if (distance[id] < minDistance) {
+                minDistance = distance[id];
+                activeId = id;
+            }
+        }
+        if (activeId !== this.state.activeId) {
+            this.setState({activeId});
+        }
     }
 }
 
