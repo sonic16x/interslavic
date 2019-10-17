@@ -1510,7 +1510,7 @@
     ],
     [
       "2@d",
-      "{dva, dvě, dvě}[p]",
+      "{dva, dvě, dvě}[r]",
       "12@d",
       "{dvanadset}[g]",
       "22@d",
@@ -1634,7 +1634,7 @@
       "800@d",
       "{osmsto}[b]",
       "10^6@d",
-      "{milion}[k]"
+      "milion"
     ],
     [
       "90@d",
@@ -1642,7 +1642,7 @@
       "900@d",
       "{devetsto}[b]",
       "10^9@d",
-      "{bilion}[k]"
+      "bilion"
     ],
     [
       "100@d",
@@ -1650,7 +1650,7 @@
       "1000@d",
       "{tyseč}[g]",
       "0@d",
-      "{nula}[r]"
+      "{nula}[p]"
     ],
     [
       "&nbsp@w=6;bl;br"
@@ -1737,8 +1737,36 @@
     ]
   ],
   "tableSovezniky": [
-    ["sojednjenja:@bt;br;bb;bl;ts", "{i, ni ... ni r}[B]@bt;br;bb;bl;ts", "razlučenja:@bt;br;bb;bl;ts", "{ili, i ili}[B]@bt;br;bb;bl;ts", "popisanja:@bt;br;bb;bl;ts", "{že}[B]@bt;br;bb;bl;ts"],
-    ["odpora:@bt;br;bb;bl;ts", "{ale, no}[B]@bt;br;bb;bl;ts", "pričiny:@bt;br;bb;bl;ts", "{bo, zatože}[B]@bt;br;bb;bl;ts", "smysla:@bt;br;bb;bl;ts", "{da}[B]@bt;br;bb;bl;ts"]
+    [
+      "sojednjenja:@d",
+      "{i, ni ... ni}[B]",
+      "razlučenja:@d",
+      "{ili, i ili}[B]",
+      "popisanja:@d",
+      "{že}[B]"
+    ],
+    [
+      "odpora:@d",
+      "{ale, no}[B]",
+      "pričiny:@d",
+      "{bo, zatože}[B]",
+      "smysla:@d",
+      "{da}[B]"
+    ]
+  ],
+  "tableCestice": [
+    [
+      "soglašenja:@d",
+      "{da, ej}[B]",
+      "odpora:@d",
+      "{ne, ni}[B]"
+    ],
+    [
+      "pytanja:@d",
+      "{li}[B]",
+      "naglašenja:@d",
+      "{ako ... potom ... inako}[B]"
+    ]
   ],
   "tableGlagoljica": [
     [
@@ -1756,7 +1784,6 @@
       "h@bb",
       "i@bb",
       "j@bb",
-      "ja@bb",
       "ju@bb",
       "k@bb",
       "l@bb",
@@ -1768,19 +1795,19 @@
       "{Ⱌ}[k]@bt;s",
       "{Ⱍ}[k]@bt;s",
       "{Ⰴ}[k]@bt;s",
-      "{ⰄⰠ}[k]@bt;s",
-      "{ⰄⰆ}[k]@bt;s",
-      "{Ⰵ}[k]@w=2;bt;s",
+      "{ⰄⰬ}[k]@bt;s",
+      "{Ⰼ}[k]@bt;s",
+      "{Ⰵ}[k]@bt;s",
+      "{Ⱑ}[k]@bt;s",
       "{Ⱇ}[k]@bt;s",
       "{Ⰳ}[k]@bt;s",
       "{Ⱈ}[k]@bt;s",
       "{Ⱛ}[k]@bt;s",
-      "{Ⱐ}[k]@bt;s",
-      "{Ⱑ}[k]@bt;s",
+      "{Ⱜ}[k]@bt;s",
       "{Ⱓ}[k]@bt;s",
       "{Ⰽ}[k]@bt;s",
       "{Ⰾ}[k]@bt;s",
-      "{ⰎⰠ}[k]@bt;s"
+      "{ⰎⰬ}[k]@bt;s"
     ],
     [
       "m@bb",
@@ -1797,7 +1824,6 @@
       "tj@bb",
       "u@bb",
       "v@bb",
-      "w@bb",
       "x@bb",
       "y@bb",
       "z@bb",
@@ -1805,8 +1831,8 @@
     ],
     [
       "{Ⰿ}[k]@bt;s",
-      "{ⰐⰐ}[k]@bt;s",
-      "{ⰐⰠ}[k]@bt;s",
+      "{Ⱀ}[k]@bt;s",
+      "{ⰐⰬ}[k]@bt;s",
       "{Ⱁ}[k]@bt;s",
       "{Ⱂ}[k]@bt;s",
       "{Ⰽ}[k]@bt;s",
@@ -1815,11 +1841,11 @@
       "{Ⱎ}[k]@bt;s",
       "{Ⱋ}[k]@bt;s",
       "{Ⱅ}[k]@bt;s",
-      "{ⰕⰠ}[k]@bt;s",
+      "{ⰕⰬ}[k]@bt;s",
       "{Ⱆ}[k]@bt;s",
-      "{Ⰲ}[k]@w=2;bt;s",
+      "{Ⰲ}[k]@bt;s",
       "{ⰍⰔ}[k]@bt;s",
-      "{ⰟⰊ}[k]@bt;s",
+      "{Ⱐ}[k]@bt;s",
       "{Ⰷ}[k]@bt;s",
       "{Ⰶ}[k]@bt;s"
     ]
