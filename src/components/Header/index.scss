@@ -80,7 +80,7 @@ $animationDuration: 0.1s;
   transition: max-height $animationDuration linear, opacity $animationDuration linear;
 }
 
-.navMenu .menuIsVisible {
+.navMenu.menuIsVisible {
   max-height: 500px;
   opacity: 1;
 }
