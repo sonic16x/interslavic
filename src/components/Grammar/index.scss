@@ -1,8 +1,10 @@
 .grammarContainer {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 60px);
   overflow: auto;
+  scroll-behavior: smooth;
 }
+
 .grammar {
   width: 100%;
   padding-right: 0.5rem;
@@ -13,7 +15,6 @@
   transition: opacity 0.2s ease-in-out;
   pointer-events: none;
   opacity: 0;
-  max-height: 0;
   &.show {
     opacity: 1;
     pointer-events: all;
@@ -83,6 +84,12 @@
     top: 70px;
     left: 10px;
     z-index: 50;
+    .selected {
+      z-index: 2;
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+    }
   }
   .grammar {
     padding-left: 340px;
