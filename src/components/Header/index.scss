@@ -105,6 +105,22 @@ $animationDuration: 0.1s;
   }
 }
 
+@media (max-width: 599px) {
+  .navMenu {
+    width: 100%;
+    ul {
+      width: 100%;
+      li {
+        width: 100%;
+        button {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
 @media (min-width: 600px) {
   .showMenu {
     display: none;

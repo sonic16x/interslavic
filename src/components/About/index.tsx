@@ -23,6 +23,7 @@ class About extends React.Component<IAboutProps> {
                     <p>Author of Interslavic/English/Polish dictionary:</p>
                     <a href={`email:${sourceEmail}`}>{sourceName}&nbsp;({sourceEmail})</a>
                     <hr/>
+                    <p>Please join the work to improve word translations for your native language.</p>
                     <a target={'_blank'} href={tableUrl}>Table with translations</a>
                     <hr/>
                     <p>Developer</p>
