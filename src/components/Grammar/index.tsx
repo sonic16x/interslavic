@@ -56,7 +56,6 @@ class Grammar extends React.Component<IGrammarProps> {
             >
                 <div className={'grammar' + (this.props.isVisible ? ' show' : '')}>
                     <br/>
-                    <h3>ABECEDA I PRAVOPISANJE</h3>
                     <h4>Osnovna gramatika medžuslovjanskogo jezyka</h4>
                     <br/>
                     <Card title={'Sodržanje'} id={'content'}>
