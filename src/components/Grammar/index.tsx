@@ -295,9 +295,7 @@ class Grammar extends React.Component<IGrammarProps> {
             document.getElementById(this.getLinkId(this.activeId)).classList.remove('selected');
             document.getElementById(this.getLinkId(activeId)).classList.add('selected');
             this.activeId = activeId;
-            if (this.userEvent) {
-                location.hash = activeId;
-            }
+            // location.hash = activeId;
         }
     }
     private getLinkId(id) {
