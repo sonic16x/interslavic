@@ -44,13 +44,6 @@
         padding: 0;
       }
       z-index: 50;
-      .selected {
-        transition: color 75ms linear, background-color 75ms linear;
-        z-index: 2;
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-      }
     }
     margin-bottom: 1rem;
     .card-body {
@@ -100,6 +93,13 @@
     padding-left: 245px;
     max-width: calc(1024px - 235px);
     box-sizing: content-box;
+    .selected {
+      transition: color 75ms linear, background-color 75ms linear;
+      z-index: 2;
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+    }
   }
 }
 

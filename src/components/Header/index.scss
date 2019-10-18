@@ -110,6 +110,7 @@ $animationDuration: 0.1s;
     display: none;
   }
   .navMenu {
+    pointer-events: all;
     opacity: 1;
     max-height: initial;
     ul {
