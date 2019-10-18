@@ -40,6 +40,9 @@
   .card {
     &#content {
       font-size: 15px;
+      .card-title {
+        margin-bottom: 0.1rem;
+      }
       .card-body {
         padding: 0;
       }
