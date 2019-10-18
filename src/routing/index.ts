@@ -18,8 +18,12 @@ export const pages = [
     },
 ];
 
+export function goToPage(path: string) {
+    window.history.pushState({}, document.title, `${path}${location.hash}`);
+}
+
 export function getPageFromPath(): string {
-    const currentPath = window.location.pathname;
+    const currentPath = window.location.pathname.split('#')[0];
     const page = pages.find(({path}) => (path === currentPath));
     if (page) {
         return page.value;
@@ -29,7 +33,7 @@ export function getPageFromPath(): string {
 }
 
 export function setInitialPage() {
-    const currentPath = window.location.pathname;
+    const currentPath = window.location.pathname.split('#')[0];
     const page = pages.find(({path}) => (path === currentPath));
     if (!page) {
         window.history.replaceState({}, document.title, homePage);

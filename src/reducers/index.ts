@@ -1,6 +1,6 @@
 import { translate, ITranslateResult } from 'utils/translator';
 import { ActionTypes } from 'actions';
-import { getPageFromPath, getPathFromPage } from 'routing';
+import { getPageFromPath, getPathFromPage, goToPage } from 'routing';
 
 export interface IMainState {
     lang: {
@@ -54,7 +54,7 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
             };
     }
     if (ActionTypes.SET_PAGE === type) {
-        window.history.pushState({}, document.title, getPathFromPage(data));
+        goToPage(getPathFromPage(data));
     }
     if (needUpdateResult) {
         const { fromText, lang, flavorisationType, searchType } = newState;

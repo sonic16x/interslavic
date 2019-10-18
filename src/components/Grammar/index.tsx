@@ -33,11 +33,13 @@ class Grammar extends React.Component<IGrammarProps> {
     private containerRef;
     private titleElements;
     private activeId;
+    private userEvent;
     constructor(props) {
         super(props);
         this.activeId = 'abeceda';
         this.containerRef = React.createRef();
         this.onScroll = this.onScroll.bind(this);
+        this.onWheel = this.onWheel.bind(this);
     }
     public componentDidUpdate() {
         if (!this.titleElements) {
@@ -46,7 +48,12 @@ class Grammar extends React.Component<IGrammarProps> {
     }
     public render() {
         return (
-            <div className={'grammarContainer'} onScroll={this.onScroll} ref={this.containerRef}>
+            <div
+                className={'grammarContainer'}
+                onWheel={this.onWheel}
+                onScroll={this.onScroll}
+                ref={this.containerRef}
+            >
                 <div className={'grammar' + (this.props.isVisible ? ' show' : '')}>
                     <br/>
                     <h3>ABECEDA I PRAVOPISANJE</h3>
@@ -59,6 +66,7 @@ class Grammar extends React.Component<IGrammarProps> {
                                     className={'list-group-item link'}
                                     key={i}
                                     id={this.getLinkId(id)}
+                                    onClick={() => this.userEvent = false}
                                     href={`#${id}`}
                                 >
                                     {titles[id]}
@@ -265,10 +273,10 @@ class Grammar extends React.Component<IGrammarProps> {
             </div>
         );
     }
+    private onWheel() {
+        this.userEvent = true;
+    }
     private onScroll() {
-        if (window.innerWidth < 1055) {
-            return;
-        }
         const scrollPosition = this.containerRef.current.scrollTop;
         let activeId;
         let minDistance = Number.MAX_SAFE_INTEGER;
@@ -288,6 +296,9 @@ class Grammar extends React.Component<IGrammarProps> {
             document.getElementById(this.getLinkId(this.activeId)).classList.remove('selected');
             document.getElementById(this.getLinkId(activeId)).classList.add('selected');
             this.activeId = activeId;
+            if (this.userEvent) {
+                location.hash = activeId;
+            }
         }
     }
     private getLinkId(id) {

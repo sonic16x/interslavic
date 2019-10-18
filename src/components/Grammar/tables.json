@@ -1037,24 +1037,20 @@
   ],
   "tableImeti": [
     [
-      "&nbsp@bt;bl;br;bb",
-      "IMĚTI@bl;bt;br",
+      "IMĚTI@bl;bt;br;w=2",
       "&nbsp@bl;bt;br",
       "tvrdy -{e}[g]š vzor@bl;bt;br;te"
     ],
     [
-      "&nbsp@bt;bl;bb",
-      "infinitiv@d",
+      "infinitiv@d;w=2",
       "im-{ě}[g]-ti@w=2;ts"
     ],
     [
-      "&nbsp@bt;bl;bb",
-      "L-participij@d",
+      "L-participij@d;w=2",
       "im-{ě}[g]-l, im-{ě}[g]-la, im-{ě}[g]-lo, im-{ě}[g]-li, im-{ě}[g]-le@w=2;ts"
     ],
     [
-      "&nbsp@bt;bl",
-      "glagolno ime@d",
+      "glagolno ime@d;w=2",
       "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
     [
@@ -1144,24 +1140,20 @@
   ],
   "tableVariti": [
     [
-      "&nbsp@bt;bl;br;bb",
-      "VARITI@bl;bt;br",
+      "VARITI@bl;bt;br;w=2",
       "&nbsp@bl;bt;br",
       "mekky -{i}[b]š vzor@bl;bt;br;te"
     ],
     [
-      "&nbsp@bt;bl;bb",
-      "infinitiv@d",
+      "infinitiv@d;w=2",
       "var-{i}[b]-ti@w=2;ts"
     ],
     [
-      "&nbsp@bt;bl;bb",
-      "L-participij@d",
+      "L-participij@d;w=2",
       "var-{i}[b]-l, var-{i}[b]-la, var-{i}[b]-lo, var-{i}[b]-li, var-{i}[b]-le@w=2;ts"
     ],
     [
-      "&nbsp@bt;bl",
-      "glagolno ime@d",
+      "glagolno ime@d;w=2",
       "var-j{e}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
     [
@@ -1288,23 +1280,19 @@
   ],
   "tableByti": [
   [
-    "&nbsp@bt;bl;br;bb",
-    "BYTI@bl;bt;br",
+    "BYTI@bl;bt;br;w=2",
     "&nbsp@bl;bt;br;w=2"
   ],
   [
-    "&nbsp@bt;bl;bb",
-    "infinitiv@d",
+    "infinitiv@d;w=2",
     "b-{y}[b]-ti@w=2;ts"
   ],
   [
-    "&nbsp@bt;bl;bb",
-    "L-participij@d",
+    "L-participij@d;w=2",
     "b-{y}[b]-l, b-{y}[b]-la, b-{y}[b]-lo, b-{y}[b]-li, b-{y}[b]-le@w=2;ts"
   ],
   [
-    "&nbsp@bt;bl",
-    "glagolno ime@d",
+    "glagolno ime@d;w=2",
     "b-{y}[b]-tje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
   ],
   [
