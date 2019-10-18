@@ -54,7 +54,8 @@ let header;
 let words;
 let headerIndexes;
 const percentsOfChecked = {};
-const isnToLatinMap = new Map();
+const isvToLatinMap = new Map();
+const isvAddMap = new Map();
 const splitPattern = /,/;
 
 function levenshteinDistance(a, b) {
@@ -100,7 +101,7 @@ function getField(item, fieldName) {
 }
 
 function isvToEngLatin(text) {
-    const latin = isnToLatinMap.get(text);
+    const latin = isvToLatinMap.get(text);
     if (!latin) {
         return normalize(getLatin(text, 3));
     }
@@ -130,11 +131,19 @@ export function initDictionary(wordList: string[][]) {
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
     words = wordList;
     words.forEach((item) => {
-        const isvWord = item[0];
-        isnToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
-        item[0].split(splitPattern)
+        const isvWord = getField(item, 'isv');
+        const add = getField(item, 'addition')
+            .replace(/\(|\)/g, '').replace(/ /g, '').split(/,|;/)
+        ;
+        isvAddMap.set(getField(item, 'addition'), add);
+        isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
+        isvWord.split(splitPattern)
+            .concat(add)
             .map((item) => {
-                isnToLatinMap.set(item, normalize(getLatin(item, 3)));
+                isvToLatinMap.set(item, normalize(getLatin(item, 3)));
+            });
+        add.map((item) => {
+                isvToLatinMap.set(item, normalize(getLatin(item, 3)));
             });
     });
     calculatePercentsOfTranslated();
@@ -184,11 +193,14 @@ export function translate(
             if (fromField === '!' || toField === '!') {
                 return false;
             }
-            return fromField
+            let splittedField = fromField
                 .replace(/^!/, '')
                 .split(splitPattern)
-                .some((sp) => searchTypes[searchType](searchPrepare(from, sp), text))
-                ;
+            ;
+            if (from === 'isv') {
+                splittedField = splittedField.concat(isvAddMap.get(getField(item, 'addition')));
+            }
+            return splittedField.some((sp) => searchTypes[searchType](searchPrepare(from, sp), text));
         })
         .map((item) => {
             const dist = getField(item, from)
