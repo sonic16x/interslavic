@@ -107,7 +107,7 @@ module.exports = {
     stats: 'errors-only',
     contentBase: outputPath,
     host: '0.0.0.0',
-    port: 4000,
+    port: 3000,
     inline: true,
     hot: true,
     historyApiFallback: true
