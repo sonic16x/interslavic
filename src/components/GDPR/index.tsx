@@ -26,7 +26,7 @@ export default class extends React.Component<{}, IGDPRState> {
                     className={'btn btn-primary'}
                     onClick={() => this.hideAlert()}
                 >
-                    Alright
+                    Ok
                 </button>
             </div>
         );
