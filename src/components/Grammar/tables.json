@@ -220,8 +220,8 @@
       "I@d;bb",
       "muž-{e}[g]m@br;r",
       "nož-{e}[g]m@bl;r",
-      "muž-{a}[r]m@br;bt;R",
-      "nož-{a}[r]m@bl;bt;R",
+      "muž-{a}[r]m{i}[b]@br;bt;R",
+      "nož-{a}[r]m{i}[b]@bl;bt;R",
       "muž-{a}[r]m{a}[r]@br;bt;r",
       "nož-{a}[r]m{a}[r]@bl;bt;r"
     ],
