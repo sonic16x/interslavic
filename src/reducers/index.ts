@@ -1,11 +1,6 @@
 import { translate, ITranslateResult } from 'utils/translator';
 import { ActionTypes } from 'actions';
-
-export const pages = [
-    'dictionary',
-    'grammar',
-    'about',
-];
+import { getPageFromPath, getPathFromPage } from 'routing';
 
 export interface IMainState {
     lang: {
@@ -20,14 +15,6 @@ export interface IMainState {
     results: ITranslateResult[];
 }
 
-export function getPage(): string {
-    const path = window.location.pathname.slice(1);
-    if (pages.indexOf(path) !== -1) {
-        return path;
-    }
-    return 'dictionary';
-}
-
 const defaultState: IMainState = {
     lang: {
         from: 'en',
@@ -36,7 +23,7 @@ const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     flavorisationType: '3',
-    page: getPage(),
+    page: getPageFromPath(),
     isLoading: true,
     results: [],
 };
@@ -67,7 +54,7 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
             };
     }
     if (ActionTypes.SET_PAGE === type) {
-        window.history.pushState({}, document.title, data);
+        window.history.pushState({}, document.title, getPathFromPage(data));
     }
     if (needUpdateResult) {
         const { fromText, lang, flavorisationType, searchType } = newState;

@@ -1,5 +1,4 @@
 .resultCard {
-  margin: 0 auto;
   width: 100%;
   max-width: 1024px;
   margin-bottom: 15px;
@@ -16,33 +15,10 @@
 }
 
 .results {
-  overflow: auto;
+  overflow: overlay;
   padding: 15px;
   margin-bottom: 45px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-/*
-@media (min-width: 576px) {
-  .resultCard {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .resultCard {
-    max-width: 600px;
-  }
-}*/
-//
-//@media (min-width: 992px) {
-//  .resultCard {
-//    max-width: 760px;
-//  }
-//}
-//
-//@media (min-width: 1200px) {
-//  .resultCard {
-//    max-width: 1140px;
-//  }
-//}

@@ -4,6 +4,7 @@ import Main from './components/Main';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { mainReducer } from 'reducers';
+import { setInitialPage } from 'routing';
 
 /* tslint:disable */
 declare global {
@@ -26,6 +27,8 @@ if ('serviceWorker' in navigator) {
             console.log('Service worker registration failed, error:', error);
         });
 }
+
+setInitialPage();
 
 if (process.env.NODE_ENV === 'production') {
     (function (m, e, t, r, i, k, a) {

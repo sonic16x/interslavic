@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
 import { setPageAction } from 'actions';
+import { pages } from 'routing';
 
 interface IHeaderProps {
     setPage: (page: string) => void;
@@ -11,21 +12,6 @@ interface IHeaderProps {
 interface IHeaderState {
     menuIsVisible: boolean;
 }
-
-const pages = [
-    {
-        name: 'Dictionary',
-        value: 'dictionary',
-    },
-    {
-        name: 'Grammar basics',
-        value: 'grammar',
-    },
-    {
-        name: 'About',
-        value: 'about',
-    },
-];
 
 class Header extends React.Component<IHeaderProps, IHeaderState> {
     constructor(props) {

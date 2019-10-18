@@ -78,11 +78,13 @@ $animationDuration: 0.1s;
   max-height: 0;
   opacity: 0;
   transition: max-height $animationDuration linear, opacity $animationDuration linear;
+  pointer-events: none;
 }
 
 .navMenu.menuIsVisible {
   max-height: 500px;
   opacity: 1;
+  pointer-events: all;
 }
 
 .navbar-brand {

@@ -1,7 +1,7 @@
 .grammarContainer {
   width: 100%;
   height: calc(100% - 60px);
-  overflow: auto;
+  overflow: overlay;
   scroll-behavior: smooth;
 }
 
