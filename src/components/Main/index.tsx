@@ -7,7 +7,7 @@ import Dictionary from 'components/Dictionary';
 import Grammar from 'components/Grammar';
 import './index.scss';
 import { fetchDictionary, setPageAction } from 'actions';
-import { getPage } from 'reducers';
+import { getPageFromPath, getPathFromPage } from 'routing';
 
 interface IMainProps {
     isLoading: boolean;
@@ -37,8 +37,8 @@ class Main extends React.Component<IMainProps> {
         );
     }
     private onChangeUrl() {
-        const page = getPage();
-        if (this.props.page !== page) {
+        const page = getPageFromPath();
+        if (getPathFromPage(this.props.page) !== page) {
             this.props.setPage(page);
         }
     }

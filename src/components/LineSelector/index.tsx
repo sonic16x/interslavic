@@ -50,6 +50,7 @@ export class LineSelector extends React.Component<ILineSelectorProps, ILineSelec
                     <a
                         className={'nav-link active shadow slide'}
                         href='#'
+                        onClick={(e) => e.preventDefault()}
                     >
                         &nbsp;
                     </a>
