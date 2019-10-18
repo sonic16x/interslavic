@@ -11,8 +11,6 @@ class About extends React.Component<IAboutProps> {
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/scherebedov/interslavic';
         const source = 'http://steen.free.fr/interslavic';
-        const sourceEmail = 'wenedyk@yahoo.co.uk';
-        const sourceName = 'Jan van Steenbergen';
         const tableUrl = 'https://docs.google.com/spreadsheets/d/14b7B41A847_PDD6S3dFBOVBIkt_Cdxnt1m4e6NjrWP0/edit?usp=sharing';
 
         return (
@@ -20,14 +18,13 @@ class About extends React.Component<IAboutProps> {
                 <div className={'common'}>
                     <br/>
                     Using dictionary from <a target={'_blank'} href={source}>{source}</a>
-                    <p>Author of Interslavic/English/Polish dictionary:</p>
-                    <a href={`email:${sourceEmail}`}>{sourceName}&nbsp;({sourceEmail})</a>
+                    <p>Author of Interslavic/English/Polish dictionary: Jan van Steenbergen</p>
                     <hr/>
                     <p>Please join the work to improve word translations for your native language.</p>
                     <a target={'_blank'} href={tableUrl}>Table with translations</a>
                     <hr/>
-                    <p>Developer</p>
-                    <a target={'_blank'} href={`email:${email}`}>{email}</a>
+                    <p>Developer:</p>
+                    <a target={'_blank'} href={`email:${email}`}>Sergey Cherebedov ({email})</a>
                     <hr/>
                     Source code (Github) <a target={'_blank'} href={github}>{github}</a>
                     <hr/>
