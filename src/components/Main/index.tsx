@@ -4,6 +4,7 @@ import Header from 'components/Header';
 import About from 'components/About';
 import { Loader } from 'components/Loader';
 import Dictionary from 'components/Dictionary';
+import GDPR from 'components/GDPR';
 import Grammar from 'components/Grammar';
 import './index.scss';
 import { fetchDictionary, setPageAction } from 'actions';
@@ -28,6 +29,7 @@ class Main extends React.Component<IMainProps> {
     public render() {
         return (
             <>
+                <GDPR/>
                 <Loader title={'Loading dictionary'} isLoading={this.props.isLoading}/>
                 <Header/>
                 <About/>

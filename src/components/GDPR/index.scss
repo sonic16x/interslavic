@@ -1,0 +1,16 @@
+.gdprAlert {
+  position: absolute;
+  bottom: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+  z-index: 110;
+  button {
+    margin-left: 1rem;
+  }
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s linear;
+}
