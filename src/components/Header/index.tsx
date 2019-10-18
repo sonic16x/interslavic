@@ -24,7 +24,13 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
         return (
             <nav className={'navbar navbar-dark bg-dark shadow header'}>
                 <span className={'navbar-brand'}>
-                    <img src={'logo.png'} height={'30'} className={'d-inline-block align-center logo'} alt={'logo'}/>
+                    <img
+                        src={'logo.png'}
+                        height={'30'}
+                        className={'d-inline-block align-center logo'}
+                        alt={'logo'}
+                        onClick={() => this.setPage('dictionary')}
+                    />
                     Medžuslovjansky slovnik
                 </span>
                 <button
