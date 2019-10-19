@@ -26,6 +26,7 @@ const titles = {
     podredne: 'Podredne izrěčenja',
     naucno: 'Naučno pravopisanje i kirilica',
     glagolica: 'Glagolica',
+    primetky: 'Primětky (*)',
     podrobnosti: 'Podrobne pravila (linki)',
 };
 
@@ -253,6 +254,14 @@ class Grammar extends React.Component<IGrammarProps> {
                     </Card>
                     <Card title={titles.glagolica} id={'glagolica'}>
                         <Table data={tables.tableGlagoljica} />
+                    </Card>
+                    <Card title={titles.primetky} id={'primetky'}>
+                        <Text>
+                            {`1. Dvojina je shranila se nyně jedino v slovenskom i lužičskyh jezykah, tomu vměsto toj formy jest rekomendovano koristati množinu.`}
+                        </Text>
+                        <Text>
+                            {`2. Prosto prošlo vrěme (aorist, imperfect) je shranilo se jedino v česti slovjanskyh jezykov, tomu vměsto njego jest rekomendovano koristati glagol byti + l-participij (pisah → jesm pisal).`}
+                        </Text>
                     </Card>
                     <Card title={titles.podrobnosti} id={'podrobnosti'}>
                         <Text>
