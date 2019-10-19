@@ -41,9 +41,8 @@ function getCyrillic(text, flavorisationType): string {
         return '';
     }
     // Новая стандартная кириллица
-    if( flavorisationType === '3NC') {
+    if ( flavorisationType === '3NC') {
         return transliterate(text, 1, 3, 0, 1)
-            .replace(/(?<=[ln])jo/g, 'йо')
             .replace(/ja/g, 'я').replace(/Ja/g, 'Я')
             .replace(/je/g, 'є').replace(/Je/g, 'Є')
             .replace(/ju/g, 'ю').replace(/Ju/g, 'Ю')
