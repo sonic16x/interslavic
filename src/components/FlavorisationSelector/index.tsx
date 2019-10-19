@@ -19,7 +19,7 @@ const flavorisationTypes = [
         value: '3',
     },
     {
-        name: 'MS Nova kirilica',
+        name: 'MS Jotovana kirilica',
         value: '3NC',
     },
     {
