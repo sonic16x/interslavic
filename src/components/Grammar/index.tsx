@@ -257,7 +257,7 @@ class Grammar extends React.Component<IGrammarProps> {
                     </Card>
                     <Card title={titles.primetky} id={'primetky'}>
                         <Text>
-                            {`1. Dvojina je shranila se nyně jedino v slovenskom i lužičskyh jezykah, tomu vměsto toj formy jest rekomendovano koristati množinu.`}
+                            {`1. Dvojina je shranila se nyně jedino v slovenskom i lužičskyh jezykah, tomu vměsto tutoj formy jest rekomendovano koristati množinu.`}
                         </Text>
                         <Text>
                             {`2. Prosto prošlo vrěme (aorist, imperfect) je shranilo se jedino v česti slovjanskyh jezykov, tomu vměsto njego jest rekomendovano koristati glagol byti + l-participij (pisah → jesm pisal).`}
