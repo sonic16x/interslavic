@@ -92,6 +92,9 @@ $animationDuration: 0.1s;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: calc(100% - 4rem);
+  img {
+    cursor: pointer;
+  }
 }
 
 .header {
