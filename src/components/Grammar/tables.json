@@ -607,8 +607,8 @@
       "se@d",
       "my@d",
       "vy@d",
-      "na@d",
-      "va@d",
+      "na<a href=\"#primetky\">*</a>@d",
+      "va<a href=\"#primetky\">*</a>@d",
       "kto@d",
       "čto@d"
     ],
@@ -1054,7 +1054,7 @@
       "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
     [
-      "sučno vrěme (tvrde glagoly možut imati sučny koren @w=4;D;bb;ts"
+      "sučno vrěme (tvrde glagoly možut iměti sučny koren @w=4;D;bb;ts"
     ],
     [
       "nerovny s korenom infinitiva)@w=4;D;bt;ts"
@@ -1157,7 +1157,7 @@
       "var-j{e}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
     [
-      "sučno vrěme (tvrde glagoly možut imati sučny koren @w=4;D;bb"
+      "sučno vrěme (tvrde glagoly možut iměti sučny koren @w=4;D;bb"
     ],
     [
       "nerovny s korenom infinitiva)@w=4;D;bt"
