@@ -40,6 +40,46 @@ function getCyrillic(text, flavorisationType): string {
     if (!text) {
         return '';
     }
+    // Новая стандартная кириллица
+    if( flavorisationType === '3NC') {
+        return transliterate(text, 1, 3, 0, 1)
+            .replace(/(?<=[ln])jo/g, 'йо')
+            .replace(/ja/g, 'я').replace(/Ja/g, 'Я')
+            .replace(/je/g, 'є').replace(/Je/g, 'Є')
+            .replace(/ju/g, 'ю').replace(/Ju/g, 'Ю')
+            .replace(/(?<=[NnLlDdTt])j/g, 'ь')
+            .replace(/j/g, 'й').replace(/J/g, 'Й')
+            .replace(/a/g, 'а').replace(/A/g, 'А')
+            .replace(/b/g, 'б').replace(/B/g, 'Б')
+            .replace(/c/g, 'ц').replace(/C/g, 'Ц')
+            .replace(/č/g, 'ч').replace(/Č/g, 'Ч')
+            .replace(/d/g, 'д').replace(/D/g, 'Ж')
+            .replace(/e/g, 'е').replace(/E/g, 'Е')
+            .replace(/ě/g, 'ӗ').replace(/Ě/g, 'Ĕ')
+            .replace(/f/g, 'ф').replace(/F/g, 'Ф')
+            .replace(/g/g, 'г').replace(/G/g, 'Г')
+            .replace(/h/g, 'х').replace(/H/g, 'Х')
+            .replace(/i/g, 'и').replace(/I/g, 'И')
+            .replace(/y/g, 'ы').replace(/Y/g, 'Ы')
+            .replace(/k/g, 'к').replace(/K/g, 'К')
+            .replace(/l/g, 'л').replace(/L/g, 'Л')
+            .replace(/m/g, 'м').replace(/M/g, 'М')
+            .replace(/n/g, 'н').replace(/N/g, 'Н')
+            .replace(/o/g, 'о').replace(/O/g, 'О')
+            .replace(/p/g, 'п').replace(/P/g, 'П')
+            .replace(/r/g, 'р').replace(/R/g, 'Р')
+            .replace(/s/g, 'с').replace(/S/g, 'С')
+            .replace(/š/g, 'ш').replace(/Š/g, 'Ш')
+            .replace(/t/g, 'т').replace(/T/g, 'Щ')
+            .replace(/u/g, 'у').replace(/U/g, 'У')
+            .replace(/v/g, 'в').replace(/V/g, 'В')
+            .replace(/z/g, 'з').replace(/Z/g, 'З')
+            .replace(/ž/g, 'ж').replace(/Ž/g, 'Ж')
+            .replace(/x/g, 'кс').replace(/X/g, 'Кс')
+            .replace(/q/g, 'к').replace(/Q/g, 'К')
+            .replace(/w/g, 'в').replace(/W/g, 'В')
+            ;
+    }
     return transliterate(text, 5, flavorisationType, 0, 1);
 }
 
@@ -47,6 +87,7 @@ function getLatin(text, flavorisationType): string {
     if (!text) {
         return '';
     }
+    if (flavorisationType === '3NC') { flavorisationType = 3; }
     return transliterate(text, 1, flavorisationType, 0, 1);
 }
 
