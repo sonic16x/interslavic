@@ -10,6 +10,7 @@ import { setInitialPage } from 'routing';
 declare global {
     const HASH_ID: string;
     const DATE: string;
+    const BASE_URL: string;
     const ym: (id: number, type: string, params: any) => void;
     interface Window {
         HASH_ID: string;

@@ -1,20 +1,18 @@
-const homePage = process.env.NODE_ENV === 'production' ? '/interslavic' : '';
-
 export const pages = [
     {
         name: 'Dictionary',
         value: 'dictionary',
-        path: `${homePage}/`,
+        path: `${BASE_URL}/`,
     },
     {
         name: 'Grammar basics',
         value: 'grammar',
-        path: `${homePage}/grammar`,
+        path: `${BASE_URL}/grammar`,
     },
     {
         name: 'About',
         value: 'about',
-        path: `${homePage}/about`,
+        path: `${BASE_URL}/about`,
     },
 ];
 
@@ -36,7 +34,7 @@ export function setInitialPage() {
     const currentPath = window.location.pathname.split('#')[0];
     const page = pages.find(({path}) => (path === currentPath));
     if (!page) {
-        window.history.replaceState({}, document.title, homePage);
+        window.history.replaceState({}, document.title, BASE_URL);
     }
 }
 
@@ -45,5 +43,5 @@ export function getPathFromPage(page: string): string {
     if (finded) {
         return finded.path;
     }
-    return homePage;
+    return BASE_URL;
 }
