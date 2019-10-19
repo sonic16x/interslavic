@@ -93,7 +93,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina@w=2;d"
+      "dvojina*@w=2;d"
     ],
     [
       "N@d;bb",
@@ -169,7 +169,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina@w=2;d"
+      "dvojina*@w=2;d"
     ],
     [
       "N@d;bb",
@@ -247,7 +247,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina@w=2;d"
+      "dvojina*@w=2;d"
     ],
     [
       "N@d;bb",
@@ -317,13 +317,13 @@
     [
       "&nbsp@bt;bl;br;bb",
       "KOST (MYŠ,RADOST,PET,ŠEST,DESET...)@bt;bl;br;w=4;ts",
-      "žensky sogl. vzor@bt;bl;br;te"
+      "žensky soglasny vzor@bt;bl;br;te"
     ],
     [
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "N@d;bb",
@@ -394,7 +394,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina@w=2;d"
+      "dvojina*@w=2;d"
     ],
     [
       "N@d;bb",
@@ -712,7 +712,7 @@
       "s. jedn.@d",
       "m.ž.m.@d",
       "m.n.m. ž.m. s.m.@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "N@d;bb",
@@ -790,7 +790,7 @@
       "s. jedn.@d",
       "m.ž.m.@d",
       "m.n.m. ž.m. s.m.@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "N@d;bb",
@@ -867,7 +867,7 @@
       "s. jedn.@d",
       "m.ž.m.@d",
       "m.n.m. ž.m. s.m.@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "N@d;bb",
@@ -945,7 +945,7 @@
       "s. jedn.@d",
       "m.ž.m.@d",
       "m.n.m. ž.m. s.m.@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "N@d;bb",
@@ -1063,7 +1063,7 @@
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "1@d",
@@ -1098,7 +1098,7 @@
       "{imaj}[k]{!}[s] {imaj}[k]-mo{!}[s] {imaj}[k]-te{!}[s]@w=2;r"
     ],
     [
-      "prošlo vrěme@w=4;D;bb"
+      "prosto prošlo vrěme*@w=4;D;bb"
     ],
     [
       "(infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bt"
@@ -1107,7 +1107,7 @@
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "1@d",
@@ -1166,7 +1166,7 @@
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "1@d",
@@ -1201,16 +1201,13 @@
       "var-{i}[b]{!}[s] var-{i}[b]mo{!}[s] var-{i}[b]te{!}[s]@w=2;r"
     ],
     [
-      "prošlo vrěme(infinitivny koren i samoglasnik iz @w=4;D;bb"
-    ],
-    [
-      "infinitivnogo zakončenja)@w=4;D;bt"
+      "prosto prošlo vrěme* (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bb;bt"
     ],
     [
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "1@d",
@@ -1268,7 +1265,7 @@
       "jesm napisal@B"
     ],
     [
-      "prošlo vrěme@D",
+      "prosto prošlo vrěme*@D",
       "pisah@",
       "napisah@"
     ],
@@ -1302,7 +1299,7 @@
     "&nbsp@d",
     "jednina@d",
     "množina@d",
-    "dvojina@d"
+    "dvojina*@d"
   ],
   [
     "1@d",
@@ -1343,7 +1340,7 @@
     "&nbsp@d",
     "jednina@d",
     "množina@d",
-    "dvojina@d"
+    "dvojina*@d"
   ],
   [
     "1@d",
@@ -1374,13 +1371,13 @@
     "{jesmy}[k] {≈ imaj-uči}[s]@b"
   ],
   [
-    "prošlo vrěme@w=4;D"
+    "prosto prošlo vrěme*@w=4;D"
   ],
   [
     "&nbsp@d",
     "jednina@d",
     "množina@d",
-    "dvojina@d"
+    "dvojina*@d"
   ],
   [
     "1@d",
@@ -1417,7 +1414,7 @@
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina@d"
+      "dvojina*@d"
     ],
     [
       "1@d",
@@ -1790,7 +1787,7 @@
       "{Ⱇ}[k]@bt;s",
       "{Ⰳ}[k]@bt;s",
       "{Ⱈ}[k]@bt;s",
-      "{Ⱛ}[k]@bt;s",
+      "{ⰻ}[k]@bt;s",
       "{Ⱜ}[k]@bt;s",
       "{Ⱓ}[k]@bt;s",
       "{Ⰽ}[k]@bt;s",
