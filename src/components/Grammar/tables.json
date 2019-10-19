@@ -93,7 +93,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina*@w=2;d"
+      "dvojina<a href=\"#primetky\">*</a>@w=2;d"
     ],
     [
       "N@d;bb",
@@ -169,7 +169,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina*@w=2;d"
+      "dvojina<a href=\"#primetky\">*</a>@w=2;d"
     ],
     [
       "N@d;bb",
@@ -247,7 +247,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina*@w=2;d"
+      "dvojina<a href=\"#primetky\">*</a>@w=2;d"
     ],
     [
       "N@d;bb",
@@ -323,7 +323,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "N@d;bb",
@@ -394,7 +394,7 @@
       "&nbsp@bt;bl",
       "jednina@w=2;d",
       "množina@w=2;d",
-      "dvojina*@w=2;d"
+      "dvojina<a href=\"#primetky\">*</a>@w=2;d"
     ],
     [
       "N@d;bb",
@@ -712,7 +712,7 @@
       "s. jedn.@d",
       "m.ž.m.@d",
       "m.n.m. ž.m. s.m.@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "N@d;bb",
@@ -790,7 +790,7 @@
       "s. jedn.@d",
       "m.ž.m.@d",
       "m.n.m. ž.m. s.m.@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "N@d;bb",
@@ -867,7 +867,7 @@
       "s. jedn.@d",
       "m.ž.m.@d",
       "m.n.m. ž.m. s.m.@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "N@d;bb",
@@ -945,7 +945,7 @@
       "s. jedn.@d",
       "m.ž.m.@d",
       "m.n.m. ž.m. s.m.@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "N@d;bb",
@@ -1063,7 +1063,7 @@
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "1@d",
@@ -1098,7 +1098,7 @@
       "{imaj}[k]{!}[s] {imaj}[k]-mo{!}[s] {imaj}[k]-te{!}[s]@w=2;r"
     ],
     [
-      "prosto prošlo vrěme*@w=4;D;bb"
+      "prosto prošlo vrěme<a href=\"#primetky\">*</a>@w=4;D;bb"
     ],
     [
       "(infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bt"
@@ -1107,7 +1107,7 @@
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "1@d",
@@ -1166,7 +1166,7 @@
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "1@d",
@@ -1201,13 +1201,13 @@
       "var-{i}[b]{!}[s] var-{i}[b]mo{!}[s] var-{i}[b]te{!}[s]@w=2;r"
     ],
     [
-      "prosto prošlo vrěme* (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bb;bt"
+      "prosto prošlo vrěme<a href=\"#primetky\">*</a> (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bb;bt"
     ],
     [
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "1@d",
@@ -1265,7 +1265,7 @@
       "jesm napisal@B"
     ],
     [
-      "prosto prošlo vrěme*@D",
+      "prosto prošlo vrěme<a href=\"#primetky\">*</a>@D",
       "pisah@",
       "napisah@"
     ],
@@ -1299,7 +1299,7 @@
     "&nbsp@d",
     "jednina@d",
     "množina@d",
-    "dvojina*@d"
+    "dvojina<a href=\"#primetky\">*</a>@d"
   ],
   [
     "1@d",
@@ -1340,7 +1340,7 @@
     "&nbsp@d",
     "jednina@d",
     "množina@d",
-    "dvojina*@d"
+    "dvojina<a href=\"#primetky\">*</a>@d"
   ],
   [
     "1@d",
@@ -1371,13 +1371,13 @@
     "{jesmy}[k] {≈ imaj-uči}[s]@b"
   ],
   [
-    "prosto prošlo vrěme*@w=4;D"
+    "prosto prošlo vrěme<a href=\"#primetky\">*</a>@w=4;D"
   ],
   [
     "&nbsp@d",
     "jednina@d",
     "množina@d",
-    "dvojina*@d"
+    "dvojina<a href=\"#primetky\">*</a>@d"
   ],
   [
     "1@d",
@@ -1414,7 +1414,7 @@
       "&nbsp@d",
       "jednina@d",
       "množina@d",
-      "dvojina*@d"
+      "dvojina<a href=\"#primetky\">*</a>@d"
     ],
     [
       "1@d",
