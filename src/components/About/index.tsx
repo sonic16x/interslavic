@@ -18,7 +18,7 @@ class About extends React.Component<IAboutProps> {
                 <div className={'common'}>
                     <br/>
                     Using dictionary from <a target={'_blank'} href={source}>{source}</a>
-                    <p>Author of Interslavic/English/Polish dictionary: Jan van Steenbergen</p>
+                    <p>Author of Interslavic/English/Polish dictionary: Jan van Steenbergen and Michał Swat</p>
                     <hr/>
                     <p>Please join the work to improve word translations for your native language.</p>
                     <a target={'_blank'} href={tableUrl}>Table with translations</a>
