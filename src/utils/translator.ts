@@ -1,4 +1,5 @@
 import { latinToIpa } from './latinToIpa';
+import { latinToGla } from './latinToGla';
 import { transliterate } from './legacy';
 
 const searchTypes = {
@@ -172,6 +173,10 @@ export interface ITranslateResult {
     originalAddCyrillic?: string;
     add: string;
     addCyrillic: string;
+    translateGla: string;
+    addGla: string;
+    originalGla: string;
+    originalAddGla: string;
     pos: string;
     ipa?: string;
     checked: boolean;
@@ -230,8 +235,10 @@ export function translate(
             return {
                 translate: translate.replace(/^!/, ''),
                 originalCyrillic: getCyrillic(ins, flavorisationType),
+                originalGla: latinToGla(getLatin(ins, flavorisationType)),
                 original: getLatin(ins, flavorisationType),
                 originalAdd: getLatin(add, flavorisationType),
+                originalAddGla: latinToGla(getLatin(add, flavorisationType)),
                 originalAddCyrillic: getCyrillic(add, flavorisationType),
                 pos: getField(item, 'partOfSpeech'),
                 checked: translate[0] !== '!',
@@ -245,9 +252,11 @@ export function translate(
             return {
                 translate: getLatin(ins, flavorisationType),
                 translateCyrillic: getCyrillic(ins, flavorisationType),
+                translateGla: latinToGla(getLatin(ins, flavorisationType)),
                 original: original.replace(/^!/, ''),
                 add: getLatin(add, flavorisationType),
                 addCyrillic: getCyrillic(add, flavorisationType),
+                addGla: latinToGla(getLatin(add, flavorisationType)),
                 pos: getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(ins, flavorisationType)),
                 checked: original[0] !== '!',

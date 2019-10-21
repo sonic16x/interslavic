@@ -50,10 +50,11 @@ class Results extends React.Component<IResultsProps> {
         if (item.originalAddCyrillic) {
             cyrillic += ` ${item.originalAddCyrillic}`;
         }
-        if (latin && cyrillic) {
-            return `${latin}/${cyrillic}`;
+        let gla = item.originalGla;
+        if (item.originalAddGla) {
+            gla += ` ${item.originalAddGla}`;
         }
-        return latin;
+        return [latin, cyrillic, gla].filter(Boolean).join('/');
     }
     private renderTranslate(item) {
         let latin = item.translate;
@@ -64,10 +65,11 @@ class Results extends React.Component<IResultsProps> {
         if (item.addCyrillic) {
             cyrillic += ` ${item.addCyrillic}`;
         }
-        if (latin && cyrillic) {
-            return `${latin}/${cyrillic}`;
+        let gla = item.translateGla;
+        if (item.addGla) {
+            gla += ` ${item.addGla}`;
         }
-        return latin;
+        return [latin, cyrillic, gla].filter(Boolean).join('/');
     }
     private renderIpa(item) {
         if (item.ipa) {
