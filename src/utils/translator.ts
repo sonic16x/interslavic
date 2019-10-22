@@ -97,7 +97,7 @@ function levenshteinDistance(a, b) {
     return matrix[b.length][a.length];
 }
 
-function getField(item, fieldName) {
+function getField(item, fieldName): string {
     return item[headerIndexes.get(fieldName)];
 }
 
@@ -167,31 +167,34 @@ export function getPercentsOfTranslated() {
 
 export interface ITranslateResult {
     translate: string;
-    translateCyrillic: string;
+    translateCyrillic?: string;
     original: string;
     originalAdd?: string;
     originalAddCyrillic?: string;
-    add: string;
-    addCyrillic: string;
-    translateGla: string;
-    addGla: string;
-    originalGla: string;
-    originalAddGla: string;
+    add?: string;
+    addCyrillic?: string;
+    translateGla?: string;
+    addGla?: string;
+    originalGla?: string;
+    originalAddGla?: string;
     pos: string;
-    ipa?: string;
+    ipa: string;
     checked: boolean;
 }
 
 export function translate(
-    inputText: string, from: string, to: string, searchType: string, flavorisationType: string,
-): any[] {
+    inputText: string,
+    from: string,
+    to: string,
+    searchType: string,
+): string[][] {
     const text = searchPrepare(from, inputText);
     if (!text) {
         return [];
     }
     const distMap = new WeakMap();
 
-    const result = words
+    return words
         .filter((item) => {
             const fromField = getField(item, from);
             const toField = getField(item, to);
@@ -226,39 +229,47 @@ export function translate(
         .sort((a, b) => distMap.get(a) - distMap.get(b))
         .slice(0, 50)
     ;
+}
 
+export function formatTranslate(
+    results: string[][],
+    from: string,
+    to: string,
+    flavorisationType: string,
+): ITranslateResult[] {
     if (from === 'isv') {
-        return result.map((item) => {
-            const ins = getField(item, 'isv');
+        return results.map((item) => {
+            const isv = getField(item, 'isv');
             const add = getField(item, 'addition');
             const translate = getField(item, to);
             return {
                 translate: translate.replace(/^!/, ''),
-                originalCyrillic: getCyrillic(ins, flavorisationType),
-                originalGla: latinToGla(getLatin(ins, flavorisationType)),
-                original: getLatin(ins, flavorisationType),
+                originalCyrillic: getCyrillic(isv, flavorisationType),
+                originalGla: latinToGla(getLatin(isv, flavorisationType)),
+                original: getLatin(isv, flavorisationType),
                 originalAdd: getLatin(add, flavorisationType),
                 originalAddGla: latinToGla(getLatin(add, flavorisationType)),
                 originalAddCyrillic: getCyrillic(add, flavorisationType),
+                ipa: latinToIpa(getLatin(isv, flavorisationType)),
                 pos: getField(item, 'partOfSpeech'),
                 checked: translate[0] !== '!',
             };
         });
     } else {
-        return result.map((item) => {
-            const ins = getField(item, 'isv');
+        return results.map((item) => {
+            const isv = getField(item, 'isv');
             const add = getField(item, 'addition');
             const original = getField(item, from);
             return {
-                translate: getLatin(ins, flavorisationType),
-                translateCyrillic: getCyrillic(ins, flavorisationType),
-                translateGla: latinToGla(getLatin(ins, flavorisationType)),
+                translate: getLatin(isv, flavorisationType),
+                translateCyrillic: getCyrillic(isv, flavorisationType),
+                translateGla: latinToGla(getLatin(isv, flavorisationType)),
                 original: original.replace(/^!/, ''),
                 add: getLatin(add, flavorisationType),
                 addCyrillic: getCyrillic(add, flavorisationType),
                 addGla: latinToGla(getLatin(add, flavorisationType)),
                 pos: getField(item, 'partOfSpeech'),
-                ipa: latinToIpa(getLatin(ins, flavorisationType)),
+                ipa: latinToIpa(getLatin(isv, flavorisationType)),
                 checked: original[0] !== '!',
             };
         });

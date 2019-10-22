@@ -5,6 +5,10 @@ import './index.scss';
 
 interface IResultsProps {
     results: ITranslateResult[];
+    lang: {
+        from: string;
+        to: string;
+    };
 }
 
 class Results extends React.Component<IResultsProps> {
@@ -17,7 +21,7 @@ class Results extends React.Component<IResultsProps> {
                         {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
                     </h5>
                     <h6 className={'card-subtitle mb-2 text-muted'}>{item.pos}</h6>
-                    {item.original ? <p className={'card-text'}>{this.renderOriginal(item)}</p> : ''}
+                    <p className={'card-text'}>{this.renderOriginal(item)}</p>
                 </div>
             </div>
         );
@@ -79,8 +83,8 @@ class Results extends React.Component<IResultsProps> {
     }
 }
 
-function mapStateToProps({results}) {
-    return { results };
+function mapStateToProps({results, lang}) {
+    return { results, lang };
 }
 
 export default connect(mapStateToProps)(Results);

@@ -1,4 +1,4 @@
-import { translate, ITranslateResult } from 'utils/translator';
+import { translate, formatTranslate, ITranslateResult } from 'utils/translator';
 import { ActionTypes } from 'actions';
 import { getPageFromPath, getPathFromPage, goToPage } from 'routing';
 
@@ -12,6 +12,7 @@ export interface IMainState {
     flavorisationType: string;
     page: string;
     isLoading: boolean;
+    rawResults: string[][];
     results: ITranslateResult[];
 }
 
@@ -25,6 +26,7 @@ const defaultState: IMainState = {
     flavorisationType: '3',
     page: getPageFromPath(),
     isLoading: true,
+    rawResults: [],
     results: [],
 };
 
@@ -53,15 +55,23 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
                 [actionTypeFieldMap[type]]: data,
             };
     }
-    if (ActionTypes.SET_PAGE === type) {
+    if (type === ActionTypes.SET_PAGE) {
         goToPage(getPathFromPage(data));
+    }
+    if (type === ActionTypes.FLAVORISATION_TYPE) {
+        const { rawResults, lang, flavorisationType} = newState;
+        return {
+            ...newState,
+            results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+        };
     }
     if (needUpdateResult) {
         const { fromText, lang, flavorisationType, searchType } = newState;
-        const results = translate(fromText, lang.from, lang.to, searchType, flavorisationType);
+        const rawResults = translate(fromText, lang.from, lang.to, searchType);
         newState = {
             ...newState,
-            results,
+            rawResults,
+            results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
         };
     }
     return newState;
