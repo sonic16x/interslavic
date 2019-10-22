@@ -50,11 +50,11 @@ class Results extends React.Component<IResultsProps> {
         if (item.originalAddCyrillic) {
             cyrillic += ` ${item.originalAddCyrillic}`;
         }
-        let gla = item.originalGla;
-        if (item.originalAddGla) {
-            gla += ` ${item.originalAddGla}`;
-        }
-        return [latin, cyrillic, gla].filter(Boolean).join('/');
+        // let gla = item.originalGla;
+        // if (item.originalAddGla) {
+        //     gla += ` ${item.originalAddGla}`;
+        // }
+        return [latin, cyrillic].filter(Boolean).join('/');
     }
     private renderTranslate(item) {
         let latin = item.translate;
@@ -65,11 +65,11 @@ class Results extends React.Component<IResultsProps> {
         if (item.addCyrillic) {
             cyrillic += ` ${item.addCyrillic}`;
         }
-        let gla = item.translateGla;
-        if (item.addGla) {
-            gla += ` ${item.addGla}`;
-        }
-        return [latin, cyrillic, gla].filter(Boolean).join('/');
+        // let gla = item.translateGla;
+        // if (item.addGla) {
+        //     gla += ` ${item.addGla}`;
+        // }
+        return [latin, cyrillic].filter(Boolean).join('/');
     }
     private renderIpa(item) {
         if (item.ipa) {
