@@ -123,7 +123,7 @@ function searchPrepare(lang, text) {
             return filterLatin(lowerCaseText);
         case 'ru':
             return lowerCaseText.replace(/[ё]/g, 'е');
-        case 'ru':
+        case 'sr':
             return srGajevicaToVukovica(lowerCaseText);
         default:
             return lowerCaseText;
