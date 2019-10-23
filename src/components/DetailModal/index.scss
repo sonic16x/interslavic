@@ -1,0 +1,12 @@
+.modal {
+  &.show {
+    display: block !important;
+  }
+  background: rgba(1, 1, 1, 0.5);
+  .modal-dialog {
+    button.close {
+      outline: 0;
+    }
+    z-index: 1070;
+  }
+}

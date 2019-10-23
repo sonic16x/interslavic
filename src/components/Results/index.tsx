@@ -2,9 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { ITranslateResult } from 'utils/translator';
 import './index.scss';
+import { showDetailAction } from 'actions';
 
 interface IResultsProps {
     results: ITranslateResult[];
+    showDetail: (itemIndex: number) => void;
     lang: {
         from: string;
         to: string;
@@ -14,7 +16,7 @@ interface IResultsProps {
 class Results extends React.Component<IResultsProps> {
     public renderResultItem(item: ITranslateResult, i: number) {
         return (
-            <div className={'card resultCard shadow'} key={i}>
+            <div className={'card resultCard shadow'} key={i} onClick={() => this.props.showDetail(i)}>
                 {this.renderCheked(item)}
                 <div className={'card-body'}>
                     <h5 className={'card-title'}>
@@ -87,4 +89,10 @@ function mapStateToProps({results, lang}) {
     return { results, lang };
 }
 
-export default connect(mapStateToProps)(Results);
+function mapDispatchToProps(dispatch) {
+    return {
+        showDetail: (i) => dispatch(showDetailAction(i)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results);

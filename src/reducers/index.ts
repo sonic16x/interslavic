@@ -12,6 +12,7 @@ export interface IMainState {
     flavorisationType: string;
     page: string;
     isLoading: boolean;
+    detailModal?: number;
     rawResults: string[][];
     results: ITranslateResult[];
 }
@@ -30,49 +31,65 @@ const defaultState: IMainState = {
     results: [],
 };
 
-const actionTypeFieldMap = {
-    [ActionTypes.SEARCH_TYPE]: 'searchType',
-    [ActionTypes.FROM_TEXT]: 'fromText',
-    [ActionTypes.FLAVORISATION_TYPE]: 'flavorisationType',
-    [ActionTypes.SET_PAGE]: 'page',
-    [ActionTypes.IS_LOADING]: 'isLoading',
-    [ActionTypes.LANG]: 'lang',
-};
-
 export function mainReducer(state: IMainState = defaultState, { type, data }) {
-    let newState = state;
-    let needUpdateResult = false;
     switch (type) {
-        case ActionTypes.LANG:
-        case ActionTypes.SEARCH_TYPE:
-        case ActionTypes.FROM_TEXT:
-        case ActionTypes.FLAVORISATION_TYPE:
-            needUpdateResult = true;
-        case ActionTypes.SET_PAGE:
-        case ActionTypes.IS_LOADING:
-            newState = {
-                ...newState,
-                [actionTypeFieldMap[type]]: data,
+        case ActionTypes.LANG: {
+            const { fromText, flavorisationType, searchType } = state;
+            const lang = data;
+            const rawResults = translate(fromText, lang.from, lang.to, searchType);
+            return {
+                ...state,
+                lang,
+                rawResults,
+                results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
             };
+        }
+        case ActionTypes.SEARCH_TYPE: {
+            const { flavorisationType, lang, fromText } = state;
+            const searchType = data;
+            const rawResults = translate(fromText, lang.from, lang.to, searchType);
+            return {
+                ...state,
+                searchType,
+                rawResults,
+                results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+            };
+        }
+        case ActionTypes.FROM_TEXT: {
+            const { searchType, flavorisationType, lang } = state;
+            const fromText = data;
+            const rawResults = translate(fromText, lang.from, lang.to, searchType);
+            return {
+                ...state,
+                fromText,
+                rawResults,
+                results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+            };
+        }
+        case ActionTypes.FLAVORISATION_TYPE:
+            const { rawResults, lang} = state;
+            return {
+                ...state,
+                flavorisationType: data,
+                results: formatTranslate(rawResults, lang.from, lang.to, data),
+            };
+        case ActionTypes.SET_PAGE:
+            goToPage(getPathFromPage(data));
+            return {
+                ...state,
+                page: data,
+            };
+        case ActionTypes.IS_LOADING:
+            return {
+                ...state,
+                isLoading: data,
+            };
+        case ActionTypes.SHOW_DETAIL:
+            return {
+                ...state,
+                detailModal: data,
+            };
+        default:
+            return defaultState;
     }
-    if (type === ActionTypes.SET_PAGE) {
-        goToPage(getPathFromPage(data));
-    }
-    if (type === ActionTypes.FLAVORISATION_TYPE) {
-        const { rawResults, lang, flavorisationType} = newState;
-        return {
-            ...newState,
-            results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
-        };
-    }
-    if (needUpdateResult) {
-        const { fromText, lang, flavorisationType, searchType } = newState;
-        const rawResults = translate(fromText, lang.from, lang.to, searchType);
-        newState = {
-            ...newState,
-            rawResults,
-            results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
-        };
-    }
-    return newState;
 }

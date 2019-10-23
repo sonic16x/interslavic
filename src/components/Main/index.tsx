@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header';
+import DetailModal from 'components/DetailModal';
 import About from 'components/About';
 import { Loader } from 'components/Loader';
 import Dictionary from 'components/Dictionary';
@@ -32,6 +33,7 @@ class Main extends React.Component<IMainProps> {
                 <GDPR/>
                 <Loader title={'Loading dictionary'} isLoading={this.props.isLoading}/>
                 <Header/>
+                <DetailModal/>
                 <About/>
                 <Dictionary/>
                 <Grammar/>

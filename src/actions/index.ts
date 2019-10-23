@@ -7,12 +7,27 @@ export enum ActionTypes {
     FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
     SET_PAGE = 'SET_PAGE',
     IS_LOADING = 'IS_LOADING',
+    SHOW_DETAIL= 'SHOW_DETAIL',
 }
 
 export function langAction(data: {from: string, to: string}) {
     return {
         type: ActionTypes.LANG,
         data,
+    };
+}
+
+export function showDetailAction(data: number) {
+    return {
+        type: ActionTypes.SHOW_DETAIL,
+        data,
+    };
+}
+
+export function hideDetailAction() {
+    return {
+        type: ActionTypes.SHOW_DETAIL,
+        data: undefined,
     };
 }
 
