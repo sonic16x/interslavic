@@ -56,7 +56,7 @@ export class LineSelector extends React.Component<ILineSelectorProps, ILineSelec
                     </a>
                 </li>
                 {this.props.options.map(({name, value}, i) => (
-                    <li className={'nav-item'} key={i} ref={this.liRefs[value]}>
+                    <li className={'nav-item frontItem'} key={i} ref={this.liRefs[value]}>
                         <a
                             className={'nav-link' + (value === this.props.value ? ' activeItem' : '')}
                             href='#'

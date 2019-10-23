@@ -22,7 +22,7 @@ class Results extends React.Component<IResultsProps> {
                     <h5 className={'card-title'}>
                         {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
                     </h5>
-                    <h6 className={'card-subtitle mb-2 text-muted'}>{item.pos}</h6>
+                    <h6 className={'card-subtitle mb-2 text-muted'}>{item.details}</h6>
                     <p className={'card-text'}>{this.renderOriginal(item)}</p>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { latinToIpa } from './latinToIpa';
 import { latinToGla } from './latinToGla';
 import { srGajevicaToVukovica } from './srGajevicaToVukovica';
-import { transliterate } from './legacy';
+import { transliterate } from 'utils/legacy/transliterate';
 
 const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
@@ -38,14 +38,14 @@ function filterLatin(text) {
         ;
 }
 
-function getCyrillic(text, flavorisationType): string {
+export function getCyrillic(text, flavorisationType): string {
     if (!text) {
         return '';
     }
     return transliterate(text, 5, flavorisationType, 0, 1);
 }
 
-function getLatin(text, flavorisationType): string {
+export function getLatin(text, flavorisationType): string {
     if (!text) {
         return '';
     }
@@ -180,7 +180,7 @@ export interface ITranslateResult {
     addGla?: string;
     originalGla?: string;
     originalAddGla?: string;
-    pos: string;
+    details: string;
     ipa: string;
     checked: boolean;
 }
@@ -253,8 +253,8 @@ export function formatTranslate(
                 originalAdd: getLatin(add, flavorisationType),
                 originalAddGla: latinToGla(getLatin(add, flavorisationType)),
                 originalAddCyrillic: getCyrillic(add, flavorisationType),
+                details: getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(isv, flavorisationType)),
-                pos: getField(item, 'partOfSpeech'),
                 checked: translate[0] !== '!',
             };
         });
@@ -271,7 +271,7 @@ export function formatTranslate(
                 add: getLatin(add, flavorisationType),
                 addCyrillic: getCyrillic(add, flavorisationType),
                 addGla: latinToGla(getLatin(add, flavorisationType)),
-                pos: getField(item, 'partOfSpeech'),
+                details: getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(isv, flavorisationType)),
                 checked: original[0] !== '!',
             };

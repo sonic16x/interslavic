@@ -12,6 +12,7 @@ export interface IMainState {
     flavorisationType: string;
     page: string;
     isLoading: boolean;
+    alphabetType: string;
     detailModal?: number;
     rawResults: string[][];
     results: ITranslateResult[];
@@ -25,6 +26,7 @@ const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     flavorisationType: '3',
+    alphabetType: 'latin',
     page: getPageFromPath(),
     isLoading: true,
     rawResults: [],
@@ -83,6 +85,11 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
             return {
                 ...state,
                 isLoading: data,
+            };
+        case ActionTypes.ALPHABET_TYPE:
+            return {
+                ...state,
+                alphabetType: data,
             };
         case ActionTypes.SHOW_DETAIL:
             return {

@@ -8,6 +8,7 @@ export enum ActionTypes {
     SET_PAGE = 'SET_PAGE',
     IS_LOADING = 'IS_LOADING',
     SHOW_DETAIL= 'SHOW_DETAIL',
+    ALPHABET_TYPE= 'ALPHABET_TYPE',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -20,6 +21,13 @@ export function langAction(data: {from: string, to: string}) {
 export function showDetailAction(data: number) {
     return {
         type: ActionTypes.SHOW_DETAIL,
+        data,
+    };
+}
+
+export function setAlphabetTypeAction(data: number) {
+    return {
+        type: ActionTypes.ALPHABET_TYPE,
         data,
     };
 }
