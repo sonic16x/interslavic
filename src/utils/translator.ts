@@ -1,5 +1,6 @@
 import { latinToIpa } from './latinToIpa';
 import { latinToGla } from './latinToGla';
+import { srGajevicaToVukovica } from './srGajevicaToVukovica';
 import { transliterate } from './legacy';
 
 const searchTypes = {
@@ -122,6 +123,8 @@ function searchPrepare(lang, text) {
             return filterLatin(lowerCaseText);
         case 'ru':
             return lowerCaseText.replace(/[ё]/g, 'е');
+        case 'sr':
+            return srGajevicaToVukovica(lowerCaseText);
         default:
             return lowerCaseText;
     }
