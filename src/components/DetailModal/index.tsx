@@ -420,8 +420,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         const tableDataCases = [
             [
-                '&nbsp;@bl;bt;bb;br',
-                '&nbsp;@bl;bt',
+                'Prep.@b',
+                'Case@b',
                 'Singular@b',
                 'Plural@b',
             ],
@@ -431,7 +431,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             const upperCaseName = `${item[0].toUpperCase()}${item.slice(1)}`;
             let pre;
             if (prepositions[i] === '') {
-                pre = '&nbsp@bl;bt';
+                pre = '&nbsp@';
             }
             if (!pre && prepositions[i] !== '!') {
                 pre = `${this.formatStr(prepositions[i])}@`;
