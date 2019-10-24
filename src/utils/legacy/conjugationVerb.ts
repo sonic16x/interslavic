@@ -42,33 +42,6 @@ export function conjugationVerb(inf, pts) {
         pfpp,
         gerund,
     }
-
-    // result = '<table class='border' style='font-family:ms sans serif; font-size:10pt;'>';
-    // result += '<tr><th class='leeg' width='50px' colspan='2'> </th><th> present </th><th> imperfect </th><th> future </th>';
-    // result += '</tr><tr>';
-    // result += '<th> 1sg <br> 2sg <br> 3sg <br> 1pl <br> 2pl <br> 3pl </th>';
-    // result += transliterate_back ('<td align='center'> ja <br> ty <br> on/ona/ono <br> my <br> vy <br> oni/one </td>');
-    // result += '	<td>' + present + '</td>';
-    // result += '	<td>' + imperfect + '</td>';
-    // result += '	<td>' + future + '</td>';
-    // result += '</tr><tr>';
-    // result += '	<th class='leeg' colspan='2'> </th><th> perfect </th><th> pluperfect </th><th> conditional </th>';
-    // result += '</tr><tr>';
-    // result += '	<th> 1sg <br> 2sg <br> 3sg <br><br> 1pl <br> 2pl <br> 3pl </th>';
-    // result += transliterate_back ('<td align='center'> ja <br> ty <br> on <br> ona <br> ono <br> my <br> vy <br> oni/one </td>');
-    // result += '	<td>' + perfect + '</td>';
-    // result += '	<td>' + pluperfect + '</td>';
-    // result += '	<td>' + conditional + '</td>';
-    // result += '</tr></table><br>';
-    // result += '<table class='border' style='font-family:ms sans serif; font-size:10pt;'>';
-    // result += '	<tr><th> infinitive </th><td>' + infinitive + '</td>';
-    // result += '	<tr><th> imperative </th><td>' + imperative + '</td>';
-    // result += '	<tr><th> present active participle </th><td>' + prap + '</td>';
-    // result += '	<tr><th> present passive participle </th><td>' + prpp + '</td>';
-    // result += '	<tr><th> past active participle </th><td>' + pfap + '</td>';
-    // result += '	<tr><th> past passive participle </th><td>' + pfpp + '</td>';
-    // result += '	<tr><th> verbal&nbsp;noun </th><td>' + gerund + '</td>';
-    // result += '</tr></table>';
 }
 
 function reflexive(inf) {

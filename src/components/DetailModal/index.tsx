@@ -129,7 +129,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
     }
     private renderVerbDetails() {
         const word = this.props.rawItem[0];
-        const data = conjugationVerb(word, '');
+        const add = this.props.rawItem[1].replace(/\(|\)/g, '');
+        const data = conjugationVerb(word, add);
         const tableDataFirst = [
             [
                 '&nbsp@bl;bt;w=2',
