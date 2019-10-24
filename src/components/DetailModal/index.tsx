@@ -405,28 +405,48 @@ class DetailModal extends React.Component<IDetailModalProps> {
             preparedWord = this.markFluentVowel(word, add);
         }
 
-        const gender = getGender(word);
-        const animated = isAnimated(word);
+        const gender = getGender(this.props.item.details);
+        const animated = isAnimated(this.props.item.details);
         const cases = declensionNoun(preparedWord, gender, animated);
+        const prepositions = [
+            '',
+            'mimo',
+            'bez',
+            'o',
+            'k',
+            's',
+            '!',
+        ];
 
         const tableDataCases = [
             [
-                '&nbsp@bl;bt',
+                '&nbsp;@bl;bt;bb;br',
+                '&nbsp;@bl;bt',
                 'Singular@b',
                 'Plural@b',
             ],
         ];
 
-        Object.keys(cases).forEach((item) => {
-            const leterCaseName = `${item[0].toUpperCase()}${item.slice(1)}`;
+        Object.keys(cases).forEach((item, i) => {
+            const upperCaseName = `${item[0].toUpperCase()}${item.slice(1)}`;
+            let pre;
+            if (prepositions[i] === '') {
+                pre = '&nbsp@bl;bt';
+            }
+            if (!pre && prepositions[i] !== '!') {
+                pre = `${this.formatStr(prepositions[i])}@`;
+            } else if (!pre) {
+                pre = '!@';
+            }
             tableDataCases.push([
-                `${leterCaseName}@b`,
+                pre,
+                `${upperCaseName}@b`,
                 `${this.formatStr(cases[item][0])}@`,
                 `${this.formatStr(cases[item][1])}@`,
             ]);
         });
 
-        tableDataCases[tableDataCases.length - 1][2] = '&nbsp@bb;br';
+        tableDataCases[tableDataCases.length - 1][3] = '&nbsp@bb;br';
 
         return (
            <div>
