@@ -15,7 +15,15 @@ function prepareGender(gender, animated) {
     }
 }
 
-export function declensionNoun(noun, originGender, animated) {
+export function declensionNoun(noun, add, originGender, animated, isPlural) {
+    //now we don't know how to decline the phrases
+    if (noun.match(/ /)) {
+        return null;
+    }
+    if(isPlural) {
+        return declensionPluralNoun(noun,add,originGender);
+    }
+
     const rawGender = prepareGender(originGender, animated);
     noun = noun.replace('è', '(e)');
     noun = noun.replace('ò', '(o)');
@@ -517,4 +525,42 @@ function rules(word: string): string {
         .replace('jy', 'ji')
         .replace('cy', 'ci')
     ;
+}
+
+function declensionPluralNoun(word: string,add: string, gender: string) {
+    if (add) {
+        return null;
+    } else if (gender === 'masculine' && word.match(/[iye]$/)) {
+        return {
+            nom: [null, word],
+            acc: [null, word],
+            gen: [null, word.slice(0, -1) + 'ov'],
+            loc: [null, word.slice(0, -1) + 'ah'],
+            dat: [null, word.slice(0, -1) + 'am'],
+            ins: [null, word.slice(0, -1) + 'ami'],
+            voc: [null, null],
+        };
+    } else if (gender === 'feminine' && word.match(/[ye]$/) ||
+        gender === 'neuter' && word.match(/[a]$/)) {
+        return {
+            nom: [null, word],
+            acc: [null, word],
+            gen: [null, word.slice(0, -1)],
+            loc: [null, word.slice(0, -1) + 'ah'],
+            dat: [null, word.slice(0, -1) + 'am'],
+            ins: [null, word.slice(0, -1) + 'ami'],
+            voc: [null, null],
+        };
+    } else if (gender === 'feminine' && word.match(/[i]$/)) {
+        return {
+            nom: [null, word],
+            acc: [null, word],
+            gen: [null, word.slice(0, -1) + 'ij'],
+            loc: [null, word.slice(0, -1) + 'jah'],
+            dat: [null, word.slice(0, -1) + 'jam'],
+            ins: [null, word.slice(0, -1) + 'jami'],
+            voc: [null, null],
+        };
+    }
+    return null;
 }

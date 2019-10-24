@@ -416,53 +416,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const animated = isAnimated(this.props.item.details);
         const plural = isPlural(this.props.item.details);
 
-        let cases;
-        let noData = false;
-        if (word.match(/ /)) {
-            noData = true;
-        } else if (plural) {
-            if (add) {
-                noData = true;
-            } else if (gender === 'masculine' && word.match(/[iye]$/)) {
-                cases = {
-                    nom: [null, word],
-                    acc: [null, word],
-                    gen: [null, word.slice(0, -1) + 'ov'],
-                    loc: [null, word.slice(0, -1) + 'ah'],
-                    dat: [null, word.slice(0, -1) + 'am'],
-                    ins: [null, word.slice(0, -1) + 'ami'],
-                    voc: [null, null],
-                };
-            } else if (gender === 'feminine' && word.match(/[ye]$/) ||
-                       gender === 'neuter' && word.match(/[a]$/)) {
-                cases = {
-                    nom: [null, word],
-                    acc: [null, word],
-                    gen: [null, word.slice(0, -1)],
-                    loc: [null, word.slice(0, -1) + 'ah'],
-                    dat: [null, word.slice(0, -1) + 'am'],
-                    ins: [null, word.slice(0, -1) + 'ami'],
-                    voc: [null, null],
-                };
-            } else if (gender === 'feminine' && word.match(/[i]$/)) {
-                cases = {
-                    nom: [null, word],
-                    acc: [null, word],
-                    gen: [null, word.slice(0, -1) + 'ij'],
-                    loc: [null, word.slice(0, -1) + 'jah'],
-                    dat: [null, word.slice(0, -1) + 'jam'],
-                    ins: [null, word.slice(0, -1) + 'jami'],
-                    voc: [null, null],
-                };
-            } else {
-                noData = true;
-            }
+        const cases = declensionNoun(preparedWord, add, gender, animated, plural);
 
-        } else {
-            cases = declensionNoun(preparedWord, gender, animated);
-        }
-
-        if (noData) {
+        if (cases === null) {
             return (
                 <div>
                     <Text>
