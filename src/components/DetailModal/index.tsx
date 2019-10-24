@@ -51,7 +51,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 <div className={'modal-dialog'} role={'document'} onClick={(e) => e.stopPropagation()}>
                     <div className={'modal-content'}>
                         <div className={'modal-header'}>
-                            <h5 className={'modal-title'}>{this.renderTitle(pos)}</h5>
+                            {this.renderTitle(pos)}
                             <button
                                 type={'button'}
                                 className={'close'}
@@ -79,6 +79,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
     }
     private renderTitle(pos: string) {
         const word = this.props.rawItem[0];
+        const add = this.props.rawItem[1];
         const { details } = this.props.item;
         const arr = [pos];
         const animated = isAnimated(details);
@@ -102,7 +103,11 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 }
                 break;
         }
-        return `${word} (${arr.join(', ')})`;
+        return (
+            <h5 className={'modal-title'}>
+                {this.formatStr(word)} {this.formatStr(add)} <i>({arr.join(', ')})</i>
+            </h5>
+        );
     }
     private renderBody(pos) {
         switch (pos) {
