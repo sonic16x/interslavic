@@ -108,6 +108,7 @@ export function getPartOfSpeech(details: string): PartOfSpeech {
         arr.indexOf('iv') !== -1 ||
         arr.indexOf('mv') !== -1 ||
         arr.indexOf('p') !== -1 ||
+        arr.indexOf('v') !== -1 ||
         arr.indexOf('tv') !== -1
     ) {
         return 'verb';

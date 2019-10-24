@@ -4,6 +4,7 @@ import './index.scss';
 import { hideDetailAction, setAlphabetTypeAction } from 'actions';
 import { declensionNoun } from 'utils/legacy/declensionNoun';
 import { declensionAdjective } from 'utils/legacy/declensionAdjective';
+import { conjugationVerb } from 'utils/legacy/conjugationVerb';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import {
@@ -94,6 +95,12 @@ class DetailModal extends React.Component<IDetailModalProps> {
                     arr.push('plural');
                 }
                 break;
+            case 'verb':
+                const verbType = getVerbType(details);
+                if (verbType) {
+                    arr.push(getVerbType(details));
+                }
+                break;
         }
         return `${word} (${arr.join(', ')})`;
     }
@@ -103,6 +110,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 return this.renderNounDetails();
             case 'adjective':
                 return this.renderAdjectiveDetails();
+            case 'verb':
+                return this.renderVerbDetails();
             default:
                 return '';
         }
@@ -117,6 +126,124 @@ class DetailModal extends React.Component<IDetailModalProps> {
             case 'cyrillic':
                 return getCyrillic(str, this.props.flavorisationType);
         }
+    }
+    private renderVerbDetails() {
+        const word = this.props.rawItem[0];
+        const data = conjugationVerb(word, '');
+        const tableDataFirst = [
+            [
+                '&nbsp@bl;bt;w=2',
+                'present@;b',
+                'imperfect@;b',
+                'future@;b',
+            ],
+        ];
+        const tableDataSecond = [
+            [
+                '&nbsp@bl;bt;w=2',
+                'perfect@;b',
+                'pluperfect@;b',
+                'conditional@;b',
+            ],
+        ];
+        const tableDataAdd = [
+            [
+                'infinitive@b',
+                this.formatStr(data.infinitive),
+            ],
+            [
+                'imperative@b',
+                this.formatStr(data.imperative),
+            ],
+            [
+                'present active participle@b',
+                this.formatStr(data.prap),
+            ],
+            [
+                'present passive participle@b',
+                this.formatStr(data.prpp),
+            ],
+            [
+                'past active participle@b',
+                this.formatStr(data.pfap),
+            ],
+            [
+                'past passive participle@b',
+                this.formatStr(data.pfpp),
+            ],
+            [
+                'verbal@b',
+                this.formatStr(data.gerund),
+            ],
+        ];
+        const pronouns = [
+            'ja',
+            'ty',
+            'on/ona/ono',
+            'my',
+            'vy',
+            'oni/one',
+        ];
+        const pronounsFull = [
+            'ja',
+            'ty',
+            'on',
+            'ona',
+            'ono',
+            'my',
+            'vy',
+            'oni/one',
+        ];
+        const forms = [
+            '1sg',
+            '2sg',
+            '3sg',
+            '1pl',
+            '2pl',
+            '3pl',
+        ];
+        const formsFull = [
+            '1sg',
+            '2sg',
+            '3sg',
+            null,
+            null,
+            '1pl',
+            '2pl',
+            '3pl',
+        ];
+        pronouns.forEach((pronoun, i) => {
+            tableDataFirst.push([
+                `${forms[i]}@b`,
+                `${this.formatStr(pronoun)}@`,
+                `${this.formatStr(data.present[i])}@`,
+                `${this.formatStr(data.imperfect[i])}@`,
+                `${this.formatStr(data.future[i])}@`,
+            ]);
+        });
+        pronounsFull.forEach((pronoun, i) => {
+            const item = [
+                `${this.formatStr(pronoun)}@`,
+                `${this.formatStr(data.perfect[i])}@`,
+                `${this.formatStr(data.pluperfect[i])}@`,
+                `${this.formatStr(data.conditional[i])}@`,
+            ];
+            if (formsFull[i]) {
+                let str = `${formsFull[i]}@b`;
+                if (formsFull[i] === '3sg') {
+                    str += ';h=3';
+                }
+                item.unshift(str);
+            }
+            tableDataSecond.push(item);
+        });
+        return (
+            <div>
+                <Table data={tableDataFirst}/>
+                <Table data={tableDataSecond}/>
+                <Table data={tableDataAdd}/>
+            </div>
+        );
     }
     private renderAdjectiveDetails() {
         const word = this.props.rawItem[0];
@@ -251,7 +378,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         const tableDataCases = [
             [
-                'Case@b',
+                '&nbsp@bl;bt',
                 'Singular@b',
                 'Plural@b',
             ],
@@ -265,6 +392,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 `${this.formatStr(cases[item][1])}@`,
             ]);
         });
+
+        tableDataCases[tableDataCases.length - 1][2] = '&nbsp@bb;br';
 
         return (
            <div>
