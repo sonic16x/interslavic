@@ -20,6 +20,7 @@ interface IDetailModalProps {
     close: () => void;
     item: any;
     alphabetType: string;
+    isDetailModal: boolean;
     flavorisationType: string;
     setAlphabetType: (type: string) => void;
     rawItem: string[];
@@ -47,7 +48,11 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const pos = getPartOfSpeech(this.props.item.details);
 
         return (
-            <div className={'modal show'} role={'dialog'} onClick={() => this.props.close()}>
+            <div
+                className={'modal' + (this.props.isDetailModal ? ' show' : '')}
+                role={'dialog'}
+                onClick={() => this.props.close()}
+            >
                 <div className={'modal-dialog'} role={'document'} onClick={(e) => e.stopPropagation()}>
                     <div className={'modal-content'}>
                         <div className={'modal-header'}>
@@ -404,7 +409,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const animated = isAnimated(this.props.item.details);
         const cases = declensionNoun(preparedWord, gender, animated);
         const prepositions = [
-            '&mdash;',
+            '',
             'mimo',
             'bez',
             'o',
@@ -426,7 +431,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             const upperCaseName = `${item[0].toUpperCase()}${item.slice(1)}`;
             let pre;
             if (prepositions[i] === '') {
-                pre = '&nbsp@';
+                pre = '&mdash;';
             }
             if (!pre && prepositions[i] !== '!') {
                 pre = `${this.formatStr(prepositions[i])}@`;
@@ -458,11 +463,12 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({detailModal, results, rawResults, alphabetType, flavorisationType}) {
+function mapStateToProps({detailModal, isDetailModal, results, rawResults, alphabetType, flavorisationType}) {
     return {
         item: results[detailModal],
         rawItem: rawResults[detailModal],
         alphabetType,
+        isDetailModal,
         flavorisationType,
     };
 }

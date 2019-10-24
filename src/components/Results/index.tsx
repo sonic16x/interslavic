@@ -2,12 +2,13 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { ITranslateResult } from 'utils/translator';
 import './index.scss';
-import { showDetailAction } from 'actions';
+import { setDetailAction, showDetailAction } from 'actions';
 import { getPartOfSpeech } from 'utils/wordDetails';
 
 interface IResultsProps {
     results: ITranslateResult[];
-    showDetail: (itemIndex: number) => void;
+    showDetail: () => void;
+    setDetail: (itemIndex: number) => void;
     lang: {
         from: string;
         to: string;
@@ -52,7 +53,10 @@ class Results extends React.Component<IResultsProps> {
                     <button
                         type={'button'}
                         className={'btn btn-sm btn-secondary shadow showForms'}
-                        onClick={() => this.props.showDetail(i)}
+                        onClick={() => {
+                            this.props.setDetail(i);
+                            this.props.showDetail();
+                        }}
                     >
                         Show forms
                     </button>
@@ -112,7 +116,8 @@ function mapStateToProps({results, lang}) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        showDetail: (i) => dispatch(showDetailAction(i)),
+        setDetail: (i) => dispatch(setDetailAction(i)),
+        showDetail: () => dispatch(showDetailAction()),
     };
 }
 

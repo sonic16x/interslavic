@@ -7,7 +7,8 @@ export enum ActionTypes {
     FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
     SET_PAGE = 'SET_PAGE',
     IS_LOADING = 'IS_LOADING',
-    SHOW_DETAIL= 'SHOW_DETAIL',
+    SET_DETAIL = 'SET_DETAIL',
+    DETAIL_IS_VISIBLE = 'DETAIL_IS_VISIBLE',
     ALPHABET_TYPE= 'ALPHABET_TYPE',
 }
 
@@ -18,10 +19,17 @@ export function langAction(data: {from: string, to: string}) {
     };
 }
 
-export function showDetailAction(data: number) {
+export function setDetailAction(data: number) {
     return {
-        type: ActionTypes.SHOW_DETAIL,
+        type: ActionTypes.SET_DETAIL,
         data,
+    };
+}
+
+export function showDetailAction() {
+    return {
+        type: ActionTypes.DETAIL_IS_VISIBLE,
+        data: true,
     };
 }
 
@@ -34,8 +42,8 @@ export function setAlphabetTypeAction(data: number) {
 
 export function hideDetailAction() {
     return {
-        type: ActionTypes.SHOW_DETAIL,
-        data: undefined,
+        type: ActionTypes.DETAIL_IS_VISIBLE,
+        data: false,
     };
 }
 
