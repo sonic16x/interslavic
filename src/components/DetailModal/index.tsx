@@ -376,11 +376,38 @@ class DetailModal extends React.Component<IDetailModalProps> {
             </div>
         );
     }
+    private markFluentVowel(word, add) {
+        let i = 0;
+        let j = 0;
+        while (true) {
+            if (word[i] !== add[j]) {
+                i++;
+                continue;
+            }
+            if (word[i] === add[j] && i !== j) {
+                break;
+            }
+            i++;
+            j++;
+        }
+        const fluentVowel = word.slice(j, i);
+        if (fluentVowel === 'è' || fluentVowel === 'ò') {
+            return word;
+        }
+        return word.replace(fluentVowel, `(${fluentVowel})`);
+    }
     private renderNounDetails() {
         const word = this.props.rawItem[0];
+        const add = this.props.rawItem[1].replace(/\(|\)/g, '');
+        let preparedWord = word;
+
+        if (add && word !== add) {
+            preparedWord = this.markFluentVowel(word, add);
+        }
+
         const gender = getGender(word);
         const animated = isAnimated(word);
-        const cases = declensionNoun(word, gender, animated);
+        const cases = declensionNoun(preparedWord, gender, animated);
 
         const tableDataCases = [
             [
