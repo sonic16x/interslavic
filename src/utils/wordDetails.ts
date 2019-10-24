@@ -1,4 +1,4 @@
-export type Gender = 'male' | 'female' | 'neuter';
+export type Gender = 'masculine' | 'feminine' | 'neuter';
 
 function getArr(str) {
     return str.replace(/ /g, '').split('.');
@@ -7,10 +7,10 @@ function getArr(str) {
 export function getGender(details: string): Gender {
     const arr = getArr(details);
     if (arr.indexOf('m') !== -1) {
-        return 'male';
+        return 'masculine';
     }
     if (arr.indexOf('f') !== -1) {
-        return 'female';
+        return 'feminine';
     }
     return 'neuter';
 }

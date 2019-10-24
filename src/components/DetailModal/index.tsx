@@ -88,13 +88,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
         switch (pos) {
             case 'noun':
                 arr.push(gender);
-                if (animated) {
-                    arr.push('animated');
-                }
-
-                if (plural) {
-                    arr.push('plural');
-                }
+                arr.push(animated ? 'animated' : 'inanimate');
+                arr.push(plural ? 'plural' : 'single');
                 break;
             case 'verb':
                 const verbType = getVerbType(details);
@@ -409,7 +404,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const animated = isAnimated(this.props.item.details);
         const cases = declensionNoun(preparedWord, gender, animated);
         const prepositions = [
-            '',
+            '&mdash;',
             'mimo',
             'bez',
             'o',
@@ -446,7 +441,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             ]);
         });
 
-        tableDataCases[tableDataCases.length - 1][3] = '&nbsp@bb;br';
+        tableDataCases[tableDataCases.length - 1][3] = '&mdash;';
 
         return (
            <div>

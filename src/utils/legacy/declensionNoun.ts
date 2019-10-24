@@ -4,13 +4,13 @@
 
 /* tslint:disable */
 function prepareGender(gender, animated) {
-    if (gender === 'female') {
+    if (gender === 'feminine') {
         return 'f';
     }
     if (gender === 'neuter') {
         return 'n';
     }
-    if (gender === 'male') {
+    if (gender === 'masculine') {
         return animated ? 'm1' : 'm2';
     }
 }
