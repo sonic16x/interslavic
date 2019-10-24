@@ -7,6 +7,7 @@ import { declensionAdjective } from 'utils/legacy/declensionAdjective';
 import { conjugationVerb } from 'utils/legacy/conjugationVerb';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
+import Text from 'components/Text';
 import {
     getGender,
     getPartOfSpeech,
@@ -122,8 +123,12 @@ class DetailModal extends React.Component<IDetailModalProps> {
         }
     }
     private formatStr(str: string): string {
-        if (!str) {
+        if (str === '') {
             return '';
+        } else if (str === null) {
+            return '&mdash;';
+        } else if (str.match(/&\w+;/g)) {
+            return str;
         }
         switch (this.props.alphabetType) {
             case 'latin':
@@ -377,25 +382,27 @@ class DetailModal extends React.Component<IDetailModalProps> {
         );
     }
     private markFluentVowel(word, add) {
-        let i = 0;
         let j = 0;
-        while (true) {
-            if (word[i] !== add[j]) {
-                i++;
+        for (let i = 0; i < Math.min(word.length - 1, add.length); i++) {
+            if (word[i] === add[i]) {
                 continue;
-            }
-            if (word[i] === add[j] && i !== j) {
+            } else if (word[i] !== add[i] && word[i + 1] === add[i]) {
+                j = i;
+                break;
+            } else {
                 break;
             }
-            i++;
-            j++;
         }
-        const fluentVowel = word.slice(j, i);
+        if ( j === 0 ) {
+            return word;
+        }
+        const fluentVowel = word[j];
         if (fluentVowel === 'è' || fluentVowel === 'ò') {
             return word;
         }
         return word.replace(fluentVowel, `(${fluentVowel})`);
     }
+
     private renderNounDetails() {
         const word = this.props.rawItem[0];
         const add = this.props.rawItem[1].replace(/\(|\)/g, '');
@@ -407,10 +414,67 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         const gender = getGender(this.props.item.details);
         const animated = isAnimated(this.props.item.details);
-        const cases = declensionNoun(preparedWord, gender, animated);
+        const plural = isPlural(this.props.item.details);
+
+        let cases;
+        let noData = false;
+        if (word.match(/ /)) {
+            noData = true;
+        } else if (plural) {
+            if (add) {
+                noData = true;
+            } else if (gender === 'masculine' && word.match(/[iye]$/)) {
+                cases = {
+                    nom: [null, word],
+                    acc: [null, word],
+                    gen: [null, word.slice(0, -1) + 'ov'],
+                    loc: [null, word.slice(0, -1) + 'ah'],
+                    dat: [null, word.slice(0, -1) + 'am'],
+                    ins: [null, word.slice(0, -1) + 'ami'],
+                    voc: [null, null],
+                };
+            } else if (gender === 'feminine' && word.match(/[ye]$/) ||
+                       gender === 'neuter' && word.match(/[a]$/)) {
+                cases = {
+                    nom: [null, word],
+                    acc: [null, word],
+                    gen: [null, word.slice(0, -1)],
+                    loc: [null, word.slice(0, -1) + 'ah'],
+                    dat: [null, word.slice(0, -1) + 'am'],
+                    ins: [null, word.slice(0, -1) + 'ami'],
+                    voc: [null, null],
+                };
+            } else if (gender === 'feminine' && word.match(/[i]$/)) {
+                cases = {
+                    nom: [null, word],
+                    acc: [null, word],
+                    gen: [null, word.slice(0, -1) + 'ij'],
+                    loc: [null, word.slice(0, -1) + 'jah'],
+                    dat: [null, word.slice(0, -1) + 'jam'],
+                    ins: [null, word.slice(0, -1) + 'jami'],
+                    voc: [null, null],
+                };
+            } else {
+                noData = true;
+            }
+
+        } else {
+            cases = declensionNoun(preparedWord, gender, animated);
+        }
+
+        if (noData) {
+            return (
+                <div>
+                    <Text>
+                        {`No data for declination this word/phrase`}
+                    </Text>
+                </div>
+            );
+        }
+
         const prepositions = [
-            '',
-            'mimo',
+            '&mdash;',
+            'na',
             'bez',
             'o',
             'k',
@@ -445,8 +509,6 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 `${this.formatStr(cases[item][1])}@`,
             ]);
         });
-
-        tableDataCases[tableDataCases.length - 1][3] = '&mdash;';
 
         return (
            <div>
