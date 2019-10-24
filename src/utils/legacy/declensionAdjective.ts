@@ -4,7 +4,7 @@
 
 /* tslint:disable */
 
-export function declension(adj: string) {
+export function declensionAdjective(adj: string) {
     // adj = transliterate(adj, 1, '2', 2, 1);
     let root = establish_root(adj);
     let m_nom_sg = m_nominative_sg(adj, root);
@@ -45,6 +45,7 @@ export function declension(adj: string) {
     dat_pl = rules(dat_pl);
     let ins_pl = instrumental_pl(root);
     ins_pl = rules(ins_pl);
+
     let adv = adverb(root);
     adv = rules(adv);
     let comp_adj = comparative_adj(root);
@@ -58,52 +59,27 @@ export function declension(adj: string) {
 
     return {
         singular: {
-            nom: [],
-            acc: [],
-            gen: [],
-            dat: [],
-            inst: [],
-            loc: [],
-            voc: [],
+            nom: [m_nom_sg, n_nom_sg, f_nom_sg],
+            acc: [m_acc_sg, f_acc_sg],
+            gen: [mn_gen_sg, f_gdl_sg],
+            dat: [mn_dat_sg, f_gdl_sg],
+            ins: [mn_ins_sg, f_ins_sg],
+            loc: [mn_loc_sg, f_gdl_sg],
         },
         plural: {
-            nom: [],
-            acc: [],
-            gen: [],
-            dat: [],
-            inst: [],
-            loc: [],
-            voc: [],
+            nom: [m_nom_pl, fn_nom_pl],
+            acc: [m_acc_pl, fn_nom_pl],
+            gen: [glo_pl],
+            dat: [dat_pl],
+            ins: [ins_pl],
+            loc: [glo_pl],
         },
+        comparison: {
+            positive: [m_nom_sg, adv],
+            comparative: [comp_adj, comp_adv],
+            superlative: [sup_adj, sup_adv],
+        }
     };
-
-    // result = '<center><table><tr><td><center><table class='border'>';
-    // result += '<tr align='center'><th rowspan='2' class='leeg'> </th><th colspan='3'> singular </th></tr>';
-    // result += '<tr align='center'> <th> masculine </th><th> neuter </th><th> feminine </th></tr>';
-    // result += '<tr align='center'><th> Nom </th><td>' + m_nom_sg + '</td><td rowspan='2'>' + n_nom_sg + '</td><td>' + f_nom_sg + '</td></tr>';
-    // result += '<tr align='center'><th> Acc </th><td>' + m_acc_sg + '</td><td>' + f_acc_sg + '</td></tr>';
-    // result += '<tr align='center'><th> Gen </th><td colspan='2'>' + mn_gen_sg + '</td><td>' + f_gdl_sg + '</td></tr>';
-    // result += '<tr align='center'><th> Dat </th><td colspan='2'>' + mn_dat_sg + '</td><td>' + f_gdl_sg + '</td></tr>';
-    // result += '<tr align='center'><th> Ins </th><td colspan='2'>' + mn_ins_sg + '</td><td>' + f_ins_sg + '</td></tr>';
-    // result += '<tr align='center'><th> Loc </th><td colspan='2'>' + mn_loc_sg + '</td><td>' + f_gdl_sg + '</td></tr>';
-    // result += '</table></center></td><td>&nbsp; &nbsp; &nbsp;</td><td><center><table class='border'>';
-    //
-    // result += '<tr align='center'><th rowspan='2' class='leeg'> </th><th colspan='2'> plural </th></tr>';
-    // result += '<tr align='center'> <th> masculine </th><th> feminine/neuter </th></tr>';
-    // result += '<tr align='center'><th> Nom </th><td>' + m_nom_pl + '</td><td rowspan='2'>' + fn_nom_pl + '</td></tr>';
-    // result += '<tr align='center'><th> Acc </th><td>' + m_acc_pl + '</td></tr>';
-    // result += '<tr align='center'><th> Gen </th><td colspan='2'>' + glo_pl + '</td</tr>';
-    // result += '<tr align='center'><th> Dat </th><td colspan='2'>' + dat_pl + '</td></tr>';
-    // result += '<tr align='center'><th> Ins </th><td colspan='2'>' + ins_pl + '</td></tr>';
-    // result += '<tr align='center'><th> Loc </th><td colspan='2'>' + glo_pl + '</td></tr>';
-    // result += '</table></center></td><td><p style='margin-left:2em; text-align:left;'><u>Degrees of comparison</u>:<br />';
-    // result += 'Positive (adjective): <b>' + m_nom_sg + '</b><br />';
-    // result += 'Positive (adverb): <b>' + adv + '</b><br />';
-    // result += 'Comparative (adjective): <b>' + comp_adj + '</b><br />';
-    // result += 'Comparative (adverb): <b>' + comp_adv + '</b><br />';
-    // result += 'Superlative (adjective): <b>' + sup_adj + '</b><br />';
-    // result += 'Superlative (adverb): <b>' + sup_adv + '</b><br />';
-    // result += '</p></td></tr></table></center>';
 }
 
 function establish_root(adj) {

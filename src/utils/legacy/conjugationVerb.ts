@@ -2,7 +2,7 @@
 // * Source http://steen.free.fr/interslavic/conjugator.html
 // */
 //
-// /* tslint:disable */
+/* tslint:disable */
 //
 // function conjugate ()
 // {

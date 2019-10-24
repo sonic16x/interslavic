@@ -55,7 +55,7 @@ export function declensionNoun(noun, originGender, animated) {
         acc: [acc_sg, acc_pl],
         gen: [gen_sg, gen_pl],
         dat: [dat_sg, dat_pl],
-        inst: [ins_sg, ins_pl],
+        ins: [ins_sg, ins_pl],
         loc: [loc_sg, loc_pl],
         voc: [voc_sg, null],
     };

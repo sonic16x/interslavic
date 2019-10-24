@@ -1,6 +1,7 @@
 .modal {
   &.show {
-    display: block !important;
+    display: flex;
+    align-items: center;
   }
   background: rgba(1, 1, 1, 0.5);
   .modal-dialog {
@@ -8,5 +9,24 @@
       outline: 0;
     }
     z-index: 1070;
+
+    .modal-footer {
+      justify-content: center;
+      .lineSelector {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    flex-basis: 500px;
+  }
+}
+
+@media (max-width: 575px) {
+  .modal-dialog {
+    flex-basis: 100%;
   }
 }
