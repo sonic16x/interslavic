@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ITranslateResult } from 'utils/translator';
 import './index.scss';
 import { showDetailAction } from 'actions';
+import { getPartOfSpeech } from 'utils/wordDetails';
 
 interface IResultsProps {
     results: ITranslateResult[];
@@ -16,8 +17,9 @@ interface IResultsProps {
 class Results extends React.Component<IResultsProps> {
     public renderResultItem(item: ITranslateResult, i: number) {
         return (
-            <div className={'card resultCard shadow'} key={i} onClick={() => this.props.showDetail(i)}>
+            <div className={'card resultCard shadow'} key={i}>
                 {this.renderCheked(item)}
+                {this.renderFormsButton(item, i)}
                 <div className={'card-body'}>
                     <h5 className={'card-title'}>
                         {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
@@ -39,6 +41,25 @@ class Results extends React.Component<IResultsProps> {
                 {results.map((item: ITranslateResult, i) => this.renderResultItem(item, i))}
             </div>
         );
+    }
+    private renderFormsButton(item, i) {
+        const pos = getPartOfSpeech(item.details);
+        switch (pos) {
+            case 'noun':
+            case 'adjective':
+            case 'verb':
+                return (
+                    <button
+                        type={'button'}
+                        className={'btn btn-sm btn-secondary shadow showForms'}
+                        onClick={() => this.props.showDetail(i)}
+                    >
+                        Show forms
+                    </button>
+                );
+            default:
+                return '';
+        }
     }
     private renderCheked({checked}) {
         if (checked) {

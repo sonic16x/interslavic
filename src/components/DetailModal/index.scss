@@ -2,6 +2,7 @@
   &.show {
     display: flex;
     align-items: center;
+    //overflow: auto;
   }
   background: rgba(1, 1, 1, 0.5);
   .modal-dialog {
@@ -9,6 +10,10 @@
       outline: 0;
     }
     z-index: 1070;
+
+    .modal-body {
+
+    }
 
     .modal-footer {
       justify-content: center;
