@@ -6,7 +6,7 @@
 
 export function declensionAdjective(adj: string) {
     // adj = transliterate(adj, 1, '2', 2, 1);
-    let root = establish_root(adj);
+    const root = establish_root(adj);
     let m_nom_sg = m_nominative_sg(adj, root);
     m_nom_sg = rules(m_nom_sg);
     let m_acc_sg = m_accusative_sg(adj, root);
@@ -78,58 +78,43 @@ export function declensionAdjective(adj: string) {
             positive: [m_nom_sg, adv],
             comparative: [comp_adj, comp_adv],
             superlative: [sup_adj, sup_adv],
-        }
+        },
     };
 }
 
 function establish_root(adj) {
     let result = '';
     if ((adj == 'naš') || (adj == 'vaš')) {
-        result = adj + '|^'
-    }
-    else if ((adj.lastIndexOf('č') == adj.length - 3) && (adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
-        result = adj + '|^'
-    }
-    else if ((adj == 'sej') || (adj == 'sjej')) {
-        result = adj.substring(0, adj.length - 2) + '|^';
-    }
-    else if ((adj == 'veś') || (adj == 'ves')) {
-        result = 'vs|^';
-    }
-    else if (adj == 'onoj') {
-        result = 'on|';
-    }
-    else if ((adj == 'ovoj') || (adj == 'ov')) {
-        result = 'ov|';
-    }
-    else if ((adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('v') == adj.length - 1)) {
-        result = adj + '|';
-    }
-    else if ((adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('n') == adj.length - 1)) {
-        result = adj + '|';
-    }
-    else if ((adj.lastIndexOf('t') == adj.length - 3) && (adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
-        result = adj.substring(0, adj.length - 2) + '|';
-    }
-    else if ((adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
         result = adj + '|^';
-    }
-    else if ((adj.lastIndexOf('e') == adj.length - 2) && (adj.lastIndexOf('n') == adj.length - 1)) {
+    } else if ((adj.lastIndexOf('č') == adj.length - 3) && (adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
+        result = adj + '|^';
+    } else if ((adj == 'sej') || (adj == 'sjej')) {
+        result = adj.substring(0, adj.length - 2) + '|^';
+    } else if ((adj == 'veś') || (adj == 'ves')) {
+        result = 'vs|^';
+    } else if (adj == 'onoj') {
+        result = 'on|';
+    } else if ((adj == 'ovoj') || (adj == 'ov')) {
+        result = 'ov|';
+    } else if ((adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('v') == adj.length - 1)) {
+        result = adj + '|';
+    } else if ((adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('n') == adj.length - 1)) {
+        result = adj + '|';
+    } else if ((adj.lastIndexOf('t') == adj.length - 3) && (adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
+        result = adj.substring(0, adj.length - 2) + '|';
+    } else if ((adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
+        result = adj + '|^';
+    } else if ((adj.lastIndexOf('e') == adj.length - 2) && (adj.lastIndexOf('n') == adj.length - 1)) {
         result = adj.substring(0, adj.length - 2) + 'n|';
-    }
-    else if ((adj.lastIndexOf('y') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
+    } else if ((adj.lastIndexOf('y') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
         result = adj.substring(0, adj.length - 2);
-    }
-    else if ((adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
+    } else if ((adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
         result = adj.substring(0, adj.length - 2) + '^';
-    }
-    else if (adj.lastIndexOf('y') == adj.length - 1) {
+    } else if (adj.lastIndexOf('y') == adj.length - 1) {
         result = adj.substring(0, adj.length - 1);
-    }
-    else if (adj.lastIndexOf('i') == adj.length - 1) {
+    } else if (adj.lastIndexOf('i') == adj.length - 1) {
         result = adj.substring(0, adj.length - 1) + '^';
-    }
-    else {
+    } else {
         result = '';
     }
 
@@ -144,115 +129,81 @@ function m_nominative_sg(adj, root) {
     let result = '';
     if (root.indexOf('|') !== -1) {
         result = adj;
-    }
-    else {
+    } else {
         result = root + 'y';
     }
     return result;
 }
 
 function f_nominative_sg(root) {
-    let result = '';
-    result = root + 'a';
-    return result;
+    return root + 'a';
 }
 
 function n_nominative_sg(root) {
-    let result = '';
-    result = root + 'o';
-    return result;
+    return root + 'o';
 }
 
 function mn_genitive_sg(root) {
-    let result = '';
-    result = root + 'ogo';
-    return result;
+    return root + 'ogo';
 }
 
 function mn_dative_sg(root) {
-    let result = '';
-    result = root + 'omu';
-    return result;
+    return root + 'omu';
 }
 
 function m_accusative_sg(adj, root) {
-    let result = '';
-    result = root + 'ogo/' + adj;
-    return result;
+    return root + 'ogo/' + adj;
 }
 
 function mn_instrumental_sg(root) {
-    let result = '';
-    result = root + 'ym';
-    return result;
+    return root + 'ym';
 }
 
 function mn_locative_sg(root) {
-    let result = '';
-    result = root + 'om';
-    return result;
+    return root + 'om';
 }
 
 function f_accusative_sg(root) {
-    let result = '';
-    result = root + 'ų';
-    return result;
+    return root + 'ų';
 }
 
 function f_gendatloc_sg(root) {
-    let result = '';
-    result = root + 'oj';
-    return result;
+    return root + 'oj';
 }
 
 function f_instrumental_sg(root) {
-    let result = '';
-    result = root + 'ojų';
-    return result;
+    return root + 'ojų';
 }
 
 function m_nominative_pl(root) {
-    let result = '';
-    result = root + 'i/' + root + 'e';
-    return result;
+    return root + 'i/' + root + 'e';
 }
 
 function m_accusative_pl(root) {
-    let result = '';
-    result = root + 'yh/' + root + 'e';
-    return result;
+    return root + 'yh/' + root + 'e';
 }
 
 function fn_nominative_pl(root) {
-    let result = '';
-    result = root + 'e';
-    return result;
+    return root + 'e';
 }
 
 function genloc_pl(root) {
-    let result = '';
-    result = root + 'yh';
-    return result;
+    return root + 'yh';
 }
 
 function dative_pl(root) {
-    let result = '';
-    result = root + 'ym';
-    return result;
+    return root + 'ym';
 }
 
 function instrumental_pl(root) {
-    let result = '';
-    result = root + 'ymi';
-    return result;
+    return root + 'ymi';
 }
 
 function adverb(root) {
     let result = '';
     if (root.charAt(root.length - 2) == 'ć') {
         result = root + 'i';
-    }
-    else {
+    } else {
         result = root + 'o';
     }
     return result;
@@ -260,44 +211,34 @@ function adverb(root) {
 
 function comparative_adj(root) {
     let result = '';
-    let hacek = root.indexOf('^');
+    const hacek = root.indexOf('^');
     const lastchar = hacek !== -1 ? root.length - 2 : root.length - 1;
-    let vowel = /[aåeěęioòuųy]/;
+    const vowel = /[aåeěęioòuųy]/;
     const liquid = /[lrŕ]/;
     const nasal = /[nm]/;
 
     if (root == 'velik') {
         result = 'vęčši';
-    }
-    else if (root == 'mal') {
+    } else if (root == 'mal') {
         result = 'menši';
-    }
-    else if (root == 'dobr') {
+    } else if (root == 'dobr') {
         result = 'lěpši, lučši';
-    }
-    else if (root == 'zl') {
+    } else if (root == 'zl') {
         result = 'gorši';
-    }
-    else if (root == 'mnog') {
+    } else if (root == 'mnog') {
         result = 'boľši';
-    }
-    else if ((root == 'blåg') || (root == 'blag')) {
+    } else if ((root == 'blåg') || (root == 'blag')) {
         result = 'unši, ' + root.substring(0, root.length - 1) + 'žejši';
-    }
-    else if (root.lastIndexOf('sk') == root.length - 2) {
+    } else if (root.lastIndexOf('sk') == root.length - 2) {
         result = 'bolje ' + root + 'i';
-    }
-    else if ((root.lastIndexOf('ok') == root.length - 2) || (root.lastIndexOf('ek') == root.length - 2)) {
+    } else if ((root.lastIndexOf('ok') == root.length - 2) || (root.lastIndexOf('ek') == root.length - 2)) {
         result = root.substring(0, root.length - 2) + 'ši';
-    }
-    else if ((root.lastIndexOf('k') == root.length - 1) && (vowel.test(root.charAt(lastchar - 1)) == false)) {
+    } else if ((root.lastIndexOf('k') == root.length - 1) && (vowel.test(root.charAt(lastchar - 1)) == false)) {
         result = root.substring(0, root.length - 1) + 'ši';
-    }
-    else {
+    } else {
         if (hacek == -1) {
             result = root + '%ějši';
-        }
-        else {
+        } else {
             result = root + '%ejši';
         }
     }
@@ -314,42 +255,32 @@ function comparative_adj(root) {
 
 function comparative_adv(root) {
     let result = '';
-    let hacek = root.indexOf('^');
+    const hacek = root.indexOf('^');
     const lastchar = hacek !== -1 ? root.length - 2 : root.length - 1;
     const vowel = /[aåeěęioòuųy]/;
     const liquid = /[lrŕ]/;
 
     if (root == 'velik') {
         result = 'vęče';
-    }
-    else if (root == 'mal') {
+    } else if (root == 'mal') {
         result = 'menje';
-    }
-    else if (root == 'dobr') {
+    } else if (root == 'dobr') {
         result = 'lěpje, lučše';
-    }
-    else if (root == 'zl') {
+    } else if (root == 'zl') {
         result = 'gorje';
-    }
-    else if (root == 'mnog') {
+    } else if (root == 'mnog') {
         result = 'bolje';
-    }
-    else if ((root == 'blåg') || (root == 'blag')) {
+    } else if ((root == 'blåg') || (root == 'blag')) {
         result = 'unje, ' + root.substring(0, root.length - 1) + 'žeje';
-    }
-    else if (root.lastIndexOf('sk') == root.length - 2) {
+    } else if (root.lastIndexOf('sk') == root.length - 2) {
         result = 'bolje ' + root + 'o';
-    }
-    else if ((root.lastIndexOf('ok') == root.length - 2) || (root.lastIndexOf('ek') == root.length - 2)) {
+    } else if ((root.lastIndexOf('ok') == root.length - 2) || (root.lastIndexOf('ek') == root.length - 2)) {
         result = root.substring(0, root.length - 2) + '%je';
-    }
-    else if ((root.lastIndexOf('k') == root.length - 1) && (vowel.test(root.charAt(lastchar - 1)) == false)) {
+    } else if ((root.lastIndexOf('k') == root.length - 1) && (vowel.test(root.charAt(lastchar - 1)) == false)) {
         result = root.substring(0, root.length - 1) + '%je';
-    }
-    else if (root.indexOf('^') != -1) {
+    } else if (root.indexOf('^') != -1) {
         result = root + 'eje';
-    }
-    else {
+    } else {
         result = root + '%ěje';
     }
     result = result.replace(/k%ě/, 'če');
@@ -371,23 +302,17 @@ function superlative(root, comp, srt) {
     let result = '';
     if ((root == 'dobr') && (srt == 'adj')) {
         result = 'najlěpši, najlučši';
-    }
-    else if ((root == 'dobr') && (srt == 'adv')) {
+    } else if ((root == 'dobr') && (srt == 'adv')) {
         result = 'najlěpje, najlučše';
-    }
-    else if ((root == 'blåg') && (srt == 'adj')) {
+    } else if ((root == 'blåg') && (srt == 'adj')) {
         result = 'najunši, najblåžejši';
-    }
-    else if ((root == 'blag') && (srt == 'adj')) {
+    } else if ((root == 'blag') && (srt == 'adj')) {
         result = 'najunši, najblažejši';
-    }
-    else if ((root == 'blåg') && (srt == 'adv')) {
+    } else if ((root == 'blåg') && (srt == 'adv')) {
         result = 'najunje, najblåžeje';
-    }
-    else if ((root == 'blag') && (srt == 'adv')) {
+    } else if ((root == 'blag') && (srt == 'adv')) {
         result = 'najunje, najblažeje';
-    }
-    else {
+    } else {
         result = 'naj' + comp;
     }
     return result;

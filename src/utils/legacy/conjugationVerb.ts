@@ -1,8 +1,9 @@
-// /*
-// * Source http://steen.free.fr/interslavic/conjugator.html
-// */
-//
+/*
+* Source http://steen.free.fr/interslavic/conjugator.html
+*/
+
 /* tslint:disable */
+
 //
 // function conjugate ()
 // {
