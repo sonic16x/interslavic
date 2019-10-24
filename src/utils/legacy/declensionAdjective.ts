@@ -4,80 +4,58 @@
 
 /* tslint:disable */
 
+function applyRules(arr) {
+    return arr.map(rules);
+}
+
 export function declensionAdjective(adj: string) {
-    // adj = transliterate(adj, 1, '2', 2, 1);
     const root = establish_root(adj);
-    let m_nom_sg = m_nominative_sg(adj, root);
-    m_nom_sg = rules(m_nom_sg);
-    let m_acc_sg = m_accusative_sg(adj, root);
-    m_acc_sg = rules(m_acc_sg);
-    m_acc_sg = rules(m_acc_sg);
-    let f_nom_sg = f_nominative_sg(root);
-    f_nom_sg = rules(f_nom_sg);
-    let n_nom_sg = n_nominative_sg(root);
-    n_nom_sg = rules(n_nom_sg);
-    let mn_gen_sg = mn_genitive_sg(root);
-    mn_gen_sg = rules(mn_gen_sg);
-    let mn_dat_sg = mn_dative_sg(root);
-    mn_dat_sg = rules(mn_dat_sg);
-    let mn_ins_sg = mn_instrumental_sg(root);
-    mn_ins_sg = rules(mn_ins_sg);
-    let mn_loc_sg = mn_locative_sg(root);
-    mn_loc_sg = rules(mn_loc_sg);
-    let f_acc_sg = f_accusative_sg(root);
-    f_acc_sg = rules(f_acc_sg);
-    let f_gdl_sg = f_gendatloc_sg(root);
-    f_gdl_sg = rules(f_gdl_sg);
-    let f_ins_sg = f_instrumental_sg(root);
-    f_ins_sg = rules(f_ins_sg);
+    const m_nom_sg = m_nominative_sg(adj, root);
+    const m_acc_sg = m_accusative_sg(adj, root);
+    const f_nom_sg = f_nominative_sg(root);
+    const n_nom_sg = n_nominative_sg(root);
+    const mn_gen_sg = mn_genitive_sg(root);
+    const mn_dat_sg = mn_dative_sg(root);
+    const mn_ins_sg = mn_instrumental_sg(root);
+    const mn_loc_sg = mn_locative_sg(root);
+    const f_acc_sg = f_accusative_sg(root);
+    const f_gdl_sg = f_gendatloc_sg(root);
+    const f_ins_sg = f_instrumental_sg(root);
 
-    let m_nom_pl = m_nominative_pl(root);
-    m_nom_pl = rules(m_nom_pl);
-    m_nom_pl = rules(m_nom_pl);
-    let m_acc_pl = m_accusative_pl(root);
-    m_acc_pl = rules(m_acc_pl);
-    m_acc_pl = rules(m_acc_pl);
-    let fn_nom_pl = fn_nominative_pl(root);
-    fn_nom_pl = rules(fn_nom_pl);
-    let glo_pl = genloc_pl(root);
-    glo_pl = rules(glo_pl);
-    let dat_pl = dative_pl(root);
-    dat_pl = rules(dat_pl);
-    let ins_pl = instrumental_pl(root);
-    ins_pl = rules(ins_pl);
+    const m_nom_pl = m_nominative_pl(root);
+    const m_acc_pl = m_accusative_pl(root);
+    const fn_nom_pl = fn_nominative_pl(root);
+    const glo_pl = genloc_pl(root);
+    const dat_pl = dative_pl(root);
+    const ins_pl = instrumental_pl(root);
 
-    let adv = adverb(root);
-    adv = rules(adv);
-    let comp_adj = comparative_adj(root);
-    comp_adj = rules(comp_adj);
-    let comp_adv = comparative_adv(root);
-    comp_adv = rules(comp_adv);
-    let sup_adj = superlative(root, comp_adj, 'adj');
-    sup_adj = rules(sup_adj);
-    let sup_adv = superlative(root, comp_adv, 'adv');
-    sup_adv = rules(sup_adv);
+    const adv = adverb(root);
+    const comp_adj = comparative_adj(root);
+    const comp_adv = comparative_adv(root);
+    const sup_adj = superlative(root, comp_adj, 'adj');
+    const sup_adv = superlative(root, comp_adv, 'adv');
 
     return {
         singular: {
-            nom: [m_nom_sg, n_nom_sg, f_nom_sg],
-            acc: [m_acc_sg, f_acc_sg],
-            gen: [mn_gen_sg, f_gdl_sg],
-            dat: [mn_dat_sg, f_gdl_sg],
-            ins: [mn_ins_sg, f_ins_sg],
-            loc: [mn_loc_sg, f_gdl_sg],
+            nom: applyRules([m_nom_sg, n_nom_sg, f_nom_sg]),
+            acc: applyRules([m_acc_sg, f_acc_sg]),
+            gen: applyRules([mn_gen_sg, f_gdl_sg]),
+            dat: applyRules([mn_dat_sg, f_gdl_sg]),
+            ins: applyRules([mn_ins_sg, f_ins_sg]),
+            loc: applyRules([mn_loc_sg, f_gdl_sg]),
         },
         plural: {
-            nom: [m_nom_pl, fn_nom_pl],
-            acc: [m_acc_pl, fn_nom_pl],
-            gen: [glo_pl],
-            dat: [dat_pl],
-            ins: [ins_pl],
-            loc: [glo_pl],
+            nom: applyRules([m_nom_pl, fn_nom_pl]),
+            acc: applyRules([m_acc_pl, fn_nom_pl]),
+            gen: applyRules([glo_pl]),
+            dat: applyRules([dat_pl]),
+            ins: applyRules([ins_pl]),
+            loc: applyRules([glo_pl]),
         },
         comparison: {
-            positive: [m_nom_sg, adv],
-            comparative: [comp_adj, comp_adv],
-            superlative: [sup_adj, sup_adv],
+            positive: applyRules([m_nom_sg, adv]),
+            comparative: applyRules([comp_adj, comp_adv]),
+            superlative: applyRules([sup_adj, sup_adv]),
         },
     };
 }
@@ -118,21 +96,19 @@ function establish_root(adj) {
         result = '';
     }
 
-    result = result.replace('k^', 'k');
-    result = result.replace('g^', 'g');
-    result = result.replace('h^', 'h');
-    return (result);
-
+    return result
+        .replace('k^', 'k')
+        .replace('g^', 'g')
+        .replace('h^', 'h')
+    ;
 }
 
 function m_nominative_sg(adj, root) {
-    let result = '';
     if (root.indexOf('|') !== -1) {
-        result = adj;
+        return adj;
     } else {
-        result = root + 'y';
+        return root + 'y';
     }
-    return result;
 }
 
 function f_nominative_sg(root) {
@@ -200,13 +176,11 @@ function instrumental_pl(root) {
 }
 
 function adverb(root) {
-    let result = '';
     if (root.charAt(root.length - 2) == 'ć') {
-        result = root + 'i';
+        return root + 'i';
     } else {
-        result = root + 'o';
+        return root + 'o';
     }
-    return result;
 }
 
 function comparative_adj(root) {
@@ -242,13 +216,15 @@ function comparative_adj(root) {
             result = root + '%ejši';
         }
     }
-    result = result.replace(/k%/, 'č');
-    result = result.replace(/g%/, 'ž');
-    result = result.replace(/h%/, 'š');
-    result = result.replace(/lši/, 'ľši');
-    result = result.replace(/gši/, 'žši');
-    result = result.replace(/ležši/, 'legši');
-    result = result.replace(/%/, '');
+    result = result
+        .replace(/k%/, 'č')
+        .replace(/g%/, 'ž')
+        .replace(/h%/, 'š')
+        .replace(/lši/, 'ľši')
+        .replace(/gši/, 'žši')
+        .replace(/ležši/, 'legši')
+        .replace(/%/, '')
+    ;
 
     return result;
 }
@@ -283,17 +259,19 @@ function comparative_adv(root) {
     } else {
         result = root + '%ěje';
     }
-    result = result.replace(/k%ě/, 'če');
-    result = result.replace(/g%ě/, 'že');
-    result = result.replace(/h%ě/, 'še');
-    result = result.replace(/k%j/, 'kš');
-    result = result.replace(/g%j/, 'gš');
-    result = result.replace(/st%j/, 'šč');
-    result = result.replace(/s%j/, 'š');
-    result = result.replace(/z%j/, 'ž');
-    result = result.replace(/t%j/, 'č');
-    result = result.replace(/d%j/, 'dž');
-    result = result.replace(/%/, '');
+    result = result
+        .replace(/k%ě/, 'če')
+        .replace(/g%ě/, 'že')
+        .replace(/h%ě/, 'še')
+        .replace(/k%j/, 'kš')
+        .replace(/g%j/, 'gš')
+        .replace(/st%j/, 'šč')
+        .replace(/s%j/, 'š')
+        .replace(/z%j/, 'ž')
+        .replace(/t%j/, 'č')
+        .replace(/d%j/, 'dž')
+        .replace(/%/, '')
+    ;
 
     return result;
 }
@@ -319,7 +297,8 @@ function superlative(root, comp, srt) {
 }
 
 function rules(word: string): string {
-    return word.replace('^o', '^e')
+    return word
+        .replace('^o', '^e')
         .replace('^y', '^i')
         .replace('s|^e', 'se')
         .replace('s|^i', 'si')
@@ -340,5 +319,5 @@ function rules(word: string): string {
         .replace('^', '')
         .replace('jy', 'ji')
         .replace('cy', 'ci')
-        ;
+    ;
 }
