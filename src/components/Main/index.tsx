@@ -8,6 +8,7 @@ import Dictionary from 'components/Dictionary';
 import GDPR from 'components/GDPR';
 import Grammar from 'components/Grammar';
 import './index.scss';
+import { dictionaryUrl } from 'consts';
 import { fetchDictionary, setPageAction } from 'actions';
 import { getPageFromPath, getPathFromPage } from 'routing';
 
@@ -17,8 +18,6 @@ interface IMainProps {
     loadDictionary: () => void;
     setPage: (page: string) => void;
 }
-
-const dictionaryUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSwmAFvs2FmTYZfaS6VMe3X0VbvuKCs5F94YbvcyRfD070GZ0eNvYZAZXoPuZyT4s6Wqho2wyVzeeeu/pub?gid=1987833874&single=true&output=tsv';
 
 class Main extends React.Component<IMainProps> {
     constructor(props) {

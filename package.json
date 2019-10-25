@@ -7,8 +7,9 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' -t stylish --fix",
+    "lint": "tslint -c tslint.json '{src,tests}/**/*.{ts,tsx}' -t stylish --fix",
     "test": "jest",
+    "updateTestSnapshot": "ts-node ./tests/updateTestSnapshot.ts",
     "build": "cross-env NODE_ENV=production webpack"
   },
   "jest": {
@@ -26,7 +27,8 @@
   },
   "main": "",
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ],
   "dependencies": {
     "react": "^16.1.1",
@@ -60,6 +62,7 @@
     "style-loader": "^0.19.0",
     "ts-jest": "^24.1.0",
     "ts-loader": "^5.3.3",
+    "ts-node": "^8.4.1",
     "tslint": "^5.14.0",
     "tslint-react": "^4.0.0",
     "typescript": "^3.3.4000",
