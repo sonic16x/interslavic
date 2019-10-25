@@ -6,7 +6,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
-const srcPath = path.resolve(__dirname, './src/');
+const srcPath = path.resolve(__dirname, 'src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
 const bundleId = 'dev';
 
@@ -39,9 +39,7 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ],
-        include: [
-          path.join(__dirname, 'src')
-        ],
+        include: [srcPath],
         exclude: []
       },
       {

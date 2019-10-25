@@ -8,7 +8,7 @@
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "lint": "tslint -c tslint.json '{src,tests}/**/*.{ts,tsx}' -t stylish --fix",
-    "test": "jest",
+    "test": "jest --logHeapUsage --coverage",
     "updateTestSnapshot": "ts-node ./tests/updateTestSnapshot.ts",
     "build": "cross-env NODE_ENV=production webpack"
   },
@@ -23,6 +23,10 @@
     "moduleFileExtensions": [
       "ts",
       "js"
+    ],
+    "verbose": false,
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.ts"
     ]
   },
   "main": "",
