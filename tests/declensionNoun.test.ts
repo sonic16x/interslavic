@@ -1,8 +1,6 @@
 import { declensionNoun } from 'utils/legacy/declensionNoun';
 import {
     getGender,
-    getPartOfSpeech,
-    getVerbType,
     isAnimated,
     isPlural,
 } from 'utils/wordDetails';
