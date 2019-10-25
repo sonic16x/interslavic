@@ -5,6 +5,7 @@ import { hideDetailAction, setAlphabetTypeAction } from 'actions';
 import { declensionNoun } from 'utils/legacy/declensionNoun';
 import { declensionAdjective } from 'utils/legacy/declensionAdjective';
 import { conjugationVerb } from 'utils/legacy/conjugationVerb';
+import { markFluentVowel } from 'utils/markFluentVowel';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import Text from 'components/Text';
@@ -381,35 +382,13 @@ class DetailModal extends React.Component<IDetailModalProps> {
             </div>
         );
     }
-    private markFluentVowel(word, add) {
-        let j = 0;
-        for (let i = 0; i < Math.min(word.length - 1, add.length); i++) {
-            if (word[i] === add[i]) {
-                continue;
-            } else if (word[i] !== add[i] && word[i + 1] === add[i]) {
-                j = i;
-                break;
-            } else {
-                break;
-            }
-        }
-        if ( j === 0 ) {
-            return word;
-        }
-        const fluentVowel = word[j];
-        if (fluentVowel === 'è' || fluentVowel === 'ò') {
-            return word;
-        }
-        return word.replace(fluentVowel, `(${fluentVowel})`);
-    }
-
     private renderNounDetails() {
         const word = this.props.rawItem[0];
         const add = this.props.rawItem[1].replace(/\(|\)/g, '');
         let preparedWord = word;
 
         if (add && word !== add) {
-            preparedWord = this.markFluentVowel(word, add);
+            preparedWord = markFluentVowel(word, add);
         }
 
         const gender = getGender(this.props.item.details);
