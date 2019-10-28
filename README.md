@@ -3,10 +3,9 @@
   Interslavic language dictionary
 </h1>
 
-[![Build Status](https://travis-ci.org/scherebedov/interslavic.svg?branch=master)](https://travis-ci.org/scherebedov/interslavic)
-
 [https://interslavic-dictionary.com](https://interslavic-dictionary.com)  
 
+[![Build Status](https://travis-ci.org/scherebedov/interslavic.svg?branch=master)](https://travis-ci.org/scherebedov/interslavic)
 
 Using dictionary from: [http://steen.free.fr/interslavic/dynamic_dictionary.html](http://steen.free.fr/interslavic/dynamic_dictionary.html)  
 
