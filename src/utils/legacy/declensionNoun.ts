@@ -4,6 +4,7 @@
 
 /* tslint:disable */
 import { markFluentVowel } from 'utils/markFluentVowel';
+import {declensionAdjective} from "./declensionAdjective";
 
 function prepareGender(gender, animated) {
     if (gender === 'feminine') {
@@ -18,17 +19,24 @@ function prepareGender(gender, animated) {
 }
 
 export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural) {
-    const add = rawAdd.replace(/\(|\)/g, '');
     let noun = rawNoun;
-    if (add && noun !== add) {
-        noun = markFluentVowel(noun, add);
-    }
+
     //now we don't know how to decline the phrases
     if (noun.match(/ /)) {
         return null;
     }
+    //plural nouns
+    const add = rawAdd.replace(/\(|\)/g, '');
     if(isPlural) {
-        return declensionPluralNoun(noun,add,originGender);
+        return declensionPluralNoun(noun, add, originGender);
+    }
+    //substantivized adjectives
+    if(add === '-ogo' || add === '-ego' || add === '-oj' || add === 'ej') {
+        return declensionSubstAdj(noun, add, originGender, animated);
+    }
+
+    if (add && noun !== add) {
+        noun = markFluentVowel(noun, add);
     }
 
     const rawGender = prepareGender(originGender, animated);
@@ -570,4 +578,31 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
         };
     }
     return null;
+}
+
+function declensionSubstAdj(word: string, add:string, gender: string, animated:string) {
+    if (gender === 'masculine' || gender === 'neuter') {
+        const adjectiveParadigm = declensionAdjective(word);
+        const animatedCol = (animated?0:1);
+        return {
+            nom: [word, adjectiveParadigm.plural.nom[0].split('/')[animatedCol]],
+            acc: [adjectiveParadigm.singular.acc[0].split('/')[animatedCol], adjectiveParadigm.plural.acc[0].split('/')[animatedCol]],
+            gen: [adjectiveParadigm.singular.gen[0], adjectiveParadigm.plural.gen[0]],
+            loc: [adjectiveParadigm.singular.loc[0], adjectiveParadigm.plural.loc[0]],
+            dat: [adjectiveParadigm.singular.dat[0], adjectiveParadigm.plural.dat[0]],
+            ins: [adjectiveParadigm.singular.ins[0], adjectiveParadigm.plural.ins[0]],
+            voc: [null, null],
+        };
+    } else {
+        const adjectiveParadigm = declensionAdjective(word.slice(0,-1) + (add==='-oj'?'y':'i'));
+        return {
+            nom: [word, adjectiveParadigm.plural.nom[1]],
+            acc: [adjectiveParadigm.singular.acc[1], adjectiveParadigm.plural.acc[1]],
+            gen: [adjectiveParadigm.singular.gen[1], adjectiveParadigm.plural.gen[0]],
+            loc: [adjectiveParadigm.singular.loc[1], adjectiveParadigm.plural.loc[0]],
+            dat: [adjectiveParadigm.singular.dat[1], adjectiveParadigm.plural.dat[0]],
+            ins: [adjectiveParadigm.singular.ins[1], adjectiveParadigm.plural.ins[0]],
+            voc: [null, null],
+        };
+    }
 }
