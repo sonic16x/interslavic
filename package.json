@@ -24,14 +24,15 @@
     "modulePaths": [
       "<rootDir>/src/"
     ],
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js|tsx)$",
     "moduleFileExtensions": [
       "ts",
+      "tsx",
       "js"
     ],
     "verbose": false,
     "collectCoverageFrom": [
-      "<rootDir>/src/**/*.ts"
+      "<rootDir>/src/**/*.{ts,tsx}"
     ]
   },
   "main": "",

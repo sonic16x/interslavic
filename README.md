@@ -4,6 +4,7 @@
   <a href="https://travis-ci.org/scherebedov/interslavic" title="Build Status on Travis CI">
     <img src="https://travis-ci.org/scherebedov/interslavic.svg?branch=master" alt="Build Status">
   </a>
+  <a href='https://coveralls.io/github/scherebedov/interslavic?branch=master'><img src='https://coveralls.io/repos/github/scherebedov/interslavic/badge.svg?branch=master' alt='Coverage Status' /></a>
 </h1>
 
 [https://interslavic-dictionary.com](https://interslavic-dictionary.com)  
