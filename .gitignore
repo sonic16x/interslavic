@@ -1,3 +1,6 @@
 node_modules
 .idea
 dist
+coverage/lcov-report
+coverage/lcov.info
+coverage/coverage-summary.json
