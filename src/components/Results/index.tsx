@@ -52,7 +52,7 @@ class Results extends React.Component<IResultsProps> {
                 return (
                     <button
                         type={'button'}
-                        className={'btn btn-sm btn-secondary shadow showForms'}
+                        className={'btn btn-sm btn-link showForms'}
                         onClick={() => {
                             this.props.setDetail(i);
                             this.props.showDetail();

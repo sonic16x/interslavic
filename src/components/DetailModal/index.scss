@@ -3,14 +3,16 @@
   align-items: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  visibility: hidden;
   &.show {
     opacity: 1;
     pointer-events: all;
-    //overflow: auto;
+    visibility: visible;
   }
   background: rgba(1, 1, 1, 0.5);
   .modal-dialog {
+    pointer-events: auto;
     button.close {
       outline: 0;
     }
@@ -38,10 +40,16 @@
   .modal-dialog {
     flex-basis: 500px;
   }
+  .modal-body {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 575px) {
   .modal-dialog {
     flex-basis: 100%;
+    .modal-body {
+      font-size: 3vw;
+    }
   }
 }
