@@ -1,15 +1,14 @@
 import request from 'request';
-import { dictionaryUrl } from '../src/consts';
-import { declensionNoun } from '../src/utils/legacy/declensionNoun';
-import { declensionAdjective } from '../src/utils/legacy/declensionAdjective';
-import { conjugationVerb } from '../src/utils/legacy/conjugationVerb';
+import { dictionaryUrl } from 'consts';
+import { declensionNoun } from 'utils/legacy/declensionNoun';
+import { declensionAdjective } from 'utils/legacy/declensionAdjective';
+import { conjugationVerb } from 'utils/legacy/conjugationVerb';
 import {
     getGender,
     getPartOfSpeech,
     isAnimated,
     isPlural,
-} from '../src/utils/wordDetails';
-import { markFluentVowel } from '../src/utils/markFluentVowel';
+} from 'utils/wordDetails';
 import * as fs from 'fs';
 
 const testCases = {
