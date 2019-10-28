@@ -24,20 +24,13 @@ request(dictionaryUrl, (err, data) => {
         const [ word, add, details ] = line.split('\t').slice(0, 3);
         switch (getPartOfSpeech(details)) {
             case 'noun':
-                let preparedWord = word;
-                const preparedAdd = add.replace(/\(|\)/g, '');
-
-                if (preparedAdd && word !== preparedAdd) {
-                    preparedWord = markFluentVowel(word, preparedAdd);
-                }
-
                 const gender = getGender(details);
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
 
                 testCases.noun.push({
                     init: { word, add, details },
-                    expected: declensionNoun(preparedWord, preparedAdd, gender, animated, plural),
+                    expected: declensionNoun(word, add, gender, animated, plural),
                 });
                 break;
             case 'verb':

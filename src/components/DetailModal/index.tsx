@@ -5,7 +5,6 @@ import { hideDetailAction, setAlphabetTypeAction } from 'actions';
 import { declensionNoun } from 'utils/legacy/declensionNoun';
 import { declensionAdjective } from 'utils/legacy/declensionAdjective';
 import { conjugationVerb } from 'utils/legacy/conjugationVerb';
-import { markFluentVowel } from 'utils/markFluentVowel';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import Text from 'components/Text';
@@ -70,7 +69,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                             </button>
                         </div>
                         <div className={'modal-body'}>
-                            {this.renderBody(pos)}
+                            {this.renderBody()}
                         </div>
                         <div className={'modal-footer'}>
                             <LineSelector
@@ -111,17 +110,38 @@ class DetailModal extends React.Component<IDetailModalProps> {
             </h5>
         );
     }
-    private renderBody(pos) {
-        switch (pos) {
+    private renderBody() {
+        const splitted = this.props.rawItem[0].split(',');
+        return splitted.map((word, i) => this.renderWord(
+            [
+                word,
+                this.props.rawItem[1].indexOf('+') === -1 ? this.props.rawItem[1] : '',
+                this.props.rawItem[2],
+            ], i, splitted.length > 1));
+    }
+    private renderWord(rawItem, i, moreOne) {
+        const [ word, add, details ] = rawItem;
+        let wordComponent;
+        switch (getPartOfSpeech(details)) {
             case 'noun':
-                return this.renderNounDetails();
+                wordComponent = this.renderNounDetails(word, add, details);
+                break;
             case 'adjective':
-                return this.renderAdjectiveDetails();
+                wordComponent = this.renderAdjectiveDetails(word);
+                break;
             case 'verb':
-                return this.renderVerbDetails();
+                wordComponent = this.renderVerbDetails(word, add);
+                break;
             default:
                 return '';
         }
+        return (
+            <div className={'word'} key={i}>
+                {moreOne ? <h6>{word}</h6> : ''}
+                {wordComponent}
+                {moreOne ? <hr/> : ''}
+            </div>
+        );
     }
     private formatStr(str: string): string {
         if (str === '') {
@@ -138,9 +158,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 return getCyrillic(str, this.props.flavorisationType);
         }
     }
-    private renderVerbDetails() {
-        const word = this.props.rawItem[0];
-        const add = this.props.rawItem[1].replace(/\(|\)/g, '');
+    private renderVerbDetails(word, add) {
         const data = conjugationVerb(word, add);
         const tableDataFirst = [
             [
@@ -250,15 +268,14 @@ class DetailModal extends React.Component<IDetailModalProps> {
             tableDataSecond.push(item);
         });
         return (
-            <div>
-                <Table data={tableDataFirst}/>
-                <Table data={tableDataSecond}/>
-                <Table data={tableDataAdd}/>
-            </div>
+            <>
+                <Table key={0} data={tableDataFirst}/>
+                <Table key={1} data={tableDataSecond}/>
+                <Table key={2} data={tableDataAdd}/>
+            </>
         );
     }
-    private renderAdjectiveDetails() {
-        const word = this.props.rawItem[0];
+    private renderAdjectiveDetails(word) {
         const { singular, plural, comparison } = declensionAdjective(word);
 
         const tableDataSingular = [
@@ -375,27 +392,19 @@ class DetailModal extends React.Component<IDetailModalProps> {
             ],
         ];
         return (
-            <div>
-                <Table data={tableDataSingular}/>
-                <Table data={tableDataPlural}/>
-                <Table data={tableDataComparison}/>
-            </div>
+            <>
+                <Table key={0} data={tableDataSingular}/>
+                <Table key={1} data={tableDataPlural}/>
+                <Table key={2} data={tableDataComparison}/>
+            </>
         );
     }
-    private renderNounDetails() {
-        const word = this.props.rawItem[0];
-        const add = this.props.rawItem[1].replace(/\(|\)/g, '');
-        let preparedWord = word;
+    private renderNounDetails(word, add, details) {
+        const gender = getGender(details);
+        const animated = isAnimated(details);
+        const plural = isPlural(details);
 
-        if (add && word !== add) {
-            preparedWord = markFluentVowel(word, add);
-        }
-
-        const gender = getGender(this.props.item.details);
-        const animated = isAnimated(this.props.item.details);
-        const plural = isPlural(this.props.item.details);
-
-        const cases = declensionNoun(preparedWord, add, gender, animated, plural);
+        const cases = declensionNoun(word, add, gender, animated, plural);
 
         if (cases === null) {
             return (
@@ -445,11 +454,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             ]);
         });
 
-        return (
-           <div>
-               <Table data={tableDataCases}/>
-           </div>
-        );
+        return <Table data={tableDataCases}/>;
     }
 }
 

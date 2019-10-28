@@ -4,7 +4,8 @@
 
 /* tslint:disable */
 
-export function conjugationVerb(inf, pts) {
+export function conjugationVerb(inf, rawPts) {
+    const pts = rawPts.replace(/\(|\)/g, '');
     const refl = reflexive(inf);
     const pref = prefix(inf);
     const is = infinitive_stem(pref, inf);

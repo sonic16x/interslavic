@@ -24,7 +24,11 @@
       }
     }
     .modal-body {
-
+      overflow-y: scroll;
+      max-height: 80vh;
+      .word {
+        text-align: center;
+      }
     }
 
     .modal-footer {

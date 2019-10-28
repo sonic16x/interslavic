@@ -3,6 +3,8 @@
 */
 
 /* tslint:disable */
+import { markFluentVowel } from 'utils/markFluentVowel';
+
 function prepareGender(gender, animated) {
     if (gender === 'feminine') {
         return 'f';
@@ -15,7 +17,12 @@ function prepareGender(gender, animated) {
     }
 }
 
-export function declensionNoun(noun, add, originGender, animated, isPlural) {
+export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural) {
+    const add = rawAdd.replace(/\(|\)/g, '');
+    let noun = rawNoun;
+    if (add && noun !== add) {
+        noun = markFluentVowel(noun, add);
+    }
     //now we don't know how to decline the phrases
     if (noun.match(/ /)) {
         return null;
