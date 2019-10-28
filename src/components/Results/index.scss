@@ -2,6 +2,8 @@
   width: 100%;
   max-width: 1024px;
   margin-bottom: 15px;
+  flex-shrink: 0;
+
   .card-body {
     padding-top: 1.5rem;
   }
