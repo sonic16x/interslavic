@@ -1,6 +1,6 @@
 <h1>
   <img src="static/logo.png" alt="Logo" height="32" width="48">
-  Dictionary for Interslavic language
+  Interslavic language dictionary
 </h1>
 
 [![Build Status](https://travis-ci.org/scherebedov/interslavic.svg?branch=master)](https://travis-ci.org/scherebedov/interslavic)
