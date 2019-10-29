@@ -209,10 +209,10 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const pronouns = [
             'ja',
             'ty',
-            'on/ona/ono',
+            'on ona ono',
             'my',
             'vy',
-            'oni/one',
+            'oni one',
         ];
         const pronounsFull = [
             'ja',
@@ -222,7 +222,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             'ono',
             'my',
             'vy',
-            'oni/one',
+            'oni one',
         ];
         const forms = [
             '1sg',

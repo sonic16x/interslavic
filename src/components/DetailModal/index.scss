@@ -29,6 +29,11 @@
       .word {
         text-align: center;
       }
+      table.customTable {
+        th, td {
+          white-space: normal;
+        }
+      }
     }
 
     .modal-footer {
@@ -40,20 +45,30 @@
   }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 678px) {
   .modal-dialog {
-    flex-basis: 500px;
-  }
-  .modal-body {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 575px) {
-  .modal-dialog {
-    flex-basis: 100%;
+    max-width: 80vw;
     .modal-body {
-      font-size: 3vw;
+      font-size: 1rem;
     }
   }
 }
+
+@media (max-width: 678px) {
+  .modal-dialog {
+    max-width: 100%;
+    flex-basis: 100%;
+    .modal-body {
+      font-size: 2.5vw;
+    }
+  }
+}
+
+//@media (max-width: 575px) {
+//  .modal-dialog {
+//    flex-basis: 100%;
+//      //.modal-body {
+//      //  font-size: 2.5vw;
+//      //}
+//  }
+//}
