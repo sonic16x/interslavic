@@ -18,12 +18,24 @@ function prepareGender(gender, animated) {
     }
 }
 
-export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural) {
+export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isIndeclinable) {
     let noun = rawNoun;
 
     //now we don't know how to decline the phrases
     if (noun.match(/ /)) {
         return null;
+    }
+    //indeclinable
+    if (isIndeclinable) {
+        return {
+            nom: [rawNoun, rawNoun],
+            acc: [rawNoun, rawNoun],
+            gen: [rawNoun, rawNoun],
+            loc: [rawNoun, rawNoun],
+            dat: [rawNoun, rawNoun],
+            ins: [rawNoun, rawNoun],
+            voc: [rawNoun, null],
+        };
     }
     //plural nouns
     const add = rawAdd.replace(/\(|\)/g, '');

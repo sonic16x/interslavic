@@ -12,7 +12,7 @@ import {
     getGender,
     getPartOfSpeech,
     getVerbType,
-    isAnimated,
+    isAnimated, isIndeclinable,
     isPlural,
 } from 'utils/wordDetails';
 import { getCyrillic, getField, getLatin, getWordList } from 'utils/translator';
@@ -91,13 +91,15 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const animated = isAnimated(details);
         const gender = getGender(details);
         const plural = isPlural(details);
+        const indeclinable = isIndeclinable(details);
         switch (pos) {
             case 'noun':
                 arr.push(gender);
-                if(gender === 'masculine') {
+                if (gender === 'masculine') {
                     arr.push(animated ? 'animated' : 'inanimate');
                 }
-                arr.push(plural ? 'plural' : 'single');
+                if (indeclinable) { arr.push('indeclinable'); }
+                if (plural) { arr.push('plural'); }
                 break;
             case 'verb':
                 const verbType = getVerbType(details);
@@ -428,8 +430,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const gender = getGender(details);
         const animated = isAnimated(details);
         const plural = isPlural(details);
+        const indeclinable = isIndeclinable(details);
 
-        const cases = declensionNoun(word, add, gender, animated, plural);
+        const cases = declensionNoun(word, add, gender, animated, plural, indeclinable);
 
         if (cases === null) {
             return (

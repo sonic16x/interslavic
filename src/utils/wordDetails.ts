@@ -23,6 +23,10 @@ export function isAnimated(details: string): boolean {
     return getArr(details).indexOf('anim') !== -1;
 }
 
+export function isIndeclinable(details: string): boolean {
+    return getArr(details).indexOf('indecl') !== -1;
+}
+
 // + adj - adjective - прилагательное
 // + adv - adverb - наречие
 // + conj - conjunction - союз

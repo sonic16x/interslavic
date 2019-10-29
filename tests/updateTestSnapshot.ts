@@ -6,7 +6,7 @@ import { conjugationVerb } from 'utils/legacy/conjugationVerb';
 import {
     getGender,
     getPartOfSpeech,
-    isAnimated,
+    isAnimated, isIndeclinable,
     isPlural,
 } from 'utils/wordDetails';
 import * as fs from 'fs';
@@ -26,10 +26,11 @@ request(dictionaryUrl, (err, data) => {
                 const gender = getGender(details);
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
+                const indeclinable = isIndeclinable(details);
 
                 testCases.noun.push({
                     init: { word, add, details },
-                    expected: declensionNoun(word, add, gender, animated, plural),
+                    expected: declensionNoun(word, add, gender, animated, plural, indeclinable),
                 });
                 break;
             case 'verb':
