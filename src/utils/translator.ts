@@ -98,7 +98,7 @@ function levenshteinDistance(a, b) {
     return matrix[b.length][a.length];
 }
 
-function getField(item, fieldName): string {
+export function getField(item, fieldName): string {
     return item[headerIndexes.get(fieldName)];
 }
 
@@ -277,4 +277,8 @@ export function formatTranslate(
             };
         });
     }
+}
+
+export function getWordList(): string[][] {
+    return words;
 }

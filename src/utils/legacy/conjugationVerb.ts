@@ -5,7 +5,12 @@
 /* tslint:disable */
 
 export function conjugationVerb(inf, rawPts) {
-    const pts = rawPts.replace(/\(|\)/g, '');
+    //special cases
+    if (inf === 'dòlžen byti') {
+        return null;
+    }
+
+    const pts = rawPts.replace(/\(|\)/g, '').split(';')[0];
     const refl = reflexive(inf);
     const pref = prefix(inf);
     const is = infinitive_stem(pref, inf);
@@ -47,8 +52,11 @@ export function conjugationVerb(inf, rawPts) {
 
 function reflexive(inf) {
     let result = '';
-    if ((inf.lastIndexOf('se') == inf.length - 2) || (inf.lastIndexOf('sę') == inf.length - 2) ||
+    /*if ((inf.lastIndexOf('se') == inf.length - 2) || (inf.lastIndexOf('sę') == inf.length - 2) ||
         (inf.indexOf('se ') == 0) || (inf.indexOf('sę ') == 0)) {
+        result = ' sę';
+    }*/
+    if(inf.indexOf(' ') !== -1 && ['se', 'sę'].indexOf(inf.split(' ')[1]) !== -1) {
         result = ' sę';
     }
     else {
@@ -95,11 +103,14 @@ function infinitive_stem(pref, inf) {
         result = 'ERROR-1';
         return result;
     }
-    else if ((inf.lastIndexOf('se') == inf.length - 2) || (inf.lastIndexOf('sę') == inf.length - 2)) {
+    /*else if ((inf.lastIndexOf('se') == inf.length - 2) || (inf.lastIndexOf('sę') == inf.length - 2)) {
         trunc = inf.substring(0, inf.length - 3);
     }
     else if ((inf.indexOf('se ') == 0) || (inf.indexOf('sę ') == 0)) {
         trunc = inf.substring(3, inf.length);
+    }*/
+    else if(inf.indexOf(' ') !== -1) {
+        trunc = inf.slice(0,inf.indexOf(' '));
     }
     else {
         trunc = inf;

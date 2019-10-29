@@ -15,7 +15,7 @@ import {
     isAnimated,
     isPlural,
 } from 'utils/wordDetails';
-import { getCyrillic, getLatin } from 'utils/translator';
+import { getCyrillic, getField, getLatin, getWordList } from 'utils/translator';
 
 interface IDetailModalProps {
     close: () => void;
@@ -114,7 +114,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const splitted = this.props.rawItem[0].split(',');
         return splitted.map((word, i) => this.renderWord(
             [
-                word,
+                word.trim(),
                 this.props.rawItem[1].indexOf('+') === -1 ? this.props.rawItem[1] : '',
                 this.props.rawItem[2],
             ], i, splitted.length > 1));
@@ -130,7 +130,21 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 wordComponent = this.renderAdjectiveDetails(word);
                 break;
             case 'verb':
-                wordComponent = this.renderVerbDetails(word, add);
+                if (!add && word.indexOf(' ') !== -1) {
+                    let add2 = '';
+                    const BaseWord = getWordList().filter((item) => {
+                        if (getField(item, 'isv') === word.split(' ')[0] &&
+                            getField(item, 'addition') &&
+                            getField(item, 'partOfSpeech').indexOf('v.') !== -1) { return true; }
+                        return false;
+                    });
+                    if (BaseWord.length > 0) {
+                        add2 = getField(BaseWord[0], 'addition');
+                    }
+                    wordComponent = this.renderVerbDetails(word, add2);
+                } else {
+                    wordComponent = this.renderVerbDetails(word, add);
+                }
                 break;
             default:
                 return '';
@@ -160,6 +174,15 @@ class DetailModal extends React.Component<IDetailModalProps> {
     }
     private renderVerbDetails(word, add) {
         const data = conjugationVerb(word, add);
+        if (data === null) {
+            return (
+                <div>
+                    <Text>
+                        {`No data for conjugation this verb`}
+                    </Text>
+                </div>
+            );
+        }
         const tableDataFirst = [
             [
                 '&nbsp@bl;bt;w=2',
