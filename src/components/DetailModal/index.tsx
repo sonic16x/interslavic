@@ -94,7 +94,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
         switch (pos) {
             case 'noun':
                 arr.push(gender);
-                arr.push(animated ? 'animated' : 'inanimate');
+                if(gender === 'masculine') {
+                    arr.push(animated ? 'animated' : 'inanimate');
+                }
                 arr.push(plural ? 'plural' : 'single');
                 break;
             case 'verb':
