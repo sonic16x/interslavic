@@ -47,6 +47,7 @@ class Results extends React.Component<IResultsProps> {
         const pos = getPartOfSpeech(item.details);
         switch (pos) {
             case 'noun':
+                if (item.original.indexOf(' ') !== -1) { return ''; }
             case 'adjective':
             case 'verb':
                 return (
