@@ -13,9 +13,7 @@ export function markFluentVowel(word: string, add: string): string {
     if ( j === 0 ) {
         return word;
     }
-    const fluentVowel = word[j];
-    if (fluentVowel === 'è' || fluentVowel === 'ò') {
-        return word;
-    }
+    const fluentVowel = word[j].replace('è', 'e').replace('ò', 'o');
+
     return word.slice(0, j) + '(' + fluentVowel + ')' + word.slice(j + 1);
 }
