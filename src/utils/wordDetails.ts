@@ -1,10 +1,13 @@
-export type Gender = 'masculine' | 'feminine' | 'neuter';
+export type Gender = 'masculine' | 'feminine' | 'neuter' | 'masculine or feminine';
 
 function getArr(str) {
     return str.replace(/ /g, '').split('.');
 }
 
 export function getGender(details: string): Gender {
+    if (details.indexOf('m./f.') !== -1) {
+        return 'masculine or feminine';
+    }
     const arr = getArr(details);
     if (arr.indexOf('m') !== -1) {
         return 'masculine';

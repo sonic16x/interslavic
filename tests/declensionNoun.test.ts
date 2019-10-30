@@ -3,15 +3,15 @@ import {
     getGender,
     isAnimated,
     isPlural,
+    isIndeclinable,
 } from 'utils/wordDetails';
 
 import { noun } from './testCases.json';
-import { isIndeclinable } from '../src/utils/wordDetails';
 
 describe('noun', () => {
     noun.forEach(({ init: { word, details, add }, expected}) => {
         test(`noun ${word}`, () => {
-            const gender = getGender(details);
+            const gender = getGender(details.replace('m./f.', 'm.' ));
             const animated = isAnimated(details);
             const plural = isPlural(details);
             const indeclinable = isIndeclinable(details);

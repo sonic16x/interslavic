@@ -95,7 +95,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         switch (pos) {
             case 'noun':
                 arr.push(gender);
-                if (gender === 'masculine') {
+                if (gender.match(/masculine/)) {
                     arr.push(animated ? 'animated' : 'inanimate');
                 }
                 if (indeclinable) { arr.push('indeclinable'); }
@@ -116,6 +116,20 @@ class DetailModal extends React.Component<IDetailModalProps> {
     }
     private renderBody() {
         const splitted = this.props.rawItem[0].split(',');
+        if (splitted.length === 1 && this.props.rawItem[2].indexOf('m./f.') !== -1 ) {
+            return [
+                this.renderWord([
+                    this.props.rawItem[0].trim(),
+                    this.props.rawItem[1].indexOf('+') === -1 ? this.props.rawItem[1] : '',
+                    'm.showGender',
+                ], 0, true),
+                this.renderWord([
+                    this.props.rawItem[0].trim(),
+                    this.props.rawItem[1].indexOf('+') === -1 ? this.props.rawItem[1] : '',
+                    'f.showGender',
+                ], 1, true),
+            ];
+        }
         return splitted.map((word, i) => this.renderWord(
             [
                 word.trim(),
@@ -126,8 +140,14 @@ class DetailModal extends React.Component<IDetailModalProps> {
     private renderWord(rawItem, i, moreOne) {
         const [ word, add, details ] = rawItem;
         let wordComponent;
+        let remark = '';
         switch (getPartOfSpeech(details)) {
             case 'noun':
+                if (details === 'm.showGender') {
+                    remark = ' (masculine)';
+                } else if (details === 'f.showGender') {
+                    remark = ' (feminine)';
+                }
                 wordComponent = this.renderNounDetails(word, add, details);
                 break;
             case 'adjective':
@@ -155,7 +175,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         }
         return (
             <div className={'word'} key={i}>
-                {moreOne ? <h6>{word}</h6> : ''}
+                {moreOne ? <h6>{word}{remark}</h6> : ''}
                 {wordComponent}
                 {moreOne ? <hr/> : ''}
             </div>

@@ -23,7 +23,7 @@ request(dictionaryUrl, (err, data) => {
         const [ word, add, details ] = line.split('\t').slice(0, 3);
         switch (getPartOfSpeech(details)) {
             case 'noun':
-                const gender = getGender(details);
+                const gender = getGender(details.replace('m./f.', 'm.' ));
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
                 const indeclinable = isIndeclinable(details);

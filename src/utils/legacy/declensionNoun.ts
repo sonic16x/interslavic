@@ -54,8 +54,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     }
 
     const rawGender = prepareGender(originGender, animated);
-    noun = noun.replace('è', '(e)');
-    noun = noun.replace('ò', '(o)');
+
     noun = noun + '%';
     noun = noun.replace(/[ńň]%/, 'nj');
     noun = noun.replace(/[ľĺ]%/, 'lj');
@@ -66,11 +65,12 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     n2 = n2.replace(/([cšžčćńľŕťďśźj])/g, '$1ь');
     noun = n1 + n2;
 
-    noun = noun.replace((String.fromCharCode(40)) + 'e' + (String.fromCharCode(41)), 'è');
-    noun = noun.replace((String.fromCharCode(40)) + 'o' + (String.fromCharCode(41)), 'ò');
+    const nounWithoutFluent = noun.replace(/\([oe]\)/,'');
+
+    noun = noun.replace( '(e)', 'è').replace( '(o)', 'ò');
 
     const gender = establish_gender(noun, rawGender);
-    const root = establish_root(noun, gender);
+    const root = establish_root(nounWithoutFluent, gender);
     const plroot = establish_plural_root(root);
     const plgen = establish_plural_gender(root, plroot, gender, rawGender);
     const nom_sg = nominative_sg(noun, root, gender);
@@ -153,10 +153,10 @@ function establish_gender(noun, gender) {
 
 function establish_root(noun, gender) {
     let result = '';
-    if ((noun == 'den') || (noun == 'dèn') || (noun == 'denjь') || (noun == 'dènjь')) {
+    /*if ((noun == 'den') || (noun == 'dèn') || (noun == 'denjь') || (noun == 'dènjь')) {
         result = 'dn';
-    }
-    else if (noun == 'lèv' || noun == 'lev') {
+    }*/
+    if (noun == 'lèv' || noun == 'lev') {
         result = 'ljv';
     }
     else if (noun == 'Lèv' || noun == 'Lev') {
