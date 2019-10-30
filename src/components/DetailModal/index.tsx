@@ -175,7 +175,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         }
         return (
             <div className={'word'} key={i}>
-                {moreOne ? <h6>{word}{remark}</h6> : ''}
+                {moreOne ? <h6>{this.formatStr(word)}{remark}</h6> : ''}
                 {wordComponent}
                 {moreOne ? <hr/> : ''}
             </div>
@@ -464,19 +464,19 @@ class DetailModal extends React.Component<IDetailModalProps> {
             );
         }
 
-        const prepositions = [
-            '&mdash;',
-            'na',
-            'bez',
-            'o',
-            'k',
-            's',
-            '!',
+        const questions = [
+            'kto? čto?',
+            'kogo? čto?',
+            'kogo? čego?',
+            'o kom? o čem?',
+            'komu? čemu?',
+            'kym? čym?',
+            'hej!',
         ];
 
         const tableDataCases = [
             [
-                'Prep.@b',
+                'Pytanja@b',
                 'Case@b',
                 'Singular@b',
                 'Plural@b',
@@ -486,11 +486,11 @@ class DetailModal extends React.Component<IDetailModalProps> {
         Object.keys(cases).forEach((item, i) => {
             const upperCaseName = `${item[0].toUpperCase()}${item.slice(1)}`;
             let pre;
-            if (prepositions[i] === '') {
+            if (questions[i] === '') {
                 pre = '&mdash;';
             }
-            if (!pre && prepositions[i] !== '!') {
-                pre = `${this.formatStr(prepositions[i])}@`;
+            if (!pre && questions[i] !== '!') {
+                pre = `${this.formatStr(questions[i])}@`;
             } else if (!pre) {
                 pre = '!@';
             }
