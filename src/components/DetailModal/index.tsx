@@ -476,7 +476,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         const tableDataCases = [
             [
-                'Pytanja@b',
+                'Questions@b',
                 'Case@b',
                 'Singular@b',
                 'Plural@b',
