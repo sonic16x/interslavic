@@ -83,7 +83,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     const loc_sg = locative_sg(root, gender);
     const voc_sg = vocative_sg(nom_sg, root, gender);
 
-    //indeclinable
+    //only singular
     if (isSingular) {
         return {
             nom: [nom_sg, null],
