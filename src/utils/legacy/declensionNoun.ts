@@ -615,25 +615,15 @@ function rules(word: string): string {
 }
 
 function declensionPluralNoun(word: string,add: string, gender: string) {
-    if (add.slice(-2) === 'yh') {
+    if (add.slice(-2) === 'yh' || add.slice(-2) === 'ih') {
+        const iOrY = (add.slice(-2) === 'yh' ? 'y' : 'i');
         return {
             nom: [null, word],
             acc: [null, word],
-            gen: [null, word.slice(0, -1) + 'yh'],
-            loc: [null, word.slice(0, -1) + 'yh'],
-            dat: [null, word.slice(0, -1) + 'ym'],
-            ins: [null, word.slice(0, -1) + 'ymi'],
-            voc: [null, null],
-        };
-    }
-    else if (add.slice(-2) === 'ih') {
-        return {
-            nom: [null, word],
-            acc: [null, word],
-            gen: [null, word.slice(0, -1) + 'ih'],
-            loc: [null, word.slice(0, -1) + 'ih'],
-            dat: [null, word.slice(0, -1) + 'im'],
-            ins: [null, word.slice(0, -1) + 'imi'],
+            gen: [null, word.slice(0, -1) + iOrY + 'h'],
+            loc: [null, word.slice(0, -1) + iOrY + 'h'],
+            dat: [null, word.slice(0, -1) + iOrY + 'm'],
+            ins: [null, word.slice(0, -1) + iOrY + 'mi'],
             voc: [null, null],
         };
     }

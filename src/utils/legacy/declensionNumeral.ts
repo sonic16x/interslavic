@@ -28,7 +28,7 @@ const exclusionList = {
 
 function getExclusionForm(rawWord, caseIndex, formColumns) {
     const wordForms = exclusionList[rawWord][caseIndex].split('|');
-    let resForms = [];
+    const resForms = [];
     for (let i = 0; i < formColumns; i++) {
         resForms.push(wordForms[(i < wordForms.length ? i : wordForms.length - 1)]);
     }
@@ -91,7 +91,7 @@ export function declensionNumeral(rawWord: string, numeralType: string) {
             columns: ['plural'],
             cases: {
                 nom: [rawWord],
-                acc: [rawWord.slice(0, -1) + iOrY + 'h / ' + word],
+                acc: [rawWord.slice(0, -1) + iOrY + 'h / ' + rawWord],
                 gen: [rawWord.slice(0, -1) + iOrY + 'h'],
                 loc: [rawWord.slice(0, -1) + iOrY + 'h'],
                 dat: [rawWord.slice(0, -1) + iOrY + 'm'],

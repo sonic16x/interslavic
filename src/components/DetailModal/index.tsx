@@ -535,12 +535,12 @@ class DetailModal extends React.Component<IDetailModalProps> {
         }
 
         if (numeralParadigm.type === 'noun') {
-            let tableDataCases = [[ 'Case@b' ]];
+            const tableDataCases = [[ 'Case@b' ]];
             numeralParadigm.columns.forEach((col) => {
                 tableDataCases[0].push(col + '@b');
             });
             Object.keys(numeralParadigm.cases).forEach((caseItem) => {
-                let tableRow = [`${caseItem[0].toUpperCase()}${caseItem.slice(1)}@b`];
+                const tableRow = [`${caseItem[0].toUpperCase()}${caseItem.slice(1)}@b`];
                 numeralParadigm.cases[caseItem].forEach((caseForm) => {
                     tableRow.push(`${this.formatStr(caseForm)}@`);
                 });
