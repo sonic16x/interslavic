@@ -22,6 +22,10 @@ export function isPlural(details: string): boolean {
     return getArr(details).indexOf('pl') !== -1;
 }
 
+export function isSingular(details: string): boolean {
+    return getArr(details).indexOf('sg') !== -1;
+}
+
 export function isAnimated(details: string): boolean {
     return getArr(details).indexOf('anim') !== -1;
 }
@@ -29,6 +33,39 @@ export function isAnimated(details: string): boolean {
 export function isIndeclinable(details: string): boolean {
     return getArr(details).indexOf('indecl') !== -1;
 }
+
+export function getNumeralType(details: string): string {
+    const arr = getArr(details);
+
+    if (arr.indexOf('card') !== -1) {
+        return 'cardinal';
+    }
+
+    if (arr.indexOf('coll') !== -1) {
+        return 'collective';
+    }
+
+    if (arr.indexOf('fract') !== -1) {
+        return 'fractional';
+    }
+
+    if (arr.indexOf('subst') !== -1) {
+        return 'substantivized';
+    }
+
+    if (arr.indexOf('diff') !== -1) {
+        return 'differential';
+    }
+
+    if (arr.indexOf('mult') !== -1) {
+        return 'multiplicative';
+    }
+
+    if (arr.indexOf('ord') !== -1) {
+        return 'ordinal';
+    }
+}
+
 
 // + adj - adjective - прилагательное
 // + adv - adverb - наречие
@@ -80,7 +117,8 @@ export type PartOfSpeech =
     'preposition' |
     'pronoun' |
     'interjection' |
-    'verb'
+    'verb' |
+    'numeral'
 ;
 
 export function getPartOfSpeech(details: string): PartOfSpeech {
@@ -106,6 +144,9 @@ export function getPartOfSpeech(details: string): PartOfSpeech {
     }
     if (arr.indexOf('pron') !== -1) {
         return 'pronoun';
+    }
+    if (arr.indexOf('num') !== -1) {
+        return 'numeral';
     }
     if (arr.indexOf('intj') !== -1) {
         return 'interjection';

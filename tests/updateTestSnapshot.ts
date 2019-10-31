@@ -7,7 +7,7 @@ import {
     getGender,
     getPartOfSpeech,
     isAnimated, isIndeclinable,
-    isPlural,
+    isPlural, isSingular,
 } from 'utils/wordDetails';
 import * as fs from 'fs';
 
@@ -26,11 +26,12 @@ request(dictionaryUrl, (err, data) => {
                 const gender = getGender(details.replace('m./f.', 'm.' ));
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
+                const singular = isSingular(details);
                 const indeclinable = isIndeclinable(details);
 
                 testCases.noun.push({
                     init: { word, add, details },
-                    expected: declensionNoun(word, add, gender, animated, plural, indeclinable),
+                    expected: declensionNoun(word, add, gender, animated, plural, singular, indeclinable),
                 });
                 break;
             case 'verb':

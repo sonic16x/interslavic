@@ -5,6 +5,7 @@ import { hideDetailAction, setAlphabetTypeAction } from 'actions';
 import { declensionNoun } from 'utils/legacy/declensionNoun';
 import { declensionAdjective } from 'utils/legacy/declensionAdjective';
 import { conjugationVerb } from 'utils/legacy/conjugationVerb';
+import { declensionNumeral} from "../../utils/legacy/declensionNumeral";
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import Text from 'components/Text';
@@ -12,10 +13,14 @@ import {
     getGender,
     getPartOfSpeech,
     getVerbType,
-    isAnimated, isIndeclinable,
+    getNumeralType,
+    isAnimated,
+    isIndeclinable,
     isPlural,
+    isSingular,
 } from 'utils/wordDetails';
 import { getCyrillic, getField, getLatin, getWordList } from 'utils/translator';
+
 
 interface IDetailModalProps {
     close: () => void;
@@ -91,6 +96,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const animated = isAnimated(details);
         const gender = getGender(details);
         const plural = isPlural(details);
+        const singular = isSingular(details);
         const indeclinable = isIndeclinable(details);
         switch (pos) {
             case 'noun':
@@ -100,13 +106,19 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 }
                 if (indeclinable) { arr.push('indeclinable'); }
                 if (plural) { arr.push('plural'); }
+                if (singular) { arr.push('singular'); }
                 break;
             case 'verb':
                 const verbType = getVerbType(details);
                 if (verbType) {
-                    arr.push(getVerbType(details));
+                    arr.push(verbType);
                 }
                 break;
+            case 'numeral':
+                const numeralType = getNumeralType(details);
+                if (numeralType) {
+                    arr.push(numeralType);
+                }
         }
         return (
             <h5 className={'modal-title'}>
@@ -170,6 +182,10 @@ class DetailModal extends React.Component<IDetailModalProps> {
                     wordComponent = this.renderVerbDetails(word, add);
                 }
                 break;
+            case 'numeral': {
+                wordComponent = this.renderNumeralDetails(word, add, details);
+                break;
+            }
             default:
                 return '';
         }
@@ -353,6 +369,11 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 `${this.formatStr(singular.gen[1])}@`,
             ],
             [
+                'Loc@b',
+                `${this.formatStr(singular.loc[0])}@w=2`,
+                `${this.formatStr(singular.loc[1])}@`,
+            ],
+            [
                 'Dat@b',
                 `${this.formatStr(singular.dat[0])}@w=2`,
                 `${this.formatStr(singular.dat[1])}@`,
@@ -361,11 +382,6 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 'Ins@b',
                 `${this.formatStr(singular.ins[0])}@w=2`,
                 `${this.formatStr(singular.ins[1])}@`,
-            ],
-            [
-                'Loc@b',
-                `${this.formatStr(singular.loc[0])}@w=2`,
-                `${this.formatStr(singular.loc[1])}@`,
             ],
         ];
 
@@ -393,16 +409,16 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 `${this.formatStr(plural.gen[0])}@w=2`,
             ],
             [
+                'Loc@b',
+                `${this.formatStr(plural.loc[0])}@w=2`,
+            ],
+            [
                 'Dat@b',
                 `${this.formatStr(plural.dat[0])}@w=2`,
             ],
             [
                 'Ins@b',
                 `${this.formatStr(plural.ins[0])}@w=2`,
-            ],
-            [
-                'Loc@b',
-                `${this.formatStr(plural.loc[0])}@w=2`,
             ],
         ];
 
@@ -450,9 +466,10 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const gender = getGender(details);
         const animated = isAnimated(details);
         const plural = isPlural(details);
+        const singular = isSingular(details);
         const indeclinable = isIndeclinable(details);
 
-        const cases = declensionNoun(word, add, gender, animated, plural, indeclinable);
+        const cases = declensionNoun(word, add, gender, animated, plural, singular, indeclinable);
 
         if (cases === null) {
             return (
@@ -464,7 +481,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             );
         }
 
-        const questions = [
+        /*const questions = [
             'kto? čto?',
             'kogo? čto?',
             'kogo? čego?',
@@ -472,11 +489,11 @@ class DetailModal extends React.Component<IDetailModalProps> {
             'komu? čemu?',
             'kym? čym?',
             'hej!',
-        ];
+        ];*/
 
         const tableDataCases = [
             [
-                'Questions@b',
+                //'Questions@b',
                 'Case@b',
                 'Singular@b',
                 'Plural@b',
@@ -485,7 +502,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         Object.keys(cases).forEach((item, i) => {
             const upperCaseName = `${item[0].toUpperCase()}${item.slice(1)}`;
-            let pre;
+            /*let pre;
             if (questions[i] === '') {
                 pre = '&mdash;';
             }
@@ -493,9 +510,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 pre = `${this.formatStr(questions[i])}@`;
             } else if (!pre) {
                 pre = '!@';
-            }
+            }*/
             tableDataCases.push([
-                pre,
+                //pre,
                 `${upperCaseName}@b`,
                 `${this.formatStr(cases[item][0])}@`,
                 `${this.formatStr(cases[item][1])}@`,
@@ -504,7 +521,130 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         return <Table data={tableDataCases}/>;
     }
+
+    private renderNumeralDetails(word, add, details) {
+        const numeralType = getNumeralType(details);
+        const numeralParadigm = declensionNumeral(word, numeralType);
+        if (numeralParadigm === null) {
+            return (
+                <div>
+                    <Text>
+                        {`No data for declination this word`}
+                    </Text>
+                </div>
+            );
+        }
+
+        if (numeralParadigm.type === 'noun') {
+            let tableDataCases = [[ 'Case@b' ]];
+            numeralParadigm.columns.forEach((col) => {
+                tableDataCases[0].push(col + '@b');
+            });
+            Object.keys(numeralParadigm.cases).forEach((caseItem) => {
+                let tableRow = [`${caseItem[0].toUpperCase()}${caseItem.slice(1)}@b`];
+                numeralParadigm.cases[caseItem].forEach((caseForm) => {
+                    tableRow.push(`${this.formatStr(caseForm)}@`);
+                });
+                tableDataCases.push(tableRow);
+            });
+
+            return <Table data={tableDataCases}/>;
+        }
+
+        if (numeralParadigm.type === 'adjective') {
+            const singular = numeralParadigm.singular;
+            const plural = numeralParadigm.plural;
+            const tableDataSingular = [
+                [
+                    '&nbsp@bb;bl;bt',
+                    'singular@w=3;b',
+                ],
+                [
+                    '&nbsp@bl;bt',
+                    'masculine@b',
+                    'neuter@b',
+                    'feminine@b',
+                ],
+                [
+                    'Nom@b',
+                    `${this.formatStr(singular.nom[0])}@`,
+                    `${this.formatStr(singular.nom[1])}@h=2`,
+                    `${this.formatStr(singular.nom[2])}@`,
+                ],
+                [
+                    'Acc@b',
+                    `${this.formatStr(singular.acc[0])}@`,
+                    `${this.formatStr(singular.acc[1])}@`,
+                ],
+                [
+                    'Gen@b',
+                    `${this.formatStr(singular.gen[0])}@w=2`,
+                    `${this.formatStr(singular.gen[1])}@`,
+                ],
+                [
+                    'Loc@b',
+                    `${this.formatStr(singular.loc[0])}@w=2`,
+                    `${this.formatStr(singular.loc[1])}@`,
+                ],
+                [
+                    'Dat@b',
+                    `${this.formatStr(singular.dat[0])}@w=2`,
+                    `${this.formatStr(singular.dat[1])}@`,
+                ],
+                [
+                    'Ins@b',
+                    `${this.formatStr(singular.ins[0])}@w=2`,
+                    `${this.formatStr(singular.ins[1])}@`,
+                ],
+            ];
+
+            const tableDataPlural = [
+                [
+                    '&nbsp@bb;bl;bt',
+                    'plural@w=2;b',
+                ],
+                [
+                    '&nbsp@bl;bt',
+                    'masculine@b',
+                    'feminine/neuter@b',
+                ],
+                [
+                    'Nom@b',
+                    `${this.formatStr(plural.nom[0])}@`,
+                    `${this.formatStr(plural.nom[1])}@h=2`,
+                ],
+                [
+                    'Acc@b',
+                    `${this.formatStr(plural.acc[0])}@`,
+                ],
+                [
+                    'Gen@b',
+                    `${this.formatStr(plural.gen[0])}@w=2`,
+                ],
+                [
+                    'Loc@b',
+                    `${this.formatStr(plural.loc[0])}@w=2`,
+                ],
+                [
+                    'Dat@b',
+                    `${this.formatStr(plural.dat[0])}@w=2`,
+                ],
+                [
+                    'Ins@b',
+                    `${this.formatStr(plural.ins[0])}@w=2`,
+                ],
+            ];
+            return (
+                <>
+                    <Table key={0} data={tableDataSingular}/>
+                    <Table key={1} data={tableDataPlural}/>
+                </>
+            );
+        }
+    }
 }
+
+
 
 function mapDispatchToProps(dispatch) {
     return {

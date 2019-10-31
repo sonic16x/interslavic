@@ -50,6 +50,7 @@ class Results extends React.Component<IResultsProps> {
                 if (item.original.match(/[^,] /)) { return ''; }
             case 'adjective':
             case 'verb':
+            case 'numeral':
                 return (
                     <button
                         type={'button'}

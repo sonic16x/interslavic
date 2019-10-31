@@ -18,7 +18,7 @@ function prepareGender(gender, animated) {
     }
 }
 
-export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isIndeclinable) {
+export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable) {
     let noun = rawNoun;
 
     //now we don't know how to decline the phrases
@@ -73,6 +73,8 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     const root = establish_root(nounWithoutFluent, gender);
     const plroot = establish_plural_root(root);
     const plgen = establish_plural_gender(root, plroot, gender, rawGender);
+
+    //singular forms
     const nom_sg = nominative_sg(noun, root, gender);
     const gen_sg = genitive_sg(root, gender);
     const dat_sg = dative_sg(root, gender);
@@ -80,6 +82,21 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     const ins_sg = instrumental_sg(root, gender);
     const loc_sg = locative_sg(root, gender);
     const voc_sg = vocative_sg(nom_sg, root, gender);
+
+    //indeclinable
+    if (isSingular) {
+        return {
+            nom: [nom_sg, null],
+            acc: [acc_sg, null],
+            gen: [gen_sg, null],
+            loc: [loc_sg, null],
+            dat: [dat_sg, null],
+            ins: [ins_sg, null],
+            voc: [voc_sg, null],
+        };
+    }
+
+    //plural forms
     const nom_pl = nominative_pl(plroot, plgen);
     const gen_pl = genitive_pl(plroot, plgen);
     const dat_pl = dative_pl(plroot, gender);
@@ -606,6 +623,17 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
             loc: [null, word.slice(0, -1) + 'yh'],
             dat: [null, word.slice(0, -1) + 'ym'],
             ins: [null, word.slice(0, -1) + 'ymi'],
+            voc: [null, null],
+        };
+    }
+    else if (add.slice(-2) === 'ih') {
+        return {
+            nom: [null, word],
+            acc: [null, word],
+            gen: [null, word.slice(0, -1) + 'ih'],
+            loc: [null, word.slice(0, -1) + 'ih'],
+            dat: [null, word.slice(0, -1) + 'im'],
+            ins: [null, word.slice(0, -1) + 'imi'],
             voc: [null, null],
         };
     }

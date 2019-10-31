@@ -102,7 +102,7 @@ export function getField(item, fieldName): string {
     return item[headerIndexes.get(fieldName)];
 }
 
-function isvToEngLatin(text) {
+export function isvToEngLatin(text) {
     const latin = isvToLatinMap.get(text);
     if (!latin) {
         return normalize(getLatin(text, 3));
