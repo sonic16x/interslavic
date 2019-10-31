@@ -5,7 +5,7 @@ import { hideDetailAction, setAlphabetTypeAction } from 'actions';
 import { declensionNoun } from 'utils/legacy/declensionNoun';
 import { declensionAdjective } from 'utils/legacy/declensionAdjective';
 import { conjugationVerb } from 'utils/legacy/conjugationVerb';
-import { declensionNumeral} from "../../utils/legacy/declensionNumeral";
+import { declensionNumeral } from '../../utils/legacy/declensionNumeral';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import Text from 'components/Text';
@@ -20,7 +20,6 @@ import {
     isSingular,
 } from 'utils/wordDetails';
 import { getCyrillic, getField, getLatin, getWordList } from 'utils/translator';
-
 
 interface IDetailModalProps {
     close: () => void;
@@ -493,7 +492,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         const tableDataCases = [
             [
-                //'Questions@b',
+                // 'Questions@b',
                 'Case@b',
                 'Singular@b',
                 'Plural@b',
@@ -512,7 +511,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 pre = '!@';
             }*/
             tableDataCases.push([
-                //pre,
+                // pre,
                 `${upperCaseName}@b`,
                 `${this.formatStr(cases[item][0])}@`,
                 `${this.formatStr(cases[item][1])}@`,
@@ -643,8 +642,6 @@ class DetailModal extends React.Component<IDetailModalProps> {
         }
     }
 }
-
-
 
 function mapDispatchToProps(dispatch) {
     return {

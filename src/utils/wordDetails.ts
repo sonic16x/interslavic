@@ -66,7 +66,6 @@ export function getNumeralType(details: string): string {
     }
 }
 
-
 // + adj - adjective - прилагательное
 // + adv - adverb - наречие
 // + conj - conjunction - союз

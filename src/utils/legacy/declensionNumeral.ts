@@ -1,11 +1,11 @@
-import {declensionNoun} from "./declensionNoun";
+import { declensionNoun } from './declensionNoun';
 import {
     getGender,
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import {declensionAdjective} from "./declensionAdjective";
-import {isvToEngLatin} from "../translator";
+import { declensionAdjective } from './declensionAdjective';
+import { isvToEngLatin } from '../translator';
 
 const exclusionList = {
     /* N A G D I L */
@@ -29,17 +29,16 @@ const exclusionList = {
 function getExclusionForm(rawWord, caseIndex, formColumns) {
     const wordForms = exclusionList[rawWord][caseIndex].split('|');
     let resForms = [];
-    for(let i = 0; i < formColumns; i++) {
+    for (let i = 0; i < formColumns; i++) {
         resForms.push(wordForms[(i < wordForms.length ? i : wordForms.length - 1)]);
     }
     return resForms;
 }
 
 export function declensionNumeral(rawWord: string, numeralType: string) {
-    let word = isvToEngLatin(rawWord);
+    const word = isvToEngLatin(rawWord);
     let declensionType = '';
     let details = '';
-    let add = '';
     if (numeralType === 'cardinal') {
         // work with exclusion list
         if (exclusionList[word]) {
@@ -91,13 +90,13 @@ export function declensionNumeral(rawWord: string, numeralType: string) {
             type: 'noun',
             columns: ['plural'],
             cases: {
-                nom: [word],
-                acc: [word.slice(0, -1) + iOrY + 'h / ' + word],
-                gen: [word.slice(0, -1) + iOrY + 'h'],
-                loc: [word.slice(0, -1) + iOrY + 'h'],
-                dat: [word.slice(0, -1) + iOrY + 'm'],
-                ins: [word.slice(0, -1) + iOrY + 'mi'],
-            }
+                nom: [rawWord],
+                acc: [rawWord.slice(0, -1) + iOrY + 'h / ' + word],
+                gen: [rawWord.slice(0, -1) + iOrY + 'h'],
+                loc: [rawWord.slice(0, -1) + iOrY + 'h'],
+                dat: [rawWord.slice(0, -1) + iOrY + 'm'],
+                ins: [rawWord.slice(0, -1) + iOrY + 'mi'],
+            },
         };
     } else if (numeralType === 'fractional' || numeralType === 'substantivized') {
         declensionType = 'noun';
@@ -111,7 +110,7 @@ export function declensionNumeral(rawWord: string, numeralType: string) {
         const gender = getGender(details);
         const plural = isPlural(details);
         const singular = isSingular(details);
-        const nounParadigm = declensionNoun(rawWord, add, gender, false, plural, singular, false);
+        const nounParadigm = declensionNoun(rawWord, '', gender, false, plural, singular, false);
 
         if (plural) {
             return {
@@ -154,8 +153,7 @@ export function declensionNumeral(rawWord: string, numeralType: string) {
             };
         }
 
-    }
-    else if(declensionType === 'adjective') {
+    } else if (declensionType === 'adjective') {
         let adjectiveParadigm;
         if (word === 'jedin') {
             adjectiveParadigm = declensionAdjective('jedny');
