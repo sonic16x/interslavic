@@ -4,6 +4,7 @@
   "description": "Word dictionary for interslavic language",
   "lang": "en",
   "dir": "ltr",
+  "scope": "#{BASE_URL}/",
   "icons": [
     {
       "src": "icon192.png",
@@ -18,6 +19,7 @@
   ],
   "serviceworker": {
     "src": "sw.#{HASH}.js",
+    "scope": "#{BASE_URL}/",
     "update_via_cache": "none"
   },
   "start_url": "./index.html",

@@ -11,6 +11,7 @@ const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const bundleId = uuidv4().replace(/-/g, '');
+const baseUrl = '/';
 
 module.exports = {
   mode: 'production',
@@ -91,14 +92,21 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
       HASH_ID: JSON.stringify(bundleId),
-      BASE_URL: JSON.stringify(''),
+      BASE_URL: JSON.stringify(baseUrl),
       DATE: JSON.stringify(new Date().toISOString()),
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new CopyPlugin([{
         from: 'static',
         transform: (content, path) => {
-            return path.indexOf('manifest.json') !== -1 ? content.toString().replace(/#{HASH}/, bundleId) : content;
+            if (path.indexOf('.json') !== -1 || path.indexOf('.html') !== -1) {
+                return content
+                    .toString()
+                    .replace(/#{HASH}/, bundleId)
+                    .replace(/#{BASE_URL}/, baseUrl)
+                  ;
+            }
+            return content;
         },
     }]),
     new ExtractTextPlugin('style.css'),
