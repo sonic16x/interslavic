@@ -74,6 +74,8 @@ function establish_root(adj) {
         result = 'on|';
     } else if ((adj == 'ovoj') || (adj == 'ov')) {
         result = 'ov|';
+    } else if (adj == 'jedin') {
+        result = 'jedn|'
     } else if ((adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('v') == adj.length - 1)) {
         result = adj + '|';
     } else if ((adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('n') == adj.length - 1)) {
@@ -128,7 +130,7 @@ function mn_dative_sg(root) {
 }
 
 function m_accusative_sg(adj, root) {
-    return root + 'ogo/' + adj;
+    return root + 'ogo / ' + adj;
 }
 
 function mn_instrumental_sg(root) {
@@ -152,11 +154,11 @@ function f_instrumental_sg(root) {
 }
 
 function m_nominative_pl(root) {
-    return root + 'i/' + root + 'e';
+    return root + 'i / ' + root + 'e';
 }
 
 function m_accusative_pl(root) {
-    return root + 'yh/' + root + 'e';
+    return root + 'yh / ' + root + 'e';
 }
 
 function fn_nominative_pl(root) {

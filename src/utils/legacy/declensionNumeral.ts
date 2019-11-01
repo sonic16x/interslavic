@@ -155,13 +155,7 @@ export function declensionNumeral(rawWord: string, numeralType: string) {
 
     } else if (declensionType === 'adjective') {
         let adjectiveParadigm;
-        if (word === 'jedin') {
-            adjectiveParadigm = declensionAdjective('jedny');
-            adjectiveParadigm.singular.nom[0] = rawWord;
-            adjectiveParadigm.singular.acc[0] = 'jednogo / jedin';
-        } else {
-            adjectiveParadigm = declensionAdjective(rawWord);
-        }
+        adjectiveParadigm = declensionAdjective(rawWord);
         return {
             type: 'adjective',
             singular: adjectiveParadigm.singular,

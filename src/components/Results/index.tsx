@@ -45,12 +45,14 @@ class Results extends React.Component<IResultsProps> {
     }
     private renderFormsButton(item, i) {
         const pos = getPartOfSpeech(item.details);
+        const isvWord = (this.props.lang.from === 'isv' ? item.original : item.translate );
         switch (pos) {
             case 'noun':
-                if (item.original.match(/[^,] /)) { return ''; }
+                if (isvWord.match(/[^,] /)) { return ''; }
             case 'adjective':
             case 'verb':
             case 'numeral':
+                if (isvWord.match(/[^,] /)) { return ''; }
                 return (
                     <button
                         type={'button'}
