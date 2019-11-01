@@ -512,6 +512,9 @@ function genitive_pl(root, gender) {
         result = result.replace(/([pbvfmlnr])j%/, '$1ej');
         result = result + '%';
     }
+    else if (root === 'st') {
+        result = 'sòt';
+    }
     else if (gender.charAt(0) == 'n') {
         result = root.replace('ь', '%');
         result = result.replace(/([pbvfmlnrszńľŕťďśźščž])j%/, '$1ij');
@@ -539,7 +542,8 @@ function genitive_pl(root, gender) {
     result = result.replace('zl%', 'zòl');
     result = result.replace('tl%', 'tòl');
     result = result.replace('mgl%', 'mgòl');
-    result = result.replace(/([pbfvmlnrtdszkgh])([kn])%/, '$1ò$2');
+    result = result.replace(/([pbfvmtdszkgh])([n])%/, '$1e$2');
+    result = result.replace(/([pbfvmlnrtdszkgh])([k])%/, '$1ò$2');
     result = result.replace(/([jńľŕťďścšžč])([kn])%/, '$1e$2');
     result = result.replace(/([pbfvmlnrtdszkghjńľŕťďścšžč])([bvmn])%/, '$1e$2');
     result = result.replace(/%/g, '');
