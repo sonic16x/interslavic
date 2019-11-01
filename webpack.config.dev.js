@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, 'src');
@@ -79,6 +80,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
       filename: 'index.html',
@@ -92,7 +94,12 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new CopyPlugin(['static']),
+    new CopyPlugin([{
+      from: 'static',
+      transform: (content, path) => {
+          return path.indexOf('manifest.json') !== -1 ? content.toString().replace(/#{HASH}/, bundleId) : content;
+      },
+    }]),
     new WriteFilePlugin(),
     new Dotenv({
       path: './.env.local',

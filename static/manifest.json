@@ -1,6 +1,9 @@
 {
-  "short_name": "Medžuslovjansky slovnik",
   "name": "Medžuslovjansky slovnik",
+  "short_name": "Medžuslovjansky slovnik",
+  "description": "Word dictionary for interslavic language",
+  "lang": "en",
+  "dir": "ltr",
   "icons": [
     {
       "src": "icon192.png",
@@ -13,8 +16,13 @@
       "sizes": "512x512"
     }
   ],
+  "serviceworker": {
+    "src": "sw.#{HASH}.js",
+    "update_via_cache": "none"
+  },
   "start_url": "./index.html",
   "background_color": "#343a40",
   "display": "standalone",
+  "orientation": "landscape",
   "theme_color": "#343a40"
 }
