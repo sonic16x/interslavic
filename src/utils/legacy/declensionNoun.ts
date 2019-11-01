@@ -542,10 +542,11 @@ function genitive_pl(root, gender) {
     result = result.replace('zl%', 'zòl');
     result = result.replace('tl%', 'tòl');
     result = result.replace('mgl%', 'mgòl');
-    result = result.replace(/([pbfvmtdszkgh])([n])%/, '$1e$2');
+    result = result.replace(/([kgh])([n])%/, '$1ò$2');
+    result = result.replace(/([pbfvmtdszlnr])([n])%/, '$1e$2');
     result = result.replace(/([pbfvmlnrtdszkgh])([k])%/, '$1ò$2');
-    result = result.replace(/([jńľŕťďścšžč])([kn])%/, '$1e$2');
-    result = result.replace(/([pbfvmlnrtdszkghjńľŕťďścšžč])([mn])%/, '$1e$2');
+    result = result.replace(/([jńľŕťďścšžč])([knm])%/, '$1e$2');
+    result = result.replace(/([ťď])([b])%/, '$1e$2');
     result = result.replace(/%/g, '');
     result = rules(result);
     return result;
