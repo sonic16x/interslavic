@@ -25,7 +25,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
             <nav className={'navbar navbar-dark bg-dark shadow header'}>
                 <span className={'navbar-brand'}>
                     <img
-                        src={`${BASE_URL}/logo.png`}
+                        src={`${BASE_URL}/logo.png`.replace(/\/\//, '/')}
                         height={'30'}
                         className={'d-inline-block align-center logo'}
                         alt={'logo'}
