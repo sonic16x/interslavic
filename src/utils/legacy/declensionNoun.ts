@@ -204,6 +204,9 @@ function establish_root(noun, gender) {
     else if (gender == 'n2') {
         result = noun.substring(0, noun.length - 1) + 'ęt';
     }
+    else if (gender == 'f1' && (noun === 'pani' || noun.slice(-3) == 'yni')) {
+        result = (noun.substring(0, noun.length - 1) + 'jь');
+    }
     else if (noun.lastIndexOf('i') == noun.length - 1) {
         result = (noun.substring(0, noun.length - 1) + 'ь');
     }
