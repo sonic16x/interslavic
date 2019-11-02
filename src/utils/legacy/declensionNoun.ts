@@ -683,8 +683,9 @@ function declensionSubstAdj(word: string, add:string, gender: string, animated:s
         const adjectiveParadigm = declensionAdjective(word,'');
         const animatedCol = (animated?0:1);
         return {
-            nom: [word, adjectiveParadigm.plural.nom[0].split('/')[animatedCol]],
-            acc: [adjectiveParadigm.singular.acc[0].split('/')[animatedCol], adjectiveParadigm.plural.acc[0].split('/')[animatedCol]],
+            nom: [word, adjectiveParadigm.plural.nom[0].split('/')[animatedCol].trim()],
+            acc: [adjectiveParadigm.singular.acc[0].split('/')[animatedCol].trim(),
+                adjectiveParadigm.plural.acc[0].split('/')[animatedCol].trim()],
             gen: [adjectiveParadigm.singular.gen[0], adjectiveParadigm.plural.gen[0]],
             loc: [adjectiveParadigm.singular.loc[0], adjectiveParadigm.plural.loc[0]],
             dat: [adjectiveParadigm.singular.dat[0], adjectiveParadigm.plural.dat[0]],
