@@ -4,10 +4,10 @@ import { dictionaryUrl } from 'consts';
 const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
     dictionaryUrl,
-    'index.html',
-    'manifest.json',
-    `index.${HASH_ID}.js`,
-    // 'https://dl.dropboxusercontent.com/s/mxu7cxl5ubh3t3t/mapPolyfillv2.min.js?dl=0',
+    // 'index.html',
+    // 'manifest.json',
+    // `index.${HASH_ID}.js`,
+    // 'https://dl.dsropboxusercontent.com/s/mxu7cxl5ubh3t3t/mapPolyfillv2.min.js?dl=0',
     // 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css',
 ];
 
@@ -21,7 +21,7 @@ self.addEventListener('activate', (event) => {
     // console.log('activate');
 });
 
-const MAX_AGE = 86400000;
+const MAX_AGE = 60 * 60 * 1000;
 
 self.addEventListener('fetch', (event: any) => {
 

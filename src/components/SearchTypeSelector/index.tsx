@@ -19,6 +19,10 @@ const searchTypes = [
         value: 'full',
     },
     {
+        name: 'End',
+        value: 'end',
+    },
+    {
         name: 'Any',
         value: 'some',
     },
