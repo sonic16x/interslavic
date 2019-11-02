@@ -8,7 +8,7 @@ function applyRules(arr: string[], postfix: string) {
     return arr.map(rules).map((item) => {
         return item.
             replace(/$/, postfix).
-            replace(/(?<=[^/]) /g, postfix + ' ');
+            replace(/([^/]) /g, '$1' + postfix + ' ');
     });
 }
 
