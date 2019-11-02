@@ -6,7 +6,7 @@ import { transliterate } from 'utils/legacy/transliterate';
 const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
     full: (item, text) => item === text,
-    end: (item, text) =>  item.indexOf(text) === item.length - text.length,
+    end: (item, text) =>  item.indexOf(text) !== -1 && item.indexOf(text) === item.length - text.length,
     some: (item, text) => item.indexOf(text) !== -1,
 };
 

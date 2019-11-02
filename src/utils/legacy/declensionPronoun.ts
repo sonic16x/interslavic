@@ -132,7 +132,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                     gen: [prefix + 'kogo' + postfix],
                     loc: [prefix + 'kom' + postfix],
                     dat: [prefix + 'komu' + postfix],
-                    ins: [prefix + 'kym' + postfix + ' / ' + prefix + 'kěm' + postfix],
+                    ins: [prefix + 'kym' + postfix ],
                 },
             };
         } else {
@@ -185,6 +185,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
             casesSingular: adjectiveParadigm.singular,
             casesPlural: adjectiveParadigm.plural,
         };
+
     }
     return null;
 }

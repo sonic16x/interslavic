@@ -129,7 +129,9 @@ function establish_gender(noun, gender) {
             || (noun.substring(0, 5) == 'koren') || (noun.substring(0, 6) == 'kremen') || (noun.substring(0, 6) == 'plåmen') || (noun.substring(0, 6) == 'plamen')
             || (noun.substring(0, 6) == 'pŕsten') || (noun.substring(0, 6) == 'prsten') || (noun.substring(0, 7) == 'strumen') || (noun.substring(0, 6) == 'greben')
             || (noun.substring(0, 6) == 'stępen') || (noun.substring(0, 6) == 'stepen') || (noun.substring(0, 6) == 'stųpen') || (noun.substring(0, 6) == 'stupen')
-            || (noun.substring(0, 5) == 'šršen') || (noun.substring(0, 5) == 'šŕšen') || (noun.substring(0, 5) == 'sršen') || (noun.substring(0, 5) == 'sŕšen'))) {
+            || (noun.substring(0, 5) == 'šršen') || (noun.substring(0, 5) == 'šŕšen') || (noun.substring(0, 5) == 'sršen') || (noun.substring(0, 5) == 'sŕšen')
+            || (noun.substring(0, 6) == 'šeršen')
+        )) {
         result = 'm3';
     }
     else if ((gender.charAt(0) == 'n') && ['čudo','dělo','divo','drěvo','igo','kolo','licьe','nebo','ojьe','oko','slovo','tělo', 'uho'].indexOf(noun) !== -1) {
