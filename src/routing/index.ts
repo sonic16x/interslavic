@@ -17,7 +17,8 @@ export const pages = [
 ];
 
 export function goToPage(path: string) {
-    window.history.pushState({}, document.title, `${path}${location.hash}`);
+    const preparedPath = path.replace(/\/\//, '/');
+    window.history.pushState({}, document.title, `${preparedPath}${location.hash}`);
 }
 
 export function getPageFromPath(): string {
