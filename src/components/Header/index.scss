@@ -91,7 +91,7 @@ $animationDuration: 0.1s;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: calc(100% - 4rem);
+  width: calc(100% - 3.5rem);
   img {
     cursor: pointer;
   }
@@ -142,5 +142,11 @@ $animationDuration: 0.1s;
   }
   .navbar-brand {
     width: auto;
+  }
+}
+
+@media ( max-width: 400px) {
+  .navbar-brand {
+    font-size:5vw;
   }
 }
