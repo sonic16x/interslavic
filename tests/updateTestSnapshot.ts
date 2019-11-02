@@ -43,7 +43,7 @@ request(dictionaryUrl, (err, data) => {
             case 'adjective':
                 testCases.adjective.push({
                     init: { word, add, details },
-                    expected: declensionAdjective(word),
+                    expected: declensionAdjective(word, ''),
                 });
                 break;
         }

@@ -7,6 +7,14 @@ import {
 import { declensionAdjective } from './declensionAdjective';
 import { isvToEngLatin } from '../translator';
 
+export interface INumeralParadigm {
+    type: string;
+    columns?: string[];
+    cases?: {};
+    casesSingular?: {};
+    casesPlural?: {};
+}
+
 const exclusionList = {
     /* N A G D I L */
     dva:        ['dva|dvě', 'dva / dvoh|dvě', 'dvoh', 'dvom', 'dvoma', 'dvoh', ['masculine', 'feminine/neuter']],
@@ -35,7 +43,7 @@ function getExclusionForm(rawWord, caseIndex, formColumns) {
     return resForms;
 }
 
-export function declensionNumeral(rawWord: string, numeralType: string) {
+export function declensionNumeral(rawWord: string, numeralType: string): INumeralParadigm {
     const word = isvToEngLatin(rawWord);
     let declensionType = '';
     let details = '';
@@ -154,12 +162,11 @@ export function declensionNumeral(rawWord: string, numeralType: string) {
         }
 
     } else if (declensionType === 'adjective') {
-        let adjectiveParadigm;
-        adjectiveParadigm = declensionAdjective(rawWord);
+        const adjectiveParadigm = declensionAdjective(rawWord, '');
         return {
             type: 'adjective',
-            singular: adjectiveParadigm.singular,
-            plural: adjectiveParadigm.plural,
+            casesSingular: adjectiveParadigm.singular,
+            casesPlural: adjectiveParadigm.plural,
         };
     }
 

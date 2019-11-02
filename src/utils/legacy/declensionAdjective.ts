@@ -4,11 +4,15 @@
 
 /* tslint:disable */
 
-function applyRules(arr) {
-    return arr.map(rules);
+function applyRules(arr: string[], postfix: string) {
+    return arr.map(rules).map((item) => {
+        return item.
+            replace(/$/, postfix).
+            replace(/(?<=[^/]) /g, postfix + ' ');
+    });
 }
 
-export function declensionAdjective(adj: string) {
+export function declensionAdjective(adj: string, postfix: string) {
     const root = establish_root(adj);
     const m_nom_sg = m_nominative_sg(adj, root);
     const m_acc_sg = m_accusative_sg(adj, root);
@@ -37,25 +41,25 @@ export function declensionAdjective(adj: string) {
 
     return {
         singular: {
-            nom: applyRules([m_nom_sg, n_nom_sg, f_nom_sg]),
-            acc: applyRules([m_acc_sg, f_acc_sg]),
-            gen: applyRules([mn_gen_sg, f_gdl_sg]),
-            loc: applyRules([mn_loc_sg, f_gdl_sg]),
-            dat: applyRules([mn_dat_sg, f_gdl_sg]),
-            ins: applyRules([mn_ins_sg, f_ins_sg]),
+            nom: applyRules([m_nom_sg, n_nom_sg, f_nom_sg], postfix),
+            acc: applyRules([m_acc_sg, f_acc_sg], postfix),
+            gen: applyRules([mn_gen_sg, f_gdl_sg], postfix),
+            loc: applyRules([mn_loc_sg, f_gdl_sg], postfix),
+            dat: applyRules([mn_dat_sg, f_gdl_sg], postfix),
+            ins: applyRules([mn_ins_sg, f_ins_sg], postfix),
         },
         plural: {
-            nom: applyRules([m_nom_pl, fn_nom_pl]),
-            acc: applyRules([m_acc_pl, fn_nom_pl]),
-            gen: applyRules([glo_pl]),
-            loc: applyRules([glo_pl]),
-            dat: applyRules([dat_pl]),
-            ins: applyRules([ins_pl]),
+            nom: applyRules([m_nom_pl, fn_nom_pl], postfix),
+            acc: applyRules([m_acc_pl, fn_nom_pl], postfix),
+            gen: applyRules([glo_pl], postfix),
+            loc: applyRules([glo_pl], postfix),
+            dat: applyRules([dat_pl], postfix),
+            ins: applyRules([ins_pl], postfix),
         },
         comparison: {
-            positive: applyRules([m_nom_sg, adv]),
-            comparative: applyRules([comp_adj, comp_adv]),
-            superlative: applyRules([sup_adj, sup_adv]),
+            positive: applyRules([m_nom_sg, adv], postfix),
+            comparative: applyRules([comp_adj, comp_adv], postfix),
+            superlative: applyRules([sup_adj, sup_adv], postfix),
         },
     };
 }
@@ -76,6 +80,8 @@ function establish_root(adj) {
         result = 'ov|';
     } else if (adj == 'jedin') {
         result = 'jedn|'
+    } else if (adj == 'nijedin') {
+        result = 'nijedn|'
     } else if ((adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('v') == adj.length - 1)) {
         result = adj + '|';
     } else if ((adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('n') == adj.length - 1)) {
@@ -304,7 +310,7 @@ function rules(word: string): string {
         .replace('^y', '^i')
         .replace('s|^e', 'se')
         .replace('s|^i', 'si')
-        .replace('|', '')
+        .replace(/\|/g, '')
         .replace('č^', 'č')
         .replace('š^', 'š')
         .replace('ž^', 'ž')

@@ -542,11 +542,17 @@ function genitive_pl(root, gender) {
     result = result.replace('zl%', 'zòl');
     result = result.replace('tl%', 'tòl');
     result = result.replace('mgl%', 'mgòl');
-    result = result.replace(/([kgh])([n])%/, '$1ò$2');
+    // original code
+    result = result.replace(/([pbfvmlnrtdszkgh])([kn])%/, '$1ò$2');
+    result = result.replace(/([jńľŕťďścšžč])([kn])%/, '$1e$2');
+    result = result.replace(/([pbfvmlnrtdszkghjńľŕťďścšžč])([bvmn])%/, '$1e$2');
+    // changed code
+    /*result = result.replace(/([kgh])([n])%/, '$1ò$2');
     result = result.replace(/([pbfvmtdszlnr])([n])%/, '$1e$2');
     result = result.replace(/([pbfvmlnrtdszkgh])([k])%/, '$1ò$2');
     result = result.replace(/([jńľŕťďścšžč])([knm])%/, '$1e$2');
-    result = result.replace(/([ťď])([b])%/, '$1e$2');
+    result = result.replace(/([ťď])([b])%/, '$1e$2');*/
+    // end
     result = result.replace(/%/g, '');
     result = rules(result);
     return result;
@@ -674,7 +680,7 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
 
 function declensionSubstAdj(word: string, add:string, gender: string, animated:string) {
     if (gender === 'masculine' || gender === 'neuter') {
-        const adjectiveParadigm = declensionAdjective(word);
+        const adjectiveParadigm = declensionAdjective(word,'');
         const animatedCol = (animated?0:1);
         return {
             nom: [word, adjectiveParadigm.plural.nom[0].split('/')[animatedCol]],
@@ -686,7 +692,7 @@ function declensionSubstAdj(word: string, add:string, gender: string, animated:s
             voc: [word, null],
         };
     } else {
-        const adjectiveParadigm = declensionAdjective(word.slice(0,-1) + (add==='-oj'?'y':'i'));
+        const adjectiveParadigm = declensionAdjective(word.slice(0,-1) + (add==='-oj'?'y':'i'), '');
         return {
             nom: [word, adjectiveParadigm.plural.nom[1]],
             acc: [adjectiveParadigm.singular.acc[1], adjectiveParadigm.plural.acc[1]],

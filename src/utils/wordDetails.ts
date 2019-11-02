@@ -66,6 +66,38 @@ export function getNumeralType(details: string): string {
     }
 }
 
+export function getPronounType(details: string): string {
+    const arr = getArr(details);
+
+    if (arr.indexOf('pers') !== -1) {
+        return 'personal';
+    }
+
+    if (arr.indexOf('dem') !== -1) {
+        return 'demonstrative';
+    }
+
+    if (arr.indexOf('indef') !== -1) {
+        return 'indefinite';
+    }
+
+    if (arr.indexOf('refl') !== -1) {
+        return 'reflexive';
+    }
+
+    if (arr.indexOf('rel') !== -1) {
+        return 'relative';
+    }
+
+    if (arr.indexOf('poss') !== -1) {
+        return 'possessive';
+    }
+
+    if (arr.indexOf('int') !== -1) {
+        return 'interrogative';
+    }
+}
+
 // + adj - adjective - прилагательное
 // + adv - adverb - наречие
 // + conj - conjunction - союз
