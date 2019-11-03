@@ -15,30 +15,32 @@ class About extends React.Component<IAboutProps> {
 
         return (
             <div className={'about' + (this.props.isVisible ? ' show' : '')}>
-                <div className={'common'}>
-                    <br/>
-                    Using dictionary from <a target={'_blank'} href={source}>{source}</a>
-                    <p>Authors of Interslavic/English/Polish dictionary: Jan van Steenbergen and Michał Swat</p>
-                    <hr/>
-                    <p>Please join the work to improve word translations for your native language.</p>
-                    <a target={'_blank'} href={tableUrl}>Table with translations</a>
-                    <hr/>
-                    <p>Developer:</p>
-                    <a target={'_blank'} href={`email:${email}`}>Sergey Cherebedov ({email})</a>
-                    <hr/>
-                    Source code (Github) <a target={'_blank'} href={github}>{github}</a>
-                    <hr/>
-                    <button
-                        type={'button'}
-                        className={'btn btn-primary shadow'}
-                        onClick={() => window.history.back()}
-                    >
-                        Go back
-                    </button>
-                </div>
-                <div className={'devInfo'}>
-                    <p className={'text-muted buildHash'}>{HASH_ID}</p>
-                    <p className={'text-muted buildHash'}>{DATE}</p>
+                <div className={'aboutContent'}>
+                    <div className={'common'}>
+                        <br/>
+                        Using dictionary from <a target={'_blank'} href={source}>{source}</a>
+                        <p>Authors of Interslavic/English/Polish dictionary: Jan van Steenbergen and Michał Swat</p>
+                        <hr/>
+                        <p>Please join the work to improve word translations for your native language.</p>
+                        <a target={'_blank'} href={tableUrl}>Table with translations</a>
+                        <hr/>
+                        <p>Developer:</p>
+                        <a target={'_blank'} href={`email:${email}`}>Sergey Cherebedov ({email})</a>
+                        <hr/>
+                        Source code (Github) <a target={'_blank'} href={github}>{github}</a>
+                        <hr/>
+                        <button
+                            type={'button'}
+                            className={'btn btn-primary shadow'}
+                            onClick={() => window.history.back()}
+                        >
+                            Go back
+                        </button>
+                    </div>
+                    <div className={'devInfo'}>
+                        <p className={'text-muted buildHash'}>{HASH_ID}</p>
+                        <p className={'text-muted buildHash'}>{DATE}</p>
+                    </div>
                 </div>
             </div>
         );

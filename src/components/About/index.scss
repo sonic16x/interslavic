@@ -1,10 +1,5 @@
 .about {
-  max-width: 1024px;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
   background: #fff;
   overflow: auto;
   display: flex;
@@ -24,6 +19,17 @@
     max-height: calc(100% - 60px);
   }
 }
+
+.aboutContent {
+  max-width: 1024px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
 .buildHash {
   text-align: center;
 }
