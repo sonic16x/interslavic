@@ -29,11 +29,12 @@ function filterLatin(text) {
         .replace(/[í]/g, 'i')
         .replace(/[łĺľ]/g, 'l')
         .replace(/[ńň]/g, 'n')
-        .replace(/[óô]/g, 'o')
+        .replace(/[óôö]/g, 'o')
         .replace(/[řŕ]/g, 'r')
         .replace(/[śš]/g, 's')
+        .replace(/[ß]/g, 'ss')
         .replace(/[ť]/g, 't')
-        .replace(/[úů]/g, 'u')
+        .replace(/[úůü]/g, 'u')
         .replace(/[ý]/g, 'y')
         .replace(/[źżž]/g, 'z')
         ;
@@ -121,6 +122,7 @@ function searchPrepare(lang, text) {
         case 'sk':
         case 'sl':
         case 'hr':
+        case 'de':
             return filterLatin(lowerCaseText);
         case 'ru':
             return lowerCaseText.replace(/[ё]/g, 'е');
