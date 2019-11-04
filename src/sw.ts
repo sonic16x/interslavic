@@ -4,7 +4,7 @@ import { dictionaryUrl } from 'consts';
 const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
     dictionaryUrl,
-    // 'index.html',
+    'index.html',
     // 'manifest.json',
     // `index.${HASH_ID}.js`,
     // 'https://dl.dsropboxusercontent.com/s/mxu7cxl5ubh3t3t/mapPolyfillv2.min.js?dl=0',
