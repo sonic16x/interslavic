@@ -86,16 +86,20 @@
   }
 }
 
-@media (min-width: 1055px) {
+@media (min-width: 1024px) {
   .card#content {
     position: absolute;
     top: 70px;
-    left: calc(50% - 525px);
+    left: calc(50% - 515px);
+  }
+  .grammarContainer {
+    overflow-x:hidden;
   }
   .grammar {
-    padding-left: 245px;
+    padding-left: calc(100vw - 100% + 245px + 0.5rem);
     max-width: calc(1024px - 235px);
     box-sizing: content-box;
+    overflow-x: hidden;
     .selected {
       transition: color 75ms linear, background-color 75ms linear;
       z-index: 2;
@@ -106,15 +110,26 @@
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1080px) {
+  .grammar {
+    padding-left: calc(245px + 0.5rem);
+    max-width: calc(100% - 255px);
+  }
+  .card#content {
+    left: 10px;
+  }
+}
+
 @media (min-width: 1530px) {
   .card#content {
     position: absolute;
     top: 70px;
-    left: calc(50% - 512px - 250px);
+    left: calc(50% - 512px - 245px);
   }
   .grammar {
     max-width: 1024px;
-    padding-left: 0 !important;
+    padding-left: calc(100vw - 100% + 0.5rem) !important;
     box-sizing: content-box;
+    overflow-x: hidden;
   }
 }

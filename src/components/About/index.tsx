@@ -16,10 +16,12 @@ class About extends React.Component<IAboutProps> {
         return (
             <div className={'about' + (this.props.isVisible ? ' show' : '')}>
                 <div className={'aboutContent'}>
+                    <br/>
+                    <h4>Interslavic language dictionary</h4>
                     <div className={'common'}>
                         <br/>
-                        Using dictionary from <a target={'_blank'} href={source}>{source}</a>
-                        <p>Authors of Interslavic/English/Polish dictionary: Jan van Steenbergen and Michał Swat</p>
+                        Using vocabulary from <a target={'_blank'} href={source}>{source}</a>
+                        <p>Authors of Interslavic/English/Polish translations: Jan van Steenbergen and Michał Swat</p>
                         <hr/>
                         <p>Please join the work to improve word translations for your native language.</p>
                         <a target={'_blank'} href={tableUrl}>Table with translations</a>
