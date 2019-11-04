@@ -10,18 +10,30 @@ interface ISelectorProps {
     onSelect: (option: string) => void;
     options: ISelectorOption[];
     value?: string;
+    label: string;
+    hideLabel?: boolean;
 }
 
 export class Selector extends React.Component<ISelectorProps> {
     public render() {
+        const id = this.props.label.toLowerCase().replace(/ /, '_');
         return (
-            <select
-                value={this.getDefaultValue()}
-                className={'form-control'}
-                onChange={(e: any) => this.props.onSelect(this.props.options[e.currentTarget.selectedIndex].value)}
-            >
-                {this.props.options.map((option, i) => <option key={i} value={option.value}>{option.name}</option>)}
-            </select>
+            <>
+                <label
+                    htmlFor={id}
+                    style={{display: this.props.hideLabel ? 'none' : 'inline-block'}}
+                >
+                    {this.props.label}
+                </label>
+                <select
+                    id={id}
+                    value={this.getDefaultValue()}
+                    className={'form-control'}
+                    onChange={(e: any) => this.props.onSelect(this.props.options[e.currentTarget.selectedIndex].value)}
+                >
+                    {this.props.options.map((option, i) => <option key={i} value={option.value}>{option.name}</option>)}
+                </select>
+            </>
         );
     }
     private getDefaultValue() {

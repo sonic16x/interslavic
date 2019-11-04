@@ -6,9 +6,12 @@ const cacheUrls = [
     dictionaryUrl,
     // 'index.html',
     // 'manifest.json',
-    // `index.${HASH_ID}.js`,
-    // 'https://dl.dsropboxusercontent.com/s/mxu7cxl5ubh3t3t/mapPolyfillv2.min.js?dl=0',
-    // 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css',
+    `${BASE_URL}/index.${HASH_ID}.js`,
+    `${BASE_URL}/vendors~grammarComponent~index.${HASH_ID}.js`,
+    `${BASE_URL}/grammarComponent.${HASH_ID}.js`,
+    `${BASE_URL}/grammarComponent~index.${HASH_ID}.js`,
+    `${BASE_URL}/logo.png`,
+    `${BASE_URL}/sw.${HASH_ID}.js`,
 ];
 
 self.addEventListener('install', (event: any) => {

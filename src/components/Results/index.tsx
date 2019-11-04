@@ -60,6 +60,7 @@ class Results extends React.Component<IResultsProps> {
                 return (
                     <button
                         type={'button'}
+                        aria-label={'Show forms'}
                         className={'btn btn-sm btn-link showForms'}
                         onClick={() => {
                             this.props.setDetail(i);

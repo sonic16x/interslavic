@@ -22,7 +22,7 @@ class InputText extends React.Component<IInputTextProps> {
                 <button
                     type={'reset'}
                     className={'removeButton'}
-                    title={'Click me to clear the input field'}
+                    aria-label={'Clear input'}
                     disabled={this.props.fromText.length === 0}
                     onClick={() => this.props.changeFromText('')}
                 >

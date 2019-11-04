@@ -36,11 +36,11 @@ class FlavorisationSelector extends React.Component<IFlavorisationSelectorProps>
     public render() {
         return (
             <div className={'flav'}>
-                <label>Flavorisation</label>
                 <Selector
                     options={flavorisationTypes}
                     onSelect={(flavorisationType) => this.props.changeFlavorisationType(flavorisationType)}
                     value={this.props.flavorisationType}
+                    label={'Flavorisation'}
                 />
             </div>
         );

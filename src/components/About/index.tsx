@@ -33,6 +33,7 @@ class About extends React.Component<IAboutProps> {
                         <hr/>
                         <button
                             type={'button'}
+                            aria-label={'Go back'}
                             className={'btn btn-primary shadow'}
                             onClick={() => window.history.back()}
                         >

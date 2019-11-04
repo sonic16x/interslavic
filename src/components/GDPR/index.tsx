@@ -24,6 +24,7 @@ export default class extends React.Component<{}, IGDPRState> {
                 <button
                     type={'button'}
                     className={'btn btn-primary'}
+                    aria-label={'Hide alert'}
                     onClick={() => this.hideAlert()}
                 >
                     Ok
