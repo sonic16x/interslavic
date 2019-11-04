@@ -9,7 +9,7 @@
         history.replaceState(null, null, redirect);
       }
       if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register(`./js/sw.#{HASH_ID}.js`)
+          navigator.serviceWorker.register(`./js/sw.<%= webpack.hash %>.js`)
               .then((registration) => {
                   console.log('Registration successful, scope is:', registration.scope);
               })
