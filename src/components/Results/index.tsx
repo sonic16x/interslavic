@@ -23,10 +23,14 @@ class Results extends React.Component<IResultsProps> {
                 {this.renderFormsButton(item, i)}
                 <div className={'card-body'}>
                     <h5 className={'card-title'}>
-                        {this.renderTranslate(item)}&nbsp;{this.renderIpa(item)}
+                        {this.renderTranslate(item)}
+                        {this.props.lang.to === 'isv' && <>&nbsp;{this.renderIpa(item)}</>}
                     </h5>
                     <h6 className={'card-subtitle mb-2 text-muted'}>{item.details}</h6>
-                    <p className={'card-text'}>{this.renderOriginal(item)}</p>
+                    <p className={'card-text'}>
+                        {this.renderOriginal(item)}
+                        {this.props.lang.from === 'isv' && <>&nbsp;{this.renderIpa(item)}</>}
+                    </p>
                 </div>
             </div>
         );

@@ -5,63 +5,63 @@ function getArr(str) {
 }
 
 export function getGender(details: string): Gender {
-    if (details.indexOf('m./f.') !== -1) {
+    if (details.includes('m./f.')) {
         return 'masculine or feminine';
     }
     const arr = getArr(details);
-    if (arr.indexOf('m') !== -1) {
+    if (arr.includes('m')) {
         return 'masculine';
     }
-    if (arr.indexOf('f') !== -1) {
+    if (arr.includes('f')) {
         return 'feminine';
     }
     return 'neuter';
 }
 
 export function isPlural(details: string): boolean {
-    return getArr(details).indexOf('pl') !== -1;
+    return getArr(details).includes('pl');
 }
 
 export function isSingular(details: string): boolean {
-    return getArr(details).indexOf('sg') !== -1;
+    return getArr(details).includes('sg');
 }
 
 export function isAnimated(details: string): boolean {
-    return getArr(details).indexOf('anim') !== -1;
+    return getArr(details).includes('anim');
 }
 
 export function isIndeclinable(details: string): boolean {
-    return getArr(details).indexOf('indecl') !== -1;
+    return getArr(details).includes('indecl');
 }
 
 export function getNumeralType(details: string): string {
     const arr = getArr(details);
 
-    if (arr.indexOf('card') !== -1) {
+    if (arr.includes('card')) {
         return 'cardinal';
     }
 
-    if (arr.indexOf('coll') !== -1) {
+    if (arr.includes('coll')) {
         return 'collective';
     }
 
-    if (arr.indexOf('fract') !== -1) {
+    if (arr.includes('fract')) {
         return 'fractional';
     }
 
-    if (arr.indexOf('subst') !== -1) {
+    if (arr.includes('subst')) {
         return 'substantivized';
     }
 
-    if (arr.indexOf('diff') !== -1) {
+    if (arr.includes('diff')) {
         return 'differential';
     }
 
-    if (arr.indexOf('mult') !== -1) {
+    if (arr.includes('mult')) {
         return 'multiplicative';
     }
 
-    if (arr.indexOf('ord') !== -1) {
+    if (arr.includes('ord')) {
         return 'ordinal';
     }
 }
@@ -69,31 +69,31 @@ export function getNumeralType(details: string): string {
 export function getPronounType(details: string): string {
     const arr = getArr(details);
 
-    if (arr.indexOf('pers') !== -1) {
+    if (arr.includes('pers')) {
         return 'personal';
     }
 
-    if (arr.indexOf('dem') !== -1) {
+    if (arr.includes('dem')) {
         return 'demonstrative';
     }
 
-    if (arr.indexOf('indef') !== -1) {
+    if (arr.includes('indef')) {
         return 'indefinite';
     }
 
-    if (arr.indexOf('refl') !== -1) {
+    if (arr.includes('refl')) {
         return 'reflexive';
     }
 
-    if (arr.indexOf('rel') !== -1) {
+    if (arr.includes('rel')) {
         return 'relative';
     }
 
-    if (arr.indexOf('poss') !== -1) {
+    if (arr.includes('poss')) {
         return 'possessive';
     }
 
-    if (arr.indexOf('int') !== -1) {
+    if (arr.includes('int')) {
         return 'interrogative';
     }
 }
@@ -119,23 +119,23 @@ export type VerbType = 'imperfective' | 'intransitive' | 'modal' | 'perfective' 
 
 export function getVerbType(details: string): VerbType {
     const arr = getArr(details);
-    if (arr.indexOf('i') !== -1) {
+    if (arr.includes('i')) {
         return 'imperfective';
     }
 
-    if (arr.indexOf('iv') !== -1) {
+    if (arr.includes('iv')) {
         return 'intransitive';
     }
 
-    if (arr.indexOf('mv') !== -1) {
+    if (arr.includes('mv')) {
         return 'modal';
     }
 
-    if (arr.indexOf('p') !== -1) {
+    if (arr.includes('p')) {
         return 'perfective';
     }
 
-    if (arr.indexOf('tv') !== -1) {
+    if (arr.includes('tv')) {
         return 'transitive';
     }
 }
@@ -154,41 +154,41 @@ export type PartOfSpeech =
 
 export function getPartOfSpeech(details: string): PartOfSpeech {
     const arr = getArr(details);
-    if (arr.indexOf('adj') !== -1) {
+    if (arr.includes('adj')) {
         return 'adjective';
     }
     if (
-        arr.indexOf('f') !== -1 ||
-        arr.indexOf('n') !== -1 ||
-        arr.indexOf('m') !== -1
+        arr.includes('f') ||
+        arr.includes('n') ||
+        arr.includes('m')
     ) {
         return 'noun';
     }
-    if (arr.indexOf('adv') !== -1) {
+    if (arr.includes('adv')) {
         return 'adverb';
     }
-    if (arr.indexOf('conj') !== -1) {
+    if (arr.includes('conj')) {
         return 'conjunction';
     }
-    if (arr.indexOf('prep') !== -1) {
+    if (arr.includes('prep')) {
         return 'preposition';
     }
-    if (arr.indexOf('pron') !== -1) {
+    if (arr.includes('pron')) {
         return 'pronoun';
     }
-    if (arr.indexOf('num') !== -1) {
+    if (arr.includes('num')) {
         return 'numeral';
     }
-    if (arr.indexOf('intj') !== -1) {
+    if (arr.includes('intj')) {
         return 'interjection';
     }
     if (
-        arr.indexOf('i') !== -1 ||
-        arr.indexOf('iv') !== -1 ||
-        arr.indexOf('mv') !== -1 ||
-        arr.indexOf('p') !== -1 ||
-        arr.indexOf('v') !== -1 ||
-        arr.indexOf('tv') !== -1
+        arr.includes('i') ||
+        arr.includes('iv') ||
+        arr.includes('mv') ||
+        arr.includes('p') ||
+        arr.includes('v') ||
+        arr.includes('tv')
     ) {
         return 'verb';
     }

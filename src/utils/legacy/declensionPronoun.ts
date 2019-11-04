@@ -12,7 +12,7 @@ export interface IPronounParadigm {
 export function declensionPronoun(rawWord: string, pronounType: string): IPronounParadigm {
     const word = isvToEngLatin(rawWord);
     if (pronounType === 'personal' || pronounType === 'reflexive') {
-        if (['ja', 'mene', 'me', 'mne', 'mi', 'mnoju', 'my', 'nas', 'nam', 'nami'].indexOf(word) !== -1) {
+        if (['ja', 'mene', 'me', 'mne', 'mi', 'mnoju', 'my', 'nas', 'nam', 'nami'].includes(word)) {
             return {
                 type: 'noun',
                 columns: ['Singular', 'Plural'],
@@ -25,7 +25,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                     ins: ['mnojų', 'nami'],
                 },
             };
-        } else if (['ty', 'tebe', 'te', 'tobe', 'ti', 'toboju', 'vy', 'vas', 'vam', 'vami'].indexOf(word) !== -1) {
+        } else if (['ty', 'tebe', 'te', 'tobe', 'ti', 'toboju', 'vy', 'vas', 'vam', 'vami'].includes(word)) {
             return {
                 type: 'noun',
                 columns: ['Singular', 'Plural'],
@@ -38,7 +38,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                     ins: ['tobojų', 'vami'],
                 },
             };
-        } else if (['on', 'jego', 'go', 'je', 'jemu', 'mu', 'njim', 'ona', 'ju', 'jej', 'jeju', 'njeju', 'oni', 'jih', 'jim', 'njimi'].indexOf(word) !== -1) {
+        } else if (['on', 'jego', 'go', 'je', 'jemu', 'mu', 'njim', 'ona', 'ju', 'jej', 'jeju', 'njeju', 'oni', 'jih', 'jim', 'njimi'].includes(word)) {
             return {
                 type: 'adjective',
                 casesSingular: {
@@ -58,7 +58,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                     ins: ['(n)jimi'],
                 },
             };
-        } else if (['sebe', 'se', 'sobe', 'si', 'soboju'].indexOf(word) !== -1) {
+        } else if (['sebe', 'se', 'sobe', 'si', 'soboju'].includes(word)) {
             return {
                 type: 'noun',
                 columns: ['Word Form'],
@@ -73,7 +73,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
             };
         }
     } else if (pronounType === 'possessive' &&
-        ['jih', 'jej', 'jego'].indexOf(word) !== -1) {
+        ['jih', 'jej', 'jego'].includes(word)) {
         return {
             type: 'noun',
             columns: ['Word Form'],
@@ -87,8 +87,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
             },
         };
     } else if ((pronounType === 'indefinite' || pronounType === 'interrogative' || pronounType === 'relative' ) &&
-        (rawWord.match(/čto/) || rawWord.match(/kto/) ||
-           ['kogo'].indexOf(word) !== -1) && !rawWord.match(/ktory/)) {
+        (rawWord.includes('čto') || rawWord.includes('kto') || rawWord === 'kogo') && !rawWord.includes('ktory')) {
         let prefix = '';
         let postfix = '';
         let origWord = rawWord;
@@ -158,8 +157,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                 ins: ['jimiže'],
             },
         };
-    } else if (['demonstrative', 'indefinite', 'interrogative', 'relative',
-        'possessive'].indexOf(pronounType) !== -1) {
+    } else if (['demonstrative', 'indefinite', 'interrogative', 'relative', 'possessive'].includes(pronounType)) {
         let origWord = rawWord;
         let postfix = '';
         if (origWord === 'te') {
