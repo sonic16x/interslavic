@@ -15,7 +15,7 @@ interface ISelectorProps {
 
 export class Selector extends React.Component<ISelectorProps> {
     public render() {
-        const id = this.props.label.toLowerCase().replace(/ /, '_');
+        const id = this.props.label ? this.props.label.toLowerCase().replace(/ /, '_') : null;
         return (
             <>
                 {this.props.label ? <label htmlFor={id}>{this.props.label}</label> : ''}
