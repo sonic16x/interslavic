@@ -107,8 +107,6 @@ class LangSelector extends React.Component<ILangSelectorProps> {
                             this.props.onSelect(this.props.from, langCode);
                         }
                     }}
-                    label={'Lang'}
-                    hideLabel={true}
                 />
             </div>
         );
