@@ -8,15 +8,6 @@
       if (redirect && redirect != location.href) {
         history.replaceState(null, null, redirect);
       }
-      if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register(`./sw.<%= webpack.hash %>.js`)
-              .then((registration) => {
-                  console.log('Registration successful, scope is:', registration.scope);
-              })
-              .catch((error) => {
-                  console.log('Service worker registration failed, error:', error);
-              });
-      }
     })();
   </script>
   <meta charset="UTF-8">

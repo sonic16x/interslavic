@@ -19,6 +19,16 @@ declare global {
     }
 }
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(`./sw.${HASH_ID}.js`)
+        .then((registration) => {
+            console.log('Registration successful, scope is:', registration.scope);
+        })
+        .catch((error) => {
+            console.log('Service worker registration failed, error:', error);
+        });
+}
+
 setInitialPage();
 
 if (process.env.NODE_ENV === 'production') {
