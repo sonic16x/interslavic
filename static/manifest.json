@@ -48,7 +48,7 @@
     }
   ],
   "serviceworker": {
-    "src": "js/sw.#{HASH_ID}.js",
+    "src": "sw.#{HASH_ID}.js",
     "scope": "#{BASE_URL}",
     "update_via_cache": "none"
   },

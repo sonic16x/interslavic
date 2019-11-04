@@ -30,7 +30,7 @@ module.exports = {
   output: {
     path: outputPath,
     publicPath: './',
-    filename: `js/[name].[hash].js`,
+    filename: `[name].[hash].js`,
     hashFunction: customHashFunction
   },
   resolve: {
