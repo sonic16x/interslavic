@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header';
 import DetailModal from 'components/DetailModal';
@@ -6,7 +6,12 @@ import About from 'components/About';
 import { Loader } from 'components/Loader';
 import Dictionary from 'components/Dictionary';
 import GDPR from 'components/GDPR';
-import Grammar from 'components/Grammar';
+const GrammarImport = import(
+    /* webpackChunkName: "grammarComponent" */
+    'components/Grammar');
+
+const Grammar = lazy(() => GrammarImport);
+
 import './index.scss';
 import { dictionaryUrl } from 'consts';
 import { fetchDictionary, setPageAction } from 'actions';
@@ -35,7 +40,9 @@ class Main extends React.Component<IMainProps> {
                 <DetailModal/>
                 <About/>
                 <Dictionary/>
-                <Grammar/>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Grammar/>
+                </Suspense>
             </>
         );
     }

@@ -12,21 +12,35 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
 const bundleId = 'dev';
 const baseUrl = '/';
 
+function customHashFunction() {
+    return {
+        digest: () => bundleId,
+        update: () => {},
+    }
+}
+
 module.exports = {
   entry: {
     index: './src/index',
+    grammarComponent: './src/components/Grammar/index',
     sw: './src/sw',
   },
   output: {
     path: outputPath,
     publicPath: './',
-    filename: `[name].${bundleId}.js`,
+    filename: `js/[name].[hash].js`,
+    hashFunction: customHashFunction,
     globalObject: 'this'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     modules: [nodeModulesPath, srcPath]
   },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
   module: {
     rules: [
       {
@@ -90,7 +104,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       HASH_ID: JSON.stringify(bundleId),
-        BASE_URL: JSON.stringify(baseUrl),
+      BASE_URL: JSON.stringify(baseUrl),
       DATE: JSON.stringify(new Date().toISOString()),
     }),
     new webpack.HotModuleReplacementPlugin(),
@@ -101,7 +115,7 @@ module.exports = {
             if (path.indexOf('.json') !== -1 || path.indexOf('.html') !== -1) {
                 return content
                     .toString()
-                    .replace(/#{HASH}/, bundleId)
+                    .replace(/#{HASH_ID}/, bundleId)
                     .replace(/#{BASE_URL}/, baseUrl)
                     ;
             }

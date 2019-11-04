@@ -13,21 +13,36 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const bundleId = uuidv4().replace(/-/g, '');
 const baseUrl = '/';
 
+
+function customHashFunction() {
+  return {
+      digest: () => bundleId,
+      update: () => {},
+  }
+}
+
 module.exports = {
   mode: 'production',
   entry: {
     index: './src/index',
+    grammarComponent: './src/components/Grammar/index',
     sw: './src/sw',
   },
   output: {
     path: outputPath,
     publicPath: './',
-    filename: `[name].${bundleId}.js`
+    filename: `js/[name].[hash].js`,
+    hashFunction: customHashFunction
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     modules: [nodeModulesPath, srcPath]
   },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
   module: {
     rules: [
       {
@@ -102,8 +117,8 @@ module.exports = {
             if (path.indexOf('.json') !== -1 || path.indexOf('.html') !== -1) {
                 return content
                     .toString()
-                    .replace(/#{HASH}/, bundleId)
-                    .replace(/#{BASE_URL}/, baseUrl)
+                    .replace(/#{HASH_ID}/g, bundleId)
+                    .replace(/#{BASE_URL}/g, baseUrl)
                   ;
             }
             return content;
