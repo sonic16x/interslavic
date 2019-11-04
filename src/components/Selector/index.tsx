@@ -10,8 +10,7 @@ interface ISelectorProps {
     onSelect: (option: string) => void;
     options: ISelectorOption[];
     value?: string;
-    label: string;
-    hideLabel?: boolean;
+    label?: string;
 }
 
 export class Selector extends React.Component<ISelectorProps> {
@@ -19,12 +18,7 @@ export class Selector extends React.Component<ISelectorProps> {
         const id = this.props.label.toLowerCase().replace(/ /, '_');
         return (
             <>
-                <label
-                    htmlFor={id}
-                    style={{display: this.props.hideLabel ? 'none' : 'inline-block'}}
-                >
-                    {this.props.label}
-                </label>
+                {this.props.label ? <label htmlFor={id}>{this.props.label}</label> : ''}
                 <select
                     id={id}
                     value={this.getDefaultValue()}

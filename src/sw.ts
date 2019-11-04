@@ -24,7 +24,7 @@ self.addEventListener('activate', (event) => {
     // console.log('activate');
 });
 
-const MAX_AGE = 60 * 60 * 1000;
+const MAX_AGE = 31557600;
 
 self.addEventListener('fetch', (event: any) => {
     event.respondWith(
