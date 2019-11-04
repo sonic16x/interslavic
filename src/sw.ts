@@ -26,7 +26,12 @@ const MAX_AGE = 60 * 60 * 1000;
 self.addEventListener('fetch', (event: any) => {
     event.respondWith(
         // Trying find resource in cache.
-        caches.match(event.request).then((cachedResponse) => {
+        caches.match(
+            event.request,
+            {
+                ignoreSearch: event.request.url.indexOf('?') != -1,
+            },
+        ).then((cachedResponse) => {
             let lastModified;
             let fetchRequest;
 

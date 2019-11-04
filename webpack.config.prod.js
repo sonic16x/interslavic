@@ -124,9 +124,6 @@ module.exports = {
         },
     }]),
     new ExtractTextPlugin('style.css'),
-    new webpack.LoaderOptionsPlugin({
-      debug: true
-    }),
     new Dotenv({
       path: './.env.prod',
       safe: true,
