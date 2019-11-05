@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-// import { Transition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import About from 'components/About';
 import Dictionary from 'components/Dictionary';
@@ -52,7 +51,7 @@ class Router extends React.Component<IRouterProps, IRouterState> {
         switch (page) {
             case 'grammar':
                 return (
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<div>&nbsp;</div>}>
                         <Grammar/>
                     </Suspense>
                 );
@@ -67,11 +66,6 @@ class Router extends React.Component<IRouterProps, IRouterState> {
 
         }
     }
-    // public componentDidUpdate(prevProps) {
-    //     // if (prevProps.page !== this.props.page) {
-    //     //
-    //     // }
-    // }
     private onChangeUrl() {
         const page = getPageFromPath();
         if (getPathFromPage(this.props.page) !== page) {
@@ -83,7 +77,6 @@ class Router extends React.Component<IRouterProps, IRouterState> {
 function mapStateToProps({ isLoading, page }) {
     return { isLoading, page };
 }
-
 
 function mapDispatchToProps(dispatch) {
     return {
