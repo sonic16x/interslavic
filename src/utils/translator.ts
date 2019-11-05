@@ -133,6 +133,15 @@ function searchPrepare(lang, text) {
     }
 }
 
+function convertCases(add) {
+    return add
+        .replace('+2', '+Gen.')
+        .replace('+3', '+Dat.')
+        .replace('+4', '+Acc.')
+        .replace('+5', '+Ins.')
+        .replace('+6', '+Loc.');
+}
+
 export function initDictionary(wordList: string[][]) {
     header = wordList.shift().map((l) => l.replace(/\W/g, ''));
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
@@ -140,7 +149,7 @@ export function initDictionary(wordList: string[][]) {
     words.forEach((item) => {
         const isvWord = getField(item, 'isv');
         const add = getField(item, 'addition')
-            .replace(/\(|\)/g, '').replace(/ /g, '').split(/,|;/)
+            .replace(/\(|\)/g, '').replace(/ /g, '').split(/[,;/]/)
         ;
         isvAddMap.set(getField(item, 'addition'), add);
         isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
@@ -173,16 +182,12 @@ export function getPercentsOfTranslated() {
 
 export interface ITranslateResult {
     translate: string;
-    translateCyrillic?: string;
     original: string;
-    originalAdd?: string;
-    originalAddCyrillic?: string;
-    add?: string;
-    addCyrillic?: string;
-    translateGla?: string;
-    addGla?: string;
-    originalGla?: string;
-    originalAddGla?: string;
+    originalCyr: string;
+    originalGla: string;
+    add: string;
+    addCyr: string;
+    addGla: string;
     details: string;
     ipa: string;
     checked: boolean;
@@ -243,44 +248,26 @@ export function formatTranslate(
     to: string,
     flavorisationType: string,
 ): ITranslateResult[] {
-    if (from === 'isv') {
-        return results.map((item) => {
-            const isv = getField(item, 'isv');
-            const add = getField(item, 'addition');
-            const translate = getField(item, to);
-            return {
-                translate: translate.replace(/^!/, ''),
-                originalCyrillic: getCyrillic(isv, flavorisationType),
-                originalGla: latinToGla(getLatin(isv, flavorisationType)),
-                original: getLatin(isv, flavorisationType),
-                originalAdd: getLatin(add, flavorisationType),
-                originalAddGla: latinToGla(getLatin(add, flavorisationType)),
-                originalAddCyrillic: getCyrillic(add, flavorisationType),
-                details: getField(item, 'partOfSpeech'),
-                ipa: latinToIpa(getLatin(isv, flavorisationType)),
-                checked: translate[0] !== '!',
-            };
-        });
-    } else {
-        return results.map((item) => {
-            const isv = getField(item, 'isv');
-            const add = getField(item, 'addition');
-            const original = getField(item, from);
-            return {
-                translate: getLatin(isv, flavorisationType),
-                translateCyrillic: getCyrillic(isv, flavorisationType),
-                translateGla: latinToGla(getLatin(isv, flavorisationType)),
-                original: original.replace(/^!/, ''),
-                add: getLatin(add, flavorisationType),
-                addCyrillic: getCyrillic(add, flavorisationType),
-                addGla: latinToGla(getLatin(add, flavorisationType)),
-                details: getField(item, 'partOfSpeech'),
-                ipa: latinToIpa(getLatin(isv, flavorisationType)),
-                checked: original[0] !== '!',
-            };
-        });
-    }
+    return results.map((item) => {
+        const isv = getField(item, 'isv');
+        const add = getField(item, 'addition');
+        const translate = getField(item, (from === 'isv' ? to : from));
+        return {
+            translate: translate.replace(/^!/, ''),
+            original: getLatin(isv, flavorisationType),
+            originalCyr: getCyrillic(isv, flavorisationType),
+            originalGla: latinToGla(getLatin(isv, flavorisationType)),
+            add: convertCases(getLatin(add, flavorisationType)),
+            addCyr: convertCases(getCyrillic(add, flavorisationType)),
+            addGla: convertCases(latinToGla(getLatin(add, flavorisationType))),
+            details: getField(item, 'partOfSpeech'),
+            ipa: latinToIpa(getLatin(isv, flavorisationType)),
+            checked: translate[0] !== '!',
+        };
+    });
+
 }
+
 
 export function getWordList(): string[][] {
     return words;

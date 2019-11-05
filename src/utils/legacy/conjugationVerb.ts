@@ -9,8 +9,7 @@ export function conjugationVerb(inf, rawPts) {
     if (inf === 'dòlžen byti') {
         return null;
     }
-
-    const pts = rawPts.replace(/\(|\)/g, '').split(';')[0];
+    const pts = rawPts.replace(/\(|\)/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
     const refl = reflexive(inf);
     const pref = prefix(inf);
     const is = infinitive_stem(pref, inf);
@@ -362,6 +361,18 @@ function buildPresent(pref, ps, psi, refl) {
                 `${pref}${cut}ęt${refl}`,
             ].map(transliterateBack);
         }
+        /*case 'a':
+        case 'e':
+        case 'ě':  {
+            return [
+                `${pref}${ps}m${refl}`,
+                `${pref}${ps}š${refl}`,
+                `${pref}${ps}${refl}`,
+                `${pref}${ps}mo${refl}`,
+                `${pref}${ps}te${refl}`,
+                `${pref}${ps}jųt${refl}`,
+            ].map(transliterateBack);
+        }*/
         default:
             return [
                 `${pref}${ps}ų${refl}, ${pref}${ps}em${refl}`,

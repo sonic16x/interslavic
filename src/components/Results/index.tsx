@@ -23,13 +23,17 @@ class Results extends React.Component<IResultsProps> {
                 {this.renderFormsButton(item, i)}
                 <div className={'card-body'}>
                     <h5 className={'card-title'}>
-                        {this.renderTranslate(item)}
-                        {this.props.lang.to === 'isv' && <>&nbsp;{this.renderIpa(item)}</>}
+                        {this.props.lang.to === 'isv' ?
+                            <>{this.renderOriginal(item)}&nbsp;{this.renderIpa(item)}</> :
+                            <>{this.renderTranslate(item)}</>
+                        }
                     </h5>
                     <h6 className={'card-subtitle mb-2 text-muted'}>{item.details}</h6>
                     <p className={'card-text'}>
-                        {this.renderOriginal(item)}
-                        {this.props.lang.from === 'isv' && <>&nbsp;{this.renderIpa(item)}</>}
+                        {this.props.lang.to === 'isv' ?
+                            <>{this.renderTranslate(item)}</> :
+                            <>{this.renderOriginal(item)}&nbsp;{this.renderIpa(item)}</>
+                        }
                     </p>
                 </div>
             </div>
@@ -49,12 +53,11 @@ class Results extends React.Component<IResultsProps> {
     }
     private renderFormsButton(item, i) {
         const pos = getPartOfSpeech(item.details);
-        const isvWord = (this.props.lang.from === 'isv' ? item.original : item.translate );
         switch (pos) {
             case 'noun':
             case 'numeral':
             case 'pronoun':
-                if (isvWord.match(/[^,] /)) { return ''; }
+                if (item.original.match(/[^,] /)) { return ''; }
             case 'adjective':
             case 'verb':
                 return (
@@ -83,33 +86,21 @@ class Results extends React.Component<IResultsProps> {
     }
     private renderOriginal(item) {
         let latin = item.original;
-        if (item.originalAdd) {
-            latin += ` ${item.originalAdd}`;
-        }
-        let cyrillic = item.originalCyrillic;
-        if (item.originalAddCyrillic) {
-            cyrillic += ` ${item.originalAddCyrillic}`;
-        }
-        // let gla = item.originalGla;
-        // if (item.originalAddGla) {
-        //     gla += ` ${item.originalAddGla}`;
-        // }
-        return [latin, cyrillic].filter(Boolean).join('/');
-    }
-    private renderTranslate(item) {
-        let latin = item.translate;
         if (item.add) {
             latin += ` ${item.add}`;
         }
-        let cyrillic = item.translateCyrillic;
-        if (item.addCyrillic) {
-            cyrillic += ` ${item.addCyrillic}`;
+        let cyrillic = item.originalCyr;
+        if (item.addCyr) {
+            cyrillic += ` ${item.addCyr}`;
         }
-        // let gla = item.translateGla;
+        // let gla = item.originalGla;
         // if (item.addGla) {
         //     gla += ` ${item.addGla}`;
         // }
         return [latin, cyrillic].filter(Boolean).join('/');
+    }
+    private renderTranslate(item) {
+        return item.translate;
     }
     private renderIpa(item) {
         if (item.ipa) {

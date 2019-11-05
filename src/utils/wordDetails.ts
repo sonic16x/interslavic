@@ -115,28 +115,27 @@ export function getPronounType(details: string): string {
 // + pron - pronoun - местоимение
 // - tv - transitive verb - переходный глагол
 
-export type VerbType = 'imperfective' | 'intransitive' | 'modal' | 'perfective' | 'transitive';
+export type VerbType = 'imperfective' | 'intransitive' | 'auxiliar' | 'perfective' | 'transitive' | 'reflective';
 
 export function getVerbType(details: string): VerbType {
     const arr = getArr(details);
-    if (arr.includes('i')) {
+    if (arr.includes('ipf')) {
         return 'imperfective';
     }
-
-    if (arr.includes('iv')) {
-        return 'intransitive';
-    }
-
-    if (arr.includes('mv')) {
-        return 'modal';
-    }
-
-    if (arr.includes('p')) {
+    if (arr.includes('pf')) {
         return 'perfective';
     }
-
-    if (arr.includes('tv')) {
+    if (arr.includes('intr')) {
+        return 'intransitive';
+    }
+    if (arr.includes('tr')) {
         return 'transitive';
+    }
+    if (arr.includes('refl')) {
+        return 'reflective';
+    }
+    if (arr.includes('aux')) {
+        return 'auxiliar';
     }
 }
 

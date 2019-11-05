@@ -136,35 +136,29 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const splitted = this.props.rawItem[0].split(',');
         if (splitted.length === 1 && this.props.rawItem[2].indexOf('m./f.') !== -1 ) {
             return [
-                this.renderWord([
-                    this.props.rawItem[0].trim(),
-                    this.props.rawItem[1].indexOf('+') === -1 ? this.props.rawItem[1] : '',
-                    'm.showGender',
-                ], 0, true),
-                this.renderWord([
-                    this.props.rawItem[0].trim(),
-                    this.props.rawItem[1].indexOf('+') === -1 ? this.props.rawItem[1] : '',
-                    'f.showGender',
-                ], 1, true),
+                this.renderWord([this.props.rawItem[0].trim(), this.props.rawItem[1], 'm.'],
+                    ['showTitle', 'showGender', 'oneMore'], 0),
+                this.renderWord([this.props.rawItem[0].trim(), this.props.rawItem[1], 'f.'],
+                    ['showTitle', 'showGender'], 1),
             ];
         }
-        return splitted.map((word, i) => this.renderWord(
-            [
-                word.trim(),
-                this.props.rawItem[1].indexOf('+') === -1 ? this.props.rawItem[1] : '',
-                this.props.rawItem[2],
-            ], i, splitted.length > 1));
+        return splitted.map((word, i) => {
+            const options = [];
+            if (splitted.length > 1) {
+                options.push('showTitle');
+                if (i < splitted.length - 1) { options.push('oneMore'); }
+            };
+            return this.renderWord([word.trim(), this.props.rawItem[1],  this.props.rawItem[2]], options, i);
+        });
     }
-    private renderWord(rawItem, i, moreOne) {
+    private renderWord(rawItem, options: string[], i) {
         const [ word, add, details ] = rawItem;
         let wordComponent;
         let remark = '';
         switch (getPartOfSpeech(details)) {
             case 'noun':
-                if (details === 'm.showGender') {
-                    remark = ' (masculine)';
-                } else if (details === 'f.showGender') {
-                    remark = ' (feminine)';
+                if (options.includes('showGender')) {
+                    remark = (details === 'm.' ? ' (masculine)' : ' (feminine)');
                 }
                 wordComponent = this.renderNounDetails(word, add, details);
                 break;
@@ -172,21 +166,22 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 wordComponent = this.renderAdjectiveDetails(word);
                 break;
             case 'verb':
-                if (!add && word.indexOf(' ') !== -1) {
-                    let add2 = '';
+                let addVerb = add;
+                // temporary fix for searching addition in parent verb
+                // must be deleted when column 'addition' will be correct filled !!!
+                if (!addVerb && word.includes(' ')) {
                     const BaseWord = getWordList().filter((item) => {
                         if (getField(item, 'isv') === word.split(' ')[0] &&
                             getField(item, 'addition') &&
-                            getField(item, 'partOfSpeech').indexOf('v.') !== -1) { return true; }
+                            getField(item, 'partOfSpeech').includes('v.')) { return true; }
                         return false;
                     });
                     if (BaseWord.length > 0) {
-                        add2 = getField(BaseWord[0], 'addition');
+                        addVerb = getField(BaseWord[0], 'addition');
                     }
-                    wordComponent = this.renderVerbDetails(word, add2);
-                } else {
-                    wordComponent = this.renderVerbDetails(word, add);
                 }
+                // normal verb
+                wordComponent = this.renderVerbDetails(word, addVerb);
                 break;
             case 'numeral':
                 wordComponent = this.renderNumeralDetails(word, details);
@@ -199,9 +194,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
         }
         return (
             <div className={'word'} key={i}>
-                {moreOne ? <h6>{this.formatStr(word)}{remark}</h6> : ''}
+                {options.includes('showTitle') ? <h6>{this.formatStr(word)}{remark}</h6> : ''}
                 {wordComponent}
-                {moreOne ? <hr/> : ''}
+                {options.includes('oneMore') ? <hr/> : ''}
             </div>
         );
     }
