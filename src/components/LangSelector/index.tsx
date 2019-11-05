@@ -59,6 +59,10 @@ const languageList = [
         name: 'Македонски',
         value: 'mk',
     },
+    {
+        name: 'Deutsch',
+        value: 'de',
+    },
 ];
 
 class LangSelector extends React.Component<ILangSelectorProps> {
