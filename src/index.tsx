@@ -19,7 +19,7 @@ declare global {
     }
 }
 
-if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register(`./sw.${HASH_ID}.js`)
         .then((registration) => {
             console.log('Registration successful, scope is:', registration.scope);
