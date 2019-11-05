@@ -4,14 +4,14 @@ import { dictionaryUrl } from 'consts';
 const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
     dictionaryUrl,
-    // 'index.html',
-    // 'manifest.json',
-    `${BASE_URL}/index.${HASH_ID}.js`,
-    `${BASE_URL}/vendors~grammarComponent~index.${HASH_ID}.js`,
-    `${BASE_URL}/grammarComponent.${HASH_ID}.js`,
-    `${BASE_URL}/grammarComponent~index.${HASH_ID}.js`,
-    `${BASE_URL}/logo.png`,
-    `${BASE_URL}/sw.${HASH_ID}.js`,
+    'index.html',
+    'manifest.json',
+    `index.${HASH_ID}.js`,
+    `vendors~grammarComponent~index.${HASH_ID}.js`,
+    `grammarComponent.${HASH_ID}.js`,
+    `grammarComponent~index.${HASH_ID}.js`,
+    `logo.png`,
+    // `sw.${HASH_ID}.js`,
 ];
 
 self.addEventListener('install', (event: any) => {
