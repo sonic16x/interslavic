@@ -7,14 +7,10 @@ import InputText from 'components/InputText';
 import FlavorisationSelector from 'components/FlavorisationSelector';
 import Results from 'components/Results';
 
-interface IDictionaryProps {
-    isVisible: boolean;
-}
-
-class Dictionary extends React.Component<IDictionaryProps> {
+class Dictionary extends React.Component {
     public render() {
         return (
-            <div className={'dictionary' + (this.props.isVisible ? ' show' : '')}>
+            <div className={'dictionary'}>
                 <div className={'controls shadow'}>
                     <LangSelector/>
                     <SearchTypeSelector/>
@@ -27,10 +23,4 @@ class Dictionary extends React.Component<IDictionaryProps> {
     }
 }
 
-function mapStateToProps({page, isLoading}) {
-    return {
-        isVisible: page === 'dictionary' && !isLoading,
-    };
-}
-
-export default connect(mapStateToProps)(Dictionary);
+export default Dictionary;

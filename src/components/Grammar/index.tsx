@@ -6,10 +6,6 @@ import tables from './tables.json';
 import Text from 'components/Text';
 import Card from 'components/Card';
 
-interface IGrammarProps {
-    isVisible: boolean;
-}
-
 const titles = {
     abeceda: 'Abeceda',
     imeniky: 'Imeniky',
@@ -30,7 +26,7 @@ const titles = {
     podrobnosti: 'Podrobne pravila (linki)',
 };
 
-class Grammar extends React.Component<IGrammarProps> {
+class Grammar extends React.Component {
     private containerRef;
     private titleElements;
     private activeId;
@@ -42,7 +38,7 @@ class Grammar extends React.Component<IGrammarProps> {
         this.onScroll = this.onScroll.bind(this);
         this.onWheel = this.onWheel.bind(this);
     }
-    public componentDidUpdate() {
+    public componentDidUpdate(prevProps) {
         if (!this.titleElements) {
             this.titleElements = Object.keys(titles).map((id) => document.getElementById(id));
         }
@@ -55,7 +51,7 @@ class Grammar extends React.Component<IGrammarProps> {
                 onScroll={this.onScroll}
                 ref={this.containerRef}
             >
-                <div className={'grammar' + (this.props.isVisible ? ' show' : '')}>
+                <div className={'grammar'}>
                     <br/>
                     <h4>Osnovna gramatika medžuslovjanskogo jezyka</h4>
                     <br/>
@@ -314,10 +310,4 @@ class Grammar extends React.Component<IGrammarProps> {
     }
 }
 
-function mapStateToProps({page, isLoading}) {
-    return {
-        isVisible: page === 'grammar' && !isLoading,
-    };
-}
-
-export default connect(mapStateToProps)(Grammar);
+export default Grammar;

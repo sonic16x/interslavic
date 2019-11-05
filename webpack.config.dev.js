@@ -28,7 +28,7 @@ module.exports = {
   output: {
     path: outputPath,
     publicPath: './',
-    filename: `js/[name].[hash].js`,
+    filename: `[name].[hash].js`,
     hashFunction: customHashFunction,
     globalObject: 'this'
   },
@@ -95,7 +95,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
       filename: 'index.html',
