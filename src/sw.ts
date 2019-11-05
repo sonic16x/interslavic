@@ -4,13 +4,13 @@ import { dictionaryUrl } from 'consts';
 const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
     dictionaryUrl,
-    '/index.html',
-    '/manifest.json',
-    `/index.${HASH_ID}.js`,
-    `/vendors~grammarComponent~index.${HASH_ID}.js`,
-    `/grammarComponent.${HASH_ID}.js`,
-    `/grammarComponent~index.${HASH_ID}.js`,
-    `/logo.png`,
+    'index.html',
+    'manifest.json',
+    `index.${HASH_ID}.js`,
+    `vendors~grammarComponent~index.${HASH_ID}.js`,
+    `grammarComponent.${HASH_ID}.js`,
+    `grammarComponent~index.${HASH_ID}.js`,
+    `logo.png`,
     // `sw.${HASH_ID}.js`,
 ];
 
