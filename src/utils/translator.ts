@@ -268,7 +268,6 @@ export function formatTranslate(
 
 }
 
-
 export function getWordList(): string[][] {
     return words;
 }

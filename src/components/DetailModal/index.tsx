@@ -147,7 +147,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             if (splitted.length > 1) {
                 options.push('showTitle');
                 if (i < splitted.length - 1) { options.push('oneMore'); }
-            };
+            }
             return this.renderWord([word.trim(), this.props.rawItem[1],  this.props.rawItem[2]], options, i);
         });
     }
