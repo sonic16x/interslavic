@@ -29,18 +29,18 @@ module.exports = {
     path: outputPath,
     publicPath: './',
     filename: `[name].[hash].js`,
-    hashFunction: customHashFunction,
+    // hashFunction: customHashFunction,
     globalObject: 'this'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     modules: [nodeModulesPath, srcPath]
   },
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all'
+    //     }
+    // },
   module: {
     rules: [
       {
@@ -112,6 +112,9 @@ module.exports = {
     new CopyPlugin([{
       from: 'static',
         transform: (content, path) => {
+            if (path.indexOf('manifest.json') !== -1) {
+              return '{}';
+            }
             if (path.indexOf('.json') !== -1 || path.indexOf('.html') !== -1) {
                 return content
                     .toString()

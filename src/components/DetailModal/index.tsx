@@ -56,11 +56,15 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         return (
             <div
-                className={'modal' + (this.props.isDetailModal ? ' show' : '')}
+                className={'modal customModal' + (this.props.isDetailModal ? ' show' : '')}
                 role={'dialog'}
                 onClick={() => this.props.close()}
             >
-                <div className={'modal-dialog'} role={'document'} onClick={(e) => e.stopPropagation()}>
+                <div
+                    className={'modal-dialog customModalDialog'}
+                    role={'document'}
+                    onClick={(e) => e.stopPropagation()}
+                >
                     <div className={'modal-content'}>
                         <div className={'modal-header'}>
                             {this.renderTitle(pos)}

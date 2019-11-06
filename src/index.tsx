@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { mainReducer } from 'reducers';
 import { setInitialPage } from 'routing';
+import './customBootstrap.scss';
 
 /* tslint:disable */
 declare global {

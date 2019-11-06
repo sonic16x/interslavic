@@ -1,4 +1,4 @@
-.gdprAlert {
+#app .gdprAlert {
   position: absolute;
   bottom: 0;
   margin-left: 16px;
@@ -7,10 +7,10 @@
   button {
     margin-left: 1rem;
   }
-}
-
-.hide {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s linear;
+  &.hide {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s linear;
+  }
 }
