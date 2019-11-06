@@ -4,6 +4,12 @@
 
 /* tslint:disable */
 
+const prefixes = [
+    'do', 'iz', 'izpo', 'nad', 'na', 'ne', 'ob', 'odpo', 'od', 'o', 'prědpo',
+    'pod', 'po', 'prě', 'pre', 'pri', 'pro', 'råzpro', 'razpro', 'råz', 'raz',
+    'sò', 's', 'u', 'vò', 'vo', 'v', 'vòz', 'voz', 'vy', 'za',
+];
+
 export function conjugationVerb(inf, rawPts) {
     //special cases
     if (inf === 'dòlžen byti') {
@@ -65,31 +71,40 @@ function reflexive(inf) {
 }
 
 function prefix(inf) {
-    let result = '';
+    // get prefixes for some non-regular verbs
+    let prefArr = prefixes.filter(
+        prfx => inf.indexOf(prfx) === 0 &&
+        ['věděti', 'vedeti', 'jesti', 'jěsti', 'dati'].includes(inf.split(' ')[0].slice(prfx.length))
+    );
+    if (prefArr.length > 0) {
+        return prefArr[0];
+    }
+    // get prefix separated with '-'
     const kreska = inf.indexOf('-');
     if (kreska != -1) {
-        result = inf.substring(0, kreska + 1)
+        return inf.substring(0, kreska + 1);
     }
+
     /*	else if ((inf.substring (0, 4) == 'pred') || (inf.substring (0, 4) == 'prėd'))
-            {	result = inf.substring (0, 4); 	}
-        else if ((inf.substring (0, 3) == 'pre') || (inf.substring (0, 3) == 'prė'))
-            {	result = inf.substring (0, 3); 	}
-        else if ((inf.substring (0, 3) == 'pri') || (inf.substring (0, 3) == 'pro'))
-            {	result = inf.substring (0, 3); 	}
-        else if ((inf.substring (0, 3) == 'raz') || (inf.substring (0, 3) == 'råz'))
-            {	result = inf.substring (0, 3); 	}
-        else if ((inf.substring (0, 3) == 'pod') || (inf.substring (0, 3) == 'nad'))
-            {	result = inf.substring (0, 3); 	}
-        else if ((inf.substring (0, 2) == 'po') || (inf.substring (0, 2) == 'na'))
-            {	result = inf.substring (0, 2); 	}
-        else if ((inf.substring (0, 2) == 'do') || (inf.substring (0, 2) == 'za'))
-            {	result = inf.substring (0, 2); 	}
-        else if ((inf.substring (0, 2) == 'iz') || (inf.substring (0, 2) == 'od'))
-            {	result = inf.substring (0, 2); 	}
-        else if ((inf.substring (0, 2) == 'vy') || (inf.substring (0, 2) == 'ob'))
-            {	result = inf.substring (0, 2); 	}
+        {	result = inf.substring (0, 4); 	}
+    else if ((inf.substring (0, 3) == 'pre') || (inf.substring (0, 3) == 'prė'))
+        {	result = inf.substring (0, 3); 	}
+    else if ((inf.substring (0, 3) == 'pri') || (inf.substring (0, 3) == 'pro'))
+        {	result = inf.substring (0, 3); 	}
+    else if ((inf.substring (0, 3) == 'raz') || (inf.substring (0, 3) == 'råz'))
+        {	result = inf.substring (0, 3); 	}
+    else if ((inf.substring (0, 3) == 'pod') || (inf.substring (0, 3) == 'nad'))
+        {	result = inf.substring (0, 3); 	}
+    else if ((inf.substring (0, 2) == 'po') || (inf.substring (0, 2) == 'na'))
+        {	result = inf.substring (0, 2); 	}
+    else if ((inf.substring (0, 2) == 'do') || (inf.substring (0, 2) == 'za'))
+        {	result = inf.substring (0, 2); 	}
+    else if ((inf.substring (0, 2) == 'iz') || (inf.substring (0, 2) == 'od'))
+        {	result = inf.substring (0, 2); 	}
+    else if ((inf.substring (0, 2) == 'vy') || (inf.substring (0, 2) == 'ob'))
+        {	result = inf.substring (0, 2); 	}
     */
-    return result;
+    return '';
 }
 
 function infinitive_stem(pref, inf) {
@@ -108,7 +123,7 @@ function infinitive_stem(pref, inf) {
     else if ((inf.indexOf('se ') == 0) || (inf.indexOf('sę ') == 0)) {
         trunc = inf.substring(3, inf.length);
     }*/
-    else if(inf.indexOf(' ') !== -1) {
+    else if(inf.includes(' ')) {
         trunc = inf.slice(0,inf.indexOf(' '));
     }
     else {
@@ -233,19 +248,19 @@ function present_tense_stem(pref, pts, is) {
         }
     }
 
-    if ((result == 'j') || (result == 'jes') || (is == 'by') || ((result == 'je') && (is == 'bi'))) {
+    if ((is == 'by') || ((result == 'je' || result == 'j') && (is == 'bi'))) {
         result = 'jes';
     }
     else if (result == 'věděĵ') {
         result = 'vě';
     }
-    else if (result == 'jed') {
+    else if (result == 'jed' || result == 'j' && is == 'jed') {
         result = 'je';
     }
-    else if (result == 'jěd') {
+    else if (result == 'jěd' || result == 'j' && is == 'jěd') {
         result = 'jě';
     }
-    else if (result == 'jad') {
+    else if (result == 'jad' || result == 'j' && is == 'jad') {
         result = 'ja';
     }
     else if (result == 'daĵ') {
@@ -322,19 +337,19 @@ function buildPresent(pref, ps, psi, refl) {
                 .map(transliterateBack);
         case 'da':
             return ['dam', 'daš', 'da', 'damò', 'date', 'dadųt']
-                .map((word) => transliterateBack(`${pref}${word}`));
+                .map((word) => transliterateBack(`${pref}${word}${refl}`));
         case 'vě':
             return ['věm', 'věš', 'vě', 'věmò', 'věte', 'vědųt']
-                .map((word) => transliterateBack(`${pref}${word}`));
+                .map((word) => transliterateBack(`${pref}${word}${refl}`));
         case 'jě':
             return ['jěm', 'jěš', 'jě', 'jěmò', 'jěte', 'jědųt']
-                .map((word) => transliterateBack(`${pref}${word}`));
+                .map((word) => transliterateBack(`${pref}${word}${refl}`));
         case 'je':
             return ['jem', 'ješ', 'je', 'jemò', 'jete', 'jedųt']
-                .map((word) => transliterateBack(`${pref}${word}`));
+                .map((word) => transliterateBack(`${pref}${word}${refl}`));
         case 'ja':
             return ['jam', 'jaš', 'ja', 'jamò', 'jate', 'jadųt']
-                .map((word) => transliterateBack(`${pref}${word}`));
+                .map((word) => transliterateBack(`${pref}${word}${refl}`));
     }
 
     switch (getLastChar(ps)) {
