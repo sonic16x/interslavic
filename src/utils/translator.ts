@@ -112,7 +112,7 @@ export function isvToEngLatin(text) {
     return latin;
 }
 
-function searchPrepare(lang, text) {
+function inputPrepare(lang, text) {
     const lowerCaseText = text.toLowerCase().replace(/ /g, '');
     switch (lang) {
         case 'isv':
@@ -128,6 +128,30 @@ function searchPrepare(lang, text) {
             return lowerCaseText.replace(/[ё]/g, 'е');
         case 'sr':
             return srGajevicaToVukovica(lowerCaseText);
+        default:
+            return lowerCaseText;
+    }
+}
+
+function searchPrepare(lang, text) {
+    let lowerCaseText = text.toLowerCase().replace(/ /g, '');
+    if (lang !== 'isv') {
+        lowerCaseText = lowerCaseText.replace('/\(.+?\)/', '');
+    } else {
+        lowerCaseText = convertCases(lowerCaseText);
+    }
+    switch (lang) {
+        case 'isv':
+            return isvToEngLatin(lowerCaseText);
+        case 'cs':
+        case 'pl':
+        case 'sk':
+        case 'sl':
+        case 'hr':
+        case 'de':
+            return filterLatin(lowerCaseText);
+        case 'ru':
+            return lowerCaseText.replace(/[ё]/g, 'е');
         default:
             return lowerCaseText;
     }
@@ -199,7 +223,7 @@ export function translate(
     to: string,
     searchType: string,
 ): string[][] {
-    const text = searchPrepare(from, inputText);
+    const text = inputPrepare(from, inputText);
     if (!text) {
         return [];
     }
