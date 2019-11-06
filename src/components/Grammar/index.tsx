@@ -26,9 +26,8 @@ const titles = {
     podrobnosti: 'Podrobne pravila (linki)',
 };
 
-class Grammar extends React.Component {
+class Grammar extends React.PureComponent {
     private containerRef;
-    private titleElements;
     private activeId;
     private userEvent;
     constructor(props) {
@@ -37,11 +36,6 @@ class Grammar extends React.Component {
         this.containerRef = React.createRef();
         this.onScroll = this.onScroll.bind(this);
         this.onWheel = this.onWheel.bind(this);
-    }
-    public componentDidUpdate(prevProps) {
-        if (!this.titleElements) {
-            this.titleElements = Object.keys(titles).map((id) => document.getElementById(id));
-        }
     }
     public render() {
         return (
@@ -286,7 +280,8 @@ class Grammar extends React.Component {
         let minDistance = Number.MAX_SAFE_INTEGER;
         const diff = this.containerRef.current.offsetTop + 100;
         const distance = {};
-        this.titleElements.forEach((item) => {
+        const titleElements = Object.keys(titles).map((id) => document.getElementById(id));
+        titleElements.forEach((item) => {
             const id = item.getAttribute('id');
             distance[id] = Math.abs((item.offsetTop - diff) - scrollPosition);
         });

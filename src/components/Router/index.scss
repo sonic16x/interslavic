@@ -7,6 +7,9 @@
   }
   width: 100%;
   height: 100%;
+  &.grammar {
+    height: calc(100% - 60px);
+  }
   overflow: auto;
   margin: 0;
   padding: 0;

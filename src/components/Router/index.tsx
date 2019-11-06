@@ -36,7 +36,7 @@ class Router extends React.Component<IRouterProps, IRouterState> {
         const addClass = page !== prevPage ? 'hide' : 'show';
         return (
             <div
-                className={`animationContainer ${addClass}`}
+                className={`animationContainer ${addClass} ${prevPage}`}
                 onAnimationEnd={() => {
                     if (page !== prevPage) {
                         this.setState({prevPage: page});

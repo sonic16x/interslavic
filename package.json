@@ -9,7 +9,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "lint": "tslint -c tslint.json '{src,tests}/**/*.{ts,tsx}' -t stylish --fix",
     "updateTestSnapshot": "ts-node -r tsconfig-paths/register ./tests/updateTestSnapshot.ts",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "test": "jest --logHeapUsage --coverage"
   },
   "jest": {
     "transform": {

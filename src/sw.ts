@@ -6,12 +6,12 @@ const cacheUrls = [
     dictionaryUrl,
     'index.html',
     'manifest.json',
-    // `index.${HASH_ID}.js`,
-    // `vendors~grammarComponent~index.${HASH_ID}.js`,
-    // `grammarComponent.${HASH_ID}.js`,
-    // `grammarComponent~index.${HASH_ID}.js`,
+    `grammarComponent.${HASH_ID}.js`,
+    `grammarComponent~index.${HASH_ID}.js`,
+    `index.${HASH_ID}.js`,
+    `sw.${HASH_ID}.js`,
+    `vendors~index.${HASH_ID}.js`,
     `logo.png`,
-    // `sw.${HASH_ID}.js`,
 ];
 
 self.addEventListener('install', (event: any) => {
