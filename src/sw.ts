@@ -10,6 +10,8 @@ const cacheUrls = [
     `grammarComponent~index.${HASH_ID}.js`,
     `index.${HASH_ID}.js`,
     `sw.${HASH_ID}.js`,
+    `styles/grammarComponent~index.${HASH_ID}.css`,
+    `styles/index.${HASH_ID}.css`,
     `vendors~index.${HASH_ID}.js`,
     `logo.png`,
 ];

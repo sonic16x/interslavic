@@ -50,21 +50,22 @@ module.exports = {
         use: 'ts-loader?configFile=tsconfig.json'
       },
       {
-        test: /\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-        ],
-        exclude: []
-      },
-      {
         test: /\.s?css$/,
         include: srcPath,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+                {
+                    loader: 'css-loader',
+                    options: {
+                        minimize: true,
+                    }
+                },
+                {
+                    loader: 'sass-loader',
+                }
+            ]
+        })
       },
       {
         test: /\.(png|jpe?g)$/,
@@ -123,7 +124,7 @@ module.exports = {
             return content;
         },
     }]),
-    new ExtractTextPlugin('style.css'),
+    new ExtractTextPlugin('styles/[name].[hash].css'),
     new Dotenv({
       path: './.env.prod',
       safe: true,
