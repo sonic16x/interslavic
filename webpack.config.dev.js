@@ -53,6 +53,7 @@ module.exports = {
         loaders: [
           'style-loader',
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ],
         include: [srcPath],
