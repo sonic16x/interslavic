@@ -16,6 +16,9 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
+    "transformIgnorePatterns": [
+      "^.+\\.(js|json)$"
+    ],
     "coverageReporters": [
       "json-summary",
       "lcov",
