@@ -27,6 +27,15 @@ class InputText extends React.Component<IInputTextProps> {
                     value={this.props.fromText}
                     onChange={(e) => this.props.changeFromText(e.target.value)}
                 />
+                <button
+                    type={'reset'}
+                    className={'removeButton'}
+                    aria-label={'Clear input'}
+                    disabled={this.props.fromText.length === 0}
+                    onClick={() => this.props.changeFromText('')}
+                >
+                    &times;
+                </button>
             </div>
         );
     }
