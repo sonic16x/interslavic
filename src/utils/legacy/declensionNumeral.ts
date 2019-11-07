@@ -44,6 +44,10 @@ function getExclusionForm(rawWord, caseIndex, formColumns) {
 }
 
 export function declensionNumeral(rawWord: string, numeralType: string): INumeralParadigm {
+    // now we don't know how to decline the phrases
+    if (rawWord.includes(' ')) {
+        return null;
+    }
     const word = isvToEngLatin(rawWord);
     let declensionType = '';
     let details = '';

@@ -20,9 +20,8 @@ function prepareGender(gender, animated) {
 
 export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable) {
     let noun = rawNoun;
-
     //now we don't know how to decline the phrases
-    if (noun.match(/ /)) {
+    if (noun.includes(' ')) {
         return null;
     }
     //indeclinable

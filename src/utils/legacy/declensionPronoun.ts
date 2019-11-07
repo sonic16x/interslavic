@@ -10,6 +10,10 @@ export interface IPronounParadigm {
 }
 
 export function declensionPronoun(rawWord: string, pronounType: string): IPronounParadigm {
+    // now we don't know how to decline the phrases
+    if (rawWord.includes(' ')) {
+        return null;
+    }
     const word = isvToEngLatin(rawWord);
     if (pronounType === 'personal' || pronounType === 'reflexive') {
         if (['ja', 'mene', 'me', 'mne', 'mi', 'mnoju', 'my', 'nas', 'nam', 'nami'].includes(word)) {

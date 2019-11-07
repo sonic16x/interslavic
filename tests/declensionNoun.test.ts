@@ -1,11 +1,11 @@
-import { declensionNoun } from 'utils/legacy/declensionNoun';
+import { declensionNoun } from '../src/utils/legacy/declensionNoun';
 import {
     getGender,
     isAnimated,
     isPlural,
     isSingular,
     isIndeclinable,
-} from 'utils/wordDetails';
+} from '../src/utils/wordDetails';
 
 import { noun } from './testCases.json';
 
