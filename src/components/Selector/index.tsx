@@ -22,7 +22,7 @@ export class Selector extends React.Component<ISelectorProps> {
                 <select
                     id={id}
                     value={this.getDefaultValue()}
-                    className={'form-control'}
+                    className={'form-control custom-select'}
                     onChange={(e: any) => this.props.onSelect(this.props.options[e.currentTarget.selectedIndex].value)}
                 >
                     {this.props.options.map((option, i) => <option key={i} value={option.value}>{option.name}</option>)}
