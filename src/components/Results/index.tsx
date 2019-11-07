@@ -17,21 +17,23 @@ interface IResultsProps {
 
 class Results extends React.Component<IResultsProps> {
     public renderResultItem(item: ITranslateResult, i: number) {
+        const lang = this.props.lang;
+
         return (
             <div className={'card resultCard shadow'} key={i}>
                 {this.renderCheked(item)}
                 {this.renderFormsButton(item, i)}
                 <div className={'card-body'}>
                     <h5 className={'card-title'}>
-                        {this.props.lang.to === 'isv' ?
+                        {lang.to === 'isv' ?
                             <>{this.renderOriginal(item)}&nbsp;{this.renderIpa(item)}</> :
-                            <>{this.renderTranslate(item)}</>
+                            <>{this.renderTranslate(item, lang.to)}</>
                         }
                     </h5>
                     <h6 className={'card-subtitle mb-2 text-muted'}>{item.details}</h6>
                     <p className={'card-text'}>
-                        {this.props.lang.to === 'isv' ?
-                            <>{this.renderTranslate(item)}</> :
+                        {lang.to === 'isv' ?
+                            <>{this.renderTranslate(item, lang.from)}</> :
                             <>{this.renderOriginal(item)}&nbsp;{this.renderIpa(item)}</>
                         }
                     </p>
@@ -93,14 +95,28 @@ class Results extends React.Component<IResultsProps> {
         if (item.addCyr) {
             cyrillic += ` ${item.addCyr}`;
         }
+
+        const latnSpan = latin
+            ? <span lang={'art-Latn-x-isv'}>{latin}</span>
+            : null;
+
+        const cyrlSpan = cyrillic
+            ? <span lang={'art-Cyrl-x-isv'}>{cyrillic}</span>
+            : null;
+
         // let gla = item.originalGla;
         // if (item.addGla) {
         //     gla += ` ${item.addGla}`;
         // }
-        return [latin, cyrillic].filter(Boolean).join('/');
+
+        return (<span className={'notranslate'} translate={'no'}>
+            {latnSpan}
+            {latnSpan && cyrlSpan ? '/' : ''}
+            {cyrlSpan}
+        </span>);
     }
-    private renderTranslate(item) {
-        return item.translate;
+    private renderTranslate(item, lang) {
+        return <span lang={lang}>{item.translate}</span>;
     }
     private renderIpa(item) {
         if (item.ipa) {
