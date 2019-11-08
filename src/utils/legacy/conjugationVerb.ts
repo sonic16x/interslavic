@@ -74,7 +74,7 @@ function prefix(inf) {
     // get prefixes for some non-regular verbs
     let prefArr = prefixes.filter(
         prfx => inf.indexOf(prfx) === 0 &&
-        ['věděti', 'vedeti', 'jesti', 'jěsti', 'dati'].includes(inf.split(' ')[0].slice(prfx.length))
+            ['věděti', 'vedeti', 'jesti', 'jěsti', 'dati', 'žiti'].includes(inf.split(' ')[0].slice(prfx.length))
     );
     if (prefArr.length > 0) {
         return prefArr[0];
@@ -656,7 +656,8 @@ function build_pfap(lpa, refl) {
 function build_pfpp(pref, is, psi) {
     let ppps = '';
     const i = (is.length - 1);
-    if (((is.charAt(i) != 'j') && ((psi.charAt(psi.length - 1) == 'j') && (i < 4) && (is.charAt(0) != 'u')) || (is == 'by')) || (is.charAt(i) == 'ę')) {
+    if ((is.charAt(i) != 'j') && ((psi.charAt(psi.length - 1) == 'j') && (i < 4) && (is.charAt(0) != 'u'))
+        || (is == 'by') || (is == 'ži')  || (is.charAt(i) == 'ę')) {
         ppps = pref + is + 't';
     }
     else if (((is.charAt(i) == 'ų') || (is.charAt(i) == 'u')) && (is.charAt(i - 1) == 'n')) {
@@ -716,7 +717,7 @@ function idti(sel) {
         .replace(/od[oò]š/g, 'odš')
         .replace(/pod[oò]š/g, 'podš')
         .replace(/nad[oò]š/g, 'nadš')
-    ;
+        ;
 }
 
 function transliterateBack(iW) {
@@ -735,5 +736,5 @@ function transliterateBack(iW) {
         .replace(/x/, 'j')
         .replace(/-/g, '')
         .replace(/—/g, '-')
-    ;
+        ;
 }
