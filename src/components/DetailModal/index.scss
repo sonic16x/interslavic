@@ -48,7 +48,7 @@
 @media (min-width: 678px) {
   .customModalDialog {
     max-width: 95vw;
-    width:650px;
+    width:650px !important;
     .modal-body {
       font-size: 1rem;
     }

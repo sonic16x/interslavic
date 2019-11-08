@@ -103,8 +103,8 @@ $animationDuration: 0.1s;
 
 @media (min-width: 1050px) {
   .header {
-    padding-left: calc(50% - 510px);
-    padding-right: calc(50% - 510px);
+    padding-left: calc(50% - 510px) !important;
+    padding-right: calc(50% - 510px) !important;
   }
 }
 
