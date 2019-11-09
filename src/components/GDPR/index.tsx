@@ -20,16 +20,18 @@ export default class extends React.Component<{}, IGDPRState> {
                 className={'alert alert-warning gdprAlert' + (!this.state.show ? ' hide' : '')}
                 role={'alert'}
             >
-                <strong>This page uses cookies for analytics: </strong>
-                <a rel={'noreferrer'} href={link} target={'_blank'}>Read more</a>
-                <button
-                    type={'button'}
-                    className={'btn btn-primary'}
-                    aria-label={'Hide alert'}
-                    onClick={() => this.hideAlert()}
-                >
-                    Ok
-                </button>
+                <strong>This page uses cookies for analytics:&nbsp;</strong>
+                <div className={'gdprActions'}>
+                    <a rel={'noreferrer'} href={link} target={'_blank'}>Read more</a>
+                    <button
+                        type={'button'}
+                        className={'btn btn-primary'}
+                        aria-label={'Hide alert'}
+                        onClick={() => this.hideAlert()}
+                    >
+                        Ok
+                    </button>
+                </div>
             </div>
         );
     }
