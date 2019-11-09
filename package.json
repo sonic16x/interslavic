@@ -45,12 +45,14 @@
   ],
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
+    "dialog-polyfill": "^0.5.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4"
   },
   "devDependencies": {
+    "@types/dialog-polyfill": "^0.5.0",
     "@types/jest": "^24.0.19",
     "@types/node": "^11.11.7",
     "@types/react": "^16.8.8",

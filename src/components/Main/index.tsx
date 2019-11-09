@@ -20,6 +20,7 @@ class Main extends React.Component<IMainProps> {
         super(props);
         this.props.loadDictionary();
     }
+
     public render() {
         return (
             <>

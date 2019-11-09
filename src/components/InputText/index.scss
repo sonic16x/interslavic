@@ -1,9 +1,16 @@
 .fromText {
   border-radius: .3rem !important;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+  }
 }
 
 .removeButton {
-  font-family: Impact;
+  font-family: Impact, fantasy;
   cursor: pointer;
   display: block;
   width: 30px;
@@ -27,8 +34,9 @@
     outline: 0;
   }
 
-  &:hover {
-    background-color: rgba(0,123,255,.25);
+  &:hover,
+  &:focus {
+    background-color: rgba(0, 123, 255, .25);
   }
 
   &[disabled] {
