@@ -1,19 +1,40 @@
-#app .gdprAlert {
-  position: absolute;
-  bottom: 0;
-  margin-left: 16px;
-  margin-right: 16px;
-  z-index: 110;
-  button {
-    margin-left: 1rem;
+#app {
+  .gdprAlert {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+
+    position: absolute;
+    bottom: 0;
+    margin-left: 16px;
+    margin-right: 16px;
+    z-index: 110;
+
+    > strong {
+      flex-grow: 1;
+    }
+
+    &.hide {
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s linear;
+    }
   }
-  a {
-    color: #245EFF;
-  }
-  &.hide {
-    display: none;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s linear;
+
+  .gdprActions {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+
+    > button {
+      margin-left: auto;
+    }
+
+    > a {
+      color: #245EFF;
+      margin-right: 1ch;
+    }
+
   }
 }
