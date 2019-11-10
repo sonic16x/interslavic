@@ -292,7 +292,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 this.formatStr(data.pfpp),
             ],
             [
-                'verbal@b',
+                'verbal noun@b',
                 this.formatStr(data.gerund),
             ],
         ];

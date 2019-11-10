@@ -22,7 +22,7 @@ export function conjugationVerb(inf, rawPts) {
 
     const ps = present_tense_stem(pref, pts, is);
     const psi = secondary_present_tense_stem(ps);
-    const lpa = l_participle(pref, is);
+    const lpa = l_participle(pref, pts, is);
 
     const infinitive = build_infinitive(pref, is, refl);
     const present = buildPresent(pref, ps, psi, refl);
@@ -74,7 +74,8 @@ function prefix(inf) {
     // get prefixes for some non-regular verbs
     let prefArr = prefixes.filter(
         prfx => inf.indexOf(prfx) === 0 &&
-            ['věděti', 'vedeti', 'jesti', 'jěsti', 'dati', 'žiti'].includes(inf.split(' ')[0].slice(prfx.length))
+        ['věděti', 'vedeti', 'jesti', 'jěsti', 'dati', 'dųti', 'byti'].
+            includes(inf.split(' ')[0].slice(prfx.length))
     );
     if (prefArr.length > 0) {
         return prefArr[0];
@@ -248,7 +249,7 @@ function present_tense_stem(pref, pts, is) {
         }
     }
 
-    if ((is == 'by') || ((result == 'je' || result == 'j') && (is == 'bi'))) {
+    if ((is == 'by') && (pref == '') || ((result == 'je' || result == 'j') && (is == 'bi'))) {
         result = 'jes';
     }
     else if (result == 'věděĵ') {
@@ -291,7 +292,7 @@ function secondary_present_tense_stem(ps) {
     }
 }
 
-function l_participle(pref, is) {
+function l_participle(pref, pts, is) {
     let result = '';
     if ((is == 'vojd') || (is == 'vòjd')) {
         result = 'všèl';
@@ -302,6 +303,10 @@ function l_participle(pref, is) {
     else if ((is.substring(is.length - 2, is.length) == 'id') ||
         (is.substring(is.length - 2, is.length) == 'jd')) {
         result = pref + is.substring(0, is.length - 2) + 'šèl';
+    }
+    //treti - trl (by Ranmaru Rei)
+    else if (is.match(/r[eě]$/) && pts.match(/re$/)) {
+        result = pref + is.slice(0, -2) + 'ŕl';
     }
     else {
         result = pref + is + 'l';
@@ -376,18 +381,6 @@ function buildPresent(pref, ps, psi, refl) {
                 `${pref}${cut}ęt${refl}`,
             ].map(transliterateBack);
         }
-        /*case 'a':
-        case 'e':
-        case 'ě':  {
-            return [
-                `${pref}${ps}m${refl}`,
-                `${pref}${ps}š${refl}`,
-                `${pref}${ps}${refl}`,
-                `${pref}${ps}mo${refl}`,
-                `${pref}${ps}te${refl}`,
-                `${pref}${ps}jųt${refl}`,
-            ].map(transliterateBack);
-        }*/
         default:
             return [
                 `${pref}${ps}ų${refl}, ${pref}${ps}em${refl}`,
@@ -417,7 +410,7 @@ function build_imperfect(pref, is, refl) {
             impst = is + 'e';
         }
     }
-    else if (is == 'by') {
+    else if (is == 'by' && pref == '') {
         impst = 'bě';
     }
     else {
@@ -656,10 +649,28 @@ function build_pfap(lpa, refl) {
 function build_pfpp(pref, is, psi) {
     let ppps = '';
     const i = (is.length - 1);
-    if ((is.charAt(i) != 'j') && ((psi.charAt(psi.length - 1) == 'j') && (i < 4) && (is.charAt(0) != 'u'))
-        || (is == 'by') || (is == 'ži')  || (is.charAt(i) == 'ę')) {
+    /* old rule for -t
+    if (((is.charAt(i) != 'j') && ((psi.charAt(psi.length - 1) == 'j') && (i < 4) && (is.charAt(0) != 'u')) || (is == 'by')) || (is.charAt(i) == 'ę')) {
         ppps = pref + is + 't';
+    }*/
+    // new rule for -t by Ranmaru Rei
+    if (
+        is.match(/nų$/ ) ||
+        is.match(/[iyuě]$/) && psi.match(/[jvn]$/) ||
+        is.match(/ę$/ ) ||
+        is === 'by' ||
+        is === 'dų' ||
+        is.match(/lě$/ ) && psi.match(/lj$/) ||
+        is.match(/å$/ )
+    ) {
+        ppps = pref + is + 't';
+        console.log('T ' + pref + ppps);
     }
+    else if(is.match(/r[eě]$/ ) && psi.match(/r$/)) {
+        ppps = pref + is.slice(0, -2) + 'ŕt';
+        console.log('RT ' + pref + ppps);
+    }
+    // end rule for -t
     else if (((is.charAt(i) == 'ų') || (is.charAt(i) == 'u')) && (is.charAt(i - 1) == 'n')) {
         ppps = pref + psi + 'en';
     }
@@ -717,7 +728,7 @@ function idti(sel) {
         .replace(/od[oò]š/g, 'odš')
         .replace(/pod[oò]š/g, 'podš')
         .replace(/nad[oò]š/g, 'nadš')
-        ;
+    ;
 }
 
 function transliterateBack(iW) {
@@ -736,5 +747,5 @@ function transliterateBack(iW) {
         .replace(/x/, 'j')
         .replace(/-/g, '')
         .replace(/—/g, '-')
-        ;
+    ;
 }
