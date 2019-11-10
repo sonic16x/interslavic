@@ -1,6 +1,5 @@
 import * as React from 'react';
-import 'dialog-polyfill/dialog-polyfill.css';
-import dialogPolyfill from 'dialog-polyfill';
+import ModalDialog from '../ModalDialog';
 import { connect } from 'react-redux';
 import './index.scss';
 import { hideDetailAction, setAlphabetTypeAction } from 'actions';
@@ -35,10 +34,6 @@ interface IDetailModalProps {
     rawItem: string[];
 }
 
-interface IDetailModalState {
-    open: boolean;
-}
-
 const alphabetType = [
     {
         name: 'Latin',
@@ -50,62 +45,22 @@ const alphabetType = [
     },
 ];
 
-class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> {
-    public state = { open: false };
-
-    private dialogRef = React.createRef<HTMLDialogElement>();
+class DetailModal extends React.Component<IDetailModalProps> {
     private closeButtonRef = React.createRef<HTMLButtonElement>();
 
-    public componentDidUpdate(prevProps: Readonly<IDetailModalProps>, prevState: Readonly<IDetailModalState>): void {
-        const dialog = this.dialogRef.current;
-
-        if (dialog) {
-            if (!this.state.open && this.props.isDetailModal > prevProps.isDetailModal) {
-                dialog.showModal();
-
-                const closeButton = this.closeButtonRef.current;
-                if (closeButton) {
-                    closeButton.blur();
-                }
-
-                this.setState({ open: true });
-            }
-
-            if (this.state.open && this.props.isDetailModal < prevProps.isDetailModal) {
-                dialog.close();
-            }
-        }
-    }
-
-    public componentDidMount() {
-        const dialogElement = this.dialogRef.current;
-
-        if (dialogElement) {
-            dialogPolyfill.registerDialog(dialogElement);
-            dialogElement.addEventListener('cancel', this.onDialogClosed);
-            dialogElement.addEventListener('close', this.onDialogClosed);
-        }
-    }
-
-    public componentWillUnmount() {
-        const dialogElement = this.dialogRef.current;
-
-        if (dialogElement) {
-            dialogElement.removeEventListener('cancel', this.onDialogClosed);
-            dialogElement.removeEventListener('close', this.onDialogClosed);
-        }
-    }
-
     public render() {
+        const contents = this.renderContents();
+
         return (
-            <dialog
-                ref={this.dialogRef}
+            <ModalDialog
                 className={'customModal'}
-                role={'dialog'}
-                onClick={this.onBackdropClick}
+                wrapperClassName={'modal-content customModalContent'}
+                open={!!contents}
+                onOpen={this.onDialogOpened}
+                onClose={this.close}
             >
-                {this.renderContents()}
-            </dialog>
+                {contents}
+            </ModalDialog>
         );
     }
 
@@ -117,17 +72,13 @@ class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> 
         const pos = getPartOfSpeech(this.props.item.details);
 
         return (
-            <div
-                role={'document'}
-                className={'modal-content customModalContent'}
-                onClick={(e) => e.stopPropagation()}
-            >
+            <>
                 <header className={'modal-header'}>
                     {this.renderTitle(pos)}
                     <button
                         ref={this.closeButtonRef}
                         className={'close'}
-                        onClick={this.onCloseModalClick}
+                        onClick={this.close}
                         aria-label={'Close'}
                     >
                         <span aria-hidden={'true'}>&times;</span>
@@ -143,22 +94,19 @@ class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> 
                         onSelect={(type) => this.props.setAlphabetType(type)}
                     />
                 </footer>
-            </div>
+            </>
         );
     }
 
-    private onDialogClosed = () => {
-        this.setState({ open: false }, () => {
-            this.props.close();
-        });
+    private onDialogOpened = () => {
+        const closeButton = this.closeButtonRef.current;
+        if (closeButton) {
+            closeButton.blur();
+        }
     }
 
-    private onCloseModalClick = () => {
-        this.dialogRef.current.close();
-    }
-
-    private onBackdropClick = () => {
-        this.dialogRef.current.close();
+    private close = () => {
+        this.props.close();
     }
 
     private renderTitle(pos: string) {

@@ -1,0 +1,40 @@
+@mixin all-dialog-elements {
+  &,
+  &::backdrop,
+  & + .backdrop {
+    @content;
+  }
+}
+
+.modalDialog {
+  border: none;
+  background: none;
+  padding: 0;
+
+  &::backdrop,
+  & + .backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  & {
+    @include all-dialog-elements { animation: none .2s ease-in-out; }
+  }
+
+  &[open] {
+    @include all-dialog-elements { animation-name: modalDialogShow }
+  }
+
+  &[open].closing {
+    @include all-dialog-elements { animation-name: modalDialogHide }
+  }
+}
+
+@keyframes modalDialogShow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalDialogHide {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

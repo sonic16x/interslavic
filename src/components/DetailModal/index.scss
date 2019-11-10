@@ -1,20 +1,9 @@
 #app {
-  .customModal {
-    border: none;
-    background: none;
-    padding: 0;
-
-    &::backdrop,
-    & + .backdrop {
-      background: rgba(0, 0, 0, 0.4);
-    }
-
-    .modal-header {
+  .customModalContent {
+    > .modal-header {
       align-items: center;
     }
-  }
 
-  .customModalContent {
     .modal-title i {
       font-weight: normal;
     }
