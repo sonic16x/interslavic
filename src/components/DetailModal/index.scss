@@ -1,66 +1,38 @@
-#app .customModal {
-  display: flex;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-  visibility: hidden;
-  &.show {
-    opacity: 1;
-    pointer-events: all;
-    visibility: visible;
-  }
-  background: rgba(1, 1, 1, 0.5);
-  .customModalDialog {
-    pointer-events: auto;
-    button.close {
-      outline: 0;
+#app {
+  .customModalContent {
+    > .modal-header {
+      align-items: center;
     }
-    z-index: 1070;
 
-    .modal-title {
-      i {
-        font-weight: normal;
-      }
+    .modal-title i {
+      font-weight: normal;
     }
-    .modal-body {
-      overflow-y: scroll;
-      max-height: 80vh;
-      .word {
-        text-align: center;
+
+    > .modal-body {
+      .word { text-align: center; }
+
+      @media (min-width: 678px) {
+        font-size: 1rem;
       }
-      table.customTable {
-        th, td {
-          white-space: normal;
-        }
+
+      @media (max-width: 678px) {
+        font-size: 2.5vw;
       }
     }
 
-    .modal-footer {
+    .customTable {
+      th,
+      td {
+        white-space: normal;
+      }
+    }
+
+    > .modal-footer {
       justify-content: center;
+
       .lineSelector {
         width: 100%;
       }
-    }
-  }
-}
-
-@media (min-width: 678px) {
-  .customModalDialog {
-    max-width: 95vw;
-    width:650px !important;
-    .modal-body {
-      font-size: 1rem;
-    }
-  }
-}
-
-@media (max-width: 678px) {
-  .customModalDialog {
-    max-width: 100%;
-    flex-basis: 100%;
-    .modal-body {
-      font-size: 2.5vw;
     }
   }
 }

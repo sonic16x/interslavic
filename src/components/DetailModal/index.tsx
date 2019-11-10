@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ModalDialog from '../ModalDialog';
 import { connect } from 'react-redux';
 import './index.scss';
 import { hideDetailAction, setAlphabetTypeAction } from 'actions';
@@ -11,14 +12,14 @@ import Table from 'components/Table';
 import Text from 'components/Text';
 import {
     getGender,
-    getPartOfSpeech,
-    getVerbType,
     getNumeralType,
+    getPartOfSpeech,
+    getPronounType,
+    getVerbType,
     isAnimated,
     isIndeclinable,
     isPlural,
     isSingular,
-    getPronounType,
 } from 'utils/wordDetails';
 import { getCyrillic, getField, getLatin, getWordList } from 'utils/translator';
 import { declensionPronoun } from '../../utils/legacy/declensionPronoun';
@@ -45,54 +46,69 @@ const alphabetType = [
 ];
 
 class DetailModal extends React.Component<IDetailModalProps> {
-    constructor(props) {
-        super(props);
-    }
+    private closeButtonRef = React.createRef<HTMLButtonElement>();
+
     public render() {
-        if (!this.props.item) {
-            return '';
+        const contents = this.renderContents();
+
+        return (
+            <ModalDialog
+                className={'customModal'}
+                wrapperClassName={'modal-content customModalContent'}
+                open={!!contents}
+                onOpen={this.onDialogOpened}
+                onClose={this.close}
+            >
+                {contents}
+            </ModalDialog>
+        );
+    }
+
+    private renderContents() {
+        if (!this.props.item || !this.props.isDetailModal) {
+            return;
         }
+
         const pos = getPartOfSpeech(this.props.item.details);
 
         return (
-            <div
-                className={'modal customModal' + (this.props.isDetailModal ? ' show' : '')}
-                role={'dialog'}
-                onClick={() => this.props.close()}
-            >
-                <div
-                    className={'modal-dialog customModalDialog'}
-                    role={'document'}
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    <div className={'modal-content'}>
-                        <div className={'modal-header'}>
-                            {this.renderTitle(pos)}
-                            <button
-                                type={'button'}
-                                className={'close'}
-                                data-dismiss={'modal'}
-                                aria-label={'Close'}
-                                onClick={() => this.props.close()}
-                            >
-                                <span aria-hidden={'true'}>&times;</span>
-                            </button>
-                        </div>
-                        <div className={'modal-body'}>
-                            {this.renderBody()}
-                        </div>
-                        <div className={'modal-footer'}>
-                            <LineSelector
-                                options={alphabetType}
-                                value={this.props.alphabetType}
-                                onSelect={(type) => this.props.setAlphabetType(type)}
-                            />
-                        </div>
-                    </div>
+            <>
+                <header className={'modal-header'}>
+                    {this.renderTitle(pos)}
+                    <button
+                        ref={this.closeButtonRef}
+                        className={'close'}
+                        onClick={this.close}
+                        aria-label={'Close'}
+                    >
+                        <span aria-hidden={'true'}>&times;</span>
+                    </button>
+                </header>
+                <div className={'modal-body'}>
+                    {this.renderBody()}
                 </div>
-            </div>
+                <footer className={'modal-footer'}>
+                    <LineSelector
+                        options={alphabetType}
+                        value={this.props.alphabetType}
+                        onSelect={(type) => this.props.setAlphabetType(type)}
+                    />
+                </footer>
+            </>
         );
     }
+
+    private onDialogOpened = () => {
+        const closeButton = this.closeButtonRef.current;
+        if (closeButton) {
+            closeButton.blur();
+        }
+    }
+
+    private close = () => {
+        this.props.close();
+    }
+
     private renderTitle(pos: string) {
         const word = this.props.rawItem[0];
         const add = this.props.rawItem[1];
@@ -136,6 +152,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             </h5>
         );
     }
+
     private renderBody() {
         const splitted = this.props.rawItem[0].split(',');
         if (splitted.length === 1 && this.props.rawItem[2].indexOf('m./f.') !== -1 ) {
@@ -155,6 +172,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             return this.renderWord([word.trim(), this.props.rawItem[1],  this.props.rawItem[2]], options, i);
         });
     }
+
     private renderWord(rawItem, options: string[], i) {
         const [ word, add, details ] = rawItem;
         let wordComponent;
@@ -204,6 +222,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             </div>
         );
     }
+
     private formatStr(str: string): string {
         if (str === '') {
             return '';
@@ -219,6 +238,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 return getCyrillic(str, this.props.flavorisationType);
         }
     }
+
     private renderVerbDetails(word, add) {
         const data = conjugationVerb(word, add);
         if (data === null) {
@@ -345,6 +365,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             </>
         );
     }
+
     private renderAdjectiveDetails(word) {
         const { singular, plural, comparison } = declensionAdjective(word, '');
 
@@ -390,6 +411,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             </>
         );
     }
+
     private renderNounDetails(word, add, details) {
         const gender = getGender(details);
         const animated = isAnimated(details);

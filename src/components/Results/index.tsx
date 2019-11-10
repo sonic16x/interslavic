@@ -18,7 +18,7 @@ interface IResultsProps {
 class Results extends React.Component<IResultsProps> {
     public renderResultItem(item: ITranslateResult, i: number) {
         return (
-            <div className={'card resultCard shadow'} key={i}>
+            <div className={'card resultCard shadow'} tabIndex={0} key={i}>
                 {this.renderCheked(item)}
                 {this.renderFormsButton(item, i)}
                 <div className={'card-body'}>

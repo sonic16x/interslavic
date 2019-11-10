@@ -75,7 +75,7 @@ class LangSelector extends React.Component<ILangSelectorProps> {
                         type={'button'}
                         style={{textDecoration: 'none'}}
                         aria-label={'Change translation direction'}
-                        className={'btn btn-link changeLang'}
+                        className={'btn btn-link changeLang customFocusRing'}
                         onClick={() => this.props.onSelect(this.props.to, this.props.from)}
                     >
                         ⇄
