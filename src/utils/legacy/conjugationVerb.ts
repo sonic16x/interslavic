@@ -12,8 +12,11 @@ const prefixes = [
 
 export function conjugationVerb(inf, rawPts) {
     //special cases
-    if (inf === 'dòlžen byti') {
+    if (inf === 'dòlžen byti' || inf.split(' ')[0].includes('/')) {
         return null;
+    }
+    if (inf === 'sųt') {
+        inf = 'byti';
     }
     const pts = rawPts.replace(/\(|\)/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
     const refl = reflexive(inf);
@@ -205,7 +208,7 @@ function present_tense_stem(pref, pts, is) {
             }
         }
         else if (result.charAt(result.length - 1) == 'ų') {
-            result = (result.substring(0, result.length - 1) + 'm');
+            result = (result.substring(0, result.length - 1) /*+ 'm'*/);
         }
         else if (((result.charAt(result.length - 1) == 'i') || (result.charAt(result.length - 1) == 'y') ||
             (result.charAt(result.length - 1) == 'o') || (result.charAt(result.length - 1) == 'u') ||
@@ -664,11 +667,9 @@ function build_pfpp(pref, is, psi) {
         is.match(/å$/ )
     ) {
         ppps = pref + is + 't';
-        console.log('T ' + pref + ppps);
     }
     else if(is.match(/r[eě]$/ ) && psi.match(/r$/)) {
         ppps = pref + is.slice(0, -2) + 'ŕt';
-        console.log('RT ' + pref + ppps);
     }
     // end rule for -t
     else if (((is.charAt(i) == 'ų') || (is.charAt(i) == 'u')) && (is.charAt(i - 1) == 'n')) {
