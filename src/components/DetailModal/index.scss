@@ -1,7 +1,24 @@
 #app {
+  .customModal {
+    box-sizing: border-box;
+    max-width: 678px;
+    padding: 2.5vh 2.5vw;
+    width: 100%;
+
+    @media (max-width: 678px) {
+      padding: 0;
+    }
+  }
+
   .customModalContent {
+    max-height: 95vh;
+    @media (max-width: 678px) {
+      max-height: 100vh;
+    }
+
     > .modal-header {
       align-items: center;
+      flex: 0 0;
     }
 
     .modal-title i {
@@ -9,6 +26,9 @@
     }
 
     > .modal-body {
+      flex: 0 1;
+      overflow: auto;
+
       .word { text-align: center; }
 
       @media (min-width: 678px) {
@@ -28,6 +48,7 @@
     }
 
     > .modal-footer {
+      flex: 0 0;
       justify-content: center;
 
       .lineSelector {

@@ -91,10 +91,10 @@ class ModalDialog extends React.Component<IModalDialogProps, IModalDialogState> 
                 dialog.classList.remove('closing');
                 dialog.close(returnValue);
                 dialog.removeEventListener('webkitAnimationEnd',  onAnimationEnd, false);
-                dialog.removeEventListener('animationEnd',  onAnimationEnd, false);
+                dialog.removeEventListener('animationend',  onAnimationEnd, false);
             });
 
-            dialog.addEventListener('animationEnd', onAnimationEnd, false);
+            dialog.addEventListener('animationend', onAnimationEnd, false);
             dialog.addEventListener('webkitAnimationEnd', onAnimationEnd, false);
             dialog.classList.add('closing');
         }
