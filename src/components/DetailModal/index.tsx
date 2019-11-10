@@ -24,7 +24,6 @@ import {
 } from 'utils/wordDetails';
 import { getCyrillic, getField, getLatin, getWordList } from 'utils/translator';
 import { declensionPronoun } from '../../utils/legacy/declensionPronoun';
-import { isPointInRectangle } from '../../utils/isPointInRectangle';
 
 interface IDetailModalProps {
     close: () => void;
@@ -68,6 +67,8 @@ class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> 
                 if (closeButton) {
                     closeButton.blur();
                 }
+
+                this.setState({ open: true });
             }
 
             if (this.state.open && this.props.isDetailModal < prevProps.isDetailModal) {
@@ -83,7 +84,6 @@ class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> 
             dialogPolyfill.registerDialog(dialogElement);
             dialogElement.addEventListener('cancel', this.onDialogClosed);
             dialogElement.addEventListener('close', this.onDialogClosed);
-            dialogElement.addEventListener('click', this.onDialogClick);
         }
     }
 
@@ -93,7 +93,6 @@ class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> 
         if (dialogElement) {
             dialogElement.removeEventListener('cancel', this.onDialogClosed);
             dialogElement.removeEventListener('close', this.onDialogClosed);
-            dialogElement.removeEventListener('click', this.onDialogClick);
         }
     }
 
@@ -103,6 +102,7 @@ class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> 
                 ref={this.dialogRef}
                 className={'customModal'}
                 role={'dialog'}
+                onClick={this.onBackdropClick}
             >
                 {this.renderContents()}
             </dialog>
@@ -120,12 +120,13 @@ class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> 
             <div
                 role={'document'}
                 className={'modal-content customModalContent'}
+                onClick={(e) => e.stopPropagation()}
             >
                 <header className={'modal-header'}>
                     {this.renderTitle(pos)}
                     <button
                         ref={this.closeButtonRef}
-                        className={'customCloseModal'}
+                        className={'close'}
                         onClick={this.onCloseModalClick}
                         aria-label={'Close'}
                     >
@@ -156,16 +157,8 @@ class DetailModal extends React.Component<IDetailModalProps, IDetailModalState> 
         this.dialogRef.current.close();
     }
 
-    private onDialogClick = (event: MouseEvent) => {
-        const dialog = this.dialogRef.current;
-        const x = event.clientX;
-        const y = event.clientY;
-        const isFromKeyboard = x === 0 && y === 0;
-        const hasClickedOnBackdrop = !isFromKeyboard && !isPointInRectangle(x, y, dialog.getBoundingClientRect());
-
-        if (hasClickedOnBackdrop) {
-            dialog.close();
-        }
+    private onBackdropClick = () => {
+        this.dialogRef.current.close();
     }
 
     private renderTitle(pos: string) {
