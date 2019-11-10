@@ -1,7 +1,10 @@
 @mixin all-dialog-elements {
   &,
-  &::backdrop,
   & + .backdrop {
+    @content;
+  }
+
+  &::backdrop {
     @content;
   }
 }
@@ -11,10 +14,8 @@
   background: none;
   padding: 0;
 
-  &::backdrop,
-  & + .backdrop {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+  &::backdrop { background-color: rgba(0, 0, 0, 0.4) }
+  & + .backdrop { background-color: rgba(0, 0, 0, 0.4) }
 
   & {
     @include all-dialog-elements { animation: none .2s ease-in-out; }

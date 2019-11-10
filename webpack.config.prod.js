@@ -51,7 +51,10 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        include: srcPath,
+        include: [
+          srcPath,
+          path.join(nodeModulesPath, 'dialog-polyfill'),
+        ],
         use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [
