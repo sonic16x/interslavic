@@ -31,7 +31,6 @@ class InputText extends React.Component<IInputTextProps> {
                     type={'reset'}
                     className={'removeButton'}
                     aria-label={'Clear input'}
-                    tabIndex={0}
                     disabled={this.props.fromText.length === 0}
                     onClick={() => this.props.changeFromText('')}
                 >
