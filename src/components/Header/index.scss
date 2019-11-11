@@ -102,9 +102,9 @@ $animationDuration: 0.2s;
 }
 
 @media (min-width: 1050px) {
-  .header {
-    padding-left: calc(50% - 510px) !important;
-    padding-right: calc(50% - 510px) !important;
+  #app .header {
+    padding-left: calc(50% - 510px);
+    padding-right: calc(50% - 510px);
   }
 }
 
@@ -146,7 +146,7 @@ $animationDuration: 0.2s;
 }
 
 @media ( max-width: 400px) {
-  .navbar-brand {
+  #app .navbar-brand {
     font-size:5vw;
   }
 }
