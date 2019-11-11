@@ -20,24 +20,7 @@ export interface IMainState {
     results: ITranslateResult[];
 }
 
-const defaultState: IMainState = {
-    lang: {
-        from: 'en',
-        to: 'isv',
-    },
-    fromText: '',
-    searchType: 'begin',
-    flavorisationType: '3',
-    alphabetType: 'latin',
-    page: getPageFromPath(),
-    isLoading: true,
-    isDetailModal: false,
-    searchExpanded: false,
-    rawResults: [],
-    results: [],
-};
-
-export function mainReducer(state: IMainState = defaultState, { type, data }) {
+export function mainReducer(state: IMainState, { type, data }) {
     switch (type) {
         case ActionTypes.LANG: {
             const { fromText, flavorisationType, searchType } = state;
@@ -68,6 +51,15 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
             return {
                 ...state,
                 fromText,
+                rawResults,
+                results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+            };
+        }
+        case ActionTypes.RUN_SEARCH: {
+            const { searchType, flavorisationType, lang, fromText } = state;
+            const rawResults = translate(fromText, lang.from, lang.to, searchType);
+            return {
+                ...state,
                 rawResults,
                 results: formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
             };
@@ -111,6 +103,6 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
                 detailModal: data,
             };
         default:
-            return defaultState;
+            return state;
     }
 }

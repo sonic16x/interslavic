@@ -10,7 +10,8 @@ export enum ActionTypes {
     SET_DETAIL = 'SET_DETAIL',
     DETAIL_IS_VISIBLE = 'DETAIL_IS_VISIBLE',
     SET_SEARCH_EXPAND = 'SET_SEARCH_EXPAND',
-    ALPHABET_TYPE= 'ALPHABET_TYPE',
+    ALPHABET_TYPE = 'ALPHABET_TYPE',
+    RUN_SEARCH = 'RUN_SEARCH',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -90,6 +91,12 @@ export function isLoadingAction(data: boolean) {
     };
 }
 
+export function runSearch() {
+    return {
+        type: ActionTypes.RUN_SEARCH,
+    };
+}
+
 export function fetchDictionary(wordsListUrl) {
     return (dispatch) => {
         return fetch(wordsListUrl)
@@ -98,6 +105,7 @@ export function fetchDictionary(wordsListUrl) {
                 const wordList = data.split('\n').map((l) => l.split('\t'));
                 dispatch(isLoadingAction(false));
                 initDictionary(wordList);
+                dispatch(runSearch());
             })
             .catch(() => location.reload(true))
         ;

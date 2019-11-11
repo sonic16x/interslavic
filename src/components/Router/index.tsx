@@ -12,7 +12,6 @@ import { getPageFromPath, getPathFromPage } from 'routing';
 interface IRouterProps {
     isLoading: boolean;
     page: string;
-    loadDictionary: () => void;
     setPage: (page: string) => void;
 }
 
@@ -23,7 +22,6 @@ interface IRouterState {
 class Router extends React.Component<IRouterProps, IRouterState> {
     constructor(props) {
         super(props);
-        this.props.loadDictionary();
         this.onChangeUrl = this.onChangeUrl.bind(this);
         window.onpopstate = this.onChangeUrl;
         this.state = {
@@ -80,7 +78,6 @@ function mapStateToProps({ isLoading, page }) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadDictionary: () => fetchDictionary(dictionaryUrl)(dispatch),
         setPage: (page) => dispatch(setPageAction(page)),
     };
 }
