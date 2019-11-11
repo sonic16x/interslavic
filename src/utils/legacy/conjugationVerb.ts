@@ -77,7 +77,7 @@ function prefix(inf) {
     // get prefixes for some non-regular verbs
     let prefArr = prefixes.filter(
         prfx => inf.indexOf(prfx) === 0 &&
-        ['věděti', 'vedeti', 'jesti', 'jěsti', 'dati', 'dųti', 'byti'].
+        ['věděti', 'vedeti', 'jesti', 'jěsti', 'dati', 'dųti', 'byti', 'žegti'].
             includes(inf.split(' ')[0].slice(prfx.length))
     );
     if (prefArr.length > 0) {
@@ -139,17 +139,17 @@ function infinitive_stem(pref, inf, pts) {
         return result;
     }
 
-    if ((trunc.lastIndexOf('ti') == (trunc.length - 2)) || (trunc.lastIndexOf('tì') == (trunc.length - 2))) {
+    if ( trunc.slice(-2) === 'ti' || trunc.slice(-2) === 'tì') {
         result = trunc.substring(0, trunc.length - 2);
     }
-    else if ((trunc.lastIndexOf('t') == (trunc.length - 1)) || (trunc.lastIndexOf('ť') == (trunc.length - 1))) {
+    else if ( trunc.slice(-1) === 't' || trunc.slice(-1) === 'ť' ) {
         result = trunc.substring(0, trunc.length - 1);
     }
     else {
         result = 'ERROR-2';
     }
 
-    if (result.lastIndexOf('s') == result.length - 1) {
+    if (result.slice(-1) === 's') {
         // *jesti
         if( result === 'jes') {
             result = 'jed';
@@ -191,36 +191,35 @@ function present_tense_stem(pref, pts, is) {
     let result = is;
 
     if (pts.length == 0) {
-        if (((result.substring(result.length - 3, result.length) == 'ova') || (result.substring(result.length - 3, result.length) == 'eva'))
-            && (result != 'hova')) {
-            result = (result.substring(0, result.length - 3) + 'uj');
+        if (((result.slice(-3) === 'ova') || (result.slice(-3) === 'eva')) && (result != 'hova')) {
+            result = (result.slice(0, -3) + 'uj');
         }
-        else if (((result.substring(result.length - 2, result.length) == 'nu') || (result.substring(result.length - 2, result.length) == 'nų')) && (result.length > 3)) {
-            result = (result.substring(0, result.length - 1));
+        else if (((result.slice(-2) === 'nu') || (result.slice(-2) === 'nų')) && (result.length > 3)) {
+            result = (result.slice(0, -1));
         }
-        else if (result.charAt(result.length - 1) == 'ę') {
-            if (result.lastIndexOf('ję') == result.length - 2) {
-                if ((result.lastIndexOf('bję') == result.length - 3) || (result.lastIndexOf('dję') == result.length - 3)
-                    || (result.lastIndexOf('sję') == result.length - 3) || (result.lastIndexOf('zję') == result.length - 3)) {
-                    result = (result.substring(0, result.length - 2) + 'òjm');
+        else if (result.slice(-1) === 'ę') {
+            if (result.slice(-2) === 'ję') {
+                if (result.slice(-3) === 'bję' || result.slice(-3) === 'dję'
+                    || result.slice(-3) === 'sję' || result.slice(-3) === 'zję') {
+                    result = (result.slice(0, -2) + 'òjm');
                 }
                 else {
-                    result = (result.substring(0, result.length - 1) + 'm');
+                    result = (result.slice(0, -1) + 'm');
                 }
             }
             else if (result = 'vzę') {
                 result = 'vòzm';
             }
             else {
-                result = (result.substring(0, result.length - 1) + 'n');
+                result = (result.slice(0, -1) + 'n');
             }
         }
-        else if (result.charAt(result.length - 1) == 'ų') {
-            result = (result.substring(0, result.length - 1) /*+ 'm'*/);
+        else if (result.slice(-1) == 'ų') {
+            result = (result.slice(0, -1) /*+ 'm'*/);
         }
-        else if ((/*(result.charAt(result.length - 1) == 'i') ||*/ (result.charAt(result.length - 1) == 'y') ||
-            (result.charAt(result.length - 1) == 'o') || (result.charAt(result.length - 1) == 'u') ||
-            (result.charAt(result.length - 1) == 'ě') || (result.charAt(result.length - 1) == 'e')) && (result.length < 4)) {
+        else if ((/*result.slice(-1) == 'i' ||*/ result.slice(-1) == 'y' ||
+            result.slice(-1) == 'o' || result.slice(-1) == 'u' ||
+            result.slice(-1) == 'ě' || result.slice(-1) == 'e') && result.length < 4) {
             /*if (result == 'uči') {
                 result = 'uči';
             }
@@ -232,29 +231,29 @@ function present_tense_stem(pref, pts, is) {
                 result = result + 'j';
             }
         }
-        else if ((result.charAt(result.length - 1) == 'a') || (result.charAt(result.length - 1) == 'e') || (result.charAt(result.length - 1) == 'ě')) {
+        else if (result.slice(-1) == 'a' || result.slice(-1) == 'e' || result.slice(-1) == 'ě') {
             result = result + 'ĵ';
         }
     }
     else {
-        if (((pts.lastIndexOf('se') == pts.length - 2) || (pts.lastIndexOf('sę') == pts.length - 2)) && (pts.length > 2)) {
-            pts = pts.substring(0, pts.length - 3);
+        if (((pts.slice(-2) === 'se') || (pts.slice(-2) === 'sę')) && (pts.length > 2)) {
+            pts = pts.slice(0, -3);
         }
         else if ((pts.indexOf('se ') == 0) || (pts.indexOf('sę ') == 0)) {
-            pts = pts.substring(3, pts.length);
+            pts = pts.slice(3);
         }
 
-        if (pref.length != 0) {
-            if (pts.indexOf(pref) != -1) {
-                pts = pts.replace(pref, '');
+        if (pref.length !== 0) {
+            if (pts.indexOf(pref) !== -1) {
+                pts = pts.slice(pref.length);
             }
             else {
-                pts = pts.replace(pref.substring(0, pref.length - 1), '');
+                pts = pts.slice(pref.length - 1);
             }
         }
-        if ((pts.lastIndexOf('-') == (pts.length - 1)) || (pts.lastIndexOf('m') == (pts.length - 1)) || (pts.lastIndexOf('e') == (pts.length - 1)) ||
-            (pts.lastIndexOf('ų') == (pts.length - 1)) || (pts.lastIndexOf('u') == (pts.length - 1))) {
-            result = pts.substring(0, pts.length - 1);
+        if ((pts.slice(-1) === '-') || (pts.slice(-1) === 'm') || (pts.slice(-1) === 'e') ||
+            (pts.slice(-1) === 'ų') || (pts.slice(-1) === 'u')) {
+            result = pts.slice(0, -1);
         }
         else {
             result = pts;
@@ -327,10 +326,10 @@ function l_participle(pref, pts, is) {
 }
 
 function build_infinitive(pref, is, refl) {
-    if ( is.match( /st$/ )) {
+    if ( is.slice(-2) === 'st' ) {
         is = is.slice(0, -1);
     }
-    else if ( is.match(/t$/) || is.match(/[^ij]d$/ )) {
+    else if ( is.slice(-1) === 't' || is.match(/[^ij]d$/ )) {
         is = is.slice(0, -1) + 's';
     }
     return transliterateBack(pref + is + 'tì' + refl);
