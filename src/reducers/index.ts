@@ -13,6 +13,7 @@ export interface IMainState {
     page: string;
     isLoading: boolean;
     isDetailModal: boolean;
+    searchExpanded: boolean;
     alphabetType: string;
     detailModal?: number;
     rawResults: string[][];
@@ -31,6 +32,7 @@ const defaultState: IMainState = {
     page: getPageFromPath(),
     isLoading: true,
     isDetailModal: false,
+    searchExpanded: false,
     rawResults: [],
     results: [],
 };
@@ -97,6 +99,11 @@ export function mainReducer(state: IMainState = defaultState, { type, data }) {
             return {
                 ...state,
                 isDetailModal: data,
+            };
+        case ActionTypes.SET_SEARCH_EXPAND:
+            return {
+                ...state,
+                searchExpanded: data,
             };
         case ActionTypes.SET_DETAIL:
             return {

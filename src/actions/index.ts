@@ -9,6 +9,7 @@ export enum ActionTypes {
     IS_LOADING = 'IS_LOADING',
     SET_DETAIL = 'SET_DETAIL',
     DETAIL_IS_VISIBLE = 'DETAIL_IS_VISIBLE',
+    SET_SEARCH_EXPAND = 'SET_SEARCH_EXPAND',
     ALPHABET_TYPE= 'ALPHABET_TYPE',
 }
 
@@ -44,6 +45,13 @@ export function hideDetailAction() {
     return {
         type: ActionTypes.DETAIL_IS_VISIBLE,
         data: false,
+    };
+}
+
+export function setSearchExpand(data) {
+    return {
+        type: ActionTypes.SET_SEARCH_EXPAND,
+        data,
     };
 }
 

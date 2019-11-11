@@ -6,22 +6,18 @@ import SearchTypeSelector from 'components/SearchTypeSelector';
 import InputText from 'components/InputText';
 import FlavorisationSelector from 'components/FlavorisationSelector';
 import Results from 'components/Results';
+import { setSearchExpand } from 'actions';
 
-interface IDictionaryState {
-    expand: boolean;
+interface IDictionaryProps {
+    searchExpanded: boolean;
+    setSearchExpand: (data: boolean) => void;
 }
 
-class Dictionary extends React.Component<{}, IDictionaryState> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            expand: false,
-        };
-    }
+class Dictionary extends React.Component<IDictionaryProps> {
     public render() {
         return (
             <div className={'dictionary'}>
-                <div className={'controls shadow' + (this.state.expand ? ' expand' : '')}>
+                <div className={'controls shadow' + (this.props.searchExpanded ? ' expand' : '')}>
                     <LangSelector/>
                     <InputText/>
                     <div className={'expandContainer'}>
@@ -30,7 +26,7 @@ class Dictionary extends React.Component<{}, IDictionaryState> {
                     </div>
                     <button
                         className={'btn expandButton'}
-                        onClick={() => this.setState({expand: !this.state.expand})}
+                        onClick={() => this.props.setSearchExpand(!this.props.searchExpanded)}
                     />
                 </div>
                 <Results/>
@@ -39,4 +35,14 @@ class Dictionary extends React.Component<{}, IDictionaryState> {
     }
 }
 
-export default Dictionary;
+function mapDispatchToProps(dispatch) {
+    return {
+        setSearchExpand: (data) => dispatch(setSearchExpand(data)),
+    };
+}
+
+function mapStateToProps({searchExpanded}) {
+    return { searchExpanded };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dictionary);
