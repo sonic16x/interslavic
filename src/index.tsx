@@ -117,7 +117,6 @@ const store = createStore(
         ),
         reduxDevTools(),
     ),
-
 );
 
 render(
