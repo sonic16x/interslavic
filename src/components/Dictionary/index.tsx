@@ -7,15 +7,31 @@ import InputText from 'components/InputText';
 import FlavorisationSelector from 'components/FlavorisationSelector';
 import Results from 'components/Results';
 
-class Dictionary extends React.Component {
+interface IDictionaryState {
+    expand: boolean;
+}
+
+class Dictionary extends React.Component<{}, IDictionaryState> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            expand: false,
+        };
+    }
     public render() {
         return (
             <div className={'dictionary'}>
-                <div className={'controls shadow'}>
+                <div className={'controls shadow' + (this.state.expand ? ' expand' : '')}>
                     <LangSelector/>
-                    <SearchTypeSelector/>
                     <InputText/>
-                    <FlavorisationSelector/>
+                    <div className={'expandContainer'}>
+                        <SearchTypeSelector/>
+                        <FlavorisationSelector/>
+                    </div>
+                    <button
+                        className={'btn expandButton'}
+                        onClick={() => this.setState({expand: !this.state.expand})}
+                    />
                 </div>
                 <Results/>
             </div>

@@ -8,17 +8,47 @@
   height: 100%;
   .controls {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 15px 15px 4px 15px;
     margin-right: auto;
     margin-left: auto;
-    display: flex;
-    flex-direction: column;
     overflow: hidden;
-    min-height: 245px;
-    justify-content: space-evenly;
+    min-height: 158px;
+    transition: min-height 0.2s linear;
+    &>* {
+      margin-bottom: 15px;
+    }
     z-index: 1;
     max-width: 1024px;
+    .expandContainer {
+      &>* {
+        margin-bottom: 15px;
+      }
+      overflow: hidden;
+      transition: height 0.2s linear, padding 0.2s linear;
+      height: 0;
+      box-sizing: border-box;
+      margin-bottom: 0;
+    }
+    &.expand {
+      min-height: 258px;
+      .expandContainer {
+        height: 102px;
+      }
+      .expandButton {
+        transform: rotate(180deg);
+      }
+    }
+    .expandButton {
+      display: block;
+      transition: transform 0.2s linear;
+      background-image: url("data:image/svg+xml,%3Csvg id='i-chevron-bottom' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M30 12 L16 24 2 12' /%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 20px;
+      width: 22px;
+      height: 20px;
+      padding: 0;
+      margin: 0 auto;
+    }
   }
 }
 
