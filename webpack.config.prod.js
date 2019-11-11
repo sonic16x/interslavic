@@ -11,7 +11,7 @@ const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const bundleId = uuidv4().replace(/-/g, '').slice(0, 20);
-const baseUrl = '/';
+const baseUrl = process.env.BASE_URL || '/';
 
 function customHashFunction() {
   return {
