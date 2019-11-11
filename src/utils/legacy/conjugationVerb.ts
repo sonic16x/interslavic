@@ -21,7 +21,7 @@ export function conjugationVerb(inf, rawPts) {
     const pts = rawPts.replace(/\(|\)/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
     const refl = reflexive(inf);
     const pref = prefix(inf);
-    const is = infinitive_stem(pref, inf);
+    const is = infinitive_stem(pref, inf, pts);
 
     const ps = present_tense_stem(pref, pts, is);
     const psi = secondary_present_tense_stem(ps);
@@ -111,7 +111,7 @@ function prefix(inf) {
     return '';
 }
 
-function infinitive_stem(pref, inf) {
+function infinitive_stem(pref, inf, pts) {
     let trunc = '';
     let result = '';
 
@@ -150,7 +150,15 @@ function infinitive_stem(pref, inf) {
     }
 
     if (result.lastIndexOf('s') == result.length - 1) {
-        result = result.substring(0, result.length - 1) + 'd';
+        // *jesti
+        if( result === 'jes') {
+            result = 'jed';
+        }
+        //steam based on pts
+        else if( pts ) {
+            result = pts.slice(0, -1);
+        }
+        /*result = result.substring(0, result.length - 1) + 'd';
         if (result == 'ned') {
             result = 'nes';
         }
@@ -174,7 +182,7 @@ function infinitive_stem(pref, inf) {
         }
         else if (result.lastIndexOf('ned') == (result.length - 3)) {
             result = result.replace(/ned/, 'nes');
-        }
+        }*/
     }
     return result;
 }
