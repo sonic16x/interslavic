@@ -312,9 +312,9 @@ function l_participle(pref, pts, is) {
     else if ((is == 'id') || (is == 'jd')) {
         result = pref + 'šèl';
     }
-    else if ((is.substring(is.length - 2, is.length) == 'id') ||
-        (is.substring(is.length - 2, is.length) == 'jd')) {
-        result = pref + is.substring(0, is.length - 2) + 'šèl';
+    else if ((is.slice(-2) == 'id') ||
+        (is.slice(-2) == 'jd')) {
+        result = pref + is.slice(0, -2) + 'šèl';
     }
     //treti - trl (by Ranmaru Rei)
     else if (is.match(/r[eě]$/) && pts.match(/re$/)) {
@@ -327,19 +327,12 @@ function l_participle(pref, pts, is) {
 }
 
 function build_infinitive(pref, is, refl) {
-    if (is.lastIndexOf('t') == (is.length - 1)) {
-        is = is.substring(0, is.length - 1) + 's';
+    if ( is.match( /st$/ )) {
+        is = is.slice(0, -1);
     }
-    else if (is.lastIndexOf('id') == (is.length - 2)) {
-        is = is.substring(0, is.length - 1) + 'd';
+    else if ( is.match(/t$/) || is.match(/[^ij]d$/ )) {
+        is = is.slice(0, -1) + 's';
     }
-    else if (is.lastIndexOf('jd') == (is.length - 2)) {
-        is = is.substring(0, is.length - 1) + 'd';
-    }
-    else if (is.lastIndexOf('d') == (is.length - 1)) {
-        is = is.substring(0, is.length - 1) + 's';
-    }
-
     return transliterateBack(pref + is + 'tì' + refl);
 }
 
