@@ -25,6 +25,8 @@ class Dictionary extends React.Component<IDictionaryProps> {
                         <FlavorisationSelector/>
                     </div>
                     <button
+                        type={'button'}
+                        aria-label={'Expand search'}
                         className={'btn expandButton'}
                         onClick={() => this.props.setSearchExpand(!this.props.searchExpanded)}
                     />
