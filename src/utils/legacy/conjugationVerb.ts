@@ -656,20 +656,17 @@ function build_pfpp(pref, is, psi) {
     if (((is.charAt(i) != 'j') && ((psi.charAt(psi.length - 1) == 'j') && (i < 4) && (is.charAt(0) != 'u')) || (is == 'by')) || (is.charAt(i) == 'ę')) {
         ppps = pref + is + 't';
     }*/
-    // new rule for -t by Ranmaru Rei
-    if (
-        is.match(/nų$/ ) ||
-        is.match(/[iyuě]$/) && psi.match(/[jvn]$/) ||
-        is.match(/ę$/ ) ||
+    // rule for -t by Ranmaru Rei
+    if(is.match(/r[eě]$/ ) && psi.match(/r$/)) {
+        ppps = pref + is.slice(0, -2) + 'ŕt';
+    }
+    else if (
+        is.match(/[iyuě]$/) && psi.match(/[jvn]$/) && psi !== 'imaj' ||
+        is.match(/[ęuųå]$/ ) ||
         is === 'by' ||
-        is === 'dų' ||
-        is.match(/lě$/ ) && psi.match(/lj$/) ||
-        is.match(/å$/ )
+        is.match(/lě$/ ) && psi.match(/lj$/)
     ) {
         ppps = pref + is + 't';
-    }
-    else if(is.match(/r[eě]$/ ) && psi.match(/r$/)) {
-        ppps = pref + is.slice(0, -2) + 'ŕt';
     }
     // end rule for -t
     else if (((is.charAt(i) == 'ų') || (is.charAt(i) == 'u')) && (is.charAt(i - 1) == 'n')) {
