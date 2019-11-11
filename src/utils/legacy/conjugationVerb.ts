@@ -210,13 +210,14 @@ function present_tense_stem(pref, pts, is) {
         else if (result.charAt(result.length - 1) == 'ų') {
             result = (result.substring(0, result.length - 1) /*+ 'm'*/);
         }
-        else if (((result.charAt(result.length - 1) == 'i') || (result.charAt(result.length - 1) == 'y') ||
+        else if ((/*(result.charAt(result.length - 1) == 'i') ||*/ (result.charAt(result.length - 1) == 'y') ||
             (result.charAt(result.length - 1) == 'o') || (result.charAt(result.length - 1) == 'u') ||
             (result.charAt(result.length - 1) == 'ě') || (result.charAt(result.length - 1) == 'e')) && (result.length < 4)) {
-            if (result == 'uči') {
+            /*if (result == 'uči') {
                 result = 'uči';
             }
-            else if (result.charAt(0) == 'u') {
+            else*/
+            if (result.charAt(0) == 'u') {
                 result = result + 'ĵ';
             }
             else {
