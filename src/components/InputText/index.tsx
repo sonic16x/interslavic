@@ -14,7 +14,7 @@ interface IInputTextProps {
 class InputText extends React.Component<IInputTextProps> {
     public render() {
         return (
-            <div className={'input-group input-group-lg'}>
+            <div className={'input-group input-group-lg inputText'}>
                 <input
                     type='search'
                     lang={this.props.searchLanguage}
