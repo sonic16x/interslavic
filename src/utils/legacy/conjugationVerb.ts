@@ -22,7 +22,6 @@ export function conjugationVerb(inf, rawPts) {
     const refl = reflexive(inf);
     const pref = prefix(inf);
     const is = infinitive_stem(pref, inf, pts);
-
     const ps = present_tense_stem(pref, pts, is);
     const psi = secondary_present_tense_stem(ps);
     const lpa = l_participle(pref, pts, is);
@@ -278,6 +277,9 @@ function present_tense_stem(pref, pts, is) {
     else if (result == 'daĵ') {
         result = 'da';
     }
+    else if (result == 'žeg' || result == 'žž') {
+        result = 'žg';
+    }
     if ((result == 'jěhaĵ') || ((result == 'jě') && (is == 'jěha'))) {
         result = 'jěd';
     }
@@ -335,10 +337,6 @@ function build_infinitive(pref, is, refl) {
     return transliterateBack(pref + is + 'tì' + refl);
 }
 
-function getLastChar(str) {
-    return str[str.length - 1];
-}
-
 function buildPresent(pref, ps, psi, refl) {
     switch (ps) {
         case 'jes':
@@ -361,9 +359,9 @@ function buildPresent(pref, ps, psi, refl) {
                 .map((word) => transliterateBack(`${pref}${word}${refl}`));
     }
 
-    switch (getLastChar(ps)) {
+    switch (ps.slice(-1)) {
         case 'ĵ': {
-            const cut = ps.substring(0, ps.length - 1);
+            const cut = ps.slice(0, -1);
             const pps = `${cut}j`;
             return [
                 `${pref}${pps}ų${refl}, ${pref}${cut}m${refl}`,
@@ -375,7 +373,7 @@ function buildPresent(pref, ps, psi, refl) {
             ].map(transliterateBack);
         }
         case 'i': {
-            const cut = ps.substring(0, ps.length - 1);
+            const cut = ps.slice(0, -1);
             return [
                 `${pref}${cut}xų${refl}, ${pref}${ps}m${refl}`,
                 `${pref}${ps}š${refl}`,
@@ -387,7 +385,7 @@ function buildPresent(pref, ps, psi, refl) {
         }
         default:
             return [
-                `${pref}${ps}ų${refl}, ${pref}${ps}em${refl}`,
+                `${pref}${ps}ų${refl}, ${pref}${psi}em${refl}`,
                 `${pref}${psi}eš${refl}`,
                 `${pref}${psi}e${refl}`,
                 `${pref}${psi}emò${refl}`,
@@ -401,11 +399,12 @@ function buildPresent(pref, ps, psi, refl) {
 function build_imperfect(pref, is, refl) {
     let impst = '';
     let i = is.length - 1;
-    let vowel = /[aeiouyęųåėěèò]/;
-
-    if (vowel.test(is.charAt(i)) == false) {
+    if (!is.charAt(i).match(/[aeiouyęųåėěèò)]/)) {
         if (is.charAt(i) == 'k') {
             impst = is.substring(0, i) + 'če';
+        }
+        else if (is.slice(-3) === 'žeg') {
+            impst = 'žže';
         }
         else if (is.charAt(i) == 'g') {
             impst = is.substring(0, i) + 'že';
@@ -461,7 +460,8 @@ function buildPerfect(lpa, refl) {
     ];
 
     return result.map((line) => {
-        let res = line.indexOf('šèl') !== -1 ?  idti(line) : line;
+        let res = line.includes('šèl') ?  idti(line) : line;
+        res = res.includes('žegl') ?  zegti(res) : res;
         return transliterateBack(res);
     });
 }
@@ -481,6 +481,7 @@ function buildPluralPerfect(lpa, refl) {
 
     return result.map((line) => {
         let res = line.indexOf('šèl') !== -1 ?  idti(line) : line;
+        res = res.includes('žegl') ?  zegti(res) : res;
         return transliterateBack(res);
     });
 }
@@ -500,6 +501,7 @@ function buildConditional(lpa, refl) {
 
     return result.map((line) => {
         let res = line.indexOf('šèl') !== -1 ?  idti(line) : line;
+        res = res.includes('žegl') ?  zegti(res) : res;
         return transliterateBack(res);
     });
 }
@@ -634,12 +636,11 @@ function build_prpp(pref, ps, psi) {
 
 function build_pfap(lpa, refl) {
     let result = '';
-    let vowel = /[aeiouyęųåėěèò)]/;
-    if (vowel.test(lpa.charAt(lpa.length - 2)) == false) {
-        result = lpa.substring(0, lpa.length - 1) + 'ši' + refl;
+    if (lpa.slice(-2, -1).match(/[aeiouyęųåėěèò)]/)) {
+        result = lpa.substring(0, lpa.length - 1) + 'vši' + refl;
     }
     else {
-        result = lpa.substring(0, lpa.length - 1) + 'vši' + refl;
+        result = lpa.substring(0, lpa.length - 1) + 'ši' + refl;
     }
     if (result.indexOf('šèv') != -1) {
         result = idti(result);
@@ -728,6 +729,14 @@ function idti(sel) {
         .replace(/pod[oò]š/g, 'podš')
         .replace(/nad[oò]š/g, 'nadš')
     ;
+}
+
+function zegti(zeg) {
+    return zeg
+        .replace(/žegl\(a\)$/g, 'žegl/žgla')
+        .replace(/žegla$/g, 'žgla')
+        .replace(/žeglo$/g, 'žglo')
+        .replace(/žegli$/g, 'žgli');
 }
 
 function transliterateBack(iW) {
