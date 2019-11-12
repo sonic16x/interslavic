@@ -15,24 +15,28 @@ interface IDictionaryProps {
 
 class Dictionary extends React.Component<IDictionaryProps> {
     public render() {
+        const expanded = this.props.searchExpanded;
+
         return (
-            <div className={'dictionary'}>
-                <div className={'controls shadow' + (this.props.searchExpanded ? ' expand' : '')}>
+            <main className={'dictionary'}>
+                <section className={'controls shadow' + (expanded ? ' expand' : '')}>
                     <LangSelector/>
                     <InputText/>
-                    <div className={'expandContainer'}>
-                        <SearchTypeSelector/>
-                        <FlavorisationSelector/>
+                    <div role={'region'} aria-labelledby={'expandControls'} className={'expandContainer'}>
+                        {expanded && <SearchTypeSelector key={'searchType'} />}
+                        {expanded && <FlavorisationSelector key={'flavorisation'} />}
                     </div>
                     <button
+                        id={'expandControls'}
                         type={'button'}
                         aria-label={'Expand search'}
+                        aria-expanded={expanded}
                         className={'btn expandButton'}
-                        onClick={() => this.props.setSearchExpand(!this.props.searchExpanded)}
+                        onClick={() => this.props.setSearchExpand(!expanded)}
                     />
-                </div>
+                </section>
                 <Results/>
-            </div>
+            </main>
         );
     }
 }
