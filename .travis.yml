@@ -6,8 +6,11 @@ cache:
     - node_modules
 
 before_deploy:
-  - "npm run test"
-  - "npm run build"
+  - npm run build
+
+script:
+  - npm test
+  - npm run coveralls
 
 deploy:
   provider: pages
