@@ -671,12 +671,12 @@ function build_pfpp(pref, is, psi) {
         ppps = pref + is + 't';
     }
     // end rule for -t
-    else if (((is.charAt(i) == 'ų') || (is.charAt(i) == 'u')) && (is.charAt(i - 1) == 'n')) {
+    /*else if (((is.charAt(i) == 'ų') || (is.charAt(i) == 'u')) && (is.charAt(i - 1) == 'n')) {
         ppps = pref + psi + 'en';
     }
     else if ((is.charAt(i) == 'ų') || (is.charAt(i) == 'u')) {
         ppps = pref + is + 't';
-    }
+    }*/
     else if ((is.charAt(i) == 'a') || (is.charAt(i) == 'e') || (is.charAt(i) == 'ě')) {
         ppps = pref + is + 'n';
     }
@@ -699,7 +699,11 @@ function build_pfpp(pref, is, psi) {
         ppps = ppps.replace(/X/g, '');
     }
     else if ((is.charAt(i) == 'k') || (is.charAt(i) == 'g')) {
-        ppps = pref + psi + 'en';
+        if (psi.slice(-1) === 'i') {
+            ppps = pref + psi.slice(0,-1) + 'en';
+        } else {
+            ppps = pref + psi + 'en';
+        }
     }
     else {
         ppps = pref + is + 'en';
