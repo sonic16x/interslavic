@@ -1,32 +1,47 @@
 const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const uuidv4 = require('uuid/v4');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
-const bundleId = uuidv4().replace(/-/g, '');
+const bundleId = 'prod'; //uuidv4().replace(/-/g, '').slice(0, 20);
+const baseUrl = process.env.BASE_URL || '/';
+
+function customHashFunction() {
+  return {
+      digest: () => bundleId,
+      update: () => {},
+  }
+}
 
 module.exports = {
   mode: 'production',
   entry: {
     index: './src/index',
+    grammarComponent: './src/components/Grammar/index',
     sw: './src/sw',
   },
   output: {
     path: outputPath,
     publicPath: './',
-    filename: `[name].${bundleId}.js`
+    filename: `[name].[hash].js`,
+    hashFunction: customHashFunction
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     modules: [nodeModulesPath, srcPath]
   },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
   module: {
     rules: [
       {
@@ -35,21 +50,28 @@ module.exports = {
         use: 'ts-loader?configFile=tsconfig.json'
       },
       {
-        test: /\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-        ],
-        exclude: []
-      },
-      {
         test: /\.s?css$/,
-        include: srcPath,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        include: [
+          srcPath,
+          path.join(nodeModulesPath, 'dialog-polyfill'),
+        ],
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+                {
+                    loader: 'css-loader',
+                    options: {
+                        minimize: true,
+                    }
+                },
+                {
+                    loader: 'postcss-loader',
+                },
+                {
+                    loader: 'sass-loader',
+                }
+            ]
+        })
       },
       {
         test: /\.(png|jpe?g)$/,
@@ -81,6 +103,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
       filename: 'index.html',
@@ -90,15 +113,24 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
       HASH_ID: JSON.stringify(bundleId),
-      BASE_URL: JSON.stringify(''),
+      BASE_URL: JSON.stringify(baseUrl),
       DATE: JSON.stringify(new Date().toISOString()),
     }),
     new webpack.NoEmitOnErrorsPlugin(),
-    new CopyPlugin(['static']),
-    new ExtractTextPlugin('style.css'),
-    new webpack.LoaderOptionsPlugin({
-      debug: true
-    }),
+    new CopyPlugin([{
+        from: 'static',
+        transform: (content, path) => {
+            if (path.indexOf('.json') !== -1 || path.indexOf('.html') !== -1) {
+                return content
+                    .toString()
+                    .replace(/#{HASH_ID}/g, bundleId)
+                    .replace(/#{BASE_URL}/g, baseUrl)
+                  ;
+            }
+            return content;
+        },
+    }]),
+    new ExtractTextPlugin('styles/[name].[hash].css'),
     new Dotenv({
       path: './.env.prod',
       safe: true,

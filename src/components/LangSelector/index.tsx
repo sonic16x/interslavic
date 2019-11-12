@@ -74,7 +74,8 @@ class LangSelector extends React.Component<ILangSelectorProps> {
                     <button
                         type={'button'}
                         style={{textDecoration: 'none'}}
-                        className={'btn btn-link changeLang'}
+                        aria-label={'Change translation direction'}
+                        className={'btn btn-link changeLang customFocusRing'}
                         onClick={() => this.props.onSelect(this.props.to, this.props.from)}
                     >
                         ⇄
@@ -89,7 +90,7 @@ class LangSelector extends React.Component<ILangSelectorProps> {
         if (langCode === 'isv') {
             return (
                 <div className={'langItem isv'}>
-                    <label className={'input-group-text langItem'}>Interslavic</label>
+                    <label className={'langItem'}>Interslavic</label>
                 </div>
             );
         }

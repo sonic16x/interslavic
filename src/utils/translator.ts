@@ -1,12 +1,13 @@
 import { latinToIpa } from './latinToIpa';
 import { latinToGla } from './latinToGla';
 import { srGajevicaToVukovica } from './srGajevicaToVukovica';
-import { transliterate } from './legacy';
+import { transliterate } from 'utils/legacy/transliterate';
 
 const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
     full: (item, text) => item === text,
-    some: (item, text) => item.indexOf(text) !== -1,
+    end: (item, text) =>  item.includes(text) && item.indexOf(text) === item.length - text.length,
+    some: (item, text) => item.includes(text),
 };
 
 function normalize(text) {
@@ -28,24 +29,25 @@ function filterLatin(text) {
         .replace(/[í]/g, 'i')
         .replace(/[łĺľ]/g, 'l')
         .replace(/[ńň]/g, 'n')
-        .replace(/[óô]/g, 'o')
+        .replace(/[óôö]/g, 'o')
         .replace(/[řŕ]/g, 'r')
         .replace(/[śš]/g, 's')
+        .replace(/[ß]/g, 'ss')
         .replace(/[ť]/g, 't')
-        .replace(/[úů]/g, 'u')
+        .replace(/[úůü]/g, 'u')
         .replace(/[ý]/g, 'y')
         .replace(/[źżž]/g, 'z')
         ;
 }
 
-function getCyrillic(text, flavorisationType): string {
+export function getCyrillic(text, flavorisationType): string {
     if (!text) {
         return '';
     }
     return transliterate(text, 5, flavorisationType, 0, 1);
 }
 
-function getLatin(text, flavorisationType): string {
+export function getLatin(text, flavorisationType): string {
     if (!text) {
         return '';
     }
@@ -98,11 +100,11 @@ function levenshteinDistance(a, b) {
     return matrix[b.length][a.length];
 }
 
-function getField(item, fieldName): string {
+export function getField(item, fieldName): string {
     return item[headerIndexes.get(fieldName)];
 }
 
-function isvToEngLatin(text) {
+export function isvToEngLatin(text) {
     const latin = isvToLatinMap.get(text);
     if (!latin) {
         return normalize(getLatin(text, 3));
@@ -110,7 +112,7 @@ function isvToEngLatin(text) {
     return latin;
 }
 
-function searchPrepare(lang, text) {
+function inputPrepare(lang, text) {
     const lowerCaseText = text.toLowerCase().replace(/ /g, '');
     switch (lang) {
         case 'isv':
@@ -120,6 +122,7 @@ function searchPrepare(lang, text) {
         case 'sk':
         case 'sl':
         case 'hr':
+        case 'de':
             return filterLatin(lowerCaseText);
         case 'ru':
             return lowerCaseText.replace(/[ё]/g, 'е');
@@ -130,6 +133,39 @@ function searchPrepare(lang, text) {
     }
 }
 
+function searchPrepare(lang, text) {
+    let lowerCaseText = text.toLowerCase().replace(/ /g, '');
+    if (lang !== 'isv') {
+        lowerCaseText = lowerCaseText.replace('/\(.+?\)/', '');
+    } else {
+        lowerCaseText = convertCases(lowerCaseText);
+    }
+    switch (lang) {
+        case 'isv':
+            return isvToEngLatin(lowerCaseText);
+        case 'cs':
+        case 'pl':
+        case 'sk':
+        case 'sl':
+        case 'hr':
+        case 'de':
+            return filterLatin(lowerCaseText);
+        case 'ru':
+            return lowerCaseText.replace(/[ё]/g, 'е');
+        default:
+            return lowerCaseText;
+    }
+}
+
+function convertCases(add) {
+    return add
+        .replace('+2', '+Gen.')
+        .replace('+3', '+Dat.')
+        .replace('+4', '+Acc.')
+        .replace('+5', '+Ins.')
+        .replace('+6', '+Loc.');
+}
+
 export function initDictionary(wordList: string[][]) {
     header = wordList.shift().map((l) => l.replace(/\W/g, ''));
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
@@ -137,7 +173,7 @@ export function initDictionary(wordList: string[][]) {
     words.forEach((item) => {
         const isvWord = getField(item, 'isv');
         const add = getField(item, 'addition')
-            .replace(/\(|\)/g, '').replace(/ /g, '').split(/,|;/)
+            .replace(/\(|\)/g, '').replace(/ /g, '').split(/[,;/]/)
         ;
         isvAddMap.set(getField(item, 'addition'), add);
         isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
@@ -170,17 +206,13 @@ export function getPercentsOfTranslated() {
 
 export interface ITranslateResult {
     translate: string;
-    translateCyrillic?: string;
     original: string;
-    originalAdd?: string;
-    originalAddCyrillic?: string;
-    add?: string;
-    addCyrillic?: string;
-    translateGla?: string;
-    addGla?: string;
-    originalGla?: string;
-    originalAddGla?: string;
-    pos: string;
+    originalCyr: string;
+    originalGla: string;
+    add: string;
+    addCyr: string;
+    addGla: string;
+    details: string;
     ipa: string;
     checked: boolean;
 }
@@ -191,7 +223,7 @@ export function translate(
     to: string,
     searchType: string,
 ): string[][] {
-    const text = searchPrepare(from, inputText);
+    const text = inputPrepare(from, inputText);
     if (!text) {
         return [];
     }
@@ -240,41 +272,26 @@ export function formatTranslate(
     to: string,
     flavorisationType: string,
 ): ITranslateResult[] {
-    if (from === 'isv') {
-        return results.map((item) => {
-            const isv = getField(item, 'isv');
-            const add = getField(item, 'addition');
-            const translate = getField(item, to);
-            return {
-                translate: translate.replace(/^!/, ''),
-                originalCyrillic: getCyrillic(isv, flavorisationType),
-                originalGla: latinToGla(getLatin(isv, flavorisationType)),
-                original: getLatin(isv, flavorisationType),
-                originalAdd: getLatin(add, flavorisationType),
-                originalAddGla: latinToGla(getLatin(add, flavorisationType)),
-                originalAddCyrillic: getCyrillic(add, flavorisationType),
-                ipa: latinToIpa(getLatin(isv, flavorisationType)),
-                pos: getField(item, 'partOfSpeech'),
-                checked: translate[0] !== '!',
-            };
-        });
-    } else {
-        return results.map((item) => {
-            const isv = getField(item, 'isv');
-            const add = getField(item, 'addition');
-            const original = getField(item, from);
-            return {
-                translate: getLatin(isv, flavorisationType),
-                translateCyrillic: getCyrillic(isv, flavorisationType),
-                translateGla: latinToGla(getLatin(isv, flavorisationType)),
-                original: original.replace(/^!/, ''),
-                add: getLatin(add, flavorisationType),
-                addCyrillic: getCyrillic(add, flavorisationType),
-                addGla: latinToGla(getLatin(add, flavorisationType)),
-                pos: getField(item, 'partOfSpeech'),
-                ipa: latinToIpa(getLatin(isv, flavorisationType)),
-                checked: original[0] !== '!',
-            };
-        });
-    }
+    return results.map((item) => {
+        const isv = getField(item, 'isv');
+        const add = getField(item, 'addition');
+        const translate = getField(item, (from === 'isv' ? to : from));
+        return {
+            translate: translate.replace(/^!/, ''),
+            original: getLatin(isv, flavorisationType),
+            originalCyr: getCyrillic(isv, flavorisationType),
+            originalGla: latinToGla(getLatin(isv, flavorisationType)),
+            add: convertCases(getLatin(add, flavorisationType)),
+            addCyr: convertCases(getCyrillic(add, flavorisationType)),
+            addGla: convertCases(latinToGla(getLatin(add, flavorisationType))),
+            details: getField(item, 'partOfSpeech'),
+            ipa: latinToIpa(getLatin(isv, flavorisationType)),
+            checked: translate[0] !== '!',
+        };
+    });
+
+}
+
+export function getWordList(): string[][] {
+    return words;
 }

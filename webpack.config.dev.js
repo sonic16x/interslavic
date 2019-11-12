@@ -4,27 +4,43 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
-const srcPath = path.resolve(__dirname, './src/');
+const srcPath = path.resolve(__dirname, 'src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
 const bundleId = 'dev';
+const baseUrl = '/';
+
+function customHashFunction() {
+    return {
+        digest: () => bundleId,
+        update: () => {},
+    }
+}
 
 module.exports = {
   entry: {
     index: './src/index',
+    grammarComponent: './src/components/Grammar/index',
     sw: './src/sw',
   },
   output: {
     path: outputPath,
     publicPath: './',
-    filename: `[name].${bundleId}.js`,
+    filename: `[name].[hash].js`,
+    // hashFunction: customHashFunction,
     globalObject: 'this'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     modules: [nodeModulesPath, srcPath]
   },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all'
+    //     }
+    // },
   module: {
     rules: [
       {
@@ -37,11 +53,10 @@ module.exports = {
         loaders: [
           'style-loader',
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ],
-        include: [
-          path.join(__dirname, 'src')
-        ],
+        include: [srcPath],
         exclude: []
       },
       {
@@ -81,6 +96,7 @@ module.exports = {
     ]
   },
   plugins: [
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
       filename: 'index.html',
@@ -89,12 +105,27 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       HASH_ID: JSON.stringify(bundleId),
-      BASE_URL: JSON.stringify(''),
+      BASE_URL: JSON.stringify(baseUrl),
       DATE: JSON.stringify(new Date().toISOString()),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new CopyPlugin(['static']),
+    new CopyPlugin([{
+      from: 'static',
+        transform: (content, path) => {
+            if (path.indexOf('manifest.json') !== -1) {
+              return '{}';
+            }
+            if (path.indexOf('.json') !== -1 || path.indexOf('.html') !== -1) {
+                return content
+                    .toString()
+                    .replace(/#{HASH_ID}/, bundleId)
+                    .replace(/#{BASE_URL}/, baseUrl)
+                    ;
+            }
+            return content;
+        },
+    }]),
     new WriteFilePlugin(),
     new Dotenv({
       path: './.env.local',

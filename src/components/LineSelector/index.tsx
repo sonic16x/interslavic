@@ -47,16 +47,15 @@ export class LineSelector extends React.Component<ILineSelectorProps, ILineSelec
         return (
             <ul className={'nav nav-pills nav-fill lineSelector'}>
                 <li className={'nav-item back'} style={{marginLeft, width}}>
-                    <a
+                    <span
                         className={'nav-link active shadow slide'}
-                        href='#'
                         onClick={(e) => e.preventDefault()}
                     >
                         &nbsp;
-                    </a>
+                    </span>
                 </li>
                 {this.props.options.map(({name, value}, i) => (
-                    <li className={'nav-item'} key={i} ref={this.liRefs[value]}>
+                    <li className={'nav-item frontItem'} key={i} ref={this.liRefs[value]}>
                         <a
                             className={'nav-link' + (value === this.props.value ? ' activeItem' : '')}
                             href='#'

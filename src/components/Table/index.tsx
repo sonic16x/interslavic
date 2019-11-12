@@ -2,11 +2,11 @@ import * as React from 'react';
 import './index.scss';
 import { parseStr } from 'components/Text';
 
-interface IGrammarProps {
+interface ITableProps {
     data: string[][];
 }
 
-export default class extends React.Component<IGrammarProps> {
+export default class extends React.Component<ITableProps> {
     public render() {
         return (
             <table className={'customTable'}>
@@ -41,8 +41,9 @@ export default class extends React.Component<IGrammarProps> {
             .map(({str, attrs}, i) => (
                 <td
                     key={i}
-                    className={Object.keys(attrs).filter((w) => w !== 'w').join(' ')}
+                    className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
                     colSpan={attrs.w}
+                    rowSpan={attrs.h}
                     dangerouslySetInnerHTML={{__html: str}}
                 />
             ));

@@ -5,7 +5,7 @@
 $lineWidth: 0.2rem;
 $lineLength: 1.6rem;
 $baseMargin: 0.5rem;
-$animationDuration: 0.1s;
+$animationDuration: 0.2s;
 
 @mixin changeState {
   transition:
@@ -91,7 +91,7 @@ $animationDuration: 0.1s;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: calc(100% - 4rem);
+  width: calc(100% - 3.5rem);
   img {
     cursor: pointer;
   }
@@ -101,8 +101,8 @@ $animationDuration: 0.1s;
   z-index: 90;
 }
 
-@media (min-width: 800px) {
-  .header {
+@media (min-width: 1050px) {
+  #app .header {
     padding-left: calc(50% - 510px);
     padding-right: calc(50% - 510px);
   }
@@ -142,5 +142,11 @@ $animationDuration: 0.1s;
   }
   .navbar-brand {
     width: auto;
+  }
+}
+
+@media ( max-width: 400px) {
+  #app .navbar-brand {
+    font-size:5vw;
   }
 }

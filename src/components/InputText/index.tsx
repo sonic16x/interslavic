@@ -2,19 +2,27 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
 import { fromTextAction } from 'actions';
+import { toBCP47 } from 'utils/bcp47';
 
 interface IInputTextProps {
     changeFromText: (text: string) => void;
     fromText: string;
+    searchLanguage: string; // valid BCP47 code
+    spellCheck: false;
 }
 
 class InputText extends React.Component<IInputTextProps> {
     public render() {
         return (
-            <div className={'input-group input-group-lg'}>
+            <div className={'input-group input-group-lg inputText'}>
                 <input
+                    type='search'
+                    lang={this.props.searchLanguage}
+                    autoCapitalize='off'
+                    autoComplete={this.props.spellCheck ? 'on' : 'off'}
+                    autoCorrect={this.props.spellCheck ? 'on' : 'off'}
+                    spellCheck={this.props.spellCheck}
                     placeholder={'Type word here'}
-                    type={'text'}
                     className={'form-control fromText'}
                     value={this.props.fromText}
                     onChange={(e) => this.props.changeFromText(e.target.value)}
@@ -22,7 +30,7 @@ class InputText extends React.Component<IInputTextProps> {
                 <button
                     type={'reset'}
                     className={'removeButton'}
-                    title={'Click me to clear the input field'}
+                    aria-label={'Clear input'}
                     disabled={this.props.fromText.length === 0}
                     onClick={() => this.props.changeFromText('')}
                 >
@@ -39,8 +47,12 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({fromText}) {
-    return {fromText};
+function mapStateToProps({lang, fromText}) {
+    return {
+      searchLanguage: toBCP47(lang.from),
+      spellCheck: lang.from !== 'isv',
+      fromText,
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputText);

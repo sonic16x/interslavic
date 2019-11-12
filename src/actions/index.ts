@@ -7,11 +7,51 @@ export enum ActionTypes {
     FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
     SET_PAGE = 'SET_PAGE',
     IS_LOADING = 'IS_LOADING',
+    SET_DETAIL = 'SET_DETAIL',
+    DETAIL_IS_VISIBLE = 'DETAIL_IS_VISIBLE',
+    SET_SEARCH_EXPAND = 'SET_SEARCH_EXPAND',
+    ALPHABET_TYPE = 'ALPHABET_TYPE',
+    RUN_SEARCH = 'RUN_SEARCH',
 }
 
 export function langAction(data: {from: string, to: string}) {
     return {
         type: ActionTypes.LANG,
+        data,
+    };
+}
+
+export function setDetailAction(data: number) {
+    return {
+        type: ActionTypes.SET_DETAIL,
+        data,
+    };
+}
+
+export function showDetailAction() {
+    return {
+        type: ActionTypes.DETAIL_IS_VISIBLE,
+        data: true,
+    };
+}
+
+export function setAlphabetTypeAction(data: number) {
+    return {
+        type: ActionTypes.ALPHABET_TYPE,
+        data,
+    };
+}
+
+export function hideDetailAction() {
+    return {
+        type: ActionTypes.DETAIL_IS_VISIBLE,
+        data: false,
+    };
+}
+
+export function setSearchExpand(data) {
+    return {
+        type: ActionTypes.SET_SEARCH_EXPAND,
         data,
     };
 }
@@ -51,6 +91,12 @@ export function isLoadingAction(data: boolean) {
     };
 }
 
+export function runSearch() {
+    return {
+        type: ActionTypes.RUN_SEARCH,
+    };
+}
+
 export function fetchDictionary(wordsListUrl) {
     return (dispatch) => {
         return fetch(wordsListUrl)
@@ -59,6 +105,7 @@ export function fetchDictionary(wordsListUrl) {
                 const wordList = data.split('\n').map((l) => l.split('\t'));
                 dispatch(isLoadingAction(false));
                 initDictionary(wordList);
+                dispatch(runSearch());
             })
             .catch(() => location.reload(true))
         ;

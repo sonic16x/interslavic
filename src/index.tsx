@@ -2,9 +2,11 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import Main from './components/Main';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { mainReducer } from 'reducers';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { mainReducer, IMainState } from 'reducers';
 import { setInitialPage } from 'routing';
+import './customBootstrap.scss';
+import { getPageFromPath } from 'routing';
 
 /* tslint:disable */
 declare global {
@@ -51,13 +53,71 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
+const defaultState: IMainState = {
+    lang: {
+        from: 'en',
+        to: 'isv',
+    },
+    fromText: '',
+    searchType: 'begin',
+    flavorisationType: '3',
+    alphabetType: 'latin',
+    page: 'dictionary',
+    isLoading: true,
+    isDetailModal: false,
+    searchExpanded: false,
+    rawResults: [],
+    results: [],
+};
+
 function reduxDevTools() {
     if (process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__) {
         return window.__REDUX_DEVTOOLS_EXTENSION__();
+    } else {
+        return f => f;
     }
 }
 
-const store = createStore(mainReducer, reduxDevTools());
+function localStorageMiddleware({getState}) {
+    return (next) => (action) => {
+        const result = next(action);
+        if (action.type === 'IS_LOADING') {
+            return result;
+        }
+        const stateForSave = {
+            ...getState(),
+        };
+        delete stateForSave.rawResults;
+        delete stateForSave.results;
+        delete stateForSave.isLoading;
+        localStorage.setItem('reduxState', JSON.stringify(stateForSave));
+        return result;
+    };
+}
+
+function getInitialState(): IMainState {
+    try {
+        const savedState = JSON.parse(localStorage.getItem('reduxState')) || {};
+        return {
+            ...defaultState,
+            page: getPageFromPath(),
+            ...savedState,
+        };
+    } catch (e) {
+        return defaultState;
+    }
+}
+
+const store = createStore(
+    mainReducer,
+    getInitialState(),
+    compose(
+        applyMiddleware(
+            localStorageMiddleware,
+        ),
+        reduxDevTools(),
+    ),
+);
 
 render(
     <Provider store={store}>
