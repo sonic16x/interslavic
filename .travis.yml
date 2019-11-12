@@ -6,6 +6,7 @@ cache:
     - node_modules
 
 before_deploy:
+  - "npm run test"
   - "npm run build"
 
 deploy:
