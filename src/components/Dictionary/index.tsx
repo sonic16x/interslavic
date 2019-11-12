@@ -13,18 +13,33 @@ interface IDictionaryProps {
     setSearchExpand: (data: boolean) => void;
 }
 
-class Dictionary extends React.Component<IDictionaryProps> {
+interface IDictionaryState {
+    expanded: boolean;
+}
+
+class Dictionary extends React.Component<IDictionaryProps, IDictionaryState> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            expanded: this.props.searchExpanded,
+        };
+    }
     public render() {
         const expanded = this.props.searchExpanded;
-
         return (
             <main className={'dictionary'}>
                 <section className={'controls shadow' + (expanded ? ' expand' : '')}>
                     <LangSelector/>
                     <InputText/>
-                    <div role={'region'} aria-labelledby={'expandControls'} className={'expandContainer'}>
-                        {expanded && <SearchTypeSelector key={'searchType'} />}
-                        {expanded && <FlavorisationSelector key={'flavorisation'} />}
+                    <div
+                        role={'region'}
+                        aria-labelledby={'expandControls'}
+                        className={'expandContainer'}
+                        onTransitionEnd={(e: any) =>
+                            this.setState({expanded: getComputedStyle(e.target).opacity === '1'})}
+                    >
+                        {(expanded || this.state.expanded) && <SearchTypeSelector key={'searchType'} />}
+                        {(expanded || this.state.expanded) && <FlavorisationSelector key={'flavorisation'} />}
                     </div>
                     <button
                         id={'expandControls'}
