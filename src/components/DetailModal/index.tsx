@@ -56,8 +56,6 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 className={'customModal'}
                 wrapperClassName={'modal-content customModalContent'}
                 open={!!contents}
-                title={'Show forms'}
-                interceptBack={true}
                 onOpen={this.onDialogOpened}
                 onClose={this.close}
             >

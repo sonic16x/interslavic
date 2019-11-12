@@ -8,11 +8,9 @@ import './index.scss';
 interface IModalDialogProps {
     className?: string;
     wrapperClassName?: string;
-
     children?: any;
+
     open?: boolean;
-    title?: string;
-    interceptBack?: boolean;
     onOpen?: () => void;
     onClose?: () => void;
 }
@@ -48,8 +46,6 @@ class ModalDialog extends React.Component<IModalDialogProps, IModalDialogState> 
         if (this.state.open) {
             this.showModal();
         }
-
-        window.addEventListener('popstate', this.onPopState);
     }
 
     public componentWillUnmount() {
@@ -59,8 +55,6 @@ class ModalDialog extends React.Component<IModalDialogProps, IModalDialogState> 
             dialogElement.removeEventListener('cancel', this.onDialogCancelListener);
             dialogElement.removeEventListener('close', this.onClose);
         }
-
-        window.removeEventListener('popstate', this.onPopState);
     }
 
     public render() {
@@ -87,11 +81,6 @@ class ModalDialog extends React.Component<IModalDialogProps, IModalDialogState> 
 
         if (dialog) {
             dialog.showModal();
-
-            if (this.props.interceptBack) {
-                window.history.pushState({}, this.props.title, location.pathname);
-            }
-
             this.setState({ open: true }, this.onOpen);
         }
     }
@@ -142,12 +131,6 @@ class ModalDialog extends React.Component<IModalDialogProps, IModalDialogState> 
     private onDialogCloseListener = () => {
         this.state.open = false; // sync state ad-hoc
         this.setState({open: false}, this.onClose);
-    }
-
-    private onPopState = () => {
-        if (this.props.interceptBack) {
-            this.close();
-        }
     }
 }
 
