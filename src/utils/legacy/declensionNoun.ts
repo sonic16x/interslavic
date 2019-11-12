@@ -180,8 +180,9 @@ function establish_root(noun, gender) {
     else if (noun == 'Lèv' || noun == 'Lev') {
         result = 'Ljv';
     }
-    else if ((gender.substring(0, 1) == 'm') && ((noun.lastIndexOf('e') == noun.length - 3) || (noun.lastIndexOf('è') == noun.length - 3)) && (noun.lastIndexOf('c') == noun.length - 2)) {
-        result = noun.substring(0, noun.length - 3) + 'cь';
+    else if (gender.charAt(0) == 'm' && noun.match(/[eè]cь$/) &&
+        (noun.slice(-5,-4).match(/[aeiouyęųåėěèòrŕ]/) || noun.slice(-4,-3).match(/[jdtc]/))) {
+        result = noun.slice(0, -3) + 'cь';
     }
     else if (gender == 'm3') {
         result = noun + '%';
