@@ -37,7 +37,6 @@ class About extends React.Component {
                         </button>
                     </div>
                     <div className={'devInfo'}>
-                        <p className={'text-muted buildHash'}>{HASH_ID}</p>
                         <p className={'text-muted buildHash'}>{DATE}</p>
                     </div>
                 </div>
