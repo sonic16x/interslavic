@@ -541,22 +541,29 @@ function genitive_pl(root, gender) {
         result = root + 'ij';
     }
     result = result.replace('jsk%', 'jsk');
-    result = result.replace('bomb%', 'bomb');
-    result = result.replace('porn%', 'porn');
+    //result = result.replace('bomb%', 'bomb');
+    //result = result.replace('porn%', 'porn');
     result = result.replace('mš%', 'meš');
     result = result.replace('zl%', 'zòl');
     result = result.replace('tl%', 'tòl');
     result = result.replace('mgl%', 'mgòl');
+
     // original code
-    result = result.replace(/([pbfvmlnrtdszkgh])([kn])%/, '$1ò$2');
+    /*result = result.replace(/([pbfvmlnrtdszkgh])([kn])%/, '$1ò$2');
     result = result.replace(/([jńľŕťďścšžč])([kn])%/, '$1e$2');
-    result = result.replace(/([pbfvmlnrtdszkghjńľŕťďścšžč])([bvmn])%/, '$1e$2');
+    result = result.replace(/([pbfvmlnrtdszkghjńľŕťďścšžč])([bvmn])%/, '$1e$2');*/
     // changed code
-    /*result = result.replace(/([kgh])([n])%/, '$1ò$2');
-    result = result.replace(/([pbfvmtdszlnr])([n])%/, '$1e$2');
-    result = result.replace(/([pbfvmlnrtdszkgh])([k])%/, '$1ò$2');
-    result = result.replace(/([jńľŕťďścšžč])([knm])%/, '$1e$2');
-    result = result.replace(/([ťď])([b])%/, '$1e$2');*/
+
+    result = result.replace(/([jńľŕťďścšžč])(k)%/, '$1e$2');
+    result = result.replace(/([pbfvmlnrtdszkgh])(k)%/, '$1ò$2');
+    result = result.replace(/([vmpzšžt])(n)%/, '$1e$2');
+    result = result.replace(/(k)([nl])%/, '$1ò$2');
+    result = result.replace(/(s)([nl])%/, '$1e$2');
+    result = result.replace(/^dn%/, 'dòn');
+    result = result.replace(/pismo%/, 'pisem');
+    result = result.replace(/^ťm%/, 'tem');
+    result = result.replace(/^sto%/, 'sòt');
+
     // end
     result = result.replace(/%/g, '');
     result = rules(result);
