@@ -33,7 +33,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
             loc: [rawNoun, rawNoun],
             dat: [rawNoun, rawNoun],
             ins: [rawNoun, rawNoun],
-            voc: [rawNoun, null],
+            voc: [rawNoun, rawNoun],
         };
     }
     //plural nouns
@@ -110,7 +110,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
         loc: [loc_sg, loc_pl],
         dat: [dat_sg, dat_pl],
         ins: [ins_sg, ins_pl],
-        voc: [voc_sg, null],
+        voc: [voc_sg, nom_pl],
     };
 }
 
@@ -647,7 +647,7 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
             loc: [null, word.slice(0, -1) + iOrY + 'h'],
             dat: [null, word.slice(0, -1) + iOrY + 'm'],
             ins: [null, word.slice(0, -1) + iOrY + 'mi'],
-            voc: [null, null],
+            voc: [null, word],
         };
     }
     else if (add) {
@@ -661,7 +661,7 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
             loc: [null, word.slice(0, -1) + 'ah'],
             dat: [null, word.slice(0, -1) + 'am'],
             ins: [null, word.slice(0, -1) + 'ami'],
-            voc: [null, null],
+            voc: [null, word],
         };
     }
     else if (gender === 'feminine' && word.match(/[ye]$/) ||
@@ -673,7 +673,7 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
             loc: [null, word.slice(0, -1) + 'ah'],
             dat: [null, word.slice(0, -1) + 'am'],
             ins: [null, word.slice(0, -1) + 'ami'],
-            voc: [null, null],
+            voc: [null, word],
         };
     }
     else if (gender === 'feminine' && word.match(/[i]$/)) {
@@ -684,7 +684,7 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
             loc: [null, word.slice(0, -1) + 'jah'],
             dat: [null, word.slice(0, -1) + 'jam'],
             ins: [null, word.slice(0, -1) + 'jami'],
-            voc: [null, null],
+            voc: [null, word],
         };
     }
     return null;
@@ -702,7 +702,7 @@ function declensionSubstAdj(word: string, add:string, gender: string, animated:s
             loc: [adjectiveParadigm.singular.loc[0], adjectiveParadigm.plural.loc[0]],
             dat: [adjectiveParadigm.singular.dat[0], adjectiveParadigm.plural.dat[0]],
             ins: [adjectiveParadigm.singular.ins[0], adjectiveParadigm.plural.ins[0]],
-            voc: [word, null],
+            voc: [word, adjectiveParadigm.plural.nom[0].split('/')[animatedCol].trim()],
         };
     } else {
         const adjectiveParadigm = declensionAdjective(word.slice(0,-1) + (add==='-oj'?'y':'i'), '');
@@ -713,7 +713,7 @@ function declensionSubstAdj(word: string, add:string, gender: string, animated:s
             loc: [adjectiveParadigm.singular.loc[1], adjectiveParadigm.plural.loc[0]],
             dat: [adjectiveParadigm.singular.dat[1], adjectiveParadigm.plural.dat[0]],
             ins: [adjectiveParadigm.singular.ins[1], adjectiveParadigm.plural.ins[0]],
-            voc: [word, null],
+            voc: [word, adjectiveParadigm.plural.nom[1]],
         };
     }
 }
