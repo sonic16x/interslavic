@@ -693,7 +693,7 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
 
 function declensionSubstAdj(word: string, add:string, gender: string, animated:string) {
     if (gender === 'masculine' || gender === 'neuter') {
-        const adjectiveParadigm = declensionAdjective(word,'');
+        const adjectiveParadigm = declensionAdjective(word.slice(0,-1) + (add==='-ogo'?'y':'i'),'');
         const animatedCol = (animated?0:1);
         return {
             nom: [word, adjectiveParadigm.plural.nom[0].split('/')[animatedCol].trim()],
