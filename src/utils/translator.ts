@@ -285,7 +285,7 @@ export function formatTranslate(
             addCyr: convertCases(getCyrillic(add, flavorisationType)),
             addGla: convertCases(latinToGla(getLatin(add, flavorisationType))),
             details: getField(item, 'partOfSpeech'),
-            ipa: latinToIpa(getLatin(isv, flavorisationType)),
+            ipa: latinToIpa(getLatin(isv.replace(/[ ]?\[.+?\]/, ''), flavorisationType)),
             checked: translate[0] !== '!',
         };
     });
