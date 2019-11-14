@@ -518,7 +518,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
     }
 
     private getAdjectivePluralCasesTable(plural) {
-        return [
+        const table = [
             [
                 '&nbsp@bb;bl;bt',
                 'plural@w=2;b',
@@ -527,16 +527,33 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 '&nbsp@bl;bt',
                 'masculine@b',
                 'feminine/neuter@b',
-            ],
-            [
-                'Nom@b',
-                `${this.formatStr(plural.nom[0])}@`,
-                `${this.formatStr(plural.nom[1])}@h=2`,
-            ],
-            [
-                'Acc@b',
-                `${this.formatStr(plural.acc[0])}@`,
-            ],
+            ]
+        ];
+        if(plural.acc.length === 2 && plural.nom[1] !== plural.acc[1]) {
+            table.push(
+                [
+                    'Nom@b',
+                    `${this.formatStr(plural.nom[0])}@`,
+                    `${this.formatStr(plural.nom[1])}@`,
+                ],
+                [
+                    'Acc@b',
+                    `${this.formatStr(plural.acc[0])}@`,
+                    `${this.formatStr(plural.acc[1])}@`,
+                ]);
+        } else {
+            table.push(
+                [
+                    'Nom@b',
+                    `${this.formatStr(plural.nom[0])}@`,
+                    `${this.formatStr(plural.nom[1])}@h=2`,
+                ],
+                [
+                    'Acc@b',
+                    `${this.formatStr(plural.acc[0])}@`,
+                ]);
+        }
+        table.push(
             [
                 'Gen@b',
                 `${this.formatStr(plural.gen[0])}@w=2`,
@@ -552,8 +569,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
             [
                 'Ins@b',
                 `${this.formatStr(plural.ins[0])}@w=2`,
-            ],
-        ];
+            ]);
+        return table;
     }
 
     private renderNumeralDetails(word, details) {
