@@ -57,7 +57,7 @@ class Results extends React.Component<IResultsProps> {
             case 'noun':
             case 'numeral':
             case 'pronoun':
-                if (item.original.match(/[^,] /)) { return ''; }
+                if (item.original.replace(/[ ]?\[.+?\]/, '').match(/[^,] /)) { return ''; }
             case 'adjective':
             case 'verb':
                 return (
