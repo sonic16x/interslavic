@@ -145,20 +145,20 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
         return {
             type: 'adjective',
             casesSingular: {
-                nom: ['iže', 'ježe', 'jaže'],
-                acc: ['jegože / iže', 'jųže'],
-                gen: ['jegože', 'jejže'],
-                loc: ['jemže', 'jejže'],
-                dat: ['jemuže', 'jejže'],
-                ins: ['jimže', 'jejųže'],
+                nom: ['iže', 'iže', 'iže'],
+                acc: ['(n)jegože / (n)jejže', '(n)ježe', '(n)jųže'],
+                gen: ['(n)jegože', '(n)jejže'],
+                loc: ['(n)jemže',  '(n)jejže'],
+                dat: ['(n)jemuže', '(n)jejže'],
+                ins: ['(n)jimže',  '(n)jejųže'],
             },
             casesPlural: {
-                nom: ['jiže / ježe', 'ježe'],
-                acc: ['jihže / ježe', 'ježe'],
-                gen: ['jihže'],
-                loc: ['jihže'],
-                dat: ['jimže'],
-                ins: ['jimiže'],
+                nom: ['iže', 'iže'],
+                acc: ['(n)jihže / (n)ježe', '(n)ježe'],
+                gen: ['(n)jihže'],
+                loc: ['(n)jihže'],
+                dat: ['(n)jimže'],
+                ins: ['(n)jimiže'],
             },
         };
     } else if (['demonstrative', 'indefinite', 'interrogative', 'relative', 'possessive'].includes(pronounType)) {
