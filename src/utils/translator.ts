@@ -60,7 +60,10 @@ let headerIndexes;
 const percentsOfChecked = {};
 const isvToLatinMap = new Map();
 const isvAddMap = new Map();
-const splitPattern = /,/;
+
+function splitWords(text: string): string[] {
+    return text.includes(';') ? text.split(';') : text.split(',');
+}
 
 function levenshteinDistance(a, b) {
     if (a.length === 0) {
@@ -177,7 +180,7 @@ export function initDictionary(wordList: string[][]) {
         ;
         isvAddMap.set(getField(item, 'addition'), add);
         isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
-        isvWord.split(splitPattern)
+        splitWords(isvWord)
             .concat(add)
             .map((item) => {
                 isvToLatinMap.set(item, normalize(getLatin(item, 3)));
@@ -236,18 +239,14 @@ export function translate(
             if (fromField === '!' || toField === '!') {
                 return false;
             }
-            let splittedField = fromField
-                .replace(/^!/, '')
-                .split(splitPattern)
-            ;
+            let splittedField = splitWords(fromField.replace(/^!/, ''));
             if (from === 'isv') {
                 splittedField = splittedField.concat(isvAddMap.get(getField(item, 'addition')));
             }
             return splittedField.some((sp) => searchTypes[searchType](searchPrepare(from, sp), text));
         })
         .map((item) => {
-            const dist = getField(item, from)
-                .split(splitPattern)
+            const dist = splitWords(getField(item, from))
                 .reduce((acc, item) => {
                     const lDist = levenshteinDistance(text, searchPrepare(from, item));
                     if (acc === false) {
