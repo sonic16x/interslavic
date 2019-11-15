@@ -65,6 +65,22 @@ function splitWords(text: string): string[] {
     return text.includes(';') ? text.split(';') : text.split(',');
 }
 
+export function removeBrackets(text: string, left: string, right: string): string {
+    const posOpen = text.indexOf(left);
+    if (posOpen !== -1) {
+        const posClose = text.indexOf(right);
+        if (posClose > posOpen) {
+            return removeBrackets((text.slice(0, posOpen) + text.slice(posClose + 1))
+                .replace('  ', ' ').trim(), left, right);
+        }
+    }
+    return text;
+}
+
+function removeExclamationMark(text: string): string {
+    return text.slice(0, 1) === '!' ? text.slice(1) : text;
+}
+
 function levenshteinDistance(a, b) {
     if (a.length === 0) {
         return b.length;
@@ -116,7 +132,9 @@ export function isvToEngLatin(text) {
 }
 
 function inputPrepare(lang, text) {
-    const lowerCaseText = text.toLowerCase().replace(/ /g, '');
+    const lowerCaseText = text.toLowerCase()
+        .replace(' ', '')
+        .replace(',', '');
     switch (lang) {
         case 'isv':
             return isvToEngLatin(lowerCaseText);
@@ -128,7 +146,7 @@ function inputPrepare(lang, text) {
         case 'de':
             return filterLatin(lowerCaseText);
         case 'ru':
-            return lowerCaseText.replace(/[ё]/g, 'е');
+            return lowerCaseText.replace('ё', 'е');
         case 'sr':
             return srGajevicaToVukovica(lowerCaseText);
         default:
@@ -137,11 +155,15 @@ function inputPrepare(lang, text) {
 }
 
 function searchPrepare(lang, text) {
-    let lowerCaseText = text.toLowerCase().replace(/ /g, '');
+    let lowerCaseText = text.toLowerCase()
+        .replace(' ', '')
+        .replace(',', '');
     if (lang !== 'isv') {
-        lowerCaseText = lowerCaseText.replace('/\(.+?\)/', '');
+        lowerCaseText = removeBrackets(lowerCaseText, '(', ')');
+        lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
     } else {
         lowerCaseText = convertCases(lowerCaseText);
+        lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
     }
     switch (lang) {
         case 'isv':
@@ -154,7 +176,7 @@ function searchPrepare(lang, text) {
         case 'de':
             return filterLatin(lowerCaseText);
         case 'ru':
-            return lowerCaseText.replace(/[ё]/g, 'е');
+            return lowerCaseText.replace('ё', 'е');
         default:
             return lowerCaseText;
     }
@@ -176,7 +198,8 @@ export function initDictionary(wordList: string[][]) {
     words.forEach((item) => {
         const isvWord = getField(item, 'isv');
         const add = getField(item, 'addition')
-            .replace(/\(|\)/g, '').replace(/ /g, '').split(/[,;/]/)
+            .replace(/[\(\) ]/g, '')
+            .split(/[,;/]/)
         ;
         isvAddMap.set(getField(item, 'addition'), add);
         isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, 3)));
@@ -239,9 +262,11 @@ export function translate(
             if (fromField === '!' || toField === '!') {
                 return false;
             }
-            let splittedField = splitWords(fromField.replace(/^!/, ''));
+            let splittedField;
             if (from === 'isv') {
-                splittedField = splittedField.concat(isvAddMap.get(getField(item, 'addition')));
+                splittedField = splitWords(fromField).concat(isvAddMap.get(getField(item, 'addition')));
+            } else {
+                splittedField = splitWords(removeExclamationMark(fromField));
             }
             return splittedField.some((sp) => searchTypes[searchType](searchPrepare(from, sp), text));
         })
@@ -284,7 +309,7 @@ export function formatTranslate(
             addCyr: convertCases(getCyrillic(add, flavorisationType)),
             addGla: convertCases(latinToGla(getLatin(add, flavorisationType))),
             details: getField(item, 'partOfSpeech'),
-            ipa: latinToIpa(getLatin(isv.replace(/[ ]?\[.+?\]/, ''), flavorisationType)),
+            ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
             checked: translate[0] !== '!',
         };
     });

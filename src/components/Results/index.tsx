@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ITranslateResult } from 'utils/translator';
+import { ITranslateResult, removeBrackets } from 'utils/translator';
 import './index.scss';
 import { setDetailAction, showDetailAction } from 'actions';
 import { getPartOfSpeech } from 'utils/wordDetails';
@@ -57,7 +57,7 @@ class Results extends React.Component<IResultsProps> {
             case 'noun':
             case 'numeral':
             case 'pronoun':
-                if (item.original.replace(/[ ]?\[.+?\]/, '').match(/[^,] /)) { return ''; }
+                if (item.original.match(/[^,] [^\[]/)) { return ''; }
             case 'adjective':
             case 'verb':
                 return (
