@@ -527,9 +527,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 '&nbsp@bl;bt',
                 'masculine@b',
                 'feminine/neuter@b',
-            ]
+            ],
         ];
-        if(plural.acc.length === 2 && plural.nom[1] !== plural.acc[1]) {
+        if (plural.acc.length === 2 && plural.nom[1] !== plural.acc[1]) {
             table.push(
                 [
                     'Nom@b',
