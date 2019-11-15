@@ -47,7 +47,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                 type: 'adjective',
                 casesSingular: {
                     nom: ['on', 'ono', 'ona'],
-                    acc: ['(n)jego (go) / (n)je', '(n)je', '(n)jų'],
+                    acc: ['(n)jego (go)', '(n)jego (go)', '(n)jų'],
                     gen: ['(n)jego', '(n)jej'],
                     loc: ['(n)jem', '(n)jej'],
                     dat: ['(n)jemu (mu)', '(n)jej'],
@@ -146,7 +146,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
             type: 'adjective',
             casesSingular: {
                 nom: ['iže', 'iže', 'iže'],
-                acc: ['(n)jegože / (n)jejže', '(n)ježe', '(n)jųže'],
+                acc: ['(n)jegože', '(n)jegože', '(n)jųže'],
                 gen: ['(n)jegože', '(n)jejže'],
                 loc: ['(n)jemže',  '(n)jejže'],
                 dat: ['(n)jemuže', '(n)jejže'],
