@@ -5,6 +5,7 @@
 /* tslint:disable */
 import { markFluentVowel } from 'utils/markFluentVowel';
 import {declensionAdjective} from "./declensionAdjective";
+import {removeBrackets } from "../translator";
 
 function prepareGender(gender, animated) {
     if (gender === 'feminine') {
@@ -20,7 +21,7 @@ function prepareGender(gender, animated) {
 
 export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable) {
     // remove square brackets
-    let noun = rawNoun.replace(/[ ]?\[.+?\]/, '');
+    let noun = removeBrackets(rawNoun, '[', ']');
     // now we don't know how to decline the phrases
     if (noun.includes(' ')) {
         return null;
