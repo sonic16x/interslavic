@@ -301,7 +301,7 @@ export function formatTranslate(
         const add = getField(item, 'addition');
         const translate = getField(item, (from === 'isv' ? to : from));
         return {
-            translate: translate.replace(/^!/, ''),
+            translate: removeExclamationMark(translate),
             original: getLatin(isv, flavorisationType),
             originalCyr: getCyrillic(isv, flavorisationType),
             originalGla: latinToGla(getLatin(isv, flavorisationType)),
