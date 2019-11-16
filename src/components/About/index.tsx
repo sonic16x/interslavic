@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { worksheetUrl } from '../../consts';
+import { worksheetUrl } from 'consts';
 import './index.scss';
 
 class About extends React.Component {

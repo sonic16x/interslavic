@@ -6,7 +6,7 @@ import { hideDetailAction, setAlphabetTypeAction } from 'actions';
 import { declensionNoun } from 'utils/legacy/declensionNoun';
 import { declensionAdjective } from 'utils/legacy/declensionAdjective';
 import { conjugationVerb } from 'utils/legacy/conjugationVerb';
-import { declensionNumeral } from '../../utils/legacy/declensionNumeral';
+import { declensionNumeral } from 'utils/legacy/declensionNumeral';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import Text from 'components/Text';
@@ -22,7 +22,7 @@ import {
     isSingular,
 } from 'utils/wordDetails';
 import { getCyrillic, getField, getLatin, getWordList } from 'utils/translator';
-import { declensionPronoun } from '../../utils/legacy/declensionPronoun';
+import { declensionPronoun } from 'utils/legacy/declensionPronoun';
 
 interface IDetailModalProps {
     close: () => void;

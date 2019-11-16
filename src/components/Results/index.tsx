@@ -4,7 +4,7 @@ import { getPercentsOfTranslated, ITranslateResult } from 'utils/translator';
 import './index.scss';
 import { setDetailAction, showDetailAction } from 'actions';
 import { getPartOfSpeech } from 'utils/wordDetails';
-import { worksheetUrl } from '../../consts';
+import { worksheetUrl } from 'consts';
 
 interface IResultsProps {
     results: ITranslateResult[];
