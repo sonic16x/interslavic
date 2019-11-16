@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { worksheetUrl } from '../../consts';
 import './index.scss';
 
 class About extends React.Component {
@@ -7,7 +7,6 @@ class About extends React.Component {
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/scherebedov/interslavic';
         const source = 'http://steen.free.fr/interslavic';
-        const tableUrl = 'https://docs.google.com/spreadsheets/d/14b7B41A847_PDD6S3dFBOVBIkt_Cdxnt1m4e6NjrWP0/edit?usp=sharing';
 
         return (
             <div className={'about'}>
@@ -20,7 +19,7 @@ class About extends React.Component {
                         <p>Authors of Interslavic/English/Polish translations: Jan van Steenbergen and Michał Swat</p>
                         <hr/>
                         <p>Please join the work to improve word translations for your native language.</p>
-                        <a target={'_blank'} href={tableUrl}>Table with translations</a>
+                        <a target={'_blank'} href={worksheetUrl}>Table with translations</a>
                         <hr/>
                         <p>Developer:</p>
                         <a target={'_blank'} href={`email:${email}`}>Sergey Cherebedov ({email})</a>
