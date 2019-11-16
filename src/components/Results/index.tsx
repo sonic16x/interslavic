@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ITranslateResult, removeBrackets } from 'utils/translator';
+import { getPercentsOfTranslated, ITranslateResult } from 'utils/translator';
 import './index.scss';
 import { setDetailAction, showDetailAction } from 'actions';
 import { getPartOfSpeech } from 'utils/wordDetails';
+import { worksheetUrl } from '../../consts';
 
 interface IResultsProps {
     results: ITranslateResult[];
@@ -45,9 +46,18 @@ class Results extends React.Component<IResultsProps> {
             return '';
         }
 
+        const lang = this.props.lang.from === 'isv' ? this.props.lang.to : this.props.lang.from;
+
         return (
             <div className={'results'}>
-                {results.map((item: ITranslateResult, i) => this.renderResultItem(item, i))}
+                <>{results.map((item: ITranslateResult, i) => this.renderResultItem(item, i))}</>
+                {results.some((item) => !item.checked) &&
+                <div className={'messageForUser'}>
+                    Search results contain inaccurate automatic translations. Currently,{' '}
+                    {getPercentsOfTranslated()[lang]}% of the words of the selected language{' '}
+                    are verified. If you speak this language, join the work on improving translations!{' '}
+                    <a target={'_blank'} href={worksheetUrl}>The worksheet is located at this link.</a>
+                </div> }
             </div>
         );
     }
