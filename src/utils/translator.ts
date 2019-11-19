@@ -57,11 +57,13 @@ export function getLatin(text, flavorisationType): string {
 let header;
 let words;
 let headerIndexes;
+let langsList;
 const percentsOfChecked = {};
 const isvToLatinMap = new Map();
 const isvAddMap = new Map();
+const splittedMap = new Map();
 
-function splitWords(text: string): string[] {
+export function splitWords(text: string): string[] {
     return text.includes(';') ? text.split(';') : text.split(',');
 }
 
@@ -77,11 +79,11 @@ export function removeBrackets(text: string, left: string, right: string): strin
     return text;
 }
 
-function removeExclamationMark(text: string): string {
+export function removeExclamationMark(text: string): string {
     return text.slice(0, 1) === '!' ? text.slice(1) : text;
 }
 
-function levenshteinDistance(a, b) {
+export function levenshteinDistance(a, b) {
     if (a.length === 0) {
         return b.length;
     }
@@ -131,7 +133,7 @@ export function isvToEngLatin(text) {
     return latin;
 }
 
-function inputPrepare(lang, text) {
+export function inputPrepare(lang, text) {
     const lowerCaseText = text.toLowerCase()
         .replace(' ', '')
         .replace(',', '');
@@ -154,7 +156,7 @@ function inputPrepare(lang, text) {
     }
 }
 
-function searchPrepare(lang, text) {
+export function searchPrepare(lang, text) {
     let lowerCaseText = text.toLowerCase()
         .replace(' ', '')
         .replace(',', '');
@@ -182,7 +184,12 @@ function searchPrepare(lang, text) {
     }
 }
 
-function convertCases(add) {
+function getSplittedField(from: string, item: string[]): string[] {
+    const key = `${getField(item, from)}-${getField(item, 'addition')}`;
+    return splittedMap.get(key);
+}
+
+export function convertCases(add) {
     return add
         .replace('+2', '+Gen.')
         .replace('+3', '+Dat.')
@@ -193,6 +200,9 @@ function convertCases(add) {
 
 export function initDictionary(wordList: string[][]) {
     header = wordList.shift().map((l) => l.replace(/\W/g, ''));
+    langsList = header.filter(
+        (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition'].indexOf(item) === -1),
+    );
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
     words = wordList;
     words.forEach((item) => {
@@ -211,14 +221,22 @@ export function initDictionary(wordList: string[][]) {
         add.map((item) => {
                 isvToLatinMap.set(item, normalize(getLatin(item, 3)));
             });
+        langsList.forEach((from) => {
+            const key = `${getField(item, from)}-${getField(item, 'addition')}`;
+            const fromField = getField(item, from);
+            let splittedField;
+            if (from === 'isv') {
+                splittedField = splitWords(fromField).concat(isvAddMap.get(getField(item, 'addition')));
+            } else {
+                splittedField = splitWords(removeExclamationMark(fromField));
+            }
+            splittedMap.set(key, splittedField.map((chunk) => searchPrepare(from, chunk)));
+        });
     });
     calculatePercentsOfTranslated();
 }
 
 function calculatePercentsOfTranslated() {
-    const langsList = header.filter(
-        (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition'].indexOf(item) === -1),
-    );
     langsList.forEach((fieldName) => {
         const notChecked = words.filter((item) => getField(item, fieldName)[0] === '!');
         const count = (1 - notChecked.length / words.length) * 100;
@@ -255,23 +273,19 @@ export function translate(
     }
     const distMap = new WeakMap();
 
-    return words
+    const results = words
         .filter((item) => {
             const fromField = getField(item, from);
             const toField = getField(item, to);
             if (fromField === '!' || toField === '!') {
                 return false;
             }
-            let splittedField;
-            if (from === 'isv') {
-                splittedField = splitWords(fromField).concat(isvAddMap.get(getField(item, 'addition')));
-            } else {
-                splittedField = splitWords(removeExclamationMark(fromField));
-            }
-            return splittedField.some((sp) => searchTypes[searchType](searchPrepare(from, sp), text));
+            const splittedField = getSplittedField(from, item);
+            return splittedField.some((chunk) => searchTypes[searchType](chunk, text));
         })
         .map((item) => {
-            const dist = splitWords(getField(item, from))
+            const splittedField = getSplittedField(from, item);
+            const dist = splittedField
                 .reduce((acc, item) => {
                     const lDist = levenshteinDistance(text, searchPrepare(from, item));
                     if (acc === false) {
@@ -288,6 +302,7 @@ export function translate(
         .sort((a, b) => distMap.get(a) - distMap.get(b))
         .slice(0, 50)
     ;
+    return results;
 }
 
 export function formatTranslate(

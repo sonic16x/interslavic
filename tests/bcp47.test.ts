@@ -1,4 +1,4 @@
-import { toBCP47 } from './bcp47';
+import { toBCP47 } from 'utils/bcp47';
 
 describe('toBCP47', () => {
   it('should convert "isv" to private extension of artificial language code', () => {
