@@ -136,7 +136,8 @@ export function isvToEngLatin(text) {
 export function inputPrepare(lang, text) {
     const lowerCaseText = text.toLowerCase()
         .replace(' ', '')
-        .replace(',', '');
+        .replace(',', '')
+        .replace(/[\u0300-\u036f]/g, '');
     switch (lang) {
         case 'isv':
             return isvToEngLatin(lowerCaseText);
@@ -159,7 +160,8 @@ export function inputPrepare(lang, text) {
 export function searchPrepare(lang, text) {
     let lowerCaseText = text.toLowerCase()
         .replace(' ', '')
-        .replace(',', '');
+        .replace(',', '')
+        .replace(/[\u0300-\u036f]/g, '');
     if (lang !== 'isv') {
         lowerCaseText = removeBrackets(lowerCaseText, '(', ')');
         lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
