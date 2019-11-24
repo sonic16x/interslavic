@@ -203,7 +203,7 @@ export function convertCases(add) {
 export function initDictionary(wordList: string[][]) {
     header = wordList.shift().map((l) => l.replace(/\W/g, ''));
     langsList = header.filter(
-        (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition'].indexOf(item) === -1),
+        (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id'].indexOf(item) === -1),
     );
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
     words = wordList;
