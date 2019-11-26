@@ -41,7 +41,11 @@ class About extends React.Component {
                             href={'http://interslavic-language.org/'}
                             target={'_blank'}
                         >
-                            <img className={'shadow'} src={'partnersPortal.png'} alt={'Interslavic Language Portal Icon'}/>
+                            <img
+                                className={'shadow'}
+                                src={'partnersPortal.png'}
+                                alt={'Interslavic Language Portal Icon'}
+                            />
                         </a>
                         <a
                             title={'Interslavic journal'}
