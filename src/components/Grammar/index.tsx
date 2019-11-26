@@ -20,7 +20,7 @@ const titles = {
     cestice: 'Čestice',
     medzuslovniky: 'Medžuslovniky',
     podredne: 'Podredne izrěčenja',
-    naucno: 'Naučno pravopisanje i kirilica',
+    // naucno: 'Naučno pravopisanje i kirilica',
     glagolica: 'Glagolica',
     primetky: 'Primětky (*)',
     podrobnosti: 'Podrobne pravila (linki)',
@@ -84,7 +84,7 @@ class Grammar extends React.PureComponent {
                             {`{3.}[B,m] V kirilici možno koristiti ligatury: {шч}[k,B] → {щ}[k,B], {ьу}[k,B]/{ју}[k,B] → {ю}[k,B], {ьа}[k,B]/{ја}[k,B] → {я}[k,B]`}
                         </Text>
                         <Text>
-                            {`Medžuslovjansky jezyk drži morfologično pravopisanje. Koren slov se piše ravno v vsih padežah. Anglijske, latinske i grečske slova imajut svoje originalno pravopisanje ale s medžuslovjanskymi zakončenjami ({architektur}[k,B]{a}[k], {biolog}[k,B]{ija}[k] ...).`}
+                            {`Medžuslovjansky jezyk drži morfologično pravopisanje. Koren slov se piše ravno v vsih padežah. Anglijske, latinske i grečske slova imajut svoje originalno pravopisanje ale s medžuslovjanskymi zakončenjami ({arhitektur}[k,B]{a}[k], {biolog}[k,B]{ija}[k] ...).`}
                         </Text>
                     </Card>
                     <Card title={titles.imeniky} id={'imeniky'}>
@@ -235,13 +235,13 @@ class Grammar extends React.PureComponent {
                             tvary {iže, jegože, jimže}[B], ... sut relativne zaimeniky od on, ona, ono `}
                         </Text>
                     </Card>
-                    <Card title={titles.naucno} id={'naucno'}>
-                        <div className={'tablesRow'}>
-                            <Table data={tables.tableNauc1} />
-                            <Table data={tables.tableNauc2} />
-                            <Table data={tables.tableKir} />
-                        </div>
-                    </Card>
+                    {/*<Card title={titles.naucno} id={'naucno'}>*/}
+                    {/*    <div className={'tablesRow'}>*/}
+                    {/*        <Table data={tables.tableNauc1} />*/}
+                    {/*        <Table data={tables.tableNauc2} />*/}
+                    {/*        <Table data={tables.tableKir} />*/}
+                    {/*    </div>*/}
+                    {/*</Card>*/}
                     <Card title={titles.glagolica} id={'glagolica'}>
                         <Table data={tables.tableGlagoljica} />
                     </Card>
