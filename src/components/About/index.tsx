@@ -29,31 +29,40 @@ class About extends React.Component {
                         <p>Our friends:</p>
                         <a
                             title={'Interslavic Facebook'}
-                            className={'partners'}
                             href={'http://www.facebook.com/groups/interslavic'}
                             target={'_blank'}
                         >
-                            <img className={'shadow'} src={'partnersFacebook.png'} alt={'Interslavic Facebook Icon'}/>
+                            <img className={'partners shadow'} src={'partnersFacebook.png'} alt={'Interslavic Facebook Icon'}/>
                         </a>
                         <a
                             title={'Interslavic Language Portal'}
-                            className={'partners'}
                             href={'http://interslavic-language.org/'}
                             target={'_blank'}
                         >
                             <img
-                                className={'shadow'}
+                                className={'partners shadow'}
                                 src={'partnersPortal.png'}
                                 alt={'Interslavic Language Portal Icon'}
                             />
                         </a>
                         <a
                             title={'Interslavic journal'}
-                            className={'partners'}
                             href={'http://slovjani.info/'}
                             target={'_blank'}
                         >
-                            <img className={'shadow'} src={'partnersJournal.jpg'} alt={'Interslavic journal Icon'}/>
+                            <img className={'partners shadow'} src={'partnersJournal.jpg'} alt={'Interslavic journal Icon'}/>
+                        </a>
+                        <hr/>
+                        <a
+                            href={'https://play.google.com/store/apps/details?id=org.interslavicdictionary.twa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'}
+                            title={'Get it on Google Play'}
+                            target={'_blank'}
+                        >
+                            <img
+                                alt={'Get it on Google Play'}
+                                width={'200px'}
+                                src={'https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'}
+                            />
                         </a>
                         <hr/>
                         <button
