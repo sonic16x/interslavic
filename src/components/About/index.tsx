@@ -26,6 +26,32 @@ class About extends React.Component {
                         <hr/>
                         Source code (Github) <a target={'_blank'} href={github}>{github}</a>
                         <hr/>
+                        <p>Our friends:</p>
+                        <a
+                            title={'Interslavic Facebook'}
+                            className={'partners'}
+                            href={'http://www.facebook.com/groups/interslavic'}
+                            target={'_blank'}
+                        >
+                            <img className={'shadow'} src={'partnersFacebook.png'} alt={'Interslavic Facebook Icon'}/>
+                        </a>
+                        <a
+                            title={'Interslavic Language Portal'}
+                            className={'partners'}
+                            href={'http://interslavic-language.org/'}
+                            target={'_blank'}
+                        >
+                            <img className={'shadow'} src={'partnersPortal.png'} alt={'Interslavic Language Portal Icon'}/>
+                        </a>
+                        <a
+                            title={'Interslavic journal'}
+                            className={'partners'}
+                            href={'http://slovjani.info/'}
+                            target={'_blank'}
+                        >
+                            <img className={'shadow'} src={'partnersJournal.jpg'} alt={'Interslavic journal Icon'}/>
+                        </a>
+                        <hr/>
                         <button
                             type={'button'}
                             aria-label={'Go back'}
