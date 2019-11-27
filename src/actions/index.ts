@@ -1,4 +1,4 @@
-import { initDictionary } from 'utils/translator';
+import { Dictionary } from 'utils/dictionary';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -102,9 +102,12 @@ export function fetchDictionary(wordsListUrl) {
         return fetch(wordsListUrl)
             .then((res) => res.text())
             .then((data) => {
-                const wordList = data.split('\n').map((l) => l.split('\t'));
+                const wordList = data
+                    .replace(/#/g, '')
+                    .split('\n')
+                    .map((l) => l.split('\t'));
                 dispatch(isLoadingAction(false));
-                initDictionary(wordList);
+                Dictionary.init(wordList);
                 dispatch(runSearch());
             })
             .catch(() => location.reload(true))

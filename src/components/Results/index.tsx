@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getPercentsOfTranslated, ITranslateResult } from 'utils/translator';
+import { Dictionary, ITranslateResult } from 'utils/dictionary';
 import './index.scss';
 import { setDetailAction, showDetailAction } from 'actions';
 import { getPartOfSpeech } from 'utils/wordDetails';
@@ -54,7 +54,7 @@ class Results extends React.Component<IResultsProps> {
                 {results.some((item) => !item.checked) &&
                 <div className={'messageForUser'}>
                     Search results contain inaccurate automatic translations. Currently,{' '}
-                    {getPercentsOfTranslated()[lang]}% of the words of the selected language{' '}
+                    {Dictionary.getPercentsOfTranslated()[lang]}% of the words of the selected language{' '}
                     are verified. If you speak this language, join the work on improving translations!{' '}
                     <a target={'_blank'} href={worksheetUrl}>The worksheet is located at this link.</a>
                 </div> }

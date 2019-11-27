@@ -21,7 +21,9 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { getCyrillic, getField, getLatin, getWordList } from 'utils/translator';
+import { Dictionary } from 'utils/dictionary';
+import { getCyrillic } from 'utils/getCyrillic';
+import { getLatin } from 'utils/getLatin';
 import { declensionPronoun } from 'utils/legacy/declensionPronoun';
 
 interface IDetailModalProps {
@@ -192,14 +194,14 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 // temporary fix for searching addition in parent verb
                 // must be deleted when column 'addition' will be correct filled !!!
                 if (!addVerb && word.includes(' ')) {
-                    const BaseWord = getWordList().filter((item) => {
-                        if (getField(item, 'isv') === word.split(' ')[0] &&
-                            getField(item, 'addition') &&
-                            getField(item, 'partOfSpeech').includes('v.')) { return true; }
+                    const BaseWord = Dictionary.getWordList().filter((item) => {
+                        if (Dictionary.getField(item, 'isv') === word.split(' ')[0] &&
+                            Dictionary.getField(item, 'addition') &&
+                            Dictionary.getField(item, 'partOfSpeech').includes('v.')) { return true; }
                         return false;
                     });
                     if (BaseWord.length > 0) {
-                        addVerb = getField(BaseWord[0], 'addition');
+                        addVerb = Dictionary.getField(BaseWord[0], 'addition');
                     }
                 }
                 // normal verb
