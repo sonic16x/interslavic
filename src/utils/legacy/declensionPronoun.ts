@@ -1,5 +1,6 @@
-import { isvToEngLatin } from '../translator';
-import { declensionAdjective } from './declensionAdjective';
+import { declensionAdjective } from 'utils/legacy/declensionAdjective';
+import { normalize } from 'utils/normalize';
+import { getLatin } from 'utils/getLatin';
 
 export interface IPronounParadigm {
     type: string;
@@ -14,7 +15,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
     if (rawWord.includes(' ')) {
         return null;
     }
-    const word = isvToEngLatin(rawWord);
+    const word = normalize(getLatin(rawWord, '3'));
     if (pronounType === 'personal' || pronounType === 'reflexive') {
         if (['ja', 'mene', 'me', 'mne', 'mi', 'mnoju', 'my', 'nas', 'nam', 'nami'].includes(word)) {
             return {

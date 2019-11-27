@@ -1,11 +1,12 @@
-import { declensionNoun } from './declensionNoun';
+import { declensionNoun } from 'utils/legacy/declensionNoun';
 import {
     getGender,
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { declensionAdjective } from './declensionAdjective';
-import { isvToEngLatin } from '../translator';
+import { declensionAdjective } from 'utils/legacy/declensionAdjective';
+import { normalize } from 'utils/normalize';
+import { getLatin } from 'utils/getLatin';
 
 export interface INumeralParadigm {
     type: string;
@@ -48,7 +49,7 @@ export function declensionNumeral(rawWord: string, numeralType: string): INumera
     if (rawWord.includes(' ')) {
         return null;
     }
-    const word = isvToEngLatin(rawWord);
+    const word = normalize(getLatin(rawWord, '3'));
     let declensionType = '';
     let details = '';
     if (numeralType === 'cardinal') {

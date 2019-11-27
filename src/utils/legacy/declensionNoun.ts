@@ -4,8 +4,8 @@
 
 /* tslint:disable */
 import { markFluentVowel } from 'utils/markFluentVowel';
-import {declensionAdjective} from "./declensionAdjective";
-import {removeBrackets } from "../translator";
+import { declensionAdjective } from 'utils/legacy/declensionAdjective';
+import { removeBrackets } from 'utils/removeBrackets';
 
 function prepareGender(gender, animated) {
     if (gender === 'feminine') {
