@@ -103,7 +103,7 @@ export function fetchDictionary(wordsListUrl) {
             .then((res) => res.text())
             .then((data) => {
                 const wordList = data
-                    .replace('#','')
+                    .replace(/#/g, '')
                     .split('\n')
                     .map((l) => l.split('\t'));
                 dispatch(isLoadingAction(false));
