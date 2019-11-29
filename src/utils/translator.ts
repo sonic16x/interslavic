@@ -83,6 +83,10 @@ export function removeExclamationMark(text: string): string {
     return text.slice(0, 1) === '!' ? text.slice(1) : text;
 }
 
+function removeLeadingSpecialChar(text: string): string {
+    return text.slice(0, 1) === '#' ? text.slice(1) : text;
+}
+
 export function levenshteinDistance(a, b) {
     if (a.length === 0) {
         return b.length;
@@ -206,7 +210,7 @@ export function initDictionary(wordList: string[][]) {
         (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id'].indexOf(item) === -1),
     );
     headerIndexes = new Map(Object.keys(header).map((i) => [header[i], i]));
-    words = wordList;
+    words = wordList.map((row) => row.map(removeLeadingSpecialChar));
     words.forEach((item) => {
         const isvWord = getField(item, 'isv');
         const add = getField(item, 'addition')
