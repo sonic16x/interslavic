@@ -102,7 +102,10 @@ export function fetchDictionary(wordsListUrl) {
         return fetch(wordsListUrl)
             .then((res) => res.text())
             .then((data) => {
-                const wordList = data.split('\n').map((l) => l.split('\t'));
+                const wordList = data
+                    .replace('#','')
+                    .split('\n')
+                    .map((l) => l.split('\t'));
                 dispatch(isLoadingAction(false));
                 initDictionary(wordList);
                 dispatch(runSearch());
