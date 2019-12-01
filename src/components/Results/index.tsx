@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'connect';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
 import './index.scss';
 import { setDetailAction, showDetailAction } from 'actions';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { worksheetUrl } from 'consts';
+import { t } from 'translations';
 
 interface IResultsProps {
     results: ITranslateResult[];
@@ -80,7 +81,7 @@ class Results extends React.Component<IResultsProps> {
                             this.props.showDetail();
                         }}
                     >
-                        Show forms
+                        {t('showForms')}
                     </button>
                 );
             default:
@@ -89,9 +90,9 @@ class Results extends React.Component<IResultsProps> {
     }
     private renderCheked({checked}) {
         if (checked) {
-            return <span className={'badge checked shadow badge-success'}>Verified</span>;
+            return <span className={'badge checked shadow badge-success'}>{t('verified')}</span>;
         } else {
-            return <span className={'badge checked shadow badge-danger'}>Auto-translation</span>;
+            return <span className={'badge checked shadow badge-danger'}>{t('autoTranslation')}</span>;
         }
     }
     private renderOriginal(item) {

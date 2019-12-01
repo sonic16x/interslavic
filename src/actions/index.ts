@@ -1,4 +1,5 @@
 import { Dictionary } from 'utils/dictionary';
+import { setLang, t } from 'translations';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -6,6 +7,7 @@ export enum ActionTypes {
     SEARCH_TYPE = 'SEARCH_TYPE',
     FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
     SET_PAGE = 'SET_PAGE',
+    SET_INTERFACE_LANG = 'SET_INTERFACE_LANG',
     IS_LOADING = 'IS_LOADING',
     SET_DETAIL = 'SET_DETAIL',
     DETAIL_IS_VISIBLE = 'DETAIL_IS_VISIBLE',
@@ -112,5 +114,19 @@ export function fetchDictionary(wordsListUrl) {
             })
             .catch(() => location.reload(true))
         ;
+    };
+}
+
+export function setInterfaceLang(language: string) {
+    return (dispatch) => {
+        return setLang(language)
+            .then(() => {
+                dispatch(
+                    {
+                        type: ActionTypes.SET_INTERFACE_LANG,
+                        data: language,
+                    },
+                );
+            });
     };
 }

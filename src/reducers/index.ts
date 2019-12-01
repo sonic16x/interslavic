@@ -7,6 +7,7 @@ export interface IMainState {
         from: string;
         to: string;
     };
+    interfaceLang: string;
     fromText: string;
     searchType: string;
     flavorisationType: string;
@@ -96,6 +97,11 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 searchExpanded: data,
+            };
+        case ActionTypes.SET_INTERFACE_LANG:
+            return {
+                ...state,
+                interfaceLang: data,
             };
         case ActionTypes.SET_DETAIL:
             return {

@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import About from 'components/About';
+import Settings from 'components/Settings';
 import Dictionary from 'components/Dictionary';
 const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Grammar'));
 
@@ -56,6 +57,10 @@ class Router extends React.Component<IRouterProps, IRouterState> {
             case 'dictionary':
                 return (
                     <Dictionary/>
+                );
+            case 'settings':
+                return (
+                    <Settings/>
                 );
             case 'about':
                 return (

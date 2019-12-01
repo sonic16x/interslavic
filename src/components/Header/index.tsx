@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'connect';
 import './index.scss';
 import { setPageAction } from 'actions';
 import { pages } from 'routing';
+import { t } from 'translations';
 
 interface IHeaderProps {
     setPage: (page: string) => void;
@@ -31,7 +32,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
                         alt={'logo'}
                         onClick={() => this.setPage('dictionary')}
                     />
-                    Medžuslovjansky slovnik
+                    {t('mainTitle')}
                 </span>
                 <button
                     type={'button'}
@@ -63,7 +64,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
                     className={'btn btn-link nav-link' + (isActive ? ' active' : '')}
                     onClick={() => this.setPage(value)}
                 >
-                    {name}
+                    {t(name)}
                 </button>
             </li>
         );
@@ -76,7 +77,7 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({menuIsVisible, page}) {
+function mapStateToProps({page}) {
     return {page};
 }
 

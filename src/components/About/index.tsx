@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { worksheetUrl } from 'consts';
+import { t } from 'translations';
 import './index.scss';
 
 class About extends React.Component {
@@ -12,21 +13,21 @@ class About extends React.Component {
             <div className={'about'}>
                 <div className={'aboutContent'}>
                     <br/>
-                    <h4>Interslavic language dictionary</h4>
+                    <h4>{t('aboutSmallTitle')}</h4>
                     <div className={'common'}>
                         <br/>
-                        Using vocabulary from <a target={'_blank'} href={source}>{source}</a>
-                        <p>Authors of Interslavic/English/Polish translations: Jan van Steenbergen and Michał Swat</p>
+                        {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>
+                        <p>{t('aboutAuthors')}</p>
                         <hr/>
-                        <p>Please join the work to improve word translations for your native language.</p>
-                        <a target={'_blank'} href={worksheetUrl}>Table with translations</a>
+                        <p>{t('aboutJoinText')}</p>
+                        <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
                         <hr/>
-                        <p>Developer:</p>
-                        <a target={'_blank'} href={`email:${email}`}>Sergey Cherebedov ({email})</a>
+                        <p>{t('aboutDeveloper')}</p>
+                        <a target={'_blank'} href={`email:${email}`}>{t('aboutDeveloperName')} ({email})</a>
                         <hr/>
-                        Source code (Github) <a target={'_blank'} href={github}>{github}</a>
+                        {t('aboutSourceCode')} <a target={'_blank'} href={github}>{github}</a>
                         <hr/>
-                        <p>Our friends:</p>
+                        <p>{t('aboutOurFriends')}</p>
                         <a
                             title={'Interslavic Facebook'}
                             href={'http://www.facebook.com/groups/interslavic'}
@@ -64,15 +65,6 @@ class About extends React.Component {
                                 src={'https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'}
                             />
                         </a>
-                        <hr/>
-                        <button
-                            type={'button'}
-                            aria-label={'Go back'}
-                            className={'btn btn-primary shadow'}
-                            onClick={() => window.history.back()}
-                        >
-                            Go back
-                        </button>
                     </div>
                     <div className={'devInfo'}>
                         <p className={'text-muted buildHash'}>{DATE}</p>

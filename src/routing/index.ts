@@ -1,16 +1,21 @@
 export const pages = [
     {
-        name: 'Dictionary',
+        name: 'dictionaryTitle',
         value: 'dictionary',
         path: `${BASE_URL}/`.replace(/\/\//, '/'),
     },
     {
-        name: 'Grammar basics',
+        name: 'grammarTitle',
         value: 'grammar',
         path: `${BASE_URL}/grammar`.replace(/\/\//, '/'),
     },
     {
-        name: 'About',
+        name: 'settingsTitle',
+        value: 'settings',
+        path: `${BASE_URL}/settings`.replace(/\/\//, '/'),
+    },
+    {
+        name: 'aboutTitle',
         value: 'about',
         path: `${BASE_URL}/about`.replace(/\/\//, '/'),
     },

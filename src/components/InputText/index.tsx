@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'connect';
 import './index.scss';
 import { fromTextAction } from 'actions';
 import { toBCP47 } from 'utils/bcp47';
+import { t } from 'translations';
 
 interface IInputTextProps {
     changeFromText: (text: string) => void;
@@ -22,7 +23,7 @@ class InputText extends React.Component<IInputTextProps> {
                     autoComplete={this.props.spellCheck ? 'on' : 'off'}
                     autoCorrect={this.props.spellCheck ? 'on' : 'off'}
                     spellCheck={this.props.spellCheck}
-                    placeholder={'Type word here'}
+                    placeholder={t('typeWordLabel')}
                     className={'form-control fromText'}
                     value={this.props.fromText}
                     onChange={(e) => this.props.changeFromText(e.target.value)}
