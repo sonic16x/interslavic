@@ -19,6 +19,14 @@ const interfaceLanguageList = [
         name: 'Русский',
         value: 'ru',
     },
+    {
+        name: 'Medžuslovjansky',
+        value: 'isv_latin',
+    },
+    {
+        name: 'Меджусловјанскы',
+        value: 'isv_cyrillic',
+    },
 ];
 
 class Settings extends React.Component<ISettingsProps> {
