@@ -18,12 +18,12 @@
   "flavorisation": "Flavorisation",
   "loading": "Loading dictionary",
   "aboutSmallTitle": "Interslavic language dictionary",
-  "aboutJoinText": "Please join the work to improve word translations for your native language",
-  "aboutDeveloper": "Developer",
+  "aboutJoinText": "Please join the work to improve word translations for your native language.",
+  "aboutDeveloper": "Developer:",
   "aboutDeveloperName": "Sergey Cherebedov",
   "aboutTranslationsTable": "Table with translations",
   "aboutSourceCode": "Source code (Github)",
   "aboutOurFriends": "Our friends:",
   "aboutUsingFrom": "Using vocabulary from",
-  "aboutAuthors": "Authors of Interslavic/English/Polish translations: Jan van Steenbergen and Michal Swat"
+  "aboutAuthors": "Authors of English and Polish translations: Jan van Steenbergen and Michał Swat."
 }
