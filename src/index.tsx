@@ -109,7 +109,7 @@ function getInitialState(): IMainState {
     } catch (e) {}
     setLang(state.interfaceLang).then();
     delete state.interfaceLang;
-    console.log(state);
+
     return state;
 }
 

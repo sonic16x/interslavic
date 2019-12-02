@@ -48,16 +48,15 @@ class Results extends React.Component<IResultsProps> {
         }
 
         const lang = this.props.lang.from === 'isv' ? this.props.lang.to : this.props.lang.from;
+        const translatedPart = Dictionary.getPercentsOfTranslated()[lang];
 
         return (
             <div className={'results'}>
                 <>{results.map((item: ITranslateResult, i) => this.renderResultItem(item, i))}</>
                 {results.some((item) => !item.checked) &&
                 <div className={'messageForUser'}>
-                    Search results contain inaccurate automatic translations. Currently,{' '}
-                    {Dictionary.getPercentsOfTranslated()[lang]}% of the words of the selected language{' '}
-                    are verified. If you speak this language, join the work on improving translations!{' '}
-                    <a target={'_blank'} href={worksheetUrl}>The worksheet is located at this link.</a>
+                    {t('notVerifiedText').replace('part%', `${translatedPart}%`)}
+                    <a target={'_blank'} href={worksheetUrl}>{t('notVerifiedTableLinkText')}</a>
                 </div> }
             </div>
         );

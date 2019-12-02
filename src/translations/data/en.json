@@ -25,5 +25,10 @@
   "aboutSourceCode": "Source code (Github):",
   "aboutOurFriends": "Our friends:",
   "aboutUsingFrom": "Using vocabulary from",
-  "aboutAuthors": "Authors of English and Polish translations: Jan van Steenbergen and Michał Swat."
+  "aboutAuthors": "Authors of English and Polish translations: Jan van Steenbergen and Michał Swat.",
+  "notVerifiedText": "Search results contain inaccurate automatic translations.\nCurrently, part% of the words of the selected language are verified.\nIf you speak this language, join the work on improving translations!\n",
+  "notVerifiedTableLinkText": "The worksheet is located at this link.",
+  "notCommercialDisclaimer": "This project is not commercial and it have open source, we doing it free and just for fun. We do not earn money on this and do not pay for help.",
+  "gdprAlert": "This page uses cookies for analytics:",
+  "gdprAlertReadMore": "Ream more"
 }

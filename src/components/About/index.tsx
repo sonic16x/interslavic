@@ -19,6 +19,8 @@ class About extends React.Component {
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>
                         <p>{t('aboutAuthors')}</p>
                         <hr/>
+                        <b>{t('notCommercialDisclaimer')}</b>
+                        <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
                         <hr/>
