@@ -11,7 +11,6 @@
     "updateTestSnapshot": "ts-node -r tsconfig-paths/register ./tests/updateTestSnapshot.ts",
     "build": "cross-env NODE_ENV=production webpack",
     "build:demo": "cross-env NODE_ENV=production BASE_URL=/demo webpack",
-    "test": "jest --logHeapUsage --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "jest": {

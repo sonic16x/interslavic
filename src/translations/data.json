@@ -153,8 +153,8 @@
   "aboutUsingFrom": {
     "en": "Using vocabulary from:",
     "ru": "Используется словарный запас с сайта:",
-    "isv_cyrillic": "Користимо словосбор с сайта:",
-    "isv_latin": "Koristimo slovosbor s sajta:"
+    "isv_cyrillic": "Користи се словосбор с сайта:",
+    "isv_latin": "Koristi se slovosbor s sajta:"
   },
   "aboutAuthors": {
     "en": "Authors of English and Polish translations: Jan van Steenbergen and Michał Swat.",
