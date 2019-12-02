@@ -7,6 +7,7 @@
 
 .grammar {
   width: 100%;
+  padding-top: 15px;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
   margin-right: auto;
@@ -87,6 +88,7 @@
     position: absolute;
     top: 70px;
     left: calc(50% - 515px);
+    width: 235px;
   }
   .grammarContainer {
     overflow-x:hidden;

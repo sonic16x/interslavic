@@ -12,7 +12,6 @@ class About extends React.Component {
         return (
             <div className={'about'}>
                 <div className={'aboutContent'}>
-                    <br/>
                     <h4>{t('aboutSmallTitle')}</h4>
                     <div className={'common'}>
                         <br/>

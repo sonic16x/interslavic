@@ -3,5 +3,21 @@
   pointer-events: all;
   max-height: 100%;
   height: 100%;
-  padding: 15px 15px 4px 15px;
+}
+
+.settingsContent {
+  max-width: 1024px;
+  width: 100%;
+  padding: 15px 5px 15px 5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 1024px) {
+  .settingsContent {
+    padding-left: calc(100vw - 100% + 15px);
+  }
+  .settings {
+    overflow-x: hidden;
+    box-sizing: content-box;
+  }
 }

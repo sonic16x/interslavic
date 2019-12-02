@@ -46,7 +46,6 @@ class Grammar extends React.PureComponent {
                 ref={this.containerRef}
             >
                 <div className={'grammar'}>
-                    <br/>
                     <h4>Osnovna gramatika medžuslovjanskogo jezyka</h4>
                     <br/>
                     <Card title={'Sodržanje'} id={'content'}>

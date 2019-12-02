@@ -21,14 +21,13 @@
 .aboutContent {
   max-width: 1024px;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 15px 5px 15px 5px;
   margin-right: auto;
   margin-left: auto;
 }
 @media (min-width: 1024px) {
   .aboutContent {
-    padding-left: calc(100vw - 100% + 15px);
+    padding-left: calc(100vw - 100% + 5px);
   }
   .about {
     overflow-x: hidden;

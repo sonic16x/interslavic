@@ -37,14 +37,16 @@ class Settings extends React.Component<ISettingsProps> {
     public render() {
         return (
             <div className={'settings'}>
-                <h2>{t('settingsTitle')}</h2>
-                <hr/>
-                <Selector
-                    options={interfaceLanguageList}
-                    value={this.props.interfaceLang}
-                    label={t('interfaceLanguage')}
-                    onSelect={(langCode: string) => this.props.setInterfaceLang(langCode)}
-                />
+                <div className={'settingsContent'}>
+                    <h4>{t('settingsTitle')}</h4>
+                    <hr/>
+                    <Selector
+                        options={interfaceLanguageList}
+                        value={this.props.interfaceLang}
+                        label={t('interfaceLanguage')}
+                        onSelect={(langCode: string) => this.props.setInterfaceLang(langCode)}
+                    />
+                </div>
             </div>
         );
     }
