@@ -123,19 +123,19 @@
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations.\nCurrently, part% of the words of the selected language are verified.\nIf you speak this language, join the work on improving translations!\n",
-    "ru": "Результаты поиска содержат автоматические переводы.\nСейчас, part% слоав текущего языка проверены.\nЕсли это ваш родной язык, присоеденяйтесь к переводу слов!\n"
+    "ru": "Результаты поиска содержат неточные автоматические переводы.\nНа данный момент проверено part% слов выбранного языка.\nЕсли это ваш родной язык, присоединяйтесь к работе над улучшением переводов!\n"
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
-    "ru": "Таблица с переводами находится здесь."
+    "ru": "Рабочая таблица расположена по этой ссылке."
   },
   "notCommercialDisclaimer": {
-    "en": "This project is not commercial and it have open source, we doing it free and just for fun. We do not earn money on this and do not pay for help.",
-    "ru": "Этот проект не является коммерческим и имеет открытый исходный код, мы делаем это бесплатно и просто для удовольствия. Мы не зарабатываем на этом деньги и не платим за помощь."
+    "en": "This is a non-profit open source project. We are doing it for free, just for fun. We don't make money from it and we don't pay for help.",
+    "ru": "Это некоммерческий проект с открытым исходным кодом. Мы занимаемся им бесплатно для удовольствия. Мы не зарабатываем на этом деньги и не платим за помощь."
   },
   "gdprAlert": {
-    "en": "This page uses cookies for analytics:",
-    "ru": "Эта страница использует cookie для аналитики:"
+    "en": "This site uses cookies for analytics:",
+    "ru": "Этот сайт использует cookie для аналитики:"
   },
   "gdprAlertReadMore": {
     "en": "Ream more",
