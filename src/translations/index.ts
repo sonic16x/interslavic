@@ -1,17 +1,15 @@
-const translations = {};
+import translations from 'translations/data.json';
 let currentLang;
 
 export function t(key) {
-    if (translations[currentLang] && translations[currentLang][key]) {
-        return translations[currentLang][key];
+    if (translations[key] && translations[key][currentLang]) {
+        return translations[key][currentLang];
     } else {
         return key;
     }
 }
 
-export async function setLang(lang) {
-    if (!translations[lang]) {
-        translations[lang] = await import(`./data/${lang}.json`);
-    }
+export function setLang(lang) {
+    // console.log(translations);
     currentLang = lang;
 }

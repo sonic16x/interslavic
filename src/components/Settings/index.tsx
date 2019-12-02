@@ -52,7 +52,7 @@ class Settings extends React.Component<ISettingsProps> {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setInterfaceLang: (data: string) => setInterfaceLang(data)(dispatch),
+        setInterfaceLang: (data: string) => dispatch(setInterfaceLang(data)),
     };
 }
 

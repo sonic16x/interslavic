@@ -93,6 +93,14 @@ export function isLoadingAction(data: boolean) {
     };
 }
 
+export function setInterfaceLang(data: string) {
+    setLang(data);
+    return {
+        type: ActionTypes.SET_INTERFACE_LANG,
+        data,
+    };
+}
+
 export function runSearch() {
     return {
         type: ActionTypes.RUN_SEARCH,
@@ -114,19 +122,5 @@ export function fetchDictionary(wordsListUrl) {
             })
             .catch(() => location.reload(true))
         ;
-    };
-}
-
-export function setInterfaceLang(language: string) {
-    return (dispatch) => {
-        return setLang(language)
-            .then(() => {
-                dispatch(
-                    {
-                        type: ActionTypes.SET_INTERFACE_LANG,
-                        data: language,
-                    },
-                );
-            });
     };
 }

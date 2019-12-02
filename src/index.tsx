@@ -107,8 +107,8 @@ function getInitialState(): IMainState {
             ...savedState,
         };
     } catch (e) {}
-    setLang(state.interfaceLang).then();
-    delete state.interfaceLang;
+
+    setLang(state.interfaceLang);
 
     return state;
 }
