@@ -25,7 +25,9 @@
   },
   "latin": {
     "en": "Latin",
-    "ru": "Латиница"
+    "ru": "Латиница",
+    "isv_cyrillic": "Латиница",
+    "isv_latin": "Latinica"
   },
   "verified": {
     "en": "Verified",
@@ -45,11 +47,15 @@
   },
   "cyrillic": {
     "en": "Cyrillic",
-    "ru": "Кириллица"
+    "ru": "Кириллица",
+    "isv_cyrillic": "Кирилица",
+    "isv_latin": "Kirilica"
   },
   "aboutTitle": {
-    "en": "About",
-    "ru": "О словаре"
+    "en": "About it",
+    "ru": "О приложении",
+    "isv_cyrillic": "О програмѣ",
+    "isv_latin": "O programě"
   },
   "typeWordLabel": {
     "en": "Type word here",
