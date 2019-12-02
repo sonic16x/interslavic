@@ -16,6 +16,9 @@
     margin-left: 10px;
     margin-top: 10px;
   }
+  .common {
+    padding-top:10px;
+  }
 }
 
 .aboutContent {
@@ -25,6 +28,7 @@
   margin-right: auto;
   margin-left: auto;
 }
+
 @media (min-width: 1024px) {
   .aboutContent {
     padding-left: calc(100vw - 100% + 5px);

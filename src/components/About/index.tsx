@@ -14,11 +14,10 @@ class About extends React.Component {
                 <div className={'aboutContent'}>
                     <h4>{t('aboutSmallTitle')}</h4>
                     <div className={'common'}>
-                        <br/>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>
                         <p>{t('aboutAuthors')}</p>
                         <hr/>
-                        <b>{t('notCommercialDisclaimer')}</b>
+                        <i>{t('nonCommercialDisclaimer')}</i>
                         <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>

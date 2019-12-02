@@ -122,8 +122,8 @@
   "aboutDeveloper": {
     "en": "Developer:",
     "ru": "Разработчик:",
-    "isv_cyrillic": "Изработник",
-    "isv_latin": "Izrabotnik"
+    "isv_cyrillic": "Изработник:",
+    "isv_latin": "Izrabotnik:"
   },
   "aboutDeveloperName": {
     "en": "Sergey Cherebedov",
@@ -174,7 +174,7 @@
     "isv_cyrillic": "Работна табела ϳе умӗшчена по овому линку:",
     "isv_latin": "Rabotna tabela je uměščena po ovomu linku:"
   },
-  "notCommercialDisclaimer": {
+  "nonCommercialDisclaimer": {
     "en": "This is a non-profit open source project. We are doing it for free, just for fun. We don't make money from it and we don't pay for help.",
     "ru": "Это некоммерческий проект с открытым исходным кодом. Мы занимаемся им бесплатно для удовольствия. Мы не зарабатываем на этом деньги и не платим за помощь.",
     "isv_cyrillic": "То ϳе безкористны проϳект с отворϳеным изходным кодом. Дӗлаϳемо го безплатно дльа приϳемности. Не заработываϳемо на овом гроши и не платимо за помоч.",
