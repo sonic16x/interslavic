@@ -25,27 +25,27 @@
   },
   "latin": {
     "en": "Latin",
-    "ru": "Язык интерфейса"
+    "ru": "Латиница"
   },
   "verified": {
     "en": "Verified",
-    "ru": "Кириллица"
+    "ru": "Проверено"
   },
   "autoTranslation": {
     "en": "Auto-translation",
-    "ru": "Латиница"
+    "ru": "Автоперевод"
   },
   "showForms": {
     "en": "Show forms",
-    "ru": "Проверено"
+    "ru": "Словоформы"
   },
   "interfaceLanguage": {
     "en": "Interface language",
-    "ru": "Автоперевод"
+    "ru": "Язык интерфейса"
   },
   "cyrillic": {
     "en": "Cyrillic",
-    "ru": "Словоформы"
+    "ru": "Кириллица"
   },
   "aboutTitle": {
     "en": "About",
