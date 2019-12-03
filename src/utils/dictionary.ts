@@ -49,6 +49,7 @@ class DictionaryClass {
     private isvToLatinMap: Map<string, string>;
     private isvAddMap: Map<string, string[]>;
     private splittedMap: Map<string, string[]>;
+    private splittedMap2: Map<string, string[]>;
 
     private constructor() {
         this.header = [];
@@ -57,6 +58,7 @@ class DictionaryClass {
         this.isvToLatinMap = new Map();
         this.isvAddMap = new Map();
         this.splittedMap = new Map();
+        this.splittedMap2 = new Map();
         this.percentsOfChecked = {};
         this.percentsOfChecked = {};
     }
@@ -97,7 +99,9 @@ class DictionaryClass {
                 } else {
                     splittedField = this.splitWords(removeExclamationMark(fromField));
                 }
+
                 this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
+                this.splittedMap2.set(key, splittedField.map((chunk) => this.levenshteinPrepare(from, chunk)));
             });
         });
 
@@ -120,6 +124,7 @@ class DictionaryClass {
         if (!text) {
             return [];
         }
+        const levenText = this.levenshteinPrepare(from, inputText);
         const distMap = new WeakMap();
         const results = this.words
             .filter((item) => {
@@ -132,10 +137,10 @@ class DictionaryClass {
                 return splittedField.some((chunk) => searchTypes[searchType](chunk, text));
             })
             .map((item) => {
-                const splittedField = this.getSplittedField(from, item);
+                const splittedField = this.getSplittedField2(from, item);
                 const dist = splittedField
                     .reduce((acc, item) => {
-                        const lDist = levenshteinDistance(text, this.searchPrepare(from, item));
+                        const lDist = levenshteinDistance(levenText, item);
                         if (lDist < acc) {
                             return lDist;
                         }
@@ -192,6 +197,10 @@ class DictionaryClass {
         const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}`;
         return this.splittedMap.get(key);
     }
+    private getSplittedField2(from: string, item: string[]): string[] {
+        const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}`;
+        return this.splittedMap2.get(key);
+    }
     private splitWords(text: string): string[] {
         return text.includes(';') ? text.split(';') : text.split(',');
     }
@@ -219,17 +228,9 @@ class DictionaryClass {
         }
     }
     private searchPrepare(lang: string, text: string): string {
-        let lowerCaseText = text.toLowerCase()
-            .replace(' ', '')
-            .replace(',', '')
+        const lowerCaseText = this.levenshteinPrepare(lang, text)
             .replace(/[\u0300-\u036f]/g, '');
-        if (lang !== 'isv') {
-            lowerCaseText = removeBrackets(lowerCaseText, '(', ')');
-            lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
-        } else {
-            lowerCaseText = convertCases(lowerCaseText);
-            lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
-        }
+
         switch (lang) {
             case 'isv':
                 return this.isvToEngLatin(lowerCaseText);
@@ -245,6 +246,20 @@ class DictionaryClass {
             default:
                 return lowerCaseText;
         }
+    }
+    private levenshteinPrepare(lang: string, text: string): string {
+        let lowerCaseText = text.toLowerCase()
+            .replace(' ', '')
+            .replace(',', '');
+
+        if (lang !== 'isv') {
+            lowerCaseText = removeBrackets(lowerCaseText, '(', ')');
+            lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
+        } else {
+            lowerCaseText = convertCases(lowerCaseText);
+            lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
+        }
+        return lowerCaseText;
     }
 }
 
