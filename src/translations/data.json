@@ -130,8 +130,8 @@
   "flavorisation": {
     "en": "Flavorization",
     "ru": "Флаворизация",
-    "isv_cyrillic": "Flavorizacija",
-    "isv_latin": "Флаворизација",
+    "isv_cyrillic": "Флаворизација",
+    "isv_latin": "Flavorizacija",
     "sk": "Flavorizácia",
     "cs": "Flavorizace"
   },
@@ -146,7 +146,7 @@
   "aboutSmallTitle": {
     "en": "Interslavic language dictionary",
     "ru": "Словарь межславянского языка",
-    "isv_cyrillic": "Словник меджусловјанского ϳезыка",
+    "isv_cyrillic": "Словник меджусловјанского језыка",
     "isv_latin": "Slovnik medžuslovjanskogo jezyka",
     "sk": "Slovník medzislovanského jazyka",
     "cs": "Slovník mezislovanslého jazyka"
@@ -154,7 +154,7 @@
   "aboutJoinText": {
     "en": "Please join the work to improve word translations for your native language!",
     "ru": "Присоединяйтесь к работе над улучшением переводов слов на ваш родной язык!",
-    "isv_cyrillic": "Просимо, приϳедньаϳте се к работӗ над улепшеньем прӗводов на ваш родны ϳезык!",
+    "isv_cyrillic": "Просимо, приједньајте се к работӗ над улепшеньем прӗводов на ваш родны језык!",
     "isv_latin": "Prosimo, prijednjajte se k rabotě nad ulepšenjem prěvodov na vaš rodny jezyk!",
     "sk": "Pripojte sa, prosím, k práci na vylepšní prekladu do vášho rodného jazyka!",
     "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!"
@@ -170,7 +170,7 @@
   "aboutDeveloperName": {
     "en": "Sergey Cherebedov",
     "ru": "Сергей Черебедов",
-    "isv_cyrillic": "Сергей Черебедов",
+    "isv_cyrillic": "Сергеј Черебедов",
     "isv_latin": "Sergej Čerebedov",
     "sk": "Sergej Čerebedov",
     "cs": "Sergej Čerebedov"
@@ -184,17 +184,17 @@
     "cs": "Tabulka s překlady"
   },
   "aboutSourceCode": {
-    "en": "Source code (Github):",
-    "ru": "Исходный код (Github):",
-    "isv_cyrillic": "Изходны код (Github):",
-    "isv_latin": "Izhodny kod (Github):",
-    "sk": "Zdrojový kód (Github):",
-    "cs": "Zdrojový kód (Github):"
+    "en": "Source code (GitHub):",
+    "ru": "Исходный код (GitHub):",
+    "isv_cyrillic": "Изходны код (GitHub):",
+    "isv_latin": "Izhodny kod (GitHub):",
+    "sk": "Zdrojový kód (GitHub):",
+    "cs": "Zdrojový kód (GitHub):"
   },
   "aboutOurFriends": {
     "en": "Interslavic online community:",
     "ru": "Межславянское интернет-сообщество:",
-    "isv_cyrillic": "Меджусловϳанска интернетна обчина:",
+    "isv_cyrillic": "Меджусловјанска интернетна обчина:",
     "isv_latin": "Medžuslovjanska internetna občina:",
     "sk": "Medzislovenská internetová komunita:",
     "cs": "Mezislovanské internetové společenství:"
@@ -210,24 +210,24 @@
   "aboutAuthors": {
     "en": "Authors of English and Polish translations: Jan van Steenbergen and Michał Swat.",
     "ru": "Авторы английского и польского переводов: Ян ван Стенберген и Михал Сват.",
-    "isv_cyrillic": "Авторы английского и польского прӗводов сут Јан ван Стеенберген и Михал Сват.",
-    "isv_latin": "Avtory anglijskogo i poljskogo prěvodov sut Jan van Steenbergen i Mihal Svat.",
+    "isv_cyrillic": "Авторы англијского и польского прӗвода сут Јан ван Стеенберген и Михал Сват.",
+    "isv_latin": "Avtory anglijskogo i poljskogo prěvoda sut Jan van Steenbergen i Mihal Svat.",
     "sk": "Autori anglickej a poľskej verzie: Jan van Steenbergen a Michał Swat.",
     "cs": "Autoři anglické a polské verze: Jan van Steenbergen a Michał Swat."
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
     "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
-    "isv_cyrillic": "Резултаты исканьа содржаϳут неточне автоматичне прӗводы. Сеϳчасно ϳест провӗрено part% слов избраного ϳезыка. Ако ли знаϳете ов ϳезык, приϳедньаϳте се к работӗ над улепшеньем прӗводов!",
-    "isv_latin": "Rezultaty iskanja sodržaϳut netočne avtomatične prӗvody. Seϳčasno ϳest provӗreno part% slov izbranogo ϳezyka. Ako li znajete ov ϳezyk, priϳednjaϳte se k rabotӗ nad ulepšenjem prӗvodov!",
-    "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov.",
-    "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů."
+    "isv_cyrillic": "Резултаты исканьа содржаϳут неточне автоматичне прӗводы. Сеϳчасно ϳест провӗрено part% слов избраного ϳезыка. Ако ли знаϳете тутоϳ ϳезык, приϳедньаϳте се к работӗ над улепшеньем прӗводов!",
+    "isv_latin": "Rezultaty iskanja sodržaϳut netočne avtomatične prӗvody. Seϳčasno ϳest provӗreno part% slov izbranogo ϳezyka. Ako li znajete tutoj ϳezyk, priϳednjaϳte se k rabotӗ nad ulepšenjem prӗvodov!",
+    "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
+    "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů!"
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
     "ru": "Рабочая таблица расположена по этой ссылке.",
-    "isv_cyrillic": "Работна табела ϳе умӗшчена по овому линку.",
-    "isv_latin": "Rabotna tabela je uměščena po ovomu linku.",
+    "isv_cyrillic": "Работна табела ϳе умӗшчена на тутом линку.",
+    "isv_latin": "Rabotna tabela je uměščena на tutom linku.",
     "sk": "Pracová tabuľka sa nachádza na tomto linku.",
     "cs": "Pracovní tabulka je umístěna na tomto linku."
   },
@@ -242,15 +242,15 @@
   "gdprAlert": {
     "en": "This site uses cookies for analytics:",
     "ru": "Этот сайт использует куки для аналитики:",
-    "isv_cyrillic": "Сеϳ сайт користи куки (cookies) дльа аналитикы:",
-    "isv_latin": "Sej sajt koristi kuki (cookies) dlja analitiky:",
+    "isv_cyrillic": "Тутоϳ сайт користаје куки (cookies) дльа аналитикы:",
+    "isv_latin": "Tutoj sajt koristaje kuki (cookies) dlja analitiky:",
     "sk": "Tieto stránky používajú na analýzu cookies:",
     "cs": "Tyto stránky používají pro analýzu cookies:"
   },
   "gdprAlertReadMore": {
-    "en": "Read more",
-    "ru": "Узнать больше",
-    "isv_cyrillic": "Читаϳ болье:",
+    "en": "Read more:",
+    "ru": "Узнать больше:",
+    "isv_cyrillic": "Читај болье:",
     "isv_latin": "Čitaj bolje:",
     "sk": "Čítaj viac:",
     "cs": "Čti více:"
