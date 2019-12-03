@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import About from 'components/About';
 import Settings from 'components/Settings';
 import Dictionary from 'components/Dictionary';
+import { toBCP47 } from 'utils/bcp47';
+
 const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Grammar'));
 
 import './index.scss';
@@ -11,6 +13,7 @@ import { fetchDictionary, setPageAction } from 'actions';
 import { getPageFromPath, getPathFromPage } from 'routing';
 
 interface IRouterProps {
+    lang: string;
     isLoading: boolean;
     page: string;
     setPage: (page: string) => void;
@@ -28,6 +31,12 @@ class Router extends React.Component<IRouterProps, IRouterState> {
         this.state = {
             prevPage: props.page,
         };
+    }
+    public componentDidMount() {
+      this.updateDocumentLanguage();
+    }
+    public componentDidUpdate() {
+      this.updateDocumentLanguage();
     }
     public render() {
         const { page } = this.props;
@@ -75,10 +84,19 @@ class Router extends React.Component<IRouterProps, IRouterState> {
             this.props.setPage(page);
         }
     }
+    private updateDocumentLanguage() {
+      if (typeof document !== 'undefined') {
+        document.documentElement.lang = this.props.lang;
+      }
+    }
 }
 
-function mapStateToProps({ isLoading, page }) {
-    return { isLoading, page };
+function mapStateToProps({ interfaceLang, isLoading, page }) {
+    return {
+      lang: toBCP47(interfaceLang),
+      isLoading,
+      page,
+    };
 }
 
 function mapDispatchToProps(dispatch) {

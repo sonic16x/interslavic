@@ -4,6 +4,7 @@
     "ru":"Межславянский словарь",
     "isv-Cyrl": "Меджусловјанскы словник",
     "isv-Latn": "Medžuslovjansky slovnik",
+    "uk": "Міжслов'янський словник",
     "sk": "Medzislovanský slovník",
     "cs": "Mezislovanský slovník",
     "hr": "Međuslavenski rječnik",
@@ -14,6 +15,7 @@
     "ru": "Словарь",
     "isv-Cyrl": "Словник",
     "isv-Latn": "Slovnik",
+    "uk": "Словник",
     "sk": "Slovník",
     "cs": "Slovník"
   },
@@ -22,6 +24,7 @@
     "ru": "Грамматика",
     "isv-Cyrl": "Граматика",
     "isv-Latn": "Gramatika",
+    "uk": "Граматика",
     "sk": "Gramatika",
     "cs": "Gramatika"
   },
@@ -30,6 +33,7 @@
     "ru": "Настройки",
     "isv-Cyrl": "Настројкы",
     "isv-Latn": "Nastrojky",
+    "uk": "Налаштування",
     "sk": "Nastavenia",
     "cs": "Nastavení"
   },
@@ -38,6 +42,7 @@
     "ru": "Латиница",
     "isv-Cyrl": "Латиница",
     "isv-Latn": "Latinica",
+    "uk": "Латиниця",
     "sk": "Latinka",
     "cs": "Latinka"
   },
@@ -46,6 +51,7 @@
     "ru": "Проверено",
     "isv-Cyrl": "Провѣрено",
     "isv-Latn": "Prověreno",
+    "uk": "Перевірено",
     "sk": "Overené",
     "cs": "Ověřeno"
   },
@@ -54,6 +60,7 @@
     "ru": "Автоперевод",
     "isv-Cyrl": "Автопрѣвод",
     "isv-Latn": "Avtoprěvod",
+    "uk": "Автоматичний переклад",
     "sk": "Automatický preklad",
     "cs": "Automatický překlad"
   },
@@ -62,6 +69,7 @@
     "ru": "Словоформы",
     "isv-Cyrl": "Покажи формы",
     "isv-Latn": "Pokaži formy",
+    "uk": "Словоформи",
     "sk": "Ukáž slovné tvary",
     "cs": "Ukaž slovní tvary"
   },
@@ -70,6 +78,7 @@
     "ru": "Язык интерфейса",
     "isv-Cyrl": "Језык интерфејса",
     "isv-Latn": "Jezyk interfejsa",
+    "uk": "Мова інтерфейсу",
     "sk": "Jazyk rozhrania",
     "cs": "Jazyk rozhraní"
   },
@@ -78,6 +87,7 @@
     "ru": "Кириллица",
     "isv-Cyrl": "Кирилица",
     "isv-Latn": "Kirilica",
+    "uk": "Кирилиця",
     "sk": "Cyrilika",
     "cs": "Cyrilice"
   },
@@ -86,6 +96,7 @@
     "ru": "О приложении",
     "isv-Cyrl": "О програмѣ",
     "isv-Latn": "O programě",
+    "uk": "Про застосунок",
     "sk": "O programe",
     "cs": "O programu"
   },
@@ -94,6 +105,7 @@
     "ru": "Введите слово",
     "isv-Cyrl": "Впиши слово",
     "isv-Latn": "Vpiši slovo",
+    "uk": "Введіть слово",
     "sk": "Zadaj slovo",
     "cs": "Zadej slovo"
   },
@@ -102,6 +114,7 @@
     "ru": "По началу",
     "isv-Cyrl": "По начелу",
     "isv-Latn": "Po načelu",
+    "uk": "Починається",
     "sk": "Začiatok",
     "cs": "Začátek"
   },
@@ -110,6 +123,7 @@
     "ru": "Полностью",
     "isv-Cyrl": "Цѣло",
     "isv-Latn": "Cělo",
+    "uk": "Збігається",
     "sk": "Úplná zhoda",
     "cs": "Úplná shoda"
   },
@@ -118,6 +132,7 @@
     "ru": "По концу",
     "isv-Cyrl": "По концу",
     "isv-Latn": "Po koncu",
+    "uk": "Закінчується",
     "sk": "Koniec",
     "cs": "Konec"
   },
@@ -126,6 +141,7 @@
     "ru": "Любая часть",
     "isv-Cyrl": "Како-либо",
     "isv-Latn": "Kako-libo",
+    "uk": "Містить",
     "sk": "Kdekoľvek",
     "cs": "Kdekoli"
   },
@@ -134,6 +150,7 @@
     "ru": "Флаворизация",
     "isv-Cyrl": "Флаворизација",
     "isv-Latn": "Flavorizacija",
+    "uk": "Флаворизація",
     "sk": "Flavorizácia",
     "cs": "Flavorizace"
   },
@@ -142,6 +159,7 @@
     "ru": "Загрузка словаря",
     "isv-Cyrl": "Dostava slovnika",
     "isv-Latn": "Достава словника",
+    "uk": "Завантаження словника",
     "sk": "Načítanie slovníka",
     "cs": "Načtení slovníku"
   },
@@ -150,6 +168,7 @@
     "ru": "Словарь межславянского языка",
     "isv-Cyrl": "Словник меджусловјанского језыка",
     "isv-Latn": "Slovnik medžuslovjanskogo jezyka",
+    "uk": "Словник міжслов'янської мови",
     "sk": "Slovník medzislovanského jazyka",
     "cs": "Slovník mezislovanslého jazyka"
   },
@@ -158,6 +177,7 @@
     "ru": "Присоединяйтесь к работе над улучшением переводов слов на ваш родной язык!",
     "isv-Cyrl": "Просимо, приједньајте се к работѣ над улепшеньем прѣводов на ваш родны језык!",
     "isv-Latn": "Prosimo, prijednjajte se k rabotě nad ulepšenjem prěvodov na vaš rodny jezyk!",
+    "uk": "Запрошуємо долучитися до роботи з поліпшення перекладів слів вашою рідною мовою!",
     "sk": "Pripojte sa, prosím, k práci na vylepšní prekladu do vášho rodného jazyka!",
     "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!"
   },
@@ -166,6 +186,7 @@
     "ru": "Разработчик:",
     "isv-Cyrl": "Изработник:",
     "isv-Latn": "Izrabotnik:",
+    "uk": "Розробник:",
     "sk": "Developer",
     "cs": "Developer"
   },
@@ -174,6 +195,7 @@
     "ru": "Сергей Черебедов",
     "isv-Cyrl": "Сергеј Черебедов",
     "isv-Latn": "Sergej Čerebedov",
+    "uk": "Сергій Черебедов",
     "sk": "Sergej Čerebedov",
     "cs": "Sergej Čerebedov"
   },
@@ -182,6 +204,7 @@
     "ru": "Таблица с переводами",
     "isv-Cyrl": "Табела с прѣводами",
     "isv-Latn": "Tabela s prěvodami",
+    "uk": "Таблиця з перекладами",
     "sk": "Tabuľka s prekladmi",
     "cs": "Tabulka s překlady"
   },
@@ -190,14 +213,16 @@
     "ru": "Исходный код (GitHub):",
     "isv-Cyrl": "Изходны код (GitHub):",
     "isv-Latn": "Izhodny kod (GitHub):",
-    "sk": "Zdrojový kód (GitHub):",
-    "cs": "Zdrojový kód (GitHub):"
+    "uk": "Вихідний код (Github):",
+    "sk": "Zdrojový kód (Github):",
+    "cs": "Zdrojový kód (Github):"
   },
   "aboutOurFriends": {
     "en": "Interslavic online community:",
     "ru": "Межславянское интернет-сообщество:",
     "isv-Cyrl": "Меджусловјанска интернетна обчина:",
     "isv-Latn": "Medžuslovjanska internetna občina:",
+    "uk": "Міжслов'янська інтернет-спільнота:",
     "sk": "Medzislovenská internetová komunita:",
     "cs": "Mezislovanské internetové společenství:"
   },
@@ -206,6 +231,7 @@
     "ru": "Используется словарный запас с сайта:",
     "isv-Cyrl": "Користи се словосбор с сайта:",
     "isv-Latn": "Koristi se slovosbor s sajta:",
+    "uk": "Використовується словниковий запас із сайту:",
     "sk": "Slovná zásoba je použitá zo stránky:",
     "cs": "Slovní zásoba se používá ze stránek:"
   },
@@ -214,6 +240,7 @@
     "ru": "Авторы английского и польского переводов: Ян ван Стенберген и Михал Сват.",
     "isv-Cyrl": "Авторы англијского и польского прѣвода сут Јан ван Стеенберген и Михал Сват.",
     "isv-Latn": "Avtory anglijskogo i poljskogo prěvoda sut Jan van Steenbergen i Mihal Svat.",
+    "uk": "Автори англійського та польського перекладів: Ян ван Cтеенберґен та Міхал Сват.",
     "sk": "Autori anglickej a poľskej verzie: Jan van Steenbergen a Michał Swat.",
     "cs": "Autoři anglické a polské verze: Jan van Steenbergen a Michał Swat."
   },
@@ -222,6 +249,7 @@
     "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
     "isv-Cyrl": "Резултаты исканьа содржаϳут неточне автоматичне прѣводы. Сеϳчасно ϳест провѣрено part% слов избраного ϳезыка. Ако ли знаϳете тутоϳ ϳезык, приϳедньаϳте се к работѣ над улепшеньем прѣводов!",
     "isv-Latn": "Rezultaty iskanja sodržaϳut netočne avtomatične prѣvody. Seϳčasno ϳest provѣreno part% slov izbranogo ϳezyka. Ako li znajete tutoj ϳezyk, priϳednjaϳte se k rabotѣ nad ulepšenjem prѣvodov!",
+    "uk": "Результати пошуку містять неточні автоматичні переклади. Нині part% слів обраної мови є перевіреними . Якщо ви знаєте цю мову, долучайтесь до роботи з поліпшення перекладів!",
     "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
     "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů!"
   },
@@ -230,6 +258,7 @@
     "ru": "Рабочая таблица расположена по этой ссылке.",
     "isv-Cyrl": "Работна табела ϳе умѣшчена на тутом линку.",
     "isv-Latn": "Rabotna tabela je uměščena на tutom linku.",
+    "uk": "Робоча таблиця знаходиться за цим посиланням.",
     "sk": "Pracová tabuľka sa nachádza na tomto linku.",
     "cs": "Pracovní tabulka je umístěna na tomto linku."
   },
@@ -238,6 +267,7 @@
     "ru": "Это некоммерческий проект с открытым исходным кодом. Мы занимаемся им бесплатно для удовольствия. Мы не зарабатываем на этом деньги и не платим за помощь.",
     "isv-Cyrl": "То ϳе безкористны проϳект с отворϳеным изходным кодом. Дѣлаϳемо го безплатно дльа приϳемности. Не заработываϳемо на овом гроши и не платимо за помоч.",
     "isv-Latn": "To ϳe bezkoristny proϳekt s otvorϳenym izhodnym kodom. Dѣlaϳemo go bezplatno dlja priϳemnosti. Ne zarabotyvaϳemo na ovom groši i ne platimo za pomoč.",
+    "uk": "Це некомерційний проєкт з відкритим вихідним кодом. Ми створюємо його безкоштовно задля задоволення. Ми не заробляємо на ньому гроші і не платимо за допомогу.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc."
   },
@@ -246,6 +276,7 @@
     "ru": "Этот сайт использует куки для аналитики:",
     "isv-Cyrl": "Тутоϳ сайт користаје куки (cookies) дльа аналитикы:",
     "isv-Latn": "Tutoj sajt koristaje kuki (cookies) dlja analitiky:",
+    "uk": "Цей сайт використовує реп'яшки (cookies) для аналітики:",
     "sk": "Tieto stránky používajú na analýzu cookies:",
     "cs": "Tyto stránky používají pro analýzu cookies:"
   },
@@ -254,6 +285,7 @@
     "ru": "Узнать больше:",
     "isv-Cyrl": "Читај болье:",
     "isv-Latn": "Čitaj bolje:",
+    "uk": "Дізнатися більше",
     "sk": "Čítaj viac:",
     "cs": "Čti více:"
   }

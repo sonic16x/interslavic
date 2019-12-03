@@ -17,15 +17,19 @@ const interfaceLanguageList = [
     },
     {
         name: 'Medžuslovjansky',
-        value: 'isv_latin',
+        value: 'isv-Latn',
     },
     {
         name: 'Меджусловјанскы',
-        value: 'isv_cyrillic',
+        value: 'isv-Cyrl',
     },
     {
         name: 'Русский',
         value: 'ru',
+    },
+    {
+        name: 'Українська',
+        value: 'uk',
     },
     {
         name: 'Češky',
