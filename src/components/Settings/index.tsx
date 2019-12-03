@@ -28,11 +28,11 @@ const interfaceLanguageList = [
         value: 'ru',
     },
     {
-        name: 'Čeština',
+        name: 'Češky',
         value: 'cs',
     },
     {
-        name: 'Slovenčina',
+        name: 'Slovenský',
         value: 'sk',
     },
 ];
