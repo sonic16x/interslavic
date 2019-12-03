@@ -11,7 +11,6 @@ export function t(key) {
     }
 }
 
-
 export function setLang(lang) {
     // console.log(translations);
     currentLang = lang;
