@@ -1,7 +1,11 @@
 export function toBCP47(code: string) {
-  switch (code) {
-    case 'isv': return 'art-x-isv';
-    case 'sr': return 'sr-Cyrl';
-    default: return code;
+  if (code.startsWith('isv')) {
+    return code.replace('isv', 'art-x-isv');
   }
+
+  if (code === 'sr') {
+    return 'sr-Cyrl';
+  }
+
+  return code;
 }

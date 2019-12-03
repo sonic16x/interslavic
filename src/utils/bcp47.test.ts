@@ -5,6 +5,10 @@ describe('toBCP47', () => {
     expect(toBCP47('isv')).toBe('art-x-isv');
   });
 
+  it('should convert "isv-Latn" to art-x-isv-Latn', () => {
+    expect(toBCP47('isv-Latn')).toBe('art-x-isv-Latn');
+  });
+
   it('should convert "sr" to explictly Cyrillic Serbian (as for now)', () => {
     expect(toBCP47('sr')).toBe('sr-Cyrl');
   });
