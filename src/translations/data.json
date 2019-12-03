@@ -42,7 +42,7 @@
   "verified": {
     "en": "Verified",
     "ru": "Проверено",
-    "isv_cyrillic": "Провӗрено",
+    "isv_cyrillic": "Провѣрено",
     "isv_latin": "Prověreno",
     "sk": "Overené",
     "cs": "Ověřeno"
@@ -50,7 +50,7 @@
   "autoTranslation": {
     "en": "Auto-translation",
     "ru": "Автоперевод",
-    "isv_cyrillic": "Автопрӗвод",
+    "isv_cyrillic": "Автопрѣвод",
     "isv_latin": "Avtoprěvod",
     "sk": "Automatický preklad",
     "cs": "Automatický překlad"
@@ -82,7 +82,7 @@
   "aboutTitle": {
     "en": "About",
     "ru": "О приложении",
-    "isv_cyrillic": "О програмӗ",
+    "isv_cyrillic": "О програмѣ",
     "isv_latin": "O programě",
     "sk": "O programe",
     "cs": "O programu"
@@ -106,7 +106,7 @@
   "searchTypeEntire": {
     "en": "Entire",
     "ru": "Полностью",
-    "isv_cyrillic": "Цӗло",
+    "isv_cyrillic": "Цѣло",
     "isv_latin": "Cělo",
     "sk": "Úplná zhoda",
     "cs": "Úplná shoda"
@@ -154,7 +154,7 @@
   "aboutJoinText": {
     "en": "Please join the work to improve word translations for your native language!",
     "ru": "Присоединяйтесь к работе над улучшением переводов слов на ваш родной язык!",
-    "isv_cyrillic": "Просимо, приједньајте се к работӗ над улепшеньем прӗводов на ваш родны језык!",
+    "isv_cyrillic": "Просимо, приједньајте се к работѣ над улепшеньем прѣводов на ваш родны језык!",
     "isv_latin": "Prosimo, prijednjajte se k rabotě nad ulepšenjem prěvodov na vaš rodny jezyk!",
     "sk": "Pripojte sa, prosím, k práci na vylepšní prekladu do vášho rodného jazyka!",
     "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!"
@@ -178,7 +178,7 @@
   "aboutTranslationsTable": {
     "en": "Table with translations",
     "ru": "Таблица с переводами",
-    "isv_cyrillic": "Табела с прӗводами",
+    "isv_cyrillic": "Табела с прѣводами",
     "isv_latin": "Tabela s prěvodami",
     "sk": "Tabuľka s prekladmi",
     "cs": "Tabulka s překlady"
@@ -210,7 +210,7 @@
   "aboutAuthors": {
     "en": "Authors of English and Polish translations: Jan van Steenbergen and Michał Swat.",
     "ru": "Авторы английского и польского переводов: Ян ван Стенберген и Михал Сват.",
-    "isv_cyrillic": "Авторы англијского и польского прӗвода сут Јан ван Стеенберген и Михал Сват.",
+    "isv_cyrillic": "Авторы англијского и польского прѣвода сут Јан ван Стеенберген и Михал Сват.",
     "isv_latin": "Avtory anglijskogo i poljskogo prěvoda sut Jan van Steenbergen i Mihal Svat.",
     "sk": "Autori anglickej a poľskej verzie: Jan van Steenbergen a Michał Swat.",
     "cs": "Autoři anglické a polské verze: Jan van Steenbergen a Michał Swat."
@@ -218,15 +218,15 @@
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
     "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
-    "isv_cyrillic": "Резултаты исканьа содржаϳут неточне автоматичне прӗводы. Сеϳчасно ϳест провӗрено part% слов избраного ϳезыка. Ако ли знаϳете тутоϳ ϳезык, приϳедньаϳте се к работӗ над улепшеньем прӗводов!",
-    "isv_latin": "Rezultaty iskanja sodržaϳut netočne avtomatične prӗvody. Seϳčasno ϳest provӗreno part% slov izbranogo ϳezyka. Ako li znajete tutoj ϳezyk, priϳednjaϳte se k rabotӗ nad ulepšenjem prӗvodov!",
+    "isv_cyrillic": "Резултаты исканьа содржаϳут неточне автоматичне прѣводы. Сеϳчасно ϳест провѣрено part% слов избраного ϳезыка. Ако ли знаϳете тутоϳ ϳезык, приϳедньаϳте се к работѣ над улепшеньем прѣводов!",
+    "isv_latin": "Rezultaty iskanja sodržaϳut netočne avtomatične prѣvody. Seϳčasno ϳest provѣreno part% slov izbranogo ϳezyka. Ako li znajete tutoj ϳezyk, priϳednjaϳte se k rabotѣ nad ulepšenjem prѣvodov!",
     "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
     "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů!"
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
     "ru": "Рабочая таблица расположена по этой ссылке.",
-    "isv_cyrillic": "Работна табела ϳе умӗшчена на тутом линку.",
+    "isv_cyrillic": "Работна табела ϳе умѣшчена на тутом линку.",
     "isv_latin": "Rabotna tabela je uměščena на tutom linku.",
     "sk": "Pracová tabuľka sa nachádza na tomto linku.",
     "cs": "Pracovní tabulka je umístěna na tomto linku."
@@ -234,8 +234,8 @@
   "nonCommercialDisclaimer": {
     "en": "This is a non-profit open source project. We are doing it for free, just for fun. We don't make money from it and we don't pay for help.",
     "ru": "Это некоммерческий проект с открытым исходным кодом. Мы занимаемся им бесплатно для удовольствия. Мы не зарабатываем на этом деньги и не платим за помощь.",
-    "isv_cyrillic": "То ϳе безкористны проϳект с отворϳеным изходным кодом. Дӗлаϳемо го безплатно дльа приϳемности. Не заработываϳемо на овом гроши и не платимо за помоч.",
-    "isv_latin": "To ϳe bezkoristny proϳekt s otvorϳenym izhodnym kodom. Dӗlaϳemo go bezplatno dlja priϳemnosti. Ne zarabotyvaϳemo na ovom groši i ne platimo za pomoč.",
+    "isv_cyrillic": "То ϳе безкористны проϳект с отворϳеным изходным кодом. Дѣлаϳемо го безплатно дльа приϳемности. Не заработываϳемо на овом гроши и не платимо за помоч.",
+    "isv_latin": "To ϳe bezkoristny proϳekt s otvorϳenym izhodnym kodom. Dѣlaϳemo go bezplatno dlja priϳemnosti. Ne zarabotyvaϳemo na ovom groši i ne platimo za pomoč.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc."
   },
