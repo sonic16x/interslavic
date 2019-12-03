@@ -5,7 +5,7 @@
     "isv_cyrillic": "Меджусловјанскы словник",
     "isv_latin": "Medžuslovjansky slovnik",
     "sk": "Medzislovanský slovník",
-    "cz": "Mezislovanský slovník"
+    "cs": "Mezislovanský slovník"
   },
   "dictionaryTitle": {
     "en": "Dictionary",
@@ -13,7 +13,7 @@
     "isv_cyrillic": "Словник",
     "isv_latin": "Slovnik",
     "sk": "Slovník",
-    "cz": "Slovník"
+    "cs": "Slovník"
   },
   "grammarTitle": {
     "en": "Grammar basics",
@@ -21,7 +21,7 @@
     "isv_cyrillic": "Граматика",
     "isv_latin": "Gramatika",
     "sk": "Gramatika",
-    "cz": "Gramatika"
+    "cs": "Gramatika"
   },
   "settingsTitle": {
     "en": "Settings",
@@ -29,7 +29,7 @@
     "isv_cyrillic": "Настројкы",
     "isv_latin": "Nastrojky",
     "sk": "Nastavenia",
-    "cz": "Nastavení"
+    "cs": "Nastavení"
   },
   "latin": {
     "en": "Latin",
@@ -37,7 +37,7 @@
     "isv_cyrillic": "Латиница",
     "isv_latin": "Latinica",
     "sk": "Latinka",
-    "cz": "Latinka"
+    "cs": "Latinka"
   },
   "verified": {
     "en": "Verified",
@@ -45,7 +45,7 @@
     "isv_cyrillic": "Провӗрено",
     "isv_latin": "Prověreno",
     "sk": "Overené",
-    "cz": "Ověřeno"
+    "cs": "Ověřeno"
   },
   "autoTranslation": {
     "en": "Auto-translation",
@@ -53,7 +53,7 @@
     "isv_cyrillic": "Автопрӗвод",
     "isv_latin": "Avtoprěvod",
     "sk": "Automatický preklad",
-    "cz": "Automatický překlad"
+    "cs": "Automatický překlad"
   },
   "showForms": {
     "en": "Show forms",
@@ -61,7 +61,7 @@
     "isv_cyrillic": "Покажи формы",
     "isv_latin": "Pokaži formy",
     "sk": "Ukáž slovné tvary",
-    "cz": "Ukaž slovní tvary"
+    "cs": "Ukaž slovní tvary"
   },
   "interfaceLanguage": {
     "en": "Interface language",
@@ -69,7 +69,7 @@
     "isv_cyrillic": "Језык интерфејса",
     "isv_latin": "Jezyk interfejsa",
     "sk": "Jazyk rozhrania",
-    "cz": "Jazyk rozhraní"
+    "cs": "Jazyk rozhraní"
   },
   "cyrillic": {
     "en": "Cyrillic",
@@ -77,7 +77,7 @@
     "isv_cyrillic": "Кирилица",
     "isv_latin": "Kirilica",
     "sk": "Cyrilika",
-    "cz": "Cyrilice"
+    "cs": "Cyrilice"
   },
   "aboutTitle": {
     "en": "About",
@@ -85,7 +85,7 @@
     "isv_cyrillic": "О програмӗ",
     "isv_latin": "O programě",
     "sk": "O programe",
-    "cz": "O programu"
+    "cs": "O programu"
   },
   "typeWordLabel": {
     "en": "Type word here",
@@ -95,7 +95,7 @@
     "isv_cyrillic": "Впиши слово",
     "isv_latin": "Tipkaj slovo tut",
     "sk": "Zadaj slovo",
-    "cz": "Zadej slovo"
+    "cs": "Zadej slovo"
   },
   "searchTypeBegin": {
     "en": "Begin",
@@ -103,7 +103,7 @@
     "isv_cyrillic": "По начелу",
     "isv_latin": "Po načelu",
     "sk": "Začiatok",
-    "cz": "Začátek"
+    "cs": "Začátek"
   },
   "searchTypeEntire": {
     "en": "Entire",
@@ -111,7 +111,7 @@
     "isv_cyrillic": "Цӗло",
     "isv_latin": "Cělo",
     "sk": "Úplná zhoda",
-    "cz": "Úplná shoda"
+    "cs": "Úplná shoda"
   },
   "searchTypeEnd": {
     "en": "End",
@@ -119,7 +119,7 @@
     "isv_cyrillic": "По концу",
     "isv_latin": "Po koncu",
     "sk": "Koniec",
-    "cz": "Konec"
+    "cs": "Konec"
   },
   "searchTypeAny": {
     "en": "Any",
@@ -127,7 +127,7 @@
     "isv_cyrillic": "Како-либо",
     "isv_latin": "Kako-libo",
     "sk": "Kdekoľvek",
-    "cz": "Kdekoli"
+    "cs": "Kdekoli"
   },
   "flavorisation": {
     "en": "Flavorization",
@@ -135,7 +135,7 @@
     "isv_cyrillic": "Flavorizacija",
     "isv_latin": "Флаворизација",
     "sk": "Flavorizácia",
-    "cz": "Flavorizace"
+    "cs": "Flavorizace"
   },
   "loading": {
     "en": "Loading dictionary",
@@ -143,7 +143,7 @@
     "isv_cyrillic": "Dostava slovnika",
     "isv_latin": "Достава словника",
     "sk": "Načítanie slovníka",
-    "cz": "Načtení slovníku"
+    "cs": "Načtení slovníku"
   },
   "aboutSmallTitle": {
     "en": "Interslavic language dictionary",
@@ -151,7 +151,7 @@
     "isv_cyrillic": "Словник меджусловјанского ϳезыка",
     "isv_latin": "Slovnik medžuslovjanskogo jezyka",
     "sk": "Slovník medzislovanského jazyka",
-    "cz": "Slovník mezislovanslého jazyka"
+    "cs": "Slovník mezislovanslého jazyka"
   },
   "aboutJoinText": {
     "en": "Please join the work to improve word translations for your native language!",
@@ -159,7 +159,7 @@
     "isv_cyrillic": "Просимо, приϳедньаϳте се к работӗ над улепшеньем прӗводов на ваш родны ϳезык!",
     "isv_latin": "Prosimo, prijednjajte se k rabotě nad ulepšenjem prěvodov na vaš rodny jezyk!",
     "sk": "Pripojte sa, prosím, k práci na vylepšní prekladu do vášho rodného jazyka!",
-    "cz": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!"
+    "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!"
   },
   "aboutDeveloper": {
     "en": "Developer:",
@@ -167,7 +167,7 @@
     "isv_cyrillic": "Изработник:",
     "isv_latin": "Izrabotnik:",
     "sk": "Developer",
-    "cz": "Developer"
+    "cs": "Developer"
   },
   "aboutDeveloperName": {
     "en": "Sergey Cherebedov",
@@ -175,7 +175,7 @@
     "isv_cyrillic": "Сергей Черебедов",
     "isv_latin": "Sergej Čerebedov",
     "sk": "Sergej Čerebedov",
-    "cz": "Sergej Čerebedov"
+    "cs": "Sergej Čerebedov"
   },
   "aboutTranslationsTable": {
     "en": "Table with translations",
@@ -183,7 +183,7 @@
     "isv_cyrillic": "Табела с прӗводами",
     "isv_latin": "Tabela s prěvodami",
     "sk": "Tabuľka s prekladmi",
-    "cz": "Tabulka s překlady"
+    "cs": "Tabulka s překlady"
   },
   "aboutSourceCode": {
     "en": "Source code (Github):",
@@ -191,7 +191,7 @@
     "isv_cyrillic": "Изходны код (Github):",
     "isv_latin": "Izhodny kod (Github):",
     "sk": "Zdrojový kód (Github):",
-    "cz": "Zdrojový kód (Github):"
+    "cs": "Zdrojový kód (Github):"
   },
   "aboutOurFriends": {
     "en": "Interslavic online community:",
@@ -199,7 +199,7 @@
     "isv_cyrillic": "Меджусловϳанска интернетна обчина:",
     "isv_latin": "Medžuslovjanska internetna občina:",
     "sk": "Medzislovenská internetová komunita:",
-    "cz": "Mezislovanské internetové společenství:"
+    "cs": "Mezislovanské internetové společenství:"
   },
   "aboutUsingFrom": {
     "en": "Using vocabulary from:",
@@ -207,7 +207,7 @@
     "isv_cyrillic": "Користи се словосбор с сайта:",
     "isv_latin": "Koristi se slovosbor s sajta:",
     "sk": "Slovná zásoba je použitá zo stránky:",
-    "cz": "Slovní zásoba se používá ze stránek:"
+    "cs": "Slovní zásoba se používá ze stránek:"
   },
   "aboutAuthors": {
     "en": "Authors of English and Polish translations: Jan van Steenbergen and Michał Swat.",
@@ -215,23 +215,23 @@
     "isv_cyrillic": "Авторы английского и польского прӗводов сут Јан ван Стеенберген и Михал Сват.",
     "isv_latin": "Avtory anglijskogo i poljskogo prěvodov sut Jan van Steenbergen i Mihal Svat.",
     "sk": "Autori anglickej a poľskej verzie: Jan van Steenbergen a Michał Swat.",
-    "cz": "Autoři anglické a polské verze: Jan van Steenbergen a Michał Swat."
+    "cs": "Autoři anglické a polské verze: Jan van Steenbergen a Michał Swat."
   },
   "notVerifiedText": {
-    "en": "Search results contain inaccurate automatic translations.\nCurrently, part% of the words of the selected language are verified.\nIf you speak this language, join the work on improving translations!\n",
-    "ru": "Результаты поиска содержат неточные автоматические переводы.\nНа данный момент проверено part% слов выбранного языка.\nЕсли это ваш родной язык, присоединяйтесь к работе над улучшением переводов!\n",
-    "isv_cyrillic": "Резултаты исканьа содржаϳут неточне автоматичне прӗводы.\nСеϳчасно ϳест провӗрено part% слов избраного ϳезыка.\nАко ли то ϳе ваш родны ϳезык, приϳедньаϳте се к работӗ над улепшеньем прӗводов!\n",
-    "isv_latin": "Rezultaty iskanja sodržaϳut netočne avtomatične prӗvody.\nSeϳčasno ϳest provӗreno part% slov izbranogo ϳezyka.\nAko li to ϳe vaš rodny ϳezyk, priϳednjaϳte se k rabotӗ nad ulepšenjem prӗvodov!",
-    "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady.\nV túto chvíľu je overené part% slov vybraného jazyka.\nAk sa jedná o váš rodný jazyk, pripojte sa k práci na zlepšení prekladov.",
-    "cz": "Výsledky hledání obsahují nepřesné automatické překlady.\nV tento okamžik je ověřeno part% slov vybraného jazyka.\nJe-li to váš rodný jazyk, připojte se k práci na zlepšení překladů."
+    "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
+    "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
+    "isv_cyrillic": "Резултаты исканьа содржаϳут неточне автоматичне прӗводы. Сеϳчасно ϳест провӗрено part% слов избраного ϳезыка. Ако ли знаϳете ов ϳезык, приϳедньаϳте се к работӗ над улепшеньем прӗводов!",
+    "isv_latin": "Rezultaty iskanja sodržaϳut netočne avtomatične prӗvody. Seϳčasno ϳest provӗreno part% slov izbranogo ϳezyka. Ako li znajete ov ϳezyk, priϳednjaϳte se k rabotӗ nad ulepšenjem prӗvodov!",
+    "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak sa jedná o váš rodný jazyk, pripojte sa k práci na zlepšení prekladov.",
+    "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Ak poznáte tento jazyk, připojte se k práci na zlepšení překladů."
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
     "ru": "Рабочая таблица расположена по этой ссылке.",
-    "isv_cyrillic": "Работна табела ϳе умӗшчена по овому линку:",
-    "isv_latin": "Rabotna tabela je uměščena po ovomu linku:",
-    "sk": "Pracová tabuľka sa nachádza na tomto linku:",
-    "cz": "Pracovní tabulka je umístěna na tomto linku:"
+    "isv_cyrillic": "Работна табела ϳе умӗшчена по овому линку.",
+    "isv_latin": "Rabotna tabela je uměščena po ovomu linku.",
+    "sk": "Pracová tabuľka sa nachádza na tomto linku.",
+    "cs": "Pracovní tabulka je umístěna na tomto linku."
   },
   "nonCommercialDisclaimer": {
     "en": "This is a non-profit open source project. We are doing it for free, just for fun. We don't make money from it and we don't pay for help.",
@@ -239,7 +239,7 @@
     "isv_cyrillic": "То ϳе безкористны проϳект с отворϳеным изходным кодом. Дӗлаϳемо го безплатно дльа приϳемности. Не заработываϳемо на овом гроши и не платимо за помоч.",
     "isv_latin": "To ϳe bezkoristny proϳekt s otvorϳenym izhodnym kodom. Dӗlaϳemo go bezplatno dlja priϳemnosti. Ne zarabotyvaϳemo na ovom groši i ne platimo za pomoč.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
-    "cz": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc."
+    "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc."
   },
   "gdprAlert": {
     "en": "This site uses cookies for analytics:",
@@ -247,7 +247,7 @@
     "isv_cyrillic": "Сеϳ сайт користи куки (cookies) дльа аналитикы:",
     "isv_latin": "Sej sajt koristi kuki (cookies) dlja analitiky:",
     "sk": "Tieto stránky používajú na analýzu cookies:",
-    "cz": "Tyto stránky používají pro analýzu cookies:"
+    "cs": "Tyto stránky používají pro analýzu cookies:"
   },
   "gdprAlertReadMore": {
     "en": "Read more",
@@ -255,6 +255,6 @@
     "isv_cyrillic": "Читаϳ болье:",
     "isv_latin": "Čitaj bolje:",
     "sk": "Čítaj viac:",
-    "cz": "Čti více:"
+    "cs": "Čti více:"
   }
 }

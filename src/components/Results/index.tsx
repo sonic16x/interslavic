@@ -56,6 +56,7 @@ class Results extends React.Component<IResultsProps> {
                 {results.some((item) => !item.checked) &&
                 <div className={'messageForUser'}>
                     {t('notVerifiedText').replace('part%', `${translatedPart}%`)}
+                    {` `}
                     <a target={'_blank'} href={worksheetUrl}>{t('notVerifiedTableLinkText')}</a>
                 </div> }
             </div>
