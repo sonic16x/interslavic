@@ -29,7 +29,7 @@
     "uk": "Граматика",
     "sk": "Gramatika",
     "cs": "Gramatika",
-    "pl": "Podstawy gramatyki"
+    "pl": "Mała gramatyka"
   },
   "settingsTitle": {
     "en": "Settings",
@@ -69,7 +69,7 @@
     "uk": "Автоматичний переклад",
     "sk": "Automatický preklad",
     "cs": "Automatický překlad",
-    "pl": "Tłumaczenie automatyczne"
+    "pl": "Tł. automatyczne"
   },
   "showForms": {
     "en": "Show forms",
@@ -129,7 +129,7 @@
     "uk": "Починається",
     "sk": "Začiatok",
     "cs": "Začátek",
-    "pl": "Początek słowa"
+    "pl": "Początek"
   },
   "searchTypeEntire": {
     "en": "Entire",
@@ -139,7 +139,7 @@
     "uk": "Збігається",
     "sk": "Úplná zhoda",
     "cs": "Úplná shoda",
-    "pl": "Całe słowo"
+    "pl": "Całe"
   },
   "searchTypeEnd": {
     "en": "End",
@@ -149,7 +149,7 @@
     "uk": "Закінчується",
     "sk": "Koniec",
     "cs": "Konec"
-    "pl": "Koniec słowa"
+    "pl": "Koniec"
   },
   "searchTypeAny": {
     "en": "Any",
@@ -159,7 +159,7 @@
     "uk": "Містить",
     "sk": "Kdekoľvek",
     "cs": "Kdekoli",
-    "pl": "Jakakolwiek część słowa"
+    "pl": "Dowolnie"
   },
   "flavorisation": {
     "en": "Flavorization",
@@ -299,7 +299,7 @@
     "uk": "Це некомерційний проєкт з відкритим вихідним кодом. Ми створюємо його безкоштовно задля задоволення. Ми не заробляємо на ньому гроші і не платимо за допомогу.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc.",
-    "pl": "Ten projekt jest otwarty i nienastawiony na zyski. To co robimy, robimy za damo, dla własnej satysfakcji. Nie zarabiamy na tym i nie płacimy za pomoc. "
+    "pl": "Ten projekt posiada otwarty kod źródłowy i jest nienastawiony na zyski. To co robimy, robimy za damo, dla własnej satysfakcji. Nie zarabiamy na tym i nie płacimy za pomoc. "
   },
   "gdprAlert": {
     "en": "This site uses cookies for analytics:",
