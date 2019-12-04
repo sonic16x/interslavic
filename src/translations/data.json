@@ -7,9 +7,9 @@
     "uk": "Міжслов'янський словник",
     "sk": "Medzislovanský slovník",
     "cs": "Mezislovanský slovník",
+    "pl": "Słownik międzysłowiański",
     "hr": "Međuslavenski rječnik",
     "sr": "Међусловенски речник"
-    "pl": "Słownik międzysłowiański"
   },
   "dictionaryTitle": {
     "en": "Dictionary",
@@ -18,7 +18,7 @@
     "ru": "Словарь",
     "uk": "Словник",
     "sk": "Slovník",
-    "cs": "Slovník"
+    "cs": "Slovník",
     "pl": "Słownik"
   },
   "grammarTitle": {
@@ -88,7 +88,7 @@
     "ru": "Язык интерфейса",
     "uk": "Мова інтерфейсу",
     "sk": "Jazyk rozhrania",
-    "cs": "Jazyk rozhraní"
+    "cs": "Jazyk rozhraní",
     "pl": "Język interfejsu"
   },
   "cyrillic": {
@@ -148,7 +148,7 @@
     "ru": "По концу",
     "uk": "Закінчується",
     "sk": "Koniec",
-    "cs": "Konec"
+    "cs": "Konec",
     "pl": "Koniec"
   },
   "searchTypeAny": {
@@ -236,10 +236,10 @@
     "isv-Cyrl": "Изходны код (GitHub):",
     "isv-Latn": "Izhodny kod (GitHub):",
     "ru": "Исходный код (GitHub):",
-    "uk": "Вихідний код (Github):",
-    "sk": "Zdrojový kód (Github):",
-    "cs": "Zdrojový kód (Github):"
-    "pl": "Kod źródłowy (Github):"
+    "uk": "Вихідний код (GitHub):",
+    "sk": "Zdrojový kód (GitHub):",
+    "cs": "Zdrojový kód (GitHub):",
+    "pl": "Kod źródłowy (GitHub):"
   },
   "aboutOurFriends": {
     "en": "Interslavic online community:",
@@ -248,7 +248,7 @@
     "ru": "Межславянское интернет-сообщество:",
     "uk": "Міжслов'янська інтернет-спільнота:",
     "sk": "Medzislovenská internetová komunita:",
-    "cs": "Mezislovanské internetové společenství:"
+    "cs": "Mezislovanské internetové společenství:",
     "pl": "Międzysłowiański online:"
   },
   "aboutUsingFrom": {
@@ -289,7 +289,7 @@
     "uk": "Робоча таблиця знаходиться за цим посиланням.",
     "sk": "Pracová tabuľka sa nachádza na tomto linku.",
     "cs": "Pracovní tabulka je umístěna na tomto linku.",
-    "pl": "Tabela robocza znajduje się pod tym linkiem:"
+    "pl": "Tabela robocza znajduje się pod tym linkiem."
   },
   "nonCommercialDisclaimer": {
     "en": "This is a non-profit open source project. We are doing it for free, just for fun. We don't make money from it and we don't pay for help.",
@@ -299,7 +299,7 @@
     "uk": "Це некомерційний проєкт з відкритим вихідним кодом. Ми створюємо його безкоштовно задля задоволення. Ми не заробляємо на ньому гроші і не платимо за допомогу.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc.",
-    "pl": "Ten projekt posiada otwarty kod źródłowy i jest nienastawiony na zyski. To co robimy, robimy za damo, dla własnej satysfakcji. Nie zarabiamy na tym i nie płacimy za pomoc. "
+    "pl": "Ten projekt posiada otwarty kod źródłowy i jest nienastawiony na zyski. To co robimy, robimy za darmo, dla własnej satysfakcji. Nie zarabiamy na tym i nie płacimy za pomoc."
   },
   "gdprAlert": {
     "en": "This site uses cookies for analytics:",

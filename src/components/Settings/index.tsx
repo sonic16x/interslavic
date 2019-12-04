@@ -32,6 +32,10 @@ const interfaceLanguageList = [
         value: 'uk',
     },
     {
+        name: 'Polski',
+        value: 'pl',
+    },
+    {
         name: 'Češky',
         value: 'cs',
     },
