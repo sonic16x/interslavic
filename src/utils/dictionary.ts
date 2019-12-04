@@ -202,7 +202,7 @@ class DictionaryClass {
             .replace(/[\u0300-\u036f]/g, '');
         switch (lang) {
             case 'isv':
-                return this.isvToEngLatin(lowerCaseText);
+                return this.isvToEngLatin(lowerCaseText).replace(/y/g, 'i');
             case 'cs':
             case 'pl':
             case 'sk':
@@ -232,7 +232,7 @@ class DictionaryClass {
         }
         switch (lang) {
             case 'isv':
-                return this.isvToEngLatin(lowerCaseText);
+                return this.isvToEngLatin(lowerCaseText).replace(/y/g, 'i');
             case 'cs':
             case 'pl':
             case 'sk':
