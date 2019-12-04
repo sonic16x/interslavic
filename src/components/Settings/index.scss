@@ -8,12 +8,13 @@
 .settingsContent {
   max-width: 1024px;
   width: 100%;
-  padding: 15px 5px 15px 5px;
+  padding: 15px;
   margin-right: auto;
   margin-left: auto;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1040px) {
   .settingsContent {
+    padding-right: 5px;
     padding-left: calc(100vw - 100% + 5px);
   }
   .settings {
