@@ -51,6 +51,10 @@ const interfaceLanguageList = [
         name: 'Српски',
         value: 'sr',
     },
+    {
+        name: 'Македонски',
+        value: 'mk',
+    },
 ];
 
 class Settings extends React.Component<ISettingsProps> {
