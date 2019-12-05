@@ -256,8 +256,8 @@
     "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!",
     "pl": "Zachęcamy do współpracy nad ulepszaniem wersji słownika w Twoim rodzimym języku!",
     "mk": "Ве молиме, приклучете се и помогнете за подобрување на преводот на заборовите на вашиот мајчин јазик!",
-    "sr": "Молимо, суделујте на побољшању превода на ваш матерњи језик!",
-    "hr": "Molimo, sudjelujte na poboljšanju prijevoda na vaš materinski jezik!"
+    "sr": "Молимо, прикључите се и суделујте на побољшању превода на ваш матерњи језик!",
+    "hr": "Molimo, priljučite se i sudjelujte na poboljšanju prijevoda na vaš materinski jezik!"
   },
   "aboutDeveloper": {
     "en": "Developer:",
@@ -360,8 +360,8 @@
     "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů!",
     "pl": "Wyniki wyszukiwania zawierają także automatyczne, nieprzejrzane przekłady.  Obecnie part% słów wybranego języka jest sprawdzonych. Mówisz tym językiem? Pomóż ulepszać nasz słownik i przyłącz się do nas!",
     "mk": "Пребаруваните резултати содржат неточни автоматски преводи. Во моментов, part% од зборовите на избраниот јазик се потврдени. Ако го зборувате овој јазик, приклучете се да помогнете во подобрувањето на преводите!",
-    "sr": "Резултати претраге садрже нетачне аутоматске преводе. Тренутно је проверено part% речи изабраног језика. Ако говорите тај језик, суделујте на побољшању превода!",
-    "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, sudjelujte na poboljšanju prijevoda!"
+    "sr": "Резултати претраге садрже нетачне аутоматске преводе. Тренутно је проверено part% речи изабраног језика. Ако говорите тај језик, прикључите се и суделујте на побољшању превода!",
+    "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, priključite se i sudjelujte na poboljšanju prijevoda!"
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
