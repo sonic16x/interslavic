@@ -8,6 +8,7 @@
     "sk": "Medzislovanský slovník",
     "cs": "Mezislovanský slovník",
     "pl": "Słownik międzysłowiański",
+    "mk": "Меѓусловенски речник",
     "hr": "Međuslavenski rječnik",
     "sr": "Међусловенски речник"
   },
@@ -19,6 +20,7 @@
     "uk": "Словник",
     "sk": "Slovník",
     "cs": "Slovník",
+    "mk": "Речник",
     "pl": "Słownik"
   },
   "grammarTitle": {
@@ -29,6 +31,7 @@
     "uk": "Граматика",
     "sk": "Gramatika",
     "cs": "Gramatika",
+    "mk": "Граматика",
     "pl": "Mała gramatyka"
   },
   "settingsTitle": {
@@ -39,6 +42,7 @@
     "uk": "Налаштування",
     "sk": "Nastavenia",
     "cs": "Nastavení",
+    "mk": "Поставки",
     "pl": "Ustawienia"
   },
   "latin": {
@@ -49,6 +53,7 @@
     "uk": "Латиниця",
     "sk": "Latinka",
     "cs": "Latinka",
+    "mk": "Латиница",
     "pl": "Łacinka"
   },
   "verified": {
@@ -59,6 +64,7 @@
     "uk": "Перевірено",
     "sk": "Overené",
     "cs": "Ověřeno",
+    "mk": "Потврдено",
     "pl": "Sprawdzone"
   },
   "autoTranslation": {
@@ -69,6 +75,7 @@
     "uk": "Автоматичний переклад",
     "sk": "Automatický preklad",
     "cs": "Automatický překlad",
+    "mk": "Автоматски превод",
     "pl": "Tł. automatyczne"
   },
   "showForms": {
@@ -79,7 +86,8 @@
     "uk": "Словоформи",
     "sk": "Ukáž slovné tvary",
     "cs": "Ukaž slovní tvary",
-    "pl": "Pokaż odmianę" 
+    "mk": "Прикажи форми",
+    "pl": "Pokaż odmianę"
   },
   "interfaceLanguage": {
     "en": "Interface language",
@@ -89,6 +97,7 @@
     "uk": "Мова інтерфейсу",
     "sk": "Jazyk rozhrania",
     "cs": "Jazyk rozhraní",
+    "mk": "Јазик на интерфејс",
     "pl": "Język interfejsu"
   },
   "cyrillic": {
@@ -99,6 +108,7 @@
     "uk": "Кирилиця",
     "sk": "Cyrilika",
     "cs": "Cyrilice",
+    "mk": "Кирилица",
     "pl": "Cyrylica"
   },
   "aboutTitle": {
@@ -109,6 +119,7 @@
     "uk": "Про застосунок",
     "sk": "O programe",
     "cs": "O programu",
+    "mk": "За програмот",
     "pl": "O projekcie"
   },
   "typeWordLabel": {
@@ -119,6 +130,7 @@
     "uk": "Введіть слово",
     "sk": "Zadaj slovo",
     "cs": "Zadej slovo",
+    "mk": "Впиши збор",
     "pl": "Tu wpisz słowo"
   },
   "searchTypeBegin": {
@@ -129,6 +141,7 @@
     "uk": "Починається",
     "sk": "Začiatok",
     "cs": "Začátek",
+    "mk": "Почеток",
     "pl": "Początek"
   },
   "searchTypeEntire": {
@@ -139,6 +152,7 @@
     "uk": "Збігається",
     "sk": "Úplná zhoda",
     "cs": "Úplná shoda",
+    "mk": "Цело",
     "pl": "Całe"
   },
   "searchTypeEnd": {
@@ -149,6 +163,7 @@
     "uk": "Закінчується",
     "sk": "Koniec",
     "cs": "Konec",
+    "mk": "Крај",
     "pl": "Koniec"
   },
   "searchTypeAny": {
@@ -159,6 +174,7 @@
     "uk": "Містить",
     "sk": "Kdekoľvek",
     "cs": "Kdekoli",
+    "mk": "Дел",
     "pl": "Dowolnie"
   },
   "flavorisation": {
@@ -169,6 +185,7 @@
     "uk": "Флаворизація",
     "sk": "Flavorizácia",
     "cs": "Flavorizace",
+    "mk": "Флаворизација",
     "pl": "Zabarwienie"
   },
   "loading": {
@@ -179,6 +196,7 @@
     "uk": "Завантаження словника",
     "sk": "Načítanie slovníka",
     "cs": "Načtení slovníku",
+    "mk": "Вчитување на речникот",
     "pl": "Wczytywanie słownika"
   },
   "aboutSmallTitle": {
@@ -189,6 +207,7 @@
     "uk": "Словник міжслов'янської мови",
     "sk": "Slovník medzislovanského jazyka",
     "cs": "Slovník mezislovanslého jazyka",
+    "mk": "Речник на меѓусловенскиот јазик",
     "pl": "Słownik języka międzysłowiańskiego"
   },
   "aboutJoinText": {
@@ -199,6 +218,7 @@
     "uk": "Запрошуємо долучитися до роботи з поліпшення перекладів слів вашою рідною мовою!",
     "sk": "Pripojte sa, prosím, k práci na vylepšní prekladu do vášho rodného jazyka!",
     "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!",
+    "mk": "Ве молиме, приклучете се и помогнете за подобрување на преводот на заборовите на вашиот мајчин јазик!",
     "pl": "Zachęcamy do współpracy nad ulepszaniem wersji słownika w Twoim rodzimym języku!"
   },
   "aboutDeveloper": {
@@ -209,6 +229,7 @@
     "uk": "Розробник:",
     "sk": "Developer",
     "cs": "Developer",
+    "mk": "Изработувач:",
     "pl": "Deweloper:"
   },
   "aboutDeveloperName": {
@@ -219,6 +240,7 @@
     "uk": "Сергій Черебедов",
     "sk": "Sergej Čerebedov",
     "cs": "Sergej Čerebedov",
+    "mk": "Сергеј Черебедов",
     "pl": "Siergiej Czeriebiedov"
   },
   "aboutTranslationsTable": {
@@ -229,6 +251,7 @@
     "uk": "Таблиця з перекладами",
     "sk": "Tabuľka s prekladmi",
     "cs": "Tabulka s překlady",
+    "mk": "Табела со преводи",
     "pl": "Tabela tłumaczeń"
   },
   "aboutSourceCode": {
@@ -239,6 +262,7 @@
     "uk": "Вихідний код (GitHub):",
     "sk": "Zdrojový kód (GitHub):",
     "cs": "Zdrojový kód (GitHub):",
+    "mk": "Изворен код (GitHub):",
     "pl": "Kod źródłowy (GitHub):"
   },
   "aboutOurFriends": {
@@ -249,6 +273,7 @@
     "uk": "Міжслов'янська інтернет-спільнота:",
     "sk": "Medzislovenská internetová komunita:",
     "cs": "Mezislovanské internetové společenství:",
+    "mk": "Меѓусловенска интернет заедница:",
     "pl": "Międzysłowiański online:"
   },
   "aboutUsingFrom": {
@@ -259,6 +284,7 @@
     "uk": "Використовується словниковий запас із сайту:",
     "sk": "Slovná zásoba je použitá zo stránky:",
     "cs": "Slovní zásoba se používá ze stránek:",
+    "mk": "Користење речник од:",
     "pl": "Wykorzystywany słownik:"
   },
   "aboutAuthors": {
@@ -269,6 +295,7 @@
     "uk": "Автори англійського та польського перекладів: Ян ван Cтеенберґен та Міхал Сват.",
     "sk": "Autori anglickej a poľskej verzie: Jan van Steenbergen a Michał Swat.",
     "cs": "Autoři anglické a polské verze: Jan van Steenbergen a Michał Swat.",
+    "mk": "Автори на преводите за англиски и полски јазик: Јан ван Стеенберген и Михал Сват.",
     "pl": "Autorzy angielskiego i polskiego przekładu: Jan van Steenbergen i Michał Swat"
   },
   "notVerifiedText": {
@@ -279,6 +306,7 @@
     "uk": "Результати пошуку містять неточні автоматичні переклади. Нині part% слів обраної мови є перевіреними . Якщо ви знаєте цю мову, долучайтесь до роботи з поліпшення перекладів!",
     "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
     "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů!",
+    "mk": "Пребаруваните резултати содржат неточни автоматски преводи. Во моментов, part% од зборовите на избраниот јазик се потврдени. Ако го зборувате овој јазик, приклучете се да помогнете во подобрувањето на преводите!",
     "pl": "Wyniki wyszukiwania zawierają także automatyczne, nieprzejrzane przekłady.  Obecnie part% słów wybranego języka jest sprawdzonych. Mówisz tym językiem? Pomóż ulepszać nasz słownik i przyłącz się do nas!"
   },
   "notVerifiedTableLinkText": {
@@ -289,6 +317,7 @@
     "uk": "Робоча таблиця знаходиться за цим посиланням.",
     "sk": "Pracová tabuľka sa nachádza na tomto linku.",
     "cs": "Pracovní tabulka je umístěna na tomto linku.",
+    "mk": "Табелата се наоѓа на следната врска.",
     "pl": "Tabela robocza znajduje się pod tym linkiem."
   },
   "nonCommercialDisclaimer": {
@@ -299,6 +328,7 @@
     "uk": "Це некомерційний проєкт з відкритим вихідним кодом. Ми створюємо його безкоштовно задля задоволення. Ми не заробляємо на ньому гроші і не платимо за допомогу.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc.",
+    "mk": "Ова е непрофитен проект со отворен код. Ова го правиме бесплатно, од задоволство. Не заработуваме пари од ова и не плаќаме за помагање.",
     "pl": "Ten projekt posiada otwarty kod źródłowy i jest nienastawiony na zyski. To co robimy, robimy za darmo, dla własnej satysfakcji. Nie zarabiamy na tym i nie płacimy za pomoc."
   },
   "gdprAlert": {
@@ -309,6 +339,7 @@
     "uk": "Цей сайт використовує реп'яшки (cookies) для аналітики:",
     "sk": "Tieto stránky používajú na analýzu cookies:",
     "cs": "Tyto stránky používají pro analýzu cookies:",
+    "mk": "Оваа страница користи колачиња за аналитика:",
     "pl": "Ta strona wykorzystuje ciasteczka w celach statystycznych:"
   },
   "gdprAlertReadMore": {
@@ -319,6 +350,7 @@
     "uk": "Дізнатися більше",
     "sk": "Čítaj viac:",
     "cs": "Čti více:",
+    "mk": "Прочитај повеќе:",
     "pl": "Czytaj więcej:"
   }
 }
