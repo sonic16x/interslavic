@@ -301,7 +301,7 @@
   },
   "aboutUsingFrom": {
     "en": "Using vocabulary from:",
-    "isv-Cyrl": "Користи се словосбор с сайта:",
+    "isv-Cyrl": "Користи се словосбор с сајта:",
     "isv-Latn": "Koristi se slovosbor s sajta:",
     "ru": "Используется словарный запас с сайта:",
     "uk": "Використовується словниковий запас із сайту:",
@@ -325,8 +325,8 @@
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
-    "isv-Cyrl": "Резултаты исканьа содржаϳут неточне автоматичне прѣводы. Сеϳчасно ϳест провѣрено part% слов избраного ϳезыка. Ако ли знаϳете тутоϳ ϳезык, приϳедньаϳте се к работѣ над улепшеньем прѣводов!",
-    "isv-Latn": "Rezultaty iskanja sodržaϳut netočne avtomatične prѣvody. Seϳčasno ϳest provѣreno part% slov izbranogo ϳezyka. Ako li znajete tutoj ϳezyk, priϳednjaϳte se k rabotѣ nad ulepšenjem prѣvodov!",
+    "isv-Cyrl": "Резултаты исканьа содржајут неточне автоматичне прѣводы. Сејчасно јест провѣрено part% слов избраного језыка. Ако ли знајете тутој језык, приједньајте се к работѣ над улепшеньем прѣводов!",
+    "isv-Latn": "Rezultaty iskanja sodržajut netočne avtomatične prěvody. Sejčasno jest prověreno part% slov izbranogo jezyka. Ako li znajete tutoj jezyk, prijednjajte se k rabotě nad ulepšenjem prěvodov!",
     "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
     "uk": "Результати пошуку містять неточні автоматичні переклади. Нині part% слів обраної мови є перевіреними . Якщо ви знаєте цю мову, долучайтесь до роботи з поліпшення перекладів!",
     "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
@@ -337,7 +337,7 @@
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
-    "isv-Cyrl": "Работна табела ϳе умѣшчена на тутом линку.",
+    "isv-Cyrl": "Работна табела је умѣшчена на тутом линку.",
     "isv-Latn": "Rabotna tabela je uměščena на tutom linku.",
     "ru": "Рабочая таблица расположена по этой ссылке.",
     "uk": "Робоча таблиця знаходиться за цим посиланням.",
@@ -349,8 +349,8 @@
   },
   "nonCommercialDisclaimer": {
     "en": "This is a non-profit open source project. We are doing it for free, just for fun. We don't make money from it and we don't pay for help.",
-    "isv-Cyrl": "То ϳе безкористны проϳект с отворϳеным изходным кодом. Дѣлаϳемо го безплатно дльа приϳемности. Не заработываϳемо на овом гроши и не платимо за помоч.",
-    "isv-Latn": "To ϳe bezkoristny proϳekt s otvorϳenym izhodnym kodom. Dѣlaϳemo go bezplatno dlja priϳemnosti. Ne zarabotyvaϳemo na ovom groši i ne platimo za pomoč.",
+    "isv-Cyrl": "То је безкористны пројект с отворјеным изходным кодом. Дѣлајемо го безплатно дльа пријемности. Не заработывајемо на овом гроши и не платимо за помоч.",
+    "isv-Latn": "To je bezkoristny projekt s otvorjenym izhodnym kodom. Dělajemo go bezplatno dlja prijemnosti. Ne zarabotyvajemo na ovom groši i ne platimo za pomoč.",
     "ru": "Это некоммерческий проект с открытым исходным кодом. Мы занимаемся им бесплатно для удовольствия. Мы не зарабатываем на этом деньги и не платим за помощь.",
     "uk": "Це некомерційний проєкт з відкритим вихідним кодом. Ми створюємо його безкоштовно задля задоволення. Ми не заробляємо на ньому гроші і не платимо за допомогу.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
@@ -361,7 +361,7 @@
   },
   "gdprAlert": {
     "en": "This site uses cookies for analytics:",
-    "isv-Cyrl": "Тутоϳ сайт користаје куки (cookies) дльа аналитикы:",
+    "isv-Cyrl": "Тутој сајт користаје куки (cookies) дльа аналитикы:",
     "isv-Latn": "Tutoj sajt koristaje kuki (cookies) dlja analitiky:",
     "ru": "Этот сайт использует куки для аналитики:",
     "uk": "Цей сайт використовує реп'яшки (cookies) для аналітики:",
