@@ -5,12 +5,13 @@
     "isv-Latn": "Medžuslovjansky slovnik",
     "ru":"Межславянский словарь",
     "uk": "Міжслов'янський словник",
+    "pl": "Słownik międzysłowiański",
     "sk": "Medzislovanský slovník",
     "cs": "Mezislovanský slovník",
-    "pl": "Słownik międzysłowiański",
     "mk": "Меѓусловенски речник",
     "sr": "Међусловенски речник",
-    "hr": "Međuslavenski rječnik"
+    "hr": "Međuslavenski rječnik",
+    "sl": "Medslovanski slovar"
   },
   "dictionaryTitle": {
     "en": "Dictionary",
@@ -18,12 +19,13 @@
     "isv-Latn": "Slovnik",
     "ru": "Словарь",
     "uk": "Словник",
+    "pl": "Słownik",
     "sk": "Slovník",
     "cs": "Slovník",
-    "pl": "Słownik",
     "mk": "Речник",
     "sr": "Речник",
-    "hr": "Rječnik"
+    "hr": "Rječnik",
+    "sl": "Slovar"
   },
   "grammarTitle": {
     "en": "Grammar basics",
@@ -31,12 +33,13 @@
     "isv-Latn": "Gramatika",
     "ru": "Грамматика",
     "uk": "Граматика",
+    "pl": "Mała gramatyka",
     "sk": "Gramatika",
     "cs": "Gramatika",
-    "pl": "Mała gramatyka",
     "mk": "Граматика",
     "sr": "Граматика",
-    "hr": "Gramatika"
+    "hr": "Gramatika",
+    "sl": "Slovnica"
   },
   "settingsTitle": {
     "en": "Settings",
@@ -44,12 +47,13 @@
     "isv-Latn": "Nastrojky",
     "ru": "Настройки",
     "uk": "Налаштування",
+    "pl": "Ustawienia",
     "sk": "Nastavenia",
     "cs": "Nastavení",
-    "pl": "Ustawienia",
     "mk": "Поставки",
     "sr": "Поставке",
-    "hr": "Postavke"
+    "hr": "Postavke",
+    "sl": "Nastavitve"
   },
   "latin": {
     "en": "Latin",
@@ -57,12 +61,13 @@
     "isv-Latn": "Latinica",
     "ru": "Латиница",
     "uk": "Латиниця",
+    "pl": "Łacinka",
     "sk": "Latinka",
     "cs": "Latinka",
-    "pl": "Łacinka",
     "mk": "Латиница",
     "sr": "Латиница",
-    "hr": "Latinica"
+    "hr": "Latinica",
+    "sl": "Latinica"
   },
   "verified": {
     "en": "Verified",
@@ -70,12 +75,13 @@
     "isv-Latn": "Prověreno",
     "ru": "Проверено",
     "uk": "Перевірено",
+    "pl": "Sprawdzone",
     "sk": "Overené",
     "cs": "Ověřeno",
-    "pl": "Sprawdzone",
     "mk": "Потврдено",
     "sr": "Проверено",
-    "hr": "Provjereno"
+    "hr": "Provjereno",
+    "sl": "Preverjeno"
   },
   "autoTranslation": {
     "en": "Auto-translation",
@@ -83,12 +89,13 @@
     "isv-Latn": "Avtoprěvod",
     "ru": "Автоперевод",
     "uk": "Автоматичний переклад",
+    "pl": "Tł. automatyczne",
     "sk": "Automatický preklad",
     "cs": "Automatický překlad",
-    "pl": "Tł. automatyczne",
     "mk": "Автоматски превод",
     "sr": "Аутоматски превод",
-    "hr": "Automatski prijevod"
+    "hr": "Automatski prijevod",
+    "sl": "Samodejni prevod"
   },
   "showForms": {
     "en": "Show forms",
@@ -96,12 +103,13 @@
     "isv-Latn": "Pokaži formy",
     "ru": "Словоформы",
     "uk": "Словоформи",
+    "pl": "Pokaż odmianę",
     "sk": "Ukáž slovné tvary",
     "cs": "Ukaž slovní tvary",
-    "pl": "Pokaż odmianę",
     "mk": "Прикажи форми",
     "sr": "Прикажи облике",
-    "hr": "Prikaži oblike"
+    "hr": "Prikaži oblike",
+    "sl": "Pokaži oblike"
   },
   "interfaceLanguage": {
     "en": "Interface language",
@@ -109,12 +117,13 @@
     "isv-Latn": "Jezyk interfejsa",
     "ru": "Язык интерфейса",
     "uk": "Мова інтерфейсу",
+    "pl": "Język interfejsu",
     "sk": "Jazyk rozhrania",
     "cs": "Jazyk rozhraní",
-    "pl": "Język interfejsu",
     "mk": "Јазик на интерфејс",
     "sr": "Језик интерфејса",
-    "hr": "Jezik interfejsa"
+    "hr": "Jezik interfejsa",
+    "sl": "Jezik vmesnika"
   },
   "cyrillic": {
     "en": "Cyrillic",
@@ -122,12 +131,13 @@
     "isv-Latn": "Kirilica",
     "ru": "Кириллица",
     "uk": "Кирилиця",
+    "pl": "Cyrylica",
     "sk": "Cyrilika",
     "cs": "Cyrilice",
-    "pl": "Cyrylica",
     "mk": "Кирилица",
     "sr": "Ћирилица",
-    "hr": "Ćirilica"
+    "hr": "Ćirilica",
+    "sl": "Cirilica"
   },
   "aboutTitle": {
     "en": "About",
@@ -135,12 +145,13 @@
     "isv-Latn": "O programě",
     "ru": "О приложении",
     "uk": "Про застосунок",
+    "pl": "O projekcie",
     "sk": "O programe",
     "cs": "O programu",
-    "pl": "O projekcie",
     "mk": "За програмот",
     "sr": "О програму",
-    "hr": "O programu"
+    "hr": "O programu",
+    "sl": "O programu"
   },
   "typeWordLabel": {
     "en": "Type word here",
@@ -148,12 +159,13 @@
     "isv-Latn": "Vpiši slovo",
     "ru": "Введите слово",
     "uk": "Введіть слово",
+    "pl": "Tu wpisz słowo",
     "sk": "Zadaj slovo",
     "cs": "Zadej slovo",
-    "pl": "Tu wpisz słowo",
     "mk": "Впиши збор",
     "sr": "Упиши реч овде",
-    "hr": "Upiši riječ ovdje"
+    "hr": "Upiši riječ ovdje",
+    "sl": "Tu vpiši besedo"
   },
   "searchTypeBegin": {
     "en": "Begin",
@@ -161,12 +173,13 @@
     "isv-Latn": "Po načelu",
     "ru": "По началу",
     "uk": "Починається",
+    "pl": "Początek",
     "sk": "Začiatok",
     "cs": "Začátek",
-    "pl": "Początek",
     "mk": "Почеток",
     "sr": "На почетку",
-    "hr": "Na početku"
+    "hr": "Na početku",
+    "sl": "Na začetku"
   },
   "searchTypeEntire": {
     "en": "Entire",
@@ -174,12 +187,13 @@
     "isv-Latn": "Cělo",
     "ru": "Полностью",
     "uk": "Збігається",
+    "pl": "Całe",
     "sk": "Úplná zhoda",
     "cs": "Úplná shoda",
-    "pl": "Całe",
     "mk": "Цело",
     "sr": "У целости",
-    "hr": "U cijelosti"
+    "hr": "U cijelosti",
+    "sl": "V celoti"
   },
   "searchTypeEnd": {
     "en": "End",
@@ -187,12 +201,13 @@
     "isv-Latn": "Po koncu",
     "ru": "По концу",
     "uk": "Закінчується",
+    "pl": "Koniec",
     "sk": "Koniec",
     "cs": "Konec",
-    "pl": "Koniec",
     "mk": "Крај",
     "sr": "На крају",
-    "hr": "Na kraju"
+    "hr": "Na kraju",
+    "sl": "Na koncu"
   },
   "searchTypeAny": {
     "en": "Any",
@@ -200,12 +215,13 @@
     "isv-Latn": "Kako-libo",
     "ru": "Любая часть",
     "uk": "Містить",
+    "pl": "Dowolnie",
     "sk": "Kdekoľvek",
     "cs": "Kdekoli",
-    "pl": "Dowolnie",
     "mk": "Дел",
     "sr": "Било где",
-    "hr": "Bilo gdje"
+    "hr": "Bilo gdje",
+    "sl": "Kjerkoli"
   },
   "flavorisation": {
     "en": "Flavorization",
@@ -213,12 +229,13 @@
     "isv-Latn": "Flavorizacija",
     "ru": "Флаворизация",
     "uk": "Флаворизація",
+    "pl": "Zabarwienie",
     "sk": "Flavorizácia",
     "cs": "Flavorizace",
-    "pl": "Zabarwienie",
     "mk": "Флаворизација",
     "sr": "Флаворизација",
-    "hr": "Flavorizacija"
+    "hr": "Flavorizacija",
+    "sl": "Flavorizacija"
   },
   "loading": {
     "en": "Loading dictionary",
@@ -226,12 +243,13 @@
     "isv-Latn": "Достава словника",
     "ru": "Загрузка словаря",
     "uk": "Завантаження словника",
+    "pl": "Wczytywanie słownika",
     "sk": "Načítanie slovníka",
     "cs": "Načtení slovníku",
-    "pl": "Wczytywanie słownika",
     "mk": "Вчитување на речникот",
     "sr": "Учитавање речника",
-    "hr": "Učitavanje rječnika"
+    "hr": "Učitavanje rječnika",
+    "sl": "Nalaganje slovarja"
   },
   "aboutSmallTitle": {
     "en": "Interslavic language dictionary",
@@ -239,12 +257,13 @@
     "isv-Latn": "Slovnik medžuslovjanskogo jezyka",
     "ru": "Словарь межславянского языка",
     "uk": "Словник міжслов'янської мови",
+    "pl": "Słownik języka międzysłowiańskiego",
     "sk": "Slovník medzislovanského jazyka",
     "cs": "Slovník mezislovanslého jazyka",
-    "pl": "Słownik języka międzysłowiańskiego",
     "mk": "Речник на меѓусловенскиот јазик",
     "sr": "Речник међусловенског језика",
-    "hr": "Rječnik međuslavenskog jezika"
+    "hr": "Rječnik međuslavenskog jezika",
+    "sl": "Slovar medslovanskega jezika"
   },
   "aboutJoinText": {
     "en": "Please join the work to improve word translations for your native language!",
@@ -252,12 +271,13 @@
     "isv-Latn": "Prosimo, prijednjajte se k rabotě nad ulepšenjem prěvodov na vaš rodny jezyk!",
     "ru": "Присоединяйтесь к работе над улучшением переводов слов на ваш родной язык!",
     "uk": "Запрошуємо долучитися до роботи з поліпшення перекладів слів вашою рідною мовою!",
+    "pl": "Zachęcamy do współpracy nad ulepszaniem wersji słownika w Twoim rodzimym języku!",
     "sk": "Pripojte sa, prosím, k práci na vylepšní prekladu do vášho rodného jazyka!",
     "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!",
-    "pl": "Zachęcamy do współpracy nad ulepszaniem wersji słownika w Twoim rodzimym języku!",
     "mk": "Ве молиме, приклучете се и помогнете за подобрување на преводот на заборовите на вашиот мајчин јазик!",
     "sr": "Молимо, прикључите се и суделујте на побољшању превода на ваш матерњи језик!",
-    "hr": "Molimo, priključite se i sudjelujte na poboljšanju prijevoda na vaš materinski jezik!"
+    "hr": "Molimo, priključite se i sudjelujte na poboljšanju prijevoda na vaš materinski jezik!",
+    "sl": "Prosimo sodelujte pri izboljšanju prevodov za vaš materni jezik!"
   },
   "aboutDeveloper": {
     "en": "Developer:",
@@ -265,12 +285,13 @@
     "isv-Latn": "Izrabotnik:",
     "ru": "Разработчик:",
     "uk": "Розробник:",
+    "pl": "Deweloper:",
     "sk": "Developer",
     "cs": "Developer",
-    "pl": "Deweloper:",
     "mk": "Изработувач:",
     "sr": "Развио:",
-    "hr": "Razvio:"
+    "hr": "Razvio:",
+    "sl": "Ravijalec:"
   },
   "aboutDeveloperName": {
     "en": "Sergey Cherebedov",
@@ -278,12 +299,13 @@
     "isv-Latn": "Sergej Čerebedov",
     "ru": "Сергей Черебедов",
     "uk": "Сергій Черебедов",
+    "pl": "Siergiej Czeriebiedov",
     "sk": "Sergej Čerebedov",
     "cs": "Sergej Čerebedov",
-    "pl": "Siergiej Czeriebiedov",
     "mk": "Сергеј Черебедов",
     "sr": "Сергеј Черебедов",
-    "hr": "Sergej Čerebedov"
+    "hr": "Sergej Čerebedov",
+    "sl": "Sergej Čerebedov"
   },
   "aboutTranslationsTable": {
     "en": "Table with translations",
@@ -291,12 +313,13 @@
     "isv-Latn": "Tabela s prěvodami",
     "ru": "Таблица с переводами",
     "uk": "Таблиця з перекладами",
+    "pl": "Tabela tłumaczeń",
     "sk": "Tabuľka s prekladmi",
     "cs": "Tabulka s překlady",
-    "pl": "Tabela tłumaczeń",
     "mk": "Табела со преводи",
     "sr": "Таблица с преводима",
-    "hr": "Tablica s prijevodima"
+    "hr": "Tablica s prijevodima",
+    "sl": "Tabela s prevodi"
   },
   "aboutSourceCode": {
     "en": "Source code (GitHub):",
@@ -304,12 +327,13 @@
     "isv-Latn": "Izhodny kod (GitHub):",
     "ru": "Исходный код (GitHub):",
     "uk": "Вихідний код (GitHub):",
+    "pl": "Kod źródłowy (GitHub):",
     "sk": "Zdrojový kód (GitHub):",
     "cs": "Zdrojový kód (GitHub):",
-    "pl": "Kod źródłowy (GitHub):",
     "mk": "Изворен код (GitHub):",
     "sr": "Изворни код (GitHub):",
-    "hr": "Izvorni kod (GitHub):"
+    "hr": "Izvorni kod (GitHub):",
+    "sl": "Izvorna koda (GitHub):"
   },
   "aboutOurFriends": {
     "en": "Interslavic online community:",
@@ -317,12 +341,13 @@
     "isv-Latn": "Medžuslovjanska internetna občina:",
     "ru": "Межславянское интернет-сообщество:",
     "uk": "Міжслов'янська інтернет-спільнота:",
+    "pl": "Międzysłowiański online:",
     "sk": "Medzislovenská internetová komunita:",
     "cs": "Mezislovanské internetové společenství:",
-    "pl": "Międzysłowiański online:",
     "mk": "Меѓусловенска интернет заедница:",
     "sr": "Међусловенска интернет заједница:",
-    "hr": "Međuslavenska internetska zajednica:"
+    "hr": "Međuslavenska internetska zajednica:",
+    "sl": "Medslovanska spletna skupnost:"
   },
   "aboutUsingFrom": {
     "en": "Using vocabulary from:",
@@ -330,12 +355,13 @@
     "isv-Latn": "Koristi se slovosbor s sajta:",
     "ru": "Используется словарный запас с сайта:",
     "uk": "Використовується словниковий запас із сайту:",
+    "pl": "Wykorzystywany słownik:",
     "sk": "Slovná zásoba je použitá zo stránky:",
     "cs": "Slovní zásoba se používá ze stránek:",
-    "pl": "Wykorzystywany słownik:",
     "mk": "Користење речник од:",
     "sr": "Користи се фонд речи са странице:",
-    "hr": "Koristi se fond riječi sa stranice:"
+    "hr": "Koristi se fond riječi sa stranice:",
+    "sl": "Uporablja se besedišče s spletnega mesta:"
   },
   "aboutAuthors": {
     "en": "Authors of English and Polish translations: Jan van Steenbergen and Michał Swat.",
@@ -343,12 +369,13 @@
     "isv-Latn": "Avtory anglijskogo i poljskogo prěvoda sut Jan van Steenbergen i Mihal Svat.",
     "ru": "Авторы английского и польского переводов: Ян ван Стенберген и Михал Сват.",
     "uk": "Автори англійського та польського перекладів: Ян ван Cтеенберґен та Міхал Сват.",
+    "pl": "Autorzy angielskiego i polskiego przekładu: Jan van Steenbergen i Michał Swat",
     "sk": "Autori anglickej a poľskej verzie: Jan van Steenbergen a Michał Swat.",
     "cs": "Autoři anglické a polské verze: Jan van Steenbergen a Michał Swat.",
-    "pl": "Autorzy angielskiego i polskiego przekładu: Jan van Steenbergen i Michał Swat",
     "mk": "Автори на преводите за англиски и полски јазик: Јан ван Стеенберген и Михал Сват.",
     "sr": "Аутори енглеског и пољског превода су Јан ван Стенберген и Михал Сват",
-    "hr": "Autori engleskog i poljskog prijevoda su Jan van Steenbergen i Michał Swat"
+    "hr": "Autori engleskog i poljskog prijevoda su Jan van Steenbergen i Michał Swat",
+    "sl": "Avtorja angleškega in poljskega prevoda sta Jan van Steenbergen in Michał Swat"
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
@@ -356,12 +383,13 @@
     "isv-Latn": "Rezultaty iskanja sodržajut netočne avtomatične prěvody. Sejčasno jest prověreno part% slov izbranogo jezyka. Ako li znajete tutoj jezyk, prijednjajte se k rabotě nad ulepšenjem prěvodov!",
     "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
     "uk": "Результати пошуку містять неточні автоматичні переклади. Нині part% слів обраної мови є перевіреними . Якщо ви знаєте цю мову, долучайтесь до роботи з поліпшення перекладів!",
+    "pl": "Wyniki wyszukiwania zawierają także automatyczne, nieprzejrzane przekłady.  Obecnie part% słów wybranego języka jest sprawdzonych. Mówisz tym językiem? Pomóż ulepszać nasz słownik i przyłącz się do nas!",
     "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
     "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů!",
-    "pl": "Wyniki wyszukiwania zawierają także automatyczne, nieprzejrzane przekłady.  Obecnie part% słów wybranego języka jest sprawdzonych. Mówisz tym językiem? Pomóż ulepszać nasz słownik i przyłącz się do nas!",
     "mk": "Пребаруваните резултати содржат неточни автоматски преводи. Во моментов, part% од зборовите на избраниот јазик се потврдени. Ако го зборувате овој јазик, приклучете се да помогнете во подобрувањето на преводите!",
     "sr": "Резултати претраге садрже нетачне аутоматске преводе. Тренутно је проверено part% речи изабраног језика. Ако говорите тај језик, прикључите се и суделујте на побољшању превода!",
-    "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, priključite se i sudjelujte na poboljšanju prijevoda!"
+    "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, priključite se i sudjelujte na poboljšanju prijevoda!",
+    "sl": "Rezultati iskanja vsebujejo nepravilne samodejne prevode. Trenutno je preverjenih part% besed izbranega jezika. Če govorite ta jezik, se pridružite in sodelujte pri izboljšanju prevodov!"
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
@@ -369,12 +397,13 @@
     "isv-Latn": "Rabotna tabela je uměščena на tutom linku.",
     "ru": "Рабочая таблица расположена по этой ссылке.",
     "uk": "Робоча таблиця знаходиться за цим посиланням.",
+    "pl": "Tabela robocza znajduje się pod tym linkiem.",
     "sk": "Pracová tabuľka sa nachádza na tomto linku.",
     "cs": "Pracovní tabulka je umístěna na tomto linku.",
-    "pl": "Tabela robocza znajduje się pod tym linkiem.",
     "mk": "Табелата се наоѓа на следната врска.",
     "sr": "Радна таблица се налази на овој вези.",
-    "hr": "Radna tablica se nalazi na ovoj poveznici."
+    "hr": "Radna tablica se nalazi na ovoj poveznici.",
+    "sl": "Delovni list se nahaja na tej povezavi."
   },
   "nonCommercialDisclaimer": {
     "en": "This is a non-profit open source project. We are doing it for free, just for fun. We don't make money from it and we don't pay for help.",
@@ -382,12 +411,13 @@
     "isv-Latn": "To je bezkoristny projekt s otvorjenym izhodnym kodom. Dělajemo go bezplatno dlja prijemnosti. Ne zarabotyvajemo na ovom groši i ne platimo za pomoč.",
     "ru": "Это некоммерческий проект с открытым исходным кодом. Мы занимаемся им бесплатно для удовольствия. Мы не зарабатываем на этом деньги и не платим за помощь.",
     "uk": "Це некомерційний проєкт з відкритим вихідним кодом. Ми створюємо його безкоштовно задля задоволення. Ми не заробляємо на ньому гроші і не платимо за допомогу.",
+    "pl": "Ten projekt posiada otwarty kod źródłowy i jest nienastawiony na zyski. To co robimy, robimy za darmo, dla własnej satysfakcji. Nie zarabiamy na tym i nie płacimy za pomoc.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc.",
-    "pl": "Ten projekt posiada otwarty kod źródłowy i jest nienastawiony na zyski. To co robimy, robimy za darmo, dla własnej satysfakcji. Nie zarabiamy na tym i nie płacimy za pomoc.",
     "mk": "Ова е непрофитен проект со отворен код. Ова го правиме бесплатно, од задоволство. Не заработуваме пари од ова и не плаќаме за помагање.",
     "sr": "Ово је непрофитан пројекат отвореног кода. Радимо бесплатно, из задовољства. Не зарађујемо од тога и не плаћамо за помоћ.",
-    "hr": "Ovo je neprofitan projekt otvorenog koda. Radimo besplatno, iz zadovoljstva. Ne zarađujemo od toga i ne plaćamo za pomoć."
+    "hr": "Ovo je neprofitan projekt otvorenog koda. Radimo besplatno, iz zadovoljstva. Ne zarađujemo od toga i ne plaćamo za pomoć.",
+    "sl": "To je neprofiten odprtokodni projekt. Delamo brezplačno, za zabavo. Z njim ne služimo in za pomoč ne plačujemo."
   },
   "gdprAlert": {
     "en": "This site uses cookies for analytics:",
@@ -395,12 +425,13 @@
     "isv-Latn": "Tutoj sajt koristaje kuki (cookies) dlja analitiky:",
     "ru": "Этот сайт использует куки для аналитики:",
     "uk": "Цей сайт використовує реп'яшки (cookies) для аналітики:",
+    "pl": "Ta strona wykorzystuje ciasteczka w celach statystycznych:",
     "sk": "Tieto stránky používajú na analýzu cookies:",
     "cs": "Tyto stránky používají pro analýzu cookies:",
-    "pl": "Ta strona wykorzystuje ciasteczka w celach statystycznych:",
     "mk": "Оваа страница користи колачиња за аналитика:",
     "sr": "Ова страница користи колачиће зарад аналитике:",
-    "hr": "Ova stranica koristi kolačiće zarad analitike:"
+    "hr": "Ova stranica koristi kolačiće zarad analitike:",
+    "sl": "To spletno mesto uporablja piškotke zaradi analitike:"
   },
   "gdprAlertReadMore": {
     "en": "Read more:",
@@ -408,11 +439,12 @@
     "isv-Latn": "Čitaj bolje:",
     "ru": "Узнать больше:",
     "uk": "Дізнатися більше",
+    "pl": "Czytaj więcej:",
     "sk": "Čítaj viac:",
     "cs": "Čti více:",
-    "pl": "Czytaj więcej:",
     "mk": "Прочитај повеќе:",
     "sr": "Прочитај више:",
-    "hr": "Pročitaj više:"
+    "hr": "Pročitaj više:",
+    "sl": "Preberi več:"
   }
 }
