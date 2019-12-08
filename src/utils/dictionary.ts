@@ -197,8 +197,8 @@ class DictionaryClass {
     }
     private inputPrepare(lang: string, text: string): string {
         const lowerCaseText = text.toLowerCase()
-            .replace(' ', '')
-            .replace(',', '')
+            .replace(/ /g, '')
+            .replace(/,/g, '')
             .replace(/[\u0300-\u036f]/g, '');
         switch (lang) {
             case 'isv':
@@ -211,7 +211,7 @@ class DictionaryClass {
             case 'de':
                 return filterLatin(lowerCaseText);
             case 'ru':
-                return lowerCaseText.replace('ё', 'е');
+                return lowerCaseText.replace(/ё/g, 'е');
             case 'sr':
                 return srGajevicaToVukovica(lowerCaseText);
             default:
@@ -220,8 +220,8 @@ class DictionaryClass {
     }
     private searchPrepare(lang: string, text: string): string {
         let lowerCaseText = text.toLowerCase()
-            .replace(' ', '')
-            .replace(',', '')
+            .replace(/ /g, '')
+            .replace(/,/g, '')
             .replace(/[\u0300-\u036f]/g, '');
         if (lang !== 'isv') {
             lowerCaseText = removeBrackets(lowerCaseText, '(', ')');
@@ -241,7 +241,7 @@ class DictionaryClass {
             case 'de':
                 return filterLatin(lowerCaseText);
             case 'ru':
-                return lowerCaseText.replace('ё', 'е');
+                return lowerCaseText.replace(/ё/g, 'е');
             default:
                 return lowerCaseText;
         }
