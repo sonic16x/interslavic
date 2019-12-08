@@ -15,7 +15,7 @@ import {
     getNumeralType,
     getPartOfSpeech,
     getPronounType,
-    getVerbType,
+    getVerbDetails,
     isAnimated,
     isIndeclinable,
     isPlural,
@@ -136,9 +136,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 if (singular) { arr.push('singular'); }
                 break;
             case 'verb':
-                const verbType = getVerbType(details);
-                if (verbType) {
-                    arr.push(verbType);
+                const verbDetails = getVerbDetails(details);
+                if (verbDetails) {
+                    arr.push(...verbDetails);
                 }
                 break;
             case 'numeral':
