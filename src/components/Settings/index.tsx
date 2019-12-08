@@ -44,6 +44,10 @@ const interfaceLanguageList = [
         value: 'sk',
     },
     {
+        name: 'Slovenščina',
+        value: 'sl',
+    },
+    {
         name: 'Hrvatski',
         value: 'hr',
     },
