@@ -10,6 +10,40 @@ export interface IPronounParadigm {
     casesPlural?: {};
 }
 
+export function declensionPronounFlat(rawWord: string, pronounType: string): string[] {
+    const result = declensionPronoun(rawWord, pronounType);
+    if (!result) {
+        return [];
+    }
+    const forms: any = [];
+    if (result.cases) {
+        forms.push(...Object.values(result.cases));
+    }
+    if (result.casesSingular) {
+        forms.push(...Object.values(result.casesSingular));
+    }
+    if (result.casesPlural) {
+        forms.push(...Object.values(result.casesPlural));
+    }
+    const dirty: string[] = forms
+        .flat()
+        .join('/')
+        .replace(/ /g, '')
+        .split('/')
+        .filter(Boolean)
+        .reduce((acc, item) => {
+            if (item.indexOf('(') !== -1 || item.indexOf(')') !== -1) {
+                acc.push(item.replace(/\(|\)/g, ''));
+                acc.push(item.replace(/\(.*\)/, ''));
+            } else {
+                acc.push(item);
+            }
+            return acc;
+        }, [])
+    ;
+    return Array.from(new Set(dirty));
+}
+
 export function declensionPronoun(rawWord: string, pronounType: string): IPronounParadigm {
     // now we don't know how to decline the phrases
     if (rawWord.includes(' ')) {

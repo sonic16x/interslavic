@@ -10,7 +10,27 @@ const prefixes = [
     'sò', 's', 'u', 'vò', 'vo', 'v', 'vòz', 'voz', 'vy', 'za',
 ];
 
-export function conjugationVerb(inf, rawPts) {
+export function conjugationVerbFlat(inf, rawPts): any {
+    const result: any = conjugationVerb(inf, rawPts);
+    if (!result) {
+        return [];
+    }
+    const forms = [
+        ...result.conditional.filter(Boolean).map((item) => item.split(' ')[1].replace(/\(|\)/g, '')),
+        result.gerund,
+        ...result.imperative.replace(/ /g, '').split(','),
+        ...result.imperfect,
+        result.infinitive,
+        result.pfap,
+        ...result.pfpp.replace(/\(|\)|,/g, '').split(' '),
+        ...result.prap.replace(/\(|\)|,/g, '').split(' '),
+        ...result.prpp.replace(/\(|\)|,/g, '').split(' '),
+        ...result.present.join(',').replace(/ /g, '').split(',')
+    ].filter(Boolean).filter((item) => item.indexOf('-') === -1);
+    return Array.from(new Set(forms));
+}
+
+export function conjugationVerb(inf, rawPts): any {
     //special cases
     if (inf === 'dòlžen byti' || inf.split(' ')[0].includes('/')) {
         return null;

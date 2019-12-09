@@ -44,6 +44,20 @@ function getExclusionForm(rawWord, caseIndex, formColumns) {
     return resForms;
 }
 
+export function declensionNumeralFlat(rawWord: string, numeralType: string): string[] {
+    const result: any = declensionNumeral(rawWord, numeralType);
+    if (!result) {
+        return [];
+    }
+    const forms = [];
+    for (const caseName in result.cases) {
+        if (result.cases.hasOwnProperty(caseName)) {
+            forms.push(...result.cases[caseName]);
+        }
+    }
+    return Array.from(new Set(forms.join('/').replace(/ /g, '').split('/'))).filter(Boolean);
+}
+
 export function declensionNumeral(rawWord: string, numeralType: string): INumeralParadigm {
     // now we don't know how to decline the phrases
     if (rawWord.includes(' ')) {
