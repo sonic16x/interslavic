@@ -10,12 +10,52 @@ import { removeBrackets } from 'utils/removeBrackets';
 import { convertCases } from 'utils/convertCases';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
 
+import { declensionNounFlat } from 'utils/legacy/declensionNoun';
+import { declensionAdjectiveFlat } from 'utils/legacy/declensionAdjective';
+import { conjugationVerbFlat } from 'utils/legacy/conjugationVerb';
+import { declensionNumeralFlat } from 'utils/legacy/declensionNumeral';
+import {
+    getGender,
+    getNumeralType,
+    getPartOfSpeech,
+    getPronounType,
+    // getVerbType,
+    isAnimated,
+    isIndeclinable,
+    isPlural,
+    isSingular,
+} from 'utils/wordDetails';
+import { declensionPronounFlat } from 'utils/legacy/declensionPronoun';
+
 export const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
     full: (item, text) => item === text,
     end: (item, text) =>  item.includes(text) && item.indexOf(text) === item.length - text.length,
     some: (item, text) => item.includes(text),
 };
+
+function getWordForms(item) {
+    const [word, add, details] = item;
+    const pos = getPartOfSpeech(details);
+    switch (pos) {
+        case 'verb':
+            return conjugationVerbFlat(word, add);
+        case 'adjective':
+            return declensionAdjectiveFlat(word, '');
+        case 'noun':
+            const gender = getGender(details.replace('m./f.', 'm.' ));
+            const animated = isAnimated(details);
+            const plural = isPlural(details);
+            const singular = isSingular(details);
+            const indeclinable = isIndeclinable(details);
+            return declensionNounFlat(word, add, gender, animated, plural, singular, indeclinable);
+        case 'pronoun':
+            return declensionPronounFlat(word, getPronounType(details));
+        case 'numeral':
+            return declensionNumeralFlat(word, getNumeralType(details));
+    }
+    return [];
+}
 
 export interface ITranslateResult {
     translate: string;
@@ -47,7 +87,6 @@ class DictionaryClass {
     private percentsOfChecked: {[lang: string]: string};
     private words: string[][];
     private isvToLatinMap: Map<string, string>;
-    private isvAddMap: Map<string, string[]>;
     private splittedMap: Map<string, string[]>;
 
     private constructor() {
@@ -55,13 +94,18 @@ class DictionaryClass {
         this.langsList = [];
         this.headerIndexes = new Map();
         this.isvToLatinMap = new Map();
-        this.isvAddMap = new Map();
         this.splittedMap = new Map();
         this.percentsOfChecked = {};
         this.percentsOfChecked = {};
     }
 
-    public init(wordList: string[][]) {
+    public init(
+        wordList: string[][],
+        dynamicDictionary: boolean = false,
+        searchIndex?: any | false,
+    ) {
+        // tslint:disable-next-line
+        console.time('INIT');
         this.header = wordList.shift().map((l) => l.replace(/\W/g, ''));
         this.langsList = this.header.filter(
             (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id'].indexOf(item) === -1),
@@ -69,13 +113,13 @@ class DictionaryClass {
         this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
 
         this.words = wordList;
+        const searchIndexExist = Boolean(searchIndex);
         this.words.forEach((item) => {
             const isvWord = this.getField(item, 'isv');
             const add = this.getField(item, 'addition')
                 .replace(/[\(\) ]/g, '')
                 .split(/[,;/]/)
             ;
-            this.isvAddMap.set(this.getField(item, 'addition'), add);
             this.isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, '3')));
             this.splitWords(isvWord)
                 .concat(add)
@@ -85,30 +129,50 @@ class DictionaryClass {
             add.map((item) => {
                 this.isvToLatinMap.set(item, normalize(getLatin(item, '3')));
             });
-            this.langsList.forEach((from) => {
-                const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}`;
-                const fromField = this.getField(item, from);
-                let splittedField;
-                if (from === 'isv') {
-                    splittedField = this
-                        .splitWords(fromField)
-                        .concat(this.isvAddMap.get(this.getField(item, 'addition')))
-                    ;
-                } else {
-                    splittedField = this.splitWords(removeExclamationMark(fromField));
-                }
-                this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
-            });
+            if (!searchIndexExist) {
+                this.langsList.forEach((from) => {
+                    const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}-${from}`;
+                    const fromField = this.getField(item, from);
+                    if (fromField[0] === '!') {
+                        return;
+                    }
+                    let splittedField;
+                    if (from === 'isv') {
+                        splittedField = this
+                            .splitWords(fromField)
+                            .concat(add)
+                        ;
+                        if (dynamicDictionary) {
+                            splittedField = splittedField.concat(getWordForms(item));
+                        }
+                    } else {
+                        splittedField = this.splitWords(removeExclamationMark(fromField));
+                    }
+                    this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
+                });
+            }
         });
+
+        if (searchIndexExist) {
+            this.splittedMap = new Map(searchIndex);
+        }
 
         this.langsList.forEach((fieldName) => {
             const notChecked = this.words.filter((item) => this.getField(item, fieldName)[0] === '!');
             const count = (1 - notChecked.length / this.words.length) * 100;
             this.percentsOfChecked[fieldName] = count.toFixed(1);
         });
+        // tslint:disable-next-line
+        console.timeEnd('INIT');
     }
     public getWordList(): string[][] {
         return this.words;
+    }
+    public getIndex() {
+        return Array.from(this.splittedMap.keys()).map((key: string) => [
+            key,
+            this.splittedMap.get(key),
+        ]);
     }
     public translate(
         inputText: string,
@@ -120,19 +184,26 @@ class DictionaryClass {
         if (!text) {
             return [];
         }
+        // tslint:disable-next-line
+        console.time('TRANSLATE');
         const distMap = new WeakMap();
         const results = this.words
             .filter((item) => {
-                const fromField = this.getField(item, from);
-                const toField = this.getField(item, to);
-                if (fromField === '!' || toField === '!') {
+                const splittedField = this.getSplittedField(from, item);
+                // Filter by first letter, maybe need to remove.
+                if (from === 'isv' && splittedField[0][0] !== text[0]) {
                     return false;
                 }
-                const splittedField = this.getSplittedField(from, item);
                 return splittedField.some((chunk) => searchTypes[searchType](chunk, text));
             })
             .map((item) => {
-                const splittedField = this.getSplittedField(from, item);
+                let splittedField = this.getSplittedField(from, item);
+                if (text.length === 1) {
+                    splittedField = splittedField.slice(0, 1);
+                }
+                if (text.length === 2) {
+                    splittedField = splittedField.slice(0, 5);
+                }
                 const dist = splittedField
                     .reduce((acc, item) => {
                         const lDist = levenshteinDistance(text, this.searchPrepare(from, item));
@@ -147,6 +218,8 @@ class DictionaryClass {
             .sort((a, b) => distMap.get(a) - distMap.get(b))
             .slice(0, 50)
         ;
+        // tslint:disable-next-line
+        console.timeEnd('TRANSLATE');
         return results;
     }
 
@@ -189,7 +262,7 @@ class DictionaryClass {
         return item[this.headerIndexes.get(fieldName)];
     }
     private getSplittedField(from: string, item: string[]): string[] {
-        const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}`;
+        const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}-${from}`;
         return this.splittedMap.get(key);
     }
     private splitWords(text: string): string[] {

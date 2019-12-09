@@ -3,8 +3,10 @@ import { dictionaryUrl } from 'consts';
 /* tslint:disable */
 const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
-    dictionaryUrl,
+    // dictionaryUrl,
     'index.html',
+    'wordList.tsv',
+    'searchIndex.tsv',
     'manifest.json',
     `grammarComponent.${HASH_ID}.js`,
     `grammarComponent~index.${HASH_ID}.js`,

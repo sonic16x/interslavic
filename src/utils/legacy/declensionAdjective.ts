@@ -12,7 +12,19 @@ function applyRules(arr: string[], postfix: string) {
     });
 }
 
-export function declensionAdjective(adj: string, postfix: string) {
+export function declensionAdjectiveFlat(adj: string, postfix: string): string[] {
+    const result = declensionAdjective(adj, postfix);
+    const forms = [];
+    for (const key in result) {
+        if (result.hasOwnProperty(key)) {
+            const notFlat: any = Object.values(result[key]);
+            forms.push(...notFlat.flat())
+        }
+    }
+    return Array.from(new Set(forms.filter(Boolean)));
+}
+
+export function declensionAdjective(adj: string, postfix: string): any {
     const root = establish_root(adj);
     const m_nom_sg = m_nominative_sg(adj, root);
     const m_acc_sg = m_accusative_sg(adj, root);
@@ -285,23 +297,26 @@ function comparative_adv(root) {
 }
 
 function superlative(root, comp, srt) {
-    let result = '';
-    if ((root == 'dobr') && (srt == 'adj')) {
-        result = 'najlěpši, najlučši';
-    } else if ((root == 'dobr') && (srt == 'adv')) {
-        result = 'najlěpje, najlučše';
-    } else if ((root == 'blåg') && (srt == 'adj')) {
-        result = 'najunši, najblåžejši';
-    } else if ((root == 'blag') && (srt == 'adj')) {
-        result = 'najunši, najblažejši';
-    } else if ((root == 'blåg') && (srt == 'adv')) {
-        result = 'najunje, najblåžeje';
-    } else if ((root == 'blag') && (srt == 'adv')) {
-        result = 'najunje, najblažeje';
-    } else {
-        result = 'naj' + comp;
+    if (root === 'dobr' && srt === 'adj') {
+        return 'najlěpši, najlučši';
     }
-    return result;
+    if (root === 'dobr' && srt === 'adv') {
+        return 'najlěpje, najlučše';
+    }
+    if (root === 'blåg' && srt === 'adj') {
+        return 'najunši, najblåžejši';
+    }
+    if (root === 'blag' && srt === 'adj') {
+        return 'najunši, najblažejši';
+    }
+    if (root === 'blåg' && srt === 'adv') {
+        return 'najunje, najblåžeje';
+    }
+    if (root === 'blag' && srt === 'adv') {
+        return 'najunje, najblažeje';
+    }
+
+    return 'naj' + comp;
 }
 
 function rules(word: string): string {

@@ -19,7 +19,16 @@ function prepareGender(gender, animated) {
     }
 }
 
-export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable) {
+export function declensionNounFlat(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable): any {
+    const result = declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable);
+    if (!result) {
+        return [];
+    }
+    const notFlat: any = Object.values(result);
+    return Array.from(new Set(notFlat.flat().filter(Boolean)));
+}
+
+export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable): any {
     // remove square brackets
     let noun = removeBrackets(rawNoun, '[', ']');
     // now we don't know how to decline the phrases
@@ -28,6 +37,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     }
     //indeclinable
     if (isIndeclinable) {
+
         return {
             nom: [noun, noun],
             acc: [noun, noun],
@@ -70,10 +80,10 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
 
     noun = noun.replace( '(e)', 'è').replace( '(o)', 'ò');
 
-    const gender = establish_gender(noun, rawGender);
+    const gender = establishGender(noun, rawGender);
     const root = establish_root(nounWithoutFluent, gender);
     const plroot = establish_plural_root(root);
-    const plgen = establish_plural_gender(root, plroot, gender, rawGender);
+    const plgen = establishPluralGender(root, plroot, gender, rawGender);
 
     //singular forms
     const nom_sg = nominative_sg(noun, root, gender);
@@ -116,59 +126,61 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     };
 }
 
-function establish_gender(noun, gender) {
-    let result = '';
-    if (noun.length == 0) {
-        result = 'ERROR-1';
-    }
+function establishGender(noun: string, gender: string): string {
+    const lastChar = noun.slice(-1);
+    const beforeLastChar = noun.slice(-2, -1);
+    const lastTwo = noun.slice(-2);
+    const sub05 = noun.substring(0, 5);
+    const sub06 = noun.substring(0, 6);
+    const sub07 = noun.substring(0, 7);
 
-    else if ((noun == 'den') || (noun == 'dèn') || (noun == 'denjь') || (noun == 'dènjь')) {
-        result = 'm3';
+    if (noun.length === 0) {
+        return null;
     }
-    else if ((gender.charAt(0) == 'm') && ((noun.lastIndexOf('en') == noun.length - 2) || (noun.lastIndexOf('enjь') == noun.length - 4))
-        && ((noun.substring(0, 5) == 'kamen') || (noun.substring(0, 5) == 'jelen') || (noun.substring(0, 6) == 'jęčmen') || (noun.substring(0, 6) == 'ječmen')
-            || (noun.substring(0, 5) == 'koren') || (noun.substring(0, 6) == 'kremen') || (noun.substring(0, 6) == 'plåmen') || (noun.substring(0, 6) == 'plamen')
-            || (noun.substring(0, 6) == 'pŕsten') || (noun.substring(0, 6) == 'prsten') || (noun.substring(0, 7) == 'strumen') || (noun.substring(0, 6) == 'greben')
-            || (noun.substring(0, 6) == 'stępen') || (noun.substring(0, 6) == 'stepen') || (noun.substring(0, 6) == 'stųpen') || (noun.substring(0, 6) == 'stupen')
-            || (noun.substring(0, 5) == 'šršen') || (noun.substring(0, 5) == 'šŕšen') || (noun.substring(0, 5) == 'sršen') || (noun.substring(0, 5) == 'sŕšen')
-            || (noun.substring(0, 6) == 'šeršen')
+    if ((noun == 'den') || (noun == 'dèn') || (noun == 'denjь') || (noun == 'dènjь')) {
+        return 'm3';
+    }
+    if ((gender.charAt(0) == 'm') && (lastTwo === 'en' || (noun.lastIndexOf('enjь') == noun.length - 4))
+        && ((sub05 === 'kamen') || (sub05 === 'jelen') || (sub06 === 'jęčmen') || (sub06 === 'ječmen')
+            || (sub05 === 'koren') || (sub06 === 'kremen') || (sub06 === 'plåmen') || (sub06 === 'plamen')
+            || (sub06 === 'pŕsten') || (sub06 === 'prsten') || (sub07 == 'strumen') || (sub06 === 'greben')
+            || (sub06 === 'stępen') || (sub06 === 'stepen') || (sub06 === 'stųpen') || (sub06 === 'stupen')
+            || (sub05 === 'šršen') || (sub05 === 'šŕšen') || (sub05 === 'sršen') || (sub05 === 'sŕšen')
+            || (sub06 === 'šeršen')
         )) {
-        result = 'm3';
+        return 'm3';
     }
-    else if ((gender.charAt(0) == 'n') && ['čudo','dělo','divo','drěvo','igo','kolo','licьe','nebo','ojьe','oko','slovo','tělo', 'uho'].indexOf(noun) !== -1) {
-        result = 'n3';
+    if ((gender.charAt(0) == 'n') && ['čudo','dělo','divo','drěvo','igo','kolo','licьe','nebo','ojьe','oko','slovo','tělo', 'uho'].indexOf(noun) !== -1) {
+        return 'n3';
     }
-    else if ((gender == 'f') && (noun.lastIndexOf('v') == noun.length - 1)) {
-        result = 'f3';
+    if (gender === 'f' && lastChar === 'v') {
+        return 'f3';
     }
-    else if ((noun == 'mati') || (noun == 'dočьi') || (noun == 'doćьi')) {
-        result = 'f3';
+    if (noun === 'mati' || noun === 'dočьi' || noun === 'doćьi') {
+        return 'f3';
     }
-    else if ((noun.lastIndexOf('a') == (noun.length - 1)) || (noun.lastIndexOf('i') == (noun.length - 1))) {
-        result = 'f1';
+    if (lastChar === 'a' || lastChar === 'i') {
+        return 'f1';
     }
-    else if (noun.lastIndexOf('ę') == (noun.length - 1)) {
-        result = 'n2';
+    if (lastChar === 'ę') {
+        return 'n2';
     }
-    else if ((noun.lastIndexOf('ь') != (noun.length - 2)) && (noun.lastIndexOf('e') == (noun.length - 1))) {
-        result = 'n2';
+    if (beforeLastChar !== 'ь' && lastChar === 'e') {
+        return 'n2';
     }
-    else if ((noun.lastIndexOf('o') == (noun.length - 1)) || (noun.lastIndexOf('e') == (noun.length - 1))) {
-        result = 'n1';
+    if (lastChar === 'o' || lastChar === 'e') {
+        return 'n1';
     }
-    else if ((noun.lastIndexOf('u') == (noun.length - 2)) && (noun.lastIndexOf('m') == (noun.length - 1))) {
-        result = 'n1';
+    if (beforeLastChar === 'u' && lastChar === 'm') {
+        return 'n1';
     }
-    else if (gender == 'm1') {
-        result = 'm1';
+    if (gender == 'm1') {
+        return 'm1';
     }
-    else if (gender == 'f') {
-        result = 'f2'
+    if (gender == 'f') {
+        return 'f2'
     }
-    else {
-        result = 'm2';
-    }
-    return result;
+    return 'm2';
 }
 
 function establish_root(noun, gender) {
@@ -268,18 +280,14 @@ function establish_plural_root(root) {
     return result;
 }
 
-function establish_plural_gender(root, plroot, gender, rawGender) {
-    let result = '';
-    if ((root != plroot) && (plroot.indexOf('n') == -1)) {
-        result = 'f2';
+function establishPluralGender(root: string, plroot: string, gender: string, rawGender: string): string {
+    if (root !== plroot && plroot.indexOf('n') === -1) {
+        return 'f2';
     }
-    else if ((gender == 'f1') && (rawGender == 'm1')) {
-        result = 'm1';
+    if (gender === 'f1' && rawGender === 'm1') {
+        return 'm1';
     }
-    else {
-        result = gender;
-    }
-    return result;
+    return gender;
 }
 
 function nominative_sg(noun, root, gender) {
@@ -523,9 +531,9 @@ function genitive_pl(root, gender) {
         result = 'sòt';
     }
     else if (gender.charAt(0) == 'n') {
-        result = root.replace('ь', '%');
-        result = result.replace(/([pbvfmlnrszńľŕťďśźščž])j%/, '$1ij');
-        result = result + '%';
+        result = root.replace('ь', '%')
+            .replace(/([pbvfmlnrszńľŕťďśźščž])j%/, '$1ij') + '%'
+        ;
         if (gender == 'n3') {
             result = result + ' / ' + palatalizationEnding(root) + 'es';
         }
@@ -542,34 +550,24 @@ function genitive_pl(root, gender) {
     else {
         result = root + 'ij';
     }
-    result = result.replace('jsk%', 'jsk');
-    //result = result.replace('bomb%', 'bomb');
-    //result = result.replace('porn%', 'porn');
-    result = result.replace('mš%', 'meš');
-    result = result.replace('zl%', 'zòl');
-    result = result.replace('tl%', 'tòl');
-    result = result.replace('mgl%', 'mgòl');
+    result = result.replace('jsk%', 'jsk')
+        .replace('mš%', 'meš')
+        .replace('zl%', 'zòl')
+        .replace('tl%', 'tòl')
+        .replace('mgl%', 'mgòl')
+        .replace(/([jśźďťľŕńčšžćđc])(k)%/, '$1e$2')
+        .replace(/([pbfvmlnrtdszkgh])(k)%/, '$1ò$2')
+        .replace(/([vmpzšžt])(n)%/, '$1e$2')
+        .replace(/(k)([nl])%/, '$1ò$2')
+        .replace(/(s)([nl])%/, '$1e$2')
+        .replace(/^dn%/, 'dòn')
+        .replace(/pismo%/, 'pisem')
+        .replace(/^ťm%/, 'tem')
+        .replace(/^sto%/, 'sòt')
+        .replace(/%/g, '')
+    ;
 
-    // original code
-    /*result = result.replace(/([pbfvmlnrtdszkgh])([kn])%/, '$1ò$2');
-    result = result.replace(/([jńľŕťďścšžč])([kn])%/, '$1e$2');
-    result = result.replace(/([pbfvmlnrtdszkghjńľŕťďścšžč])([bvmn])%/, '$1e$2');*/
-    // changed code
-
-    result = result.replace(/([jśźďťľŕńčšžćđc])(k)%/, '$1e$2');
-    result = result.replace(/([pbfvmlnrtdszkgh])(k)%/, '$1ò$2');
-    result = result.replace(/([vmpzšžt])(n)%/, '$1e$2');
-    result = result.replace(/(k)([nl])%/, '$1ò$2');
-    result = result.replace(/(s)([nl])%/, '$1e$2');
-    result = result.replace(/^dn%/, 'dòn');
-    result = result.replace(/pismo%/, 'pisem');
-    result = result.replace(/^ťm%/, 'tem');
-    result = result.replace(/^sto%/, 'sòt');
-
-    // end
-    result = result.replace(/%/g, '');
-    result = rules(result);
-    return result;
+    return rules(result);
 }
 
 function dative_pl(root, gender) {
@@ -639,16 +637,18 @@ function rules(word: string): string {
     ;
 }
 
-function declensionPluralNoun(word: string,add: string, gender: string) {
+function declensionPluralNoun(word: string, add: string, gender: string) {
+    const wordWithoutLast = word.slice(0, -1);
     if (add.slice(-2) === 'yh' || add.slice(-2) === 'ih') {
         const iOrY = (add.slice(-2) === 'yh' ? 'y' : 'i');
+
         return {
             nom: [null, word],
             acc: [null, word],
-            gen: [null, word.slice(0, -1) + iOrY + 'h'],
-            loc: [null, word.slice(0, -1) + iOrY + 'h'],
-            dat: [null, word.slice(0, -1) + iOrY + 'm'],
-            ins: [null, word.slice(0, -1) + iOrY + 'mi'],
+            gen: [null, wordWithoutLast + iOrY + 'h'],
+            loc: [null, wordWithoutLast + iOrY + 'h'],
+            dat: [null, wordWithoutLast + iOrY + 'm'],
+            ins: [null, wordWithoutLast + iOrY + 'mi'],
             voc: [null, word],
         };
     }
@@ -659,33 +659,35 @@ function declensionPluralNoun(word: string,add: string, gender: string) {
         return {
             nom: [null, word],
             acc: [null, word],
-            gen: [null, word.slice(0, -1) + 'ov'],
-            loc: [null, word.slice(0, -1) + 'ah'],
-            dat: [null, word.slice(0, -1) + 'am'],
-            ins: [null, word.slice(0, -1) + 'ami'],
+            gen: [null, wordWithoutLast + 'ov'],
+            loc: [null, wordWithoutLast + 'ah'],
+            dat: [null, wordWithoutLast + 'am'],
+            ins: [null, wordWithoutLast + 'ami'],
             voc: [null, word],
         };
     }
     else if (gender === 'feminine' && word.match(/[ye]$/) ||
         gender === 'neuter' && word.match(/[a]$/)) {
+
         return {
             nom: [null, word],
             acc: [null, word],
-            gen: [null, word.slice(0, -1)],
-            loc: [null, word.slice(0, -1) + 'ah'],
-            dat: [null, word.slice(0, -1) + 'am'],
-            ins: [null, word.slice(0, -1) + 'ami'],
+            gen: [null, wordWithoutLast],
+            loc: [null, wordWithoutLast + 'ah'],
+            dat: [null, wordWithoutLast + 'am'],
+            ins: [null, wordWithoutLast + 'ami'],
             voc: [null, word],
         };
     }
     else if (gender === 'feminine' && word.match(/[i]$/)) {
+
         return {
             nom: [null, word],
             acc: [null, word],
-            gen: [null, word.slice(0, -1) + 'ij'],
-            loc: [null, word.slice(0, -1) + 'jah'],
-            dat: [null, word.slice(0, -1) + 'jam'],
-            ins: [null, word.slice(0, -1) + 'jami'],
+            gen: [null, wordWithoutLast + 'ij'],
+            loc: [null, wordWithoutLast + 'jah'],
+            dat: [null, wordWithoutLast + 'jam'],
+            ins: [null, wordWithoutLast + 'jami'],
             voc: [null, word],
         };
     }
@@ -696,6 +698,7 @@ function declensionSubstAdj(word: string, add:string, gender: string, animated:s
     if (gender === 'masculine' || gender === 'neuter') {
         const adjectiveParadigm = declensionAdjective(word.slice(0,-1) + (add==='-ogo'?'y':'i'),'');
         const animatedCol = (animated?0:1);
+
         return {
             nom: [word, adjectiveParadigm.plural.nom[0].split('/')[animatedCol].trim()],
             acc: [adjectiveParadigm.singular.acc[0].split('/')[animatedCol].trim(),
@@ -708,6 +711,7 @@ function declensionSubstAdj(word: string, add:string, gender: string, animated:s
         };
     } else {
         const adjectiveParadigm = declensionAdjective(word.slice(0,-1) + (add==='-oj'?'y':'i'), '');
+
         return {
             nom: [word, adjectiveParadigm.plural.nom[1]],
             acc: [adjectiveParadigm.singular.acc[1], adjectiveParadigm.plural.acc[1]],
@@ -721,17 +725,21 @@ function declensionSubstAdj(word: string, add:string, gender: string, animated:s
 }
 
 function palatalizationEnding(root: string): string {
-    if (root.slice(-1) === 'g') {
-        return root.slice(0, -1) + 'žь';
+    const rootOneLast = root.slice(-1);
+    const rootWithoutLast = root.slice(0, -1);
+
+    if (rootOneLast === 'g') {
+        return rootWithoutLast + 'žь';
     }
-    else if (root.slice(-1) === 'h') {
-        return root.slice(0, -1) + 'šь';
+    if (rootOneLast === 'h') {
+        return rootWithoutLast + 'šь';
     }
-    else if (root.slice(-1) === 'k') {
-        return root.slice(0, -1) + 'čь';
+    if (rootOneLast === 'k') {
+        return rootWithoutLast + 'čь';
     }
-    else if (root.slice(-2) === 'cь') {
+    if (root.slice(-2) === 'cь') {
         return root.slice(0, -2) + 'čь';
     }
-    else return root;
+
+    return root;
 }
