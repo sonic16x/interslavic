@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'connect';
 import './index.scss';
 import { searchTypeAction } from 'actions';
 import { LineSelector } from '../LineSelector';
+import { t } from 'translations';
 
 interface IFlavorisationSelectorProps {
     searchType: string;
@@ -11,19 +12,19 @@ interface IFlavorisationSelectorProps {
 
 const searchTypes = [
     {
-        name: 'Begin',
+        name: 'searchTypeBegin',
         value: 'begin',
     },
     {
-        name: 'Entire',
+        name: 'searchTypeEntire',
         value: 'full',
     },
     {
-        name: 'End',
+        name: 'searchTypeEnd',
         value: 'end',
     },
     {
-        name: 'Any',
+        name: 'searchTypeAny',
         value: 'some',
     },
 ];
@@ -32,7 +33,10 @@ class SearchTypeSelector extends React.Component<IFlavorisationSelectorProps> {
     public render() {
         return (
             <LineSelector
-                options={searchTypes}
+                options={searchTypes.map((item) => ({
+                    name: t(item.name),
+                    value: item.value,
+                }))}
                 value={this.props.searchType}
                 onSelect={(searchType) => this.props.changeSearchType(searchType)}
             />

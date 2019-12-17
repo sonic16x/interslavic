@@ -1,4 +1,5 @@
 import { Dictionary } from 'utils/dictionary';
+import { setLang, t } from 'translations';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -6,6 +7,7 @@ export enum ActionTypes {
     SEARCH_TYPE = 'SEARCH_TYPE',
     FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
     SET_PAGE = 'SET_PAGE',
+    SET_INTERFACE_LANG = 'SET_INTERFACE_LANG',
     IS_LOADING = 'IS_LOADING',
     SET_DETAIL = 'SET_DETAIL',
     DETAIL_IS_VISIBLE = 'DETAIL_IS_VISIBLE',
@@ -87,6 +89,14 @@ export function setPageAction(data: string) {
 export function isLoadingAction(data: boolean) {
     return {
         type: ActionTypes.IS_LOADING,
+        data,
+    };
+}
+
+export function setInterfaceLang(data: string) {
+    setLang(data);
+    return {
+        type: ActionTypes.SET_INTERFACE_LANG,
         data,
     };
 }

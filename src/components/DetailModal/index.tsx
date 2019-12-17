@@ -15,7 +15,7 @@ import {
     getNumeralType,
     getPartOfSpeech,
     getPronounType,
-    getVerbType,
+    getVerbDetails,
     isAnimated,
     isIndeclinable,
     isPlural,
@@ -25,6 +25,7 @@ import { Dictionary } from 'utils/dictionary';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
 import { declensionPronoun } from 'utils/legacy/declensionPronoun';
+import { t } from 'translations';
 
 interface IDetailModalProps {
     close: () => void;
@@ -38,11 +39,11 @@ interface IDetailModalProps {
 
 const alphabetType = [
     {
-        name: 'Latin',
+        name: 'latin',
         value: 'latin',
     },
     {
-        name: 'Cyrillic',
+        name: 'cyrillic',
         value: 'cyrillic',
     },
 ];
@@ -91,7 +92,10 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 </div>
                 <footer className={'modal-footer'}>
                     <LineSelector
-                        options={alphabetType}
+                        options={alphabetType.map((item) => ({
+                            name: t(item.name),
+                            value: item.value,
+                        }))}
                         value={this.props.alphabetType}
                         onSelect={(type) => this.props.setAlphabetType(type)}
                     />
@@ -132,9 +136,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 if (singular) { arr.push('singular'); }
                 break;
             case 'verb':
-                const verbType = getVerbType(details);
-                if (verbType) {
-                    arr.push(verbType);
+                const verbDetails = getVerbDetails(details);
+                if (verbDetails) {
+                    arr.push(...verbDetails);
                 }
                 break;
             case 'numeral':

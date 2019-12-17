@@ -44,16 +44,16 @@ const languageList = [
         value: 'sl',
     },
     {
-        name: 'Български',
-        value: 'bg',
-    },
-    {
         name: 'Hrvatski',
         value: 'hr',
     },
     {
         name: 'Српски',
         value: 'sr',
+    },
+    {
+        name: 'Български',
+        value: 'bg',
     },
     {
         name: 'Македонски',

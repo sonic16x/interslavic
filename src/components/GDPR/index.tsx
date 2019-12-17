@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './index.scss';
+import { t } from 'translations';
 
 interface IGDPRState {
     show: boolean;
@@ -20,9 +21,9 @@ export default class extends React.Component<{}, IGDPRState> {
                 className={'alert alert-warning gdprAlert' + (!this.state.show ? ' hide' : '')}
                 role={'alert'}
             >
-                <strong>This page uses cookies for analytics:&nbsp;</strong>
+                <strong>{t('gdprAlert')}&nbsp;</strong>
                 <div className={'gdprActions'}>
-                    <a rel={'noreferrer'} href={link} target={'_blank'}>Read more</a>
+                    <a rel={'noreferrer'} href={link} target={'_blank'}>{t('gdprAlertReadMore')}</a>
                     <button
                         type={'button'}
                         className={'btn btn-primary'}

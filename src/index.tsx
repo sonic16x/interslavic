@@ -7,6 +7,7 @@ import { mainReducer, IMainState } from 'reducers';
 import { setInitialPage } from 'routing';
 import './customBootstrap.scss';
 import { getPageFromPath } from 'routing';
+import { setLang } from 'translations';
 
 /* tslint:disable */
 declare global {
@@ -58,6 +59,7 @@ const defaultState: IMainState = {
         from: 'en',
         to: 'isv',
     },
+    interfaceLang: 'en',
     fromText: '',
     searchType: 'begin',
     flavorisationType: '3',
@@ -96,16 +98,19 @@ function localStorageMiddleware({getState}) {
 }
 
 function getInitialState(): IMainState {
+    let state = defaultState;
     try {
         const savedState = JSON.parse(localStorage.getItem('reduxState')) || {};
-        return {
+        state = {
             ...defaultState,
             page: getPageFromPath(),
             ...savedState,
         };
-    } catch (e) {
-        return defaultState;
-    }
+    } catch (e) {}
+
+    setLang(state.interfaceLang);
+
+    return state;
 }
 
 const store = createStore(

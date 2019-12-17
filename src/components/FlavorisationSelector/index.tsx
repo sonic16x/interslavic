@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'connect';
 import './index.scss';
 import { flavorisationTypeAction } from 'actions';
 import { Selector } from 'components/Selector';
+import { t } from 'translations';
 
 interface IFlavorisationSelectorProps {
     flavorisationType: string;
@@ -40,7 +41,7 @@ class FlavorisationSelector extends React.Component<IFlavorisationSelectorProps>
                     options={flavorisationTypes}
                     onSelect={(flavorisationType) => this.props.changeFlavorisationType(flavorisationType)}
                     value={this.props.flavorisationType}
-                    label={'Flavorisation'}
+                    label={t('flavorisation')}
                 />
             </div>
         );

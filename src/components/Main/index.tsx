@@ -1,10 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'connect';
 import Header from 'components/Header';
 import DetailModal from 'components/DetailModal';
 import Router from 'components/Router';
 import { Loader } from 'components/Loader';
 import GDPR from 'components/GDPR';
+import { t } from 'translations';
 
 import './index.scss';
 import { dictionaryUrl } from 'consts';
@@ -25,7 +26,7 @@ class Main extends React.Component<IMainProps> {
         return (
             <>
                 <GDPR/>
-                <Loader title={'Loading dictionary'} isLoading={this.props.isLoading}/>
+                <Loader title={t('loading')} isLoading={this.props.isLoading}/>
                 <Header/>
                 <DetailModal/>
                 <Router/>
