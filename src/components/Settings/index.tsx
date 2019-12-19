@@ -16,12 +16,12 @@ const interfaceLanguageList = [
         value: 'en',
     },
     {
-        name: 'Меджусловјанскы',
-        value: 'isv-Cyrl',
-    },
-    {
         name: 'Medžuslovjansky',
         value: 'isv-Latn',
+    },
+    {
+        name: 'Меджусловјанскы',
+        value: 'isv-Cyrl',
     },
     {
         name: 'Русский',
@@ -36,12 +36,12 @@ const interfaceLanguageList = [
         value: 'be',
     },
     {
-        name: 'Česky',
-        value: 'cs',
-    },
-    {
         name: 'Polski',
         value: 'pl',
+    },
+    {
+        name: 'Česky',
+        value: 'cs',
     },
     {
         name: 'Slovenský',
@@ -60,12 +60,12 @@ const interfaceLanguageList = [
         value: 'sr',
     },
     {
-        name: 'Български',
-        value: 'bg',
-    },
-    {
         name: 'Македонски',
         value: 'mk',
+    },
+    {
+        name: 'Български',
+        value: 'bg',
     },
 ];
 
