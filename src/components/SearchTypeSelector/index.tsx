@@ -19,10 +19,10 @@ const searchTypes = [
         name: 'searchTypeEntire',
         value: 'full',
     },
-    {
+    /*{
         name: 'searchTypeEnd',
         value: 'end',
-    },
+    },*/
     {
         name: 'searchTypeAny',
         value: 'some',
