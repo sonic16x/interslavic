@@ -201,8 +201,8 @@ class Grammar extends React.PureComponent {
                     <Card title={titles.ciselniky} id={'ciselniky'}>
                         <Table data={tables.tableNumbers} />
                         <Text>
-                            {`{25 746}[B] = dvadeset pet	tyseč sedmset četyrideset šest.
-                            {25 746}[B] = dvadeset pet tyseč sedmset četyrideset šesty.`}
+                            {`{25 746}[B] = dvadeset pet	tyseč sedmsto četyrideset šest.
+                            {25 746}[B] = dvadeset pet tyseč sedmsto četyrideset šesty.`}
                         </Text>
                         <Text>
                             {`{{dva, dvoh, dvom, dvoma}[r]
