@@ -107,7 +107,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
       filename: 'index.html',
-      path: outputPath
+      path: outputPath,
+      excludeChunks: ['sw', 'grammarComponent'],
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
