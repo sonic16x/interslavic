@@ -41,7 +41,7 @@ function mapStateToProps({ isLoading }) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadDictionary: () => fetchDictionary(dictionaryUrl)(dispatch),
+        loadDictionary: () => fetchDictionary(dispatch),
     };
 }
 

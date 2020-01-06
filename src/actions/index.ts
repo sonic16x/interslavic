@@ -107,32 +107,23 @@ export function runSearch() {
     };
 }
 
-export function fetchDictionary(wordsListUrl) {
-    return (dispatch) => {
-        return Promise.all([
-            fetch('wordList.tsv')
-                .then((res) => res.text())
-                .then((data) => {
-                    return data
-                        .replace(/#/g, '')
-                        .split('\n')
-                        .map((l) => l.split('\t'));
-                }),
-            fetch('searchIndex.tsv')
-                .then((res) => res.text())
-                .then((data) => {
-                    return data
-                        .split('\n')
-                        .map((l) => {
-                            const [key, forms] = l.split('\t');
-                            return [key, forms.split('|')];
-                        });
-                }),
-        ]).then((data: any) => {
-            const [wordList, searchIndex] = data;
+export function fetchDictionary(dispatch) {
+    return fetch('data.txt')
+        .then((res) => res.text())
+        .then((dataStr) => {
+            const [wordListStr, searchIndexStr] = dataStr.split('<>');
+            const wordList = wordListStr
+                .replace(/#/g, '')
+                .split('\n')
+                .map((l) => l.split('\t'));
+            const searchIndex = searchIndexStr
+                .split('\n')
+                .map((l) => {
+                    const [key, forms] = l.split('\t');
+                    return [key, forms.split('|')];
+                });
             dispatch(isLoadingAction(false));
             Dictionary.init(wordList, false, searchIndex);
             dispatch(runSearch());
         });
-    };
 }

@@ -12,13 +12,14 @@ request(dictionaryUrl, (err, data) => {
     const shortWordList = wordList.map((item) => {
         return item.filter((_, i) => validFields.indexOf(header[i]) !== -1);
     });
-    fs.writeFileSync('./static/wordList.tsv', shortWordList.slice(1).map((item) => item.join('\t')).join('\n'));
+    const wordListStr = shortWordList.slice(1).map((item) => item.join('\t')).join('\n');
     Dictionary.init(shortWordList, true);
     const searchIndex = Dictionary.getIndex();
-    fs.writeFileSync('./static/searchIndex.tsv', searchIndex.map((item) => {
+    const searchIndexStr = searchIndex.map((item) => {
         return [
             item[0],
             Array.from(new Set(item[1])).filter(Boolean).join('|'),
         ].join('\t');
-    }).join('\n'));
+    }).join('\n');
+    fs.writeFileSync('./static/data.txt', [wordListStr, searchIndexStr].join('<>'));
 });
