@@ -5,8 +5,7 @@ const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
     // dictionaryUrl,
     'index.html',
-    'wordList.tsv',
-    'searchIndex.tsv',
+    'data.txt',
     'manifest.json',
     `grammarComponent.${HASH_ID}.js`,
     `grammarComponent~index.${HASH_ID}.js`,
@@ -16,7 +15,6 @@ const cacheUrls = [
     `styles/index.${HASH_ID}.css`,
     `vendors~index.${HASH_ID}.js`,
     `logo.png`,
-    `/`,
 ];
 
 self.addEventListener('install', (event: any) => {
