@@ -138,8 +138,8 @@ class DictionaryClass {
 
         this.words = wordList;
         const searchIndexExist = Boolean(searchIndex);
-        this.words.forEach((item) => {
-            if (!searchIndexExist) {
+        if (!searchIndexExist) {
+            this.words.forEach((item) => {
                 const isvWord = this.getField(item, 'isv');
                 const add = this.getField(item, 'addition')
                     .replace(/[\(\) ]/g, '')
@@ -172,8 +172,8 @@ class DictionaryClass {
                     }
                     this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
                 });
-            }
-        });
+            });
+        }
 
         if (searchIndexExist) {
             this.splittedMap = new Map(searchIndex);
