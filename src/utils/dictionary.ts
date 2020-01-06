@@ -34,6 +34,30 @@ export const searchTypes = {
     some: (item, text) => item.includes(text),
 };
 
+export const validFields = [
+    'isv',
+    'addition',
+    'partOfSpeech',
+    // 'type',
+    'en',
+    // 'sameInLanguages',
+    // 'genesis',
+    'ru',
+    'be',
+    'uk',
+    'pl',
+    'cs',
+    'sk',
+    'bg',
+    'mk',
+    'sr',
+    'hr',
+    'sl',
+    'de',
+    // 'id',
+    // 'id',
+];
+
 function getWordForms(item) {
     const [word, add, details] = item;
     const pos = getPartOfSpeech(details);
@@ -106,7 +130,7 @@ class DictionaryClass {
     ) {
         // tslint:disable-next-line
         // console.time('INIT');
-        this.header = wordList.shift().map((l) => l.replace(/\W/g, ''));
+        this.header = validFields;
         this.langsList = this.header.filter(
             (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id'].indexOf(item) === -1),
         );
@@ -133,9 +157,7 @@ class DictionaryClass {
                 this.langsList.forEach((from) => {
                     const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}-${from}`;
                     const fromField = this.getField(item, from);
-                    if (fromField[0] === '!') {
-                        return;
-                    }
+
                     let splittedField;
                     if (from === 'isv') {
                         splittedField = this
