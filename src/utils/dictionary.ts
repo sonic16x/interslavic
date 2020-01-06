@@ -139,21 +139,21 @@ class DictionaryClass {
         this.words = wordList;
         const searchIndexExist = Boolean(searchIndex);
         this.words.forEach((item) => {
-            const isvWord = this.getField(item, 'isv');
-            const add = this.getField(item, 'addition')
-                .replace(/[\(\) ]/g, '')
-                .split(/[,;/]/)
-            ;
-            this.isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, '3')));
-            this.splitWords(isvWord)
-                .concat(add)
-                .map((item) => {
+            if (!searchIndexExist) {
+                const isvWord = this.getField(item, 'isv');
+                const add = this.getField(item, 'addition')
+                    .replace(/[\(\) ]/g, '')
+                    .split(/[,;/]/)
+                ;
+                this.isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, '3')));
+                this.splitWords(isvWord)
+                    .concat(add)
+                    .map((item) => {
+                        this.isvToLatinMap.set(item, normalize(getLatin(item, '3')));
+                    });
+                add.map((item) => {
                     this.isvToLatinMap.set(item, normalize(getLatin(item, '3')));
                 });
-            add.map((item) => {
-                this.isvToLatinMap.set(item, normalize(getLatin(item, '3')));
-            });
-            if (!searchIndexExist) {
                 this.langsList.forEach((from) => {
                     const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}-${from}`;
                     const fromField = this.getField(item, from);
