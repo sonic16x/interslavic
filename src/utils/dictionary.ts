@@ -191,9 +191,9 @@ class DictionaryClass {
             .filter((item) => {
                 const splittedField = this.getSplittedField(from, item);
                 // Filter by first letter, maybe need to remove.
-                if (from === 'isv' && splittedField[0][0] !== text[0]) {
-                    return false;
-                }
+                // if (from === 'isv' && splittedField[0][0] !== text[0]) {
+                //     return false;
+                // }
                 return splittedField.some((chunk) => searchTypes[searchType](chunk, text));
             })
             .map((item) => {
@@ -202,7 +202,7 @@ class DictionaryClass {
                     splittedField = splittedField.slice(0, 1);
                 }
                 if (text.length === 2) {
-                    splittedField = splittedField.slice(0, 5);
+                    splittedField = splittedField.slice(0, 2);
                 }
                 const dist = splittedField
                     .reduce((acc, item) => {
