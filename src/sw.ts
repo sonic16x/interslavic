@@ -16,6 +16,7 @@ const cacheUrls = [
     `styles/index.${HASH_ID}.css`,
     `vendors~index.${HASH_ID}.js`,
     `logo.png`,
+    `/`,
 ];
 
 self.addEventListener('install', (event: any) => {
