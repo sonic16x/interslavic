@@ -105,7 +105,7 @@ class DictionaryClass {
         searchIndex?: any | false,
     ) {
         // tslint:disable-next-line
-        console.time('INIT');
+        // console.time('INIT');
         this.header = wordList.shift().map((l) => l.replace(/\W/g, ''));
         this.langsList = this.header.filter(
             (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id'].indexOf(item) === -1),
@@ -163,7 +163,7 @@ class DictionaryClass {
             this.percentsOfChecked[fieldName] = count.toFixed(1);
         });
         // tslint:disable-next-line
-        console.timeEnd('INIT');
+        // console.timeEnd('INIT');
     }
     public getWordList(): string[][] {
         return this.words;
@@ -185,7 +185,7 @@ class DictionaryClass {
             return [];
         }
         // tslint:disable-next-line
-        console.time('TRANSLATE');
+        // console.time('TRANSLATE');
         const distMap = new WeakMap();
         const results = this.words
             .filter((item) => {
@@ -219,7 +219,7 @@ class DictionaryClass {
             .slice(0, 50)
         ;
         // tslint:disable-next-line
-        console.timeEnd('TRANSLATE');
+        // console.timeEnd('TRANSLATE');
         return results;
     }
 
