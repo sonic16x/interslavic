@@ -8,7 +8,6 @@ import GDPR from 'components/GDPR';
 import { t } from 'translations';
 
 import './index.scss';
-import { dictionaryUrl } from 'consts';
 import { fetchDictionary } from 'actions';
 
 interface IMainProps {

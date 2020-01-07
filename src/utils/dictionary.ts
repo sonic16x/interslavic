@@ -19,7 +19,6 @@ import {
     getNumeralType,
     getPartOfSpeech,
     getPronounType,
-    // getVerbType,
     isAnimated,
     isIndeclinable,
     isPlural,
@@ -33,6 +32,8 @@ export const searchTypes = {
     end: (item, text) =>  item.includes(text) && item.indexOf(text) === item.length - text.length,
     some: (item, text) => item.includes(text),
 };
+
+export const dataDelimiter = '<>';
 
 export const validFields = [
     'isv',
@@ -125,11 +126,13 @@ class DictionaryClass {
 
     public init(
         wordList: string[][],
-        dynamicDictionary: boolean = false,
         searchIndex?: any | false,
+        percentsOfChecked?: any,
     ) {
-        // tslint:disable-next-line
-        // console.time('INIT');
+        if (process.env.NODE_ENV !== 'production') {
+            // tslint:disable-next-line
+            console.time('INIT');
+        }
         this.header = validFields;
         this.langsList = this.header.filter(
             (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id'].indexOf(item) === -1),
@@ -163,29 +166,28 @@ class DictionaryClass {
                         splittedField = this
                             .splitWords(fromField)
                             .concat(add)
+                            .concat(getWordForms(item))
                         ;
-                        if (dynamicDictionary) {
-                            splittedField = splittedField.concat(getWordForms(item));
-                        }
                     } else {
                         splittedField = this.splitWords(removeExclamationMark(fromField));
                     }
                     this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
                 });
             });
-        }
-
-        if (searchIndexExist) {
+            this.langsList.forEach((fieldName) => {
+                const notChecked = this.words.filter((item) => this.getField(item, fieldName)[0] === '!');
+                const count = (1 - notChecked.length / this.words.length) * 100;
+                this.percentsOfChecked[fieldName] = count.toFixed(1);
+            });
+        } else {
             this.splittedMap = new Map(searchIndex);
+            this.percentsOfChecked = percentsOfChecked;
         }
 
-        this.langsList.forEach((fieldName) => {
-            const notChecked = this.words.filter((item) => this.getField(item, fieldName)[0] === '!');
-            const count = (1 - notChecked.length / this.words.length) * 100;
-            this.percentsOfChecked[fieldName] = count.toFixed(1);
-        });
-        // tslint:disable-next-line
-        // console.timeEnd('INIT');
+        if (process.env.NODE_ENV !== 'production') {
+            // tslint:disable-next-line
+            console.timeEnd('INIT');
+        }
     }
     public getWordList(): string[][] {
         return this.words;
@@ -206,8 +208,10 @@ class DictionaryClass {
         if (!text) {
             return [];
         }
-        // tslint:disable-next-line
-        // console.time('TRANSLATE');
+        if (process.env.NODE_ENV !== 'production') {
+            // tslint:disable-next-line
+            console.time('TRANSLATE');
+        }
         const distMap = new WeakMap();
         const results = this.words
             .filter((item) => {
@@ -240,8 +244,10 @@ class DictionaryClass {
             .sort((a, b) => distMap.get(a) - distMap.get(b))
             .slice(0, 50)
         ;
-        // tslint:disable-next-line
-        // console.timeEnd('TRANSLATE');
+        if (process.env.NODE_ENV !== 'production') {
+            // tslint:disable-next-line
+            console.timeEnd('TRANSLATE');
+        }
         return results;
     }
 

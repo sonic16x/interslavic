@@ -1,5 +1,5 @@
-import { Dictionary } from 'utils/dictionary';
-import { setLang, t } from 'translations';
+import { Dictionary, dataDelimiter } from 'utils/dictionary';
+import { setLang } from 'translations';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -108,10 +108,14 @@ export function runSearch() {
 }
 
 export function fetchDictionary(dispatch) {
+    if (process.env.NODE_ENV !== 'production') {
+        // tslint:disable-next-line
+        console.time('FID');
+    }
     return fetch('data.txt')
         .then((res) => res.text())
         .then((dataStr) => {
-            const [wordListStr, searchIndexStr] = dataStr.split('<>');
+            const [wordListStr, searchIndexStr, percentsOfCheckedStr] = dataStr.split(dataDelimiter);
             const wordList = wordListStr
                 .replace(/#/g, '')
                 .split('\n')
@@ -122,8 +126,13 @@ export function fetchDictionary(dispatch) {
                     const [key, forms] = l.split('\t');
                     return [key, forms.split('|')];
                 });
+            const percentsOfChecked = JSON.parse(percentsOfCheckedStr);
+            Dictionary.init(wordList, searchIndex, percentsOfChecked);
             dispatch(isLoadingAction(false));
-            Dictionary.init(wordList, false, searchIndex);
             dispatch(runSearch());
+            if (process.env.NODE_ENV !== 'production') {
+                // tslint:disable-next-line
+                console.timeEnd('FID');
+            }
         });
 }

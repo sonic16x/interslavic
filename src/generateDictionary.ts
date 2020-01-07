@@ -1,6 +1,6 @@
 import request from 'request';
 import { dictionaryUrl } from 'consts';
-import { Dictionary, validFields } from 'utils/dictionary';
+import { Dictionary, validFields, dataDelimiter } from 'utils/dictionary';
 import * as fs from 'fs';
 
 request(dictionaryUrl, (err, data) => {
@@ -13,13 +13,14 @@ request(dictionaryUrl, (err, data) => {
         return item.filter((_, i) => validFields.indexOf(header[i]) !== -1);
     });
     const wordListStr = shortWordList.slice(1).map((item) => item.join('\t')).join('\n');
-    Dictionary.init(shortWordList, true);
+    Dictionary.init(shortWordList);
     const searchIndex = Dictionary.getIndex();
+    const translateStatisticStr = JSON.stringify(Dictionary.getPercentsOfTranslated());
     const searchIndexStr = searchIndex.map((item) => {
         return [
             item[0],
             Array.from(new Set(item[1])).filter(Boolean).join('|'),
         ].join('\t');
     }).join('\n');
-    fs.writeFileSync('./static/data.txt', [wordListStr, searchIndexStr].join('<>'));
+    fs.writeFileSync('./static/data.txt', [wordListStr, searchIndexStr, translateStatisticStr].join(dataDelimiter));
 });
