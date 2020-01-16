@@ -55,8 +55,8 @@ export const validFields = [
     'hr',
     'sl',
     'de',
-    // 'id',
-    // 'frequency',
+    'id',
+    //'frequency',
 ];
 
 function getWordForms(item) {
@@ -143,11 +143,11 @@ class DictionaryClass {
 
         this.words = wordList;
         const searchIndexExist = Boolean(searchIndex);
-        let key = 0;
+        const key = 0;
         if (!searchIndexExist) {
             this.words.forEach((item) => {
                 this.langsList.forEach((from) => {
-                    const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}-${from}`;
+                    const key = `${this.getField(item, 'id')}-${from}`;
                     let fromField = this.getField(item, from);
 
                     let splittedField;
@@ -278,7 +278,7 @@ class DictionaryClass {
         return item[this.headerIndexes.get(fieldName)];
     }
     private getSplittedField(from: string, item: string[]): string[] {
-        const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}-${from}`;
+        const key = `${this.getField(item, 'id')}-${from}`;
         return this.splittedMap.get(key);
     }
     private splitWords(text: string): string[] {
