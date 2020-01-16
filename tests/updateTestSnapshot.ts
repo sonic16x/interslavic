@@ -22,7 +22,7 @@ const testCases = {
 };
 
 request(dictionaryUrl, (err, data) => {
-    const splittedBody = data.body.split('\n').filter(Boolean).slice(1);
+    const splittedBody = data.body.replace(/#/g, '').split('\n').filter(Boolean).slice(1);
     splittedBody.forEach((line, i) => {
         const [ word, add, details ] = line.split('\t').slice(0, 3);
         switch (getPartOfSpeech(details)) {
