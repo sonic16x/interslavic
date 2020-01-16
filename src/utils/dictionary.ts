@@ -56,7 +56,7 @@ export const validFields = [
     'sl',
     'de',
     // 'id',
-    // 'id',
+    // 'frequency',
 ];
 
 function getWordForms(item) {
@@ -133,43 +133,35 @@ class DictionaryClass {
             // tslint:disable-next-line
             console.time('INIT');
         }
+
         this.header = validFields;
         this.langsList = this.header.filter(
-            (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id'].indexOf(item) === -1),
+            (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id' ,
+                'frequency'].indexOf(item) === -1),
         );
         this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
 
         this.words = wordList;
         const searchIndexExist = Boolean(searchIndex);
+        let key = 0;
         if (!searchIndexExist) {
             this.words.forEach((item) => {
-                const isvWord = this.getField(item, 'isv');
-                const add = this.getField(item, 'addition')
-                    .replace(/[\(\) ]/g, '')
-                    .split(/[,;/]/)
-                ;
-                this.isvToLatinMap.set(isvWord, normalize(getLatin(isvWord, '3')));
-                this.splitWords(isvWord)
-                    .concat(add)
-                    .map((item) => {
-                        this.isvToLatinMap.set(item, normalize(getLatin(item, '3')));
-                    });
-                add.map((item) => {
-                    this.isvToLatinMap.set(item, normalize(getLatin(item, '3')));
-                });
                 this.langsList.forEach((from) => {
                     const key = `${this.getField(item, from)}-${this.getField(item, 'addition')}-${from}`;
-                    const fromField = this.getField(item, from);
+                    let fromField = this.getField(item, from);
 
                     let splittedField;
                     if (from === 'isv') {
+                        fromField = removeBrackets(fromField, '[', ']');
                         splittedField = this
                             .splitWords(fromField)
-                            .concat(add)
                             .concat(getWordForms(item))
                         ;
                     } else {
-                        splittedField = this.splitWords(removeExclamationMark(fromField));
+                        fromField = removeExclamationMark(fromField);
+                        fromField = removeBrackets(fromField, '[', ']');
+                        fromField = removeBrackets(fromField, '(', ')');
+                        splittedField = this.splitWords(fromField);
                     }
                     this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
                 });
@@ -280,11 +272,7 @@ class DictionaryClass {
         return this.percentsOfChecked;
     }
     public isvToEngLatin(text) {
-        const latin = this.isvToLatinMap.get(text);
-        if (!latin) {
-            return normalize(getLatin(text, '3'));
-        }
-        return latin;
+        return normalize(getLatin(text, '3'));
     }
     public getField(item: string[], fieldName: string) {
         return item[this.headerIndexes.get(fieldName)];
@@ -320,17 +308,10 @@ class DictionaryClass {
         }
     }
     private searchPrepare(lang: string, text: string): string {
-        let lowerCaseText = text.toLowerCase()
+        const lowerCaseText = text.toLowerCase()
             .replace(/ /g, '')
             .replace(/,/g, '')
             .replace(/[\u0300-\u036f]/g, '');
-        if (lang !== 'isv') {
-            lowerCaseText = removeBrackets(lowerCaseText, '(', ')');
-            lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
-        } else {
-            lowerCaseText = convertCases(lowerCaseText);
-            lowerCaseText = removeBrackets(lowerCaseText, '[', ']');
-        }
         switch (lang) {
             case 'isv':
                 return this.isvToEngLatin(lowerCaseText);
