@@ -18,7 +18,11 @@ export function declensionAdjectiveFlat(adj: string, postfix: string): string[] 
     for (const key in result) {
         if (result.hasOwnProperty(key)) {
             const notFlat: any = Object.values(result[key]);
-            forms.push(...notFlat.flat())
+            const flatArr = notFlat
+                .flat()
+                .map((word)=>word.replace(/ /g,'').split('/'))
+                .flat();
+            forms.push(...flatArr);
         }
     }
     return Array.from(new Set(forms.filter(Boolean)));
