@@ -56,7 +56,7 @@ export const validFields = [
     'sl',
     'de',
     'id',
-    //'frequency',
+    // 'frequency',
 ];
 
 function getWordForms(item) {
@@ -143,7 +143,7 @@ class DictionaryClass {
 
         this.words = wordList;
         const searchIndexExist = Boolean(searchIndex);
-        const key = 0;
+
         if (!searchIndexExist) {
             this.words.forEach((item) => {
                 this.langsList.forEach((from) => {
