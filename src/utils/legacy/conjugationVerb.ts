@@ -16,15 +16,15 @@ export function conjugationVerbFlat(inf, rawPts): any {
         return [];
     }
     const forms = [
-        ...result.conditional.filter(Boolean).map((item) => item.split(' ')[1].replace(/\(|\)/g, '')),
+        ...result.conditional.filter(Boolean).map((item) => item.split(' ')[1].replace(/[()]/g, '')),
         result.gerund,
         ...result.imperative.replace(/ /g, '').split(','),
         ...result.imperfect,
         result.infinitive,
         result.pfap,
-        ...result.pfpp.replace(/\(|\)|,/g, '').split(' '),
-        ...result.prap.replace(/\(|\)|,/g, '').split(' '),
-        ...result.prpp.replace(/\(|\)|,/g, '').split(' '),
+        ...result.pfpp.replace(/[(),]/g, '').split(' '),
+        ...result.prap.replace(/[(),]/g, '').split(' '),
+        ...result.prpp.replace(/[(),]/g, '').split(' '),
         ...result.present.join(',').replace(/ /g, '').split(',')
     ].filter(Boolean).filter((item) => item.indexOf('-') === -1);
     return Array.from(new Set(forms));
@@ -32,13 +32,13 @@ export function conjugationVerbFlat(inf, rawPts): any {
 
 export function conjugationVerb(inf, rawPts): any {
     //special cases
-    if (inf === 'dòlžen byti' || inf.split(' ')[0].includes('/')) {
+    if (inf.split(' ')[0].includes('/')) {
         return null;
     }
-    if (inf === 'sųt') {
+    if (inf === 'sųt' || inf === 'je, jest') {
         inf = 'byti';
     }
-    const pts = rawPts.replace(/\(|\)/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
+    const pts = rawPts.replace(/[()]/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
     const refl = reflexive(inf);
     const pref = prefix(inf);
     const is = infinitive_stem(pref, inf, pts);
