@@ -61,6 +61,7 @@ export const validFields = [
 
 const isvReplacebleLetters = [
     ['đ', 'dž'],
+    ['ć', 'č'],
     ['ž', 'z'],
     ['š', 's'],
     ['č', 'c'],
@@ -77,7 +78,6 @@ const isvReplacebleLetters = [
     ['ď', 'd'],
     ['ś', 's'],
     ['ź', 'z'],
-    ['ć', 'c'],
 ];
 
 function getWordForms(item) {
@@ -385,9 +385,6 @@ class DictionaryClass {
                         this.isvSearchLetters.to.push(replacement[1]);
                     }
                 });
-        }
-        if (this.isvSearchLetters.from.includes('đ') && !this.isvSearchLetters.from.includes('ž')) {
-            this.isvSearchLetters.to.filter(() => 'dž').map(() => 'dz');
         }
         return this.isvSearchLetters;
     }
