@@ -12,6 +12,7 @@ import { fetchDictionary } from 'actions';
 
 interface IMainProps {
     isLoading: boolean;
+    loadingProgress: number;
     loadDictionary: () => void;
 }
 
@@ -22,10 +23,15 @@ class Main extends React.Component<IMainProps> {
     }
 
     public render() {
+        const { isLoading, loadingProgress } = this.props;
         return (
             <>
                 <GDPR/>
-                <Loader title={t('loading')} isLoading={this.props.isLoading}/>
+                <Loader
+                    title={t('loading')}
+                    isLoading={isLoading}
+                    progress={loadingProgress}
+                />
                 <Header/>
                 <DetailModal/>
                 <Router/>
@@ -34,8 +40,8 @@ class Main extends React.Component<IMainProps> {
     }
 }
 
-function mapStateToProps({ isLoading }) {
-    return { isLoading };
+function mapStateToProps({ isLoading, loadingProgress }) {
+    return { isLoading, loadingProgress };
 }
 
 function mapDispatchToProps(dispatch) {

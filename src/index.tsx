@@ -66,6 +66,7 @@ const defaultState: IMainState = {
     alphabetType: 'latin',
     page: 'dictionary',
     isLoading: true,
+    loadingProgress: 0,
     isDetailModal: false,
     searchExpanded: false,
     rawResults: [],

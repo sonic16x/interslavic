@@ -9,6 +9,7 @@ export enum ActionTypes {
     SET_PAGE = 'SET_PAGE',
     SET_INTERFACE_LANG = 'SET_INTERFACE_LANG',
     IS_LOADING = 'IS_LOADING',
+    LOADING_PROGRESS = 'LOADING_PROGRESS',
     SET_DETAIL = 'SET_DETAIL',
     DETAIL_IS_VISIBLE = 'DETAIL_IS_VISIBLE',
     SET_SEARCH_EXPAND = 'SET_SEARCH_EXPAND',
@@ -93,6 +94,13 @@ export function isLoadingAction(data: boolean) {
     };
 }
 
+export function loadingProgressAction(data: number) {
+    return {
+        type: ActionTypes.LOADING_PROGRESS,
+        data,
+    };
+}
+
 export function setInterfaceLang(data: string) {
     setLang(data);
     return {
@@ -107,12 +115,53 @@ export function runSearch() {
     };
 }
 
+function progressHelper(onProgress) {
+    return (response) => {
+        if (!response.body) {
+            return response;
+        }
+
+        let loaded = 0;
+        const contentLength = response.headers.get('content-length');
+        const total = !contentLength ? -1 : parseInt(contentLength, 10);
+
+        return new Response(
+            new ReadableStream({
+                start(controller) {
+                    const reader = response.body.getReader();
+                    return read();
+
+                    function read() {
+                        return reader.read()
+                            .then(({ done, value }) => {
+                                if (done) {
+                                    return void controller.close();
+                                }
+                                loaded += value.byteLength;
+                                onProgress({ loaded, total });
+                                controller.enqueue(value);
+                                return read();
+                            })
+                            .catch((error) => {
+                                controller.error(error);
+                            });
+                    }
+                },
+            }),
+        );
+    };
+}
+
 export function fetchDictionary(dispatch) {
     if (process.env.NODE_ENV !== 'production') {
         // tslint:disable-next-line
         console.time('FID');
     }
     return fetch('data.txt')
+        .then(progressHelper(({loaded, total}) => {
+            const p = Math.ceil((loaded / total) * 100);
+            dispatch(loadingProgressAction(p));
+        }))
         .then((res) => res.text())
         .then((dataStr) => {
             const [wordListStr, searchIndexStr, percentsOfCheckedStr] = dataStr.split(dataDelimiter);
