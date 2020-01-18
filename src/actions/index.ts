@@ -14,6 +14,7 @@ export enum ActionTypes {
     SET_SEARCH_EXPAND = 'SET_SEARCH_EXPAND',
     ALPHABET_TYPE = 'ALPHABET_TYPE',
     RUN_SEARCH = 'RUN_SEARCH',
+    CHANGE_ISV_SEARCH_LETTERS = 'CHANGE_ISV_SEARCH_LETTERS',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -97,6 +98,13 @@ export function setInterfaceLang(data: string) {
     setLang(data);
     return {
         type: ActionTypes.SET_INTERFACE_LANG,
+        data,
+    };
+}
+
+export function changeIsvSearchLetters(data: string) {
+    return {
+        type: ActionTypes.CHANGE_ISV_SEARCH_LETTERS,
         data,
     };
 }

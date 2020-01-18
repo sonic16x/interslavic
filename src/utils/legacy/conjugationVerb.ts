@@ -35,7 +35,7 @@ export function conjugationVerb(inf, rawPts): any {
     if (inf.split(' ')[0].includes('/')) {
         return null;
     }
-    if (inf === 'sųt' || inf === 'je, jest') {
+    if (inf === 'sųt' || inf === 'je' || inf === 'jest') {
         inf = 'byti';
     }
     const pts = rawPts.replace(/[()]/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
@@ -226,7 +226,7 @@ function present_tense_stem(pref, pts, is) {
                     result = (result.slice(0, -1) + 'm');
                 }
             }
-            else if (result = 'vzę') {
+            else if (result === 'vzę') {
                 result = 'vòzm';
             }
             else {
