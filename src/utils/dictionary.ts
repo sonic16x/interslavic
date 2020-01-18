@@ -59,27 +59,58 @@ export const validFields = [
     // 'frequency',
 ];
 
+const isvReplacebleLetters = [
+    ['đ', 'dž'],
+    ['ž', 'z'],
+    ['š', 's'],
+    ['č', 'c'],
+    ['ě', 'e'],
+    ['y', 'i'],
+    ['å', 'a'],
+    ['ę', 'e'],
+    ['ų', 'u'],
+    ['ò', 'o'],
+    ['ŕ', 'r'],
+    ['ľ', 'l'],
+    ['ń', 'n'],
+    ['ť', 't'],
+    ['ď', 'd'],
+    ['ś', 's'],
+    ['ź', 'z'],
+    ['ć', 'c'],
+];
+
 function getWordForms(item) {
     const [word, add, details] = item;
     const pos = getPartOfSpeech(details);
-    switch (pos) {
-        case 'verb':
-            return conjugationVerbFlat(word, add);
-        case 'adjective':
-            return declensionAdjectiveFlat(word, '');
-        case 'noun':
-            const gender = getGender(details.replace('m./f.', 'm.' ));
-            const animated = isAnimated(details);
-            const plural = isPlural(details);
-            const singular = isSingular(details);
-            const indeclinable = isIndeclinable(details);
-            return declensionNounFlat(word, add, gender, animated, plural, singular, indeclinable);
-        case 'pronoun':
-            return declensionPronounFlat(word, getPronounType(details));
-        case 'numeral':
-            return declensionNumeralFlat(word, getNumeralType(details));
-    }
-    return [];
+    const wordForms = [];
+    word.split(',').map((wordElement) => {
+        wordElement = wordElement.trim();
+        switch (pos) {
+            case 'verb':
+                wordForms.push(...conjugationVerbFlat(wordElement, add));
+                break;
+            case 'adjective':
+                wordForms.push(...declensionAdjectiveFlat(wordElement, ''));
+                break;
+            case 'noun':
+                const gender = getGender(details.replace('m./f.', 'm.' ));
+                const animated = isAnimated(details);
+                const plural = isPlural(details);
+                const singular = isSingular(details);
+                const indeclinable = isIndeclinable(details);
+                wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural, singular,
+                    indeclinable));
+                break;
+            case 'pronoun':
+                wordForms.push(...declensionPronounFlat(wordElement, getPronounType(details)));
+                break;
+            case 'numeral':
+                wordForms.push(...declensionNumeralFlat(wordElement, getNumeralType(details)));
+                break;
+        }
+    });
+    return Array.from(new Set(wordForms));
 }
 
 export interface ITranslateResult {
@@ -111,17 +142,17 @@ class DictionaryClass {
     private headerIndexes: Map<string, number>;
     private percentsOfChecked: {[lang: string]: string};
     private words: string[][];
-    private isvToLatinMap: Map<string, string>;
     private splittedMap: Map<string, string[]>;
+    private isvSearchLetters: { from: string[], to: string[] };
 
     private constructor() {
         this.header = [];
         this.langsList = [];
         this.headerIndexes = new Map();
-        this.isvToLatinMap = new Map();
         this.splittedMap = new Map();
         this.percentsOfChecked = {};
         this.percentsOfChecked = {};
+        this.isvSearchLetters =  { from: [], to: [] };
     }
 
     public init(
@@ -149,18 +180,19 @@ class DictionaryClass {
                 this.langsList.forEach((from) => {
                     const key = `${this.getField(item, 'id')}-${from}`;
                     let fromField = this.getField(item, from);
+                    fromField = removeBrackets(fromField, '[', ']');
+                    fromField = removeBrackets(fromField, '(', ')');
 
                     let splittedField;
                     if (from === 'isv') {
-                        fromField = removeBrackets(fromField, '[', ']');
                         splittedField = this
                             .splitWords(fromField)
                             .concat(getWordForms(item))
                         ;
+                        this.splittedMap.set(key + '-src',
+                            splittedField.map((chunk) => this.searchPrepare('isv-src', chunk)));
                     } else {
                         fromField = removeExclamationMark(fromField);
-                        fromField = removeBrackets(fromField, '[', ']');
-                        fromField = removeBrackets(fromField, '(', ')');
                         splittedField = this.splitWords(fromField);
                     }
                     this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
@@ -195,11 +227,15 @@ class DictionaryClass {
         from: string,
         to: string,
         searchType: string,
+        flavorisationType: string,
     ): string[][] {
         const text = this.inputPrepare(from, inputText);
         if (!text) {
             return [];
         }
+        const isvText = (from === 'isv' ?
+            this.applyIsvSearchLetters(getLatin(inputText, flavorisationType), flavorisationType)
+            : '');
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
             console.time('TRANSLATE');
@@ -207,12 +243,41 @@ class DictionaryClass {
         const distMap = new WeakMap();
         const results = this.words
             .filter((item) => {
-                const splittedField = this.getSplittedField(from, item);
-                // Filter by first letter, maybe need to remove.
-                // if (from === 'isv' && splittedField[0][0] !== text[0]) {
-                //     return false;
-                // }
-                return splittedField.some((chunk) => searchTypes[searchType](chunk, text));
+                // for isv only: when entered 1 symbol - searching by first entry of cell
+                if (from === 'isv' && text.length === 1) {
+                    if (this.isvSearchLetters.to.includes(text)) {
+                        const splittedField = this.getSplittedField('isv-src', item);
+                        let searchedLetter = splittedField[0];
+                        if (flavorisationType === '3') {
+                            searchedLetter = getLatin(searchedLetter, flavorisationType);
+                        }
+                        return searchTypes[searchType](this.applyIsvSearchLetters(searchedLetter,
+                            flavorisationType), isvText);
+                    } else {
+                        const splittedField = this.getSplittedField(from, item);
+                        return searchTypes[searchType](splittedField[0], text);
+                    }
+                } else {
+                    const splittedField = this.getSplittedField(from, item);
+                    // Filter by first letter, maybe need to remove.
+                    // if (from === 'isv' && splittedField[0][0] !== text[0]) {
+                    //     return false;
+                    // }
+                    return splittedField.some((chunk) => searchTypes[searchType](chunk, text));
+                }
+            })
+            .filter((item) => {
+               if (from === 'isv' &&
+                    (flavorisationType === '2' || flavorisationType === '3') &&
+                    this.isvSearchLetters.to.some((letter) => text.includes(letter))) {
+                    const splittedField = this.getSplittedField('isv-src', item);
+                    return splittedField.some((chunk) => {
+                        if (flavorisationType === '3') { chunk = getLatin(chunk, flavorisationType); }
+                        return searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText);
+                    });
+                } else {
+                    return true;
+                }
             })
             .map((item) => {
                 let splittedField = this.getSplittedField(from, item);
@@ -272,10 +337,34 @@ class DictionaryClass {
         return this.percentsOfChecked;
     }
     public isvToEngLatin(text) {
-        return normalize(getLatin(text, '3'));
+        return normalize(getLatin(text, '3'))
+            .replace(/y/g, 'i');
     }
     public getField(item: string[], fieldName: string) {
         return item[this.headerIndexes.get(fieldName)];
+    }
+    public changeIsvSearchLetters(letters: string): {from: string[], to: string[]} {
+        for (let letter of letters) {
+            isvReplacebleLetters
+                .filter((replacement) => replacement[0] === letter)
+                .map((replacement) => {
+                    const index = this.isvSearchLetters.from.indexOf(replacement[0]);
+                    if (index !== -1) {
+                        this.isvSearchLetters.from.splice(index, 1);
+                        this.isvSearchLetters.to.splice(index, 1);
+                    } else {
+                        this.isvSearchLetters.from.push(replacement[0]);
+                        this.isvSearchLetters.to.push(replacement[1]);
+                    }
+                });
+        }
+        if (this.isvSearchLetters.from.includes('đ') && !this.isvSearchLetters.from.includes('ž')) {
+            this.isvSearchLetters.to.filter(() => 'dž').map(() => 'dz');
+        }
+        return this.isvSearchLetters;
+    }
+    public setIsvSearchLetters(letters: {from: string[], to: string[]}): void {
+        this.isvSearchLetters = letters;
     }
     private getSplittedField(from: string, item: string[]): string[] {
         const key = `${this.getField(item, 'id')}-${from}`;
@@ -290,8 +379,10 @@ class DictionaryClass {
             .replace(/,/g, '')
             .replace(/[\u0300-\u036f]/g, '');
         switch (lang) {
+            case 'isv-src':
+                return lowerCaseText;
             case 'isv':
-                return this.isvToEngLatin(lowerCaseText);
+                return DictionaryClass.isvToEngLatin(lowerCaseText);
             case 'cs':
             case 'pl':
             case 'sk':
@@ -313,8 +404,10 @@ class DictionaryClass {
             .replace(/,/g, '')
             .replace(/[\u0300-\u036f]/g, '');
         switch (lang) {
+            case 'isv-src':
+                return lowerCaseText;
             case 'isv':
-                return this.isvToEngLatin(lowerCaseText);
+                return DictionaryClass.isvToEngLatin(lowerCaseText);
             case 'cs':
             case 'pl':
             case 'sk':
@@ -326,6 +419,19 @@ class DictionaryClass {
                 return lowerCaseText.replace(/ё/g, 'е');
             default:
                 return lowerCaseText;
+        }
+    }
+    private applyIsvSearchLetters(text: string, flavorisationType: string): string {
+        text = this.searchPrepare('isv-src', text);
+        if (flavorisationType === '2' || flavorisationType === '3') {
+            isvReplacebleLetters
+                .filter((replacement) => !this.isvSearchLetters.from.includes(replacement[0]))
+                .map((replacement) => {
+                    text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
+                });
+            return text;
+        } else {
+            return text;
         }
     }
 }

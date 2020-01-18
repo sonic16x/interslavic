@@ -1,5 +1,5 @@
 import { ActionTypes } from 'actions';
-import { getPageFromPath, getPathFromPage, goToPage } from 'routing';
+import { getPathFromPage, goToPage } from 'routing';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
 
 export interface IMainState {
@@ -8,6 +8,10 @@ export interface IMainState {
         to: string;
     };
     interfaceLang: string;
+    isvSearchLetters: {
+        from: string[];
+        to: string[]
+    };
     fromText: string;
     searchType: string;
     flavorisationType: string;
@@ -26,7 +30,7 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.LANG: {
             const { fromText, flavorisationType, searchType } = state;
             const lang = data;
-            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType);
+            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType, flavorisationType);
             return {
                 ...state,
                 lang,
@@ -37,7 +41,7 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.SEARCH_TYPE: {
             const { flavorisationType, lang, fromText } = state;
             const searchType = data;
-            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType);
+            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType, flavorisationType);
             return {
                 ...state,
                 searchType,
@@ -48,7 +52,7 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.FROM_TEXT: {
             const { searchType, flavorisationType, lang } = state;
             const fromText = data;
-            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType);
+            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType, flavorisationType);
             return {
                 ...state,
                 fromText,
@@ -58,15 +62,27 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.RUN_SEARCH: {
             const { searchType, flavorisationType, lang, fromText } = state;
-            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType);
+            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType, flavorisationType);
             return {
                 ...state,
                 rawResults,
                 results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
             };
         }
+        case ActionTypes.CHANGE_ISV_SEARCH_LETTERS: {
+            const {searchType, flavorisationType, lang, fromText} = state;
+            const isvSearchLetters = Dictionary.changeIsvSearchLetters(data);
+            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType, flavorisationType);
+            return {
+                ...state,
+                isvSearchLetters,
+                rawResults,
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+            };
+        }
         case ActionTypes.FLAVORISATION_TYPE:
-            const { rawResults, lang} = state;
+            const {searchType, lang, fromText} = state;
+            const rawResults = Dictionary.translate(fromText, lang.from, lang.to, searchType, data);
             return {
                 ...state,
                 flavorisationType: data,

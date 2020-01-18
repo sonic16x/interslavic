@@ -11,7 +11,12 @@
   padding: 15px;
   margin-right: auto;
   margin-left: auto;
+  & div.isvSearchLetters div.custom-checkbox {
+    display: inline-block;
+    padding-right: 1rem;
+  }
 }
+
 @media (min-width: 1040px) {
   .settingsContent {
     padding-right: 5px;

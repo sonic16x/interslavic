@@ -8,6 +8,7 @@ import { setInitialPage } from 'routing';
 import './customBootstrap.scss';
 import { getPageFromPath } from 'routing';
 import { setLang } from 'translations';
+import { Dictionary } from './utils/dictionary';
 
 /* tslint:disable */
 declare global {
@@ -60,6 +61,10 @@ const defaultState: IMainState = {
         to: 'isv',
     },
     interfaceLang: 'en',
+    isvSearchLetters: {
+        from: [],
+        to: [],
+    },
     fromText: '',
     searchType: 'begin',
     flavorisationType: '3',
@@ -109,6 +114,7 @@ function getInitialState(): IMainState {
     } catch (e) {}
 
     setLang(state.interfaceLang);
+    Dictionary.setIsvSearchLetters(state.isvSearchLetters);
 
     return state;
 }

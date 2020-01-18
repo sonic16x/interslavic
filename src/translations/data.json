@@ -510,5 +510,53 @@
     "sr": "Прочитај више:",
     "mk": "Прочитај повеќе:",
     "bg": "Прочети повече:"
+  },
+  "searchSensitiveLettersForInterslavic": {
+    "en": "Search-sensitive letters for Interslavic",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru": "Учитывать буквы при поиске на межславянском",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "standardOrthography": {
+    "en": "Standard orthography:",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru": "Стандартное правописание:",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "etymologicalOrthography": {
+    "en": "Etymological orthography:",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru": "Этимологическое правописание:",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   }
 }
