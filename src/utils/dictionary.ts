@@ -237,7 +237,7 @@ class DictionaryClass {
             return [];
         }
         const isvText = (from === 'isv' ?
-            this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType),flavorisationType)
+            this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType), flavorisationType)
             : '');
         if (inputOptions.some((option) => option.trim() === 'end')) {
             searchType = 'end';
@@ -288,9 +288,15 @@ class DictionaryClass {
                 if (from === 'isv' && !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&
                    this.isvSearchLetters.to.some((letter) => text.includes(letter))) {
                     const splittedField = this.getSplittedField('isv-src', item);
-                    return splittedField.some((chunk) => {
-                        return searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText);
-                    });
+                    if (isvText.length === 1) {
+                        return searchTypes[searchType](this.applyIsvSearchLetters(splittedField[0],
+                            flavorisationType), isvText);
+                    } else {
+                        return splittedField.some((chunk) => {
+                            return searchTypes[searchType](this.applyIsvSearchLetters(chunk,
+                                flavorisationType), isvText);
+                        });
+                    }
                 }
                 return true;
             })
