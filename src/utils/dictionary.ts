@@ -234,7 +234,7 @@ class DictionaryClass {
             return [];
         }
         const isvText = (from === 'isv' ?
-            this.applyIsvSearchLetters(getLatin(inputText, flavorisationType), flavorisationType)
+            this.applyIsvSearchLetters(getLatin(inputText, flavorisationType))
             : '');
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
@@ -245,16 +245,10 @@ class DictionaryClass {
             .filter((item) => {
                 // for isv only: when entered 1 symbol - searching by first entry of cell
                 if (from === 'isv' && text.length === 1) {
-                    if (this.isvSearchLetters.to.includes(text)) {
-                        const splittedField = this.getSplittedField('isv-src', item);
-                        let searchedLetter = splittedField[0];
-                        if (flavorisationType === '3') {
-                            searchedLetter = getLatin(searchedLetter, flavorisationType);
-                        }
-                        return searchTypes[searchType](this.applyIsvSearchLetters(searchedLetter,
-                            flavorisationType), isvText);
+                    const splittedField = this.getSplittedField(from, item);
+                    if (searchType==='begin') {
+                        return searchTypes[searchType](splittedField[0][0], text);
                     } else {
-                        const splittedField = this.getSplittedField(from, item);
                         return searchTypes[searchType](splittedField[0], text);
                     }
                 } else {
@@ -267,13 +261,12 @@ class DictionaryClass {
                 }
             })
             .filter((item) => {
-               if (from === 'isv' &&
-                    (flavorisationType === '2' || flavorisationType === '3') &&
-                    this.isvSearchLetters.to.some((letter) => text.includes(letter))) {
+               if (from === 'isv' && (flavorisationType === '2' || flavorisationType === '3') &&
+                   this.isvSearchLetters.to.some((letter) => text.includes(letter))) {
                     const splittedField = this.getSplittedField('isv-src', item);
                     return splittedField.some((chunk) => {
                         if (flavorisationType === '3') { chunk = getLatin(chunk, flavorisationType); }
-                        return searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText);
+                        return searchTypes[searchType](this.applyIsvSearchLetters(chunk), isvText);
                     });
                 } else {
                     return true;
@@ -344,7 +337,7 @@ class DictionaryClass {
         return item[this.headerIndexes.get(fieldName)];
     }
     public changeIsvSearchLetters(letters: string): {from: string[], to: string[]} {
-        for (let letter of letters) {
+        for (const letter of letters) {
             isvReplacebleLetters
                 .filter((replacement) => replacement[0] === letter)
                 .map((replacement) => {
@@ -382,7 +375,7 @@ class DictionaryClass {
             case 'isv-src':
                 return lowerCaseText;
             case 'isv':
-                return DictionaryClass.isvToEngLatin(lowerCaseText);
+                return this.isvToEngLatin(lowerCaseText);
             case 'cs':
             case 'pl':
             case 'sk':
@@ -407,7 +400,7 @@ class DictionaryClass {
             case 'isv-src':
                 return lowerCaseText;
             case 'isv':
-                return DictionaryClass.isvToEngLatin(lowerCaseText);
+                return this.isvToEngLatin(lowerCaseText);
             case 'cs':
             case 'pl':
             case 'sk':
@@ -421,18 +414,14 @@ class DictionaryClass {
                 return lowerCaseText;
         }
     }
-    private applyIsvSearchLetters(text: string, flavorisationType: string): string {
+    private applyIsvSearchLetters(text: string): string {
         text = this.searchPrepare('isv-src', text);
-        if (flavorisationType === '2' || flavorisationType === '3') {
-            isvReplacebleLetters
-                .filter((replacement) => !this.isvSearchLetters.from.includes(replacement[0]))
-                .map((replacement) => {
-                    text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
-                });
-            return text;
-        } else {
-            return text;
-        }
+        isvReplacebleLetters
+            .filter((replacement) => !this.isvSearchLetters.from.includes(replacement[0]))
+            .map((replacement) => {
+                text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
+            });
+        return text;
     }
 }
 
