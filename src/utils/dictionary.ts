@@ -258,15 +258,15 @@ class DictionaryClass {
                 // hard etymological search for isv
                 if (from === 'isv' && hardEtymSearch) {
                     const splittedField = this.getSplittedField('isv-src', item);
-                    filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk, inputWord));
+                    if(inputWord.length === 1) {
+                        filterResult = searchTypes[searchType](splittedField[0], inputWord);
+                    } else {
+                        filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk, inputWord));
+                    }
                 // for isv only: when entered 1 symbol - searching by first entry of cell
                 } else if (from === 'isv' && text.length === 1) {
                     const splittedField = this.getSplittedField(from, item);
-                    if (searchType === 'begin') {
-                        filterResult = searchTypes[searchType](splittedField[0][0], text);
-                    } else {
-                        filterResult = searchTypes[searchType](splittedField[0], text);
-                    }
+                    filterResult = searchTypes[searchType](splittedField[0], text);
                 } else {
                     const splittedField = this.getSplittedField(from, item);
                     // Filter by first letter, maybe need to remove.
