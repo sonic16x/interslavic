@@ -237,7 +237,7 @@ class DictionaryClass {
             return [];
         }
         const isvText = (from === 'isv' ?
-            this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType))
+            this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType),flavorisationType)
             : '');
         if (inputOptions.some((option) => option.trim() === 'end')) {
             searchType = 'end';
@@ -258,7 +258,7 @@ class DictionaryClass {
                 // hard etymological search for isv
                 if (from === 'isv' && hardEtymSearch) {
                     const splittedField = this.getSplittedField('isv-src', item);
-                    if(inputWord.length === 1) {
+                    if (inputWord.length === 1) {
                         filterResult = searchTypes[searchType](splittedField[0], inputWord);
                     } else {
                         filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk, inputWord));
@@ -289,8 +289,7 @@ class DictionaryClass {
                    this.isvSearchLetters.to.some((letter) => text.includes(letter))) {
                     const splittedField = this.getSplittedField('isv-src', item);
                     return splittedField.some((chunk) => {
-                        if (flavorisationType === '3') { chunk = getLatin(chunk, flavorisationType); }
-                        return searchTypes[searchType](this.applyIsvSearchLetters(chunk), isvText);
+                        return searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText);
                     });
                 }
                 return true;
@@ -437,10 +436,12 @@ class DictionaryClass {
                 return lowerCaseText;
         }
     }
-    private applyIsvSearchLetters(text: string): string {
+    private applyIsvSearchLetters(text: string, flavorisationType: string): string {
         text = this.searchPrepare('isv-src', text);
         isvReplacebleLetters
-            .filter((replacement) => !this.isvSearchLetters.from.includes(replacement[0]))
+            .filter((replacement) =>
+                !this.isvSearchLetters.from.includes(replacement[0]) ||
+                flavorisationType === '3' && !['š', 'ž', 'č', 'ě', 'y'].includes(replacement[0]))
             .map((replacement) => {
                 text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
             });
