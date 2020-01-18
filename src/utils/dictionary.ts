@@ -245,7 +245,7 @@ class DictionaryClass {
         const hardEtymSearch = inputOptions.some((o) => o === 'etym') ||
             (flavorisationType === '2' &&
             isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0])));
-        const twoWaySearch = inputOptions.some((o) => o === 'b');
+        const twoWaySearch = from === 'isv' && inputOptions.some((o) => o === 'b');
 
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
@@ -276,7 +276,7 @@ class DictionaryClass {
                     filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk, text));
                 }
                 // two-way search
-                if (twoWaySearch) {
+                if (!filterResult && twoWaySearch) {
                     const splittedField = this.getSplittedField(to, item);
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, textTo));
@@ -284,21 +284,28 @@ class DictionaryClass {
                 return filterResult;
             })
             .filter((item) => {
+                let filterResult = true;
                 // search in isv with search sensitive letters
                 if (from === 'isv' && !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&
                    this.isvSearchLetters.to.some((letter) => text.includes(letter))) {
                     const splittedField = this.getSplittedField('isv-src', item);
                     if (isvText.length === 1) {
-                        return searchTypes[searchType](this.applyIsvSearchLetters(splittedField[0],
+                        filterResult = searchTypes[searchType](this.applyIsvSearchLetters(splittedField[0],
                             flavorisationType), isvText);
                     } else {
-                        return splittedField.some((chunk) => {
+                        filterResult = splittedField.some((chunk) => {
                             return searchTypes[searchType](this.applyIsvSearchLetters(chunk,
                                 flavorisationType), isvText);
                         });
                     }
                 }
-                return true;
+                // two-way search
+                if (!filterResult && twoWaySearch) {
+                    const splittedField = this.getSplittedField(to, item);
+                    filterResult = filterResult ||
+                        splittedField.some((chunk) => searchTypes[searchType](chunk, textTo));
+                }
+                return filterResult;
             })
             .map((item) => {
                 let splittedField = this.getSplittedField(from, item);
