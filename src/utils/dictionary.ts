@@ -250,12 +250,12 @@ class DictionaryClass {
         // option -b - two-way search when searching in isv
         const twoWaySearch = from === 'isv' && inputOptions.some((o) => o === 'b');
         // option -pos: - filter by part of speach
-        //for example "-pos:noun.m+v.ipf" - search for masculine nouns or imperfective verbs
+        // for example "-pos:noun.m+v.ipf" - search for masculine nouns or imperfective verbs
         const filterpartOfSpeech =
-            (inputOptions.some((option) => option.length > 4 && option.slice(0,4)==='pos:') ?
-                inputOptions.find((option) => option.slice(0,4)==='pos:')
-                  .slice(4).replace(/ /g,'')
-                  .split('+').map((elem)=> elem.split('.').filter(Boolean)) :
+            (inputOptions.some((option) => option.length > 4 && option.slice(0, 4) === 'pos:') ?
+                inputOptions.find((option) => option.slice(0, 4) === 'pos:')
+                  .slice(4).replace(/ /g, '')
+                  .split('+').map((elem) => elem.split('.').filter(Boolean)) :
                 []);
 
         if (process.env.NODE_ENV !== 'production') {
@@ -292,15 +292,15 @@ class DictionaryClass {
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, textTo));
                 }
-                //seach by part of speach
+                // seach by part of speach
                 if (filterResult && filterpartOfSpeech.length) {
                     const partOfSpeech = this.getField(item, 'partOfSpeech')
-                        .replace(/ /g,'').split('.').filter(Boolean);
+                        .replace(/ /g, '').split('.').filter(Boolean);
                     if (partOfSpeech.includes('m') || partOfSpeech.includes('n')
                         || partOfSpeech.includes('f')) {
                         partOfSpeech.push('noun');
                     }
-                    if (!filterpartOfSpeech.some((c)=>c.every((e)=>partOfSpeech.includes(e)))) {
+                    if (!filterpartOfSpeech.some((c) => c.every((e) => partOfSpeech.includes(e)))) {
                         return false;
                     }
                 }
