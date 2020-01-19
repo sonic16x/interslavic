@@ -1,5 +1,7 @@
 import { ActionTypes } from 'actions';
+import { defaultState } from 'index';
 import { getPathFromPage, goToPage } from 'routing';
+import { setLang } from 'translations';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
 
 export interface IMainState {
@@ -115,6 +117,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 searchExpanded: data,
             };
         case ActionTypes.SET_INTERFACE_LANG:
+            setLang(data);
             return {
                 ...state,
                 interfaceLang: data,

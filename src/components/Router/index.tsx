@@ -1,16 +1,15 @@
+import About from 'components/About';
+import Dictionary from 'components/Dictionary';
+import Settings from 'components/Settings';
 import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
-import About from 'components/About';
-import Settings from 'components/Settings';
-import Dictionary from 'components/Dictionary';
 import { toBCP47 } from 'utils/bcp47';
 
 const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Grammar'));
 
-import './index.scss';
-import { dictionaryUrl } from 'consts';
-import { fetchDictionary, setPageAction } from 'actions';
+import { setPageAction } from 'actions';
 import { getPageFromPath, getPathFromPage } from 'routing';
+import './index.scss';
 
 interface IRouterProps {
     lang: string;

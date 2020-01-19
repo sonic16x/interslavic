@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import Main from './components/Main';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { mainReducer, IMainState } from 'reducers';
+import { IMainState, mainReducer } from 'reducers';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { setInitialPage } from 'routing';
-import './customBootstrap.scss';
 import { getPageFromPath } from 'routing';
 import { setLang } from 'translations';
+import Main from './components/Main';
+import './customBootstrap.scss';
 import { Dictionary } from './utils/dictionary';
 
 /* tslint:disable */
@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-const defaultState: IMainState = {
+export const defaultState: IMainState = {
     lang: {
         from: 'en',
         to: 'isv',

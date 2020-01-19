@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { connect } from 'connect';
-import './index.scss';
 import { flavorisationTypeAction } from 'actions';
 import { Selector } from 'components/Selector';
+import { connect } from 'connect';
+import * as React from 'react';
 import { t } from 'translations';
+import './index.scss';
 
 interface IFlavorisationSelectorProps {
     flavorisationType: string;

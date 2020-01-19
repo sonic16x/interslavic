@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { connect } from 'connect';
-import './index.scss';
 import { setPageAction } from 'actions';
+import { connect } from 'connect';
+import * as React from 'react';
 import { pages } from 'routing';
 import { t } from 'translations';
+import './index.scss';
 
 interface IHeaderProps {
     setPage: (page: string) => void;

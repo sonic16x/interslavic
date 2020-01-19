@@ -2,9 +2,9 @@ import { declensionNoun } from '../src/utils/legacy/declensionNoun';
 import {
     getGender,
     isAnimated,
+    isIndeclinable,
     isPlural,
     isSingular,
-    isIndeclinable,
 } from '../src/utils/wordDetails';
 
 import { noun } from './testCases.json';

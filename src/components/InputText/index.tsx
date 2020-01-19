@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { connect } from 'connect';
-import './index.scss';
 import { fromTextAction } from 'actions';
-import { toBCP47 } from 'utils/bcp47';
+import { connect } from 'connect';
+import * as React from 'react';
 import { t } from 'translations';
+import { toBCP47 } from 'utils/bcp47';
+import './index.scss';
 
 interface IInputTextProps {
     changeFromText: (text: string) => void;

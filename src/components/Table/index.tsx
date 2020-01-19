@@ -1,6 +1,6 @@
+import { parseStr } from 'components/Text';
 import * as React from 'react';
 import './index.scss';
-import { parseStr } from 'components/Text';
 
 interface ITableProps {
     data: string[][];

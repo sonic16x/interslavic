@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { worksheetUrl } from 'consts';
+import * as React from 'react';
 import { t } from 'translations';
 import './index.scss';
 

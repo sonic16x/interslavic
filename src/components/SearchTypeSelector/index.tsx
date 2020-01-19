@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { connect } from 'connect';
-import './index.scss';
 import { searchTypeAction } from 'actions';
-import { LineSelector } from '../LineSelector';
+import { connect } from 'connect';
+import * as React from 'react';
 import { t } from 'translations';
+import { LineSelector } from '../LineSelector';
+import './index.scss';
 
 interface IFlavorisationSelectorProps {
     searchType: string;
