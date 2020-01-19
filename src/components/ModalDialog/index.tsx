@@ -1,8 +1,8 @@
-import { once } from 'lodash';
-import * as React from 'react';
-import 'dialog-polyfill/dialog-polyfill.css';
 import classnames from 'classnames';
 import dialogPolyfill from 'dialog-polyfill';
+import 'dialog-polyfill/dialog-polyfill.css';
+import { once } from 'lodash';
+import * as React from 'react';
 import './index.scss';
 
 interface IModalDialogProps {

@@ -1,10 +1,10 @@
+import Card from 'components/Card';
+import Table from 'components/Table';
+import Text from 'components/Text';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
-import Table from 'components/Table';
 import tables from './tables.json';
-import Text from 'components/Text';
-import Card from 'components/Card';
 
 const titles = {
     abeceda: 'Abeceda',

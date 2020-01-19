@@ -1,15 +1,18 @@
-import * as React from 'react';
-import ModalDialog from '../ModalDialog';
-import { connect } from 'react-redux';
-import './index.scss';
 import { hideDetailAction, setAlphabetTypeAction } from 'actions';
-import { declensionNoun } from 'utils/legacy/declensionNoun';
-import { declensionAdjective } from 'utils/legacy/declensionAdjective';
-import { conjugationVerb } from 'utils/legacy/conjugationVerb';
-import { declensionNumeral } from 'utils/legacy/declensionNumeral';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import Text from 'components/Text';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { t } from 'translations';
+import { Dictionary } from 'utils/dictionary';
+import { getCyrillic } from 'utils/getCyrillic';
+import { getLatin } from 'utils/getLatin';
+import { conjugationVerb } from 'utils/legacy/conjugationVerb';
+import { declensionAdjective } from 'utils/legacy/declensionAdjective';
+import { declensionNoun } from 'utils/legacy/declensionNoun';
+import { declensionNumeral } from 'utils/legacy/declensionNumeral';
+import { declensionPronoun } from 'utils/legacy/declensionPronoun';
 import {
     getGender,
     getNumeralType,
@@ -21,11 +24,8 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { Dictionary } from 'utils/dictionary';
-import { getCyrillic } from 'utils/getCyrillic';
-import { getLatin } from 'utils/getLatin';
-import { declensionPronoun } from 'utils/legacy/declensionPronoun';
-import { t } from 'translations';
+import ModalDialog from '../ModalDialog';
+import './index.scss';
 
 interface IDetailModalProps {
     close: () => void;

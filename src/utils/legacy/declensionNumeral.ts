@@ -1,12 +1,12 @@
+import { getLatin } from 'utils/getLatin';
+import { declensionAdjective } from 'utils/legacy/declensionAdjective';
 import { declensionNoun } from 'utils/legacy/declensionNoun';
+import { normalize } from 'utils/normalize';
 import {
     getGender,
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { declensionAdjective } from 'utils/legacy/declensionAdjective';
-import { normalize } from 'utils/normalize';
-import { getLatin } from 'utils/getLatin';
 
 export interface INumeralParadigm {
     type: string;

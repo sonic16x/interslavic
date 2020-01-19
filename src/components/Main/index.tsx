@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'connect';
-import Header from 'components/Header';
 import DetailModal from 'components/DetailModal';
-import Router from 'components/Router';
-import { Loader } from 'components/Loader';
 import GDPR from 'components/GDPR';
+import Header from 'components/Header';
+import { Loader } from 'components/Loader';
+import Router from 'components/Router';
+import { connect } from 'connect';
+import React from 'react';
 import { t } from 'translations';
 
+import { fetchDictionary } from 'services';
 import './index.scss';
-import { fetchDictionary } from 'actions';
 
 interface IMainProps {
     isLoading: boolean;

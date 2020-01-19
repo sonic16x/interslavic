@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './index.scss';
 import { t } from 'translations';
+import './index.scss';
 
 interface IGDPRState {
     show: boolean;

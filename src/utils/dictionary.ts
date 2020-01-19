@@ -1,19 +1,20 @@
-import { latinToGla } from 'utils/latinToGla';
-import { latinToIpa } from 'utils/latinToIpa';
-import { normalize } from 'utils/normalize';
+import { convertCases } from 'utils/convertCases';
+import { filterLatin } from 'utils/filterLatin';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
+import { latinToGla } from 'utils/latinToGla';
+import { latinToIpa } from 'utils/latinToIpa';
 import { levenshteinDistance } from 'utils/levenshteinDistance';
-import { srGajevicaToVukovica } from 'utils/srGajevicaToVukovica';
-import { filterLatin } from 'utils/filterLatin';
+import { normalize } from 'utils/normalize';
 import { removeBrackets } from 'utils/removeBrackets';
-import { convertCases } from 'utils/convertCases';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
+import { srGajevicaToVukovica } from 'utils/srGajevicaToVukovica';
 
-import { declensionNounFlat } from 'utils/legacy/declensionNoun';
-import { declensionAdjectiveFlat } from 'utils/legacy/declensionAdjective';
 import { conjugationVerbFlat } from 'utils/legacy/conjugationVerb';
+import { declensionAdjectiveFlat } from 'utils/legacy/declensionAdjective';
+import { declensionNounFlat } from 'utils/legacy/declensionNoun';
 import { declensionNumeralFlat } from 'utils/legacy/declensionNumeral';
+import { declensionPronounFlat } from 'utils/legacy/declensionPronoun';
 import {
     getGender,
     getNumeralType,
@@ -24,7 +25,6 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { declensionPronounFlat } from 'utils/legacy/declensionPronoun';
 
 export const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,

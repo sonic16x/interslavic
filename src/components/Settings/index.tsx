@@ -1,10 +1,10 @@
-import * as React from 'react';
-import './index.scss';
-import { connect } from 'react-redux';
-import { setInterfaceLang, changeIsvSearchLetters } from 'actions';
+import { changeIsvSearchLetters, setInterfaceLang } from 'actions';
 import { Selector } from 'components/Selector';
+import * as React from 'react';
+import { connect } from 'react-redux';
 import { t } from 'translations';
 import { Checkbox } from '../Checkbox';
+import './index.scss';
 
 interface ISettingsProps {
     interfaceLang: string;
@@ -20,7 +20,7 @@ const interfaceLanguageList = [
     },
     {
         name: 'Medžuslovjansky',
-        value: 'isv-Latn',
+        value: 'isv',
     },
     {
         name: 'Меджусловјанскы',

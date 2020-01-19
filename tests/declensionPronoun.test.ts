@@ -1,7 +1,7 @@
 
-import { pronoun } from './testCases.json';
 import { declensionPronoun } from '../src/utils/legacy/declensionPronoun';
 import { getPronounType } from '../src/utils/wordDetails';
+import { pronoun } from './testCases.json';
 
 describe('pronoun', () => {
     pronoun.forEach(({ init: { word, details, add }, expected}) => {

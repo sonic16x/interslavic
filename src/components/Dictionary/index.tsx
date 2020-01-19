@@ -1,12 +1,12 @@
-import * as React from 'react';
-import './index.scss';
-import { connect } from 'react-redux';
-import LangSelector from 'components/LangSelector';
-import SearchTypeSelector from 'components/SearchTypeSelector';
-import InputText from 'components/InputText';
-import FlavorisationSelector from 'components/FlavorisationSelector';
-import Results from 'components/Results';
 import { setSearchExpand } from 'actions';
+import FlavorisationSelector from 'components/FlavorisationSelector';
+import InputText from 'components/InputText';
+import LangSelector from 'components/LangSelector';
+import Results from 'components/Results';
+import SearchTypeSelector from 'components/SearchTypeSelector';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import './index.scss';
 
 interface IDictionaryProps {
     searchExpanded: boolean;

@@ -1,7 +1,7 @@
-import request from 'request';
 import { dictionaryUrl } from 'consts';
-import { Dictionary, validFields, dataDelimiter } from 'utils/dictionary';
 import * as fs from 'fs';
+import request from 'request';
+import { dataDelimiter, Dictionary, validFields } from 'utils/dictionary';
 
 request(dictionaryUrl, (err, data) => {
     const wordList = data.body

@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { connect } from 'connect';
-import { Dictionary, ITranslateResult } from 'utils/dictionary';
-import './index.scss';
 import { setDetailAction, showDetailAction } from 'actions';
-import { getPartOfSpeech } from 'utils/wordDetails';
+import { connect } from 'connect';
 import { worksheetUrl } from 'consts';
+import * as React from 'react';
 import { t } from 'translations';
+import { Dictionary, ITranslateResult } from 'utils/dictionary';
+import { getPartOfSpeech } from 'utils/wordDetails';
+import './index.scss';
 
 interface IResultsProps {
     results: ITranslateResult[];

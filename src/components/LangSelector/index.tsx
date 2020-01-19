@@ -1,8 +1,8 @@
+import { langAction } from 'actions';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Selector } from '../Selector';
 import './index.scss';
-import { langAction } from 'actions';
 
 interface ILangSelectorProps {
     from: string;

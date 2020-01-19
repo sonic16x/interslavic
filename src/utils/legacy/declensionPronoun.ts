@@ -1,6 +1,6 @@
+import { getLatin } from 'utils/getLatin';
 import { declensionAdjective } from 'utils/legacy/declensionAdjective';
 import { normalize } from 'utils/normalize';
-import { getLatin } from 'utils/getLatin';
 
 export interface IPronounParadigm {
     type: string;

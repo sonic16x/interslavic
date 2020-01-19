@@ -9,19 +9,19 @@
     "jsx-no-multiline-js": false,
     "no-shadowed-variable": false,
     "indent": [true, "spaces", 2],
-    "ordered-imports": false,
+    "ordered-imports": true,
     "whitespace": [
       true,
       "check-branch",
-      "check-decl",
       "check-operator",
-      "check-module",
       "check-separator",
       "check-rest-spread",
       "check-type",
       "check-typecast",
       "check-type-operator",
-      "check-preblock"
+      "check-preblock",
+      "check-decl",
+      "check-module"
     ]
   },
   "formatter": "stylish"

@@ -1,17 +1,17 @@
-import request from 'request';
 import { dictionaryUrl } from 'consts';
-import { declensionNoun } from 'utils/legacy/declensionNoun';
-import { declensionAdjective } from 'utils/legacy/declensionAdjective';
+import * as fs from 'fs';
+import request from 'request';
 import { conjugationVerb } from 'utils/legacy/conjugationVerb';
-import { declensionPronoun } from 'utils/legacy/declensionPronoun';
+import { declensionAdjective } from 'utils/legacy/declensionAdjective';
+import { declensionNoun } from 'utils/legacy/declensionNoun';
 import { declensionNumeral } from 'utils/legacy/declensionNumeral';
+import { declensionPronoun } from 'utils/legacy/declensionPronoun';
 import {
     getGender, getNumeralType,
     getPartOfSpeech, getPronounType,
     isAnimated, isIndeclinable,
     isPlural, isSingular,
 } from 'utils/wordDetails';
-import * as fs from 'fs';
 
 const testCases = {
     noun: [],
