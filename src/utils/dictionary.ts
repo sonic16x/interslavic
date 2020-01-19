@@ -244,9 +244,9 @@ class DictionaryClass {
             searchType = 'end';
         }
         // option -etym - hard search by etymological orthography for Isv
-        const hardEtymSearch = inputOptions.some((o) => o === 'etym') ||
+        const hardEtymSearch = from === 'isv' && (inputOptions.some((o) => o === 'etym') ||
             (flavorisationType === '2' &&
-            isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0])));
+            isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
         // option -b - two-way search when searching in isv
         const twoWaySearch = from === 'isv' && inputOptions.some((o) => o === 'b');
         // option -pos: - filter by part of speach
@@ -255,7 +255,7 @@ class DictionaryClass {
             (inputOptions.some((option) => option.length > 4 && option.slice(0, 4) === 'pos:') ?
                 inputOptions.find((option) => option.slice(0, 4) === 'pos:')
                   .slice(4).replace(/ /g, '')
-                  .split('+').map((elem) => elem.split('.').filter(Boolean)) :
+                  .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean)) :
                 []);
 
         if (process.env.NODE_ENV !== 'production') {
