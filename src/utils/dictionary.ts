@@ -239,13 +239,24 @@ class DictionaryClass {
         const isvText = (from === 'isv' ?
             this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType), flavorisationType)
             : '');
+        // option -end - search by ending of word
         if (inputOptions.some((option) => option.trim() === 'end')) {
             searchType = 'end';
         }
+        // option -etym - hard search by etymological orthography for Isv
         const hardEtymSearch = inputOptions.some((o) => o === 'etym') ||
             (flavorisationType === '2' &&
             isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0])));
+        // option -b - two-way search when searching in isv
         const twoWaySearch = from === 'isv' && inputOptions.some((o) => o === 'b');
+        // option -pos: - filter by part of speach
+        //for example "-pos:noun.m+v.ipf" - search for masculine nouns or imperfective verbs
+        const filterpartOfSpeech =
+            (inputOptions.some((option) => option.length > 4 && option.slice(0,4)==='pos:') ?
+                inputOptions.find((option) => option.slice(0,4)==='pos:')
+                  .slice(4).replace(/ /g,'')
+                  .split('+').map((elem)=> elem.split('.').filter(Boolean)) :
+                []);
 
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
@@ -280,6 +291,18 @@ class DictionaryClass {
                     const splittedField = this.getSplittedField(to, item);
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, textTo));
+                }
+                //seach by part of speach
+                if (filterResult && filterpartOfSpeech.length) {
+                    const partOfSpeech = this.getField(item, 'partOfSpeech')
+                        .replace(/ /g,'').split('.').filter(Boolean);
+                    if (partOfSpeech.includes('m') || partOfSpeech.includes('n')
+                        || partOfSpeech.includes('f')) {
+                        partOfSpeech.push('noun');
+                    }
+                    if (!filterpartOfSpeech.some((c)=>c.every((e)=>partOfSpeech.includes(e)))) {
+                        return false;
+                    }
                 }
                 return filterResult;
             })
