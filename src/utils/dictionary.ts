@@ -231,9 +231,10 @@ class DictionaryClass {
     ): string[][] {
         const inputOptions = inputText.split(' -').map((option) => option.trim());
         const inputWord = inputOptions.shift();
-        const text = this.inputPrepare(from, inputWord);
-        const textTo = this.inputPrepare(to, inputWord);
-        if (!text) {
+        const lang = from === 'isv' ? to : from;
+        const inputIsvPrepared = this.inputPrepare('isv', inputWord);
+        const inputLangPrepared = this.inputPrepare(lang, inputWord);
+        if (!inputLangPrepared || !inputIsvPrepared) {
             return [];
         }
         const isvText = (from === 'isv' ?
@@ -252,9 +253,9 @@ class DictionaryClass {
         // option -pos: - filter by part of speach
         // for example "-pos:noun.m+v.ipf" - search for masculine nouns or imperfective verbs
         const filterpartOfSpeech =
-            (inputOptions.some((option) => option.length > 4 && option.slice(0, 4) === 'pos:') ?
-                inputOptions.find((option) => option.slice(0, 4) === 'pos:')
-                  .slice(4).replace(/ /g, '')
+            (inputOptions.some((option) => option.length > 4 && option.slice(0, 2) === 'p:') ?
+                inputOptions.find((option) => option.slice(0, 2) === 'p:')
+                  .slice(2).replace(/ /g, '')
                   .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean)) :
                 []);
 
@@ -266,31 +267,30 @@ class DictionaryClass {
         const results = this.words
             .filter((item) => {
                 let filterResult = false;
-                // hard etymological search for isv
-                if (from === 'isv' && hardEtymSearch) {
-                    const splittedField = this.getSplittedField('isv-src', item);
-                    if (inputWord.length === 1) {
-                        filterResult = searchTypes[searchType](splittedField[0], inputWord);
+                if (from === 'isv' || twoWaySearch) {
+                    // hard etymological search for isv
+                    if (hardEtymSearch) {
+                        const splittedField = this.getSplittedField('isv-src', item);
+                        if (inputWord.length === 1) {
+                            filterResult = searchTypes[searchType](splittedField[0], inputWord);
+                        } else {
+                            filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk, inputWord));
+                        }
+                        // for isv only: when entered 1 symbol - searching by first entry of cell
                     } else {
-                        filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk, inputWord));
+                        const splittedField = this.getSplittedField('isv', item);
+                        if (inputIsvPrepared.length === 1) {
+                            filterResult = searchTypes[searchType](splittedField[0], inputIsvPrepared);
+                        } else {
+                            filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk,
+                                inputIsvPrepared));
+                        }
                     }
-                // for isv only: when entered 1 symbol - searching by first entry of cell
-                } else if (from === 'isv' && text.length === 1) {
-                    const splittedField = this.getSplittedField(from, item);
-                    filterResult = searchTypes[searchType](splittedField[0], text);
-                } else {
-                    const splittedField = this.getSplittedField(from, item);
-                    // Filter by first letter, maybe need to remove.
-                    // if (from === 'isv' && splittedField[0][0] !== text[0]) {
-                    //     return false;
-                    // }
-                    filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk, text));
                 }
-                // two-way search
-                if (!filterResult && twoWaySearch) {
-                    const splittedField = this.getSplittedField(to, item);
+                if (to === 'isv' || twoWaySearch) {
+                    const splittedField = this.getSplittedField(lang, item);
                     filterResult = filterResult ||
-                        splittedField.some((chunk) => searchTypes[searchType](chunk, textTo));
+                        splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
                 // seach by part of speach
                 if (filterResult && filterpartOfSpeech.length) {
@@ -309,8 +309,9 @@ class DictionaryClass {
             .filter((item) => {
                 let filterResult = true;
                 // search in isv with search sensitive letters
-                if (from === 'isv' && !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&
-                   this.isvSearchLetters.to.some((letter) => text.includes(letter))) {
+                if ((from === 'isv' || twoWaySearch) &&
+                   !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&
+                    this.isvSearchLetters.to.some((letter) => inputIsvPrepared.includes(letter))) {
                     const splittedField = this.getSplittedField('isv-src', item);
                     if (isvText.length === 1) {
                         filterResult = searchTypes[searchType](this.applyIsvSearchLetters(splittedField[0],
@@ -322,25 +323,24 @@ class DictionaryClass {
                         });
                     }
                 }
-                // two-way search
-                if (!filterResult && twoWaySearch) {
-                    const splittedField = this.getSplittedField(to, item);
+                if (!filterResult && (to === 'isv' || twoWaySearch)) {
+                    const splittedField = this.getSplittedField(lang, item);
                     filterResult = filterResult ||
-                        splittedField.some((chunk) => searchTypes[searchType](chunk, textTo));
+                        splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
                 return filterResult;
             })
             .map((item) => {
                 let splittedField = this.getSplittedField(from, item);
-                if (text.length === 1) {
+                if (inputWord.length === 1) {
                     splittedField = splittedField.slice(0, 1);
                 }
-                if (text.length === 2) {
+                if (inputWord.length === 2) {
                     splittedField = splittedField.slice(0, 2);
                 }
                 const dist = splittedField
                     .reduce((acc, item) => {
-                        const lDist = levenshteinDistance(text, this.searchPrepare(from, item));
+                        const lDist = levenshteinDistance(inputIsvPrepared, this.searchPrepare(from, item));
                         if (lDist < acc) {
                             return lDist;
                         }
