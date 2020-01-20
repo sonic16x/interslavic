@@ -250,7 +250,7 @@ class DictionaryClass {
             isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
         // option -b - two-way search when searching in isv
         const twoWaySearch = from === 'isv' && inputOptions.some((o) => o === 'b');
-        // option -pos: - filter by part of speach
+        // option -p: - filter by part of speach
         // for example "-pos:noun.m+v.ipf" - search for masculine nouns or imperfective verbs
         const filterpartOfSpeech =
             (inputOptions.some((option) => option.length > 4 && option.slice(0, 2) === 'p:') ?
