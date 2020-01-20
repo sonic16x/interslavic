@@ -20,7 +20,7 @@ const interfaceLanguageList = [
     },
     {
         name: 'Medžuslovjansky',
-        value: 'isv',
+        value: 'isv-Latn',
     },
     {
         name: 'Меджусловјанскы',
