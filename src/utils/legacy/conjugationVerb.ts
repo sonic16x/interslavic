@@ -107,6 +107,10 @@ function prefix(inf) {
     if (kreska != -1) {
         return inf.substring(0, kreska + 1);
     }
+    // get prefix 'ne '
+    if(inf.indexOf('ne ') === 0) {
+        return 'ne ';
+    }
 
     /*	else if ((inf.substring (0, 4) == 'pred') || (inf.substring (0, 4) == 'prėd'))
         {	result = inf.substring (0, 4); 	}
