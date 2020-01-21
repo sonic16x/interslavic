@@ -77,7 +77,8 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                     ins: ['tobojų', 'vami'],
                 },
             };
-        } else if (['on', 'jego', 'go', 'je', 'jemu', 'mu', 'njim', 'ona', 'ju', 'jej', 'jeju', 'njeju', 'oni', 'one', 'jih', 'jim', 'njimi'].includes(word)) {
+        } else if (['on', 'jego', 'go', 'je', 'jemu', 'mu', 'njim', 'ona', 'ju', 'jej', 'jeju', 'njeju',
+            'oni', 'one', 'jih', 'jim', 'njimi'].includes(word)) {
             return {
                 type: 'adjective',
                 casesSingular: {
