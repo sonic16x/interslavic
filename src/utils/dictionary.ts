@@ -262,7 +262,7 @@ class DictionaryClass {
         const filterpartOfSpeech =
             (inputOptions.some((option) => option.length > 2 && option.slice(0, 2) === 'p:') ?
                 inputOptions.find((option) => option.slice(0, 2) === 'p:')
-                  .slice(2).replace(/ /g, '')
+                  .slice(2).replace(/[ \/]/g, '')
                   .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean)) :
                 []);
         if (process.env.NODE_ENV !== 'production') {
@@ -301,7 +301,7 @@ class DictionaryClass {
                 // seach by part of speach
                 if (filterResult && filterpartOfSpeech.length) {
                     const partOfSpeech = this.getField(item, 'partOfSpeech')
-                        .replace(/[ ]/g, '').split('.').filter(Boolean);
+                        .replace(/[ \/]/g, '').split('.').filter(Boolean);
                     if (partOfSpeech.includes('m') || partOfSpeech.includes('n')
                         || partOfSpeech.includes('f')) {
                         partOfSpeech.push('noun');
