@@ -100,13 +100,13 @@ function getWordForms(item) {
                 const singular = isSingular(details);
                 const indeclinable = isIndeclinable(details);
                 if (details.includes('m./f.')) {
-                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural,
-                        singular, indeclinable));
                     wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animated, plural,
                         singular, indeclinable));
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animated, plural,
+                        singular, indeclinable));
                 } else {
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animated, plural, singular,
-                        indeclinable));
+                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural,
+                        singular, indeclinable));
                 }
                 break;
             case 'pronoun':
