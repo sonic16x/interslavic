@@ -2,7 +2,9 @@ import translations from 'translations/data.json';
 let currentLang;
 
 export function t(key) {
-    if (translations[key] && translations[key][currentLang]) {
+    if (!translations[key]) {
+        return key;
+    } else if (translations[key][currentLang]) {
         return translations[key][currentLang];
     } else if (translations[key].en) {
         return translations[key].en;

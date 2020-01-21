@@ -12,7 +12,7 @@ import { noun } from './testCases.json';
 describe('noun', () => {
     noun.forEach(({ init: { word, details, add }, expected}) => {
         test(`noun ${word}`, () => {
-            const gender = getGender(details.replace('m./f.', 'm.' ));
+            const gender = getGender(details);
             const animated = isAnimated(details);
             const plural = isPlural(details);
             const singular = isSingular(details);
