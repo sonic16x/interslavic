@@ -190,7 +190,7 @@ class DictionaryClass {
                             .concat(getWordForms(item))
                         ;
                         this.splittedMap.set(key + '-src',
-                            splittedField.map((chunk) => this.searchPrepare('isv-src', chunk)));
+                            splittedField.map((chunk) => this.searchPrepare('isv-src', getLatin(chunk, '2'))));
                     } else {
                         fromField = removeExclamationMark(fromField);
                         splittedField = this.splitWords(fromField);
