@@ -204,36 +204,35 @@ function establish_root(noun, gender) {
         result = result.replace('%', '');
     }
     else if ((noun == 'mati') || (noun == 'dočьi') || (noun == 'doćьi')) {
-        result = noun.substring(0, noun.length - 1) + 'er';
+        result = noun.slice(0, -1) + 'er';
     }
-    else if ((gender == 'f3') && ((noun.lastIndexOf('o') == noun.length - 2) || (noun.lastIndexOf('ò') == noun.length - 2)) && (noun.lastIndexOf('v') == noun.length - 1)) {
-        result = noun.substring(0, noun.length - 2) + 'v';
+    else if ((gender == 'f3') && ((noun.slice(-2) === 'o') || (noun.slice(-2) === 'ò')) && (noun.slice(-1) === 'v')) {
+        result = noun.slice(0, -2) + 'v';
     }
     else if (gender == 'f3') {
         result = noun;
     }
-    else if ((gender == 'n2') && (noun.lastIndexOf('m') == noun.length - 2)) {
-        result = noun.substring(0, noun.length - 1) + 'en';
+    else if ((gender == 'n2') && (noun.slice(-2) === 'm')) {
+        result = noun.slice(0, -1) + 'en';
     }
     else if (gender == 'n2') {
-        result = noun.substring(0, noun.length - 1) + 'ęt';
+        result = noun.slice(0, -1) + 'ęt';
     }
     else if (gender == 'f1' && (noun === 'pani' || noun.slice(-3) == 'yni')) {
-        result = (noun.substring(0, noun.length - 1) + 'jь');
+        result = (noun.slice(0, -1) + 'jь');
     }
-    else if (noun.lastIndexOf('i') == noun.length - 1) {
-        result = (noun.substring(0, noun.length - 1) + 'ь');
+    else if (noun.slice(-1) === 'i') {
+        result = (noun.slice(0, -1) + 'ь');
     }
-    else if ((noun.lastIndexOf('a') == (noun.length - 1)) || (noun.lastIndexOf('e') == (noun.length - 1)) ||
-        (noun.lastIndexOf('o') == (noun.length - 1))) {
-        result = (noun.substring(0, noun.length - 1));
+    else if ((noun.slice(-1) === 'a') || (noun.slice(-1) === 'e') || (noun.slice(-1) === 'o')) {
+        result = (noun.slice(0, -1));
     }
-    else if ((noun.lastIndexOf('u') == (noun.length - 2)) && (noun.lastIndexOf('m') == (noun.length - 1))) {
+    /*else if (noun.slice(-2) === 'um') {
         result = (noun.substring(0, noun.length - 2));
-    }
+    }*/
     /*	else if ((gender == 'f2') && (noun.lastIndexOf('ь') == noun.length - 1))
             { result = (noun.substring (0, noun.length - 1)); } */
-    else if ((gender == 'f2') && (noun.lastIndexOf('ь') != noun.length - 1)) {
+    else if ((gender == 'f2') && (noun.slice(-1) === 'ь')) {
         result = noun + 'ь';
     }
     else {

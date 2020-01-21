@@ -94,13 +94,20 @@ function getWordForms(item) {
                 wordForms.push(...declensionAdjectiveFlat(wordElement, ''));
                 break;
             case 'noun':
-                const gender = getGender(details.replace('m./f.', 'm.' ));
+                const gender = getGender(details);
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
                 const singular = isSingular(details);
                 const indeclinable = isIndeclinable(details);
-                wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural, singular,
-                    indeclinable));
+                if (details.includes('m./f.')) {
+                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural,
+                        singular, indeclinable));
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animated, plural,
+                        singular, indeclinable));
+                } else {
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animated, plural, singular,
+                        indeclinable));
+                }
                 break;
             case 'pronoun':
                 wordForms.push(...declensionPronounFlat(wordElement, getPronounType(details)));
@@ -295,7 +302,7 @@ class DictionaryClass {
                 // seach by part of speach
                 if (filterResult && filterpartOfSpeech.length) {
                     const partOfSpeech = this.getField(item, 'partOfSpeech')
-                        .replace(/ /g, '').split('.').filter(Boolean);
+                        .replace(/[ ]/g, '').split('.').filter(Boolean);
                     if (partOfSpeech.includes('m') || partOfSpeech.includes('n')
                         || partOfSpeech.includes('f')) {
                         partOfSpeech.push('noun');
