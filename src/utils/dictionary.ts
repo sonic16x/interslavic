@@ -260,12 +260,11 @@ class DictionaryClass {
         // option -p: - filter by part of speach
         // for example "-pos:noun.m+v.ipf" - search for masculine nouns or imperfective verbs
         const filterpartOfSpeech =
-            (inputOptions.some((option) => option.length > 4 && option.slice(0, 2) === 'p:') ?
+            (inputOptions.some((option) => option.length > 2 && option.slice(0, 2) === 'p:') ?
                 inputOptions.find((option) => option.slice(0, 2) === 'p:')
                   .slice(2).replace(/ /g, '')
                   .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean)) :
                 []);
-
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
             console.time('TRANSLATE');
