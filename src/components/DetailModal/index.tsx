@@ -119,7 +119,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const word = this.props.rawItem[0];
         const add = this.props.rawItem[1];
         const { details } = this.props.item;
-        const arr = [pos];
+        const arr = [t(pos)];
         const animated = isAnimated(details);
         const gender = getGender(details);
         const plural = isPlural(details);
@@ -129,11 +129,11 @@ class DetailModal extends React.Component<IDetailModalProps> {
             case 'noun':
                 arr.push(gender);
                 if (gender.match(/masculine/)) {
-                    arr.push(animated ? 'animated' : 'inanimate');
+                    arr.push(animated ? t('animated') : t('inanimate'));
                 }
                 if (indeclinable) { arr.push('indeclinable'); }
-                if (plural) { arr.push('plural'); }
-                if (singular) { arr.push('singular'); }
+                if (plural) { arr.push(t('plural')); }
+                if (singular) { arr.push(t('singular')); }
                 break;
             case 'verb':
                 const verbDetails = getVerbDetails(details);
@@ -446,12 +446,13 @@ class DetailModal extends React.Component<IDetailModalProps> {
     }
 
     private getSimpleCasesTable(paradigmArray) {
-        const tableDataCases = [[ 'Case@b' ]];
+        const tableDataCases = [[ `${t('case')}@b` ]];
         paradigmArray.columns.forEach((col) => {
-            tableDataCases[0].push(col + '@b');
+            tableDataCases[0].push(t(col) + '@b');
         });
         Object.keys(paradigmArray.cases).forEach((caseItem) => {
-            const tableRow = [`${caseItem[0].toUpperCase()}${caseItem.slice(1)}@b`];
+            const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
+            const tableRow = [`${caseName}@b`];
             paradigmArray.cases[caseItem].forEach((caseForm) => {
                 tableRow.push(`${this.formatStr(caseForm)}@`);
             });

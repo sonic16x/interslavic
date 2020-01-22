@@ -2,6 +2,7 @@ import { setSearchExpand } from 'actions';
 import FlavorisationSelector from 'components/FlavorisationSelector';
 import InputText from 'components/InputText';
 import LangSelector from 'components/LangSelector';
+import POSSelector from 'components/POSSelector';
 import Results from 'components/Results';
 import SearchTypeSelector from 'components/SearchTypeSelector';
 import * as React from 'react';
@@ -38,8 +39,13 @@ class Dictionary extends React.Component<IDictionaryProps, IDictionaryState> {
                         onTransitionEnd={(e: any) =>
                             this.setState({expanded: getComputedStyle(e.target).opacity === '1'})}
                     >
-                        {(expanded || this.state.expanded) && <SearchTypeSelector key={'searchType'} />}
-                        {(expanded || this.state.expanded) && <FlavorisationSelector key={'flavorisation'} />}
+                        {(expanded || this.state.expanded) && (
+                            <>
+                                <SearchTypeSelector key={'searchType'} />
+                                <FlavorisationSelector key={'flavorisation'} />
+                                <POSSelector key={'posFilter'} />
+                            </>
+                        )}
                     </div>
                     <button
                         id={'expandControls'}

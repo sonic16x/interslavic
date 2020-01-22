@@ -36,7 +36,7 @@ const flavorisationTypes = [
 class FlavorisationSelector extends React.Component<IFlavorisationSelectorProps> {
     public render() {
         return (
-            <div className={'flav'}>
+            <div className={'flavorisationSelector'}>
                 <Selector
                     options={flavorisationTypes}
                     onSelect={(flavorisationType) => this.props.changeFlavorisationType(flavorisationType)}

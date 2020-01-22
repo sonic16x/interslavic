@@ -8,7 +8,8 @@
   height: 100%;
   .controls {
     width: 100%;
-    padding: 15px 15px 4px 15px;
+    //padding: 15px 15px 4px 15px;
+    padding-bottom: 4px;
     margin-right: auto;
     margin-left: auto;
     overflow: hidden;
@@ -20,9 +21,9 @@
     z-index: 1;
     max-width: 1024px;
     .expandContainer {
-      &>* {
-        margin-bottom: 15px;
-      }
+      //&>* {
+      //  margin-bottom: 15px;
+      //}
       overflow: hidden;
       transition: height 0.2s linear, opacity 0.2s linear;
       height: 0;
@@ -35,13 +36,13 @@
       transition: margin-bottom 0.2s linear;
     }
     &.expand {
-      min-height: 256px;
+      min-height: 306px;
       .inputText {
         margin-bottom: 15px;
       }
       .expandContainer {
         opacity: 1;
-        height: 102px;
+        height: 153px;
       }
       .expandButton {
         transform: rotate(270deg);

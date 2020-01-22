@@ -558,5 +558,93 @@
     "sr": "Етимолошки правопис:",
     "mk": "Етимолошки правопис:",
     "bg": "Етимологичен правопис:"
+  },
+  "partOfSpeech": {
+    "en": "part of speech",
+    "ru": "часть речи"
+  },
+  "noun": {
+    "en": "noun",
+    "ru": "существительное"
+  },
+  "pronoun": {
+    "en": "pronoun",
+    "ru":  "местоимение"
+  },
+  "adjective":  {
+    "en": "adjective",
+    "ru":  "прилагательное"
+  },
+  "adverb": {
+    "en": "adverb",
+    "ru":  "наречие"
+  },
+  "preposition":  {
+    "en": "preposition",
+    "ru":  "предлог"
+  },
+  "numeral": {
+    "en": "numeral",
+    "ru":  "числительное"
+  },
+  "interjection":  {
+    "en": "interjection",
+    "ru":  "междометие"
+  },
+  "verb": {
+    "en": "verb",
+    "ru":  "глагол"
+  },
+  "all": {
+    "en": "all",
+    "ru":  "все"
+  },
+  "case": {
+    "en": "case",
+    "ru":  "падеж"
+  },
+  "singular": {
+    "en": "singular",
+    "ru":  "ед ч."
+  },
+  "plural": {
+    "en": "plural",
+    "ru":  "мн. ч."
+  },
+  "animated": {
+    "en": "animated",
+    "ru":  "одушевлённое"
+  },
+  "inanimate": {
+    "en": "inanimate",
+    "ru":  "неодушевлённое"
+  },
+  "caseNom": {
+    "en": "nominative",
+    "ru":  "именительный"
+  },
+  "caseAcc": {
+    "en": "accusative",
+    "ru":  "винительный"
+  },
+  "caseGen": {
+    "en": "genitive",
+    "ru":  "родительный"
+  },
+  "caseLoc": {
+    "en": "locative",
+    "ru":  "местный"
+  },
+  "caseDat": {
+    "en": "dative",
+    "ru":  "дательный"
+  },
+  "caseIns": {
+    "en": "instrumental",
+    "ru":  "творительный"
+  },
+  "caseVoc": {
+    "en": "vocative",
+    "ru":  "звательный"
   }
 }

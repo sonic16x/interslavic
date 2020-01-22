@@ -18,7 +18,7 @@
   position: absolute;
   padding: 0;
   top: 10px;
-  right: 11px;
+  right: 22px;
   color: #666;
   border: 0;
   background-color: #fff;
@@ -42,4 +42,7 @@
   &[disabled] {
     display: none;
   }
+}
+.inputText {
+  padding: 0 15px;
 }
