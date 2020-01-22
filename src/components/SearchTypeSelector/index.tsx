@@ -33,6 +33,7 @@ class SearchTypeSelector extends React.Component<IFlavorisationSelectorProps> {
     public render() {
         return (
             <LineSelector
+                className={'searchTypeSelector'}
                 options={searchTypes.map((item) => ({
                     name: t(item.name),
                     value: item.value,

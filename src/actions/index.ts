@@ -12,6 +12,7 @@ export enum ActionTypes {
     ALPHABET_TYPE = 'ALPHABET_TYPE',
     RUN_SEARCH = 'RUN_SEARCH',
     CHANGE_ISV_SEARCH_LETTERS = 'CHANGE_ISV_SEARCH_LETTERS',
+    POS_FILTER = 'POS_FILTER',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -101,6 +102,13 @@ export function setInterfaceLang(data: string) {
 export function changeIsvSearchLetters(data: string) {
     return {
         type: ActionTypes.CHANGE_ISV_SEARCH_LETTERS,
+        data,
+    };
+}
+
+export function posFilterAction(data: string) {
+    return {
+        type: ActionTypes.POS_FILTER,
         data,
     };
 }

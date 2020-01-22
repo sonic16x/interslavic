@@ -10,6 +10,7 @@ interface ILineSelectorProps {
     options: ILineSelectorOption[];
     value: string;
     onSelect: (value: string) => void;
+    className?: string;
 }
 
 interface ILineSelectorState {
@@ -45,7 +46,7 @@ export class LineSelector extends React.Component<ILineSelectorProps, ILineSelec
         const marginLeft = activeRef ?  this.getWithBefore(index) : 0;
 
         return (
-            <ul className={'nav nav-pills nav-fill lineSelector'}>
+            <ul className={'nav nav-pills nav-fill lineSelector' + ` ${this.props.className}`}>
                 <li className={'nav-item back'} style={{marginLeft, width}}>
                     <span
                         className={'nav-link active shadow slide'}

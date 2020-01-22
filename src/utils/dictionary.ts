@@ -33,6 +33,15 @@ export const searchTypes = {
     some: (item, text) => item.includes(text),
 };
 
+export interface ITranslateParams {
+    inputText: string;
+    from: string;
+    to: string;
+    searchType: string;
+    posFilter: string;
+    flavorisationType: string;
+}
+
 export const dataDelimiter = '<>';
 
 export const validFields = [
@@ -229,13 +238,21 @@ class DictionaryClass {
             this.splittedMap.get(key),
         ]);
     }
-    public translate(
-        inputText: string,
-        from: string,
-        to: string,
-        searchType: string,
-        flavorisationType: string,
-    ): string[][] {
+    public translate(translateParams: ITranslateParams): string[][] {
+        if (process.env.NODE_ENV !== 'production') {
+            // tslint:disable-next-line
+            console.time('TRANSLATE');
+        }
+
+        const {
+            inputText,
+            from,
+            to,
+            posFilter,
+            flavorisationType,
+        } = translateParams;
+        let searchType = translateParams.searchType;
+
         const inputOptions = inputText.split(' -').map((option) => option.trim());
         const inputWord = inputOptions.shift();
         const lang = from === 'isv' ? to : from;
@@ -264,11 +281,8 @@ class DictionaryClass {
                 inputOptions.find((option) => option.slice(0, 2) === 'p ')
                   .slice(2).replace(/[ \/]/g, '')
                   .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean)) :
-                []);
-        if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
-            console.time('TRANSLATE');
-        }
+                (posFilter ? [[posFilter]] : []));
+
         const distMap = new WeakMap();
         const results = this.words
             .filter((item) => {
