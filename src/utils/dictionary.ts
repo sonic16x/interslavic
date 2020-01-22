@@ -255,8 +255,8 @@ class DictionaryClass {
         const hardEtymSearch = from === 'isv' && (inputOptions.some((o) => o === 'etym') ||
             (flavorisationType === '2' &&
             isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
-        // option -b - two-way search when searching in isv
-        const twoWaySearch = from === 'isv' && inputOptions.some((o) => o === 'b');
+        // option -b - two-way search
+        const twoWaySearch = inputOptions.some((o) => o === 'b');
         // option -p: - filter by part of speach
         // for example "-pos:noun.m+v.ipf" - search for masculine nouns or imperfective verbs
         const filterpartOfSpeech =
@@ -344,14 +344,34 @@ class DictionaryClass {
                 if (inputWord.length === 2) {
                     splittedField = splittedField.slice(0, 2);
                 }
-                const dist = splittedField
+                let dist = splittedField
                     .reduce((acc, item) => {
-                        const lDist = levenshteinDistance(inputIsvPrepared, this.searchPrepare(from, item));
+                        const lDist = levenshteinDistance(from === 'isv' ? inputIsvPrepared : inputLangPrepared,
+                            this.searchPrepare(from, item));
                         if (lDist < acc) {
                             return lDist;
                         }
                         return acc;
                     }, Number.MAX_SAFE_INTEGER);
+                if (twoWaySearch) {
+                    splittedField = this.getSplittedField(to, item);
+                    if (inputWord.length === 1) {
+                        splittedField = splittedField.slice(0, 1);
+                    }
+                    if (inputWord.length === 2) {
+                        splittedField = splittedField.slice(0, 2);
+                    }
+                    const dist2 = splittedField
+                        .reduce((acc, item) => {
+                            const lDist = levenshteinDistance(from === 'isv' ? inputLangPrepared : inputIsvPrepared,
+                                this.searchPrepare(to, item));
+                            if (lDist < acc) {
+                                return lDist;
+                            }
+                            return acc;
+                        }, Number.MAX_SAFE_INTEGER);
+                    dist = dist2 < dist ? dist2 : dist;
+                }
                 distMap.set(item, dist);
                 return item;
             })
