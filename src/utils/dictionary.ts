@@ -257,11 +257,11 @@ class DictionaryClass {
             isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
         // option -b - two-way search
         const twoWaySearch = inputOptions.some((o) => o === 'b');
-        // option -p: - filter by part of speach
-        // for example "-pos:noun.m+v.ipf" - search for masculine nouns or imperfective verbs
+        // option -p - filter by part of speach
+        // for example "-p noun.m+v.ipf" - search for masculine nouns or imperfective verbs
         const filterpartOfSpeech =
-            (inputOptions.some((option) => option.length > 2 && option.slice(0, 2) === 'p:') ?
-                inputOptions.find((option) => option.slice(0, 2) === 'p:')
+            (inputOptions.some((option) => option.length > 2 && option.slice(0, 2) === 'p ') ?
+                inputOptions.find((option) => option.slice(0, 2) === 'p ')
                   .slice(2).replace(/[ \/]/g, '')
                   .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean)) :
                 []);
