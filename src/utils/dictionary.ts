@@ -239,11 +239,6 @@ class DictionaryClass {
         ]);
     }
     public translate(translateParams: ITranslateParams): string[][] {
-        if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
-            console.time('TRANSLATE');
-        }
-
         const {
             inputText,
             from,
@@ -260,6 +255,10 @@ class DictionaryClass {
         const inputLangPrepared = this.inputPrepare(lang, inputWord);
         if (!inputLangPrepared || !inputIsvPrepared) {
             return [];
+        }
+        if (process.env.NODE_ENV !== 'production') {
+            // tslint:disable-next-line
+            console.time('TRANSLATE');
         }
         const isvText = (from === 'isv' ?
             this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType), flavorisationType)
