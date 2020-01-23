@@ -102,6 +102,8 @@ function establish_root(adj) {
         result = 'nijedn|'
     } else if (adj.slice(-2) == 'ov') {
         result = adj + '|';
+    } else if (adj.slice(-2) == 'ev') {
+        result = adj + '|';
     } else if (adj.slice(-2) == 'in') {
         result = adj + '|';
     } else if (adj.slice(-3) == 'toj') {
