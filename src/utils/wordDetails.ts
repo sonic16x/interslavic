@@ -27,7 +27,7 @@
     pf.	perfective
     intr.	intransitive
     tr.	transitive
-    refl.	reflective
+    refl.	reflexive
     aux.	auxiliar
     adj.	adjective
     adv	adverb
@@ -197,7 +197,7 @@ export function getVerbDetails(details: string): VerbType[] {
             case 'aux':
                 return 'auxiliar';
             case 'refl':
-                return 'reflective';
+                return 'reflexive';
             case 'ipf':
                 return 'imperfective';
             case 'pf':
