@@ -752,10 +752,10 @@
     "bg": ""
   },
   "case": {
-    "en": "Case",
+    "en": "case",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru":  "Падеж",
+    "ru":  "падеж",
     "uk": "",
     "be": "",
     "pl": "",
@@ -768,10 +768,10 @@
     "bg": ""
   },
   "singular": {
-    "en": "Singular",
+    "en": "singular",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru":  "Ед. число",
+    "ru":  "ед. число",
     "uk": "",
     "be": "",
     "pl": "",
@@ -784,10 +784,10 @@
     "bg": ""
   },
   "plural": {
-    "en": "Plural",
+    "en": "plural",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru":  "Мн. число",
+    "ru":  "мн. число",
     "uk": "",
     "be": "",
     "pl": "",
@@ -800,10 +800,10 @@
     "bg": ""
   },
   "masculine": {
-    "en": "Masculine",
+    "en": "masculine",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru": "Муж. род",
+    "ru": "муж. род",
     "uk": "",
     "be": "",
     "pl": "",
@@ -816,10 +816,10 @@
     "bg": ""
   },
   "feminine": {
-    "en": "Feminine",
+    "en": "feminine",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru": "Жен. род",
+    "ru": "жен. род",
     "uk": "",
     "be": "",
     "pl": "",
@@ -832,10 +832,10 @@
     "bg": ""
   },
   "neuter": {
-    "en": "Neuter",
+    "en": "neuter",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru": "Сред. род",
+    "ru": "сред. род",
     "uk": "",
     "be": "",
     "pl": "",
@@ -848,10 +848,10 @@
     "bg": ""
   },
   "feminine/neuter": {
-    "en": "Feminine/Neuter",
+    "en": "feminine/neuter",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru": "Жен./сред. род",
+    "ru": "жен./сред. род",
     "uk": "",
     "be": "",
     "pl": "",
