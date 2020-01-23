@@ -84,10 +84,12 @@ function establish_root(adj) {
     let result = '';
     if ((adj == 'naš') || (adj == 'vaš')) {
         result = adj + '|^';
-    } else if ((adj.lastIndexOf('č') == adj.length - 3) && (adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
+    } else if (adj == 'rad') {
+        result = adj + '|';
+    } else if (adj.slice(-3) == 'čij') {
         result = adj + '|^';
     } else if ((adj == 'sej') || (adj == 'sjej')) {
-        result = adj.substring(0, adj.length - 2) + '|^';
+        result = adj.slice(0, -2) + '|^';
     } else if ((adj == 'veś') || (adj == 'ves')) {
         result = 'vs|^';
     } else if (adj == 'onoj') {
@@ -98,24 +100,24 @@ function establish_root(adj) {
         result = 'jedn|'
     } else if (adj == 'nijedin') {
         result = 'nijedn|'
-    } else if ((adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('v') == adj.length - 1)) {
+    } else if (adj.slice(-2) == 'ov') {
         result = adj + '|';
-    } else if ((adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('n') == adj.length - 1)) {
+    } else if (adj.slice(-2) == 'in') {
         result = adj + '|';
-    } else if ((adj.lastIndexOf('t') == adj.length - 3) && (adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
-        result = adj.substring(0, adj.length - 2) + '|';
-    } else if ((adj.lastIndexOf('o') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
+    } else if (adj.slice(-3) == 'toj') {
+        result = adj.slice(0, -2) + '|';
+    } else if (adj.slice(-2) == 'oj') {
         result = adj + '|^';
-    } else if ((adj.lastIndexOf('e') == adj.length - 2) && (adj.lastIndexOf('n') == adj.length - 1)) {
-        result = adj.substring(0, adj.length - 2) + 'n|';
-    } else if ((adj.lastIndexOf('y') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
-        result = adj.substring(0, adj.length - 2);
-    } else if ((adj.lastIndexOf('i') == adj.length - 2) && (adj.lastIndexOf('j') == adj.length - 1)) {
-        result = adj.substring(0, adj.length - 2) + '^';
-    } else if (adj.lastIndexOf('y') == adj.length - 1) {
-        result = adj.substring(0, adj.length - 1);
-    } else if (adj.lastIndexOf('i') == adj.length - 1) {
-        result = adj.substring(0, adj.length - 1) + '^';
+    } else if (adj.slice(-2) == 'en') {
+        result = adj.slice(0, -2) + 'n|';
+    } else if (adj.slice(-2) == 'yj') {
+        result = adj.slice(0, -2);
+    } else if (adj.slice(-2) == 'ij') {
+        result = adj.slice(0, -2) + '^';
+    } else if (adj.slice(-1) == 'y') {
+        result = adj.slice(0, -1);
+    } else if (adj.slice(-1) == 'i') {
+        result = adj.slice(0, -1) + '^';
     } else {
         result = '';
     }
