@@ -186,7 +186,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         switch (getPartOfSpeech(details)) {
             case 'noun':
                 if (options.includes('showGender')) {
-                    remark = (details === 'm.' ? ' (masculine)' : ' (feminine)');
+                    remark = (details === 'm.' ? ' (' + t('noun-masculine') + ')' : ' (' + t('noun-feminine') + ')');
                 }
                 wordComponent = this.renderNounDetails(word, add, details);
                 break;
@@ -465,59 +465,59 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const table = [
             [
                 '&nbsp@bb;bl;bt',
-                'singular@w=3;b',
+                `${t('singular')}@w=3;b`,
             ],
             [
                 '&nbsp@bl;bt',
-                'masculine@b',
-                'neuter@b',
-                'feminine@b',
+                `${t('masculine')}@b`,
+                `${t('neuter')}@b`,
+                `${t('feminine')}@b`,
             ],
         ];
         if (singular.acc.length === 3) {
             table.push([
-                    'Nom@b',
+                    `${t('caseNom')}@b`,
                     `${this.formatStr(singular.nom[0])}@`,
                     `${this.formatStr(singular.nom[1])}@`,
                     `${this.formatStr(singular.nom[2])}@`,
                 ],
                 [
-                    'Acc@b',
+                    `${t('caseAcc')}@b`,
                     `${this.formatStr(singular.acc[0])}@`,
                     `${this.formatStr(singular.acc[1])}@`,
                     `${this.formatStr(singular.acc[2])}@`,
                 ]);
         } else {
             table.push([
-                    'Nom@b',
+                    `${t('caseNom')}@b`,
                     `${this.formatStr(singular.nom[0])}@`,
                     `${this.formatStr(singular.nom[1])}@h=2`,
                     `${this.formatStr(singular.nom[2])}@`,
                 ],
                 [
-                    'Acc@b',
+                    `${t('caseAcc')}@b`,
                     `${this.formatStr(singular.acc[0])}@`,
                     `${this.formatStr(singular.acc[1])}@`,
                 ]);
         }
         table.push(
             [
-                'Gen@b',
+                `${t('caseGen')}@b`,
                 `${this.formatStr(singular.gen[0])}@w=2`,
                 `${this.formatStr(singular.gen[1])}@`,
             ],
             [
-                'Loc@b',
+                `${t('caseLoc')}@b`,
                 `${this.formatStr(singular.loc[0])}@w=2`,
                 `${this.formatStr(singular.loc[1])}@`,
             ],
             [
-                'Dat@b',
+                `${t('caseDat')}@b`,
                 `${this.formatStr(singular.dat[0])}@w=2`,
                 `${this.formatStr(singular.dat[1])}@`,
             ],
             [
-                'Ins@b',
+                `${t('caseIns')}@b`,
                 `${this.formatStr(singular.ins[0])}@w=2`,
                 `${this.formatStr(singular.ins[1])}@`,
             ]);
@@ -528,53 +528,53 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const table = [
             [
                 '&nbsp@bb;bl;bt',
-                'plural@w=2;b',
+                `${t('plural')}@w=2;b`,
             ],
             [
                 '&nbsp@bl;bt',
-                'masculine@b',
-                'feminine/neuter@b',
+                `${t('plural')}@b`,
+                `${t('feminine/neuter')}@b`,
             ],
         ];
         if (plural.acc.length === 2 && plural.nom[1] !== plural.acc[1]) {
             table.push(
                 [
-                    'Nom@b',
+                    `${t('caseNom')}@b`,
                     `${this.formatStr(plural.nom[0])}@`,
                     `${this.formatStr(plural.nom[1])}@`,
                 ],
                 [
-                    'Acc@b',
+                    `${t('caseAcc')}@b`,
                     `${this.formatStr(plural.acc[0])}@`,
                     `${this.formatStr(plural.acc[1])}@`,
                 ]);
         } else {
             table.push(
                 [
-                    'Nom@b',
+                    `${t('caseNom')}@b`,
                     `${this.formatStr(plural.nom[0])}@`,
                     `${this.formatStr(plural.nom[1])}@h=2`,
                 ],
                 [
-                    'Acc@b',
+                    `${t('caseAcc')}@b`,
                     `${this.formatStr(plural.acc[0])}@`,
                 ]);
         }
         table.push(
             [
-                'Gen@b',
+                `${t('caseGen')}@b`,
                 `${this.formatStr(plural.gen[0])}@w=2`,
             ],
             [
-                'Loc@b',
+                `${t('caseLoc')}@b`,
                 `${this.formatStr(plural.loc[0])}@w=2`,
             ],
             [
-                'Dat@b',
+                `${t('caseDat')}@b`,
                 `${this.formatStr(plural.dat[0])}@w=2`,
             ],
             [
-                'Ins@b',
+                `${t('caseIns')}@b`,
                 `${this.formatStr(plural.ins[0])}@w=2`,
             ]);
         return table;
