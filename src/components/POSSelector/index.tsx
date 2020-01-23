@@ -12,7 +12,7 @@ interface IPOSSelectorProps {
 
 const POSList = [
     {
-        name: 'all',
+        name: 'anyPartOfSpeech',
         value: '',
     },
     {
@@ -28,25 +28,30 @@ const POSList = [
         value: 'adj',
     },
     {
-        name: 'adverb',
-        value: 'adv',
+        name: 'verb',
+        value: 'v',
     },
     {
-        name: 'preposition',
-        value: 'prep',
+        name: 'adverb',
+        value: 'adv',
     },
     {
         name: 'numeral',
         value: 'num',
     },
     {
+        name: 'preposition',
+        value: 'prep',
+    },
+    {
+        name: 'conjunction',
+        value: 'conj',
+    },
+    {
         name: 'interjection',
         value: 'intj',
     },
-    {
-        name: 'verb',
-        value: 'v',
-    },
+
 ];
 
 class POSSelector extends React.Component<IPOSSelectorProps> {
