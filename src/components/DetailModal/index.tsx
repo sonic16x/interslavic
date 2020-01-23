@@ -127,29 +127,29 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const indeclinable = isIndeclinable(details);
         switch (pos) {
             case 'noun':
-                arr.push(gender);
+                arr.push(t(gender));
                 if (gender.match(/masculine/)) {
-                    arr.push(animated ? t('animated') : t('inanimate'));
+                    arr.push(t(animated ? 'animated' : 'inanimate'));
                 }
-                if (indeclinable) { arr.push('indeclinable'); }
+                if (indeclinable) { arr.push(t('indeclinable')); }
                 if (plural) { arr.push(t('plural')); }
                 if (singular) { arr.push(t('singular')); }
                 break;
             case 'verb':
                 const verbDetails = getVerbDetails(details);
                 if (verbDetails) {
-                    arr.push(...verbDetails);
+                    arr.push(...verbDetails.map(t));
                 }
                 break;
             case 'numeral':
                 const numeralType = getNumeralType(details);
                 if (numeralType) {
-                    arr.push(numeralType);
+                    arr.push(t(numeralType));
                 }
             case 'pronoun':
                 const pronounType = getPronounType(details);
                 if (pronounType) {
-                    arr.push(pronounType);
+                    arr.push(t(pronounType));
                 }
         }
         return (

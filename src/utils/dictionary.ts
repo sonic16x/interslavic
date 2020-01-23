@@ -263,24 +263,32 @@ class DictionaryClass {
         const isvText = (from === 'isv' ?
             this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType), flavorisationType)
             : '');
+
         // option -end - search by ending of word
         if (inputOptions.some((option) => option.trim() === 'end')) {
             searchType = 'end';
         }
+
         // option -etym - hard search by etymological orthography for Isv
         const hardEtymSearch = from === 'isv' && (inputOptions.some((o) => o === 'etym') ||
             (flavorisationType === '2' &&
             isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
+
         // option -b - two-way search
         const twoWaySearch = inputOptions.some((o) => o === 'b');
-        // option -p - filter by part of speach
-        // for example "-p noun.m+v.ipf" - search for masculine nouns or imperfective verbs
-        const filterpartOfSpeech =
-            (inputOptions.some((option) => option.length > 2 && option.slice(0, 2) === 'p ') ?
-                inputOptions.find((option) => option.slice(0, 2) === 'p ')
-                  .slice(2).replace(/[ \/]/g, '')
-                  .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean)) :
-                (posFilter ? [[posFilter]] : []));
+
+        // filter by part of speech
+        let filterPartOfSpeech = [];
+        //   option -p, for example "-p noun.m+v.ipf" - search for masculine nouns or imperfective verbs
+        const optionPOS = inputOptions.find((option) => option.slice(0, 2) === 'p ');
+        if (optionPOS) {
+            filterPartOfSpeech = optionPOS
+                .slice(2).replace(/[ \/]/g, '')
+                .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean));
+        //   filter by interface selector
+        } else if (posFilter) {
+            filterPartOfSpeech = [[posFilter]];
+        }
 
         const distMap = new WeakMap();
         const results = this.words
@@ -312,14 +320,14 @@ class DictionaryClass {
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
                 // seach by part of speach
-                if (filterResult && filterpartOfSpeech.length) {
+                if (filterResult && filterPartOfSpeech.length) {
                     const partOfSpeech = this.getField(item, 'partOfSpeech')
                         .replace(/[ \/]/g, '').split('.').filter(Boolean);
                     if (partOfSpeech.includes('m') || partOfSpeech.includes('n')
                         || partOfSpeech.includes('f')) {
                         partOfSpeech.push('noun');
                     }
-                    if (!filterpartOfSpeech.some((c) => c.every((e) => partOfSpeech.includes(e)))) {
+                    if (!filterPartOfSpeech.some((c) => c.every((e) => partOfSpeech.includes(e)))) {
                         return false;
                     }
                 }
