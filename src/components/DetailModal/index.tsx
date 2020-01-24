@@ -464,11 +464,11 @@ class DetailModal extends React.Component<IDetailModalProps> {
     private getAdjectiveSingularCasesTable(singular) {
         const table = [
             [
-                '&nbsp@bb;bl;bt',
+                '&nbsp@bl;bt',
                 `${t('singular')}@w=3;b`,
             ],
             [
-                '&nbsp@bl;bt',
+                `${t('case')}@b`,
                 `${t('masculine')}@b`,
                 `${t('neuter')}@b`,
                 `${t('feminine')}@b`,
@@ -527,11 +527,11 @@ class DetailModal extends React.Component<IDetailModalProps> {
     private getAdjectivePluralCasesTable(plural) {
         const table = [
             [
-                '&nbsp@bb;bl;bt',
+                '&nbsp@bl;bt',
                 `${t('plural')}@w=2;b`,
             ],
             [
-                '&nbsp@bl;bt',
+                `${t('case')}@b`,
                 `${t('plural')}@b`,
                 `${t('feminineOrNeuter')}@b`,
             ],
