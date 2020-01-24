@@ -1472,10 +1472,10 @@
     "bg": ""
   },
   "positive": {
-    "en": "Positive",
+    "en": "positive",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru":  "Положительная",
+    "ru":  "положительная",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1488,10 +1488,10 @@
     "bg": ""
   },
   "comparative": {
-    "en": "Comparative",
+    "en": "comparative",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru":  "Сравнительная",
+    "ru":  "сравнительная",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1504,10 +1504,10 @@
     "bg": ""
   },
   "superlative": {
-    "en": "Superlative",
+    "en": "superlative",
     "isv-Latn": "",
     "isv-Cyrl": "",
-    "ru":  "Превосходная",
+    "ru":  "превосходная",
     "uk": "",
     "be": "",
     "pl": "",
