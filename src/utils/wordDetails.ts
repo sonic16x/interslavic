@@ -191,19 +191,19 @@ export function getVerbDetails(details: string): VerbType[] {
     return getArr(details).map((detail) => {
         switch (detail) {
             case 'intr':
-                return 'intransitive';
+                return 'Intransitive';
             case 'tr':
-                return 'transitive';
+                return 'Transitive';
             case 'aux':
-                return 'auxiliar';
+                return 'Auxiliar';
             case 'refl':
-                return 'reflexive';
+                return 'Reflexive';
             case 'ipf':
-                return 'imperfective';
+                return 'Imperfective';
             case 'pf':
-                return 'perfective';
+                return 'Perfective';
             case 'ipf/pf':
-                return 'imperfective / perfective';
+                return 'ImperfectiveOrPerfective';
             default:
                 return '';
         }
