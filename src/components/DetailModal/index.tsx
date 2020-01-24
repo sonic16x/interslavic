@@ -127,29 +127,29 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const indeclinable = isIndeclinable(details);
         switch (pos) {
             case 'noun':
-                arr.push(t('noun-' + gender));
+                arr.push(t('noun' + gender));
                 if (gender.match(/masculine/)) {
-                    arr.push(t( animated ? 'noun-animated' : 'noun-inanimate'));
+                    arr.push(t( animated ? 'nounAnimated' : 'nounInanimate'));
                 }
-                if (indeclinable) { arr.push(t('noun-indeclinable')); }
-                if (plural) { arr.push(t('noun-plural')); }
-                if (singular) { arr.push(t('noun-singular')); }
+                if (indeclinable) { arr.push(t('nounIndeclinable')); }
+                if (plural) { arr.push(t('nounPlural')); }
+                if (singular) { arr.push(t('nounSingular')); }
                 break;
             case 'verb':
                 const verbDetails = getVerbDetails(details);
                 if (verbDetails) {
-                    arr.push(...verbDetails.map((e) => t('verb-' + e)));
+                    arr.push(...verbDetails.map((e) => t('verb' + e)));
                 }
                 break;
             case 'numeral':
                 const numeralType = getNumeralType(details);
                 if (numeralType) {
-                    arr.push(t('numeral-' + numeralType));
+                    arr.push(t('numeral' + numeralType));
                 }
             case 'pronoun':
                 const pronounType = getPronounType(details);
                 if (pronounType) {
-                    arr.push(t('pronoun-' + pronounType));
+                    arr.push(t('pronoun' + pronounType));
                 }
         }
         return (
@@ -186,7 +186,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         switch (getPartOfSpeech(details)) {
             case 'noun':
                 if (options.includes('showGender')) {
-                    remark = (details === 'm.' ? ' (' + t('noun-masculine') + ')' : ' (' + t('noun-feminine') + ')');
+                    remark = (details === 'm.' ? ' (' + t('nounMasculine') + ')' : ' (' + t('nounFeminine') + ')');
                 }
                 wordComponent = this.renderNounDetails(word, add, details);
                 break;
@@ -259,46 +259,46 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const tableDataFirst = [
             [
                 '&nbsp@bl;bt;w=2',
-                'present@;b',
-                'imperfect@;b',
-                'future@;b',
+                `${t('present')}@;b`,
+                `${t('imperfect')}@;b`,
+                `${t('future')}@;b`,
             ],
         ];
         const tableDataSecond = [
             [
-                '&nbsp@bl;bt;w=2',
-                'perfect@;b',
-                'pluperfect@;b',
-                'conditional@;b',
+                `&nbsp@bl;bt;w=2`,
+                `${t('perfect')}@;b`,
+                `${t('pluperfect')}@;b`,
+                `${t('conditional')}@;b`,
             ],
         ];
         const tableDataAdd = [
             [
-                'infinitive@b',
+                `${t('infinitive')}@b`,
                 this.formatStr(data.infinitive),
             ],
             [
-                'imperative@b',
+                `${t('imperative')}@b`,
                 this.formatStr(data.imperative),
             ],
             [
-                'present active participle@b',
+                `${t('presentActiveParticiple')}@b`,
                 this.formatStr(data.prap),
             ],
             [
-                'present passive participle@b',
+                `${t('presentPassiveParticiple')}@b`,
                 this.formatStr(data.prpp),
             ],
             [
-                'past active participle@b',
+                `${t('pastActiveParticiple')}@b`,
                 this.formatStr(data.pfap),
             ],
             [
-                'past passive participle@b',
+                `${t('pastPassiveParticiple')}@b`,
                 this.formatStr(data.pfpp),
             ],
             [
-                'verbal noun@b',
+                `${t('verbalNoun')}@b`,
                 this.formatStr(data.gerund),
             ],
         ];
@@ -320,15 +320,15 @@ class DetailModal extends React.Component<IDetailModalProps> {
             'vy',
             'oni one',
         ];
-        const forms = [
-            '1sg',
-            '2sg',
-            '3sg',
-            '1pl',
-            '2pl',
-            '3pl',
+        const forms1 = [
+            `1sg`,
+            `2sg`,
+            `3sg`,
+            `1pl`,
+            `2pl`,
+            `3pl`,
         ];
-        const formsFull = [
+        const forms2 = [
             '1sg',
             '2sg',
             '3sg',
@@ -340,7 +340,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
         ];
         pronouns.forEach((pronoun, i) => {
             tableDataFirst.push([
-                `${forms[i]}@b`,
+                `${t(forms1[i])}@b`,
                 `${this.formatStr(pronoun)}@`,
                 `${this.formatStr(data.present[i])}@`,
                 `${this.formatStr(data.imperfect[i])}@`,
@@ -354,9 +354,9 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 `${this.formatStr(data.pluperfect[i])}@`,
                 `${this.formatStr(data.conditional[i])}@`,
             ];
-            if (formsFull[i]) {
-                let str = `${formsFull[i]}@b`;
-                if (formsFull[i] === '3sg') {
+            if (forms2[i]) {
+                let str = `${t(forms2[i])}@b`;
+                if (forms2[i] === '3sg') {
                     str += ';h=3';
                 }
                 item.unshift(str);
@@ -533,7 +533,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             [
                 '&nbsp@bl;bt',
                 `${t('plural')}@b`,
-                `${t('feminine/neuter')}@b`,
+                `${t('feminineOrNeuter')}@b`,
             ],
         ];
         if (plural.acc.length === 2 && plural.nom[1] !== plural.acc[1]) {

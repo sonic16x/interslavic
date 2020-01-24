@@ -847,7 +847,7 @@
     "mk": "",
     "bg": ""
   },
-  "feminine/neuter": {
+  "feminineOrNeuter": {
     "en": "feminine/neuter",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -863,7 +863,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-masculine": {
+  "nounMasculine": {
     "en": "masculine",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -879,7 +879,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-feminine": {
+  "nounFeminine": {
     "en": "feminine",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -895,7 +895,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-neuter": {
+  "nounNeuter": {
     "en": "neuter",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -911,7 +911,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-masculine or feminine": {
+  "nounMasculineOrFeminine": {
     "en": "masculine or feminine",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -927,7 +927,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-singular": {
+  "nounSingular": {
     "en": "singular",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -943,7 +943,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-plural": {
+  "nounPlural": {
     "en": "plural",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -959,7 +959,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-animated": {
+  "nounAnimated": {
     "en": "animated",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -975,7 +975,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-inanimate": {
+  "nounInanimate": {
     "en": "inanimate",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -991,7 +991,7 @@
     "mk": "",
     "bg": ""
   },
-  "noun-indeclinable": {
+  "nounIndeclinable": {
     "en": "indeclinable",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1007,7 +1007,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeral-cardinal": {
+  "numeralCardinal": {
     "en": "cardinal",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1023,7 +1023,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeral-collective": {
+  "numeralCollective": {
     "en": "collective",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1039,7 +1039,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeral-fractional": {
+  "numeralFractional": {
     "en": "fractional",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1055,7 +1055,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeral-substantivized": {
+  "numeralSubstantivized": {
     "en": "substantivized",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1071,7 +1071,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeral-differential": {
+  "numeralDifferential": {
     "en": "differential",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1087,7 +1087,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeral-multiplicative": {
+  "numeralMultiplicative": {
     "en": "multiplicative",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1103,7 +1103,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeral-ordinal": {
+  "numeralOrdinal": {
     "en": "ordinal",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1119,7 +1119,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronoun-personal": {
+  "pronounPersonal": {
     "en": "personal",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1135,7 +1135,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronoun-demonstrative": {
+  "pronounDemonstrative": {
     "en": "demonstrative",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1151,7 +1151,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronoun-indefinite": {
+  "pronounIndefinite": {
     "en": "indefinite",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1167,7 +1167,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronoun-reflexive": {
+  "pronounReflexive": {
     "en": "reflexive",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1183,7 +1183,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronoun-relative": {
+  "pronounRelative": {
     "en": "relative",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1199,7 +1199,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronoun-possessive": {
+  "pronounPossessive": {
     "en": "possessive",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1215,7 +1215,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronoun-interrogative": {
+  "pronounInterrogative": {
     "en": "interrogative",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1231,7 +1231,7 @@
     "mk": "",
     "bg": ""
   },
-  "verb-imperfective": {
+  "verbImperfective": {
     "en": "imperfective",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1247,7 +1247,7 @@
     "mk": "",
     "bg": ""
   },
-  "verb-perfective": {
+  "verbPerfective": {
     "en": "perfective",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1263,7 +1263,7 @@
     "mk": "",
     "bg": ""
   },
-  "verb-imperfective / perfective": {
+  "verbImperfectiveOrPerfective": {
     "en": "imperfective / perfective",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1279,7 +1279,7 @@
     "mk": "",
     "bg": ""
   },
-  "verb-intransitive": {
+  "verbIntransitive": {
   "en": "intransitive",
   "isv-Latn": "",
   "isv-Cyrl": "",
@@ -1295,7 +1295,7 @@
   "mk": "",
   "bg": ""
 },
-  "verb-transitive": {
+  "verbTransitive": {
     "en": "transitive",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1311,7 +1311,7 @@
     "mk": "",
     "bg": ""
   },
-  "verb-reflexive": {
+  "verbReflexive": {
     "en": "reflexive",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1327,7 +1327,7 @@
     "mk": "",
     "bg": ""
   },
-  "verb-auxiliar": {
+  "verbAuxiliar": {
     "en": "auxiliar",
     "isv-Latn": "",
     "isv-Cyrl": "",
@@ -1508,6 +1508,310 @@
     "isv-Latn": "",
     "isv-Cyrl": "",
     "ru":  "Превосходная",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "present": {
+    "en": "present",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "настоящее",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "imperfect": {
+    "en": "imperfect",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "несов. прошед.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "future": {
+    "en": "future",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "будущее",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "perfect": {
+    "en": "perfect",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "соверш. прош.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "pluperfect": {
+    "en": "pluperfect",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "предпрошед.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "conditional": {
+    "en": "conditional",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "сослаг. накл.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "infinitive": {
+    "en": "infinitive",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "неопределённая форма",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "imperative": {
+    "en": "imperative",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "повелительное накл.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "presentActiveParticiple": {
+    "en": "present active participle",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "действ. прич. наст. вр.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "presentPassiveParticiple": {
+    "en": "present passive participle",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "страд. причаст. наст. вр.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "pastActiveParticiple": {
+    "en": "past active participle",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "действ. причаст. прошед. вр.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "pastPassiveParticiple": {
+    "en": "past passive participle",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "страд. причаст. прошед. вр.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "verbalNoun": {
+    "en": "verbal noun",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "отглагольное существ.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "1sg": {
+    "en": "1sg",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "1ед",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "2sg": {
+    "en": "2sg",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "2ед",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "3sg": {
+    "en": "3sg",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "3ед",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "1pl": {
+    "en": "1pl",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "1мн",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "2pl": {
+    "en": "2pl",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "2мн",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "3pl": {
+    "en": "3pl",
+    "isv-Latn": "",
+    "isv-Cyrl": "",
+    "ru":  "3мн",
     "uk": "",
     "be": "",
     "pl": "",
