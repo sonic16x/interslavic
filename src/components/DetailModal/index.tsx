@@ -395,7 +395,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
             ],
             [
                 `${t('superlative')}@b`,
-                `${this.formatStr(comparison.superlative[0])}@`, ,
+                `${this.formatStr(comparison.superlative[0])}@`,
                 `${this.formatStr(comparison.superlative[1])}@`,
             ],
         ];
