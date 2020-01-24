@@ -256,7 +256,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 </div>
             );
         }
-        const tableDataFirst = [
+        const tableData1 = [
             [
                 '&nbsp@bl;bt;w=2',
                 `${t('present')}@;b`,
@@ -264,7 +264,32 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 `${t('future')}@;b`,
             ],
         ];
-        const tableDataSecond = [
+        const forms1 = [
+            `1sg`,
+            `2sg`,
+            `3sg`,
+            `1pl`,
+            `2pl`,
+            `3pl`,
+        ];
+        const pronouns1 = [
+            'ja',
+            'ty',
+            'on ona ono',
+            'my',
+            'vy',
+            'oni one',
+        ];
+        pronouns1.forEach((pronoun, i) => {
+            tableData1.push([
+                `${t(forms1[i])}@b`,
+                `${this.formatStr(pronoun)}@`,
+                `${this.formatStr(data.present[i])}@`,
+                `${this.formatStr(data.imperfect[i])}@`,
+                `${this.formatStr(data.future[i])}@`,
+            ]);
+        });
+        const tableData2 = [
             [
                 `&nbsp@bl;bt;w=2`,
                 `${t('perfect')}@;b`,
@@ -272,6 +297,48 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 `${t('conditional')}@;b`,
             ],
         ];
+        const forms2 = [
+            '1sg',
+            '2sg',
+            '3sg',
+            null,
+            null,
+            '1pl',
+            '2pl',
+            '3pl',
+        ];
+        const pronouns2 = [
+            'ja',
+            'ty',
+            'on',
+            'ona',
+            'ono',
+            'my',
+            'vy',
+            'oni one',
+        ];
+        pronouns2.forEach((pronoun, i) => {
+            const item = [
+                `${this.formatStr(pronoun)}@`,
+                `${this.formatStr(data.perfect[i])}@`,
+                `${this.formatStr(data.pluperfect[i])}@`,
+                `${this.formatStr(data.conditional[i])}@`,
+            ];
+            if (forms2[i]) {
+                let str = `${t(forms2[i])}@b`;
+                if (forms2[i] === '3sg') {
+                    str += ';h=3';
+                }
+                item.unshift(str);
+            }
+            tableData2.push(item);
+        });
+
+        const tableData =
+            [...tableData1,
+             ['@w=2;bb;bl;br', '@w=3;bl;br'],
+            ...tableData2];
+
         const tableDataAdd = [
             [
                 `${t('infinitive')}@b`,
@@ -302,71 +369,10 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 this.formatStr(data.gerund),
             ],
         ];
-        const pronouns = [
-            'ja',
-            'ty',
-            'on ona ono',
-            'my',
-            'vy',
-            'oni one',
-        ];
-        const pronounsFull = [
-            'ja',
-            'ty',
-            'on',
-            'ona',
-            'ono',
-            'my',
-            'vy',
-            'oni one',
-        ];
-        const forms1 = [
-            `1sg`,
-            `2sg`,
-            `3sg`,
-            `1pl`,
-            `2pl`,
-            `3pl`,
-        ];
-        const forms2 = [
-            '1sg',
-            '2sg',
-            '3sg',
-            null,
-            null,
-            '1pl',
-            '2pl',
-            '3pl',
-        ];
-        pronouns.forEach((pronoun, i) => {
-            tableDataFirst.push([
-                `${t(forms1[i])}@b`,
-                `${this.formatStr(pronoun)}@`,
-                `${this.formatStr(data.present[i])}@`,
-                `${this.formatStr(data.imperfect[i])}@`,
-                `${this.formatStr(data.future[i])}@`,
-            ]);
-        });
-        pronounsFull.forEach((pronoun, i) => {
-            const item = [
-                `${this.formatStr(pronoun)}@`,
-                `${this.formatStr(data.perfect[i])}@`,
-                `${this.formatStr(data.pluperfect[i])}@`,
-                `${this.formatStr(data.conditional[i])}@`,
-            ];
-            if (forms2[i]) {
-                let str = `${t(forms2[i])}@b`;
-                if (forms2[i] === '3sg') {
-                    str += ';h=3';
-                }
-                item.unshift(str);
-            }
-            tableDataSecond.push(item);
-        });
+
         return (
             <>
-                <Table key={0} data={tableDataFirst}/>
-                <Table key={1} data={tableDataSecond}/>
+                <Table key={0} data={tableData}/>
                 <Table key={2} data={tableDataAdd}/>
             </>
         );
