@@ -379,33 +379,33 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const tableDataPlural = this.getAdjectivePluralCasesTable(plural);
         const tableDataComparison = [
             [
-                'Degrees of comparison@w=3;b',
+                `${t('degreesOfComparison')}@w=3;b`,
             ],
             [
-                'Positive@b;h=2',
-                'adjective@b',
+                `${t('positive')}@b;h=2`,
+                `${t('adjective')}@b`,
                 `${this.formatStr(comparison.positive[0])}@`,
             ],
             [
-                'adverb@b',
+                `${t('adverb')}@b`,
                 `${this.formatStr(comparison.positive[1])}@`,
             ],
             [
-                'Comparative@b;h=2',
-                'adjective@b',
+                `${t('comparative')}@b;h=2`,
+                `${t('adjective')}@b`,
                 `${this.formatStr(comparison.comparative[0])}@`,
             ],
             [
-                'adverb@b',
+                `${t('adverb')}@b`,
                 `${this.formatStr(comparison.comparative[1])}@`,
             ],
             [
-                'Superlative@b;h=2',
-                'adjective@b',
+                `${t('superlative')}@b;h=2`,
+                `${t('adjective')}@b`,
                 `${this.formatStr(comparison.superlative[0])}@`,
             ],
             [
-                'adverb@b',
+                `${t('adverb')}@b`,
                 `${this.formatStr(comparison.superlative[1])}@`,
             ],
         ];
