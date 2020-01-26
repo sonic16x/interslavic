@@ -21,7 +21,7 @@ export function conjugationVerbFlat(inf, rawPts): any {
         ...result.imperative.replace(/ /g, '').split(','),
         ...result.imperfect,
         result.infinitive,
-        result.pfap,
+        ...result.pfap.replace(/[(),]/g, '').split(' '),
         ...result.pfpp.replace(/[(),]/g, '').split(' '),
         ...result.prap.replace(/[(),]/g, '').split(' '),
         ...result.prpp.replace(/[(),]/g, '').split(' '),
@@ -669,7 +669,7 @@ function build_pfap(lpa, refl) {
     if (result.indexOf('šèv') != -1) {
         result = idti(result);
     }
-
+    result = result + ' (' + result.slice(0, -1) + "á, " + result.slice(0, -1) + "é)";
     result = transliterateBack(result);
     return result;
 }
