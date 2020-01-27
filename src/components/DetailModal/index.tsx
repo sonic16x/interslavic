@@ -127,29 +127,29 @@ class DetailModal extends React.Component<IDetailModalProps> {
         const indeclinable = isIndeclinable(details);
         switch (pos) {
             case 'noun':
-                arr.push(t('noun' + gender));
+                arr.push(t('noun-' + gender));
                 if (gender.match(/masculine/)) {
-                    arr.push(t( animated ? 'nounAnimated' : 'nounInanimate'));
+                    arr.push(t( animated ? 'noun-animated' : 'noun-inanimate'));
                 }
-                if (indeclinable) { arr.push(t('nounIndeclinable')); }
-                if (plural) { arr.push(t('nounPlural')); }
-                if (singular) { arr.push(t('nounSingular')); }
+                if (indeclinable) { arr.push(t('noun-indeclinable')); }
+                if (plural) { arr.push(t('noun-plural')); }
+                if (singular) { arr.push(t('noun-singular')); }
                 break;
             case 'verb':
                 const verbDetails = getVerbDetails(details);
                 if (verbDetails) {
-                    arr.push(...verbDetails.map((e) => t('verb' + e)));
+                    arr.push(...verbDetails.map((e) => t('verb-' + e)));
                 }
                 break;
             case 'numeral':
                 const numeralType = getNumeralType(details);
                 if (numeralType) {
-                    arr.push(t('numeral' + numeralType));
+                    arr.push(t('numeral-' + numeralType));
                 }
             case 'pronoun':
                 const pronounType = getPronounType(details);
                 if (pronounType) {
-                    arr.push(t('pronoun' + pronounType));
+                    arr.push(t('pronoun-' + pronounType));
                 }
         }
         return (
