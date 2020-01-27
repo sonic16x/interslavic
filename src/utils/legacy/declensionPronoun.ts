@@ -54,7 +54,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
         if (['ja', 'mene', 'me', 'mne', 'mi', 'mnoju', 'my', 'nas', 'nam', 'nami'].includes(word)) {
             return {
                 type: 'noun',
-                columns: ['Singular', 'Plural'],
+                columns: ['singular', 'plural'],
                 cases: {
                     nom: ['ja', 'my'],
                     acc: ['mene (mę)', 'nas'],
@@ -67,7 +67,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
         } else if (['ty', 'tebe', 'te', 'tobe', 'ti', 'toboju', 'vy', 'vas', 'vam', 'vami'].includes(word)) {
             return {
                 type: 'noun',
-                columns: ['Singular', 'Plural'],
+                columns: ['singular', 'plural'],
                 cases: {
                     nom: ['ty', 'vy'],
                     acc: ['tebe (tę)', 'vas'],
@@ -101,7 +101,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
         } else if (['sebe', 'se', 'sobe', 'si', 'soboju'].includes(word)) {
             return {
                 type: 'noun',
-                columns: ['Word Form'],
+                columns: ['wordForm'],
                 cases: {
                     nom: [null],
                     acc: ['sebę (sę)'],
@@ -116,7 +116,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
         ['jih', 'jej', 'jego'].includes(word)) {
         return {
             type: 'noun',
-            columns: ['Word Form'],
+            columns: ['wordForm'],
             cases: {
                 nom: [rawWord],
                 acc: [rawWord],

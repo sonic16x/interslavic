@@ -97,7 +97,7 @@ export function getPartOfSpeech(details: string): PartOfSpeech {
 
 // Nouns
 
-export type Gender = 'masculine' | 'feminine' | 'neuter' | 'masculine or feminine';
+export type Gender = 'masculine' | 'feminine' | 'neuter' | 'masculineOrFeminine';
 
 export function getGender(details: string): Gender {
     const arr = getArr(details);
@@ -108,7 +108,7 @@ export function getGender(details: string): Gender {
         return 'feminine';
     }
     if (arr.includes('m/f')) {
-        return 'masculine or feminine';
+        return 'masculineOrFeminine';
     }
     return 'neuter';
 }
@@ -185,25 +185,25 @@ export function getPronounType(details: string): string {
 
 // Verbs
 
-export type VerbType = 'intransitive' | 'transitive' | 'auxiliar' | 'reflective' | 'imperfective' | 'perfective' | 'imperfective / perfective';
+export type VerbType = 'intransitive' | 'transitive' | 'auxiliar' | 'reflexive' | 'imperfective' | 'perfective' | 'imperfectiveOrPerfective';
 
 export function getVerbDetails(details: string): VerbType[] {
     return getArr(details).map((detail) => {
         switch (detail) {
             case 'intr':
-                return 'Intransitive';
+                return 'intransitive';
             case 'tr':
-                return 'Transitive';
+                return 'transitive';
             case 'aux':
-                return 'Auxiliar';
+                return 'auxiliar';
             case 'refl':
-                return 'Reflexive';
+                return 'reflexive';
             case 'ipf':
-                return 'Imperfective';
+                return 'imperfective';
             case 'pf':
-                return 'Perfective';
+                return 'perfective';
             case 'ipf/pf':
-                return 'ImperfectiveOrPerfective';
+                return 'imperfectiveOrPerfective';
             default:
                 return '';
         }

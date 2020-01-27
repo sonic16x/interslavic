@@ -863,11 +863,11 @@
     "mk": "",
     "bg": ""
   },
-  "nounMasculine": {
+  "noun-masculine": {
     "en": "masculine",
-    "isv-Latn": "muž. rod",
-    "isv-Cyrl": "муж. род",
-    "ru": "муж. род",
+    "isv-Latn": "mužsky rod",
+    "isv-Cyrl": "мужскы род",
+    "ru": "мужской род",
     "uk": "",
     "be": "",
     "pl": "",
@@ -879,11 +879,11 @@
     "mk": "",
     "bg": ""
   },
-  "nounFeminine": {
+  "noun-feminine": {
     "en": "feminine",
-    "isv-Latn": "žen. rod",
-    "isv-Cyrl": "жен. род",
-    "ru": "жен. род",
+    "isv-Latn": "žensky rod",
+    "isv-Cyrl": "женскы род",
+    "ru": "женский род",
     "uk": "",
     "be": "",
     "pl": "",
@@ -895,11 +895,11 @@
     "mk": "",
     "bg": ""
   },
-  "nounNeuter": {
+  "noun-neuter": {
     "en": "neuter",
-    "isv-Latn": "srěd. rod",
-    "isv-Cyrl": "срѣд. род",
-    "ru": "сред. род",
+    "isv-Latn": "srědnji rod",
+    "isv-Cyrl": "срѣднји род",
+    "ru": "средний род",
     "uk": "",
     "be": "",
     "pl": "",
@@ -911,7 +911,7 @@
     "mk": "",
     "bg": ""
   },
-  "nounMasculineOrFeminine": {
+  "noun-masculineOrFeminine": {
     "en": "masculine or feminine",
     "isv-Latn": "muž. ili žen. rod",
     "isv-Cyrl": "муж. или жен. род",
@@ -927,7 +927,7 @@
     "mk": "",
     "bg": ""
   },
-  "nounSingular": {
+  "noun-singular": {
     "en": "singular",
     "isv-Latn": "jednina",
     "isv-Cyrl": "једнина",
@@ -943,7 +943,7 @@
     "mk": "",
     "bg": ""
   },
-  "nounPlural": {
+  "noun-plural": {
     "en": "plural",
     "isv-Latn": "množina",
     "isv-Cyrl": "множина",
@@ -959,7 +959,7 @@
     "mk": "",
     "bg": ""
   },
-  "nounAnimated": {
+  "noun-animated": {
     "en": "animated",
     "isv-Latn": "živy",
     "isv-Cyrl": "живы",
@@ -975,7 +975,7 @@
     "mk": "",
     "bg": ""
   },
-  "nounInanimate": {
+  "noun-inanimate": {
     "en": "inanimate",
     "isv-Latn": "neživy",
     "isv-Cyrl": "неживы",
@@ -991,7 +991,7 @@
     "mk": "",
     "bg": ""
   },
-  "nounIndeclinable": {
+  "noun-indeclinable": {
     "en": "indeclinable",
     "isv-Latn": "nesklanjajemy",
     "isv-Cyrl": "нескланьајемы",
@@ -1007,7 +1007,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeralCardinal": {
+  "numeral-cardinal": {
     "en": "cardinal",
     "isv-Latn": "kolikostny",
     "isv-Cyrl": "коликостны",
@@ -1023,7 +1023,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeralCollective": {
+  "numeral-collective": {
     "en": "collective",
     "isv-Latn": "sborny",
     "isv-Cyrl": "сборны",
@@ -1039,7 +1039,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeralFractional": {
+  "numeral-fractional": {
     "en": "fractional",
     "isv-Latn": "ulomkovy",
     "isv-Cyrl": "уломковы",
@@ -1055,7 +1055,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeralSubstantivized": {
+  "numeral-substantivized": {
     "en": "substantivized",
     "isv-Latn": "substantovany",
     "isv-Cyrl": "субстантованы",
@@ -1071,7 +1071,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeralDifferential": {
+  "numeral-differential": {
     "en": "differential",
     "isv-Latn": "različajuči",
     "isv-Cyrl": "различајучи",
@@ -1087,7 +1087,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeralMultiplicative": {
+  "numeral-multiplicative": {
     "en": "multiplicative",
     "isv-Latn": "množiteljny",
     "isv-Cyrl": "множительны",
@@ -1103,7 +1103,7 @@
     "mk": "",
     "bg": ""
   },
-  "numeralOrdinal": {
+  "numeral-ordinal": {
     "en": "ordinal",
     "isv-Latn": "poredkovy",
     "isv-Cyrl": "поредковы",
@@ -1119,7 +1119,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronounPersonal": {
+  "pronoun-personal": {
     "en": "personal",
     "isv-Latn": "osobny",
     "isv-Cyrl": "особны",
@@ -1135,7 +1135,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronounDemonstrative": {
+  "pronoun-demonstrative": {
     "en": "demonstrative",
     "isv-Latn": "ukazateljny",
     "isv-Cyrl": "указательны",
@@ -1151,7 +1151,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronounIndefinite": {
+  "pronoun-indefinite": {
     "en": "indefinite",
     "isv-Latn": "neoznačiteljny",
     "isv-Cyrl": "неозначительны",
@@ -1167,7 +1167,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronounReflexive": {
+  "pronoun-reflexive": {
     "en": "reflexive",
     "isv-Latn": "refleksivny",
     "isv-Cyrl": "рефлексивны",
@@ -1183,7 +1183,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronounRelative": {
+  "pronoun-relative": {
     "en": "relative",
     "isv-Latn": "relativny",
     "isv-Cyrl": "релативны",
@@ -1199,7 +1199,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronounPossessive": {
+  "pronoun-possessive": {
     "en": "possessive",
     "isv-Latn": "prisvojiteljny",
     "isv-Cyrl": "присвојительны",
@@ -1215,7 +1215,7 @@
     "mk": "",
     "bg": ""
   },
-  "pronounInterrogative": {
+  "pronoun-interrogative": {
     "en": "interrogative",
     "isv-Latn": "pytateljny",
     "isv-Cyrl": "пытательны",
@@ -1231,7 +1231,7 @@
     "mk": "",
     "bg": ""
   },
-  "verbImperfective": {
+  "verb-imperfective": {
     "en": "imperfective",
     "isv-Latn": "nesovršeny",
     "isv-Cyrl": "несовршены",
@@ -1247,7 +1247,7 @@
     "mk": "",
     "bg": ""
   },
-  "verbPerfective": {
+  "verb-perfective": {
     "en": "perfective",
     "isv-Latn": "sovršeny",
     "isv-Cyrl": "совршены",
@@ -1263,7 +1263,7 @@
     "mk": "",
     "bg": ""
   },
-  "verbImperfectiveOrPerfective": {
+  "verb-imperfectiveOrPerfective": {
     "en": "imperfective / perfective",
     "isv-Latn": "nesovršeny / sovršeny",
     "isv-Cyrl": "несовршены / совршены",
@@ -1279,7 +1279,7 @@
     "mk": "",
     "bg": ""
   },
-  "verbIntransitive": {
+  "verb-intransitive": {
   "en": "intransitive",
   "isv-Latn": "neprěhodny",
   "isv-Cyrl": "непрѣходны",
@@ -1295,7 +1295,7 @@
   "mk": "",
   "bg": ""
 },
-  "verbTransitive": {
+  "verb-transitive": {
     "en": "transitive",
     "isv-Latn": "prěhodny",
     "isv-Cyrl": "прѣходны",
@@ -1311,7 +1311,7 @@
     "mk": "",
     "bg": ""
   },
-  "verbReflexive": {
+  "verb-reflexive": {
     "en": "reflexive",
     "isv-Latn": "svratny",
     "isv-Cyrl": "свратны",
@@ -1327,7 +1327,7 @@
     "mk": "",
     "bg": ""
   },
-  "verbAuxiliar": {
+  "verb-auxiliar": {
     "en": "auxiliar",
     "isv-Latn": "pomočny",
     "isv-Cyrl": "помочны",
@@ -1812,6 +1812,22 @@
     "isv-Latn": "3mn",
     "isv-Cyrl": "3мн",
     "ru":  "3мн",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "wordForm": {
+    "en": "word form",
+    "isv-Latn": "forma slova",
+    "isv-Cyrl": "форма слова",
+    "ru":  "форма слова",
     "uk": "",
     "be": "",
     "pl": "",
