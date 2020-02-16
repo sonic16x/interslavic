@@ -206,13 +206,13 @@ function establish_root(noun, gender) {
     else if ((noun == 'mati') || (noun == 'dočьi') || (noun == 'doćьi')) {
         result = noun.slice(0, -1) + 'er';
     }
-    else if ((gender == 'f3') && ((noun.slice(-2) === 'o') || (noun.slice(-2) === 'ò')) && (noun.slice(-1) === 'v')) {
+    else if ((gender == 'f3') && ((noun.slice(-2, -1) === 'o') || (noun.slice(-2, -1) === 'ò')) && (noun.slice(-1) === 'v')) {
         result = noun.slice(0, -2) + 'v';
     }
     else if (gender == 'f3') {
         result = noun;
     }
-    else if ((gender == 'n2') && (noun.slice(-2) === 'm')) {
+    else if ((gender == 'n2') && (noun.slice(-2, -1) === 'm')) {
         result = noun.slice(0, -1) + 'en';
     }
     else if (gender == 'n2') {
