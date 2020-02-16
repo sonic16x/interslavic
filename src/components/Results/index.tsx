@@ -90,9 +90,9 @@ class Results extends React.Component<IResultsProps> {
     }
     private renderCheked({checked}) {
         if (checked) {
-            return <span className={'badge checked shadow badge-success'}>{t('verified')}</span>;
+            return <span className={'badge checked badge-success'}>{t('verified')}</span>;
         } else {
-            return <span className={'badge checked shadow badge-danger'}>{t('autoTranslation')}</span>;
+            return <span className={'badge checked badge-danger'}>{t('autoTranslation')}</span>;
         }
     }
     private renderOriginal(item) {
