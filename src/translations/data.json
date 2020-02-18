@@ -285,7 +285,7 @@
     "hr": "Učitavanje rječnika",
     "sr": "Учитавање речника",
     "mk": "Вчитување на речникот",
-    "bg": "Зареждане на речника"
+    "bg": "Речникът се зарежда"
   },
   "aboutSmallTitle": {
     "en": "Interslavic language dictionary",
@@ -573,7 +573,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Част на речта"
   },
   "noun": {
     "en": "noun",
@@ -589,7 +589,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "съществително"
   },
   "pronoun": {
     "en": "pronoun",
@@ -605,7 +605,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "местоимение"
   },
   "adjective":  {
     "en": "adjective",
@@ -621,7 +621,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "прилагателно"
   },
   "adverb": {
     "en": "adverb",
@@ -637,7 +637,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "наречие"
   },
   "preposition":  {
     "en": "preposition",
@@ -653,7 +653,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "предлог"
   },
   "numeral": {
     "en": "numeral",
@@ -669,7 +669,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "числително"
   },
   "interjection":  {
     "en": "interjection",
@@ -685,7 +685,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "междуметие"
   },
   "conjunction":  {
     "en": "conjunction",
@@ -701,7 +701,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "съюз"
   },
   "verb": {
     "en": "verb",
@@ -717,7 +717,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "глагол"
   },
   "prefix": {
     "en": "prefix",
@@ -733,7 +733,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "представка"
   },
   "anyPartOfSpeech": {
     "en": "any",
@@ -749,7 +749,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "всяка"
   },
   "case": {
     "en": "case",
@@ -765,7 +765,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "падеж"
   },
   "singular": {
     "en": "singular",
@@ -781,7 +781,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "ед. число"
   },
   "plural": {
     "en": "plural",
@@ -797,7 +797,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мн. число"
   },
   "masculine": {
     "en": "masculine",
@@ -813,7 +813,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мъж. род"
   },
   "feminine": {
     "en": "feminine",
@@ -829,7 +829,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "жен. род"
   },
   "neuter": {
     "en": "neuter",
@@ -845,7 +845,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "сред. род"
   },
   "feminineOrNeuter": {
     "en": "feminine/neuter",
@@ -861,7 +861,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "жен./сред. род"
   },
   "noun-masculine": {
     "en": "masculine",
@@ -877,7 +877,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мъжки род"
   },
   "noun-feminine": {
     "en": "feminine",
@@ -893,7 +893,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "женски род"
   },
   "noun-neuter": {
     "en": "neuter",
@@ -909,7 +909,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "среден род"
   },
   "noun-masculineOrFeminine": {
     "en": "masculine or feminine",
@@ -925,7 +925,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мъж. или жен. род"
   },
   "noun-singular": {
     "en": "singular",
@@ -941,7 +941,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "ед. число"
   },
   "noun-plural": {
     "en": "plural",
@@ -957,7 +957,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мн. число"
   },
   "noun-animated": {
     "en": "animated",
@@ -973,7 +973,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "одушевено"
   },
   "noun-inanimate": {
     "en": "inanimate",
@@ -989,7 +989,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "неодушевено"
   },
   "noun-indeclinable": {
     "en": "indeclinable",
@@ -1005,7 +1005,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "несклоняемо"
   },
   "numeral-cardinal": {
     "en": "cardinal",
@@ -1021,7 +1021,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "бройно"
   },
   "numeral-collective": {
     "en": "collective",
@@ -1037,7 +1037,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "събирателно"
   },
   "numeral-fractional": {
     "en": "fractional",
@@ -1053,7 +1053,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "дробно"
   },
   "numeral-substantivized": {
     "en": "substantivized",
@@ -1069,7 +1069,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "субстантивизирано"
   },
   "numeral-differential": {
     "en": "differential",
@@ -1085,7 +1085,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "различително"
   },
   "numeral-multiplicative": {
     "en": "multiplicative",
@@ -1101,7 +1101,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "умножително"
   },
   "numeral-ordinal": {
     "en": "ordinal",
@@ -1117,7 +1117,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "редно"
   },
   "pronoun-personal": {
     "en": "personal",
@@ -1133,7 +1133,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "лично"
   },
   "pronoun-demonstrative": {
     "en": "demonstrative",
@@ -1149,7 +1149,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "показателно"
   },
   "pronoun-indefinite": {
     "en": "indefinite",
@@ -1165,7 +1165,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "неопределително"
   },
   "pronoun-reflexive": {
     "en": "reflexive",
@@ -1181,7 +1181,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "възвратно"
   },
   "pronoun-relative": {
     "en": "relative",
@@ -1197,7 +1197,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "относително"
   },
   "pronoun-possessive": {
     "en": "possessive",
@@ -1213,7 +1213,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "притежателно"
   },
   "pronoun-interrogative": {
     "en": "interrogative",
@@ -1229,7 +1229,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "въпросително"
   },
   "verb-imperfective": {
     "en": "imperfective",
@@ -1245,7 +1245,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "несвършен"
   },
   "verb-perfective": {
     "en": "perfective",
@@ -1261,7 +1261,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "свършен"
   },
   "verb-imperfectiveOrPerfective": {
     "en": "imperfective / perfective",
@@ -1277,7 +1277,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "несвършен / свършен"
   },
   "verb-intransitive": {
   "en": "intransitive",
@@ -1293,7 +1293,7 @@
   "hr": "",
   "sr": "",
   "mk": "",
-  "bg": ""
+  "bg": "непреходен"
 },
   "verb-transitive": {
     "en": "transitive",
@@ -1309,7 +1309,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "преходен"
   },
   "verb-reflexive": {
     "en": "reflexive",
@@ -1325,7 +1325,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "възвратен"
   },
   "verb-auxiliar": {
     "en": "auxiliar",
@@ -1341,7 +1341,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "спомагателен"
   },
   "caseNom": {
     "en": "Nom.",
@@ -1357,7 +1357,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Имен."
   },
   "caseAcc": {
     "en": "Acc.",
@@ -1373,7 +1373,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Вин."
   },
   "caseGen": {
     "en": "Gen.",
@@ -1389,7 +1389,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Род."
   },
   "caseLoc": {
     "en": "Loc.",
@@ -1405,7 +1405,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Мест."
   },
   "caseDat": {
     "en": "Dat.",
@@ -1421,7 +1421,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Дат."
   },
   "caseIns": {
     "en": "Ins.",
@@ -1437,7 +1437,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Твор."
   },
   "caseVoc": {
     "en": "Voc.",
@@ -1453,7 +1453,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Зват."
   },
   "degreesOfComparison": {
     "en": "Degrees of comparison",
@@ -1469,7 +1469,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "Степени за сравнение"
   },
   "positive": {
     "en": "positive",
@@ -1485,7 +1485,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "положителна"
   },
   "comparative": {
     "en": "comparative",
@@ -1501,7 +1501,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "сравнителна"
   },
   "superlative": {
     "en": "superlative",
@@ -1517,7 +1517,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "превъзходна"
   },
   "present": {
     "en": "present",
@@ -1533,7 +1533,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "настояще"
   },
   "imperfect": {
     "en": "imperfect",
@@ -1549,7 +1549,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мин. несв."
   },
   "future": {
     "en": "future",
@@ -1565,7 +1565,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "бъдеще"
   },
   "perfect": {
     "en": "perfect",
@@ -1581,7 +1581,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мин. неопр."
   },
   "pluperfect": {
     "en": "pluperfect",
@@ -1597,7 +1597,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мин. предвар."
   },
   "conditional": {
     "en": "conditional",
@@ -1613,7 +1613,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "условно накл."
   },
   "infinitive": {
     "en": "infinitive",
@@ -1629,7 +1629,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "инфинитив"
   },
   "imperative": {
     "en": "imperative",
@@ -1645,7 +1645,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "повелително накл."
   },
   "presentActiveParticiple": {
     "en": "present active participle",
@@ -1661,7 +1661,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "сег. деят. причастие"
   },
   "presentPassiveParticiple": {
     "en": "present passive participle",
@@ -1677,7 +1677,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "сег. страд. причастие"
   },
   "pastActiveParticiple": {
     "en": "past active participle",
@@ -1693,7 +1693,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мин. деят. причастие"
   },
   "pastPassiveParticiple": {
     "en": "past passive participle",
@@ -1709,7 +1709,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "мин. страд. причастие"
   },
   "verbalNoun": {
     "en": "verbal noun",
@@ -1725,7 +1725,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "отглаголно същ."
   },
   "1sg": {
     "en": "1sg",
@@ -1741,7 +1741,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "1.ед."
   },
   "2sg": {
     "en": "2sg",
@@ -1757,7 +1757,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "2.ед."
   },
   "3sg": {
     "en": "3sg",
@@ -1773,7 +1773,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "3.ед."
   },
   "1pl": {
     "en": "1pl",
@@ -1789,7 +1789,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "1.мн."
   },
   "2pl": {
     "en": "2pl",
@@ -1805,7 +1805,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "2.мн."
   },
   "3pl": {
     "en": "3pl",
@@ -1821,7 +1821,7 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "3.мн."
   },
   "wordForm": {
     "en": "word form",
@@ -1837,6 +1837,6 @@
     "hr": "",
     "sr": "",
     "mk": "",
-    "bg": ""
+    "bg": "словоформа"
   }
 }
