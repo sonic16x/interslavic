@@ -10,18 +10,29 @@ interface IHeaderProps {
     page: string;
 }
 
-interface IHeaderState {
-    menuIsVisible: boolean;
+interface IHeaderLink {
+    name: string;
+    active: boolean;
+    onClick: () => void;
 }
 
-class Header extends React.Component<IHeaderProps, IHeaderState> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            menuIsVisible: false,
-        };
-    }
-    public render() {
+const HeaderLink: React.FC<IHeaderLink> =
+    ({name, onClick, active}: IHeaderLink) => (
+        <li className={'nav-item'}>
+            <button
+                aria-label={'Menu item'}
+                className={'btn btn-link nav-link' + (active ? ' active' : '')}
+                onClick={onClick}
+            >
+                {t(name)}
+            </button>
+        </li>
+    );
+
+const HeaderInternal: React.FC<IHeaderProps> =
+    ({page, setPage}: IHeaderProps) => {
+        const [menuIsVisible, setMenuIsVisible] = React.useState(false);
+
         return (
             <nav className={'navbar navbar-dark bg-dark shadow header'}>
                 <span className={'navbar-brand'}>
@@ -30,7 +41,10 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
                         height={'30'}
                         className={'d-inline-block align-center logo'}
                         alt={'logo'}
-                        onClick={() => this.setPage('dictionary')}
+                        onClick={() => {
+                            setPage('dictionary');
+                            setMenuIsVisible(false);
+                        }}
                     />
                     {t('mainTitle')}
                 </span>
@@ -38,38 +52,29 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
                     type={'button'}
                     className={'showMenu'}
                     aria-label={'Menu button'}
-                    data-active={this.state.menuIsVisible}
-                    onClick={() => this.setState({menuIsVisible: !this.state.menuIsVisible})}
+                    data-active={menuIsVisible}
+                    onClick={() => setMenuIsVisible(!menuIsVisible)}
                 >
                     <span />
                 </button>
-                <div className={'navMenu' + (this.state.menuIsVisible ? ' menuIsVisible' : '')}>
+                <div className={'navMenu' + (menuIsVisible ? ' menuIsVisible' : '')}>
                     <ul className={'navbar-nav mr-auto'}>
-                        {pages.map(((link, i) => this.renderLink(this.props.page, link, i)))}
+                        {pages.map((({name, value}, i) => (
+                            <HeaderLink
+                                name={name}
+                                key={i}
+                                active={page === value}
+                                onClick={() => {
+                                    setPage(value);
+                                    setMenuIsVisible(false);
+                                }}
+                            />
+                        )))}
                     </ul>
                 </div>
             </nav>
         );
-    }
-    private setPage(page) {
-        this.props.setPage(page);
-        this.setState({menuIsVisible: false});
-    }
-    private renderLink(page, {name, value}, i) {
-        const isActive = page === value;
-        return (
-            <li className={'nav-item'} key={i}>
-                <button
-                    aria-label={'Menu item'}
-                    className={'btn btn-link nav-link' + (isActive ? ' active' : '')}
-                    onClick={() => this.setPage(value)}
-                >
-                    {t(name)}
-                </button>
-            </li>
-        );
-    }
-}
+    };
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -81,4 +86,4 @@ function mapStateToProps({page}) {
     return {page};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export const Header = connect(mapStateToProps, mapDispatchToProps)(HeaderInternal);

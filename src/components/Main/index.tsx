@@ -1,6 +1,6 @@
 import DetailModal from 'components/DetailModal';
 import GDPR from 'components/GDPR';
-import Header from 'components/Header';
+import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
 import Router from 'components/Router';
 import { connect } from 'connect';
