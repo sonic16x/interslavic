@@ -7,20 +7,19 @@ interface ICheckboxProps {
     onChange: () => void;
 }
 
-export class Checkbox extends React.Component<ICheckboxProps> {
-    public render() {
-        const id = `id_${this.props.title.toLowerCase()}`;
+export const Checkbox: React.FC<ICheckboxProps> =
+    ({title, checked, onChange}: ICheckboxProps) => {
+        const id = `id_${title.toLowerCase()}`;
         return (
             <div className={'custom-control custom-checkbox'}>
                 <input
-                    onChange={() => this.props.onChange()}
+                    onChange={() => onChange()}
                     type={'checkbox'}
                     className={'custom-control-input'}
                     id={id}
-                    checked={this.props.checked}
+                    checked={checked}
                 />
-                <label className={'custom-control-label'} htmlFor={id}>{this.props.title}</label>
+                <label className={'custom-control-label'} htmlFor={id}>{title}</label>
             </div>
         );
-    }
-}
+    };

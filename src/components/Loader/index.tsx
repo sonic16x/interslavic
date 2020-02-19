@@ -6,15 +6,12 @@ interface ILoaderProps {
     isLoading: boolean;
 }
 
-export class Loader extends React.Component<ILoaderProps> {
-    public render() {
-        return (
-            <div className={'loaderContainer' + (this.props.isLoading ? ' loading' : '')}>
-                <div className={'text-primary customSpinner'} role={'status'}>
-                    <span className={'sr-only'} />
-                </div>
-                <h3 className={'text-muted'}>{this.props.title}</h3>
+export const Loader: React.FC<ILoaderProps> =
+    ({isLoading, title}: ILoaderProps) => (
+        <div className={'loaderContainer' + (isLoading ? ' loading' : '')}>
+            <div className={'text-primary customSpinner'} role={'status'}>
+                <span className={'sr-only'} />
             </div>
-        );
-    }
-}
+            <h3 className={'text-muted'}>{title}</h3>
+        </div>
+    );

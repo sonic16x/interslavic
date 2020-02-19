@@ -1,6 +1,6 @@
-import About from 'components/About';
+import { About } from 'components/About';
 import Dictionary from 'components/Dictionary';
-import Settings from 'components/Settings';
+import { Settings } from 'components/Settings';
 import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { toBCP47 } from 'utils/bcp47';

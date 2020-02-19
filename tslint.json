@@ -9,6 +9,7 @@
     "jsx-no-multiline-js": false,
     "no-shadowed-variable": false,
     "indent": [true, "spaces", 2],
+    "max-line-length": [true, 240],
     "ordered-imports": true,
     "whitespace": [
       true,

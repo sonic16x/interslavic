@@ -1,4 +1,4 @@
-import Card from 'components/Card';
+import { Card } from 'components/Card';
 import Table from 'components/Table';
 import Text from 'components/Text';
 import * as React from 'react';

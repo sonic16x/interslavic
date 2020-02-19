@@ -3,8 +3,8 @@ import * as React from 'react';
 import { t } from 'translations';
 import './index.scss';
 
-class About extends React.Component {
-    public render() {
+export const About: React.FC =
+    () => {
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/scherebedov/interslavic';
         const source = 'http://steen.free.fr/interslavic';
@@ -72,7 +72,4 @@ class About extends React.Component {
                 </div>
             </div>
         );
-    }
-}
-
-export default About;
+    };
