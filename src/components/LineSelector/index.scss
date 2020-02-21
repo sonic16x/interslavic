@@ -1,21 +1,31 @@
 .lineSelector {
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  cursor: pointer;
+  user-select: none;
 
-  .back {
+  .slide {
+    background: #2962ff;
     position: absolute;
-    width: 33%;
     pointer-events: none;
-    transition: 0.1s;
-    z-index: 10;
+    transition: margin-left 0.1s ease-in-out;
+    border-radius: .35rem;
+    height: 40px;
   }
-  .nav-link {
+
+  .item {
+    flex: 1 1 0;
+    text-align: center;
+    color: #2962ff;
     font-weight: 500;
-    transition: color 0.1s;
-  }
-  .activeItem {
-    color: #fff;
-  }
-  .frontItem {
-    z-index: 11;
+    transition: color 0.1s ease-in-out;
+    z-index: 1;
+    line-height: 40px;
+
+    &.active {
+      color: #fff;
+    }
   }
 }

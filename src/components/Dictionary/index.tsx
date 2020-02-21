@@ -9,37 +9,27 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
 
-interface IDictionaryProps {
+interface IDictionaryPropsInternal {
     searchExpanded: boolean;
     setSearchExpand: (data: boolean) => void;
 }
 
-interface IDictionaryState {
-    expanded: boolean;
-}
+const DictionaryInternal: React.FC<IDictionaryPropsInternal> =
+    ({searchExpanded, setSearchExpand}: IDictionaryPropsInternal) => {
+        const [expanded, setExpanded] = React.useState<boolean>(searchExpanded);
 
-class Dictionary extends React.Component<IDictionaryProps, IDictionaryState> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            expanded: this.props.searchExpanded,
-        };
-    }
-    public render() {
-        const expanded = this.props.searchExpanded;
         return (
             <main className={'dictionary'}>
-                <section className={'controls shadow' + (expanded ? ' expand' : '')}>
+                <section className={'controls shadow' + (searchExpanded ? ' expand' : '')}>
                     <LangSelector/>
                     <InputText/>
                     <div
                         role={'region'}
                         aria-labelledby={'expandControls'}
                         className={'expandContainer'}
-                        onTransitionEnd={(e: any) =>
-                            this.setState({expanded: getComputedStyle(e.target).opacity === '1'})}
+                        onTransitionEnd={(e: any) => setExpanded(getComputedStyle(e.target).opacity === '1')}
                     >
-                        {(expanded || this.state.expanded) && (
+                        {(searchExpanded || expanded) && (
                             <>
                                 <SearchTypeSelector key={'searchType'} />
                                 <FlavorisationSelector key={'flavorisation'} />
@@ -47,20 +37,24 @@ class Dictionary extends React.Component<IDictionaryProps, IDictionaryState> {
                             </>
                         )}
                     </div>
-                    <button
-                        id={'expandControls'}
-                        type={'button'}
-                        aria-label={'Expand search'}
-                        aria-expanded={expanded}
-                        className={'btn expandButton'}
-                        onClick={() => this.props.setSearchExpand(!expanded)}
-                    />
+                    <div
+                        className={'expandButtonContainer'}
+                        onClick={() => setSearchExpand(!searchExpanded)}
+                    >
+                        <button
+                            id={'expandControls'}
+                            type={'button'}
+                            aria-label={'Expand search'}
+                            aria-expanded={searchExpanded}
+                            className={'btn expandButton'}
+                            onClick={() => setSearchExpand(!searchExpanded)}
+                        />
+                    </div>
                 </section>
                 <Results/>
             </main>
         );
-    }
-}
+    };
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -72,4 +66,4 @@ function mapStateToProps({searchExpanded}) {
     return { searchExpanded };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dictionary);
+export default connect(mapStateToProps, mapDispatchToProps)(DictionaryInternal);
