@@ -1,11 +1,12 @@
-import { setPageAction } from 'actions';
-import { connect } from 'connect';
 import * as React from 'react';
+import { connect } from 'connect';
+import classNames from 'classnames';
+import './index.scss';
+import { setPageAction } from 'actions';
 import { pages } from 'routing';
 import { t } from 'translations';
-import './index.scss';
 
-interface IHeaderProps {
+interface IHeaderPropsInternal {
     setPage: (page: string) => void;
     page: string;
 }
@@ -21,7 +22,7 @@ const HeaderLink: React.FC<IHeaderLink> =
         <li className={'nav-item'}>
             <button
                 aria-label={'Menu item'}
-                className={'btn btn-link nav-link' + (active ? ' active' : '')}
+                className={classNames('btn btn-link nav-link', {active})}
                 onClick={onClick}
             >
                 {t(name)}
@@ -29,8 +30,8 @@ const HeaderLink: React.FC<IHeaderLink> =
         </li>
     );
 
-const HeaderInternal: React.FC<IHeaderProps> =
-    ({page, setPage}: IHeaderProps) => {
+const HeaderInternal: React.FC<IHeaderPropsInternal> =
+    ({page, setPage}: IHeaderPropsInternal) => {
         const [menuIsVisible, setMenuIsVisible] = React.useState(false);
 
         return (
@@ -57,7 +58,7 @@ const HeaderInternal: React.FC<IHeaderProps> =
                 >
                     <span />
                 </button>
-                <div className={'navMenu' + (menuIsVisible ? ' menuIsVisible' : '')}>
+                <div className={classNames('navMenu', {menuIsVisible})}>
                     <ul className={'navbar-nav mr-auto'}>
                         {pages.map((({name, value}, i) => (
                             <HeaderLink

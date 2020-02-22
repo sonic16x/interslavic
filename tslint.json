@@ -10,7 +10,7 @@
     "no-shadowed-variable": false,
     "indent": [true, "spaces", 2],
     "max-line-length": [true, 240],
-    "ordered-imports": true,
+    "ordered-imports": false,
     "whitespace": [
       true,
       "check-branch",

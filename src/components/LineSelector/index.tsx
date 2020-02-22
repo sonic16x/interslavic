@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './index.scss';
+import classNames from 'classnames';
 
 export interface ILineSelectorOption {
     name: string;
@@ -15,22 +16,23 @@ interface ILineSelectorProps {
 
 export const LineSelector: React.FC<ILineSelectorProps> =
     ({className, options, value, onSelect}: ILineSelectorProps) => {
-        const index = options.map(({value}) => value).indexOf(value);
+        const index = options.findIndex((item) => (item.value === value));
+        const length = options.length;
 
         return (
-            <div className={'lineSelector' + ` ${className}`}>
+            <div className={classNames('lineSelector', className)}>
                 <span
                     className={'slide shadow'}
                     style={{
-                        width: `calc(100% / ${options.length})`,
-                        marginLeft: `calc(100% / ${options.length} * ${index})`,
+                        width: `calc(100% / ${length})`,
+                        marginLeft: `calc(100% / ${length} * ${index})`,
                     }}
                 />
                 {options.map((item, i) => (
                     <span
                         key={i}
-                        className={'item' + (value === item.value ? ' active' : '')}
-                        onClick={(e) => onSelect(item.value)}
+                        className={classNames('item', {active: value === item.value})}
+                        onClick={() => onSelect(item.value)}
                     >
                         {item.name}
                     </span>

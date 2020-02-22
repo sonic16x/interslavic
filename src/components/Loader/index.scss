@@ -13,7 +13,8 @@
   pointer-events: none;
   opacity: 0;
   z-index: 100;
-  &.loading {
+
+  &.isLoading {
     opacity: 1;
     pointer-events: all;
   }
@@ -24,6 +25,7 @@
     transform: rotate(360deg);
   }
 }
+
 #app .customSpinner {
   display: inline-block;
   width: 4rem;
@@ -35,6 +37,7 @@
   -webkit-animation: spinner-border .75s linear infinite;
   animation: spinner-border .75s linear infinite;
 }
+
 .spinner-border-sm {
   height: 1rem;
   border-width: .2em;
