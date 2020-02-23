@@ -361,7 +361,7 @@
   },
   "aboutSourceCode": {
     "en": "Source code (GitHub):",
-    "isv": "Izhodny kod (GitHub):",
+    "isv": "Izhodny kod ({GitHub}):",
     "ru": "Исходный код (GitHub):",
     "uk": "Вихідний код (GitHub):",
     "be": "Зыходны код (GitHub):",
