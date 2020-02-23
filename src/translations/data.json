@@ -1,8 +1,7 @@
 {
   "mainTitle": {
     "en": "Interslavic dictionary",
-    "isv-Latn": "Medžuslovjansky slovnik",
-    "isv-Cyrl": "Меджусловјанскы словник",
+    "isv": "Medžuslovjansky slovnik",
     "ru": "Межславянский словарь",
     "uk": "Міжслов'янський словник",
     "be": "Міжславянскі слоўнік",
@@ -17,8 +16,7 @@
   },
   "dictionaryTitle": {
     "en": "Dictionary",
-    "isv-Latn": "Slovnik",
-    "isv-Cyrl": "Словник",
+    "isv": "Slovnik",
     "ru": "Словарь",
     "uk": "Словник",
     "be": "Слоўнік",
@@ -33,8 +31,7 @@
   },
   "grammarTitle": {
     "en": "Grammar basics",
-    "isv-Latn": "Gramatika",
-    "isv-Cyrl": "Граматика",
+    "isv": "Gramatika",
     "ru": "Грамматика",
     "uk": "Граматика",
     "be": "Граматыка",
@@ -49,8 +46,7 @@
   },
   "settingsTitle": {
     "en": "Settings",
-    "isv-Latn": "Nastrojky",
-    "isv-Cyrl": "Настројкы",
+    "isv": "Nastrojky",
     "ru": "Настройки",
     "uk": "Налаштування",
     "be": "Налады",
@@ -65,8 +61,7 @@
   },
   "latin": {
     "en": "Latin",
-    "isv-Latn": "Latinica",
-    "isv-Cyrl": "Латиница",
+    "isv": "Latinica",
     "ru": "Латиница",
     "uk": "Латиниця",
     "be": "Лацінка",
@@ -79,10 +74,24 @@
     "mk": "Латиница",
     "bg": "Латиница"
   },
+  "glagolitic": {
+    "en": "Glagolitic",
+    "isv": "Glagolica",
+    "ru": "Глаголица",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
   "verified": {
     "en": "Verified",
-    "isv-Latn": "Prověreno",
-    "isv-Cyrl": "Провѣрено",
+    "isv": "Prověreno",
     "ru": "Проверено",
     "uk": "Перевірено",
     "be": "Праверана",
@@ -97,8 +106,7 @@
   },
   "autoTranslation": {
     "en": "Auto-translation",
-    "isv-Latn": "Avtoprěvod",
-    "isv-Cyrl": "Автопрѣвод",
+    "isv": "Avtoprěvod",
     "ru": "Автоперевод",
     "uk": "Автоматичний переклад",
     "be": "Аўтаматычны пераклад",
@@ -113,8 +121,7 @@
   },
   "showForms": {
     "en": "Show forms",
-    "isv-Latn": "Pokaži formy",
-    "isv-Cyrl": "Покажи формы",
+    "isv": "Pokaži formy",
     "ru": "Словоформы",
     "uk": "Словоформи",
     "be": "Словаформы",
@@ -129,8 +136,7 @@
   },
   "interfaceLanguage": {
     "en": "Interface language",
-    "isv-Latn": "Jezyk interfejsa",
-    "isv-Cyrl": "Језык интерфејса",
+    "isv": "Jezyk interfejsa",
     "ru": "Язык интерфейса",
     "uk": "Мова інтерфейсу",
     "be": "Мова інтэрфейсу",
@@ -145,8 +151,7 @@
   },
   "cyrillic": {
     "en": "Cyrillic",
-    "isv-Latn": "Kirilica",
-    "isv-Cyrl": "Кирилица",
+    "isv": "Kirilica",
     "ru": "Кириллица",
     "uk": "Кирилиця",
     "be": "Кірыліца",
@@ -161,8 +166,7 @@
   },
   "aboutTitle": {
     "en": "About",
-    "isv-Latn": "O programě",
-    "isv-Cyrl": "О програмѣ",
+    "isv": "O programě",
     "ru": "О приложении",
     "uk": "Про застосунок",
     "be": "Аб праграме",
@@ -177,8 +181,7 @@
   },
   "typeWordLabel": {
     "en": "Type word here",
-    "isv-Latn": "Vpiši slovo",
-    "isv-Cyrl": "Впиши слово",
+    "isv": "Vpiši slovo",
     "ru": "Введите слово",
     "uk": "Введіть слово",
     "be": "Увядзі слова",
@@ -193,8 +196,7 @@
   },
   "searchTypeBegin": {
     "en": "Begin",
-    "isv-Latn": "Počatok",
-    "isv-Cyrl": "Початок",
+    "isv": "Počatok",
     "ru": "Начало",
     "uk": "Початок",
     "be": "Пачаток",
@@ -209,8 +211,7 @@
   },
   "searchTypeEntire": {
     "en": "Entire",
-    "isv-Latn": "Cělo",
-    "isv-Cyrl": "Цѣло",
+    "isv": "Cělo",
     "ru": "Целиком",
     "uk": "Повністю",
     "be": "Цэлае",
@@ -225,8 +226,7 @@
   },
   "searchTypeEnd": {
     "en": "End",
-    "isv-Latn": "Konec",
-    "isv-Cyrl": "Конец",
+    "isv": "Konec",
     "ru": "Конец",
     "uk": "Кінець",
     "be": "Канец",
@@ -241,8 +241,7 @@
   },
   "searchTypeAny": {
     "en": "Any",
-    "isv-Latn": "Kde-libo",
-    "isv-Cyrl": "Кде-либо",
+    "isv": "Kde-libo",
     "ru": "Где-либо",
     "uk": "Де-небудь",
     "be": "Дзе-небудзь",
@@ -257,8 +256,7 @@
   },
   "flavorisation": {
     "en": "Flavorization",
-    "isv-Latn": "Flavorizacija",
-    "isv-Cyrl": "Флаворизација",
+    "isv": "Flavorizacija",
     "ru": "Флаворизация",
     "uk": "Флаворизація",
     "be": "Флаворызацыя",
@@ -273,8 +271,7 @@
   },
   "loading": {
     "en": "Loading dictionary",
-    "isv-Latn": "Dostava slovnika",
-    "isv-Cyrl": "Достава словника",
+    "isv": "Dostava slovnika",
     "ru": "Загрузка словаря",
     "uk": "Завантаження словника",
     "be": "Запампоўка слоўніка",
@@ -289,8 +286,7 @@
   },
   "aboutSmallTitle": {
     "en": "Interslavic language dictionary",
-    "isv-Latn": "Slovnik medžuslovjanskogo jezyka",
-    "isv-Cyrl": "Словник меджусловјанского језыка",
+    "isv": "Slovnik medžuslovjanskogo jezyka",
     "ru": "Словарь межславянского языка",
     "uk": "Словник міжслов'янської мови",
     "be": "Слоўнік міжславянскае мовы",
@@ -305,8 +301,7 @@
   },
   "aboutJoinText": {
     "en": "Please join the work to improve word translations for your native language!",
-    "isv-Latn": "Prosimo, prijednjajte se k rabotě nad ulěpšenjem prěvodov na vaš rodny jezyk!",
-    "isv-Cyrl": "Просимо, приједньајте се к работѣ над улѣпшенјем прѣводов на ваш родны језык!",
+    "isv": "Prosimo, prijednjajte se k rabotě nad ulěpšenjem prěvodov na vaš rodny jezyk!",
     "ru": "Присоединяйтесь к работе над улучшением переводов слов на ваш родной язык!",
     "uk": "Запрошуємо долучитися до роботи з поліпшення перекладів слів вашою рідною мовою!",
     "be": "Далучайцеся да працы над паляпшэннем перакладаў слоў на ваш родную мову!",
@@ -321,8 +316,7 @@
   },
   "aboutDeveloper": {
     "en": "Developer:",
-    "isv-Latn": "Izrabotnik:",
-    "isv-Cyrl": "Изработник:",
+    "isv": "Izrabotnik:",
     "ru": "Разработчик:",
     "uk": "Розробник:",
     "be": "Распрацоўшчык",
@@ -337,8 +331,7 @@
   },
   "aboutDeveloperName": {
     "en": "Sergey Cherebedov",
-    "isv-Latn": "Sergej Čerebedov",
-    "isv-Cyrl": "Сергеј Черебедов",
+    "isv": "Sergej Čerebedov",
     "ru": "Сергей Черебедов",
     "uk": "Сергій Черебедов",
     "be": "Сяргей Чэрабедаў",
@@ -353,8 +346,7 @@
   },
   "aboutTranslationsTable": {
     "en": "Table with translations",
-    "isv-Latn": "Tabela s prěvodami",
-    "isv-Cyrl": "Табела с прѣводами",
+    "isv": "Tabela s prěvodami",
     "ru": "Таблица с переводами",
     "uk": "Таблиця з перекладами",
     "be": "Табліца з перакладамі",
@@ -369,8 +361,7 @@
   },
   "aboutSourceCode": {
     "en": "Source code (GitHub):",
-    "isv-Latn": "Izhodny kod (GitHub):",
-    "isv-Cyrl": "Изходны код (GitHub):",
+    "isv": "Izhodny kod (GitHub):",
     "ru": "Исходный код (GitHub):",
     "uk": "Вихідний код (GitHub):",
     "be": "Зыходны код (GitHub):",
@@ -385,8 +376,7 @@
   },
   "aboutOurFriends": {
     "en": "Interslavic online community:",
-    "isv-Latn": "Medžuslovjanska internetna občina:",
-    "isv-Cyrl": "Меджусловјанска интернетна обчина:",
+    "isv": "Medžuslovjanska internetna občina:",
     "ru": "Межславянское интернет-сообщество:",
     "uk": "Міжслов'янська інтернет-спільнота:",
     "be": "Міжславянская інтэрнэт-супольнасць:",
@@ -401,8 +391,7 @@
   },
   "aboutUsingFrom": {
     "en": "Using vocabulary from:",
-    "isv-Latn": "Koristi se slovosbor s sajta:",
-    "isv-Cyrl": "Користи се словосбор с сајта:",
+    "isv": "Koristi se slovosbor s sajta:",
     "ru": "Используется словарный запас с сайта:",
     "uk": "Використовується словниковий запас із сайту:",
     "be": "Выкарыстоўваецца слоўнікавы запас з сайта:",
@@ -417,8 +406,7 @@
   },
   "aboutAuthors": {
     "en": "The original dictionary was created by Jan van Steenbergen. Translations were made by: Polish – Michał Swat, Czech – Zdeněk Kučera, Russian – Denis Shabalin and others. Work continues.",
-    "isv-Latn": "Tvoritelj originalnogo slovnika jest Jan van Steenbergen. Prěvody izpolnili: poljsky jezyk – Mihal Svat, češsky – Zdeněk Kučera, russky – Denis Šabalin i ini. Rabota trvaje.",
-    "isv-Cyrl": "Творитель оригиналного словника јест Јан ван Стеенберген. Прѣводы изполнили: польскы језык – Михал Сват, чешскы – Зденѣк Кучера, русскы – Денис Шабалин и ини. Работа трваје.",
+    "isv": "Tvoritelj originalnogo slovnika jest Jan van Steenbergen. Prěvody izpolnili: poljsky jezyk – Mihal Svat, češsky – Zdeněk Kučera, russky – Denis Šabalin i ini. Rabota trvaje.",
     "ru": "Создатель оригинального словаря – Ян ван Стенберген. Переводы выполнили: польский язык – Михал Сват, чешский – Зденек Кучера, русский – Денис Шабалин и другие. Работа продолжается.",
     "uk": "Творець оригінального словника – Ян ван Стенберген. Переклади виконали: польська мова – Міхал Сват, чеська – Зденек Кучера, російська – Денис Шабалін і інші. Робота триває.",
     "be": "Стваральнік арыгінальнага слоўніка – Ян ван Стенберген. Пераклады выканалі: польская мова – Міхал Сват, чэшская – Здэнек Кучэра, руская – Дзяніс Шабалін і іншыя. Праца ідзе.",
@@ -433,8 +421,7 @@
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
-    "isv-Latn": "Rezultaty iskanja sodržajut netočne avtomatične prěvody. Sejčasno jest prověreno part% slov izbranogo jezyka. Ako li znajete tutoj jezyk, prijednjajte se k rabotě nad ulěpšenjem prěvodov!",
-    "isv-Cyrl": "Резултаты исканја содржајут неточне автоматичне прѣводы. Сејчасно јест провѣрено part% слов избраного језыка. Ако ли знајете тутој језык, приједньајте се к работѣ над улѣпшенјем прѣводов!",
+    "isv": "Rezultaty iskanja sodržajut netočne avtomatične prěvody. Sejčasno jest prověreno part% slov izbranogo jezyka. Ako li znajete tutoj jezyk, prijednjajte se k rabotě nad ulěpšenjem prěvodov!",
     "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
     "uk": "Результати пошуку містять неточні автоматичні переклади. Нині part% слів обраної мови є перевіреними . Якщо ви знаєте цю мову, долучайтесь до роботи з поліпшення перекладів!",
     "be": "Вынікі пошуку ўтрымліваюць недакладныя аўтаматычныя пераклады. На дадзены момант праверана part% слоў абранага мовы. Калі вы ведаеце гэтую мову, далучайцеся да працы над паляпшэннем перакладаў!",
@@ -449,8 +436,7 @@
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
-    "isv-Latn": "Rabotna tabela je uměščena на tutom linku.",
-    "isv-Cyrl": "Работна табела је умѣшчена на тутом линку.",
+    "isv": "Rabotna tabela je uměščena на tutom linku.",
     "ru": "Рабочая таблица расположена по этой ссылке.",
     "uk": "Робоча таблиця знаходиться за цим посиланням.",
     "be": "Працоўная табліца знаходзіцца па гэтай спасылцы.",
@@ -465,8 +451,7 @@
   },
   "nonCommercialDisclaimer": {
     "en": "This is a non-profit open source project. We are doing it for free, just for fun. We don't make money from it and we don't pay for help.",
-    "isv-Latn": "To je bezkoristny projekt s otvorjenym izhodnym kodom. Dělajemo go bezplatno dlja prijemnosti. Ne zarabotyvajemo na ovom groši i ne platimo za pomoč.",
-    "isv-Cyrl": "То је безкористны пројект с отворјеным изходным кодом. Дѣлајемо го безплатно дльа пријемности. Не заработывајемо на овом гроши и не платимо за помоч.",
+    "isv": "To je bezkoristny projekt s otvorjenym izhodnym kodom. Dělajemo go bezplatno dlja prijemnosti. Ne zarabotyvajemo na ovom groši i ne platimo za pomoč.",
     "ru": "Это некоммерческий проект с открытым исходным кодом. Мы занимаемся им бесплатно для удовольствия. Мы не зарабатываем на этом деньги и не платим за помощь.",
     "uk": "Це некомерційний проєкт з відкритим вихідним кодом. Ми створюємо його безкоштовно задля задоволення. Ми не заробляємо на ньому гроші і не платимо за допомогу.",
     "be": "Гэта некамерцыйны праект з адкрытым зыходным кодам. Мы робім тое бясплатна, дзеля задавальнення. Мы не зарабляем на гэтым грошы і не плацім за дапамогу.",
@@ -481,8 +466,7 @@
   },
   "gdprAlert": {
     "en": "This site uses cookies for analytics:",
-    "isv-Latn": "Tutoj sajt koristaje kuki (cookies) dlja analitiky:",
-    "isv-Cyrl": "Тутој сајт користаје куки (cookies) дльа аналитикы:",
+    "isv": "Tutoj sajt koristaje kuki (cookies) dlja analitiky:",
     "ru": "Этот сайт использует куки для аналитики:",
     "uk": "Цей сайт використовує реп'яшки (cookies) для аналітики:",
     "be": "Гэты сайт выкарыстоўвае файлы кукіс для аналітыкі:",
@@ -497,8 +481,7 @@
   },
   "gdprAlertReadMore": {
     "en": "Read more:",
-    "isv-Latn": "Čitaj bolje:",
-    "isv-Cyrl": "Читај болье:",
+    "isv": "Čitaj bolje:",
     "ru": "Узнать больше:",
     "uk": "Дізнатися більше",
     "be": "Чытайце болей:",
@@ -513,8 +496,7 @@
   },
   "searchSensitiveLettersForInterslavic": {
     "en": "Search-sensitive letters for Interslavic",
-    "isv-Latn": "Značime bukvy pri iskanju na medžuslovjanskom",
-    "isv-Cyrl": "Значиме буквы при исканју на меджусловјанском",
+    "isv": "Značime bukvy pri iskanju na medžuslovjanskom",
     "ru": "Учитывать буквы при поиске на межславянском",
     "uk": "Зважати на літери при пошуку міжслав'янською мовою",
     "be": "Ўлічваць літары пры пошуку на міжславянскай мове",
@@ -529,8 +511,7 @@
   },
   "standardOrthography": {
     "en": "Standard orthography",
-    "isv-Latn": "Standartny pravopis",
-    "isv-Cyrl": "Стандартны правопис",
+    "isv": "Standartny pravopis",
     "ru": "Стандартное правописание",
     "uk": "Стандартний правопис",
     "be": "Стандартнае правапісанне",
@@ -545,8 +526,7 @@
   },
   "etymologicalOrthography": {
     "en": "Etymological orthography:",
-    "isv-Latn": "Etimologičny pravopis:",
-    "isv-Cyrl": "Етимологичны правопис:",
+    "isv": "Etimologičny pravopis:",
     "ru": "Этимологическое правописание:",
     "uk": "Етимологічний правопис:",
     "be": "Этымалагічнай правапіс:",
@@ -561,8 +541,7 @@
   },
   "partOfSpeech": {
     "en": "Part of speech",
-    "isv-Latn": "Čest molvy",
-    "isv-Cyrl": "Чест молвы",
+    "isv": "Čest molvy",
     "ru": "Часть речи",
     "uk": "",
     "be": "",
@@ -577,8 +556,7 @@
   },
   "noun": {
     "en": "noun",
-    "isv-Latn": "imennik",
-    "isv-Cyrl": "именник",
+    "isv": "imennik",
     "ru": "существительное",
     "uk": "",
     "be": "",
@@ -593,8 +571,7 @@
   },
   "pronoun": {
     "en": "pronoun",
-    "isv-Latn": "zaimennik",
-    "isv-Cyrl": "заименник",
+    "isv": "zaimennik",
     "ru":  "местоимение",
     "uk": "",
     "be": "",
@@ -609,8 +586,7 @@
   },
   "adjective":  {
     "en": "adjective",
-    "isv-Latn": "pridavnik",
-    "isv-Cyrl": "придавник",
+    "isv": "pridavnik",
     "ru":  "прилагательное",
     "uk": "",
     "be": "",
@@ -625,8 +601,7 @@
   },
   "adverb": {
     "en": "adverb",
-    "isv-Latn": "prislovnik",
-    "isv-Cyrl": "присловник",
+    "isv": "prislovnik",
     "ru":  "наречие",
     "uk": "",
     "be": "",
@@ -641,8 +616,7 @@
   },
   "preposition":  {
     "en": "preposition",
-    "isv-Latn": "prědložnik",
-    "isv-Cyrl": "прѣдложник",
+    "isv": "prědložnik",
     "ru":  "предлог",
     "uk": "",
     "be": "",
@@ -657,8 +631,7 @@
   },
   "numeral": {
     "en": "numeral",
-    "isv-Latn": "čislovnik",
-    "isv-Cyrl": "числовник",
+    "isv": "čislovnik",
     "ru":  "числительное",
     "uk": "",
     "be": "",
@@ -673,8 +646,7 @@
   },
   "interjection":  {
     "en": "interjection",
-    "isv-Latn": "medžumetje",
-    "isv-Cyrl": "меджуметје ",
+    "isv": "medžumetje",
     "ru":  "междометие",
     "uk": "",
     "be": "",
@@ -689,8 +661,7 @@
   },
   "conjunction":  {
     "en": "conjunction",
-    "isv-Latn": "sveznik",
-    "isv-Cyrl": "свезник",
+    "isv": "sveznik",
     "ru":  "союз",
     "uk": "",
     "be": "",
@@ -705,8 +676,7 @@
   },
   "verb": {
     "en": "verb",
-    "isv-Latn": "glagol",
-    "isv-Cyrl": "глагол",
+    "isv": "glagol",
     "ru":  "глагол",
     "uk": "",
     "be": "",
@@ -721,8 +691,7 @@
   },
   "prefix": {
     "en": "prefix",
-    "isv-Latn": "prědrastka",
-    "isv-Cyrl": "прѣдрастка",
+    "isv": "prědrastka",
     "ru":  "приставка",
     "uk": "",
     "be": "",
@@ -737,8 +706,7 @@
   },
   "anyPartOfSpeech": {
     "en": "any",
-    "isv-Latn": "vsaka",
-    "isv-Cyrl": "всака",
+    "isv": "vsaka",
     "ru":  "любая",
     "uk": "",
     "be": "",
@@ -753,8 +721,7 @@
   },
   "case": {
     "en": "case",
-    "isv-Latn": "padež",
-    "isv-Cyrl": "падеж",
+    "isv": "padež",
     "ru":  "падеж",
     "uk": "",
     "be": "",
@@ -769,8 +736,7 @@
   },
   "singular": {
     "en": "singular",
-    "isv-Latn": "jednina",
-    "isv-Cyrl": "једнина",
+    "isv": "jednina",
     "ru":  "ед. число",
     "uk": "",
     "be": "",
@@ -785,8 +751,7 @@
   },
   "plural": {
     "en": "plural",
-    "isv-Latn": "množina",
-    "isv-Cyrl": "множина",
+    "isv": "množina",
     "ru":  "мн. число",
     "uk": "",
     "be": "",
@@ -801,8 +766,7 @@
   },
   "masculine": {
     "en": "masculine",
-    "isv-Latn": "muž. rod",
-    "isv-Cyrl": "муж. род",
+    "isv": "muž. rod",
     "ru": "муж. род",
     "uk": "",
     "be": "",
@@ -817,8 +781,7 @@
   },
   "feminine": {
     "en": "feminine",
-    "isv-Latn": "žen. rod",
-    "isv-Cyrl": "жен. род",
+    "isv": "žen. rod",
     "ru": "жен. род",
     "uk": "",
     "be": "",
@@ -833,8 +796,7 @@
   },
   "neuter": {
     "en": "neuter",
-    "isv-Latn": "srěd. rod",
-    "isv-Cyrl": "срѣд. род",
+    "isv": "srěd. rod",
     "ru": "сред. род",
     "uk": "",
     "be": "",
@@ -849,8 +811,7 @@
   },
   "feminineOrNeuter": {
     "en": "feminine/neuter",
-    "isv-Latn": "žen./srěd. rod",
-    "isv-Cyrl": "жен./сред. род",
+    "isv": "žen./srěd. rod",
     "ru": "жен./сред. род",
     "uk": "",
     "be": "",
@@ -865,8 +826,7 @@
   },
   "noun-masculine": {
     "en": "masculine",
-    "isv-Latn": "mužsky rod",
-    "isv-Cyrl": "мужскы род",
+    "isv": "mužsky rod",
     "ru": "мужской род",
     "uk": "",
     "be": "",
@@ -881,8 +841,7 @@
   },
   "noun-feminine": {
     "en": "feminine",
-    "isv-Latn": "žensky rod",
-    "isv-Cyrl": "женскы род",
+    "isv": "žensky rod",
     "ru": "женский род",
     "uk": "",
     "be": "",
@@ -897,8 +856,7 @@
   },
   "noun-neuter": {
     "en": "neuter",
-    "isv-Latn": "srědnji rod",
-    "isv-Cyrl": "срѣднји род",
+    "isv": "srědnji rod",
     "ru": "средний род",
     "uk": "",
     "be": "",
@@ -913,8 +871,7 @@
   },
   "noun-masculineOrFeminine": {
     "en": "masculine or feminine",
-    "isv-Latn": "muž. ili žen. rod",
-    "isv-Cyrl": "муж. или жен. род",
+    "isv": "muž. ili žen. rod",
     "ru": "муж. или жен. род",
     "uk": "",
     "be": "",
@@ -929,8 +886,7 @@
   },
   "noun-singular": {
     "en": "singular",
-    "isv-Latn": "jednina",
-    "isv-Cyrl": "једнина",
+    "isv": "jednina",
     "ru":  "ед. число",
     "uk": "",
     "be": "",
@@ -945,8 +901,7 @@
   },
   "noun-plural": {
     "en": "plural",
-    "isv-Latn": "množina",
-    "isv-Cyrl": "множина",
+    "isv": "množina",
     "ru":  "мн. число",
     "uk": "",
     "be": "",
@@ -961,8 +916,7 @@
   },
   "noun-animated": {
     "en": "animated",
-    "isv-Latn": "živy",
-    "isv-Cyrl": "живы",
+    "isv": "živy",
     "ru":  "одушевлённое",
     "uk": "",
     "be": "",
@@ -977,8 +931,7 @@
   },
   "noun-inanimate": {
     "en": "inanimate",
-    "isv-Latn": "neživy",
-    "isv-Cyrl": "неживы",
+    "isv": "neživy",
     "ru":  "неодушевлённое",
     "uk": "",
     "be": "",
@@ -993,8 +946,7 @@
   },
   "noun-indeclinable": {
     "en": "indeclinable",
-    "isv-Latn": "nesklanjajemy",
-    "isv-Cyrl": "нескланьајемы",
+    "isv": "nesklanjajemy",
     "ru":  "несклоняемое",
     "uk": "",
     "be": "",
@@ -1009,8 +961,7 @@
   },
   "numeral-cardinal": {
     "en": "cardinal",
-    "isv-Latn": "kolikostny",
-    "isv-Cyrl": "коликостны",
+    "isv": "kolikostny",
     "ru":  "количественное",
     "uk": "",
     "be": "",
@@ -1025,8 +976,7 @@
   },
   "numeral-collective": {
     "en": "collective",
-    "isv-Latn": "sborny",
-    "isv-Cyrl": "сборны",
+    "isv": "sborny",
     "ru":  "собирательное",
     "uk": "",
     "be": "",
@@ -1041,8 +991,7 @@
   },
   "numeral-fractional": {
     "en": "fractional",
-    "isv-Latn": "ulomkovy",
-    "isv-Cyrl": "уломковы",
+    "isv": "ulomkovy",
     "ru":  "дробное",
     "uk": "",
     "be": "",
@@ -1057,8 +1006,7 @@
   },
   "numeral-substantivized": {
     "en": "substantivized",
-    "isv-Latn": "substantovany",
-    "isv-Cyrl": "субстантованы",
+    "isv": "substantovany",
     "ru":  "субстантивированное",
     "uk": "",
     "be": "",
@@ -1073,8 +1021,7 @@
   },
   "numeral-differential": {
     "en": "differential",
-    "isv-Latn": "različajuči",
-    "isv-Cyrl": "различајучи",
+    "isv": "različajuči",
     "ru":  "видовое",
     "uk": "",
     "be": "",
@@ -1089,8 +1036,7 @@
   },
   "numeral-multiplicative": {
     "en": "multiplicative",
-    "isv-Latn": "množiteljny",
-    "isv-Cyrl": "множительны",
+    "isv": "množiteljny",
     "ru":  "многократное",
     "uk": "",
     "be": "",
@@ -1105,8 +1051,7 @@
   },
   "numeral-ordinal": {
     "en": "ordinal",
-    "isv-Latn": "poredkovy",
-    "isv-Cyrl": "поредковы",
+    "isv": "poredkovy",
     "ru":  "порядковое",
     "uk": "",
     "be": "",
@@ -1121,8 +1066,7 @@
   },
   "pronoun-personal": {
     "en": "personal",
-    "isv-Latn": "osobny",
-    "isv-Cyrl": "особны",
+    "isv": "osobny",
     "ru":  "личное",
     "uk": "",
     "be": "",
@@ -1137,8 +1081,7 @@
   },
   "pronoun-demonstrative": {
     "en": "demonstrative",
-    "isv-Latn": "ukazateljny",
-    "isv-Cyrl": "указательны",
+    "isv": "ukazateljny",
     "ru":  "указательное",
     "uk": "",
     "be": "",
@@ -1153,8 +1096,7 @@
   },
   "pronoun-indefinite": {
     "en": "indefinite",
-    "isv-Latn": "neoznačiteljny",
-    "isv-Cyrl": "неозначительны",
+    "isv": "neoznačiteljny",
     "ru":  "неопределённое",
     "uk": "",
     "be": "",
@@ -1169,8 +1111,7 @@
   },
   "pronoun-reflexive": {
     "en": "reflexive",
-    "isv-Latn": "refleksivny",
-    "isv-Cyrl": "рефлексивны",
+    "isv": "refleksivny",
     "ru":  "возвратное",
     "uk": "",
     "be": "",
@@ -1185,8 +1126,7 @@
   },
   "pronoun-relative": {
     "en": "relative",
-    "isv-Latn": "relativny",
-    "isv-Cyrl": "релативны",
+    "isv": "relativny",
     "ru":  "относительное",
     "uk": "",
     "be": "",
@@ -1201,8 +1141,7 @@
   },
   "pronoun-possessive": {
     "en": "possessive",
-    "isv-Latn": "prisvojiteljny",
-    "isv-Cyrl": "присвојительны",
+    "isv": "prisvojiteljny",
     "ru":  "притяжательное",
     "uk": "",
     "be": "",
@@ -1217,8 +1156,7 @@
   },
   "pronoun-interrogative": {
     "en": "interrogative",
-    "isv-Latn": "pytateljny",
-    "isv-Cyrl": "пытательны",
+    "isv": "pytateljny",
     "ru":  "вопросительное",
     "uk": "",
     "be": "",
@@ -1233,8 +1171,7 @@
   },
   "verb-imperfective": {
     "en": "imperfective",
-    "isv-Latn": "nesovršeny",
-    "isv-Cyrl": "несовршены",
+    "isv": "nesovršeny",
     "ru":  "несовершенный",
     "uk": "",
     "be": "",
@@ -1249,8 +1186,7 @@
   },
   "verb-perfective": {
     "en": "perfective",
-    "isv-Latn": "sovršeny",
-    "isv-Cyrl": "совршены",
+    "isv": "sovršeny",
     "ru":  "совершенный",
     "uk": "",
     "be": "",
@@ -1265,8 +1201,7 @@
   },
   "verb-imperfectiveOrPerfective": {
     "en": "imperfective / perfective",
-    "isv-Latn": "nesovršeny / sovršeny",
-    "isv-Cyrl": "несовршены / совршены",
+    "isv": "nesovršeny / sovršeny",
     "ru":  "несовершенный / совершенный",
     "uk": "",
     "be": "",
@@ -1281,8 +1216,7 @@
   },
   "verb-intransitive": {
   "en": "intransitive",
-  "isv-Latn": "neprěhodny",
-  "isv-Cyrl": "непрѣходны",
+  "isv": "neprěhodny",
   "ru":  "непереходный",
   "uk": "",
   "be": "",
@@ -1297,8 +1231,7 @@
 },
   "verb-transitive": {
     "en": "transitive",
-    "isv-Latn": "prěhodny",
-    "isv-Cyrl": "прѣходны",
+    "isv": "prěhodny",
     "ru":  "переходный",
     "uk": "",
     "be": "",
@@ -1313,8 +1246,7 @@
   },
   "verb-reflexive": {
     "en": "reflexive",
-    "isv-Latn": "svratny",
-    "isv-Cyrl": "свратны",
+    "isv": "svratny",
     "ru":  "возвратный",
     "uk": "",
     "be": "",
@@ -1329,8 +1261,7 @@
   },
   "verb-auxiliar": {
     "en": "auxiliar",
-    "isv-Latn": "pomočny",
-    "isv-Cyrl": "помочны",
+    "isv": "pomočny",
     "ru":  "вспомогательный",
     "uk": "",
     "be": "",
@@ -1345,8 +1276,7 @@
   },
   "caseNom": {
     "en": "Nom.",
-    "isv-Latn": "Imen.",
-    "isv-Cyrl": "Имен.",
+    "isv": "Imen.",
     "ru":  "Имен.",
     "uk": "",
     "be": "",
@@ -1361,8 +1291,7 @@
   },
   "caseAcc": {
     "en": "Acc.",
-    "isv-Latn": "Vin.",
-    "isv-Cyrl": "Вин.",
+    "isv": "Vin.",
     "ru":  "Вин.",
     "uk": "",
     "be": "",
@@ -1377,8 +1306,7 @@
   },
   "caseGen": {
     "en": "Gen.",
-    "isv-Latn": "Rod.",
-    "isv-Cyrl": "Род.",
+    "isv": "Rod.",
     "ru":  "Род.",
     "uk": "",
     "be": "",
@@ -1393,8 +1321,7 @@
   },
   "caseLoc": {
     "en": "Loc.",
-    "isv-Latn": "Měst.",
-    "isv-Cyrl": "Мѣст",
+    "isv": "Měst.",
     "ru":  "Мест.",
     "uk": "",
     "be": "",
@@ -1409,8 +1336,7 @@
   },
   "caseDat": {
     "en": "Dat.",
-    "isv-Latn": "Dat.",
-    "isv-Cyrl": "Дат.",
+    "isv": "Dat.",
     "ru":  "Дат.",
     "uk": "",
     "be": "",
@@ -1425,8 +1351,7 @@
   },
   "caseIns": {
     "en": "Ins.",
-    "isv-Latn": "Tvor.",
-    "isv-Cyrl": "Твор.",
+    "isv": "Tvor.",
     "ru":  "Твор.",
     "uk": "",
     "be": "",
@@ -1441,8 +1366,7 @@
   },
   "caseVoc": {
     "en": "Voc.",
-    "isv-Latn": "Zvat.",
-    "isv-Cyrl": "Зват.",
+    "isv": "Zvat.",
     "ru":  "Зват.",
     "uk": "",
     "be": "",
@@ -1457,8 +1381,7 @@
   },
   "degreesOfComparison": {
     "en": "Degrees of comparison",
-    "isv-Latn": "Stupnje sravnenja",
-    "isv-Cyrl": "Ступнье сравненја",
+    "isv": "Stupnje sravnenja",
     "ru":  "Степени сравнения",
     "uk": "",
     "be": "",
@@ -1473,8 +1396,7 @@
   },
   "positive": {
     "en": "positive",
-    "isv-Latn": "pozitivna",
-    "isv-Cyrl": "позитивна",
+    "isv": "pozitivna",
     "ru":  "положительная",
     "uk": "",
     "be": "",
@@ -1489,8 +1411,7 @@
   },
   "comparative": {
     "en": "comparative",
-    "isv-Latn": "sravniteljna",
-    "isv-Cyrl": "сравнительна",
+    "isv": "sravniteljna",
     "ru":  "сравнительная",
     "uk": "",
     "be": "",
@@ -1505,8 +1426,7 @@
   },
   "superlative": {
     "en": "superlative",
-    "isv-Latn": "superlativna",
-    "isv-Cyrl": "суперлативна",
+    "isv": "superlativna",
     "ru":  "превосходная",
     "uk": "",
     "be": "",
@@ -1521,8 +1441,7 @@
   },
   "present": {
     "en": "present",
-    "isv-Latn": "nastoječe",
-    "isv-Cyrl": "настојече",
+    "isv": "nastoječe",
     "ru":  "настоящее",
     "uk": "",
     "be": "",
@@ -1537,8 +1456,7 @@
   },
   "imperfect": {
     "en": "imperfect",
-    "isv-Latn": "imperfekt",
-    "isv-Cyrl": "имперфект",
+    "isv": "imperfekt",
     "ru":  "несов. прошед.",
     "uk": "",
     "be": "",
@@ -1553,8 +1471,7 @@
   },
   "future": {
     "en": "future",
-    "isv-Latn": "buduče",
-    "isv-Cyrl": "будуче",
+    "isv": "buduče",
     "ru":  "будущее",
     "uk": "",
     "be": "",
@@ -1569,8 +1486,7 @@
   },
   "perfect": {
     "en": "perfect",
-    "isv-Latn": "perfekt",
-    "isv-Cyrl": "перфект",
+    "isv": "perfekt",
     "ru":  "соверш. прошед.",
     "uk": "",
     "be": "",
@@ -1585,8 +1501,7 @@
   },
   "pluperfect": {
     "en": "pluperfect",
-    "isv-Latn": "pluskvamperfekt",
-    "isv-Cyrl": "плусквамперфект",
+    "isv": "pluskvamperfekt",
     "ru":  "предпрошед.",
     "uk": "",
     "be": "",
@@ -1601,8 +1516,7 @@
   },
   "conditional": {
     "en": "conditional",
-    "isv-Latn": "kondicional",
-    "isv-Cyrl": "кондиционал",
+    "isv": "kondicional",
     "ru":  "сослаг. накл.",
     "uk": "",
     "be": "",
@@ -1617,8 +1531,7 @@
   },
   "infinitive": {
     "en": "infinitive",
-    "isv-Latn": "infinitiv",
-    "isv-Cyrl": "инфинитив",
+    "isv": "infinitiv",
     "ru":  "неопределённая форма",
     "uk": "",
     "be": "",
@@ -1633,8 +1546,7 @@
   },
   "imperative": {
     "en": "imperative",
-    "isv-Latn": "poveliteljno naklonenje",
-    "isv-Cyrl": "повелительнo наклоненје",
+    "isv": "poveliteljno naklonenje",
     "ru":  "повелительное накл.",
     "uk": "",
     "be": "",
@@ -1649,8 +1561,7 @@
   },
   "presentActiveParticiple": {
     "en": "present active participle",
-    "isv-Latn": "nast. aktiv. pričestje",
-    "isv-Cyrl": "наст. актив. причестје",
+    "isv": "nast. aktiv. pričestje",
     "ru":  "действ. прич. наст. вр.",
     "uk": "",
     "be": "",
@@ -1665,8 +1576,7 @@
   },
   "presentPassiveParticiple": {
     "en": "present passive participle",
-    "isv-Latn": "nast. passiv. pričestje",
-    "isv-Cyrl": "наст. пассив. причестје",
+    "isv": "nast. passiv. pričestje",
     "ru":  "страд. причаст. наст. вр.",
     "uk": "",
     "be": "",
@@ -1681,8 +1591,7 @@
   },
   "pastActiveParticiple": {
     "en": "past active participle",
-    "isv-Latn": "prošlo aktiv. pričestje",
-    "isv-Cyrl": "прошло актив. причестје",
+    "isv": "prošlo aktiv. pričestje",
     "ru":  "действ. причаст. прошед. вр.",
     "uk": "",
     "be": "",
@@ -1697,8 +1606,7 @@
   },
   "pastPassiveParticiple": {
     "en": "past passive participle",
-    "isv-Latn": "prošlo passiv. pričestje",
-    "isv-Cyrl": "прошло пассив. причестје",
+    "isv": "prošlo passiv. pričestje",
     "ru":  "страд. причаст. прошед. вр.",
     "uk": "",
     "be": "",
@@ -1713,8 +1621,7 @@
   },
   "verbalNoun": {
     "en": "verbal noun",
-    "isv-Latn": "glagolno ime",
-    "isv-Cyrl": "глаголно име",
+    "isv": "glagolno ime",
     "ru":  "отглагольное существ.",
     "uk": "",
     "be": "",
@@ -1729,8 +1636,7 @@
   },
   "1sg": {
     "en": "1sg",
-    "isv-Latn": "1jed",
-    "isv-Cyrl": "1јед",
+    "isv": "1jed",
     "ru":  "1ед",
     "uk": "",
     "be": "",
@@ -1745,8 +1651,7 @@
   },
   "2sg": {
     "en": "2sg",
-    "isv-Latn": "2jed",
-    "isv-Cyrl": "2јед",
+    "isv": "2jed",
     "ru":  "2ед",
     "uk": "",
     "be": "",
@@ -1761,8 +1666,7 @@
   },
   "3sg": {
     "en": "3sg",
-    "isv-Latn": "3jed",
-    "isv-Cyrl": "3јед",
+    "isv": "3jed",
     "ru":  "3ед",
     "uk": "",
     "be": "",
@@ -1777,8 +1681,7 @@
   },
   "1pl": {
     "en": "1pl",
-    "isv-Latn": "1mn",
-    "isv-Cyrl": "1мн",
+    "isv": "1mn",
     "ru":  "1мн",
     "uk": "",
     "be": "",
@@ -1793,8 +1696,7 @@
   },
   "2pl": {
     "en": "2pl",
-    "isv-Latn": "2mn",
-    "isv-Cyrl": "2мн",
+    "isv": "2mn",
     "ru":  "2мн",
     "uk": "",
     "be": "",
@@ -1809,8 +1711,7 @@
   },
   "3pl": {
     "en": "3pl",
-    "isv-Latn": "3mn",
-    "isv-Cyrl": "3мн",
+    "isv": "3mn",
     "ru":  "3мн",
     "uk": "",
     "be": "",
@@ -1825,8 +1726,7 @@
   },
   "wordForm": {
     "en": "word form",
-    "isv-Latn": "forma slova",
-    "isv-Cyrl": "форма слова",
+    "isv": "forma slova",
     "ru":  "форма слова",
     "uk": "",
     "be": "",
@@ -1838,5 +1738,20 @@
     "sr": "",
     "mk": "",
     "bg": "словоформа"
+  },
+  "alphabets": {
+    "en": "Alphabets",
+    "isv": "Abecedy",
+    "ru":  "Алфавиты",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   }
 }

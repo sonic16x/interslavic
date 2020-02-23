@@ -10,6 +10,7 @@ import './index.scss';
 interface IResultsProps {
     results: ITranslateResult[];
     showDetail: () => void;
+    alphabets: any;
     setDetail: (itemIndex: number) => void;
     lang: {
         from: string;
@@ -26,7 +27,7 @@ class Results extends React.Component<IResultsProps> {
                 <div className={'card-body'}>
                     <h5 className={'card-title'}>
                         {this.props.lang.to === 'isv' ?
-                            <>{this.renderOriginal(item)}&nbsp;{this.renderIpa(item)}</> :
+                            <>{this.renderOriginal(item, this.props.alphabets)}&nbsp;{this.renderIpa(item)}</> :
                             <>{this.renderTranslate(item)}</>
                         }
                     </h5>
@@ -34,7 +35,7 @@ class Results extends React.Component<IResultsProps> {
                     <p className={'card-text'}>
                         {this.props.lang.to === 'isv' ?
                             <>{this.renderTranslate(item)}</> :
-                            <>{this.renderOriginal(item)}&nbsp;{this.renderIpa(item)}</>
+                            <>{this.renderOriginal(item, this.props.alphabets)}&nbsp;{this.renderIpa(item)}</>
                         }
                     </p>
                 </div>
@@ -95,7 +96,7 @@ class Results extends React.Component<IResultsProps> {
             return <span className={'badge checked badge-danger'}>{t('autoTranslation')}</span>;
         }
     }
-    private renderOriginal(item) {
+    private renderOriginal(item, alphabets) {
         let latin = item.original;
         if (item.add) {
             latin += ` ${item.add}`;
@@ -104,11 +105,26 @@ class Results extends React.Component<IResultsProps> {
         if (item.addCyr) {
             cyrillic += ` ${item.addCyr}`;
         }
-        // let gla = item.originalGla;
-        // if (item.addGla) {
-        //     gla += ` ${item.addGla}`;
-        // }
-        return [latin, cyrillic].filter(Boolean).join('/');
+        let gla = item.originalGla;
+        if (item.addGla) {
+            gla += ` ${item.addGla}`;
+        }
+
+        const result = [];
+
+        if (alphabets.latin) {
+            result.push(latin);
+        }
+
+        if (alphabets.cyrillic) {
+            result.push(cyrillic);
+        }
+
+        if (alphabets.glag) {
+            result.push(gla);
+        }
+
+        return result.filter(Boolean).join('/');
     }
     private renderTranslate(item) {
         return item.translate;
@@ -121,8 +137,12 @@ class Results extends React.Component<IResultsProps> {
     }
 }
 
-function mapStateToProps({results, lang}) {
-    return { results, lang };
+function mapStateToProps({results, lang, alphabets}) {
+    return {
+        results,
+        lang,
+        alphabets,
+    };
 }
 
 function mapDispatchToProps(dispatch) {

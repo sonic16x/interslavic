@@ -26,6 +26,11 @@ export interface IMainState {
     detailModal?: number;
     rawResults: string[][];
     results: ITranslateResult[];
+    alphabets: {
+        latin: boolean;
+        cyrillic: boolean;
+        glagolitic: boolean;
+    };
 }
 
 export function mainReducer(state: IMainState, { type, data }) {
@@ -179,6 +184,14 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 detailModal: data,
+            };
+        case ActionTypes.SET_ALPHABETS:
+            return {
+                ...state,
+                alphabets: {
+                    ...state.alphabets,
+                    ...data,
+                },
             };
         default:
             return state;

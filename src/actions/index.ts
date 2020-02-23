@@ -1,3 +1,5 @@
+import {IMainState} from "../reducers";
+
 export enum ActionTypes {
     LANG = 'LANG',
     FROM_TEXT = 'FROM_TEXT',
@@ -13,6 +15,7 @@ export enum ActionTypes {
     RUN_SEARCH = 'RUN_SEARCH',
     CHANGE_ISV_SEARCH_LETTERS = 'CHANGE_ISV_SEARCH_LETTERS',
     POS_FILTER = 'POS_FILTER',
+    SET_ALPHABETS = 'SET_ALPHABETS',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -116,5 +119,12 @@ export function posFilterAction(data: string) {
 export function runSearch() {
     return {
         type: ActionTypes.RUN_SEARCH,
+    };
+}
+
+export function setAlphabets(data) {
+    return {
+        type: ActionTypes.SET_ALPHABETS,
+        data,
     };
 }
