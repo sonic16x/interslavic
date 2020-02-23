@@ -1,0 +1,93 @@
+@import "src/index";
+
+.results-card {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  box-shadow: var(--shadow);
+  border: var(--border);
+  border-radius: var(--border-radius-s);
+  max-width: 1024px;
+  margin-bottom: 15px;
+  flex-shrink: 0;
+  padding: 24px 20px 20px;
+  box-sizing: border-box;
+
+  &__translate {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .word + .word:before {
+    content: "/";
+  }
+
+  .ipa {
+    color: var(--muted-text-color);
+    font-weight: 500;
+  }
+
+  &__details {
+    font-size: 16px;
+    color: var(--muted-text-color);
+  }
+
+  &__original {
+    font-size: 16px;
+    color: #000;
+  }
+
+  &__original {
+
+  }
+
+  &__status-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--invalid-color);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 2px 4px;
+    border-radius: var(--border-radius-s);
+
+    &.verified {
+      background: var(--valid-color);
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  &__show-forms-button, &__show-translates-button {
+    outline: none;
+    cursor: pointer;
+    background: none;
+    font-size: 14px;
+    border: none;
+    color: var(--primary-color);
+  }
+
+  &__favorite-button {
+    display: none; // @todo maybe in future will be realised.
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    background: none;
+    font-size: 27px;
+    line-height: 22px;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    padding: 0;
+    border: none;
+    color: var(--yellow-color);
+    outline: none;
+  }
+}

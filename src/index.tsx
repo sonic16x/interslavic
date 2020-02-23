@@ -7,7 +7,7 @@ import { setInitialPage } from 'routing';
 import { getPageFromPath } from 'routing';
 import { setLang } from 'translations';
 import Main from './components/Main';
-import './customBootstrap.scss';
+import './index.scss';
 import { Dictionary } from './utils/dictionary';
 import { analyticsMiddleware } from './middlewares/analyticsMiddleware';
 
@@ -74,6 +74,7 @@ export const defaultState: IMainState = {
     page: 'dictionary',
     isLoading: true,
     isDetailModal: false,
+    isTranslationsModal: false,
     searchExpanded: false,
     rawResults: [],
     results: [],
@@ -82,6 +83,7 @@ export const defaultState: IMainState = {
         cyrillic: true,
         glagolitic: false,
     },
+    favoriteList: {},
 };
 
 function reduxDevTools() {

@@ -1,11 +1,11 @@
 import { flavorisationTypeAction } from 'actions';
 import { Selector } from 'components/Selector';
-import { connect } from 'connect';
+import { connect } from 'react-redux';
 import * as React from 'react';
 import { t } from 'translations';
 import './index.scss';
 
-interface IFlavorisationSelectorProps {
+interface IFlavorisationSelectorInternalProps {
     flavorisationType: string;
     changeFlavorisationType: (flavorisationType: string) => void;
 }
@@ -33,20 +33,16 @@ const flavorisationTypes = [
     },
 ];
 
-class FlavorisationSelector extends React.Component<IFlavorisationSelectorProps> {
-    public render() {
-        return (
-            <div className={'flavorisationSelector'}>
-                <Selector
-                    options={flavorisationTypes}
-                    onSelect={(flavorisationType) => this.props.changeFlavorisationType(flavorisationType)}
-                    value={this.props.flavorisationType}
-                    label={t('flavorisation')}
-                />
-            </div>
-        );
-    }
-}
+const FlavorisationSelectorInternal: React.FC<IFlavorisationSelectorInternalProps> =
+    ({changeFlavorisationType, flavorisationType}: IFlavorisationSelectorInternalProps) => (
+        <Selector
+            className={'flavorisation-selector'}
+            options={flavorisationTypes}
+            onSelect={(flavorisationType) => changeFlavorisationType(flavorisationType)}
+            value={flavorisationType}
+            label={t('flavorisation')}
+        />
+    );
 
 function mapStateToProps({flavorisationType}) {
     return {
@@ -60,4 +56,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FlavorisationSelector);
+export const FlavorisationSelector = connect(mapStateToProps, mapDispatchToProps)(FlavorisationSelectorInternal);

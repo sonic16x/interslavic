@@ -1,152 +1,165 @@
-.logo {
-  margin-right: 10px;
-}
-
-$lineWidth: 0.2rem;
-$lineLength: 1.6rem;
-$baseMargin: 0.5rem;
-$animationDuration: 0.2s;
+@import "src/index";
 
 @mixin changeState {
   transition:
-          transform $animationDuration linear,
-          margin $animationDuration linear,
-          background-color $animationDuration linear
+          transform var(--animation-duration) linear,
+          margin var(--animation-duration) linear,
+          background-color var(--animation-duration) linear
   ;
 }
 
-.showMenu {
-  &:focus {
-    outline:0;
-  }
-  border: 1px solid #555;
-  border-radius: 0.25rem;
-  box-sizing: content-box;
-  padding: 0.2rem;
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  background-color: #343a40;
+  padding: 8px 16px;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
   z-index: 10;
 
-  background: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
+  &__show-menu-button {
+    display: none;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-sizing: content-box;
+    padding: 3px;
+    z-index: 10;
 
-  width: $lineLength;
-  height: $lineLength;
-
-  &>span {
-    display: block;
-    width: $lineLength;
-    height: $lineWidth;
-    background-color: #fff;
-    position: relative;
-    @include changeState;
-    &::before, &::after {
-      @include changeState;
-      display: block;
-      content: '';
-      position: absolute;
-      width: $lineLength;
-      height: $lineWidth;
-      background-color: #fff;
-    }
-    &::after {
-      margin-top: -$baseMargin;
-    }
-    &::before {
-      margin-top: $baseMargin;
-    }
-  }
-
-  &[data-active='true'] {
-    &>span {
-      background-color: rgba(0, 0, 0, 0);
-      &::before, &::after {
-        margin-top: 0;
-      }
-      &::after {
-        transform: rotate(-45deg);
-      }
-      &::before {
-        transform: rotate(45deg);
-      }
-    }
-  }
-}
-
-.navMenu {
-  max-height: 0;
-  opacity: 0;
-  transition: max-height $animationDuration linear, opacity $animationDuration linear;
-  pointer-events: none;
-}
-
-.navMenu.menuIsVisible {
-  max-height: 500px;
-  opacity: 1;
-  pointer-events: all;
-}
-
-.navbar-brand {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: calc(100% - 3.5rem);
-  img {
+    background: none;
+    color: inherit;
+    font: inherit;
     cursor: pointer;
-  }
-}
+    outline: inherit;
 
-.header {
-  z-index: 90;
-}
+    width: var(--line-length);
+    height: var(--line-length);
 
-@media (min-width: 1050px) {
-  #app .header {
-    padding-left: calc(50% - 510px);
-    padding-right: calc(50% - 510px);
-  }
-}
+    &:focus {
+      outline:0;
+    };
 
-@media (max-width: 599px) {
-  .navMenu {
-    width: 100%;
-    ul {
-      width: 100%;
-      li {
-        width: 100%;
-        button {
-          width: 100%;
-          text-align: center;
+    &>.lines {
+      display: block;
+      width: var(--line-length);
+      height: var(--line-width);
+      background-color: #fff;
+      position: relative;
+      @include changeState;
+
+      &::before, &::after {
+        @include changeState;
+        display: block;
+        content: '';
+        position: absolute;
+        width: var(--line-length);
+        height: var(--line-width);
+        background-color: #fff;
+      }
+
+      &::after {
+        margin-top: calc(-1 * var(--base-margin));
+      }
+
+      &::before {
+        margin-top: var(--base-margin);
+      }
+
+      &.active {
+        background-color: rgba(0, 0, 0, 0);
+
+        &::before, &::after {
+          margin-top: 0;
+        }
+
+        &::after {
+          transform: rotate(-45deg);
+        }
+
+        &::before {
+          transform: rotate(45deg);
         }
       }
     }
   }
-}
 
-@media (min-width: 720px) {
-  .showMenu {
-    display: none;
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .navMenu {
-    pointer-events: all;
-    opacity: 1;
-    max-height: initial;
-    ul {
-      width: 100%;
-      flex-direction: row;
-      li {
-        margin-left: 10px;
-      }
+
+  &__menu-item {
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #999;
+    white-space: nowrap;
+    transition: color var(--animation-duration) linear;
+
+    &.active {
+      color: #fff;
+    }
+
+    &:hover {
+      color: #ddd;
     }
   }
-  .navbar-brand {
-    width: auto;
+
+  &__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 5px 0;
+    white-space: nowrap;
+    margin: 0;
+
+    &-img {
+      margin-right: 10px;
+    }
   }
 }
 
-@media ( max-width: 400px) {
-  #app .navbar-brand {
-    font-size:5vw;
+@media (max-width: 630px) {
+  .header {
+    flex-wrap: wrap;
+
+    &__menu {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      top: 54px;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height var(--animation-duration) linear, opacity var(--animation-duration) linear;
+      pointer-events: none;
+
+      &-item {
+        line-height: 40px;
+        //height: 40px
+      }
+
+      &.active {
+        max-height: 500px;
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    &__show-menu-button {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 1050px) {
+  .header {
+    padding-left: calc(50% - 510px);
+    padding-right: calc(50% - 510px);
   }
 }

@@ -27,8 +27,10 @@ import {
 import ModalDialog from '../ModalDialog';
 import './index.scss';
 import { getGlagolitic } from 'utils/getGlagolitic';
+import { alphabetTypes } from 'consts';
+import { Clipboard } from 'components/Clipboard';
 
-interface IDetailModalProps {
+interface IDetailModalInternal {
     close: () => void;
     item: any;
     alphabetType: string;
@@ -36,25 +38,9 @@ interface IDetailModalProps {
     isDetailModal: boolean;
     flavorisationType: string;
     setAlphabetType: (type: string) => void;
-    rawItem: string[];
 }
 
-const alphabetType = [
-    {
-        name: 'latin',
-        value: 'latin',
-    },
-    {
-        name: 'cyrillic',
-        value: 'cyrillic',
-    },
-    {
-        name: 'glagolitic',
-        value: 'glagolitic',
-    },
-];
-
-class DetailModal extends React.Component<IDetailModalProps> {
+class DetailModalInternal extends React.Component<IDetailModalInternal> {
     private closeButtonRef = React.createRef<HTMLButtonElement>();
 
     public render() {
@@ -62,8 +48,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         return (
             <ModalDialog
-                className={'customModal'}
-                wrapperClassName={'modal-content customModalContent'}
+                wrapperClassName={'modal-content'}
                 open={!!contents}
                 onOpen={this.onDialogOpened}
                 onClose={this.close}
@@ -82,23 +67,23 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         return (
             <>
-                <header className={'modal-header'}>
+                <div className={'modal-dialog__header'}>
                     {this.renderTitle(pos)}
                     <button
                         ref={this.closeButtonRef}
-                        className={'close'}
+                        className={'modal-dialog__header-close'}
                         onClick={this.close}
                         aria-label={'Close'}
                     >
-                        <span aria-hidden={'true'}>&times;</span>
+                        &times;
                     </button>
-                </header>
-                <div className={'modal-body'}>
+                </div>
+                <div className={'modal-dialog__body'}>
                     {this.renderBody()}
                 </div>
-                <footer className={'modal-footer'}>
+                <footer className={'modal-dialog__footer'}>
                     <LineSelector
-                        options={alphabetType.filter(({value}) => this.props.alphabets[value]).map((item) => ({
+                        options={alphabetTypes.filter(({value}) => this.props.alphabets[value]).map((item) => ({
                             name: t(item.name),
                             value: item.value,
                         }))}
@@ -122,8 +107,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
     }
 
     private renderTitle(pos: string) {
-        const word = this.props.rawItem[0];
-        const add = this.props.rawItem[1];
+        const word = this.props.item.raw[0];
+        const add = this.props.item.raw[1];
         const { details } = this.props.item;
         const arr = [t(pos)];
         const animated = isAnimated(details);
@@ -159,19 +144,19 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 }
         }
         return (
-            <h5 className={'modal-title'}>
-                {this.formatStr(word)} {this.formatStr(add)} <i>({arr.join(', ')})</i>
-            </h5>
+            <span className={'modal-dialog__header-title'}>
+                {this.formatStr(word)} {this.formatStr(add)} <span className={'details'}>({arr.join(', ')})</span>
+            </span>
         );
     }
 
     private renderBody() {
-        const splitted = this.props.rawItem[0].split(',');
-        if (splitted.length === 1 && this.props.rawItem[2].indexOf('m./f.') !== -1 ) {
+        const splitted = this.props.item.raw[0].split(',');
+        if (splitted.length === 1 && this.props.item.raw[2].indexOf('m./f.') !== -1 ) {
             return [
-                this.renderWord([this.props.rawItem[0].trim(), this.props.rawItem[1], 'm.'],
+                this.renderWord([this.props.item.raw[0].trim(), this.props.item.raw[1], 'm.'],
                     ['showTitle', 'showGender', 'oneMore'], 0),
-                this.renderWord([this.props.rawItem[0].trim(), this.props.rawItem[1], 'f.'],
+                this.renderWord([this.props.item.raw[0].trim(), this.props.item.raw[1], 'f.'],
                     ['showTitle', 'showGender'], 1),
             ];
         }
@@ -181,7 +166,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 options.push('showTitle');
                 if (i < splitted.length - 1) { options.push('oneMore'); }
             }
-            return this.renderWord([word.trim(), this.props.rawItem[1],  this.props.rawItem[2]], options, i);
+            return this.renderWord([word.trim(), this.props.item.raw[1],  this.props.item.raw[2]], options, i);
         });
     }
 
@@ -344,8 +329,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
 
         const tableData =
             [...tableData1,
-             ['@w=2;bb;bl;br', '@w=3;bl;br'],
-            ...tableData2];
+                ['@w=2;bb;bl;br', '@w=3;bl;br'],
+                ...tableData2];
 
         const tableDataAdd = [
             [
@@ -442,8 +427,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
         }
 
         const tableDataCases = this.getSimpleCasesTable({
-           columns: ['singular', 'plural'],
-           cases,
+            columns: ['singular', 'plural'],
+            cases,
         });
 
         return <Table data={tableDataCases}/>;
@@ -654,10 +639,9 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({detailModal, isDetailModal, results, rawResults, alphabetType, flavorisationType, alphabets}) {
+function mapStateToProps({detailModal, isDetailModal, results, alphabetType, flavorisationType, alphabets}) {
     return {
         item: results[detailModal],
-        rawItem: rawResults[detailModal],
         alphabetType,
         alphabets,
         isDetailModal,
@@ -665,4 +649,4 @@ function mapStateToProps({detailModal, isDetailModal, results, rawResults, alpha
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailModal);
+export const DetailModal = connect(mapStateToProps, mapDispatchToProps)(DetailModalInternal);

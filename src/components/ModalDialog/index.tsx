@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classNames from 'classnames';
 import dialogPolyfill from 'dialog-polyfill';
 import 'dialog-polyfill/dialog-polyfill.css';
 import { once } from 'lodash';
@@ -61,13 +61,13 @@ class ModalDialog extends React.Component<IModalDialogProps, IModalDialogState> 
         return (
             <dialog
                 ref={this.dialogRef}
-                className={classnames('modalDialog', this.props.className)}
+                className={classNames('modal-dialog', this.props.className)}
                 role={'dialog'}
                 onClick={this.onBackdropClick}
             >
                 <div
                     role={'document'}
-                    className={classnames(this.props.wrapperClassName)}
+                    className={classNames(this.props.wrapperClassName)}
                     onClick={this.onContentClick}
                 >
                     {this.props.children}

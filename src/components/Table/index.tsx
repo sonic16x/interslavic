@@ -1,6 +1,7 @@
 import { parseStr } from 'components/Text';
 import * as React from 'react';
 import './index.scss';
+import { Clipboard } from 'components/Clipboard';
 
 interface ITableProps {
     data: string[][];
@@ -9,7 +10,7 @@ interface ITableProps {
 export default class extends React.Component<ITableProps> {
     public render() {
         return (
-            <table className={'customTable'}>
+            <table className={'table'}>
                 <tbody>{this.renderBody()}</tbody>
             </table>
         );
@@ -44,6 +45,7 @@ export default class extends React.Component<ITableProps> {
                     className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
                     colSpan={attrs.w}
                     rowSpan={attrs.h}
+                    style={{width: attrs.sw}}
                     dangerouslySetInnerHTML={{__html: str}}
                 />
             ));

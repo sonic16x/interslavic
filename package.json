@@ -47,7 +47,6 @@
     "test"
   ],
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "dialog-polyfill": "^0.5.0",
     "lodash": "^4.17.15",

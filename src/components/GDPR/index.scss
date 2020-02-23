@@ -1,40 +1,54 @@
-#app {
-  .gdprAlert {
-    display: flex;
-    align-items: center;
-    flex-flow: row wrap;
+@import "src/index";
 
-    position: absolute;
-    bottom: 0;
-    margin-left: 16px;
-    margin-right: 16px;
-    z-index: 110;
+.gdpr-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 15;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
 
-    > strong {
-      flex-grow: 1;
-    }
-
-    &.hide {
-      display: none;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s linear;
-    }
+  &.hide {
+    opacity: 0;
+    transition: 0.2s opacity linear;
+    pointer-events: none;
   }
 
-  .gdprActions {
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__text {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  &__link {
+    margin-left: 3px;
+  }
+
+  &__links {
     display: flex;
-    align-items: center;
-    flex-grow: 1;
+    margin-bottom: 10px;
+  }
 
-    > button {
-      margin-left: auto;
-    }
-
-    > a {
-      color: #245EFF;
-      margin-right: 1ch;
-    }
-
+  &__button {
+    cursor: pointer;
+    background: var(--primary-color);
+    border-radius: .35rem;
+    height: 40px;
+    padding: 0 10px;
+    box-shadow: var(--shadow);
+    font-weight: 500;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
   }
 }

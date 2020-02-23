@@ -25,6 +25,7 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
+import { langs } from 'consts';
 
 export const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
@@ -52,18 +53,7 @@ export const validFields = [
     'en',
     // 'sameInLanguages',
     // 'genesis',
-    'ru',
-    'be',
-    'uk',
-    'pl',
-    'cs',
-    'sk',
-    'bg',
-    'mk',
-    'sr',
-    'hr',
-    'sl',
-    'de',
+    ...langs,
     'id',
     // 'frequency',
 ];
@@ -142,6 +132,7 @@ export interface ITranslateResult {
     details: string;
     ipa: string;
     checked: boolean;
+    raw: string[];
 }
 
 class DictionaryClass {
@@ -178,10 +169,7 @@ class DictionaryClass {
         searchIndex?: any | false,
         percentsOfChecked?: any,
     ) {
-        if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
-            console.time('INIT');
-        }
+        const startInitTime = performance.now();
 
         this.header = validFields;
         this.langsList = this.header.filter(
@@ -226,9 +214,11 @@ class DictionaryClass {
             this.percentsOfChecked = percentsOfChecked;
         }
 
+        const initTime = Math.round(performance.now() - startInitTime); // @TODO: send to GA
+
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
-            console.timeEnd('INIT');
+            console.log('INIT', `${initTime}ms`);
         }
     }
     public getWordList(): string[][] {
@@ -258,10 +248,9 @@ class DictionaryClass {
         if (!inputLangPrepared || !inputIsvPrepared) {
             return [];
         }
-        if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
-            console.time('TRANSLATE');
-        }
+
+        const startTranslateTime = performance.now();
+
         const isvText = (from === 'isv' ?
             this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType), flavorisationType)
             : '');
@@ -401,9 +390,12 @@ class DictionaryClass {
             .sort((a, b) => distMap.get(a) - distMap.get(b))
             .slice(0, 50)
         ;
+
+        const translateTime = Math.round(performance.now() - startTranslateTime); // @TODO: send to GA
+
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
-            console.timeEnd('TRANSLATE');
+            console.log('TRANSLATE', `${translateTime}ms`);
         }
         return results;
     }
@@ -429,6 +421,7 @@ class DictionaryClass {
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
+                raw: item,
             };
         });
 

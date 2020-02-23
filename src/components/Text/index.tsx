@@ -37,7 +37,7 @@ export default class extends React.PureComponent<ITextProps> {
         return (
             <p
                 style={style}
-                className={'customText'}
+                className={'custom-text'}
                 dangerouslySetInnerHTML={{__html: parseStr(this.props.children)}}
             />
         );

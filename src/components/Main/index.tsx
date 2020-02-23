@@ -1,9 +1,11 @@
-import DetailModal from 'components/DetailModal';
-import GDPR from 'components/GDPR';
+import { DetailModal } from 'components/DetailModal';
+import { TranslationsModal } from 'components/TranslationsModal';
+import { GDPR } from 'components/GDPR';
 import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
+import { Notification } from 'components/Notification';
 import Router from 'components/Router';
-import { connect } from 'connect';
+import { connect } from 'react-redux';
 import React from 'react';
 import { t } from 'translations';
 
@@ -28,6 +30,8 @@ class Main extends React.Component<IMainProps> {
                 <Loader title={t('loading')} isLoading={this.props.isLoading}/>
                 <Header/>
                 <DetailModal/>
+                <TranslationsModal/>
+                <Notification/>
                 <Router/>
             </>
         );

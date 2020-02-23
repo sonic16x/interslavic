@@ -1,14 +1,21 @@
 import { ActionTypes } from 'actions';
-import { defaultState } from 'index';
 import { getPathFromPage, goToPage } from 'routing';
 import { setLang } from 'translations';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
 
+export interface IAlphabets {
+    latin: boolean;
+    cyrillic: boolean;
+    glagolitic: boolean;
+}
+
+export interface ILang {
+    from: string;
+    to: string;
+}
+
 export interface IMainState {
-    lang: {
-        from: string;
-        to: string;
-    };
+    lang: ILang;
     interfaceLang: string;
     isvSearchLetters: {
         from: string[];
@@ -21,15 +28,17 @@ export interface IMainState {
     page: string;
     isLoading: boolean;
     isDetailModal: boolean;
+    isTranslationsModal: boolean;
     searchExpanded: boolean;
     alphabetType: string;
     detailModal?: number;
+    translationsModal?: number;
     rawResults: string[][];
     results: ITranslateResult[];
-    alphabets: {
-        latin: boolean;
-        cyrillic: boolean;
-        glagolitic: boolean;
+    alphabets: IAlphabets;
+    notification?: string;
+    favoriteList: {
+        [key: string]: boolean;
     };
 }
 
@@ -154,6 +163,11 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 page: data,
             };
+        case ActionTypes.SET_NOTIFICATION:
+            return {
+                ...state,
+                notification: data,
+            };
         case ActionTypes.IS_LOADING:
             return {
                 ...state,
@@ -164,10 +178,23 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 alphabetType: data,
             };
-        case ActionTypes.DETAIL_IS_VISIBLE:
+        case ActionTypes.DETAIL_IS_VISIBLE_MODAL:
             return {
                 ...state,
                 isDetailModal: data,
+            };
+        case ActionTypes.SET_FAVORITE:
+            return {
+                ...state,
+                favoriteList: {
+                    ...state.favoriteList,
+                    [data]: !state.favoriteList[data],
+                },
+            };
+        case ActionTypes.TRANSLATIONS_IS_VISIBLE_MODAL:
+            return {
+                ...state,
+                isTranslationsModal: data,
             };
         case ActionTypes.SET_SEARCH_EXPAND:
             return {
@@ -180,10 +207,15 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 interfaceLang: data,
             };
-        case ActionTypes.SET_DETAIL:
+        case ActionTypes.SET_DETAIL_MODAL:
             return {
                 ...state,
                 detailModal: data,
+            };
+        case ActionTypes.SET_TRANSLATIONS_MODAL:
+            return {
+                ...state,
+                translationsModal: data,
             };
         case ActionTypes.SET_ALPHABETS:
             const alphabets = {

@@ -1,3 +1,5 @@
+@import "src/index";
+
 .lineSelector {
   position: relative;
   display: flex;
@@ -7,18 +9,19 @@
   user-select: none;
 
   .slide {
-    background: #2962ff;
+    background:  var(--primary-color);
     position: absolute;
     pointer-events: none;
     transition: margin-left 0.1s ease-in-out;
     border-radius: .35rem;
     height: 40px;
+    box-shadow: var(--shadow);
   }
 
   .item {
     flex: 1 1 0;
     text-align: center;
-    color: #2962ff;
+    color:  var(--primary-color);
     font-weight: 500;
     transition: color 0.1s ease-in-out;
     z-index: 1;

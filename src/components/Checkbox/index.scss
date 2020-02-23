@@ -1,7 +1,42 @@
-.custom-control-label::after, .custom-control-label::before {
-  width: 1.2rem;
-  height: 1.2rem;
-}
-.custom-control-label {
-  font-size: 1.1rem;
+@import "src/index";
+
+.checkbox {
+  display: inline-flex;
+  margin: 0 8px 8px 0;
+  align-items: center;
+  height: 16px;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+
+    &::before {
+      cursor: pointer;
+      margin-right: 8px;
+      display: block;
+      content: "✔";
+      color: #fff;
+      width: 16px;
+      height: 16px;
+      border: var(--border);
+      border-radius: var(--border-radius-s);
+      background: #fff;
+      transition: background-color .1s ease-in-out;
+      line-height: 16px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    &[data-checked=true] {
+      &::before {
+        background: var(--primary-color);
+        border-color: transparent;
+      }
+    }
+  }
 }

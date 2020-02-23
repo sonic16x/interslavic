@@ -1,0 +1,14 @@
+@import "src/index";
+
+.card {
+  border: var(--border);
+  border-radius: var(--border-radius-m);
+
+  &__title {
+    margin-top: 8px;
+  }
+
+  &__body {
+
+  }
+}

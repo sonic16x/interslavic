@@ -134,6 +134,21 @@
     "mk": "Прикажи форми",
     "bg": "Всички форми"
   },
+  "declensions": {
+    "en": "Declension",
+    "isv": "Sklonjenje",
+    "ru": "Склонение"
+  },
+  "conjugation": {
+    "en": "Conjugation",
+    "isv": "Spreženje",
+    "ru": "Спряжение"
+  },
+  "translates": {
+    "en": "Translates",
+    "isv": "Prěklady",
+    "ru": "Переводы"
+  },
   "interfaceLanguage": {
     "en": "Interface language",
     "isv": "Jezyk interfejsa",
@@ -464,20 +479,50 @@
     "mk": "Ова е непрофитен проект со отворен код. Ова го правиме бесплатно, од задоволство. Не заработуваме пари од ова и не плаќаме за помагање.",
     "bg": "Това е проект с нестопанска цел и отворен код. Участваме в него безплатно и за удоволствие. Не печелим пари от това и не плащаме за помощ."
   },
-  "gdprAlert": {
-    "en": "This site uses cookies for analytics:",
-    "isv": "Tutoj sajt koristaje kuki ({cookies}) dlja analitiky:",
-    "ru": "Этот сайт использует куки для аналитики:",
-    "uk": "Цей сайт використовує реп'яшки (cookies) для аналітики:",
-    "be": "Гэты сайт выкарыстоўвае файлы кукіс для аналітыкі:",
-    "pl": "Ta strona wykorzystuje ciasteczka w celach statystycznych:",
-    "cs": "Tyto stránky používají pro analýzu cookies:",
-    "sk": "Tieto stránky používajú na analýzu cookies:",
-    "sl": "To spletno mesto uporablja piškotke zaradi analitike:",
-    "hr": "Ova stranica koristi kolačiće zarad analitike:",
-    "sr": "Ова страница користи колачиће зарад аналитике:",
-    "mk": "Оваа страница користи колачиња за аналитика:",
-    "bg": "Тази страница ползва бисквитки за анализ на трафика:"
+  "gdprAlertTitle": {
+    "en": "We use cookies",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "Używamy pliki cookie",
+    "cs": "",
+    "sk": "",
+    "sl": "Uporabljamo piškotke",
+    "hr": "",
+    "sr": "Ми користимо колачиће",
+    "mk": "",
+    "bg": "Ние използваме бисквитки"
+  },
+  "gdprAlertText": {
+    "en": "We use cookies and other tracking technologies to improve your browsing experience on our website, to show you personalized content and targeted ads, to analyze our website traffic, and to understand where our visitors are coming from. By browsing our website, you consent to our use of cookies and other tracking technologies.",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "Używamy plików cookie i innych technologii śledzenia, aby poprawić jakość przeglądania naszej witryny, wyświetlać spersonalizowane treści i reklamy, analizować ruch w naszej witrynie i wiedzieć, skąd pochodzą nasi użytkownicy. Przeglądając naszą stronę, wyrażasz zgodę na używanie przez nas plików cookie i innych technologii śledzenia.",
+    "cs": "",
+    "sk": "",
+    "sl": "Piškotke in druge sledilne tehnologije uporabljamo za izboljšanje vaše uporabniške izkušnje med brskanjem po naši spletni strani, za prikazovanje personaliziranih vsebin oz. targetiranih oglasov, za analizo obiskov naše spletne strani in za vpogled v to, iz kje prihajajo naši gostje. Z brskanjem po naši spletni strani soglašate z našo rabo piškotkov in drugih sledilnih tehnologij.",
+    "hr": "",
+    "sr": "Ми користимо колачиће и остале технологије за праћење како би унапредили вашу претрагу на нашем веб сајту, како би вам приказали персонализовани садржај и циљане рекламе, анализирали посете на нашем сајту и разумели одакле наши посетиоци сајта долазе. Прегледањем нашег сајта, пристајете на коришћење колачић и других технологија праћења.",
+    "mk": "",
+    "bg": "Ние използваме бисквитки и други, проследяващи, технологии, за да подобрим сърфирането ви в нашия сайт, като ви покажем персонализирано съдържание и реклами, да анализираме трафика на нашия сайт и да разберем откъде идват нашите посетители. Разглеждайки нашия уебсайт, вие се съгласявате с използването на бисквитки и други технологии за проследяване."
+  },
+  "gdprAlertOk": {
+    "en": "Got it",
+    "isv": "Dobro",
+    "ru": "Хорошо",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   },
   "gdprAlertReadMore": {
     "en": "Read more:",
@@ -493,6 +538,36 @@
     "sr": "Прочитај више:",
     "mk": "Прочитај повеќе:",
     "bg": "Прочети повече:"
+  },
+  "gdprAlertYandex": {
+    "en": "Yandex Metrika agreement",
+    "isv": "",
+    "ru": "соглашение Яндекс Метрики",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "gdprAlertGoogle": {
+    "en": "Google Analytics agreement",
+    "isv": "",
+    "ru": "соглашение Гугл Аналитики",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   },
   "searchSensitiveLettersForInterslavic": {
     "en": "Search-sensitive letters for Interslavic",
@@ -572,7 +647,7 @@
   "pronoun": {
     "en": "pronoun",
     "isv": "zaimennik",
-    "ru":  "местоимение",
+    "ru": "местоимение",
     "uk": "",
     "be": "",
     "pl": "",
@@ -584,10 +659,10 @@
     "mk": "",
     "bg": "местоимение"
   },
-  "adjective":  {
+  "adjective": {
     "en": "adjective",
     "isv": "pridavnik",
-    "ru":  "прилагательное",
+    "ru": "прилагательное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -602,7 +677,7 @@
   "adverb": {
     "en": "adverb",
     "isv": "prislovnik",
-    "ru":  "наречие",
+    "ru": "наречие",
     "uk": "",
     "be": "",
     "pl": "",
@@ -614,10 +689,10 @@
     "mk": "",
     "bg": "наречие"
   },
-  "preposition":  {
+  "preposition": {
     "en": "preposition",
     "isv": "prědložnik",
-    "ru":  "предлог",
+    "ru": "предлог",
     "uk": "",
     "be": "",
     "pl": "",
@@ -632,7 +707,7 @@
   "numeral": {
     "en": "numeral",
     "isv": "čislovnik",
-    "ru":  "числительное",
+    "ru": "числительное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -644,10 +719,10 @@
     "mk": "",
     "bg": "числително"
   },
-  "interjection":  {
+  "interjection": {
     "en": "interjection",
     "isv": "medžumetje",
-    "ru":  "междометие",
+    "ru": "междометие",
     "uk": "",
     "be": "",
     "pl": "",
@@ -659,10 +734,10 @@
     "mk": "",
     "bg": "междуметие"
   },
-  "conjunction":  {
+  "conjunction": {
     "en": "conjunction",
     "isv": "sveznik",
-    "ru":  "союз",
+    "ru": "союз",
     "uk": "",
     "be": "",
     "pl": "",
@@ -677,7 +752,7 @@
   "verb": {
     "en": "verb",
     "isv": "glagol",
-    "ru":  "глагол",
+    "ru": "глагол",
     "uk": "",
     "be": "",
     "pl": "",
@@ -692,7 +767,7 @@
   "prefix": {
     "en": "prefix",
     "isv": "prědrastka",
-    "ru":  "приставка",
+    "ru": "приставка",
     "uk": "",
     "be": "",
     "pl": "",
@@ -707,7 +782,7 @@
   "anyPartOfSpeech": {
     "en": "any",
     "isv": "vsaka",
-    "ru":  "любая",
+    "ru": "любая",
     "uk": "",
     "be": "",
     "pl": "",
@@ -722,7 +797,7 @@
   "case": {
     "en": "case",
     "isv": "padež",
-    "ru":  "падеж",
+    "ru": "падеж",
     "uk": "",
     "be": "",
     "pl": "",
@@ -737,7 +812,7 @@
   "singular": {
     "en": "singular",
     "isv": "jednina",
-    "ru":  "ед. число",
+    "ru": "ед. число",
     "uk": "",
     "be": "",
     "pl": "",
@@ -752,7 +827,7 @@
   "plural": {
     "en": "plural",
     "isv": "množina",
-    "ru":  "мн. число",
+    "ru": "мн. число",
     "uk": "",
     "be": "",
     "pl": "",
@@ -887,7 +962,7 @@
   "noun-singular": {
     "en": "singular",
     "isv": "jednina",
-    "ru":  "ед. число",
+    "ru": "ед. число",
     "uk": "",
     "be": "",
     "pl": "",
@@ -902,7 +977,7 @@
   "noun-plural": {
     "en": "plural",
     "isv": "množina",
-    "ru":  "мн. число",
+    "ru": "мн. число",
     "uk": "",
     "be": "",
     "pl": "",
@@ -917,7 +992,7 @@
   "noun-animated": {
     "en": "animated",
     "isv": "živy",
-    "ru":  "одушевлённое",
+    "ru": "одушевлённое",
     "uk": "",
     "be": "",
     "pl": "",
@@ -932,7 +1007,7 @@
   "noun-inanimate": {
     "en": "inanimate",
     "isv": "neživy",
-    "ru":  "неодушевлённое",
+    "ru": "неодушевлённое",
     "uk": "",
     "be": "",
     "pl": "",
@@ -947,7 +1022,7 @@
   "noun-indeclinable": {
     "en": "indeclinable",
     "isv": "nesklanjajemy",
-    "ru":  "несклоняемое",
+    "ru": "несклоняемое",
     "uk": "",
     "be": "",
     "pl": "",
@@ -962,7 +1037,7 @@
   "numeral-cardinal": {
     "en": "cardinal",
     "isv": "kolikostny",
-    "ru":  "количественное",
+    "ru": "количественное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -977,7 +1052,7 @@
   "numeral-collective": {
     "en": "collective",
     "isv": "sborny",
-    "ru":  "собирательное",
+    "ru": "собирательное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -992,7 +1067,7 @@
   "numeral-fractional": {
     "en": "fractional",
     "isv": "ulomkovy",
-    "ru":  "дробное",
+    "ru": "дробное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1007,7 +1082,7 @@
   "numeral-substantivized": {
     "en": "substantivized",
     "isv": "substantovany",
-    "ru":  "субстантивированное",
+    "ru": "субстантивированное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1022,7 +1097,7 @@
   "numeral-differential": {
     "en": "differential",
     "isv": "različajuči",
-    "ru":  "видовое",
+    "ru": "видовое",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1037,7 +1112,7 @@
   "numeral-multiplicative": {
     "en": "multiplicative",
     "isv": "množiteljny",
-    "ru":  "многократное",
+    "ru": "многократное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1052,7 +1127,7 @@
   "numeral-ordinal": {
     "en": "ordinal",
     "isv": "poredkovy",
-    "ru":  "порядковое",
+    "ru": "порядковое",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1067,7 +1142,7 @@
   "pronoun-personal": {
     "en": "personal",
     "isv": "osobny",
-    "ru":  "личное",
+    "ru": "личное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1082,7 +1157,7 @@
   "pronoun-demonstrative": {
     "en": "demonstrative",
     "isv": "ukazateljny",
-    "ru":  "указательное",
+    "ru": "указательное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1097,7 +1172,7 @@
   "pronoun-indefinite": {
     "en": "indefinite",
     "isv": "neoznačiteljny",
-    "ru":  "неопределённое",
+    "ru": "неопределённое",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1112,7 +1187,7 @@
   "pronoun-reflexive": {
     "en": "reflexive",
     "isv": "refleksivny",
-    "ru":  "возвратное",
+    "ru": "возвратное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1127,7 +1202,7 @@
   "pronoun-relative": {
     "en": "relative",
     "isv": "relativny",
-    "ru":  "относительное",
+    "ru": "относительное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1142,7 +1217,7 @@
   "pronoun-possessive": {
     "en": "possessive",
     "isv": "prisvojiteljny",
-    "ru":  "притяжательное",
+    "ru": "притяжательное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1157,7 +1232,7 @@
   "pronoun-interrogative": {
     "en": "interrogative",
     "isv": "pytateljny",
-    "ru":  "вопросительное",
+    "ru": "вопросительное",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1172,7 +1247,7 @@
   "verb-imperfective": {
     "en": "imperfective",
     "isv": "nesovršeny",
-    "ru":  "несовершенный",
+    "ru": "несовершенный",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1187,7 +1262,7 @@
   "verb-perfective": {
     "en": "perfective",
     "isv": "sovršeny",
-    "ru":  "совершенный",
+    "ru": "совершенный",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1202,7 +1277,7 @@
   "verb-imperfectiveOrPerfective": {
     "en": "imperfective / perfective",
     "isv": "nesovršeny / sovršeny",
-    "ru":  "несовершенный / совершенный",
+    "ru": "несовершенный / совершенный",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1215,24 +1290,24 @@
     "bg": "несвършен / свършен"
   },
   "verb-intransitive": {
-  "en": "intransitive",
-  "isv": "neprěhodny",
-  "ru":  "непереходный",
-  "uk": "",
-  "be": "",
-  "pl": "",
-  "cs": "",
-  "sk": "",
-  "sl": "",
-  "hr": "",
-  "sr": "",
-  "mk": "",
-  "bg": "непреходен"
-},
+    "en": "intransitive",
+    "isv": "neprěhodny",
+    "ru": "непереходный",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": "непреходен"
+  },
   "verb-transitive": {
     "en": "transitive",
     "isv": "prěhodny",
-    "ru":  "переходный",
+    "ru": "переходный",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1247,7 +1322,7 @@
   "verb-reflexive": {
     "en": "reflexive",
     "isv": "svratny",
-    "ru":  "возвратный",
+    "ru": "возвратный",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1262,7 +1337,7 @@
   "verb-auxiliar": {
     "en": "auxiliar",
     "isv": "pomočny",
-    "ru":  "вспомогательный",
+    "ru": "вспомогательный",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1277,7 +1352,7 @@
   "caseNom": {
     "en": "Nom.",
     "isv": "Imen.",
-    "ru":  "Имен.",
+    "ru": "Имен.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1292,7 +1367,7 @@
   "caseAcc": {
     "en": "Acc.",
     "isv": "Vin.",
-    "ru":  "Вин.",
+    "ru": "Вин.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1307,7 +1382,7 @@
   "caseGen": {
     "en": "Gen.",
     "isv": "Rod.",
-    "ru":  "Род.",
+    "ru": "Род.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1322,7 +1397,7 @@
   "caseLoc": {
     "en": "Loc.",
     "isv": "Měst.",
-    "ru":  "Мест.",
+    "ru": "Мест.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1337,7 +1412,7 @@
   "caseDat": {
     "en": "Dat.",
     "isv": "Dat.",
-    "ru":  "Дат.",
+    "ru": "Дат.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1352,7 +1427,7 @@
   "caseIns": {
     "en": "Ins.",
     "isv": "Tvor.",
-    "ru":  "Твор.",
+    "ru": "Твор.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1367,7 +1442,7 @@
   "caseVoc": {
     "en": "Voc.",
     "isv": "Zvat.",
-    "ru":  "Зват.",
+    "ru": "Зват.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1382,7 +1457,7 @@
   "degreesOfComparison": {
     "en": "Degrees of comparison",
     "isv": "Stupnje sravnenja",
-    "ru":  "Степени сравнения",
+    "ru": "Степени сравнения",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1397,7 +1472,7 @@
   "positive": {
     "en": "positive",
     "isv": "pozitivna",
-    "ru":  "положительная",
+    "ru": "положительная",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1412,7 +1487,7 @@
   "comparative": {
     "en": "comparative",
     "isv": "sravniteljna",
-    "ru":  "сравнительная",
+    "ru": "сравнительная",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1427,7 +1502,7 @@
   "superlative": {
     "en": "superlative",
     "isv": "superlativna",
-    "ru":  "превосходная",
+    "ru": "превосходная",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1442,7 +1517,7 @@
   "present": {
     "en": "present",
     "isv": "nastoječe",
-    "ru":  "настоящее",
+    "ru": "настоящее",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1457,7 +1532,7 @@
   "imperfect": {
     "en": "imperfect",
     "isv": "imperfekt",
-    "ru":  "несов. прошед.",
+    "ru": "несов. прошед.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1472,7 +1547,7 @@
   "future": {
     "en": "future",
     "isv": "buduče",
-    "ru":  "будущее",
+    "ru": "будущее",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1487,7 +1562,7 @@
   "perfect": {
     "en": "perfect",
     "isv": "perfekt",
-    "ru":  "соверш. прошед.",
+    "ru": "соверш. прошед.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1502,7 +1577,7 @@
   "pluperfect": {
     "en": "pluperfect",
     "isv": "pluskvamperfekt",
-    "ru":  "предпрошед.",
+    "ru": "предпрошед.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1517,7 +1592,7 @@
   "conditional": {
     "en": "conditional",
     "isv": "kondicional",
-    "ru":  "сослаг. накл.",
+    "ru": "сослаг. накл.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1532,7 +1607,7 @@
   "infinitive": {
     "en": "infinitive",
     "isv": "infinitiv",
-    "ru":  "неопределённая форма",
+    "ru": "неопределённая форма",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1547,7 +1622,7 @@
   "imperative": {
     "en": "imperative",
     "isv": "poveliteljno naklonenje",
-    "ru":  "повелительное накл.",
+    "ru": "повелительное накл.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1562,7 +1637,7 @@
   "presentActiveParticiple": {
     "en": "present active participle",
     "isv": "nast. aktiv. pričestje",
-    "ru":  "действ. прич. наст. вр.",
+    "ru": "действ. прич. наст. вр.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1577,7 +1652,7 @@
   "presentPassiveParticiple": {
     "en": "present passive participle",
     "isv": "nast. passiv. pričestje",
-    "ru":  "страд. причаст. наст. вр.",
+    "ru": "страд. причаст. наст. вр.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1592,7 +1667,7 @@
   "pastActiveParticiple": {
     "en": "past active participle",
     "isv": "prošlo aktiv. pričestje",
-    "ru":  "действ. причаст. прошед. вр.",
+    "ru": "действ. причаст. прошед. вр.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1607,7 +1682,7 @@
   "pastPassiveParticiple": {
     "en": "past passive participle",
     "isv": "prošlo passiv. pričestje",
-    "ru":  "страд. причаст. прошед. вр.",
+    "ru": "страд. причаст. прошед. вр.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1622,7 +1697,7 @@
   "verbalNoun": {
     "en": "verbal noun",
     "isv": "glagolno ime",
-    "ru":  "отглагольное существ.",
+    "ru": "отглагольное существ.",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1637,7 +1712,7 @@
   "1sg": {
     "en": "1sg",
     "isv": "1jed",
-    "ru":  "1ед",
+    "ru": "1ед",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1652,7 +1727,7 @@
   "2sg": {
     "en": "2sg",
     "isv": "2jed",
-    "ru":  "2ед",
+    "ru": "2ед",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1667,7 +1742,7 @@
   "3sg": {
     "en": "3sg",
     "isv": "3jed",
-    "ru":  "3ед",
+    "ru": "3ед",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1682,7 +1757,7 @@
   "1pl": {
     "en": "1pl",
     "isv": "1mn",
-    "ru":  "1мн",
+    "ru": "1мн",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1697,7 +1772,7 @@
   "2pl": {
     "en": "2pl",
     "isv": "2mn",
-    "ru":  "2мн",
+    "ru": "2мн",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1712,7 +1787,7 @@
   "3pl": {
     "en": "3pl",
     "isv": "3mn",
-    "ru":  "3мн",
+    "ru": "3мн",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1727,7 +1802,7 @@
   "wordForm": {
     "en": "word form",
     "isv": "forma slova",
-    "ru":  "форма слова",
+    "ru": "форма слова",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1738,6 +1813,291 @@
     "sr": "",
     "mk": "",
     "bg": "словоформа"
+  },
+  "translatesModalTitle": {
+    "en": "Translates",
+    "isv": "Prěklady",
+    "ru": "Переводы",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "isvLang": {
+    "en": "Interslavic",
+    "isv": "Medžuslovjansky",
+    "ru": "Межславянский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "isvEtymologicLatinLang": {
+    "en": "ISV etymological",
+    "isv": "MS etimologičny",
+    "ru": "МС этимологический",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "isvLatinLang": {
+    "en": "ISV Latin",
+    "isv": "MS latinica",
+    "ru": "МС латиница",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "isvCyrillicLang": {
+    "en": "ISV Cyrillic",
+    "isv": "MS kirilica",
+    "ru": "МС кириллица",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "ruLang": {
+    "en": "Russian",
+    "isv": "Russky",
+    "ru": "Русский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "beLang": {
+    "en": "Belarusian",
+    "isv": "Bělorussky",
+    "ru": "Белорусский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "ukLang": {
+    "en": "Ukrainian",
+    "isv": "Ukrajinsky",
+    "ru": "Украинский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "plLang": {
+    "en": "Polish",
+    "isv": "Poljsky",
+    "ru": "Польский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "csLang": {
+    "en": "Czech",
+    "isv": "Češsky",
+    "ru": "Чешский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "skLang": {
+    "en": "Slovak",
+    "isv": "Slovačsky",
+    "ru": "Словацкий",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "bgLang": {
+    "en": "Bulgarian",
+    "isv": "Bulgarsky",
+    "ru": "Болгарский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "mkLang": {
+    "en": "Macedonian",
+    "isv": "Makedonsky",
+    "ru": "Македонский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "srLang": {
+    "en": "Serbian",
+    "isv": "Srbsky",
+    "ru": "Сербский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "hrLang": {
+    "en": "Croatian",
+    "isv": "Hrvatsky",
+    "ru": "Хорватский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "slLang": {
+    "en": "Slovenian",
+    "isv": "Slovensky",
+    "ru": "Словенский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "deLang": {
+    "en": "German",
+    "isv": "Němečsky",
+    "ru": "Немецкий",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "enLang": {
+    "en": "English",
+    "isv": "Anglijsky",
+    "ru": "Английский",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "clipboardCopyNotification": {
+    "en": "Text \"{str}\" copied to clipboard",
+    "isv": "Tekst \"{str}\" je skopijovany v bufernu pamet",
+    "ru": "Текст \"{str}\" скопирован в буфер обмена",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   },
   "showSlavicWordsInAlphabets": {
     "en": "Show interslavic words using selected alphabets",
@@ -1753,5 +2113,65 @@
     "sr": "Показати међусловенске речи у одабраним писмима",
     "mk": "Покажи меѓусловенски зборови со избрани азбуки",
     "bg": "Покажи междуславянски думите с избрани азбука"
+  },
+  "translationsBottomText": {
+    "en": "The symbol ✓ indicates verified translations.",
+    "isv": "Znakom ✓ sut označene prověrene prěvody",
+    "ru": "Знаком ✓ отмечены проверенные переводы.",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "resultsNotFound": {
+    "en": "Not found",
+    "isv": "",
+    "ru": "Ничего не найдено",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "resultsNotFoundFilters": {
+    "en": "Try to change method of search or reset filters",
+    "isv": "",
+    "ru": "Попробуйте изменить режим поиска или сбросить фильтры",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "resultsNotFoundResetFilters": {
+    "en": "Reset filters",
+    "isv": "",
+    "ru": "Сбросить фильтры",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   }
 }

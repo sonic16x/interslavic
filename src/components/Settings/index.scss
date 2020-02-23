@@ -1,29 +1,24 @@
+@import "src/index";
+
 .settings {
   background: #fff;
   pointer-events: all;
   max-height: 100%;
   height: 100%;
-}
-
-.settingsContent {
   max-width: 1024px;
-  width: 100%;
-  padding: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  & div.isvSearchLetters div.custom-checkbox {
-    display: inline-block;
-    padding-right: 1rem;
-  }
-}
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
 
-@media (min-width: 1040px) {
-  .settingsContent {
-    padding-right: 5px;
-    padding-left: calc(100vw - 100% + 5px);
-  }
-  .settings {
-    overflow-x: hidden;
-    box-sizing: content-box;
+  &__title {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0;
+
+    &-minor {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 600;
+    }
   }
 }

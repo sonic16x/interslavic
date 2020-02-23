@@ -439,7 +439,8 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/’/g,"ъ");
         iW = iW.replace (/`/g,"’");
 
-        if (flav == "1")	{	iW = iW.replace (/ṙ/g,"ър");
+        if (flav == "1")	{
+            iW = iW.replace (/ṙ/g,"ър");
             iW = iW.replace (/ŕ/g,"ьр");
             iW = iW.replace (/ě/g,"Ê");
             iW = iW.replace (/[ḓṱ]/g,"");
@@ -451,6 +452,9 @@ export function transliterateW (iW, type, flav, nms)
                 iW = iW.replace (/є/g,"е");
                 iW = iW.replace (/л#ј/g,"љ");
                 iW = iW.replace (/н#ј/g,"њ");
+            }
+            if (flav == "2") {
+                iW = iW.replace (/є/g,"ѣ"); // DŠ  !!!
             }
         }
 
@@ -544,7 +548,7 @@ export function transliterateW (iW, type, flav, nms)
             iW = iW.replace(/ž/g,"ⰶ");
         }
     }
-    /* D.S. Variant Glagolica */
+    /* D.Š. Variant Glagolica */
     /*
     if (type == 7) {
         if (flav == "2") {

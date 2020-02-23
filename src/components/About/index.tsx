@@ -10,10 +10,10 @@ export const About: React.FC =
         const source = 'http://steen.free.fr/interslavic';
 
         return (
-            <div className={'about'}>
-                <div className={'aboutContent'}>
+            <div className={'about-page'}>
+                <div className={'about-page__container'}>
                     <h4>{t('aboutSmallTitle')}</h4>
-                    <div className={'common'}>
+                    <div className={'about-page__common'}>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>
                         <p>{t('aboutAuthors')}</p>
                         <hr/>
@@ -33,25 +33,21 @@ export const About: React.FC =
                             href={'http://www.facebook.com/groups/interslavic'}
                             target={'_blank'}
                         >
-                            <img className={'partners shadow'} src={'partnersFacebook.png'} alt={'Interslavic Facebook Icon'}/>
+                            Facebook community
                         </a>
                         <a
                             title={'Interslavic Language Portal'}
                             href={'http://interslavic-language.org/'}
                             target={'_blank'}
                         >
-                            <img
-                                className={'partners shadow'}
-                                src={'partnersPortal.png'}
-                                alt={'Interslavic Language Portal Icon'}
-                            />
+                            interslavic-language.org
                         </a>
                         <a
                             title={'Interslavic journal'}
                             href={'http://slovjani.info/'}
                             target={'_blank'}
                         >
-                            <img className={'partners shadow'} src={'partnersJournal.jpg'} alt={'Interslavic journal Icon'}/>
+                            slovjani.info
                         </a>
                         <hr/>
                         <a
@@ -66,9 +62,7 @@ export const About: React.FC =
                             />
                         </a>
                     </div>
-                    <div className={'devInfo'}>
-                        <p className={'text-muted buildHash'}>{DATE}</p>
-                    </div>
+                    <div className={'about-page__release-date'}>{DATE}</div>
                 </div>
             </div>
         );

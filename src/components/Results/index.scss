@@ -1,39 +1,25 @@
-.resultCard {
-  width: 100%;
-  max-width: 1024px;
-  margin-bottom: 15px;
-  flex-shrink: 0;
-
-  .card-body {
-    padding-top: 1.5rem;
-  }
-}
-
-.checked {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.showForms {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-}
-
 .results {
   overflow: auto;
   overflow: overlay;
-  padding: 15px;
-  margin-bottom: 45px;
+  padding: 16px 0;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  //width: 100%;
+
+  &__message-for-users {
+    white-space: pre-line;
+    width: 100%;
+    max-width: 1024px;
+    padding: 15px;
+  }
 }
 
-.messageForUser {
-  white-space: pre-line;
-  width: 100%;
-  max-width: 1024px;
-  padding: 15px;
+@media (max-width: 1024px) {
+  .results {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }

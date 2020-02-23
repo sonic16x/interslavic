@@ -82,99 +82,97 @@ const interfaceLanguageList = [
 const SettingsInternal: React.FC<ISettingsPropsInternal> =
     (props: ISettingsPropsInternal) => (
         <div className={'settings'}>
-            <div className={'settingsContent'}>
-                <h4>{t('settingsTitle')}</h4>
-                <hr/>
-                <h5>{t('interfaceLanguage')}</h5>
-                <Selector
-                    options={interfaceLanguageList}
-                    value={props.interfaceLang}
-                    onSelect={(langCode: string) => props.setInterfaceLang(langCode)}
+            <h4>{t('settingsTitle')}</h4>
+            <hr/>
+            <h5>{t('interfaceLanguage')}</h5>
+            <Selector
+                options={interfaceLanguageList}
+                value={props.interfaceLang}
+                onSelect={(langCode: string) => props.setInterfaceLang(langCode)}
+            />
+            <hr/>
+            <h5>{t('searchSensitiveLettersForInterslavic')}</h5>
+            <div className={'settings__isv-search-letters'}>
+                <h6>{t('standardOrthography')}</h6>
+                <Checkbox
+                    title={'ž š č (ж ш ч)'}
+                    checked={props.isvSearchLetters.from.includes('ž')}
+                    onChange={() => {props.changeIsvSearchLetters('žšč'); }}
                 />
-                <hr/>
-                <h5>{t('searchSensitiveLettersForInterslavic')}</h5>
-                <div className={'isvSearchLetters'}>
-                    <h6>{t('standardOrthography')}</h6>
-                    <Checkbox
-                        title={'ž š č (ж ш ч)'}
-                        checked={props.isvSearchLetters.from.includes('ž')}
-                        onChange={() => {props.changeIsvSearchLetters('žšč'); }}
-                    />
-                    <Checkbox
-                        title={'ě (є)'}
-                        checked={props.isvSearchLetters.from.includes('ě')}
-                        onChange={() => {props.changeIsvSearchLetters('ě'); }}
-                    />
-                    <Checkbox
-                        title={'y (ы)'}
-                        checked={props.isvSearchLetters.from.includes('y')}
-                        onChange={() => {props.changeIsvSearchLetters('y'); }}
-                    />
-                    <h6>{t('etymologicalOrthography')}</h6>
-                    <Checkbox
-                        title={'å'}
-                        checked={props.isvSearchLetters.from.includes('å')}
-                        onChange={() => {props.changeIsvSearchLetters('å'); }}
-                    />
-                    <Checkbox
-                        title={'ę ų'}
-                        checked={props.isvSearchLetters.from.includes('ę')}
-                        onChange={() => {props.changeIsvSearchLetters('ęų'); }}
-                    />
-                    {/*<Checkbox
+                <Checkbox
+                    title={'ě (є)'}
+                    checked={props.isvSearchLetters.from.includes('ě')}
+                    onChange={() => {props.changeIsvSearchLetters('ě'); }}
+                />
+                <Checkbox
+                    title={'y (ы)'}
+                    checked={props.isvSearchLetters.from.includes('y')}
+                    onChange={() => {props.changeIsvSearchLetters('y'); }}
+                />
+                <h6>{t('etymologicalOrthography')}</h6>
+                <Checkbox
+                    title={'å'}
+                    checked={props.isvSearchLetters.from.includes('å')}
+                    onChange={() => {props.changeIsvSearchLetters('å'); }}
+                />
+                <Checkbox
+                    title={'ę ų'}
+                    checked={props.isvSearchLetters.from.includes('ę')}
+                    onChange={() => {props.changeIsvSearchLetters('ęų'); }}
+                />
+                {/*<Checkbox
                         title={'ė ȯ'}
                         checked={props.isvSearchLetters.from.includes('ė')}
                         onChange={() => {props.changeIsvSearchLetters('ėȯ'); }}
                     />*/}
-                    <Checkbox
-                        title={'ŕ'}
-                        checked={props.isvSearchLetters.from.includes('ŕ')}
-                        onChange={() => {props.changeIsvSearchLetters('ŕ'); }}
-                    />
-                    <Checkbox
-                        title={'ľ ń'}
-                        checked={props.isvSearchLetters.from.includes('ľ')}
-                        onChange={() => {props.changeIsvSearchLetters('ľń'); }}
-                    />
-                    <Checkbox
-                        title={'ť ď'}
-                        checked={props.isvSearchLetters.from.includes('ť')}
-                        onChange={() => {props.changeIsvSearchLetters('ťď'); }}
-                    />
-                    <Checkbox
-                        title={'ś ź'}
-                        checked={props.isvSearchLetters.from.includes('ś')}
-                        onChange={() => {props.changeIsvSearchLetters('śź'); }}
-                    />
-                    <Checkbox
-                        title={'ć'}
-                        checked={props.isvSearchLetters.from.includes('ć')}
-                        onChange={() => {props.changeIsvSearchLetters('ć'); }}
-                    />
-                    <Checkbox
-                        title={'đ'}
-                        checked={props.isvSearchLetters.from.includes('đ')}
-                        onChange={() => {props.changeIsvSearchLetters('đ'); }}
-                    />
-                </div>
-                <hr/>
-                <h5>{t('showSlavicWordsInAlphabets')}</h5>
                 <Checkbox
-                    title={t('latin')}
-                    checked={props.alphabets.latin}
-                    onChange={() => props.setAlphabets({latin: !props.alphabets.latin})}
+                    title={'ŕ'}
+                    checked={props.isvSearchLetters.from.includes('ŕ')}
+                    onChange={() => {props.changeIsvSearchLetters('ŕ'); }}
                 />
                 <Checkbox
-                    title={t('cyrillic')}
-                    checked={props.alphabets.cyrillic}
-                    onChange={() => props.setAlphabets({cyrillic: !props.alphabets.cyrillic})}
+                    title={'ľ ń'}
+                    checked={props.isvSearchLetters.from.includes('ľ')}
+                    onChange={() => {props.changeIsvSearchLetters('ľń'); }}
                 />
                 <Checkbox
-                    title={t('glagolitic')}
-                    checked={props.alphabets.glagolitic}
-                    onChange={() => props.setAlphabets({glagolitic: !props.alphabets.glagolitic})}
+                    title={'ť ď'}
+                    checked={props.isvSearchLetters.from.includes('ť')}
+                    onChange={() => {props.changeIsvSearchLetters('ťď'); }}
+                />
+                <Checkbox
+                    title={'ś ź'}
+                    checked={props.isvSearchLetters.from.includes('ś')}
+                    onChange={() => {props.changeIsvSearchLetters('śź'); }}
+                />
+                <Checkbox
+                    title={'ć'}
+                    checked={props.isvSearchLetters.from.includes('ć')}
+                    onChange={() => {props.changeIsvSearchLetters('ć'); }}
+                />
+                <Checkbox
+                    title={'đ'}
+                    checked={props.isvSearchLetters.from.includes('đ')}
+                    onChange={() => {props.changeIsvSearchLetters('đ'); }}
                 />
             </div>
+            <hr/>
+            <h5>{t('showSlavicWordsInAlphabets')}</h5>
+            <Checkbox
+                title={t('latin')}
+                checked={props.alphabets.latin}
+                onChange={() => props.setAlphabets({latin: !props.alphabets.latin})}
+            />
+            <Checkbox
+                title={t('cyrillic')}
+                checked={props.alphabets.cyrillic}
+                onChange={() => props.setAlphabets({cyrillic: !props.alphabets.cyrillic})}
+            />
+            <Checkbox
+                title={t('glagolitic')}
+                checked={props.alphabets.glagolitic}
+                onChange={() => props.setAlphabets({glagolitic: !props.alphabets.glagolitic})}
+            />
         </div>
     );
 
