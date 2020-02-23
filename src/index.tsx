@@ -76,6 +76,11 @@ export const defaultState: IMainState = {
     searchExpanded: false,
     rawResults: [],
     results: [],
+    alphabets: {
+        latin: true,
+        cyrillic: true,
+        glagolitic: false,
+    },
 };
 
 function reduxDevTools() {

@@ -26,11 +26,14 @@ import {
 } from 'utils/wordDetails';
 import ModalDialog from '../ModalDialog';
 import './index.scss';
+import { latinToGla } from 'utils/latinToGla';
+import translations from "../../translations/data.json";
 
 interface IDetailModalProps {
     close: () => void;
     item: any;
     alphabetType: string;
+    alphabets: any;
     isDetailModal: boolean;
     flavorisationType: string;
     setAlphabetType: (type: string) => void;
@@ -45,6 +48,10 @@ const alphabetType = [
     {
         name: 'cyrillic',
         value: 'cyrillic',
+    },
+    {
+        name: 'glagolitic',
+        value: 'glagolitic',
     },
 ];
 
@@ -92,7 +99,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 </div>
                 <footer className={'modal-footer'}>
                     <LineSelector
-                        options={alphabetType.map((item) => ({
+                        options={alphabetType.filter(({value}) => this.props.alphabets[value]).map((item) => ({
                             name: t(item.name),
                             value: item.value,
                         }))}
@@ -242,6 +249,8 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 return getLatin(str, this.props.flavorisationType);
             case 'cyrillic':
                 return getCyrillic(str, this.props.flavorisationType);
+            case 'glagolitic':
+                return latinToGla(getLatin(str, this.props.flavorisationType));
         }
     }
 
@@ -646,11 +655,12 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({detailModal, isDetailModal, results, rawResults, alphabetType, flavorisationType}) {
+function mapStateToProps({detailModal, isDetailModal, results, rawResults, alphabetType, flavorisationType, alphabets}) {
     return {
         item: results[detailModal],
         rawItem: rawResults[detailModal],
         alphabetType,
+        alphabets,
         isDetailModal,
         flavorisationType,
     };
