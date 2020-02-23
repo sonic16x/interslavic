@@ -16,11 +16,11 @@ export function t(key) {
         }
 
         switch (alphabet) {
-            case 'latn':
+            case 'Latn':
                 return translations[key].isv;
-            case 'cyrl':
+            case 'Cyrl':
                 return getCyrillic(translations[key].isv, '3');
-            case 'glag':
+            case 'Glag':
                 return latinToGla(translations[key].isv);
         }
     }

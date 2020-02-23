@@ -23,15 +23,15 @@ const interfaceLanguageList = [
     },
     {
         name: 'Medžuslovjansky',
-        value: 'isv-latn',
+        value: 'isv-Latn',
     },
     {
         name: 'Меджусловјанскы',
-        value: 'isv-cyrl',
+        value: 'isv-Cyrl',
     },
     {
         name: 'MⰅⰌⰖⰔⰎⰑⰂⰬⰀⰐⰔⰍⰠ',
-        value: 'isv-glag',
+        value: 'isv-Glag',
     },
     {
         name: 'Русский',
