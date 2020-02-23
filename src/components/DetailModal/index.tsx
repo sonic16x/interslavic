@@ -27,7 +27,6 @@ import {
 import ModalDialog from '../ModalDialog';
 import './index.scss';
 import { latinToGla } from 'utils/latinToGla';
-import translations from "../../translations/data.json";
 
 interface IDetailModalProps {
     close: () => void;

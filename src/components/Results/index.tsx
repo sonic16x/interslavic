@@ -120,11 +120,11 @@ class Results extends React.Component<IResultsProps> {
             result.push(cyrillic);
         }
 
-        if (alphabets.glag) {
+        if (alphabets.glagolitic) {
             result.push(gla);
         }
 
-        return result.filter(Boolean).join('/');
+        return result.join('/');
     }
     private renderTranslate(item) {
         return item.translate;

@@ -1,4 +1,4 @@
-import {IMainState} from "../reducers";
+import { IMainState } from 'reducers';
 
 export enum ActionTypes {
     LANG = 'LANG',
