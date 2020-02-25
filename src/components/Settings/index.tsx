@@ -30,7 +30,7 @@ const interfaceLanguageList = [
         value: 'isv-Cyrl',
     },
     {
-        name: 'MⰅⰌⰖⰔⰎⰑⰂⰬⰀⰐⰔⰍⰠ',
+        name: 'Ⰿⰵⰴⰶⱆⱄⰾⱁⰲⰺⰰⱀⱄⰽⱛ',
         value: 'isv-Glag',
     },
     {
