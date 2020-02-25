@@ -1,6 +1,7 @@
 import translations from 'translations/data.json';
 import { latinToGla } from 'utils/latinToGla';
 import { getCyrillic } from 'utils/getCyrillic';
+import { getLatin } from '../utils/getLatin';
 let currentLang;
 
 export function t(key) {
@@ -17,7 +18,7 @@ export function t(key) {
 
         switch (alphabet) {
             case 'Latn':
-                return translations[key].isv;
+                return getLatin(translations[key].isv, '3');
             case 'Cyrl':
                 return getCyrillic(translations[key].isv, '3');
             case 'Glag':
