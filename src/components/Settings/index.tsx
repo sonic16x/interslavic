@@ -158,7 +158,7 @@ const SettingsInternal: React.FC<ISettingsPropsInternal> =
                     />
                 </div>
                 <hr/>
-                <h5>{t('alphabets')}</h5>
+                <h5>{t('showSlavicWordsInAlphabets')}</h5>
                 <Checkbox
                     title={t('latin')}
                     checked={props.alphabets.latin}

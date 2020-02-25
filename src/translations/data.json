@@ -421,7 +421,7 @@
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
-    "isv": "Rezultaty iskanja sodržajut netočne avtomatične prěvody. Sejčasno jest prověreno part% slov izbranogo jezyka. Ako li znajete tutoj jezyk, prijednjajte se k rabotě nad ulěpšenjem prěvodov!",
+    "isv": "Rezultaty iskanja sodržajut netočne avtomatične prěvody. Sejčasno jest prověreno {part%} slov izbranogo jezyka. Ako li znajete tutoj jezyk, prijednjajte se k rabotě nad ulěpšenjem prěvodov!",
     "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
     "uk": "Результати пошуку містять неточні автоматичні переклади. Нині part% слів обраної мови є перевіреними . Якщо ви знаєте цю мову, долучайтесь до роботи з поліпшення перекладів!",
     "be": "Вынікі пошуку ўтрымліваюць недакладныя аўтаматычныя пераклады. На дадзены момант праверана part% слоў абранага мовы. Калі вы ведаеце гэтую мову, далучайцеся да працы над паляпшэннем перакладаў!",
@@ -466,7 +466,7 @@
   },
   "gdprAlert": {
     "en": "This site uses cookies for analytics:",
-    "isv": "Tutoj sajt koristaje kuki (cookies) dlja analitiky:",
+    "isv": "Tutoj sajt koristaje kuki ({cookies}) dlja analitiky:",
     "ru": "Этот сайт использует куки для аналитики:",
     "uk": "Цей сайт використовує реп'яшки (cookies) для аналітики:",
     "be": "Гэты сайт выкарыстоўвае файлы кукіс для аналітыкі:",
@@ -498,7 +498,7 @@
     "en": "Search-sensitive letters for Interslavic",
     "isv": "Značime bukvy pri iskanju na medžuslovjanskom",
     "ru": "Учитывать буквы при поиске на межславянском",
-    "uk": "Зважати літери при пошуку міжслав'янською мовою",
+    "uk": "Зважати на літери при пошуку міжслав'янською мовою",
     "be": "Ўлічваць літары пры пошуку на міжславянскай мове",
     "pl": "Znaczące litery podczas wyszukiwania w języku międzysłowiańskim",
     "cs": "Smysluplná písmena při hledání v mezislovanském jazyce",
@@ -1739,10 +1739,10 @@
     "mk": "",
     "bg": "словоформа"
   },
-  "alphabets": {
-    "en": "Alphabets",
-    "isv": "Abecedy",
-    "ru":  "Алфавиты",
+  "showSlavicWordsInAlphabets": {
+    "en": "The alphabets for displaying words of the Interslavic",
+    "isv": "Alfabety dlja pokazyvanja slov medžuslovjanskogo jezyka",
+    "ru":  "Алфавиты для отображения слов межславянского языка",
     "uk": "",
     "be": "",
     "pl": "",
