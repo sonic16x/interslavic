@@ -537,6 +537,87 @@ export function transliterateW(iW, type, flav, nms) {
 
     }
 
+    /* Glagolica */
+
+    if (type == 7) {
+        if (flav == "2") {
+            iW = iW.replace(/tı/g, "ť");
+            iW = iW.replace(/dı/g, "ď");
+            iW = iW.replace(/sı/g, "ś");
+            iW = iW.replace(/zı/g, "ź");
+            iW = iW.replace(/lı/g, "ľ");
+            iW = iW.replace(/nı/g, "ń");
+            iW = iW.replace(/rı/g, "ř");
+            iW = iW.replace(/ı/g, "");
+        }
+        else {
+            iW = iW.replace(/ŕ/g, "r");
+        }
+        iW = iW.replace(/ŕ/g, "ır");
+        iW = iW.replace(/([ščžj])ı/g, "$1");
+
+        iW = iW.replace(/ľ/g, "ⰾⱐ"); // ль
+        iW = iW.replace(/lj/g, "ⰾⱐ"); // ль
+        iW = iW.replace(/ń/g, "ⱀⱐ"); // нь
+        iW = iW.replace(/nj/g, "ⱀⱐ"); // нь
+        iW = iW.replace(/[ŕṙ]/g, "ⱏⱃ"); // ьр
+        iW = iW.replace(/ř/g, "ⱏⱃ"); // рь
+        iW = iW.replace(/ť/g, "ⱅⱐ"); // ть
+        iW = iW.replace(/ď/g, "ⰴⱐ"); // дь
+        iW = iW.replace(/ś/g, "ⱄⱐ"); // сь
+        iW = iW.replace(/ź/g, "ⰸⱐ"); // зь
+
+        iW = iW.replace(/ć/g, "ⱍⱐ");  // чь
+        iW = iW.replace(/đ/g, "ⰼ"); // džerv
+        iW = iW.replace(/a/g, "ⰰ"); // а
+        iW = iW.replace(/å/g, "ⱉ"); // от
+        iW = iW.replace(/b/g, "ⰱ"); // б
+        iW = iW.replace(/v/g, "ⰲ"); // в
+        iW = iW.replace(/g/g, "ⰳ"); // г
+        iW = iW.replace(/d/g, "ⰴ"); // д
+        iW = iW.replace(/e/g, "ⰵ"); // е
+        iW = iW.replace(/ě/g, "ⱑ"); // ять
+        iW = iW.replace(/ž/g, "ⰶ"); // ж
+        iW = iW.replace(/z/g, "ⰸ"); // з
+        iW = iW.replace(/i/g, "ⰻ"); // и
+        iW = iW.replace(/j/g, "ⰹ"); // иже
+        iW = iW.replace(/k/g, "ⰽ"); // к
+        iW = iW.replace(/l/g, "ⰾ"); // л
+        iW = iW.replace(/m/g, "ⰿ"); // м
+        iW = iW.replace(/n/g, "ⱀ"); // н
+        iW = iW.replace(/o/g, "ⱁ"); // он
+        iW = iW.replace(/p/g, "ⱂ"); // п
+        iW = iW.replace(/[rṙ]/g, "ⱃ"); // р
+        iW = iW.replace(/s/g, "ⱄ"); // с
+        iW = iW.replace(/t/g, "ⱅ"); // т
+        iW = iW.replace(/u/g, "ⱆ"); // у
+        iW = iW.replace(/f/g, "ⱇ"); // ф
+        iW = iW.replace(/h/g, "ⱈ"); // х
+        iW = iW.replace(/c/g, "ⱌ"); // ц
+        iW = iW.replace(/č/g, "ⱍ"); // ч
+        iW = iW.replace(/š/g, "ⱎ"); // ш
+        iW = iW.replace(/yj/g, "ⱐⰹⰺ"); // ыј=ъјі
+        iW = iW.replace(/y/g, "ⱐⰹ"); // ы=ъј
+        iW = iW.replace(/ę/g, "ⱔ"); // ѧ small yus
+        iW = iW.replace(/ų/g, "ⱘ"); // ѫ big yus
+        iW = iW.replace(/òj/g, "ⱏⰺ"); // ъі
+        iW = iW.replace(/ò/g, "ⱏ"); // ъ
+        iW = iW.replace(/`/g, "’");
+        iW = iW.replace(/ı/g, "ⱐ"); // ь
+
+        iW = iW.replace(/ⱎⱍⱐ/g, "ⱋ");  // шчь=щ
+        iW = iW.replace(/[ⰹⰺⱐ]ⰰ/g, "ⱝ"); // [јіь]а
+        iW = iW.replace(/[ⰹⰺⱐ]ⱔ/g, "ⱗ"); // [јіь]ѧ
+        iW = iW.replace(/[ⰹⰺⱐ]ⰻ/g, "ⰺ"); // [јіь]и
+        iW = iW.replace(/[ⰹⰺⱐ]ⱁ/g, "ⱖ"); // [јіь]о
+        iW = iW.replace(/[ⰹⰺⱐ]ⱆ/g, "ⱓ"); // [јіь]у
+        iW = iW.replace(/[ⰹⰺⱐ]ⱘ/g, "ⱙ"); // [јіь]ѫ
+
+        iW = iW.replace(/ⰻⰵ/g, "ⰺⰵ"); // ие
+        iW = iW.replace(/ⰻⰰ/g, "ⰺⰰ"); // иа
+        iW = iW.replace(/ⰻⱁ/g, "ⰺⱁ"); // ио
+        iW = iW.replace(/ⰻⱆ/g, "ⰺⱆ"); // иу
+    }
 
     /* IPA */
 
