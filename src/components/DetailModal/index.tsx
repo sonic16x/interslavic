@@ -26,7 +26,7 @@ import {
 } from 'utils/wordDetails';
 import ModalDialog from '../ModalDialog';
 import './index.scss';
-import { latinToGla } from 'utils/latinToGla';
+import { getGlagolitic } from 'utils/getGlagolitic';
 
 interface IDetailModalProps {
     close: () => void;
@@ -249,10 +249,10 @@ class DetailModal extends React.Component<IDetailModalProps> {
             case 'cyrillic':
                 return getCyrillic(str, this.props.flavorisationType);
             case 'glagolitic':
-                return latinToGla(getLatin(str, this.props.flavorisationType));
+                return getGlagolitic(str, this.props.flavorisationType);
         }
     }
-
+s
     private renderVerbDetails(word, add) {
         const data = conjugationVerb(word, add);
         if (data === null) {

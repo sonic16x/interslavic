@@ -2,7 +2,7 @@ import { convertCases } from 'utils/convertCases';
 import { filterLatin } from 'utils/filterLatin';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
-import { latinToGla } from 'utils/latinToGla';
+import { getGlagolitic } from 'utils/getGlagolitic';
 import { latinToIpa } from 'utils/latinToIpa';
 import { levenshteinDistance } from 'utils/levenshteinDistance';
 import { normalize } from 'utils/normalize';
@@ -420,10 +420,10 @@ class DictionaryClass {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
                 originalCyr: getCyrillic(isv, flavorisationType),
-                originalGla: latinToGla(getLatin(isv, flavorisationType)),
+                originalGla: getGlagolitic(isv, flavorisationType),
                 add: convertCases(getLatin(add, flavorisationType)),
                 addCyr: convertCases(getCyrillic(add, flavorisationType)),
-                addGla: convertCases(latinToGla(getLatin(add, flavorisationType))),
+                addGla: convertCases(getGlagolitic(add, flavorisationType)),
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',

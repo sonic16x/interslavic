@@ -1,5 +1,5 @@
 import translations from 'translations/data.json';
-import { latinToGla } from 'utils/latinToGla';
+import { getGlagolitic } from 'utils/getGlagolitic';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from '../utils/getLatin';
 let currentLang;
@@ -22,7 +22,7 @@ export function t(key) {
             case 'Cyrl':
                 return getCyrillic(translations[key].isv, '3');
             case 'Glag':
-                return latinToGla(translations[key].isv);
+                return getGlagolitic(translations[key].isv, '3');
         }
     }
     if (!translations[key]) {
