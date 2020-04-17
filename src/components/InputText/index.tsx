@@ -13,31 +13,41 @@ interface IInputTextPropsInternal {
 }
 
 const InputTextInternal: React.FC<IInputTextPropsInternal> =
-    ({searchLanguage, spellCheck, fromText, changeFromText}) => (
-        <div className={'input-group input-group-lg inputText'}>
-            <input
-                type='search'
-                lang={searchLanguage}
-                autoCapitalize='off'
-                autoComplete={spellCheck ? 'on' : 'off'}
-                autoCorrect={spellCheck ? 'on' : 'off'}
-                spellCheck={spellCheck}
-                placeholder={t('typeWordLabel')}
-                className={'form-control fromText'}
-                value={fromText}
-                onChange={(e) => changeFromText(e.target.value)}
-            />
-            <button
-                type={'reset'}
-                className={'removeButton'}
-                aria-label={'Clear input'}
-                disabled={fromText.length === 0}
-                onClick={() => changeFromText('')}
-            >
-                &times;
-            </button>
-        </div>
-    );
+    ({searchLanguage, spellCheck, fromText, changeFromText}) => {
+        let timerId;
+
+        const search = (e) => {
+            clearTimeout(timerId);
+            const {value} = e.target;
+            timerId = setTimeout(() => changeFromText(value), 200);
+        }
+
+        return (
+            <div className={'input-group input-group-lg inputText'}>
+                <input
+                    type='search'
+                    lang={searchLanguage}
+                    autoCapitalize='off'
+                    autoComplete={spellCheck ? 'on' : 'off'}
+                    autoCorrect={spellCheck ? 'on' : 'off'}
+                    spellCheck={spellCheck}
+                    placeholder={t('typeWordLabel')}
+                    className={'form-control fromText'}
+                    defaultValue={fromText}
+                    onChange={search}
+                />
+                <button
+                    type={'reset'}
+                    className={'removeButton'}
+                    aria-label={'Clear input'}
+                    disabled={fromText.length === 0}
+                    onClick={() => changeFromText('')}
+                >
+                    &times;
+                </button>
+            </div>
+        )
+    };
 
 function mapDispatchToProps(dispatch) {
     return {
