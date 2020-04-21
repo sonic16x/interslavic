@@ -12,7 +12,7 @@ interface IFlavorisationSelectorProps {
 
 const flavorisationTypes = [
     {
-        name: 'Naučny MS',
+        name: 'Etimologičny pravopis',
         value: '2',
     },
     {
