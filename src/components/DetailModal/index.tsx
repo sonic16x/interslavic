@@ -252,7 +252,7 @@ class DetailModal extends React.Component<IDetailModalProps> {
                 return getGlagolitic(str, this.props.flavorisationType);
         }
     }
-s
+
     private renderVerbDetails(word, add) {
         const data = conjugationVerb(word, add);
         if (data === null) {
