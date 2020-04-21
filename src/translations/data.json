@@ -1740,18 +1740,18 @@
     "bg": "словоформа"
   },
   "showSlavicWordsInAlphabets": {
-    "en": "The alphabets for displaying words of the Interslavic",
-    "isv": "Alfabety dlja pokazyvanja slov medžuslovjanskogo jezyka",
-    "ru":  "Алфавиты для отображения слов межславянского языка",
-    "uk": "",
-    "be": "",
-    "pl": "",
-    "cs": "",
-    "sk": "",
-    "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
-    "bg": ""
+    "en": "Show interslavic words using selected alphabets",
+    "isv": "Pokazyvati medžuslovjaske slova na izbranyh alfabetah",
+    "ru":  "Отображать межславянские слова на выбранных алфавитах",
+    "uk": "Показувати міжслов'янські слова на обраних алфавітах",
+    "be": "Паказваць міжславянскія словы на абраных алфавітах",
+    "pl": "Pokaż medzysłowiańskie słowa w wybranych alfabetach",
+    "cs": "Zobrazit mezislovanská slova ve vybraných abecedách",
+    "sk": "Zobraziť medzislovanské slová vo vybraných abecedách",
+    "sl": "Pokazati medslovanske besede v izbranih abecedah",
+    "hr": "Pokazati međuslovenske riječi pomoću odabranih abeceda",
+    "sr": "Показати међусловенске речи помоћу одабраних абецеда",
+    "mk": "Покажи меѓусловенски зборови со избрани азбуки",
+    "bg": "Покажи междуславянски думите с избрани азбука"
   }
 }
