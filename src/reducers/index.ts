@@ -186,12 +186,16 @@ export function mainReducer(state: IMainState, { type, data }) {
                 detailModal: data,
             };
         case ActionTypes.SET_ALPHABETS:
+            const alphabets = {
+                ...state.alphabets,
+                ...data,
+            };
+            if (!Object.values(alphabets).some(Boolean)) {
+                alphabets.latin = true;
+            }
             return {
                 ...state,
-                alphabets: {
-                    ...state.alphabets,
-                    ...data,
-                },
+                alphabets,
             };
         default:
             return state;
