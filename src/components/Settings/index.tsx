@@ -101,7 +101,7 @@ const SettingsInternal: React.FC<ISettingsPropsInternal> =
                         onChange={() => {props.changeIsvSearchLetters('žšč'); }}
                     />
                     <Checkbox
-                        title={'ě (ѣ)'}
+                        title={'ě (є)'}
                         checked={props.isvSearchLetters.from.includes('ě')}
                         onChange={() => {props.changeIsvSearchLetters('ě'); }}
                     />
@@ -122,9 +122,9 @@ const SettingsInternal: React.FC<ISettingsPropsInternal> =
                         onChange={() => {props.changeIsvSearchLetters('ęų'); }}
                     />
                     <Checkbox
-                        title={'ò'}
-                        checked={props.isvSearchLetters.from.includes('ò')}
-                        onChange={() => {props.changeIsvSearchLetters('ò'); }}
+                        title={'ė ȯ'}
+                        checked={props.isvSearchLetters.from.includes('ė')}
+                        onChange={() => {props.changeIsvSearchLetters('ėȯ'); }}
                     />
                     <Checkbox
                         title={'ŕ'}
