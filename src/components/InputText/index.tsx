@@ -20,7 +20,7 @@ const InputTextInternal: React.FC<IInputTextPropsInternal> =
             clearTimeout(timerId);
             const {value} = e.target;
             timerId = setTimeout(() => changeFromText(value), 200);
-        }
+        };
 
         return (
             <div className={'input-group input-group-lg inputText'}>
@@ -46,7 +46,7 @@ const InputTextInternal: React.FC<IInputTextPropsInternal> =
                     &times;
                 </button>
             </div>
-        )
+        );
     };
 
 function mapDispatchToProps(dispatch) {
