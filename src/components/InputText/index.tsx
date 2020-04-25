@@ -4,6 +4,7 @@ import './index.scss';
 import { fromTextAction } from 'actions';
 import { t } from 'translations';
 import { toBCP47 } from 'utils/bcp47';
+import { useRef } from 'react';
 
 interface IInputTextPropsInternal {
     changeFromText: (text: string) => void;
@@ -15,6 +16,7 @@ interface IInputTextPropsInternal {
 const InputTextInternal: React.FC<IInputTextPropsInternal> =
     ({searchLanguage, spellCheck, fromText, changeFromText}) => {
         let timerId;
+        const inputRef = useRef();
 
         const search = (e) => {
             clearTimeout(timerId);
@@ -35,13 +37,20 @@ const InputTextInternal: React.FC<IInputTextPropsInternal> =
                     className={'form-control fromText'}
                     defaultValue={fromText}
                     onChange={search}
+                    ref={inputRef}
                 />
                 <button
                     type={'reset'}
                     className={'removeButton'}
                     aria-label={'Clear input'}
                     disabled={fromText.length === 0}
-                    onClick={() => changeFromText('')}
+                    onClick={() => {
+                        if (inputRef && inputRef.current) {
+                            // @ts-ignore
+                            inputRef.current.value = '';
+                        }
+                        changeFromText('');
+                    }}
                 >
                     &times;
                 </button>
