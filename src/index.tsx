@@ -9,6 +9,7 @@ import { setLang } from 'translations';
 import Main from './components/Main';
 import './customBootstrap.scss';
 import { Dictionary } from './utils/dictionary';
+import { analyticsMiddleware } from './middlewares/analyticsMiddleware';
 
 /* tslint:disable */
 declare global {
@@ -131,6 +132,7 @@ const store = createStore(
     compose(
         applyMiddleware(
             localStorageMiddleware,
+            analyticsMiddleware,
         ),
         reduxDevTools(),
     ),
