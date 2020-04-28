@@ -1,4 +1,5 @@
 import { IMainState } from '../reducers';
+import debounce from 'lodash/debounce';
 
 declare function ga(...args: any[]): void;
 
@@ -12,8 +13,21 @@ interface IAnalyticsDimensions {
 }
 
 export class BiReporter {
+    constructor() {
+        this.search = debounce(this.search.bind(this), 3000);
+        this.emptySearch = debounce(this.emptySearch.bind(this), 600);
+    }
+
     public search(state: IMainState) {
-        this._setDimensions({
+        this._sendEvent('search', `search ${state.lang.from}`, state.fromText);
+    }
+
+    public emptySearch(state: IMainState) {
+        this._sendEvent('search', `empty ${state.lang.from}`, state.fromText);
+    }
+
+    public setDimensions(state: IMainState) {
+        this._setGaDimensions({
             searchValue: state.fromText,
             searchLanguageFrom: state.lang.from,
             searchLanguageTo: state.lang.to,
@@ -21,11 +35,9 @@ export class BiReporter {
             searchFilterPos: state.posFilter,
             searchFilterPart: state.searchType,
         });
-
-        this._send('search', `search ${state.lang.from}`, state.fromText);
     }
 
-    private _setDimensions(dimensions: IAnalyticsDimensions) {
+    private _setGaDimensions(dimensions: IAnalyticsDimensions) {
         if (typeof ga !== 'function') {
             return;
         }
@@ -38,7 +50,7 @@ export class BiReporter {
         ga('set', 'dimension6', dimensions.searchFilterPart);
     }
 
-    private _send(category: string, action: string, label: string) {
+    private _sendEvent(category: string, action: string, label: string) {
         if (typeof ga !== 'function') {
             return;
         }
