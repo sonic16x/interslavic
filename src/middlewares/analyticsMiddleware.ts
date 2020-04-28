@@ -1,5 +1,6 @@
 import { ActionTypes } from '../actions';
-import biReporter from '../utils/analytics';
+import biReporter from '../utils/biReporter';
+import { IMainState } from '../reducers';
 
 export function analyticsMiddleware({ getState }) {
     return (next) => (action) => {
@@ -10,7 +11,16 @@ export function analyticsMiddleware({ getState }) {
             case ActionTypes.POS_FILTER:
             case ActionTypes.SEARCH_TYPE:
             case ActionTypes.LANG:
-                biReporter.search(getState());
+                const state: IMainState = getState();
+                biReporter.setDimensions(state);
+
+                if (state.fromText) {
+                    biReporter.search(state);
+
+                    if (state.results.length === 0) {
+                        biReporter.emptySearch(state);
+                    }
+                }
                 break;
         }
 
