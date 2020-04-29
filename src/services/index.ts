@@ -1,5 +1,6 @@
 import { isLoadingAction, runSearch } from 'actions';
 import { dataDelimiter, Dictionary } from 'utils/dictionary';
+import biReporter from 'utils/biReporter';
 
 export function fetchDictionary(dispatch) {
     const startFidTime = performance.now();
@@ -22,11 +23,14 @@ export function fetchDictionary(dispatch) {
                     return [key, forms.split('|')];
                 });
             const percentsOfChecked = JSON.parse(percentsOfCheckedStr);
-            Dictionary.init(wordList, searchIndex, percentsOfChecked);
+            const initTime = Dictionary.init(wordList, searchIndex, percentsOfChecked);
             dispatch(isLoadingAction(false));
             dispatch(runSearch());
 
-            const fidTime = Math.round(performance.now() - startFidTime); // @TODO: send to GA
+            const fidTime = Math.round(performance.now() - startFidTime);
+
+            biReporter.performanceInit(initTime);
+            biReporter.performanceFID(fidTime);
 
             if (process.env.NODE_ENV !== 'production') {
                 // tslint:disable-next-line

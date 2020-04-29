@@ -1,6 +1,6 @@
-import { ActionTypes } from '../actions';
-import biReporter from '../utils/biReporter';
-import { IMainState } from '../reducers';
+import { ActionTypes } from 'actions';
+import biReporter from 'utils/biReporter';
+import { IMainState } from 'reducers';
 
 export function analyticsMiddleware({ getState }) {
     return (next) => (action) => {

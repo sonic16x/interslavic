@@ -2,6 +2,7 @@ import { ActionTypes } from 'actions';
 import { getPathFromPage, goToPage } from 'routing';
 import { setLang } from 'translations';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
+import biReporter from 'utils/biReporter';
 
 export interface IAlphabets {
     latin: boolean;
@@ -47,13 +48,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.LANG: {
             const { fromText, flavorisationType, searchType, posFilter } = state;
             const lang = data;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 lang,
@@ -64,13 +68,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.SEARCH_TYPE: {
             const { flavorisationType, lang, fromText, posFilter } = state;
             const searchType = data;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 searchType,
@@ -81,13 +88,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.FROM_TEXT: {
             const { searchType, flavorisationType, lang, posFilter } = state;
             const fromText = data;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 fromText,
@@ -97,13 +107,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.RUN_SEARCH: {
             const { searchType, flavorisationType, lang, fromText, posFilter } = state;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 rawResults,
@@ -113,13 +126,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.CHANGE_ISV_SEARCH_LETTERS: {
             const { searchType, flavorisationType, lang, fromText, posFilter} = state;
             const isvSearchLetters = Dictionary.changeIsvSearchLetters(data);
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 isvSearchLetters,
@@ -129,13 +145,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.FLAVORISATION_TYPE: {
             const { searchType, lang, fromText, posFilter } = state;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType: data,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 flavorisationType: data,
@@ -144,13 +163,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.POS_FILTER: {
             const { searchType, lang, fromText, flavorisationType } = state;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 flavorisationType,
                 posFilter: data,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 posFilter: data,

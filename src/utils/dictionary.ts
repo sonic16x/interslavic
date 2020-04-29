@@ -168,7 +168,7 @@ class DictionaryClass {
         wordList: string[][],
         searchIndex?: any | false,
         percentsOfChecked?: any,
-    ) {
+    ): number {
         const startInitTime = performance.now();
 
         this.header = validFields;
@@ -214,12 +214,14 @@ class DictionaryClass {
             this.percentsOfChecked = percentsOfChecked;
         }
 
-        const initTime = Math.round(performance.now() - startInitTime); // @TODO: send to GA
+        const initTime = Math.round(performance.now() - startInitTime);
 
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
             console.log('INIT', `${initTime}ms`);
         }
+
+        return initTime;
     }
     public getWordList(): string[][] {
         return this.words;
@@ -230,7 +232,7 @@ class DictionaryClass {
             this.splittedMap.get(key),
         ]);
     }
-    public translate(translateParams: ITranslateParams): string[][] {
+    public translate(translateParams: ITranslateParams): [string[][], number] {
         const {
             inputText,
             from,
@@ -246,7 +248,7 @@ class DictionaryClass {
         const inputIsvPrepared = this.inputPrepare('isv', inputWord);
         const inputLangPrepared = this.inputPrepare(lang, inputWord);
         if (!inputLangPrepared || !inputIsvPrepared) {
-            return [];
+            return [[], 0];
         }
 
         const startTranslateTime = performance.now();
@@ -397,7 +399,8 @@ class DictionaryClass {
             // tslint:disable-next-line
             console.log('TRANSLATE', `${translateTime}ms`);
         }
-        return results;
+
+        return [results, translateTime];
     }
 
     public formatTranslate(

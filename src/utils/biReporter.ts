@@ -22,6 +22,18 @@ export class BiReporter {
         this._sendEvent('search', `search ${state.lang.from}`, state.fromText);
     }
 
+    public performanceInit(time: number) {
+        this._sendEvent('performance', 'init', undefined, time);
+    }
+
+    public performanceFID(time: number) {
+        this._sendEvent('performance', 'fid', undefined, time);
+    }
+
+    public performanceSearch(time: number) {
+        this._sendEvent('performance', 'search', undefined, time);
+    }
+
     public emptySearch(state: IMainState) {
         this._sendEvent('search', `empty ${state.lang.from}`, state.fromText);
     }
@@ -50,12 +62,18 @@ export class BiReporter {
         ga('set', 'dimension6', dimensions.searchFilterPart);
     }
 
-    private _sendEvent(category: string, action: string, label: string) {
+    private _sendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue?: number) {
         if (typeof ga !== 'function') {
             return;
         }
 
-        ga('send', 'event', category, action, label);
+        ga('send', {
+            hitType: 'event',
+            eventCategory,
+            eventAction,
+            eventLabel,
+            eventValue,
+        });
     }
 }
 
