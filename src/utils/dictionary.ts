@@ -169,7 +169,11 @@ class DictionaryClass {
         searchIndex?: any | false,
         percentsOfChecked?: any,
     ): number {
-        const startInitTime = performance.now();
+        let startInitTime = 0;
+
+        if (typeof performance !== 'undefined') {
+            startInitTime = window.performance.now();
+        }
 
         this.header = validFields;
         this.langsList = this.header.filter(
@@ -214,7 +218,11 @@ class DictionaryClass {
             this.percentsOfChecked = percentsOfChecked;
         }
 
-        const initTime = Math.round(performance.now() - startInitTime);
+        let initTime = 0;
+
+        if (typeof performance !== 'undefined') {
+            initTime = Math.round(performance.now() - startInitTime);
+        }
 
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
