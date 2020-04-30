@@ -1,5 +1,3 @@
-import { DetailModal } from 'components/DetailModal';
-import { TranslationsModal } from 'components/TranslationsModal';
 import { GDPR } from 'components/GDPR';
 import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
@@ -11,6 +9,7 @@ import { t } from 'translations';
 
 import { fetchDictionary } from 'services';
 import './index.scss';
+import { ModalDialog } from 'components/ModalDialog';
 
 interface IMainProps {
     isLoading: boolean;
@@ -29,8 +28,7 @@ class Main extends React.Component<IMainProps> {
                 <GDPR/>
                 <Loader title={t('loading')} isLoading={this.props.isLoading}/>
                 <Header/>
-                <DetailModal/>
-                <TranslationsModal/>
+                <ModalDialog/>
                 <Notification/>
                 <Router/>
             </>

@@ -15,6 +15,17 @@ export interface ILang {
     to: string;
 }
 
+export enum MODAL_DIALOG_TYPES {
+    MODAL_DIALOG_TRANSLATION = 'MODAL_DIALOG_TRANSLATION',
+    MODAL_DIALOG_WORD_FORMS = 'MODAL_DIALOG_WORD_FORMS',
+}
+
+export interface IModalDialog {
+    type: MODAL_DIALOG_TYPES;
+    index: number;
+    show?: boolean;
+}
+
 export interface IMainState {
     lang: ILang;
     interfaceLang: string;
@@ -28,16 +39,13 @@ export interface IMainState {
     flavorisationType: string;
     page: string;
     isLoading: boolean;
-    isDetailModal: boolean;
-    isTranslationsModal: boolean;
     searchExpanded: boolean;
     alphabetType: string;
-    detailModal?: number;
-    translationsModal?: number;
     rawResults: string[][];
     results: ITranslateResult[];
     alphabets: IAlphabets;
     notification?: string;
+    modalDialog: IModalDialog;
     favoriteList: {
         [key: string]: boolean;
     };
@@ -200,11 +208,6 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 alphabetType: data,
             };
-        case ActionTypes.DETAIL_IS_VISIBLE_MODAL:
-            return {
-                ...state,
-                isDetailModal: data,
-            };
         case ActionTypes.SET_FAVORITE:
             return {
                 ...state,
@@ -212,11 +215,6 @@ export function mainReducer(state: IMainState, { type, data }) {
                     ...state.favoriteList,
                     [data]: !state.favoriteList[data],
                 },
-            };
-        case ActionTypes.TRANSLATIONS_IS_VISIBLE_MODAL:
-            return {
-                ...state,
-                isTranslationsModal: data,
             };
         case ActionTypes.SET_SEARCH_EXPAND:
             return {
@@ -229,15 +227,21 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 interfaceLang: data,
             };
-        case ActionTypes.SET_DETAIL_MODAL:
+        case ActionTypes.SHOW_MODAL_DIALOG:
             return {
                 ...state,
-                detailModal: data,
+                modalDialog: {
+                    ...data,
+                    show: true,
+                },
             };
-        case ActionTypes.SET_TRANSLATIONS_MODAL:
+        case ActionTypes.HIDE_MODAL_DIALOG:
             return {
                 ...state,
-                translationsModal: data,
+                modalDialog: {
+                    ...state.modalDialog,
+                    show: false,
+                },
             };
         case ActionTypes.SET_ALPHABETS:
             const alphabets = {

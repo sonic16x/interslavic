@@ -5,15 +5,9 @@ import './index.scss';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import classNames from 'classnames';
-import { IAlphabets } from 'reducers';
+import { IAlphabets, MODAL_DIALOG_TYPES } from 'reducers';
 import { Clipboard } from 'components/Clipboard';
-import {
-    showDetailAction,
-    setDetailAction,
-    showTranslationsAction,
-    setTranslationsAction,
-    setFavoriteAction,
-} from 'actions';
+import { setFavoriteAction, showModalDialog } from 'actions';
 
 interface IResultsCardProps {
     item: ITranslateResult;
@@ -92,12 +86,16 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
         const showTranslations = React.useCallback(() => {
-            dispatch(setTranslationsAction(index));
-            dispatch(showTranslationsAction());
+            dispatch(showModalDialog({
+                type: MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION,
+                index,
+            }));
         }, [index]);
         const showDetail = React.useCallback(() => {
-            dispatch(setDetailAction(index));
-            dispatch(showDetailAction());
+            dispatch(showModalDialog({
+                type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
+                index,
+            }));
         }, [index]);
         const setFavorite = React.useCallback(() => {
             dispatch(setFavoriteAction(id));

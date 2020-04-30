@@ -1,43 +1,25 @@
-import { hideTranslationsAction, setAlphabetTypeAction } from 'actions';
+import { setAlphabetTypeAction, hideModalDialog } from 'actions';
 import Table from 'components/Table';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { t } from 'translations';
-import ModalDialog from '../ModalDialog';
 import './index.scss';
 import { langs } from 'consts';
 import { validFields } from 'utils/dictionary';
 import { getLatin } from 'utils/getLatin';
 import { getCyrillic } from 'utils/getCyrillic';
+import { IMainState } from 'reducers';
 
 interface ITranslationsModalInternalProps {
     close: () => void;
     item: any;
     alphabets: any;
-    isTranslationsModal: boolean;
     flavorisationType: string;
 }
 
 class TranslationsModalInternal extends React.Component<ITranslationsModalInternalProps> {
-    private closeButtonRef = React.createRef<HTMLButtonElement>();
-
     public render() {
-        const contents = this.renderContents();
-
-        return (
-            <ModalDialog
-                wrapperClassName={'modal-content'}
-                open={!!contents}
-                onOpen={this.onDialogOpened}
-                onClose={this.close}
-            >
-                {contents}
-            </ModalDialog>
-        );
-    }
-
-    private renderContents() {
-        if (!this.props.item || !this.props.isTranslationsModal) {
+        if (!this.props.item) {
             return null;
         }
 
@@ -48,9 +30,8 @@ class TranslationsModalInternal extends React.Component<ITranslationsModalIntern
                         {t('translatesModalTitle')}
                     </div>
                     <button
-                        ref={this.closeButtonRef}
                         className={'modal-dialog__header-close'}
-                        onClick={this.close}
+                        onClick={this.props.close}
                         aria-label={'Close'}
                     >
                         &times;
@@ -113,30 +94,18 @@ class TranslationsModalInternal extends React.Component<ITranslationsModalIntern
         }, []);
         return <Table data={tableData} />;
     }
-
-    private onDialogOpened = () => {
-        const closeButton = this.closeButtonRef.current;
-        if (closeButton) {
-            closeButton.blur();
-        }
-    }
-
-    private close = () => {
-        this.props.close();
-    }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        close: () => dispatch(hideTranslationsAction()),
+        close: () => dispatch(hideModalDialog()),
         setAlphabetType: (type) => dispatch(setAlphabetTypeAction(type)),
     };
 }
 
-function mapStateToProps({translationsModal, results, isTranslationsModal, flavorisationType}) {
+function mapStateToProps({results, flavorisationType, modalDialog}: IMainState) {
     return {
-        item: results[translationsModal],
-        isTranslationsModal,
+        item: results[modalDialog.index],
         flavorisationType,
     };
 }

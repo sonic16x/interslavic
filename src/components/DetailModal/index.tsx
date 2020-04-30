@@ -1,4 +1,4 @@
-import { hideDetailAction, setAlphabetTypeAction } from 'actions';
+import { hideModalDialog, setAlphabetTypeAction } from 'actions';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import Text from 'components/Text';
@@ -24,43 +24,24 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import ModalDialog from '../ModalDialog';
 import './index.scss';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { alphabetTypes } from 'consts';
-import { Clipboard } from 'components/Clipboard';
+import { IMainState } from 'reducers';
 
 interface IDetailModalInternal {
     close: () => void;
     item: any;
     alphabetType: string;
     alphabets: any;
-    isDetailModal: boolean;
     flavorisationType: string;
     setAlphabetType: (type: string) => void;
 }
 
 class DetailModalInternal extends React.Component<IDetailModalInternal> {
-    private closeButtonRef = React.createRef<HTMLButtonElement>();
-
     public render() {
-        const contents = this.renderContents();
-
-        return (
-            <ModalDialog
-                wrapperClassName={'modal-content'}
-                open={!!contents}
-                onOpen={this.onDialogOpened}
-                onClose={this.close}
-            >
-                {contents}
-            </ModalDialog>
-        );
-    }
-
-    private renderContents() {
-        if (!this.props.item || !this.props.isDetailModal) {
-            return;
+        if (!this.props.item) {
+            return null;
         }
 
         const pos = getPartOfSpeech(this.props.item.details);
@@ -70,9 +51,8 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
                 <div className={'modal-dialog__header'}>
                     {this.renderTitle(pos)}
                     <button
-                        ref={this.closeButtonRef}
                         className={'modal-dialog__header-close'}
-                        onClick={this.close}
+                        onClick={this.props.close}
                         aria-label={'Close'}
                     >
                         &times;
@@ -93,17 +73,6 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
                 </footer>
             </>
         );
-    }
-
-    private onDialogOpened = () => {
-        const closeButton = this.closeButtonRef.current;
-        if (closeButton) {
-            closeButton.blur();
-        }
-    }
-
-    private close = () => {
-        this.props.close();
     }
 
     private renderTitle(pos: string) {
@@ -634,17 +603,16 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
 
 function mapDispatchToProps(dispatch) {
     return {
-        close: () => dispatch(hideDetailAction()),
+        close: () => dispatch(hideModalDialog()),
         setAlphabetType: (type) => dispatch(setAlphabetTypeAction(type)),
     };
 }
 
-function mapStateToProps({detailModal, isDetailModal, results, alphabetType, flavorisationType, alphabets}) {
+function mapStateToProps({modalDialog, results, alphabetType, flavorisationType, alphabets}: IMainState) {
     return {
-        item: results[detailModal],
+        item: results[modalDialog.index],
         alphabetType,
         alphabets,
-        isDetailModal,
         flavorisationType,
     };
 }

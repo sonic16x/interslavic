@@ -74,8 +74,10 @@ export const defaultState: IMainState = {
     alphabetType: 'latin',
     page: 'dictionary',
     isLoading: true,
-    isDetailModal: false,
-    isTranslationsModal: false,
+    modalDialog: {
+        type: null,
+        index: null,
+    },
     searchExpanded: false,
     rawResults: [],
     results: [],

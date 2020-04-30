@@ -1,4 +1,4 @@
-import { IMainState } from 'reducers';
+import { IMainState, IModalDialog } from 'reducers';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -14,10 +14,8 @@ export enum ActionTypes {
     CHANGE_ISV_SEARCH_LETTERS = 'CHANGE_ISV_SEARCH_LETTERS',
     POS_FILTER = 'POS_FILTER',
     SET_ALPHABETS = 'SET_ALPHABETS',
-    SET_TRANSLATIONS_MODAL = 'SET_TRANSLATIONS_MODAL',
-    TRANSLATIONS_IS_VISIBLE_MODAL = 'TRANSLATIONS_IS_VISIBLE_MODAL',
-    SET_DETAIL_MODAL = 'SET_DETAIL_MODAL',
-    DETAIL_IS_VISIBLE_MODAL = 'DETAIL_IS_VISIBLE_MODAL',
+    SHOW_MODAL_DIALOG = 'SHOW_MODAL_DIALOG',
+    HIDE_MODAL_DIALOG = 'HIDE_MODAL_DIALOG',
     SET_FAVORITE = 'SET_FAVORITE',
     SET_NOTIFICATION = 'SET_NOTIFICATION',
 }
@@ -29,24 +27,16 @@ export function langAction(data: {from: string, to: string}) {
     };
 }
 
-export function setDetailAction(data: number) {
+export function showModalDialog(data: IModalDialog) {
     return {
-        type: ActionTypes.SET_DETAIL_MODAL,
+        type: ActionTypes.SHOW_MODAL_DIALOG,
         data,
     };
 }
 
-export function showDetailAction() {
+export function hideModalDialog() {
     return {
-        type: ActionTypes.DETAIL_IS_VISIBLE_MODAL,
-        data: true,
-    };
-}
-
-export function setTranslationsAction(data: number) {
-    return {
-        type: ActionTypes.SET_TRANSLATIONS_MODAL,
-        data,
+        type: ActionTypes.HIDE_MODAL_DIALOG,
     };
 }
 
@@ -64,31 +54,10 @@ export function setNotificationAction(data: string) {
     };
 }
 
-export function showTranslationsAction() {
-    return {
-        type: ActionTypes.TRANSLATIONS_IS_VISIBLE_MODAL,
-        data: true,
-    };
-}
-
 export function setAlphabetTypeAction(data: number) {
     return {
         type: ActionTypes.ALPHABET_TYPE,
         data,
-    };
-}
-
-export function hideDetailAction() {
-    return {
-        type: ActionTypes.DETAIL_IS_VISIBLE_MODAL,
-        data: false,
-    };
-}
-
-export function hideTranslationsAction() {
-    return {
-        type: ActionTypes.TRANSLATIONS_IS_VISIBLE_MODAL,
-        data: false,
     };
 }
 
