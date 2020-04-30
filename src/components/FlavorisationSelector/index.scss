@@ -3,5 +3,9 @@
 
   .selector__select {
     width: 50%;
+
+    @media (max-width: 450px) {
+      width: 65%;
+    }
   }
 }

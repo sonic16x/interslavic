@@ -15,12 +15,14 @@
     font-size: 16px;
     box-sizing: border-box;
     line-height: 24px;
-    padding: 6px 28px 6px 12px;
+    padding: 6px 12px 6px 12px;
     border: var(--border);
     border-radius: var(--border-radius-s);
     outline: none;
     min-width: 40%;
     flex: 0 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__another {
