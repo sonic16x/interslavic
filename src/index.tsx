@@ -6,10 +6,11 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { setInitialPage } from 'routing';
 import { getPageFromPath } from 'routing';
 import { setLang } from 'translations';
-import Main from './components/Main';
+import Main from 'components/Main';
 import './index.scss';
-import { Dictionary } from './utils/dictionary';
-import { analyticsMiddleware } from './middlewares/analyticsMiddleware';
+import { Dictionary } from 'utils/dictionary';
+import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
+import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
 
 /* tslint:disable */
 declare global {
@@ -92,23 +93,6 @@ function reduxDevTools() {
     } else {
         return f => f;
     }
-}
-
-function localStorageMiddleware({getState}) {
-    return (next) => (action) => {
-        const result = next(action);
-        if (action.type === 'IS_LOADING') {
-            return result;
-        }
-        const stateForSave = {
-            ...getState(),
-        };
-        delete stateForSave.rawResults;
-        delete stateForSave.results;
-        delete stateForSave.isLoading;
-        localStorage.setItem('reduxState', JSON.stringify(stateForSave));
-        return result;
-    };
 }
 
 function getInitialState(): IMainState {
