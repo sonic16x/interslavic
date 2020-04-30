@@ -101,7 +101,7 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         }, [index]);
         const setFavorite = React.useCallback(() => {
             dispatch(setFavoriteAction(id));
-        }, [index]);
+        }, [id]);
 
         return (
             <div className={'results-card'} tabIndex={0}>
