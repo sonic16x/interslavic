@@ -39,16 +39,32 @@ export default class extends React.Component<ITableProps> {
     private renderRow(row: string[]) {
         return row
             .map((item) => this.parseItem(item))
-            .map(({str, attrs}, i) => (
-                <td
-                    key={i}
-                    className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
-                    colSpan={attrs.w}
-                    rowSpan={attrs.h}
-                    style={{width: attrs.sw}}
-                    dangerouslySetInnerHTML={{__html: str}}
-                />
-            ));
+            .map(({str, attrs}, i) => {
+                if (str.includes('<') || str.includes('&')) {
+                    return (
+                        <td
+                            key={i}
+                            className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
+                            colSpan={attrs.w}
+                            rowSpan={attrs.h}
+                            style={{width: attrs.sw}}
+                            dangerouslySetInnerHTML={{__html: str}}
+                        />
+                    );
+                } else {
+                    return (
+                        <td
+                            key={i}
+                            className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
+                            colSpan={attrs.w}
+                            rowSpan={attrs.h}
+                            style={{width: attrs.sw}}
+                        >
+                            <Clipboard str={str}/>
+                        </td>
+                    );
+                }
+            });
     }
 
     private renderBody() {
