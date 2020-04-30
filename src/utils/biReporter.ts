@@ -1,5 +1,7 @@
-import { IMainState } from '../reducers';
+import { IAlphabets, IMainState } from '../reducers';
 import debounce from 'lodash/debounce';
+import { objectSetToString } from './objectSetToString';
+import { toQueryString } from './toQueryString';
 
 declare function ga(...args: any[]): void;
 
@@ -10,6 +12,9 @@ interface IAnalyticsDimensions {
     searchLanguage: string;
     searchFilterPos: string;
     searchFilterPart: string;
+    interfaceLanguage: string;
+    flavorisationType: string;
+    alphabets: IAlphabets;
 }
 
 export class BiReporter {
@@ -23,15 +28,15 @@ export class BiReporter {
     }
 
     public performanceInit(time: number) {
-        this._sendEvent('performance', 'init', undefined, time);
+        this._sendEvent('performance', 'performance init', undefined, time);
     }
 
     public performanceFID(time: number) {
-        this._sendEvent('performance', 'fid', undefined, time);
+        this._sendEvent('performance', 'performance fid', undefined, time);
     }
 
     public performanceSearch(time: number) {
-        this._sendEvent('performance', 'search', undefined, time);
+        this._sendEvent('performance', 'performance search', undefined, time);
     }
 
     public emptySearch(state: IMainState) {
@@ -46,6 +51,9 @@ export class BiReporter {
             searchLanguage: state.lang.from === 'isv' ? state.lang.to : state.lang.from,
             searchFilterPos: state.posFilter,
             searchFilterPart: state.searchType,
+            interfaceLanguage: state.interfaceLang,
+            alphabets: state.alphabets,
+            flavorisationType: state.flavorisationType,
         });
     }
 
@@ -54,12 +62,31 @@ export class BiReporter {
             return;
         }
 
+        const alphabetsString = objectSetToString(dimensions.alphabets);
+
         ga('set', 'dimension1', dimensions.searchValue);
         ga('set', 'dimension2', dimensions.searchLanguageFrom);
         ga('set', 'dimension3', dimensions.searchLanguageTo);
         ga('set', 'dimension4', dimensions.searchLanguage);
         ga('set', 'dimension5', dimensions.searchFilterPos);
         ga('set', 'dimension6', dimensions.searchFilterPart);
+        ga('set', 'dimension7', dimensions.interfaceLanguage);
+        ga('set', 'dimension8', alphabetsString);
+        ga('set', 'dimension9', dimensions.flavorisationType);
+
+        // NOTE: for Google Analytics ease of filtering (uiLang=isv&fromLang=isv...)
+        const complexStateValue = toQueryString({
+            uiLang: dimensions.interfaceLanguage,
+            alphabets: alphabetsString,
+            fromLang: dimensions.searchLanguageFrom,
+            toLang: dimensions.searchLanguageTo,
+            search: dimensions.searchValue,
+            filterPart: dimensions.searchFilterPart,
+            flavor: dimensions.flavorisationType,
+            filterPos: dimensions.searchFilterPos,
+        });
+
+        ga('set', 'dimension10', complexStateValue);
     }
 
     private _sendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue?: number) {
