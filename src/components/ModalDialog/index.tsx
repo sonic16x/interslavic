@@ -5,6 +5,8 @@ import { IMainState, MODAL_DIALOG_TYPES } from 'reducers';
 import { DetailModal } from 'components/DetailModal';
 import { TranslationsModal } from 'components/TranslationsModal';
 import classNames from 'classnames';
+import { useDispatch } from 'react-redux';
+import { hideModalDialog } from 'actions';
 
 interface IModalDialogInternalProps {
     type: MODAL_DIALOG_TYPES;
@@ -26,6 +28,20 @@ function getModalDialog(type: MODAL_DIALOG_TYPES) {
 const ModalDialogInternal: React.FC<IModalDialogInternalProps> =
     ({type, show}: IModalDialogInternalProps) => {
         const content = getModalDialog(type);
+        const dispatch = useDispatch();
+        const onKeyPress = React.useCallback(({code}) => {
+            if (code === 'Escape') {
+                dispatch(hideModalDialog());
+            }
+        }, [dispatch]);
+
+        React.useEffect(() => {
+            window.addEventListener('keyup', onKeyPress);
+
+            return () => {
+                window.removeEventListener('keyup', onKeyPress);
+            };
+        }, []);
 
         return (
             <div className={classNames('modal-dialog-container', {show})}>
