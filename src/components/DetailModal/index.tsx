@@ -61,17 +61,32 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
                 <div className={'modal-dialog__body'}>
                     {this.renderBody()}
                 </div>
-                <footer className={'modal-dialog__footer'}>
-                    <LineSelector
-                        options={alphabetTypes.filter(({value}) => this.props.alphabets[value]).map((item) => ({
-                            name: t(item.name),
-                            value: item.value,
-                        }))}
-                        value={this.props.alphabetType}
-                        onSelect={(type) => this.props.setAlphabetType(type)}
-                    />
-                </footer>
+                {this.renderFooter()}
             </>
+        );
+    }
+
+    private renderFooter() {
+        const options = alphabetTypes
+            .filter(({value}) => this.props.alphabets[value])
+            .map((item) => ({
+                    name: t(item.name),
+                    value: item.value,
+                }),
+            );
+
+        if (options.length === 1) {
+            return null;
+        }
+
+        return (
+            <footer className={'modal-dialog__footer'}>
+                <LineSelector
+                    options={options}
+                    value={this.props.alphabetType}
+                    onSelect={(type) => this.props.setAlphabetType(type)}
+                />
+            </footer>
         );
     }
 

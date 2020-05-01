@@ -244,6 +244,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 },
             };
         case ActionTypes.SET_ALPHABETS:
+            let alphabetType = state.alphabetType;
             const alphabets = {
                 ...state.alphabets,
                 ...data,
@@ -251,9 +252,13 @@ export function mainReducer(state: IMainState, { type, data }) {
             if (!Object.values(alphabets).some(Boolean)) {
                 alphabets.latin = true;
             }
+            if (!alphabets[state.alphabetType]) {
+                alphabetType = Object.keys(alphabets)[0];
+            }
             return {
                 ...state,
                 alphabets,
+                alphabetType,
             };
         default:
             return state;
