@@ -127,7 +127,7 @@ export class BiReporter {
         this._setCustomDimensions({
             wordId: clipboard ? clipboard.wordId : '',
             cardIndex: clipboard ? clipboard.index : -1,
-            clipboardContent: clipboard.content,
+            clipboardContent: clipboard ? clipboard.content : '',
         });
     }
 
