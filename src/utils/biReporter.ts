@@ -17,10 +17,22 @@ interface IAnalyticsDimensions {
     alphabets: IAlphabets;
 }
 
+interface ICardDetails {
+    index: number;
+    wordId: string;
+    isv: string;
+}
+
 export class BiReporter {
     constructor() {
         this.search = debounce(this.search.bind(this), 3000);
         this.emptySearch = debounce(this.emptySearch.bind(this), 600);
+    }
+
+    public cardInteraction(action: string, details: ICardDetails) {
+        this._setCardDimensions(details);
+        this._sendEvent('card', action, details.isv);
+        this._setCardDimensions(null);
     }
 
     public search(state: IMainState) {
@@ -67,7 +79,7 @@ export class BiReporter {
         ga('set', 'dimension12', '');
     }
 
-    public setDimensions(state: IMainState) {
+    public setSearchDimensions(state: IMainState) {
         this._setGaDimensions({
             searchValue: state.fromText,
             searchLanguageFrom: state.lang.from,
@@ -111,6 +123,15 @@ export class BiReporter {
         });
 
         ga('set', 'dimension10', complexStateValue);
+    }
+
+    private _setCardDimensions(card: ICardDetails | null) {
+        if (typeof ga !== 'function') {
+            return;
+        }
+
+        ga('set', 'dimension11', card ? card.wordId : '');
+        ga('set', 'metric1', card ? card.index : -1);
     }
 
     private _sendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue?: number) {

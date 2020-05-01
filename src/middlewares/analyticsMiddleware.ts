@@ -12,7 +12,7 @@ export function analyticsMiddleware({ getState }) {
             case ActionTypes.SEARCH_TYPE:
             case ActionTypes.LANG:
                 const state: IMainState = getState();
-                biReporter.setDimensions(state);
+                biReporter.setSearchDimensions(state);
 
                 if (state.fromText) {
                     biReporter.search(state);

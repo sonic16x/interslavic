@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { IAlphabets, ILang, MODAL_DIALOG_TYPES } from 'reducers';
 import { Clipboard } from 'components/Clipboard';
 import { setFavoriteAction, showModalDialog } from 'actions';
+import biReporter from 'utils/biReporter';
 
 interface IResultsCardProps {
     item: ITranslateResult;
@@ -98,13 +99,24 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         const id = Dictionary.getField(item.raw, 'id').toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
+        const cardBiInfo = {
+            wordId: id,
+            isv: item.raw[0],
+            index,
+        };
+
+        const reportClick = React.useCallback(() => {
+            biReporter.cardInteraction('click card', cardBiInfo);
+        }, [id, index]);
         const showTranslations = React.useCallback(() => {
+            biReporter.cardInteraction('show forms', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION,
                 index,
             }));
         }, [index]);
         const showDetail = React.useCallback(() => {
+            biReporter.cardInteraction('show translations', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
                 index,
@@ -115,7 +127,7 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         }, [id]);
 
         return (
-            <div className={'results-card'} tabIndex={0}>
+            <div className={'results-card'} tabIndex={0} onClick={reportClick}>
                 <div className={'results-card__translate'}>
                     {lang.from !== 'isv' ? (
                         <Clipboard
