@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { IAlphabets, ILang, MODAL_DIALOG_TYPES } from 'reducers';
 import { Clipboard } from 'components/Clipboard';
 import { setFavoriteAction, showModalDialog } from 'actions';
-import biReporter from 'utils/biReporter';
+import { biReporter, ICardAnalytics } from 'utils/biReporter';
 
 interface IResultsCardProps {
     item: ITranslateResult;
@@ -99,9 +99,9 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         const id = Dictionary.getField(item.raw, 'id').toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
-        const cardBiInfo = {
+        const cardBiInfo: ICardAnalytics = {
             wordId: id,
-            isv: item.raw[0],
+            isv: Dictionary.getField(item.raw, 'isv'),
             index,
         };
 

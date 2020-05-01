@@ -1,6 +1,6 @@
 import { isLoadingAction, runSearch } from 'actions';
 import { dataDelimiter, Dictionary } from 'utils/dictionary';
-import biReporter from 'utils/biReporter';
+import { biReporter } from 'utils/biReporter';
 
 export function fetchDictionary(dispatch) {
     const startFidTime = performance.now();

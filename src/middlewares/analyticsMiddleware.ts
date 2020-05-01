@@ -1,5 +1,5 @@
 import { ActionTypes } from 'actions';
-import biReporter from 'utils/biReporter';
+import { biReporter } from 'utils/biReporter';
 import { IMainState } from 'reducers';
 
 export function analyticsMiddleware({ getState }) {
@@ -19,6 +19,8 @@ export function analyticsMiddleware({ getState }) {
 
                     if (state.results.length === 0) {
                         biReporter.emptySearch(state);
+                    } else {
+                        biReporter.searchResults(state.results);
                     }
                 }
                 break;

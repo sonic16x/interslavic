@@ -4,7 +4,7 @@ import { setNotificationAction } from 'actions';
 import { t } from 'translations';
 import './index.scss';
 import classNames from 'classnames';
-import biReporter from 'utils/biReporter';
+import { biReporter, IClipboardAnalytics } from 'utils/biReporter';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
 
 interface IClipboardProps {
@@ -29,23 +29,19 @@ export const Clipboard: React.FC<IClipboardProps> =
             if (type && typeof index !== 'undefined') {
                 const id = Dictionary.getField(item.raw, 'id').toString();
 
+                const clipboardDetails: IClipboardAnalytics = {
+                    wordId: id,
+                    isv: Dictionary.getField(item.raw, 'isv'),
+                    content: str,
+                    index,
+                    lang,
+                };
+
                 if (type === 'card') {
-                    biReporter.clipboardCard(
-                        str,
-                        id,
-                        index,
-                        item.raw[0],
-                        lang,
-                    );
+                    biReporter.clipboardCard(clipboardDetails);
                 }
                 if (type === 'modal') {
-                    biReporter.clipboardModal(
-                        str,
-                        id,
-                        index,
-                        item.raw[0],
-                        lang,
-                    );
+                    biReporter.clipboardModal(clipboardDetails);
                 }
             }
 
