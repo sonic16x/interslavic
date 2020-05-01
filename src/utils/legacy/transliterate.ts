@@ -1822,7 +1822,7 @@ function nmsify (iW)
     iW = iW.replace (/ù/g,"ŭ");
     iW = iW.replace (/[éē]/g,"e");
     iW = iW.replace (/[ĕëè]/g,"ė");
-    iW = iW.replace (/œóô/g,"o");
+    iW = iW.replace (/[œóô]/g,"o");
     iW = iW.replace (/[ŏöò]/g,"ȯ");
     iW = iW.replace (/ý/g,"y");
     iW = iW.replace (/ł/g,"l");
