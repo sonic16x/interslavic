@@ -32,6 +32,7 @@ html, body {
 }
 
 a {
+  display: inline-block !important;
   cursor: pointer;
   color: var(--primary-color);
   text-decoration: none;

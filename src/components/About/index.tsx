@@ -35,6 +35,7 @@ export const About: React.FC =
                         >
                             Facebook community
                         </a>
+                        <br/>
                         <a
                             title={'Interslavic Language Portal'}
                             href={'http://interslavic-language.org/'}
@@ -42,6 +43,7 @@ export const About: React.FC =
                         >
                             interslavic-language.org
                         </a>
+                        <br/>
                         <a
                             title={'Interslavic journal'}
                             href={'http://slovjani.info/'}
