@@ -25,6 +25,7 @@
   }
 
   &__text {
+    text-align: center;
     padding: 15px;
     font-size: 16px;
   }
@@ -34,7 +35,7 @@
   }
 
   &__links {
-    display: flex;
+    text-align: center;
     margin-bottom: 10px;
   }
 
