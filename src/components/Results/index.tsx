@@ -40,7 +40,7 @@ const ResultsInternal: React.FC<IResultsInternalProps> =
                         alphabets={alphabets}
                         key={index}
                         index={index}
-                        lang={lang.to}
+                        lang={lang}
                         isFavorite={favoriteList[Dictionary.getField(item.raw, 'id').toString()]}
                     />
                 ))}

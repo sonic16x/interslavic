@@ -43,6 +43,30 @@ export class BiReporter {
         this._sendEvent('search', `empty ${state.lang.from}`, state.fromText);
     }
 
+    public clipboardCard(clipboardContent: string, wordId: string, cardIndex: number, word, lang) {
+        ga('set', 'metric1', cardIndex.toString());
+        ga('set', 'dimension11', wordId);
+        ga('set', 'dimension12', clipboardContent);
+
+        this._sendEvent('clipboard card', `card copy ${lang}`, word);
+
+        ga('set', 'metric1', '-1');
+        ga('set', 'dimension11', '');
+        ga('set', 'dimension12', '');
+    }
+
+    public clipboardModal(clipboardContent: string, wordId: string, cardIndex: number, word, lang) {
+        ga('set', 'metric1', cardIndex.toString());
+        ga('set', 'dimension11', wordId);
+        ga('set', 'dimension12', clipboardContent);
+
+        this._sendEvent('clipboard modal', `modal copy ${lang}`, word);
+
+        ga('set', 'metric1', '-1');
+        ga('set', 'dimension11', '');
+        ga('set', 'dimension12', '');
+    }
+
     public setDimensions(state: IMainState) {
         this._setGaDimensions({
             searchValue: state.fromText,
