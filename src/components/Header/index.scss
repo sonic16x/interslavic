@@ -152,8 +152,25 @@
       }
     }
 
+    &__logo {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding-right: 33px;
+
+      &-text {
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
     &__show-menu-button {
       display: block;
+      position: absolute;
+      right: 16px;
+      top: 12px;
+      background: #343a40;
     }
   }
 }

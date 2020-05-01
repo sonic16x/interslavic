@@ -29,7 +29,9 @@ const HeaderInternal: React.FC<IHeaderPropsInternal> =
                             setMenuIsVisible(false);
                         }}
                     />
-                    {t('mainTitle')}
+                    <span className={'header__logo-text'}>
+                        {t('mainTitle')}
+                    </span>
                 </h1>
                 <button
                     type={'button'}

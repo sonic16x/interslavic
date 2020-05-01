@@ -2085,9 +2085,9 @@
     "bg": ""
   },
   "clipboardCopyNotification": {
-    "en": "Text \"__str__\" copied to clipboard",
-    "isv": "Tekst \"__str__\" je skopijovany v bufernu pamet",
-    "ru": "Текст \"__str__\" скопирован в буфер обмена",
+    "en": "Text \"{__str__}\" copied to clipboard",
+    "isv": "Tekst \"{__str__}\" je skopijovany v bufernu pamet",
+    "ru": "Текст \"{__str__}\" скопирован в буфер обмена",
     "uk": "",
     "be": "",
     "pl": "",
