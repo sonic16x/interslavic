@@ -34,6 +34,9 @@ const ModalDialogInternal: React.FC<IModalDialogInternalProps> =
                 dispatch(hideModalDialog());
             }
         }, [dispatch]);
+        const onBackdropClick = React.useCallback(() => {
+            dispatch(hideModalDialog());
+        }, [dispatch]);
 
         React.useEffect(() => {
             window.addEventListener('keyup', onKeyPress);
@@ -45,7 +48,7 @@ const ModalDialogInternal: React.FC<IModalDialogInternalProps> =
 
         return (
             <div className={classNames('modal-dialog-container', {show})}>
-                <div className={'modal-dialog-back'} />
+                <div className={'modal-dialog-back'} onClick={onBackdropClick}/>
                 <div className={'modal-dialog'}>
                     {content}
                 </div>
