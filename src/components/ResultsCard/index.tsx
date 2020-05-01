@@ -129,25 +129,25 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         return (
             <div className={'results-card'} tabIndex={0} onClick={reportClick}>
                 <div className={'results-card__translate'}>
-                    {lang.from !== 'isv' ? (
-                        <Clipboard
-                            str={item.translate}
-                            index={index}
-                            type={'card'}
-                            item={item}
-                            lang={lang.from}
-                        />
-                    ) : renderOriginal(item, alphabets, index)}
-                </div>
-                <div className={'results-card__details'}>{item.details}</div>
-                <div className={'results-card__original'}>
-                    {lang.from === 'isv' ? (
+                    {lang.to !== 'isv' ? (
                         <Clipboard
                             str={item.translate}
                             index={index}
                             type={'card'}
                             item={item}
                             lang={lang.to}
+                        />
+                    ) : renderOriginal(item, alphabets, index)}
+                </div>
+                <div className={'results-card__details'}>{item.details}</div>
+                <div className={'results-card__original'}>
+                    {lang.to === 'isv' ? (
+                        <Clipboard
+                            str={item.translate}
+                            index={index}
+                            type={'card'}
+                            item={item}
+                            lang={lang.from}
                         />
                     ) : renderOriginal(item, alphabets, index)}
                 </div>
