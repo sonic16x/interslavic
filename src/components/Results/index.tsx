@@ -13,17 +13,18 @@ interface IResultsInternalProps {
     alphabets: IAlphabets;
     lang: ILang;
     empty: boolean;
+    posFilter: string;
     favoriteList: {
         [key: string]: boolean;
     };
 }
 
 const ResultsInternal: React.FC<IResultsInternalProps> =
-    ({results, lang, alphabets, favoriteList, empty}: IResultsInternalProps) => {
+    ({results, lang, alphabets, favoriteList, empty, posFilter}: IResultsInternalProps) => {
         if (!results || !results.length) {
             if (empty) {
                 return (
-                    <ResultsEmpty />
+                    <ResultsEmpty showReset={posFilter !== ''}/>
                 );
             }
 
@@ -61,6 +62,7 @@ function mapStateToProps({results, lang, alphabets, favoriteList, fromText, posF
         lang,
         alphabets,
         favoriteList,
+        posFilter,
         empty: results.length === 0 && fromText.length !== 0,
     };
 }

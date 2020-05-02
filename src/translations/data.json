@@ -2144,7 +2144,22 @@
     "mk": "",
     "bg": ""
   },
-  "resultsNotFoundFilters": {
+  "resultsNotFoundMessage": {
+    "en": "Try to change method of search",
+    "isv": "",
+    "ru": "Попробуйте изменить режим поиска",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "resultsNotFoundMessageFilters": {
     "en": "Try to change method of search or reset filters",
     "isv": "",
     "ru": "Попробуйте изменить режим поиска или сбросить фильтры",

@@ -4,24 +4,30 @@ import { t } from 'translations';
 import './index.scss';
 import { posFilterAction } from 'actions';
 
-export const ResultsEmpty: React.FC =
-    () => {
+interface IResultsEmptyProps {
+    showReset?: boolean;
+}
+
+export const ResultsEmpty: React.FC<IResultsEmptyProps> =
+    ({showReset}: IResultsEmptyProps) => {
         const dispatch = useDispatch();
 
         return (
             <div className={'results-empty'}>
                 {t('resultsNotFound')} :(
                 <div className={'results-empty__filter'}>
-                    {t('resultsNotFoundFilters')}
+                    {t(showReset ? 'resultsNotFoundMessageFilters' : 'resultsNotFoundMessage')}
                 </div>
-                <button
-                    type={'button'}
-                    className={'results-empty__button'}
-                    aria-label={'Reset filters'}
-                    onClick={() => dispatch(posFilterAction(''))}
-                >
-                    {t('resultsNotFoundResetFilters')}
-                </button>
+                {showReset && (
+                    <button
+                        type={'button'}
+                        className={'results-empty__button'}
+                        aria-label={'Reset filters'}
+                        onClick={() => dispatch(posFilterAction(''))}
+                    >
+                        {t('resultsNotFoundResetFilters')}
+                    </button>
+                )}
             </div>
         );
     };
