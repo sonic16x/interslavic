@@ -19,6 +19,10 @@
     pointer-events: none;
   }
 
+  &__app-name {
+
+  }
+
   &__title {
     font-size: 24px;
     font-weight: 600;
@@ -28,6 +32,7 @@
     text-align: center;
     padding: 15px;
     font-size: 16px;
+    max-width: 650px;
   }
 
   &__link {

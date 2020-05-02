@@ -14,6 +14,9 @@ export const GDPR: React.FC =
                 className={classNames('gdpr-alert', {hide: !visible})}
                 role={'alert'}
             >
+                <h2 className={'gdpr-alert__app-name'}>
+                    {t('mainTitle')}
+                </h2>
                 <div className={'gdpr-alert__title'}>{t('gdprAlertTitle')}</div>
                 <div className={'gdpr-alert__text'}>{t('gdprAlertText')}</div>
                 <div className={'gdpr-alert__links'}>
