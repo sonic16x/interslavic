@@ -30,6 +30,7 @@ export const Clipboard: React.FC<IClipboardProps> =
                 const id = Dictionary.getField(item.raw, 'id').toString();
 
                 const clipboardDetails: IClipboardAnalytics = {
+                    checked: item.checked,
                     wordId: id,
                     isv: Dictionary.getField(item.raw, 'isv'),
                     content: str,

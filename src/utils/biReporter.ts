@@ -10,6 +10,7 @@ export interface ICardAnalytics {
     index: number;
     wordId: string;
     isv: string;
+    checked: boolean;
 }
 
 export interface IClipboardAnalytics extends ICardAnalytics {
@@ -20,10 +21,10 @@ export interface IClipboardAnalytics extends ICardAnalytics {
 export class BiReporter {
     // tslint:disable-next-line:no-empty
     private ga = typeof ga === 'function' ? ga : () => {};
+    private shownCards = new Set<string>();
 
     constructor() {
         this.search = debounce(this.search.bind(this), 3000);
-        this.searchResults = debounce(this.searchResults.bind(this), 3000);
         this.emptySearch = debounce(this.emptySearch.bind(this), 600);
     }
 
@@ -35,25 +36,18 @@ export class BiReporter {
         this._sendEvent('search', `empty ${state.lang.from}`, state.fromText);
     }
 
-    public searchResults(results: ITranslateResult[]) {
-        for (let i = 0; i < 3; i++) {
-            const result = results[i];
-
-            if (result) {
-                const card: ICardAnalytics = {
-                    index: i,
-                    isv: Dictionary.getField(result.raw, 'isv'),
-                    wordId: Dictionary.getField(result.raw, 'id'),
-                };
-
-                this._setCardDimensions(card);
-                this._sendEvent('card', `show card`, card.isv);
-                if (!result.checked) {
-                    this._sendEvent('card', `show autotranslate`, card.isv);
-                }
-                this._setCardDimensions(null);
-            }
+    public showCard(card: ICardAnalytics) {
+        if (this.shownCards.has(card.wordId)) {
+            return;
         }
+
+        this._setCardDimensions(card);
+        this._sendEvent('card', `show card`, card.isv);
+        if (!card.checked) {
+            this._sendEvent('card', `show autotranslate`, card.isv);
+        }
+        this._setCardDimensions(null);
+        this.shownCards.add(card.wordId);
     }
 
     public performanceInit(time: number) {

@@ -19,8 +19,6 @@ export function analyticsMiddleware({ getState }) {
 
                     if (state.results.length === 0) {
                         biReporter.emptySearch(state);
-                    } else {
-                        biReporter.searchResults(state.results);
                     }
                 }
                 break;
