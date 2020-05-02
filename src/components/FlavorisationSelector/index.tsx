@@ -12,23 +12,23 @@ interface IFlavorisationSelectorInternalProps {
 
 const flavorisationTypes = [
     {
-        name: 'Etimologičny pravopis',
+        name: 'flavEtymological',
         value: '2',
     },
     {
-        name: 'Medžuslovjansky',
+        name: 'flavStandard',
         value: '3',
     },
     {
-        name: 'Slovianto',
+        name: 'flavSlovianto',
         value: '4',
     },
     {
-        name: 'Sěverny variant',
+        name: 'flavNorthern',
         value: 'S',
     },
     {
-        name: 'Južny variant',
+        name: 'flavSouthern',
         value: 'J',
     },
 ];
@@ -37,7 +37,10 @@ const FlavorisationSelectorInternal: React.FC<IFlavorisationSelectorInternalProp
     ({changeFlavorisationType, flavorisationType}: IFlavorisationSelectorInternalProps) => (
         <Selector
             className={'flavorisation-selector'}
-            options={flavorisationTypes}
+            options={flavorisationTypes.map(({name, value}) => ({
+                name: t(name),
+                value,
+            }))}
             onSelect={(flavorisationType) => changeFlavorisationType(flavorisationType)}
             value={flavorisationType}
             label={t('flavorisation')}
