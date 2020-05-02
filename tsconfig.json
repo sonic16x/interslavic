@@ -12,7 +12,13 @@
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "paths": {}
+    "paths": {},
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.collection"
+    ]
   },
   "exclude": [
     "node_modules",

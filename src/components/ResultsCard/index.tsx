@@ -9,6 +9,7 @@ import { IAlphabets, ILang, MODAL_DIALOG_TYPES } from 'reducers';
 import { Clipboard } from 'components/Clipboard';
 import { setFavoriteAction, showModalDialog } from 'actions';
 import { biReporter, ICardAnalytics } from 'utils/biReporter';
+import {useIntersect} from "../../hooks/useIntersect";
 
 interface IResultsCardProps {
     item: ITranslateResult;
@@ -100,10 +101,20 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
         const cardBiInfo: ICardAnalytics = {
+            checked: item.checked,
             wordId: id,
             isv: Dictionary.getField(item.raw, 'isv'),
             index,
         };
+
+        const onShown = React.useCallback((entry) => {
+            biReporter.showCard(cardBiInfo);
+        }, [id, index]);
+
+        const [setRef] = useIntersect({
+            threshold: 0.5,
+            onShown,
+        });
 
         const reportClick = React.useCallback(() => {
             biReporter.cardInteraction('click card', cardBiInfo);
@@ -127,7 +138,7 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         }, [id]);
 
         return (
-            <div className={'results-card'} tabIndex={0} onClick={reportClick}>
+            <div className={'results-card'} ref={setRef} tabIndex={0} onClick={reportClick}>
                 <div className={'results-card__translate'}>
                     {lang.to !== 'isv' ? (
                         <Clipboard
