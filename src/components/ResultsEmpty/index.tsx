@@ -14,7 +14,7 @@ export const ResultsEmpty: React.FC<IResultsEmptyProps> =
 
         return (
             <div className={'results-empty'}>
-                {t('resultsNotFound')} :(
+                {t('resultsNotFound')} <span className={'results-empty__smile'}>:(</span>
                 <div className={'results-empty__filter'}>
                     {t(showReset ? 'resultsNotFoundMessageFilters' : 'resultsNotFoundMessage')}
                 </div>

@@ -7,6 +7,10 @@
   margin-top: 100px;
   color: var(--muted-text-color);
 
+  &__smile {
+    white-space: nowrap;
+  }
+
   &__filter {
     margin-top: 5px;
     font-size: 24px;
