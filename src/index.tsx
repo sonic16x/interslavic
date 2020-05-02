@@ -54,6 +54,7 @@ if (process.env.NODE_ENV === 'production') {
         clickmap: true,
         trackLinks: true,
         accurateTrackBounce: true,
+        webvisor: true
     });
 }
 
