@@ -1,3 +1,26 @@
-.selector select {
-  width: 100px;
+@import "src/index";
+
+.selector {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 18px;
+  }
+
+  &__select {
+    background: #fff;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 6px 28px 6px 12px;
+    border: var(--border);
+    border-radius: var(--border-radius-s);
+    outline: none;
+  }
 }

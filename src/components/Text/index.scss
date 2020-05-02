@@ -1,32 +1,39 @@
-@mixin customText {
+@mixin custom-text {
   span {
     &.p {
       color: #9C27B0;
     }
+
     &.r {
       color: #f44336;
     }
+
     &.g {
       color: #4CAF50;
     }
+
     &.b {
       color: #3F51B5;
     }
+
     &.s {
       color: #9E9E9E;
     }
+
     &.k {
       color: #a0522d;
     }
+
     &.B {
       font-weight: bold;
     }
+
     &.i {
       font-style: italic;
     }
   }
 }
 
-.customText {
-  @include customText;
+.custom-text {
+  @include custom-text;
 }

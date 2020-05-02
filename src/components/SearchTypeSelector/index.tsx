@@ -1,5 +1,5 @@
 import { searchTypeAction } from 'actions';
-import { connect } from 'connect';
+import { connect } from 'react-redux';
 import * as React from 'react';
 import { t } from 'translations';
 import { LineSelector } from '../LineSelector';

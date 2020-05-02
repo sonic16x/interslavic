@@ -1,14 +1,33 @@
 import { ActionTypes } from 'actions';
-import { defaultState } from 'index';
 import { getPathFromPage, goToPage } from 'routing';
 import { setLang } from 'translations';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
+import { biReporter } from 'utils/biReporter';
+
+export interface IAlphabets {
+    latin: boolean;
+    cyrillic: boolean;
+    glagolitic: boolean;
+}
+
+export interface ILang {
+    from: string;
+    to: string;
+}
+
+export enum MODAL_DIALOG_TYPES {
+    MODAL_DIALOG_TRANSLATION = 'MODAL_DIALOG_TRANSLATION',
+    MODAL_DIALOG_WORD_FORMS = 'MODAL_DIALOG_WORD_FORMS',
+}
+
+export interface IModalDialog {
+    type: MODAL_DIALOG_TYPES;
+    index: number;
+    show?: boolean;
+}
 
 export interface IMainState {
-    lang: {
-        from: string;
-        to: string;
-    };
+    lang: ILang;
     interfaceLang: string;
     isvSearchLetters: {
         from: string[];
@@ -20,16 +39,15 @@ export interface IMainState {
     flavorisationType: string;
     page: string;
     isLoading: boolean;
-    isDetailModal: boolean;
     searchExpanded: boolean;
     alphabetType: string;
-    detailModal?: number;
     rawResults: string[][];
     results: ITranslateResult[];
-    alphabets: {
-        latin: boolean;
-        cyrillic: boolean;
-        glagolitic: boolean;
+    alphabets: IAlphabets;
+    notification?: string;
+    modalDialog: IModalDialog;
+    favoriteList: {
+        [key: string]: boolean;
     };
 }
 
@@ -38,13 +56,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.LANG: {
             const { fromText, flavorisationType, searchType, posFilter } = state;
             const lang = data;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 lang,
@@ -55,13 +76,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.SEARCH_TYPE: {
             const { flavorisationType, lang, fromText, posFilter } = state;
             const searchType = data;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 searchType,
@@ -72,13 +96,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.FROM_TEXT: {
             const { searchType, flavorisationType, lang, posFilter } = state;
             const fromText = data;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 fromText,
@@ -88,13 +115,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.RUN_SEARCH: {
             const { searchType, flavorisationType, lang, fromText, posFilter } = state;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 rawResults,
@@ -104,13 +134,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.CHANGE_ISV_SEARCH_LETTERS: {
             const { searchType, flavorisationType, lang, fromText, posFilter} = state;
             const isvSearchLetters = Dictionary.changeIsvSearchLetters(data);
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 isvSearchLetters,
@@ -120,13 +153,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.FLAVORISATION_TYPE: {
             const { searchType, lang, fromText, posFilter } = state;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType: data,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 flavorisationType: data,
@@ -135,13 +171,16 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.POS_FILTER: {
             const { searchType, lang, fromText, flavorisationType } = state;
-            const rawResults = Dictionary.translate({
+            const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 flavorisationType,
                 posFilter: data,
             });
+
+            biReporter.performanceSearch(translateTime);
+
             return {
                 ...state,
                 posFilter: data,
@@ -154,6 +193,11 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 page: data,
             };
+        case ActionTypes.SET_NOTIFICATION:
+            return {
+                ...state,
+                notification: data,
+            };
         case ActionTypes.IS_LOADING:
             return {
                 ...state,
@@ -164,10 +208,13 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 alphabetType: data,
             };
-        case ActionTypes.DETAIL_IS_VISIBLE:
+        case ActionTypes.SET_FAVORITE:
             return {
                 ...state,
-                isDetailModal: data,
+                favoriteList: {
+                    ...state.favoriteList,
+                    [data]: !state.favoriteList[data],
+                },
             };
         case ActionTypes.SET_SEARCH_EXPAND:
             return {
@@ -180,12 +227,24 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 interfaceLang: data,
             };
-        case ActionTypes.SET_DETAIL:
+        case ActionTypes.SHOW_MODAL_DIALOG:
             return {
                 ...state,
-                detailModal: data,
+                modalDialog: {
+                    ...data,
+                    show: true,
+                },
+            };
+        case ActionTypes.HIDE_MODAL_DIALOG:
+            return {
+                ...state,
+                modalDialog: {
+                    ...state.modalDialog,
+                    show: false,
+                },
             };
         case ActionTypes.SET_ALPHABETS:
+            let alphabetType = state.alphabetType;
             const alphabets = {
                 ...state.alphabets,
                 ...data,
@@ -193,9 +252,13 @@ export function mainReducer(state: IMainState, { type, data }) {
             if (!Object.values(alphabets).some(Boolean)) {
                 alphabets.latin = true;
             }
+            if (!alphabets[state.alphabetType]) {
+                alphabetType = Object.keys(alphabets)[0];
+            }
             return {
                 ...state,
                 alphabets,
+                alphabetType,
             };
         default:
             return state;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './index.scss';
+import classNames from 'classnames';
 
 export interface ISelectorOption {
     name: string;
@@ -9,34 +10,27 @@ export interface ISelectorOption {
 interface ISelectorProps {
     onSelect: (option: string) => void;
     options: ISelectorOption[];
+    className?: string;
     value?: string;
     label?: string;
 }
 
-export class Selector extends React.Component<ISelectorProps> {
-    public render() {
-        const id = this.props.label ? this.props.label.toLowerCase().replace(/ /, '_') : null;
+export const Selector: React.FC<ISelectorProps> =
+    (props: ISelectorProps) => {
+        const {onSelect, options, className, value, label} = props;
+        const id = label ? label.toLowerCase().replace(/ /, '_') : null;
+
         return (
-            <>
-                {this.props.label ? <label htmlFor={id}>{this.props.label}</label> : ''}
+            <div className={classNames('selector', className)}>
+                {label && <label className={'selector__title'} htmlFor={id}>{label}</label>}
                 <select
                     id={id}
-                    value={this.getDefaultValue()}
-                    className={'form-control custom-select'}
-                    onChange={(e: any) => this.props.onSelect(this.props.options[e.currentTarget.selectedIndex].value)}
+                    value={value}
+                    className={'selector__select'}
+                    onChange={(e: any) => onSelect(options[e.currentTarget.selectedIndex].value)}
                 >
-                    {this.props.options.map((option, i) => <option key={i} value={option.value}>{option.name}</option>)}
+                    {options.map((option, i) => <option key={i} value={option.value}>{option.name}</option>)}
                 </select>
-            </>
+            </div>
         );
-    }
-    private getDefaultValue() {
-        if (this.props.value) {
-            return this.props.value;
-        }
-        if (this.props.options.length) {
-            return this.props.options[0].value;
-        }
-        return '';
-    }
-}
+    };

@@ -1,43 +1,45 @@
 import * as React from 'react';
 import { t } from 'translations';
+import classNames from 'classnames';
 import './index.scss';
 
-interface IGDPRState {
-    show: boolean;
-}
+export const GDPR: React.FC =
+    () => {
+        const [visible, setVisible] = React.useState(localStorage.getItem('analyticsAlert') !== 'false');
+        const yandexMetrikaLink = 'https://yandex.com/legal/metrica_agreement/';
+        const googleAnalyticsLink = 'https://marketingplatform.google.com/about/analytics/terms/us/';
 
-export default class extends React.Component<{}, IGDPRState> {
-    constructor(props) {
-        super(props);
-        const showAlert = localStorage.getItem('gdprAlert') !== 'false';
-        this.state = {
-            show: showAlert,
-        };
-    }
-    public render() {
-        const link = 'https://yandex.com/legal/metrica_agreement/';
         return (
             <div
-                className={'alert alert-warning gdprAlert' + (!this.state.show ? ' hide' : '')}
+                className={classNames('gdpr-alert', {hide: !visible})}
                 role={'alert'}
             >
-                <strong>{t('gdprAlert')}&nbsp;</strong>
-                <div className={'gdprActions'}>
-                    <a rel={'noreferrer'} href={link} target={'_blank'}>{t('gdprAlertReadMore')}</a>
-                    <button
-                        type={'button'}
-                        className={'btn btn-primary'}
-                        aria-label={'Hide alert'}
-                        onClick={() => this.hideAlert()}
-                    >
-                        Ok
-                    </button>
+                <h2 className={'gdpr-alert__app-name'}>
+                    {t('mainTitle')}
+                </h2>
+                <div className={'gdpr-alert__title'}>{t('gdprAlertTitle')}</div>
+                <div className={'gdpr-alert__text'}>{t('gdprAlertText')}</div>
+                <div className={'gdpr-alert__links'}>
+                    {t('gdprAlertReadMore')}
+                    <a className={'gdpr-alert__link'} rel={'noreferrer'} href={yandexMetrikaLink} target={'_blank'}>
+                        {t('gdprAlertYandex')}
+                    </a>
+                    ,
+                    <a className={'gdpr-alert__link'} rel={'noreferrer'} href={googleAnalyticsLink} target={'_blank'}>
+                        {t('gdprAlertGoogle')}
+                    </a>
                 </div>
+                <button
+                    type={'button'}
+                    className={'gdpr-alert__button'}
+                    aria-label={'Hide alert'}
+                    onClick={() => {
+                        setVisible(false);
+                        localStorage.setItem('analyticsAlert', 'false');
+                    }}
+                >
+                    {t('gdprAlertOk')}
+                </button>
             </div>
         );
-    }
-    private hideAlert() {
-        this.setState({show: false});
-        localStorage.setItem('gdprAlert', 'false');
-    }
-}
+    };

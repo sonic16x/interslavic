@@ -1,11 +1,11 @@
 import { posFilterAction } from 'actions';
 import { Selector } from 'components/Selector';
-import { connect } from 'connect';
+import { connect } from 'react-redux';
 import * as React from 'react';
 import { t } from 'translations';
 import './index.scss';
 
-interface IPOSSelectorProps {
+interface IPOSSelectorInternalProps {
     posFilter: string;
     changePosFilter: (pos: string) => void;
 }
@@ -54,23 +54,19 @@ const POSList = [
 
 ];
 
-class POSSelector extends React.Component<IPOSSelectorProps> {
-    public render() {
-        return (
-            <div className={'posSelector'}>
-                <Selector
-                    options={POSList.map(({name, value}) => ({
-                        name: t(name),
-                        value,
-                    }))}
-                    onSelect={(pos) => this.props.changePosFilter(pos)}
-                    value={this.props.posFilter}
-                    label={t('partOfSpeech')}
-                />
-            </div>
-        );
-    }
-}
+const POSSelectorInternal: React.FC<IPOSSelectorInternalProps> =
+    ({changePosFilter, posFilter}: IPOSSelectorInternalProps) => (
+        <Selector
+            className={'pos-selector'}
+            options={POSList.map(({name, value}) => ({
+                name: t(name),
+                value,
+            }))}
+            onSelect={(pos) => changePosFilter(pos)}
+            value={posFilter}
+            label={t('partOfSpeech')}
+        />
+    );
 
 function mapStateToProps({posFilter}) {
     return {
@@ -84,4 +80,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(POSSelector);
+export const POSSelector = connect(mapStateToProps, mapDispatchToProps)(POSSelectorInternal);

@@ -783,5 +783,14 @@ function transliterateBack(iW) {
         .replace(/x/, 'j')
         .replace(/-/g, '')
         .replace(/—/g, '-')
+        //
+        .replace(/lı/g, "ľ")
+        .replace(/nı/g, "ń")
+        .replace(/rı/g, "ŕ")
+        .replace(/tı/g, "ť")
+        .replace(/dı/g, "ď")
+        .replace(/sı/g, "ś")
+        .replace(/zı/g, "ź")
+        .replace(/ı/g, "")
     ;
 }

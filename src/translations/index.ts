@@ -1,10 +1,21 @@
 import translations from 'translations/data.json';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getCyrillic } from 'utils/getCyrillic';
-import { getLatin } from '../utils/getLatin';
+import { getLatin } from 'utils/getLatin';
+
 let currentLang;
 
-export function t(key) {
+interface ITranslateParams {
+    [key: string]: string;
+}
+
+function replaceParams(str, params?: ITranslateParams) {
+    return Object.keys(params).reduce((acc, paramKey) => (
+        acc.replace(/\{|\}/g, '').replace(new RegExp(`__${paramKey}__`, 'g'), params[paramKey])
+    ), str);
+}
+
+function tRaw(key) {
     const [lang, alphabet] = currentLang.split('-');
 
     if (lang === 'isv') {
@@ -33,6 +44,16 @@ export function t(key) {
         return translations[key].en;
     } else {
         return key;
+    }
+}
+
+export function t(key, params?: ITranslateParams) {
+    const rawTranslate = tRaw(key);
+
+    if (params) {
+        return replaceParams(rawTranslate, params);
+    } else {
+        return rawTranslate;
     }
 }
 

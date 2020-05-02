@@ -1,4 +1,6 @@
-.grammarContainer {
+@import "src/index";
+
+.grammar-container {
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -6,54 +8,72 @@
 }
 
 .grammar {
-  width: 100%;
-  padding-top: 15px;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
   margin-right: auto;
   margin-left: auto;
   background: #fff;
-  //transition: opacity 2s linear;
   pointer-events: all;
-  //opacity: 1;
   text-align: center;
+  max-width: 1024px;
+  padding: 16px 8px;
+
   p {
-    margin-bottom: 0.3rem;
+    margin-bottom: 5px;
   }
+
   .tablesRow {
     display: flex;
     flex-direction: row;
   }
+
   .title {
     text-align: center;
     font-weight: bold;
     color: #455A64;
-    font-size: 1.3rem;
+    font-size: 20px;
   }
+
   .link {
-    padding: 0.3rem 1.25rem;
+    padding: 5px 20px;
+  }
+
+  &__content {
+    display: flex;
+    flex-flow: column;
+    font-size: 15px;
+    z-index: 50;
+
+    .card-title {
+      margin-bottom: 2px;
+    }
+
+    .card__body {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+
+      &:visited {
+        color: var(--primary-color);
+      }
+    }
   }
 
   .card {
-    &#content {
-      font-size: 15px;
-      .card-title {
-        margin-bottom: 0.1rem;
-      }
-      .card-body {
-        padding: 0;
-      }
-      z-index: 50;
-    }
-    margin-bottom: 1rem;
-    .card-body {
-      padding: 0.5rem;
+    margin-bottom: 16px;
+
+    .card__body {
+      padding: 8px;
     }
   }
-  max-width: 1024px;
+
   table.customTable {
-    font-size: 0.55rem;
+    font-size: 9px;
   }
+
   a.list-group-item {
     transition: color 75ms linear, background-color 75ms linear;
   }
@@ -62,7 +82,7 @@
 @media (min-width: 395px) {
   .grammar {
     table.customTable {
-      font-size: 0.5rem;
+      font-size: 7px;
     }
   }
 }
@@ -70,7 +90,7 @@
 @media (min-width: 465px) {
   .grammar {
     table.customTable {
-      font-size: 0.7rem;
+      font-size: 10px;
     }
   }
 }
@@ -78,56 +98,74 @@
 @media (min-width: 650px) {
   .grammar {
     table.customTable {
-      font-size: 1rem;
+      font-size: 15px;
     }
   }
 }
 
 @media (min-width: 1024px) {
-  .card#content {
-    position: absolute;
-    top: 70px;
-    left: calc(50% - 515px);
-    width: 235px;
+  .grammar-container {
+    overflow-x: hidden;
   }
-  .grammarContainer {
-    overflow-x:hidden;
-  }
+
   .grammar {
-    padding-left: calc(100vw - 100% + 245px + 0.5rem);
+    padding-left: calc(100vw - 100% + 245px + 8px);
     max-width: calc(1024px - 235px);
     box-sizing: content-box;
     overflow-x: hidden;
+
+    &__content {
+      position: absolute;
+      top: 70px;
+      left: calc(50% - 515px);
+      width: 235px;
+    }
+
     .selected {
       transition: color 75ms linear, background-color 75ms linear;
       z-index: 2;
       color: #fff;
-      background-color: #007bff;
-      border-color: #007bff;
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      border-radius: var(--border-radius-s);
+
+      &:visited {
+        color: #fff;
+      }
     }
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1080px) {
   .grammar {
-    padding-left: calc(245px + 0.5rem);
+    padding-left: calc(245px + 8px);
     max-width: calc(100% - 255px);
-  }
-  .card#content {
-    left: 10px;
+
+    &__content {
+      left: 10px;
+    }
   }
 }
 
 @media (min-width: 1530px) {
-  .card#content {
-    position: absolute;
-    top: 70px;
-    left: calc(50% - 512px - 245px);
-  }
   .grammar {
     max-width: 1024px;
-    padding-left: calc(100vw - 100% + 0.5rem) !important;
+    padding-left: calc(100vw - 100% + 8px) !important;
     box-sizing: content-box;
     overflow-x: hidden;
+
+    &__content {
+      position: absolute;
+      top: 70px;
+      left: calc(50% - 512px - 245px);
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .grammar {
+    td {
+      font-size: 2.5vw !important;
+    }
   }
 }

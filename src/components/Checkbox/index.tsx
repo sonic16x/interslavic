@@ -11,15 +11,21 @@ export const Checkbox: React.FC<ICheckboxProps> =
     ({title, checked, onChange}: ICheckboxProps) => {
         const id = `id_${title.toLowerCase()}`;
         return (
-            <div className={'custom-control custom-checkbox'}>
+            <span className={'checkbox'}>
                 <input
                     onChange={() => onChange()}
                     type={'checkbox'}
-                    className={'custom-control-input'}
+                    className={'checkbox__input'}
                     id={id}
                     checked={checked}
                 />
-                <label className={'custom-control-label'} htmlFor={id}>{title}</label>
-            </div>
+                <label
+                    className={'checkbox__label'}
+                    htmlFor={id}
+                    data-checked={checked}
+                >
+                    {title}
+                </label>
+            </span>
         );
     };

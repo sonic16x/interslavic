@@ -1,47 +1,28 @@
-.about {
+@import "src/index";
+
+.about-page {
   width: 100%;
-  background: #fff;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 100%;
+  font-size: 16px;
+
   p {
-    margin-bottom: 0;
+    padding: 5px 0;
   }
-  opacity: 1;
-  pointer-events: all;
-  height: calc(100% - 60px);
-  max-height: calc(100% - 60px);
-  .partners {
-    margin-left: 10px;
-    margin-top: 10px;
-  }
-  .common {
-    padding-top:10px;
-  }
-}
 
-.aboutContent {
-  max-width: 1024px;
-  width: 100%;
-  padding: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 1040px) {
-  .aboutContent {
-    padding-right: 5px;
-    padding-left: calc(100vw - 100% + 5px);
+  a {
+    display: block;
   }
-  .about {
-    overflow-x: hidden;
-    box-sizing: content-box;
+
+  &__container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  &__release-date {
+    text-align: center;
+    color: var(--muted-text-color);
+    font-size: 16px;
+    margin-bottom: 45px;
   }
 }
-
-
-.buildHash {
-  text-align: center;
-}
-

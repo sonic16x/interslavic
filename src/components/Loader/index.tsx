@@ -9,10 +9,10 @@ interface ILoaderProps {
 
 export const Loader: React.FC<ILoaderProps> =
     ({isLoading, title}: ILoaderProps) => (
-        <div className={classNames('loaderContainer', {isLoading})}>
-            <div className={'text-primary customSpinner'} role={'status'}>
-                <span className={'sr-only'} />
+        <div className={classNames('loader', {loading: isLoading})}>
+            <div className={'loader__spinner'}>
+                <span />
             </div>
-            <h3 className={'text-muted'}>{title}</h3>
+            <span className={'loader__title'}>{title}</span>
         </div>
     );

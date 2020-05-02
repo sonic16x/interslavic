@@ -2,7 +2,6 @@ import { Card } from 'components/Card';
 import Table from 'components/Table';
 import Text from 'components/Text';
 import * as React from 'react';
-import { connect } from 'react-redux';
 import './index.scss';
 import tables from './tables.json';
 
@@ -40,28 +39,26 @@ class Grammar extends React.PureComponent {
     public render() {
         return (
             <div
-                className={'grammarContainer'}
+                className={'grammar-container'}
                 onWheel={this.onWheel}
                 onScroll={this.onScroll}
                 ref={this.containerRef}
             >
                 <div className={'grammar'}>
-                    <h4>Osnovna gramatika medžuslovjanskogo jezyka</h4>
+                    <h4 className={'grammar__title'}>Osnovna gramatika medžuslovjanskogo jezyka</h4>
                     <br/>
-                    <Card title={'Sodržanje'} id={'content'}>
-                        <div className={'list-group list-group-flush'}>
-                            {Object.keys(titles).map((id, i) => (
-                                <a
-                                    className={'list-group-item link'}
-                                    key={i}
-                                    id={this.getLinkId(id)}
-                                    onClick={() => this.userEvent = false}
-                                    href={`#${id}`}
-                                >
-                                    {titles[id]}
-                                </a>
-                            ))}
-                        </div>
+                    <Card title={'Sodržanje'} id={'content'} className={'grammar__content'}>
+                        {Object.keys(titles).map((id, i) => (
+                            <a
+                                className={'list-group-item link'}
+                                key={i}
+                                id={this.getLinkId(id)}
+                                onClick={() => this.userEvent = false}
+                                href={`#${id}`}
+                            >
+                                {titles[id]}
+                            </a>
+                        ))}
                     </Card>
                     <Card title={titles.abeceda} id={'abeceda'}>
                         <Table data={tables.tableAbeceda} />

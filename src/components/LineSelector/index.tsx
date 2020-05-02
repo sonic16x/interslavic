@@ -22,7 +22,7 @@ export const LineSelector: React.FC<ILineSelectorProps> =
         return (
             <div className={classNames('lineSelector', className)}>
                 <span
-                    className={'slide shadow'}
+                    className={'slide'}
                     style={{
                         width: `calc(100% / ${length})`,
                         marginLeft: `calc(100% / ${length} * ${index})`,

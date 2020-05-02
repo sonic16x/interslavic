@@ -1,37 +1,48 @@
-@import "../Text/index.scss";
+@import "src/components/Text/index.scss";
 
-table.customTable {
+.table {
   margin: 10px auto;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 16px;
   text-align: start;
   width: 100%;
+  border-collapse: collapse;
+
   th, td {
     white-space: nowrap;
     box-sizing: border-box;
     border: 2px solid #9E9E9E;
     text-align: center;
     height: 10px;
+
     &.B {
       background: #90CAF9;
     }
+
     &.b {
       background: #BBDEFB;
     }
+
     &.G {
       background: #A5D6A7;
     }
+
     &.g {
       background: #C8E6C9;
     }
+
     &.R {
       background: #ef9a9a;
     }
+
     &.r {
       background: #ffcdd2;
     }
+
     &.S {
       background: #E0E0E0;
     }
+
     &.s {
       background: #EEEEEE;
     }
@@ -49,23 +60,27 @@ table.customTable {
       color: #fff;
       text-align: center;
     }
+
     &.D {
       background: #90A4AE;
       color: #fff;
       text-align: center;
     }
 
-    @include customText;
+    @include custom-text;
 
     &.bt {
       border-top-color: transparent;
     }
+
     &.br {
       border-right-color: transparent;
     }
+
     &.bb {
       border-bottom-color: transparent;
     }
+
     &.bl {
       border-left-color: transparent;
     }

@@ -25,6 +25,7 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
+import { langs } from 'consts';
 
 export const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
@@ -52,18 +53,7 @@ export const validFields = [
     'en',
     // 'sameInLanguages',
     // 'genesis',
-    'ru',
-    'be',
-    'uk',
-    'pl',
-    'cs',
-    'sk',
-    'bg',
-    'mk',
-    'sr',
-    'hr',
-    'sl',
-    'de',
+    ...langs,
     'id',
     // 'frequency',
 ];
@@ -142,6 +132,7 @@ export interface ITranslateResult {
     details: string;
     ipa: string;
     checked: boolean;
+    raw: string[];
 }
 
 class DictionaryClass {
@@ -177,10 +168,11 @@ class DictionaryClass {
         wordList: string[][],
         searchIndex?: any | false,
         percentsOfChecked?: any,
-    ) {
-        if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
-            console.time('INIT');
+    ): number {
+        let startInitTime = 0;
+
+        if (typeof performance !== 'undefined') {
+            startInitTime = window.performance.now();
         }
 
         this.header = validFields;
@@ -226,10 +218,18 @@ class DictionaryClass {
             this.percentsOfChecked = percentsOfChecked;
         }
 
+        let initTime = 0;
+
+        if (typeof performance !== 'undefined') {
+            initTime = Math.round(performance.now() - startInitTime);
+        }
+
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
-            console.timeEnd('INIT');
+            console.log('INIT', `${initTime}ms`);
         }
+
+        return initTime;
     }
     public getWordList(): string[][] {
         return this.words;
@@ -240,7 +240,7 @@ class DictionaryClass {
             this.splittedMap.get(key),
         ]);
     }
-    public translate(translateParams: ITranslateParams): string[][] {
+    public translate(translateParams: ITranslateParams): [string[][], number] {
         const {
             inputText,
             from,
@@ -256,12 +256,11 @@ class DictionaryClass {
         const inputIsvPrepared = this.inputPrepare('isv', inputWord);
         const inputLangPrepared = this.inputPrepare(lang, inputWord);
         if (!inputLangPrepared || !inputIsvPrepared) {
-            return [];
+            return [[], 0];
         }
-        if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
-            console.time('TRANSLATE');
-        }
+
+        const startTranslateTime = performance.now();
+
         const isvText = (from === 'isv' ?
             this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType), flavorisationType)
             : '');
@@ -401,11 +400,15 @@ class DictionaryClass {
             .sort((a, b) => distMap.get(a) - distMap.get(b))
             .slice(0, 50)
         ;
+
+        const translateTime = Math.round(performance.now() - startTranslateTime); // @TODO: send to GA
+
         if (process.env.NODE_ENV !== 'production') {
             // tslint:disable-next-line
-            console.timeEnd('TRANSLATE');
+            console.log('TRANSLATE', `${translateTime}ms`);
         }
-        return results;
+
+        return [results, translateTime];
     }
 
     public formatTranslate(
@@ -429,6 +432,7 @@ class DictionaryClass {
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
+                raw: item,
             };
         });
 

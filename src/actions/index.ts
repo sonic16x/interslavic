@@ -1,4 +1,4 @@
-import { IMainState } from 'reducers';
+import { IMainState, IModalDialog } from 'reducers';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -8,14 +8,16 @@ export enum ActionTypes {
     SET_PAGE = 'SET_PAGE',
     SET_INTERFACE_LANG = 'SET_INTERFACE_LANG',
     IS_LOADING = 'IS_LOADING',
-    SET_DETAIL = 'SET_DETAIL',
-    DETAIL_IS_VISIBLE = 'DETAIL_IS_VISIBLE',
     SET_SEARCH_EXPAND = 'SET_SEARCH_EXPAND',
     ALPHABET_TYPE = 'ALPHABET_TYPE',
     RUN_SEARCH = 'RUN_SEARCH',
     CHANGE_ISV_SEARCH_LETTERS = 'CHANGE_ISV_SEARCH_LETTERS',
     POS_FILTER = 'POS_FILTER',
     SET_ALPHABETS = 'SET_ALPHABETS',
+    SHOW_MODAL_DIALOG = 'SHOW_MODAL_DIALOG',
+    HIDE_MODAL_DIALOG = 'HIDE_MODAL_DIALOG',
+    SET_FAVORITE = 'SET_FAVORITE',
+    SET_NOTIFICATION = 'SET_NOTIFICATION',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -25,17 +27,30 @@ export function langAction(data: {from: string, to: string}) {
     };
 }
 
-export function setDetailAction(data: number) {
+export function showModalDialog(data: IModalDialog) {
     return {
-        type: ActionTypes.SET_DETAIL,
+        type: ActionTypes.SHOW_MODAL_DIALOG,
         data,
     };
 }
 
-export function showDetailAction() {
+export function hideModalDialog() {
     return {
-        type: ActionTypes.DETAIL_IS_VISIBLE,
-        data: true,
+        type: ActionTypes.HIDE_MODAL_DIALOG,
+    };
+}
+
+export function setFavoriteAction(data: string) {
+    return {
+        type: ActionTypes.SET_FAVORITE,
+        data,
+    };
+}
+
+export function setNotificationAction(data: string) {
+    return {
+        type: ActionTypes.SET_NOTIFICATION,
+        data,
     };
 }
 
@@ -43,13 +58,6 @@ export function setAlphabetTypeAction(data: number) {
     return {
         type: ActionTypes.ALPHABET_TYPE,
         data,
-    };
-}
-
-export function hideDetailAction() {
-    return {
-        type: ActionTypes.DETAIL_IS_VISIBLE,
-        data: false,
     };
 }
 
