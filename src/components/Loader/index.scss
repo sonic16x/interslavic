@@ -21,21 +21,30 @@
     pointer-events: all;
   }
 
-  &__progress {
-    font-size: 25px;
-    color: var(--muted-text-color);
-    margin-bottom: -52px;
+  &__inner {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 
-  &__spinner {
-    display: inline-block;
-    width: 4rem;
-    height: 4rem;
-    vertical-align: text-bottom;
-    border: .3em solid var(--primary-color);
-    border-right-color: transparent;
-    border-radius: 50%;
-    animation: loader-spinner-animation .75s linear infinite;
+  &__circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+
+    path.sector-path {
+      transition: stroke 100ms linear;
+    }
+  }
+
+  &__progress {
+    font-size: 28px;
+    color: var(--muted-text-color);
   }
 
   &__title {
@@ -43,11 +52,5 @@
     font-weight: 500;
     margin-top: 10px;
     color: var(--muted-text-color);
-  }
-}
-
-@keyframes loader-spinner-animation {
-  to {
-    transform: rotate(360deg);
   }
 }

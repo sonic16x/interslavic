@@ -202,7 +202,7 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.IS_LOADING:
             return {
                 ...state,
-                isLoading: true,
+                isLoading: data,
             };
         case ActionTypes.LOADING_PROGRESS:
             return {
