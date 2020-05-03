@@ -103,6 +103,14 @@ function getInitialState(): IMainState {
     let state = defaultState;
     try {
         const savedState = JSON.parse(localStorage.getItem('reduxState')) || {};
+
+        if (savedState.lang.from !== 'isv' && savedState.lang.to !== 'isv') {
+            savedState.lang = {
+                from: 'en',
+                to: 'isv',
+            };
+        }
+
         state = {
             ...defaultState,
             page: getPageFromPath(),

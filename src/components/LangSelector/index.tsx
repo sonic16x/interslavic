@@ -50,15 +50,6 @@ export const LangSelector: React.FC =
         const {from, to} = useLang();
         const dispatch = useDispatch();
 
-        React.useEffect(() => {
-            if (from !== 'isv' && to !== 'isv') {
-                dispatch(langAction({
-                    from: 'isv',
-                    to: 'en',
-                }));
-            }
-        }, [from, to]);
-
         return (
             <div className={'lang-selector'}>
                 <LangPart
