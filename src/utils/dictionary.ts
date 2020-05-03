@@ -26,7 +26,7 @@ import {
     isSingular,
 } from 'utils/wordDetails';
 import { langs } from 'consts';
-import {IAlphabets} from "../reducers";
+import { IAlphabets } from 'reducers';
 
 export const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,

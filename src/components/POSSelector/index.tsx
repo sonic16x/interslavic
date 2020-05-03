@@ -47,22 +47,25 @@ const POSList = [
         name: 'interjection',
         value: 'intj',
     },
-
 ];
 
 export const POSSelector: React.FC =
     () => {
         const dispatch = useDispatch();
         const posFilter = usePosFilter();
+        const options = POSList.map(({name, value}) => ({
+            name: t(name),
+            value,
+        }));
+        const onSelect = React.useCallback((pos) => {
+            dispatch(posFilterAction(pos));
+        }, [dispatch]);
 
         return (
             <Selector
                 className={'pos-selector'}
-                options={POSList.map(({name, value}) => ({
-                    name: t(name),
-                    value,
-                }))}
-                onSelect={(pos) => dispatch(posFilterAction(pos))}
+                options={options}
+                onSelect={onSelect}
                 value={posFilter}
                 label={t('partOfSpeech')}
             />
