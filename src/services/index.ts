@@ -46,10 +46,10 @@ export function fetchDictionary(dispatch) {
         console.time('FID');
     }
     return fetch('data.txt')
-        .then(progressHelper(({loaded, total}) => {
-            const p = Math.ceil((loaded / total) * 97);
-            dispatch(loadingProgressAction(p));
-        }))
+        // .then(progressHelper(({loaded, total}) => {
+        //     const p = Math.ceil((loaded / total) * 97);
+        //     dispatch(loadingProgressAction(p));
+        // }))
         .then((res) => res.text())
         .then((dataStr) => {
             const [wordListStr, searchIndexStr, percentsOfCheckedStr] = dataStr.split(dataDelimiter);
@@ -65,7 +65,7 @@ export function fetchDictionary(dispatch) {
                 });
             const percentsOfChecked = JSON.parse(percentsOfCheckedStr);
             const initTime = Dictionary.init(wordList, searchIndex, percentsOfChecked);
-            dispatch(loadingProgressAction(100));
+            // dispatch(loadingProgressAction(100));
             dispatch(isLoadingAction(false));
             dispatch(runSearch());
 
