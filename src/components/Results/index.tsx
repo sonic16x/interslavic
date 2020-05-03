@@ -37,7 +37,6 @@ export const Results: React.FC =
                         item={item}
                         key={index}
                         index={index}
-                        lang={lang}
                     />
                 ))}
                 {results.some((item) => !item.checked) && (
