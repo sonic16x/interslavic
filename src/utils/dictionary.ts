@@ -26,6 +26,7 @@ import {
     isSingular,
 } from 'utils/wordDetails';
 import { langs } from 'consts';
+import {IAlphabets} from "../reducers";
 
 export const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
@@ -123,11 +124,11 @@ function getWordForms(item) {
 export interface ITranslateResult {
     translate: string;
     original: string;
-    originalCyr: string;
-    originalGla: string;
+    originalCyr?: string;
+    originalGla?: string;
     add: string;
-    addCyr: string;
-    addGla: string;
+    addCyr?: string;
+    addGla?: string;
     details: string;
     ipa: string;
     checked: boolean;
@@ -412,24 +413,30 @@ class DictionaryClass {
         from: string,
         to: string,
         flavorisationType: string,
+        alphabets: IAlphabets,
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
             const add = this.getField(item, 'addition');
             const translate = this.getField(item, (from === 'isv' ? to : from));
-            return {
+            const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
-                originalCyr: getCyrillic(isv, flavorisationType),
-                originalGla: getGlagolitic(isv, flavorisationType),
                 add: convertCases(getLatin(add, flavorisationType)),
-                addCyr: convertCases(getCyrillic(add, flavorisationType)),
-                addGla: convertCases(getGlagolitic(add, flavorisationType)),
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
                 raw: item,
             };
+            if (alphabets.cyrillic) {
+                formattedItem.originalCyr = getCyrillic(isv, flavorisationType);
+                formattedItem.addCyr = convertCases(getCyrillic(add, flavorisationType));
+            }
+            if (alphabets.glagolitic) {
+                formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
+                formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
+            }
+            return formattedItem;
         });
 
     }
