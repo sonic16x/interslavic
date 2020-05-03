@@ -1,20 +1,13 @@
 import { changeIsvSearchLetters, setInterfaceLang, setAlphabets } from 'actions';
 import { Selector } from 'components/Selector';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { IMainState } from 'reducers';
 import { t } from 'translations';
 import { Checkbox } from '../Checkbox';
 import './index.scss';
-
-interface ISettingsPropsInternal {
-    interfaceLang: string;
-    setInterfaceLang: (data: string) => void;
-    isvSearchLetters: { from: string[], to: string[] };
-    changeIsvSearchLetters: (letters: string) => void;
-    alphabets: any;
-    setAlphabets: (data: any) => void;
-}
+import { useDispatch } from 'react-redux';
+import { useInterfaceLang } from 'hooks/useInterfaceLang';
+import { useAlphabets } from 'hooks/useAlphabets';
+import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
 
 const interfaceLanguageList = [
     {
@@ -79,117 +72,106 @@ const interfaceLanguageList = [
     },
 ];
 
-const SettingsInternal: React.FC<ISettingsPropsInternal> =
-    (props: ISettingsPropsInternal) => (
-        <div className={'settings'}>
-            <h4>{t('settingsTitle')}</h4>
-            <hr/>
-            <h5>{t('interfaceLanguage')}</h5>
-            <Selector
-                options={interfaceLanguageList}
-                value={props.interfaceLang}
-                onSelect={(langCode: string) => props.setInterfaceLang(langCode)}
-            />
-            <hr/>
-            <h5>{t('searchSensitiveLettersForInterslavic')}</h5>
-            <div className={'settings__isv-search-letters'}>
-                <h6>{t('standardOrthography')}</h6>
-                <Checkbox
-                    title={'ž š č (ж ш ч)'}
-                    checked={props.isvSearchLetters.from.includes('ž')}
-                    onChange={() => {props.changeIsvSearchLetters('žšč'); }}
+export const Settings: React.FC =
+    () => {
+        const dispatch = useDispatch();
+        const interfaceLang = useInterfaceLang();
+        const alphabets = useAlphabets();
+        const isvSearchLetters = useIsvSearchLetters();
+
+        return (
+            <div className={'settings'}>
+                <h4>{t('settingsTitle')}</h4>
+                <hr/>
+                <h5>{t('interfaceLanguage')}</h5>
+                <Selector
+                    options={interfaceLanguageList}
+                    value={interfaceLang}
+                    onSelect={(langCode: string) => dispatch(setInterfaceLang(langCode))}
                 />
-                <Checkbox
-                    title={'ě (є)'}
-                    checked={props.isvSearchLetters.from.includes('ě')}
-                    onChange={() => {props.changeIsvSearchLetters('ě'); }}
-                />
-                <Checkbox
-                    title={'y (ы)'}
-                    checked={props.isvSearchLetters.from.includes('y')}
-                    onChange={() => {props.changeIsvSearchLetters('y'); }}
-                />
-                <h6>{t('etymologicalOrthography')}</h6>
-                <Checkbox
-                    title={'å'}
-                    checked={props.isvSearchLetters.from.includes('å')}
-                    onChange={() => {props.changeIsvSearchLetters('å'); }}
-                />
-                <Checkbox
-                    title={'ę ų'}
-                    checked={props.isvSearchLetters.from.includes('ę')}
-                    onChange={() => {props.changeIsvSearchLetters('ęų'); }}
-                />
-                {/*<Checkbox
+                <hr/>
+                <h5>{t('searchSensitiveLettersForInterslavic')}</h5>
+                <div className={'settings__isv-search-letters'}>
+                    <h6>{t('standardOrthography')}</h6>
+                    <Checkbox
+                        title={'ž š č (ж ш ч)'}
+                        checked={isvSearchLetters.from.includes('ž')}
+                        onChange={() => dispatch(changeIsvSearchLetters('žšč'))}
+                    />
+                    <Checkbox
+                        title={'ě (є)'}
+                        checked={isvSearchLetters.from.includes('ě')}
+                        onChange={() => dispatch(changeIsvSearchLetters('ě'))}
+                    />
+                    <Checkbox
+                        title={'y (ы)'}
+                        checked={isvSearchLetters.from.includes('y')}
+                        onChange={() => dispatch(changeIsvSearchLetters('y'))}
+                    />
+                    <h6>{t('etymologicalOrthography')}</h6>
+                    <Checkbox
+                        title={'å'}
+                        checked={isvSearchLetters.from.includes('å')}
+                        onChange={() => dispatch(changeIsvSearchLetters('å'))}
+                    />
+                    <Checkbox
+                        title={'ę ų'}
+                        checked={isvSearchLetters.from.includes('ę')}
+                        onChange={() => dispatch(changeIsvSearchLetters('ęų'))}
+                    />
+                    {/*<Checkbox
                         title={'ė ȯ'}
-                        checked={props.isvSearchLetters.from.includes('ė')}
-                        onChange={() => {props.changeIsvSearchLetters('ėȯ'); }}
+                        checked={isvSearchLetters.from.includes('ė')}
+                        onChange={() => {changeIsvSearchLetters('ėȯ'); }}
                     />*/}
+                    <Checkbox
+                        title={'ŕ'}
+                        checked={isvSearchLetters.from.includes('ŕ')}
+                        onChange={() => dispatch(changeIsvSearchLetters('ŕ'))}
+                    />
+                    <Checkbox
+                        title={'ľ ń'}
+                        checked={isvSearchLetters.from.includes('ľ')}
+                        onChange={() => dispatch(changeIsvSearchLetters('ľń'))}
+                    />
+                    <Checkbox
+                        title={'ť ď'}
+                        checked={isvSearchLetters.from.includes('ť')}
+                        onChange={() => dispatch(changeIsvSearchLetters('ťď'))}
+                    />
+                    <Checkbox
+                        title={'ś ź'}
+                        checked={isvSearchLetters.from.includes('ś')}
+                        onChange={() => dispatch(changeIsvSearchLetters('śź'))}
+                    />
+                    <Checkbox
+                        title={'ć'}
+                        checked={isvSearchLetters.from.includes('ć')}
+                        onChange={() => dispatch(changeIsvSearchLetters('ć'))}
+                    />
+                    <Checkbox
+                        title={'đ'}
+                        checked={isvSearchLetters.from.includes('đ')}
+                        onChange={() => dispatch(changeIsvSearchLetters('đ'))}
+                    />
+                </div>
+                <hr/>
+                <h5>{t('showSlavicWordsInAlphabets')}</h5>
                 <Checkbox
-                    title={'ŕ'}
-                    checked={props.isvSearchLetters.from.includes('ŕ')}
-                    onChange={() => {props.changeIsvSearchLetters('ŕ'); }}
+                    title={t('latin')}
+                    checked={alphabets.latin}
+                    onChange={() => dispatch(setAlphabets({latin: !alphabets.latin}))}
                 />
                 <Checkbox
-                    title={'ľ ń'}
-                    checked={props.isvSearchLetters.from.includes('ľ')}
-                    onChange={() => {props.changeIsvSearchLetters('ľń'); }}
+                    title={t('cyrillic')}
+                    checked={alphabets.cyrillic}
+                    onChange={() => dispatch(setAlphabets({cyrillic: !alphabets.cyrillic}))}
                 />
                 <Checkbox
-                    title={'ť ď'}
-                    checked={props.isvSearchLetters.from.includes('ť')}
-                    onChange={() => {props.changeIsvSearchLetters('ťď'); }}
-                />
-                <Checkbox
-                    title={'ś ź'}
-                    checked={props.isvSearchLetters.from.includes('ś')}
-                    onChange={() => {props.changeIsvSearchLetters('śź'); }}
-                />
-                <Checkbox
-                    title={'ć'}
-                    checked={props.isvSearchLetters.from.includes('ć')}
-                    onChange={() => {props.changeIsvSearchLetters('ć'); }}
-                />
-                <Checkbox
-                    title={'đ'}
-                    checked={props.isvSearchLetters.from.includes('đ')}
-                    onChange={() => {props.changeIsvSearchLetters('đ'); }}
+                    title={t('glagolitic')}
+                    checked={alphabets.glagolitic}
+                    onChange={() => dispatch(setAlphabets({glagolitic: !alphabets.glagolitic}))}
                 />
             </div>
-            <hr/>
-            <h5>{t('showSlavicWordsInAlphabets')}</h5>
-            <Checkbox
-                title={t('latin')}
-                checked={props.alphabets.latin}
-                onChange={() => props.setAlphabets({latin: !props.alphabets.latin})}
-            />
-            <Checkbox
-                title={t('cyrillic')}
-                checked={props.alphabets.cyrillic}
-                onChange={() => props.setAlphabets({cyrillic: !props.alphabets.cyrillic})}
-            />
-            <Checkbox
-                title={t('glagolitic')}
-                checked={props.alphabets.glagolitic}
-                onChange={() => props.setAlphabets({glagolitic: !props.alphabets.glagolitic})}
-            />
-        </div>
-    );
-
-function mapDispatchToProps(dispatch) {
-    return {
-        setAlphabets: (data) => dispatch(setAlphabets(data)),
-        setInterfaceLang: (data: string) => dispatch(setInterfaceLang(data)),
-        changeIsvSearchLetters: (data: string) => dispatch(changeIsvSearchLetters(data)),
+        );
     };
-}
-
-function mapStateToProps({interfaceLang, isvSearchLetters, alphabets}: IMainState) {
-    return {
-        interfaceLang,
-        isvSearchLetters,
-        alphabets,
-    };
-}
-
-export const Settings = connect(mapStateToProps, mapDispatchToProps, null, {areStatePropsEqual: () => false})(SettingsInternal);

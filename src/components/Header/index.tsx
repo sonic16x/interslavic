@@ -1,19 +1,18 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 import './index.scss';
 import { setPageAction } from 'actions';
 import { pages } from 'routing';
 import { t } from 'translations';
+import { useDispatch } from 'react-redux';
+import { usePage } from 'hooks/usePage';
+import { useInterfaceLang } from 'hooks/useInterfaceLang';
 
-interface IHeaderPropsInternal {
-    setPage: (page: string) => void;
-    page: string;
-    interfaceLang: string;
-}
-
-const HeaderInternal: React.FC<IHeaderPropsInternal> =
-    ({page, setPage}: IHeaderPropsInternal) => {
+export const Header: React.FC =
+    () => {
+        const dispatch = useDispatch();
+        const page = usePage();
+        useInterfaceLang();
         const [menuIsVisible, setMenuIsVisible] = React.useState(false);
 
         return (
@@ -25,7 +24,7 @@ const HeaderInternal: React.FC<IHeaderPropsInternal> =
                         className={'header__logo-img'}
                         alt={'logo'}
                         onClick={() => {
-                            setPage('dictionary');
+                            dispatch(setPageAction('dictionary'));
                             setMenuIsVisible(false);
                         }}
                     />
@@ -48,7 +47,7 @@ const HeaderInternal: React.FC<IHeaderPropsInternal> =
                             className={classNames('header__menu-item', {active: page === value})}
                             onClick={(e) => {
                                 e.preventDefault();
-                                setPage(value);
+                                dispatch(setPageAction(value));
                                 setMenuIsVisible(false);
                             }}
                         >
@@ -59,15 +58,3 @@ const HeaderInternal: React.FC<IHeaderPropsInternal> =
             </header>
         );
     };
-
-function mapDispatchToProps(dispatch) {
-    return {
-        setPage: (page) => dispatch(setPageAction(page)),
-    };
-}
-
-function mapStateToProps({page, interfaceLang}) {
-    return {page, interfaceLang};
-}
-
-export const Header = connect(mapStateToProps, mapDispatchToProps)(HeaderInternal);

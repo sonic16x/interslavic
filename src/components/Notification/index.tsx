@@ -1,17 +1,15 @@
 import * as React from 'react';
 import './index.scss';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { setNotificationAction } from 'actions';
 import { useEffect, useState } from 'react';
+import { useNotification } from 'hooks/useNotification';
+import { useDispatch } from 'react-redux';
 
-interface INotificationInternalProps {
-    notification?: string;
-    hide: () => void;
-}
-
-const NotificationInternal: React.FC<INotificationInternalProps> =
-    ({notification, hide}: INotificationInternalProps) => {
+export const Notification: React.FC =
+    () => {
+        const dispatch = useDispatch();
+        const notification = useNotification();
         const [isVisible, setVisible] = useState(true);
         const [timer, setTimer] = useState(null);
 
@@ -20,11 +18,11 @@ const NotificationInternal: React.FC<INotificationInternalProps> =
                 clearTimeout(timer);
             }
             const timerId = setTimeout(() => {
-                hide();
+                dispatch(setNotificationAction(''));
                 setVisible(true);
             }, 2000);
             setTimer(timerId);
-        }, [!!notification]);
+        }, [!!notification, dispatch]);
 
         return (
             <div className={'notification-container'}>
@@ -33,7 +31,7 @@ const NotificationInternal: React.FC<INotificationInternalProps> =
                     onClick={() => setVisible(false)}
                     onTransitionEnd={() => {
                         if (!isVisible) {
-                            hide();
+                            dispatch(setNotificationAction(''));
                             setVisible(true);
                             if (timer) {
                                 clearTimeout(timer);
@@ -46,15 +44,3 @@ const NotificationInternal: React.FC<INotificationInternalProps> =
             </div>
         );
     };
-
-function mapStateToProps({notification}) {
-    return {notification};
-}
-
-function mapDispatchProps(dispatch) {
-    return {
-        hide: () => dispatch(setNotificationAction('')),
-    };
-}
-
-export const Notification = connect(mapStateToProps, mapDispatchProps)(NotificationInternal);

@@ -1,14 +1,10 @@
 import { searchTypeAction } from 'actions';
-import { connect } from 'react-redux';
 import * as React from 'react';
 import { t } from 'translations';
 import { LineSelector } from '../LineSelector';
 import './index.scss';
-
-interface IFlavorisationSelectorProps {
-    searchType: string;
-    changeSearchType: (searchType: string) => void;
-}
+import { useDispatch } from 'react-redux';
+import { useSearchType } from 'hooks/useSearchType';
 
 const searchTypes = [
     {
@@ -29,8 +25,11 @@ const searchTypes = [
     },
 ];
 
-class SearchTypeSelector extends React.Component<IFlavorisationSelectorProps> {
-    public render() {
+export const SearchTypeSelector: React.FC =
+    () => {
+        const dispatch = useDispatch();
+        const searchType = useSearchType();
+
         return (
             <LineSelector
                 className={'searchTypeSelector'}
@@ -38,23 +37,8 @@ class SearchTypeSelector extends React.Component<IFlavorisationSelectorProps> {
                     name: t(item.name),
                     value: item.value,
                 }))}
-                value={this.props.searchType}
-                onSelect={(searchType) => this.props.changeSearchType(searchType)}
+                value={searchType}
+                onSelect={(searchType) => dispatch(searchTypeAction(searchType))}
             />
         );
-    }
-}
-
-function mapStateToProps({searchType}) {
-    return {
-        searchType,
     };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        changeSearchType: (searchType) => dispatch(searchTypeAction(searchType)),
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchTypeSelector);

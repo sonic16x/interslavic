@@ -9,14 +9,14 @@ import { IAlphabets, ILang, MODAL_DIALOG_TYPES } from 'reducers';
 import { Clipboard } from 'components/Clipboard';
 import { setFavoriteAction, showModalDialog } from 'actions';
 import { biReporter, ICardAnalytics } from 'utils/biReporter';
-import {useIntersect} from "../../hooks/useIntersect";
+import { useIntersect } from 'hooks/useIntersect';
+import { useAlphabets } from 'hooks/useAlphabets';
+import { useFavorite } from 'hooks/useFavorite';
 
 interface IResultsCardProps {
     item: ITranslateResult;
-    alphabets: IAlphabets;
     lang: ILang;
     index: number;
-    isFavorite: boolean;
 }
 
 function showFormsButtonIsVisible(item: ITranslateResult) {
@@ -96,8 +96,10 @@ function renderOriginal(item, alphabets, index) {
 }
 
 export const ResultsCard: React.FC<IResultsCardProps> =
-    ({item, alphabets, lang, isFavorite, index}: IResultsCardProps) => {
+    ({item, lang, index}: IResultsCardProps) => {
+        const alphabets = useAlphabets();
         const id = Dictionary.getField(item.raw, 'id').toString();
+        const isFavorite = useFavorite()[id];
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
         const cardBiInfo: ICardAnalytics = {

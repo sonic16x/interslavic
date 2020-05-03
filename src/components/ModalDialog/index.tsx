@@ -1,18 +1,12 @@
 import * as React from 'react';
 import './index.scss';
-import { connect } from 'react-redux';
-import { IMainState, MODAL_DIALOG_TYPES } from 'reducers';
+import { MODAL_DIALOG_TYPES } from 'reducers';
 import { DetailModal } from 'components/DetailModal';
 import { TranslationsModal } from 'components/TranslationsModal';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 import { hideModalDialog } from 'actions';
-
-interface IModalDialogInternalProps {
-    type: MODAL_DIALOG_TYPES;
-    index: number;
-    show: boolean;
-}
+import { useModalDialog } from 'hooks/useModalDialog';
 
 function getModalDialog(type: MODAL_DIALOG_TYPES) {
     switch (type) {
@@ -25,8 +19,9 @@ function getModalDialog(type: MODAL_DIALOG_TYPES) {
     }
 }
 
-const ModalDialogInternal: React.FC<IModalDialogInternalProps> =
-    ({type, show}: IModalDialogInternalProps) => {
+export const ModalDialog: React.FC =
+    () => {
+        const { type, show } = useModalDialog();
         const content = getModalDialog(type);
         const dispatch = useDispatch();
         const onKeyPress = React.useCallback(({code}) => {
@@ -55,9 +50,3 @@ const ModalDialogInternal: React.FC<IModalDialogInternalProps> =
             </div>
         );
     };
-
-function mapStateToProps({modalDialog}: IMainState) {
-    return { ...modalDialog };
-}
-
-export const ModalDialog = connect(mapStateToProps, null)(ModalDialogInternal);

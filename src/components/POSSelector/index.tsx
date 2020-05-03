@@ -1,14 +1,10 @@
 import { posFilterAction } from 'actions';
 import { Selector } from 'components/Selector';
-import { connect } from 'react-redux';
 import * as React from 'react';
 import { t } from 'translations';
 import './index.scss';
-
-interface IPOSSelectorInternalProps {
-    posFilter: string;
-    changePosFilter: (pos: string) => void;
-}
+import { usePosFilter } from 'hooks/usePosFilter';
+import { useDispatch } from 'react-redux';
 
 const POSList = [
     {
@@ -54,30 +50,21 @@ const POSList = [
 
 ];
 
-const POSSelectorInternal: React.FC<IPOSSelectorInternalProps> =
-    ({changePosFilter, posFilter}: IPOSSelectorInternalProps) => (
-        <Selector
-            className={'pos-selector'}
-            options={POSList.map(({name, value}) => ({
-                name: t(name),
-                value,
-            }))}
-            onSelect={(pos) => changePosFilter(pos)}
-            value={posFilter}
-            label={t('partOfSpeech')}
-        />
-    );
+export const POSSelector: React.FC =
+    () => {
+        const dispatch = useDispatch();
+        const posFilter = usePosFilter();
 
-function mapStateToProps({posFilter}) {
-    return {
-        posFilter,
+        return (
+            <Selector
+                className={'pos-selector'}
+                options={POSList.map(({name, value}) => ({
+                    name: t(name),
+                    value,
+                }))}
+                onSelect={(pos) => dispatch(posFilterAction(pos))}
+                value={posFilter}
+                label={t('partOfSpeech')}
+            />
+        );
     };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        changePosFilter: (pos) => dispatch(posFilterAction(pos)),
-    };
-}
-
-export const POSSelector = connect(mapStateToProps, mapDispatchToProps)(POSSelectorInternal);
