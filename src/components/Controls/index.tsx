@@ -3,20 +3,22 @@ import { FlavorisationSelector } from 'components/FlavorisationSelector';
 import { InputText } from 'components/InputText';
 import { LangSelector } from 'components/LangSelector';
 import { POSSelector } from 'components/POSSelector';
-import SearchTypeSelector from 'components/SearchTypeSelector';
+import { SearchTypeSelector } from 'components/SearchTypeSelector';
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useSearchExpanded } from 'hooks/useSearchExpanded';
 import classNames from 'classnames';
 import './index.scss';
 
-interface IControlsPropsInternal {
-    searchExpanded: boolean;
-    setSearchExpand: (data: boolean) => void;
-}
-
-const ControlsInternal: React.FC<IControlsPropsInternal> =
-    ({searchExpanded, setSearchExpand}: IControlsPropsInternal) => {
+export const Controls: React.FC =
+    () => {
+        const dispatch = useDispatch();
+        const searchExpanded = useSearchExpanded();
         const [expanded, setExpanded] = React.useState<boolean>(searchExpanded);
+
+        const onCLick = React.useCallback(() => {
+            dispatch(setSearchExpand(!searchExpanded));
+        }, [dispatch, searchExpanded, expanded]);
 
         return (
             <div
@@ -40,7 +42,7 @@ const ControlsInternal: React.FC<IControlsPropsInternal> =
                 </div>
                 <div
                     className={'controls__expand-button-container'}
-                    onClick={() => setSearchExpand(!searchExpanded)}
+                    onClick={onCLick}
                 >
                     <button
                         id={'expandControls'}
@@ -48,21 +50,9 @@ const ControlsInternal: React.FC<IControlsPropsInternal> =
                         aria-label={'Expand search'}
                         aria-expanded={searchExpanded}
                         className={'controls__expand-button'}
-                        onClick={() => setSearchExpand(!searchExpanded)}
+                        onClick={onCLick}
                     />
                 </div>
             </div>
         );
     };
-
-function mapDispatchToProps(dispatch) {
-    return {
-        setSearchExpand: (data) => dispatch(setSearchExpand(data)),
-    };
-}
-
-function mapStateToProps({searchExpanded}) {
-    return { searchExpanded };
-}
-
-export const Controls = connect(mapStateToProps, mapDispatchToProps)(ControlsInternal);

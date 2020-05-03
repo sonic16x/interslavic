@@ -1,18 +1,19 @@
 import * as React from 'react';
 import './index.scss';
 import classNames from 'classnames';
+import { t } from 'translations';
+import { useLoading } from 'hooks/useLoading';
 
-interface ILoaderProps {
-    title: string;
-    isLoading: boolean;
-}
+export const Loader =
+    () => {
+        const loading = useLoading();
 
-export const Loader: React.FC<ILoaderProps> =
-    ({isLoading, title}: ILoaderProps) => (
-        <div className={classNames('loader', {loading: isLoading})}>
-            <div className={'loader__spinner'}>
-                <span />
+        return (
+            <div className={classNames('loader', {loading})}>
+                <div className={'loader__spinner'}>
+                    <span />
+                </div>
+                <span className={'loader__title'}>{t('loading')}</span>
             </div>
-            <span className={'loader__title'}>{title}</span>
-        </div>
-    );
+        );
+    };

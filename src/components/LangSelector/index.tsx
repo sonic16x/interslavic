@@ -1,16 +1,11 @@
 import { langAction } from 'actions';
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { t } from 'translations';
 import { Selector } from 'components/Selector';
 import { langs } from 'consts';
 import './index.scss';
-
-interface ILangSelectorInternalProps {
-    from: string;
-    to: string;
-    onSelect: (from: string, to: string) => void;
-}
+import { useDispatch } from 'react-redux';
+import { useLang } from 'hooks/useLang';
 
 interface ILangPart {
     dir: string;
@@ -50,42 +45,40 @@ const LangPart: React.FC<ILangPart> =
         );
     };
 
-const LangSelectorInternal: React.FC<ILangSelectorInternalProps> =
-    ({from, to, onSelect}: ILangSelectorInternalProps) => {
+export const LangSelector: React.FC =
+    () => {
+        const {from, to} = useLang();
+        const dispatch = useDispatch();
+
         return (
             <div className={'lang-selector'}>
                 <LangPart
                     dir={'from'}
                     lang={from}
-                    onSelect={(value) => onSelect(value, to)}
+                    onSelect={(value) => dispatch(langAction({
+                        from: value,
+                        to,
+                    }))}
                 />
                 <button
                     type={'button'}
                     aria-label={'Change translation direction'}
                     className={'lang-selector__change-dir-button'}
-                    onClick={() => onSelect(to, from)}
+                    onClick={() => dispatch(langAction({
+                        from: to,
+                        to: from,
+                    }))}
                 >
                     ⇄
                 </button>
                 <LangPart
                     dir={'to'}
                     lang={to}
-                    onSelect={(value) => onSelect(from, value)}
+                    onSelect={(value) => dispatch(langAction({
+                        from: value,
+                        to,
+                    }))}
                 />
             </div>
         );
     };
-
-function mapStateToProps({lang}) {
-    return { ...lang };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        onSelect: (from, to) => {
-            dispatch(langAction({from, to}));
-        },
-    };
-}
-
-export const LangSelector = connect(mapStateToProps, mapDispatchToProps)(LangSelectorInternal);

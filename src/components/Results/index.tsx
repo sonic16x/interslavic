@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import { worksheetUrl } from 'consts';
 import * as React from 'react';
 import { t } from 'translations';
@@ -6,21 +5,19 @@ import { Dictionary, ITranslateResult } from 'utils/dictionary';
 import './index.scss';
 import { ResultsCard } from 'components/ResultsCard';
 import { ResultsEmpty } from 'components/ResultsEmpty';
-import { IMainState, ILang, IAlphabets } from 'reducers';
+import { useResults } from 'hooks/useResults';
+import { usePosFilter } from 'hooks/usePosFilter';
+import { useLang } from 'hooks/useLang';
+import { useFromText } from 'hooks/useFromText';
 
-interface IResultsInternalProps {
-    results: ITranslateResult[];
-    alphabets: IAlphabets;
-    lang: ILang;
-    empty: boolean;
-    posFilter: string;
-    favoriteList: {
-        [key: string]: boolean;
-    };
-}
+export const Results: React.FC =
+    () => {
+        const results = useResults();
+        const posFilter = usePosFilter();
+        const lang = useLang();
+        const fromText = useFromText();
+        const empty = results.length === 0 && fromText.length !== 0;
 
-const ResultsInternal: React.FC<IResultsInternalProps> =
-    ({results, lang, alphabets, favoriteList, empty, posFilter}: IResultsInternalProps) => {
         if (!results || !results.length) {
             if (empty) {
                 return (
@@ -38,11 +35,9 @@ const ResultsInternal: React.FC<IResultsInternalProps> =
                 {results.map((item: ITranslateResult, index) => (
                     <ResultsCard
                         item={item}
-                        alphabets={alphabets}
                         key={index}
                         index={index}
                         lang={lang}
-                        isFavorite={favoriteList[Dictionary.getField(item.raw, 'id').toString()]}
                     />
                 ))}
                 {results.some((item) => !item.checked) && (
@@ -55,16 +50,3 @@ const ResultsInternal: React.FC<IResultsInternalProps> =
             </div>
         );
     };
-
-function mapStateToProps({results, lang, alphabets, favoriteList, fromText, posFilter}: IMainState) {
-    return {
-        results,
-        lang,
-        alphabets,
-        favoriteList,
-        posFilter,
-        empty: results.length === 0 && fromText.length !== 0,
-    };
-}
-
-export const Results = connect(mapStateToProps, null)(ResultsInternal);

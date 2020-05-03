@@ -5,14 +5,12 @@ import { Notification } from 'components/Notification';
 import Router from 'components/Router';
 import { connect } from 'react-redux';
 import React from 'react';
-import { t } from 'translations';
 
 import { fetchDictionary } from 'services';
 import './index.scss';
 import { ModalDialog } from 'components/ModalDialog';
 
 interface IMainProps {
-    isLoading: boolean;
     loadDictionary: () => void;
 }
 
@@ -26,7 +24,7 @@ class Main extends React.Component<IMainProps> {
         return (
             <>
                 <GDPR/>
-                <Loader title={t('loading')} isLoading={this.props.isLoading}/>
+                <Loader/>
                 <Header/>
                 <ModalDialog/>
                 <Notification/>
@@ -36,14 +34,10 @@ class Main extends React.Component<IMainProps> {
     }
 }
 
-function mapStateToProps({ isLoading }) {
-    return { isLoading };
-}
-
 function mapDispatchToProps(dispatch) {
     return {
         loadDictionary: () => fetchDictionary(dispatch),
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(null, mapDispatchToProps)(Main);

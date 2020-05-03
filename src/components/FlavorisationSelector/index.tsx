@@ -1,14 +1,10 @@
 import { flavorisationTypeAction } from 'actions';
 import { Selector } from 'components/Selector';
-import { connect } from 'react-redux';
 import * as React from 'react';
 import { t } from 'translations';
 import './index.scss';
-
-interface IFlavorisationSelectorInternalProps {
-    flavorisationType: string;
-    changeFlavorisationType: (flavorisationType: string) => void;
-}
+import { useDispatch } from 'react-redux';
+import { useFlavorisationType } from 'hooks/useFlavorisationType';
 
 const flavorisationTypes = [
     {
@@ -33,30 +29,21 @@ const flavorisationTypes = [
     },
 ];
 
-const FlavorisationSelectorInternal: React.FC<IFlavorisationSelectorInternalProps> =
-    ({changeFlavorisationType, flavorisationType}: IFlavorisationSelectorInternalProps) => (
-        <Selector
-            className={'flavorisation-selector'}
-            options={flavorisationTypes.map(({name, value}) => ({
-                name: t(name),
-                value,
-            }))}
-            onSelect={(flavorisationType) => changeFlavorisationType(flavorisationType)}
-            value={flavorisationType}
-            label={t('flavorisation')}
-        />
-    );
+export const FlavorisationSelector: React.FC =
+    () => {
+        const dispatch = useDispatch();
+        const flavorisationType = useFlavorisationType();
 
-function mapStateToProps({flavorisationType}) {
-    return {
-        flavorisationType,
+        return (
+            <Selector
+                className={'flavorisation-selector'}
+                options={flavorisationTypes.map(({name, value}) => ({
+                    name: t(name),
+                    value,
+                }))}
+                onSelect={(flavorisationType) => dispatch(flavorisationTypeAction(flavorisationType))}
+                value={flavorisationType}
+                label={t('flavorisation')}
+            />
+        );
     };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        changeFlavorisationType: (flavorisationType) => dispatch(flavorisationTypeAction(flavorisationType)),
-    };
-}
-
-export const FlavorisationSelector = connect(mapStateToProps, mapDispatchToProps)(FlavorisationSelectorInternal);
