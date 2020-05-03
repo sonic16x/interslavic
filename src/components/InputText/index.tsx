@@ -14,6 +14,12 @@ export const InputText: React.FC =
         const fromText = useFromText();
         const spellCheck = lang.from !== 'isv';
         const searchLanguage = toBCP47(lang.from);
+        const onChange = React.useCallback((e) => {
+            dispatch(fromTextAction(e.target.value));
+        }, [dispatch]);
+        const onClick = React.useCallback(() => {
+            dispatch(fromTextAction(''));
+        }, [dispatch]);
 
         return (
             <div className={'inputText'}>
@@ -27,14 +33,14 @@ export const InputText: React.FC =
                     spellCheck={spellCheck}
                     placeholder={t('typeWordLabel')}
                     value={fromText}
-                    onChange={(e) => dispatch(fromTextAction(e.target.value))}
+                    onChange={onChange}
                 />
                 <button
                     className={'removeButton'}
                     type={'reset'}
                     aria-label={'Clear input'}
                     disabled={fromText.length === 0}
-                    onClick={() => dispatch(fromTextAction(''))}
+                    onClick={onClick}
                 >
                     &times;
                 </button>
