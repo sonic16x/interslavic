@@ -21,6 +21,12 @@
     pointer-events: all;
   }
 
+  &__progress {
+    font-size: 25px;
+    color: var(--muted-text-color);
+    margin-bottom: -52px;
+  }
+
   &__spinner {
     display: inline-block;
     width: 4rem;
