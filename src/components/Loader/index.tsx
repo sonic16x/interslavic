@@ -5,26 +5,6 @@ import { t } from 'translations';
 import { useLoading } from 'hooks/useLoading';
 import { useLoadingProgress } from 'hooks/useLoadingProgress';
 
-function getArc(angle, radius, center) {
-    const x = center + radius * Math.cos(angle / 180 * Math.PI);
-    const y = center + radius * Math.sin(angle / 180 * Math.PI);
-
-    return `A${radius},${radius} 1 0 1 ${x},${y}`;
-}
-
-function getSector(angle: number, size: number, stroke: number) {
-    const firstAngle = angle > 180 ? 90 : angle - 90;
-    const secondAngle = -270 + angle - 180;
-    const center = size / 2;
-    const radius = stroke ? center - (stroke) / 2 : center;
-
-    const firstArc = getArc(firstAngle, radius, center);
-    const secondArc = angle > 180 ? getArc(secondAngle, radius, center) : '';
-    const start = `M${center},${stroke / 2}`;
-
-    return `${start} ${firstArc} ${secondArc}`;
-}
-
 function buildCirclePath(cx: number, cy: number, r: number): string {
   return `
       M ${cx}, ${cy - r}
