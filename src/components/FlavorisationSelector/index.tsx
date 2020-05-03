@@ -33,15 +33,19 @@ export const FlavorisationSelector: React.FC =
     () => {
         const dispatch = useDispatch();
         const flavorisationType = useFlavorisationType();
+        const options = flavorisationTypes.map(({name, value}) => ({
+            name: t(name),
+            value,
+        }));
+        const onSelect = React.useCallback(() => {
+            dispatch(flavorisationTypeAction(flavorisationType));
+        }, [dispatch]);
 
         return (
             <Selector
                 className={'flavorisation-selector'}
-                options={flavorisationTypes.map(({name, value}) => ({
-                    name: t(name),
-                    value,
-                }))}
-                onSelect={(flavorisationType) => dispatch(flavorisationTypeAction(flavorisationType))}
+                options={options}
+                onSelect={onSelect}
                 value={flavorisationType}
                 label={t('flavorisation')}
             />

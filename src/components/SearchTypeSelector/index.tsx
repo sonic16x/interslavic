@@ -15,10 +15,10 @@ const searchTypes = [
         name: 'searchTypeEntire',
         value: 'full',
     },
-    /*{
-        name: 'searchTypeEnd',
-        value: 'end',
-    },*/
+    // {
+    //     name: 'searchTypeEnd',
+    //     value: 'end',
+    // },
     {
         name: 'searchTypeAny',
         value: 'some',
@@ -29,16 +29,20 @@ export const SearchTypeSelector: React.FC =
     () => {
         const dispatch = useDispatch();
         const searchType = useSearchType();
+        const onSelect = React.useCallback((searchType) => {
+            dispatch(searchTypeAction(searchType));
+        }, [dispatch]);
+        const options = searchTypes.map((item) => ({
+            name: t(item.name),
+            value: item.value,
+        }));
 
         return (
             <LineSelector
                 className={'searchTypeSelector'}
-                options={searchTypes.map((item) => ({
-                    name: t(item.name),
-                    value: item.value,
-                }))}
+                options={options}
                 value={searchType}
-                onSelect={(searchType) => dispatch(searchTypeAction(searchType))}
+                onSelect={onSelect}
             />
         );
     };
