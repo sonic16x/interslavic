@@ -1,4 +1,4 @@
-import { IMainState, IModalDialog } from 'reducers';
+import { IModalDialog } from 'reducers';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -8,6 +8,7 @@ export enum ActionTypes {
     SET_PAGE = 'SET_PAGE',
     SET_INTERFACE_LANG = 'SET_INTERFACE_LANG',
     IS_LOADING = 'IS_LOADING',
+    LOADING_PROGRESS = 'LOADING_PROGRESS',
     SET_SEARCH_EXPAND = 'SET_SEARCH_EXPAND',
     ALPHABET_TYPE = 'ALPHABET_TYPE',
     RUN_SEARCH = 'RUN_SEARCH',
@@ -99,6 +100,13 @@ export function setPageAction(data: string) {
 export function isLoadingAction(data: boolean) {
     return {
         type: ActionTypes.IS_LOADING,
+        data,
+    };
+}
+
+export function loadingProgressAction(data: number) {
+    return {
+        type: ActionTypes.LOADING_PROGRESS,
         data,
     };
 }

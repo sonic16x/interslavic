@@ -75,6 +75,7 @@ export const defaultState: IMainState = {
     alphabetType: 'latin',
     page: 'dictionary',
     isLoading: true,
+    loadingProgress: 0,
     modalDialog: {
         type: null,
         index: null,

@@ -39,6 +39,7 @@ export interface IMainState {
     flavorisationType: string;
     page: string;
     isLoading: boolean;
+    loadingProgress: number;
     searchExpanded: boolean;
     alphabetType: string;
     rawResults: string[][];
@@ -201,7 +202,12 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.IS_LOADING:
             return {
                 ...state,
-                isLoading: data,
+                isLoading: true,
+            };
+        case ActionTypes.LOADING_PROGRESS:
+            return {
+                ...state,
+                loadingProgress: data,
             };
         case ActionTypes.ALPHABET_TYPE:
             return {

@@ -1,6 +1,43 @@
-import { isLoadingAction, runSearch } from 'actions';
+import { isLoadingAction, runSearch, loadingProgressAction } from 'actions';
 import { dataDelimiter, Dictionary } from 'utils/dictionary';
 import { biReporter } from 'utils/biReporter';
+
+function progressHelper(onProgress) {
+    return (response) => {
+        if (!response.body) {
+            return response;
+        }
+
+        let loaded = 0;
+        const contentLength = response.headers.get('content-length');
+        const total = !contentLength ? -1 : parseInt(contentLength, 10);
+
+        return new Response(
+            new ReadableStream({
+                start(controller) {
+                    const reader = response.body.getReader();
+                    return read();
+
+                    function read() {
+                        return reader.read()
+                            .then(({ done, value }) => {
+                                if (done) {
+                                    return void controller.close();
+                                }
+                                loaded += value.byteLength;
+                                onProgress({ loaded, total });
+                                controller.enqueue(value);
+                                return read();
+                            })
+                            .catch((error) => {
+                                controller.error(error);
+                            });
+                    }
+                },
+            }),
+        );
+    };
+}
 
 export function fetchDictionary(dispatch) {
     const startFidTime = performance.now();
@@ -9,6 +46,10 @@ export function fetchDictionary(dispatch) {
         console.time('FID');
     }
     return fetch('data.txt')
+        .then(progressHelper(({loaded, total}) => {
+            const p = Math.ceil((loaded / total) * 100);
+            dispatch(loadingProgressAction(p));
+        }))
         .then((res) => res.text())
         .then((dataStr) => {
             const [wordListStr, searchIndexStr, percentsOfCheckedStr] = dataStr.split(dataDelimiter);
