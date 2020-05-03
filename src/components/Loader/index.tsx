@@ -25,11 +25,25 @@ function getSector(angle: number, size: number, stroke: number) {
     return `${start} ${firstArc} ${secondArc}`;
 }
 
+function buildCirclePath(cx: number, cy: number, r: number): string {
+  return `
+      M ${cx}, ${cy - r}
+      a ${r},${r} 0 1,0 0,${r * 2}
+      a ${r},${r} 0 1,0 0,${-r * 2}
+  `;
+}
+
+const RADIUS = 50;
+const STROKE = 6;
+const INNER_RADIUS = RADIUS - (STROKE / 2);
+const CIRCLE_PATH = buildCirclePath(RADIUS, RADIUS, INNER_RADIUS);
+const MAX_OFFSET = Math.ceil(2 * Math.PI * INNER_RADIUS);
+
 export const Loader =
     () => {
         const loading = useLoading();
         const progress = useLoadingProgress();
-        const angle = (360 / 100) * progress;
+        const dashOffset = Math.floor(0.01 * progress * MAX_OFFSET) - MAX_OFFSET;
 
         return (
             <div className={classNames('loader', {loading})}>
@@ -43,13 +57,15 @@ export const Loader =
                         <svg
                             width={'100px'}
                             height={'100px'}
-                            viewBox={'0 0 100px 100px'}
+                            viewBox={'0 0 100 100'}
                         >
                             <path
                                 className={'sector-path'}
-                                d={getSector(angle, 100, 6)}
+                                d={CIRCLE_PATH}
                                 stroke={'#2962ff'}
                                 strokeWidth={'6px'}
+                                strokeDasharray={MAX_OFFSET}
+                                strokeDashoffset={dashOffset}
                                 fill={'none'}
                             />
                         </svg>

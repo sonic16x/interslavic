@@ -10,6 +10,7 @@ export function localStorageMiddleware({getState}) {
         delete stateForSave.rawResults;
         delete stateForSave.results;
         delete stateForSave.isLoading;
+        delete stateForSave.loadingProgress;
         localStorage.setItem('reduxState', JSON.stringify(stateForSave));
         return result;
     };
