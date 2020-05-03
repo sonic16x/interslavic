@@ -47,7 +47,7 @@ export function fetchDictionary(dispatch) {
     }
     return fetch('data.txt')
         .then(progressHelper(({loaded, total}) => {
-            const p = Math.ceil((loaded / total) * 100);
+            const p = Math.ceil((loaded / total) * 97);
             dispatch(loadingProgressAction(p));
         }))
         .then((res) => res.text())
@@ -65,6 +65,7 @@ export function fetchDictionary(dispatch) {
                 });
             const percentsOfChecked = JSON.parse(percentsOfCheckedStr);
             const initTime = Dictionary.init(wordList, searchIndex, percentsOfChecked);
+            dispatch(loadingProgressAction(100));
             dispatch(isLoadingAction(false));
             dispatch(runSearch());
 
