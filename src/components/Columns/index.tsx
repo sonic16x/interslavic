@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import './index.scss';
 
 function splitUp(arr, n) {

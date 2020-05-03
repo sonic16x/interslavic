@@ -5,17 +5,17 @@ import './index.scss';
 import { Dictionary, ITranslateResult } from 'utils/dictionary';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import classNames from 'classnames';
-import { IAlphabets, ILang, MODAL_DIALOG_TYPES } from 'reducers';
+import { MODAL_DIALOG_TYPES } from 'reducers';
 import { Clipboard } from 'components/Clipboard';
 import { setFavoriteAction, showModalDialog } from 'actions';
 import { biReporter, ICardAnalytics } from 'utils/biReporter';
 import { useIntersect } from 'hooks/useIntersect';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useFavorite } from 'hooks/useFavorite';
+import { useLang } from 'hooks/useLang';
 
 interface IResultsCardProps {
     item: ITranslateResult;
-    lang: ILang;
     index: number;
 }
 
@@ -96,8 +96,9 @@ function renderOriginal(item, alphabets, index) {
 }
 
 export const ResultsCard: React.FC<IResultsCardProps> =
-    ({item, lang, index}: IResultsCardProps) => {
+    ({item, index}: IResultsCardProps) => {
         const alphabets = useAlphabets();
+        const lang = useLang();
         const id = Dictionary.getField(item.raw, 'id').toString();
         const isFavorite = useFavorite()[id];
         const pos = getPartOfSpeech(item.details);
