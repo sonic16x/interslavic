@@ -71,7 +71,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 lang,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets),
             };
         }
         case ActionTypes.SEARCH_TYPE: {
@@ -91,7 +91,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 searchType,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets),
             };
         }
         case ActionTypes.FROM_TEXT: {
@@ -111,7 +111,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 fromText,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets),
             };
         }
         case ActionTypes.RUN_SEARCH: {
@@ -129,7 +129,7 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets),
             };
         }
         case ActionTypes.CHANGE_ISV_SEARCH_LETTERS: {
@@ -149,7 +149,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 isvSearchLetters,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType),
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets),
             };
         }
         case ActionTypes.FLAVORISATION_TYPE: {
@@ -167,7 +167,7 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 flavorisationType: data,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, data),
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, data, state.alphabets),
             };
         }
         case ActionTypes.POS_FILTER: {
@@ -185,7 +185,7 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 posFilter: data,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, data),
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, data, state.alphabets),
             };
         }
         case ActionTypes.SET_PAGE:
@@ -255,16 +255,20 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state.alphabets,
                 ...data,
             };
-            if (!Object.values(alphabets).some(Boolean)) {
+
+            if (Object.values(alphabets).every((value) => !value)) {
                 alphabets.latin = true;
             }
+
             if (!alphabets[state.alphabetType]) {
-                alphabetType = Object.keys(alphabets)[0];
+                alphabetType = Object.keys(alphabets).filter((key) => alphabets[key])[0];
             }
+
             return {
                 ...state,
                 alphabets,
                 alphabetType,
+                results: Dictionary.formatTranslate(state.rawResults, state.lang.from, state.lang.to, state.flavorisationType, alphabets),
             };
         default:
             return state;
