@@ -17,6 +17,7 @@ export const About: React.FC =
                         <p>{t('aboutInterslavic')}</p>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
                         <p>{t('aboutAuthors')}</p>
+                        <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
                         <hr/>
