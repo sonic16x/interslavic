@@ -18,10 +18,10 @@ export const About: React.FC =
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
                         <p>{t('aboutAuthors')}</p>
                         <hr/>
+                        <i>{t('nonCommercialDisclaimer')}</i>
+                        <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
-                        <hr/>
-                        <i>{t('nonCommercialDisclaimer')}</i>
                         <hr/>
                         <p>{t('aboutDeveloper')}</p>
                         <a target={'_blank'} href={`email:${email}`}>{t('aboutDeveloperName')} ({email})</a>
