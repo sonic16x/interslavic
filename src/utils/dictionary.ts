@@ -46,6 +46,7 @@ export interface ITranslateParams {
 export const dataDelimiter = '<>';
 
 export const validFields = [
+    'id',
     'isv',
     'addition',
     'partOfSpeech',
@@ -54,8 +55,6 @@ export const validFields = [
     // 'sameInLanguages',
     // 'genesis',
     ...langs,
-    'id',
-    // 'frequency',
 ];
 
 const isvReplacebleLetters = [
