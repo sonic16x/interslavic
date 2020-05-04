@@ -67,7 +67,7 @@ class TranslationsModalInternal extends React.Component<ITranslationsModalIntern
             if (lang === 'isv') {
                 return [
                     [
-                        `{${t('isvEtymologicLatinLang')}}[B]@ts;b;sw=120px`,
+                        `{${t('isvEtymologicLatinLang')}}[B]@ts;b;sw=130px`,
                         `${getLatin(translates[i], '2')}@ts`,
                     ],
                     [
