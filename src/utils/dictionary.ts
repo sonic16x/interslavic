@@ -82,7 +82,9 @@ const isvReplacebleLetters = [
 ];
 
 function getWordForms(item) {
-    const [word, add, details] = item;
+    const word =  Dictionary.getField(item, 'isv');
+    const add = Dictionary.getField(item, 'addition');
+    const details = Dictionary.getField(item, 'partOfSpeech');
     const pos = getPartOfSpeech(details);
     const wordForms = [];
     word.split(',').map((wordElement) => {
