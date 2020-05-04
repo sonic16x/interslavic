@@ -24,7 +24,7 @@ const testCases = {
 request(dictionaryUrl, (err, data) => {
     const splittedBody = data.body.replace(/#/g, '').split('\n').filter(Boolean).slice(1);
     splittedBody.forEach((line, i) => {
-        const [ wordOrig, add, detailsOrig ] = line.split('\t').slice(0, 3);
+        const [ wordOrig, add, detailsOrig ] = line.split('\t').slice(1, 4);
         const words = wordOrig.split(',').map((e) => e.trim());
         let details = detailsOrig;
         words.forEach((word) => {
