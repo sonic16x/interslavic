@@ -176,12 +176,9 @@ class DictionaryClass {
         }
 
         this.header = validFields;
-        this.langsList = this.header.filter(
-            (item) => (['partOfSpeech', 'type', 'sameInLanguages', 'genesis', 'addition', 'id' ,
-                'frequency'].indexOf(item) === -1),
-        );
-        this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
+        this.langsList = ['isv', 'en', ...langs];
 
+        this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
         this.words = wordList;
         const searchIndexExist = Boolean(searchIndex);
 
