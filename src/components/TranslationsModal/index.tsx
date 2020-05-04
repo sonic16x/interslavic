@@ -103,10 +103,11 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({results, flavorisationType, modalDialog}: IMainState) {
+function mapStateToProps({results, flavorisationType, modalDialog, interfaceLang}: IMainState) {
     return {
         item: results[modalDialog.index],
         flavorisationType,
+        interfaceLang,
     };
 }
 
