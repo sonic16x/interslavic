@@ -37,8 +37,8 @@ export const FlavorisationSelector: React.FC =
             name: t(name),
             value,
         }));
-        const onSelect = React.useCallback(() => {
-            dispatch(flavorisationTypeAction(flavorisationType));
+        const onSelect = React.useCallback((type) => {
+            dispatch(flavorisationTypeAction(type));
         }, [dispatch]);
 
         return (
