@@ -14,13 +14,13 @@ export const About: React.FC =
                 <div className={'about-page__container'}>
                     <h4>{t('aboutSmallTitle')}</h4>
                     <div className={'about-page__common'}>
-                        {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>
+                        <p>{t('aboutInterslavic')}</p>
+                        {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
                         <p>{t('aboutAuthors')}</p>
-                        <hr/>
-                        <i>{t('nonCommercialDisclaimer')}</i>
-                        <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
+                        <hr/>
+                        <i>{t('nonCommercialDisclaimer')}</i>
                         <hr/>
                         <p>{t('aboutDeveloper')}</p>
                         <a target={'_blank'} href={`email:${email}`}>{t('aboutDeveloperName')} ({email})</a>
