@@ -91,8 +91,8 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
     }
 
     private renderTitle(pos: string) {
-        const word = this.props.item.raw[0];
-        const add = this.props.item.raw[1];
+        const word = Dictionary.getField(this.props.item.raw, 'isv');
+        const add = Dictionary.getField(this.props.item.raw, 'addition');
         const { details } = this.props.item;
         const arr = [t(pos)];
         const animated = isAnimated(details);
@@ -135,12 +135,15 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
     }
 
     private renderBody() {
-        const splitted = this.props.item.raw[0].split(',');
-        if (splitted.length === 1 && this.props.item.raw[2].indexOf('m./f.') !== -1 ) {
+        const fieldIsv = Dictionary.getField(this.props.item.raw, 'isv');
+        const fieldAddition = Dictionary.getField(this.props.item.raw, 'addition');
+        const fieldPartOfSpeech = Dictionary.getField(this.props.item.raw, 'partOfSpeech');
+        const splitted = fieldIsv.split(',');
+        if (splitted.length === 1 && fieldPartOfSpeech.indexOf('m./f.') !== -1 ) {
             return [
-                this.renderWord([this.props.item.raw[0].trim(), this.props.item.raw[1], 'm.'],
+                this.renderWord([fieldIsv, fieldAddition, 'm.'],
                     ['showTitle', 'showGender', 'oneMore'], 0),
-                this.renderWord([this.props.item.raw[0].trim(), this.props.item.raw[1], 'f.'],
+                this.renderWord([fieldIsv, fieldAddition, 'f.'],
                     ['showTitle', 'showGender'], 1),
             ];
         }
@@ -150,7 +153,7 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
                 options.push('showTitle');
                 if (i < splitted.length - 1) { options.push('oneMore'); }
             }
-            return this.renderWord([word.trim(), this.props.item.raw[1],  this.props.item.raw[2]], options, i);
+            return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options, i);
         });
     }
 

@@ -10,7 +10,7 @@ request(dictionaryUrl, (err, data) => {
         .map((l) => l.split('\t'));
     const header = wordList[0];
     const shortWordList = wordList.map((item) => {
-        return validFields.map((fld) => item.find((_, i) => header[i] === fld));
+        return validFields.map((fld) => item.find((_, i) => header[i] === fld)).map((e) => e.trim());
     });
     const wordListStr = shortWordList.slice(1).map((item) => item.join('\t')).join('\n');
     Dictionary.init(shortWordList);
