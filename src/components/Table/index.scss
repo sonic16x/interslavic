@@ -67,6 +67,10 @@
       text-align: center;
     }
 
+    &.nowrap {
+      white-space: nowrap;
+    }
+
     @include custom-text;
 
     &.bt {
