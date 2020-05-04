@@ -738,7 +738,7 @@ function build_pfpp(pref, is, psi) {
 
 function build_gerund(pfpp, refl) {
     const ppps = (pfpp.indexOf('(') - 2);
-    return transliterateBack(pfpp.substring(0, ppps) + 'ıje' + refl);
+    return transliterateBack(pfpp.substring(0, ppps) + 'ıje' /*+ refl*/);
 }
 
 function idti(sel) {
