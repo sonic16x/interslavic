@@ -164,7 +164,7 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
         switch (getPartOfSpeech(details)) {
             case 'noun':
                 if (options.includes('showGender')) {
-                    remark = (details === 'm.' ? ' (' + t('nounMasculine') + ')' : ' (' + t('nounFeminine') + ')');
+                    remark = (details === 'm.' ? ' (' + t('noun-masculine') + ')' : ' (' + t('noun-feminine') + ')');
                 }
                 wordComponent = this.renderNounDetails(word, add, details);
                 break;
