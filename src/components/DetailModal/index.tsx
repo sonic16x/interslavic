@@ -35,6 +35,7 @@ interface IDetailModalInternal {
     alphabetType: string;
     alphabets: any;
     flavorisationType: string;
+    interfaceLang: string;
     setAlphabetType: (type: string) => void;
 }
 
@@ -626,12 +627,13 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({modalDialog, results, alphabetType, flavorisationType, alphabets}: IMainState) {
+function mapStateToProps({modalDialog, results, alphabetType, flavorisationType, alphabets, interfaceLang}: IMainState) {
     return {
         item: results[modalDialog.index],
         alphabetType,
         alphabets,
         flavorisationType,
+        interfaceLang,
     };
 }
 
