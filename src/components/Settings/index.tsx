@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
+import { useResults } from 'hooks/useResults';
 
 const interfaceLanguageList = [
     {
@@ -78,6 +79,7 @@ export const Settings: React.FC =
         const interfaceLang = useInterfaceLang();
         const alphabets = useAlphabets();
         const isvSearchLetters = useIsvSearchLetters();
+        useResults();
 
         return (
             <div className={'settings'}>
