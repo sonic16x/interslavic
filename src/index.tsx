@@ -6,7 +6,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { setInitialPage } from 'routing';
 import { getPageFromPath } from 'routing';
 import { setLang } from 'translations';
-import Main from 'components/Main';
+import { Main } from 'components/Main';
 import './index.scss';
 import { Dictionary } from 'utils/dictionary';
 import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';

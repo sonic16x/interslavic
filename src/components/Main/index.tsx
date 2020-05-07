@@ -1,43 +1,29 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+
 import { GDPR } from 'components/GDPR';
 import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
 import { Notification } from 'components/Notification';
+import { ModalDialog } from 'components/ModalDialog';
 import Router from 'components/Router';
-import { connect } from 'react-redux';
-import React from 'react';
 
 import { fetchDictionary } from 'services';
 import './index.scss';
-import { ModalDialog } from 'components/ModalDialog';
 
-interface IMainProps {
-    loadDictionary: () => void;
-}
+export const Main: React.FC =
+    () => {
+        const dispatch = useDispatch();
+        React.useEffect(() => fetchDictionary(dispatch));
 
-class Main extends React.Component<IMainProps> {
-    constructor(props) {
-        super(props);
-        this.props.loadDictionary();
-    }
-
-    public render() {
         return (
             <>
+                <Header/>
+                <Router/>
                 <GDPR/>
                 <Loader/>
-                <Header/>
                 <ModalDialog/>
                 <Notification/>
-                <Router/>
             </>
         );
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        loadDictionary: () => fetchDictionary(dispatch),
     };
-}
-
-export default connect(null, mapDispatchToProps)(Main);

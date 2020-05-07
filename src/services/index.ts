@@ -39,13 +39,13 @@ function progressHelper(onProgress) {
     };
 }
 
-export function fetchDictionary(dispatch) {
+export function fetchDictionary(dispatch): void {
     const startFidTime = performance.now();
     if (process.env.NODE_ENV !== 'production') {
         // tslint:disable-next-line
         console.time('FID');
     }
-    return fetch('data.txt')
+    fetch('data.txt')
         // .then(progressHelper(({loaded, total}) => {
         //     const p = Math.ceil((loaded / total) * 97);
         //     dispatch(loadingProgressAction(p));
