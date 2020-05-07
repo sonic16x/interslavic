@@ -1,68 +1,48 @@
-import { setAlphabetTypeAction, hideModalDialog } from 'actions';
+import { hideModalDialog } from 'actions';
 import Table from 'components/Table';
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { t } from 'translations';
 import './index.scss';
 import { langs } from 'consts';
 import { validFields } from 'utils/dictionary';
 import { getLatin } from 'utils/getLatin';
 import { getCyrillic } from 'utils/getCyrillic';
-import { IMainState } from 'reducers';
+import { useResults } from 'hooks/useResults';
+import { useInterfaceLang } from 'hooks/useInterfaceLang';
+import { useModalDialog } from 'hooks/useModalDialog';
 
-interface ITranslationsModalInternalProps {
-    close: () => void;
-    item: any;
-    alphabets: any;
-    flavorisationType: string;
+function renderTranslate(str: string): string {
+    if (str[0] === '!') {
+        return `{${str.slice(1)}}[s]@ts;`;
+    }
+    return `{✓}[g] ${str}@ts`;
 }
 
-class TranslationsModalInternal extends React.Component<ITranslationsModalInternalProps> {
-    public render() {
-        if (!this.props.item) {
+export const TranslationsModal: React.FC =
+    () => {
+        const results = useResults();
+        const dispatch = useDispatch();
+        const modalDialog = useModalDialog();
+        useInterfaceLang();
+
+        const item = results[modalDialog.index];
+
+        const onClick = React.useCallback(() => {
+            dispatch(hideModalDialog());
+        }, [dispatch]);
+
+        if (!item) {
             return null;
         }
 
-        return (
-            <>
-                <div className={'modal-dialog__header'}>
-                    <div className={'modal-dialog__header-title'}>
-                        {t('translatesModalTitle')}
-                    </div>
-                    <button
-                        className={'modal-dialog__header-close'}
-                        onClick={this.props.close}
-                        aria-label={'Close'}
-                    >
-                        &times;
-                    </button>
-                </div>
-                <div className={'modal-dialog__body'}>
-                    {this.renderBody()}
-                </div>
-                <footer className={'modal-dialog__footer'}>
-                    {t('translationsBottomText')}
-                    <br/>
-                    {t('aboutJoinText')}
-                </footer>
-            </>
-        );
-    }
-
-    private renderTranslate(str: string): string {
-        if (str[0] === '!') {
-            return `{${str.slice(1)}}[s]@ts;`;
-        }
-        return `{✓}[g] ${str}@ts`;
-    }
-
-    private renderBody() {
         const allLangs = [
             'isv',
             'en',
             ...langs,
         ];
-        const translates = this.props.item.raw.filter((_, i) => (allLangs.includes(validFields[i])));
+
+        const translates = item.raw.filter((_, i) => (allLangs.includes(validFields[i])));
         const tableData = allLangs.reduce((arr, lang, i) => {
             if (lang === 'isv') {
                 return [
@@ -88,27 +68,33 @@ class TranslationsModalInternal extends React.Component<ITranslationsModalIntern
                 ...arr,
                 [
                     `{${t(`${lang}Lang`)}}[B]@ts;b`,
-                    this.renderTranslate(translates[i]),
+                    renderTranslate(translates[i]),
                 ],
             ];
         }, []);
-        return <Table data={tableData} />;
-    }
-}
 
-function mapDispatchToProps(dispatch) {
-    return {
-        close: () => dispatch(hideModalDialog()),
-        setAlphabetType: (type) => dispatch(setAlphabetTypeAction(type)),
+        return (
+            <>
+                <div className={'modal-dialog__header'}>
+                    <div className={'modal-dialog__header-title'}>
+                        {t('translatesModalTitle')}
+                    </div>
+                    <button
+                        className={'modal-dialog__header-close'}
+                        onClick={onClick}
+                        aria-label={'Close'}
+                    >
+                        &times;
+                    </button>
+                </div>
+                <div className={'modal-dialog__body'}>
+                    <Table data={tableData}/>
+                </div>
+                <footer className={'modal-dialog__footer'}>
+                    {t('translationsBottomText')}
+                    <br/>
+                    {t('aboutJoinText')}
+                </footer>
+            </>
+        );
     };
-}
-
-function mapStateToProps({results, flavorisationType, modalDialog, interfaceLang}: IMainState) {
-    return {
-        item: results[modalDialog.index],
-        flavorisationType,
-        interfaceLang,
-    };
-}
-
-export const TranslationsModal = connect(mapStateToProps, mapDispatchToProps)(TranslationsModalInternal);
