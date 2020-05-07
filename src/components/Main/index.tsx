@@ -6,7 +6,7 @@ import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
 import { Notification } from 'components/Notification';
 import { ModalDialog } from 'components/ModalDialog';
-import Router from 'components/Router';
+import { Router } from 'components/Router';
 
 import { fetchDictionary } from 'services';
 import './index.scss';
