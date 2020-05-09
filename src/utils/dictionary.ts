@@ -260,9 +260,13 @@ class DictionaryClass {
 
         const startTranslateTime = performance.now();
 
-        const isvText = (from === 'isv' ?
-            this.applyIsvSearchLetters(getLatin(inputWord, flavorisationType), flavorisationType)
-            : '');
+        let isvText = '';
+        if (from === 'isv') {
+            if (flavorisationType === '2' && this.isvSearchLetters.from.includes('ȯ')) {
+                isvText = inputWord.replace(/[ȯòъ]/g, '{ȯ}');
+            }
+            isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType), flavorisationType);
+        }
 
         // option -end - search by ending of word
         if (inputOptions.some((option) => option.trim() === 'end')) {
