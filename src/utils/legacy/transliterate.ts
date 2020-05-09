@@ -1784,7 +1784,7 @@ function nmsify (iW)
     iW = iW.replace (/ш/g,"š");
     iW = iW.replace (/щ/g,"šč");
     iW = iW.replace (/[ыꙑ]/g,"y");
-    iW = iW.replace (/ъ/g,"q");
+    iW = iW.replace (/ъ/g,"ȯ"); //Fixed by D.Š - old translation is 'q'
     iW = iW.replace (/ў/g,"ŭ");
     iW = iW.replace (/ѧ/g,"ę");
     iW = iW.replace (/ѫ/g,"ų");
