@@ -69,14 +69,13 @@ const isvReplacebleLetters = [
     ['å', 'a'],
     ['ę', 'e'],
     ['ų', 'u'],
-    ['ò', 'o'],
     ['ȯ', 'o'],
     ['ė', 'e'],
     ['ŕ', 'r'],
-    ['ľ', 'l'],
+    ['ĺ', 'l'],
     ['ń', 'n'],
-    ['ť', 't'],
-    ['ď', 'd'],
+    ['t́', 't'],
+    ['d́', 'd'],
     ['ś', 's'],
     ['ź', 'z'],
 ];
@@ -262,8 +261,10 @@ class DictionaryClass {
 
         let isvText = '';
         if (from === 'isv') {
+            isvText = inputWord;
+            // Fix for search by character ȯ
             if (flavorisationType === '2' && this.isvSearchLetters.from.includes('ȯ')) {
-                isvText = inputWord.replace(/[ȯòъ]/g, '{ȯ}');
+                isvText = isvText.replace(/[ȯòъ]/g, '{ȯ}');
             }
             isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType), flavorisationType);
         }
@@ -457,7 +458,7 @@ class DictionaryClass {
         return item[this.headerIndexes.get(fieldName)];
     }
     public changeIsvSearchLetters(letters: string): {from: string[], to: string[]} {
-        for (const letter of letters) {
+        for (const letter of letters.match(/.[\u0300-\u036f]?/g)) {
             isvReplacebleLetters
                 .filter((replacement) => replacement[0] === letter)
                 .map((replacement) => {
@@ -484,35 +485,28 @@ class DictionaryClass {
         return text.includes(';') ? text.split(';') : text.split(',');
     }
     private inputPrepare(lang: string, text: string): string {
-        const lowerCaseText = text.toLowerCase()
-            .replace(/ /g, '')
-            .replace(/,/g, '')
-            .replace(/[\u0300-\u036f]/g, '');
-        switch (lang) {
-            case 'isv-src':
-                return lowerCaseText;
-            case 'isv':
-                return this.isvToEngLatin(lowerCaseText);
-            case 'cs':
-            case 'pl':
-            case 'sk':
-            case 'sl':
-            case 'hr':
-            case 'de':
-                return filterLatin(lowerCaseText);
-            case 'ru':
-                return lowerCaseText.replace(/ё/g, 'е');
-            case 'sr':
-                return srGajevicaToVukovica(lowerCaseText);
-            default:
-                return lowerCaseText;
+        const preparedText = this.searchPrepare(lang, text);
+        if (lang === 'sr') {
+            return srGajevicaToVukovica(preparedText);
+        } else {
+            return preparedText;
         }
     }
     private searchPrepare(lang: string, text: string): string {
-        const lowerCaseText = text.toLowerCase()
+        let lowerCaseText = text.toLowerCase()
             .replace(/ /g, '')
-            .replace(/,/g, '')
-            .replace(/[\u0300-\u036f]/g, '');
+            .replace(/,/g, '');
+        if (lang !== 'isv-src') {
+            lowerCaseText = lowerCaseText.replace(/[\u0300-\u036f]/g, '');
+        } else {
+            lowerCaseText = lowerCaseText
+                .replace(/t́/g, 'ť')
+                .replace(/d́/g, 'ď')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/ť/g, 't́')
+                .replace(/ď/g, 'd́')
+            ;
+        }
         switch (lang) {
             case 'isv-src':
                 return lowerCaseText;
