@@ -4,9 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, 'src');
@@ -39,27 +36,22 @@ module.exports = {
                 use: 'ts-loader?configFile=tsconfig.json'
             },
             {
-                test: /\.s?css$/,
-                include: [
-                    srcPath,
+                test: /\.scss$/,
+                loaders: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
                 ],
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: true,
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                        },
-                        {
-                            loader: 'sass-loader',
-                        }
-                    ]
-                })
+                include: [srcPath],
+                exclude: []
+            },
+            {
+                test: /\.css$/,
+                loaders: [
+                    'style-loader',
+                    'css-loader'
+                ]
             },
             {
                 test: /\.(png|jpe?g)$/,
@@ -122,15 +114,6 @@ module.exports = {
                 return content;
             },
         }]),
-        new ExtractTextPlugin('styles/[name].[hash].css'),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /styles/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorPluginOptions: {
-                preset: ['default', {discardComments: {removeAll: true}}],
-            },
-            canPrint: true
-        }),
         new WriteFilePlugin(),
         new Dotenv({
             path: './.env.local',
