@@ -1,25 +1,26 @@
+@import "src/index";
+
 .results {
   overflow: auto;
   overflow: overlay;
-  padding: 16px 0;
+  padding: var(--gap-size) 0;
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  //width: 100%;
 
   &__message-for-users {
     white-space: pre-line;
     width: 100%;
     max-width: 1024px;
-    padding: 15px;
+    padding: var(--gap-size);
   }
 }
 
 @media (max-width: 1024px) {
   .results {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: var(--gap-size);
+    padding-right: var(--gap-size);
   }
 }

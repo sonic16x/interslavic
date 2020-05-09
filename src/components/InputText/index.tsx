@@ -22,9 +22,9 @@ export const InputText: React.FC =
         }, [dispatch]);
 
         return (
-            <div className={'inputText'}>
+            <div className={'input-text'}>
                 <input
-                    className={'fromText'}
+                    className={'input-text__input'}
                     type='search'
                     lang={searchLanguage}
                     autoCapitalize='off'
@@ -36,7 +36,7 @@ export const InputText: React.FC =
                     onChange={onChange}
                 />
                 <button
-                    className={'removeButton'}
+                    className={'input-text__clear-button'}
                     type={'reset'}
                     aria-label={'Clear input'}
                     disabled={fromText.length === 0}
