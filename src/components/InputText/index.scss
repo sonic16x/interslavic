@@ -1,14 +1,16 @@
-.inputText {
+@import "src/index";
+
+.input-text {
   padding: 15px 15px 0;
   position: relative;
 
-  .fromText {
-    border-radius: .3rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
+  &__input {
+    border-radius: var(--border-radius-s);
+    font-size: var(--text-l);
+    line-height: 30px;
     font-weight: 500;
     border: 1px solid #ced4da;
-    padding: .5rem 1rem;
+    padding: 8px 16px;
     width: 100%;
     color: #999 ;
 
@@ -28,7 +30,7 @@
     }
   }
 
-  .removeButton {
+  &__clear-button {
     font-family: Impact, fantasy;
     cursor: pointer;
     display: block;
@@ -36,7 +38,7 @@
     height: 30px;
     position: absolute;
     padding: 0;
-    top: 24px;
+    top: 21px;
     right: 22px;
     color: #666;
     border: 0;

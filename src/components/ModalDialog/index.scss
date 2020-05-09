@@ -8,7 +8,7 @@
   border: var(--border);
   border-radius: var(--border-radius-s);
   max-width: 1000px;
-  transition: opacity .2s ease-in-out;
+  transition: opacity var(--animation-duration) ease-in-out;
   z-index: 25;
   max-height: 100%;
   display: flex;
@@ -37,7 +37,7 @@
     left: 0;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity var(--animation-duration) ease-in-out;
 
     &.show {
       opacity: 1;

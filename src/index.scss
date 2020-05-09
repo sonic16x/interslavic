@@ -7,14 +7,28 @@
   --valid-color: #28a745;
   --invalid-color: #dc3545;
   --yellow-color: #ffeb3b;
-  --shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+  --shadow: 0 8px 16px rgba(0, 0, 0, .15);
   --border: 1px solid rgba(0, 0, 0, .125);
   --border-radius-s: 4px;
   --border-radius-m: 8px;
   --line-width: 3px;
   --line-length: 25px;
   --base-margin: 8px;
-  --animation-duration: 0.2s;
+  --animation-duration: .15s;
+
+  --text-l: 20px;
+  --text-l-line: 24px;
+
+  --text-m: 16px;
+  --text-m-line: 20px;
+
+  --text-s: 14px;
+  --text-s-line: 18px;
+
+  --text-xs: 12px;
+  --text-xs-line: 16px;
+
+  --gap-size: 16px;
 }
 
 html, body {
@@ -26,8 +40,9 @@ html, body {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-#app, input, select {
+#app, input, select, button, a {
   font-family: Roboto, sans-serif;
+  -webkit-appearance: none;
 }
 
 a {

@@ -11,7 +11,7 @@
   align-items: center;
   flex-direction: column;
   background: #fff;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity var(--animation-duration) ease-in-out;
   pointer-events: none;
   opacity: 0;
   z-index: 100;
