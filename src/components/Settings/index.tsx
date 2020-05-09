@@ -132,14 +132,14 @@ export const Settings: React.FC =
                         onChange={() => dispatch(changeIsvSearchLetters('ŕ'))}
                     />
                     <Checkbox
-                        title={'ľ ń'}
-                        checked={isvSearchLetters.from.includes('ľ')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ľń'))}
+                        title={'ĺ ń'}
+                        checked={isvSearchLetters.from.includes('ĺ')}
+                        onChange={() => dispatch(changeIsvSearchLetters('ĺń'))}
                     />
                     <Checkbox
-                        title={'ť ď'}
-                        checked={isvSearchLetters.from.includes('ť')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ťď'))}
+                        title={'t́ d́'}
+                        checked={isvSearchLetters.from.includes('t́')}
+                        onChange={() => dispatch(changeIsvSearchLetters('t́d́'))}
                     />
                     <Checkbox
                         title={'ś ź'}
