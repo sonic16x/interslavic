@@ -138,8 +138,8 @@ export const Settings: React.FC =
                     />
                     <Checkbox
                         title={'t́ d́'}
-                        checked={isvSearchLetters.from.includes('t́')}
-                        onChange={() => dispatch(changeIsvSearchLetters('t́d́'))}
+                        checked={isvSearchLetters.from.includes('ť')}
+                        onChange={() => dispatch(changeIsvSearchLetters('ťď'))}
                     />
                     <Checkbox
                         title={'ś ź'}

@@ -37,7 +37,6 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     }
     //indeclinable
     if (isIndeclinable) {
-
         return {
             nom: [noun, noun],
             acc: [noun, noun],
