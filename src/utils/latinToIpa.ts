@@ -28,6 +28,7 @@ export function latinToIpa(text: string) {
         .replace(/sť/g, 'sʲtʲ')
         .replace(/st́/g, 'sʲtʲ')
         .replace(/zď/g, 'zʲdʲ')
+        .replace(/sd́/g, 'sʲdʲ')
         .replace(/ť/g, 'tʲ')
         .replace(/t́/g, 'tʲ')
         .replace(/tь/g, 'tʲ')
