@@ -49,7 +49,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
         };
     }
     //plural nouns
-    const add = rawAdd.replace(/\(|\)/g, '');
+    const add = rawAdd.replace(/[()]/g, '');
     if(isPlural) {
         return declensionPluralNoun(noun, add, originGender);
     }
@@ -78,7 +78,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
 
     const nounWithoutFluent = noun.replace(/\([oe]\)/,'');
 
-    noun = noun.replace( '(e)', 'è').replace( '(o)', 'ò');
+    noun = noun.replace( '(e)', 'ė').replace( '(o)', 'ȯ');
 
     const gender = establishGender(noun, rawGender);
     const root = establish_root(nounWithoutFluent, gender);
@@ -137,7 +137,7 @@ function establishGender(noun: string, gender: string): string {
     if (noun.length === 0) {
         return null;
     }
-    if ((noun == 'den') || (noun == 'dèn') || (noun == 'denjь') || (noun == 'dènjь')) {
+    if ((noun == 'den') || (noun == 'dėn') || (noun == 'denjь') || (noun == 'dėnjь')) {
         return 'm3';
     }
     if ((gender.charAt(0) == 'm') && (lastTwo === 'en' || (noun.lastIndexOf('enjь') == noun.length - 4))
@@ -185,17 +185,17 @@ function establishGender(noun: string, gender: string): string {
 
 function establish_root(noun, gender) {
     let result = '';
-    /*if ((noun == 'den') || (noun == 'dèn') || (noun == 'denjь') || (noun == 'dènjь')) {
+    /*if ((noun == 'den') || (noun == 'dėn') || (noun == 'denjь') || (noun == 'dėnjь')) {
         result = 'dn';
     }*/
-    if (noun == 'lèv' || noun == 'lev') {
+    if (noun == 'lėv' || noun == 'lev') {
         result = 'ljv';
     }
-    else if (noun == 'Lèv' || noun == 'Lev') {
+    else if (noun == 'Lėv' || noun == 'Lev') {
         result = 'Ljv';
     }
-    else if (gender.charAt(0) == 'm' && noun.match(/[eè]cь$/) &&
-        (noun.slice(-5,-4).match(/[aeiouyęųåėěèòrŕ]/) || noun.slice(-4,-3).match(/[jdtc]/))) {
+    else if (gender.charAt(0) == 'm' && noun.match(/[eė]cь$/) &&
+        (noun.slice(-5,-4).match(/[aeiouyęųåėěȯrŕ]/) || noun.slice(-4,-3).match(/[jdtc]/))) {
         result = noun.slice(0, -3) + 'cь';
     }
     else if (gender == 'm3') {
@@ -206,7 +206,7 @@ function establish_root(noun, gender) {
     else if ((noun == 'mati') || (noun == 'dočьi') || (noun == 'doćьi')) {
         result = noun.slice(0, -1) + 'er';
     }
-    else if ((gender == 'f3') && ((noun.slice(-2, -1) === 'o') || (noun.slice(-2, -1) === 'ò')) && (noun.slice(-1) === 'v')) {
+    else if ((gender == 'f3') && ((noun.slice(-2, -1) === 'o') || (noun.slice(-2, -1) === 'ȯ')) && (noun.slice(-1) === 'v')) {
         result = noun.slice(0, -2) + 'v';
     }
     else if (gender == 'f3') {
@@ -239,8 +239,8 @@ function establish_root(noun, gender) {
         result = noun;
     }
 
-    const filler_e = result.lastIndexOf('è');
-    const filler_o = result.lastIndexOf('ò');
+    const filler_e = result.lastIndexOf('ė');
+    const filler_o = result.lastIndexOf('ȯ');
     let filler;
     if ((filler_e != -1) || (filler_o != -1)) {
         if (filler_o > filler_e) {
@@ -295,7 +295,7 @@ function nominative_sg(noun, root, gender) {
         result = root;
     }
     if (gender == 'f3' && (root.lastIndexOf('v') == root.length - 1)) {
-        result = root.substring(0, root.length - 1) + 'òv';
+        result = root.substring(0, root.length - 1) + 'ȯv';
     }
     else if (gender == 'f3') {
         result = noun;
@@ -394,7 +394,7 @@ function instrumental_sg(root, gender) {
         result = root + 'jų';
     }
     else if ((gender == 'f3') && (root.lastIndexOf('v') == root.length - 1)) {
-        result = root.substring(0, root.length - 1) + 'òvjų';
+        result = root.substring(0, root.length - 1) + 'ȯvjų';
     }
     else if (gender == 'f3') {
         result = root + 'jų';
@@ -527,7 +527,7 @@ function genitive_pl(root, gender) {
         result = result + '%';
     }
     else if (root === 'st') {
-        result = 'sòt';
+        result = 'sȯt';
     }
     else if (gender.charAt(0) == 'n') {
         result = root.replace('ь', '%')
@@ -551,18 +551,18 @@ function genitive_pl(root, gender) {
     }
     result = result.replace('jsk%', 'jsk')
         .replace('mš%', 'meš')
-        .replace('zl%', 'zòl')
-        .replace('tl%', 'tòl')
-        .replace('mgl%', 'mgòl')
+        .replace('zl%', 'zȯl')
+        .replace('tl%', 'tȯl')
+        .replace('mgl%', 'mgȯl')
         .replace(/([jśźďťľŕńčšžćđc])(k)%/, '$1e$2')
-        .replace(/([pbfvmlnrtdszkgh])(k)%/, '$1ò$2')
+        .replace(/([pbfvmlnrtdszkgh])(k)%/, '$1ȯ$2')
         .replace(/([vmpzšžt])(n)%/, '$1e$2')
-        .replace(/(k)([nl])%/, '$1ò$2')
+        .replace(/(k)([nl])%/, '$1ȯ$2')
         .replace(/(s)([nl])%/, '$1e$2')
-        .replace(/^dn%/, 'dòn')
+        .replace(/^dn%/, 'dȯn')
         .replace(/pismo%/, 'pisem')
         .replace(/^ťm%/, 'tem')
-        .replace(/^sto%/, 'sòt')
+        .replace(/^sto%/, 'sȯt')
         .replace(/%/g, '')
     ;
 

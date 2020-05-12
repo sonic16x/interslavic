@@ -7,7 +7,7 @@
 const prefixes = [
     'do', 'iz', 'izpo', 'nad', 'na', 'ne', 'ob', 'odpo', 'od', 'o', 'prědpo',
     'pod', 'po', 'prě', 'pre', 'pri', 'pro', 'råzpro', 'razpro', 'råz', 'raz',
-    'sò', 's', 'u', 'vò', 'vo', 'v', 'vòz', 'voz', 'vy', 'za',
+    'sȯ', 's', 'u', 'vȯ', 'vo', 'v', 'vȯz', 'voz', 'vy', 'za',
 ];
 
 export function conjugationVerbFlat(inf, rawPts): any {
@@ -224,14 +224,14 @@ function present_tense_stem(pref, pts, is) {
             if (result.slice(-2) === 'ję') {
                 if (result.slice(-3) === 'bję' || result.slice(-3) === 'dję'
                     || result.slice(-3) === 'sję' || result.slice(-3) === 'zję') {
-                    result = (result.slice(0, -2) + 'òjm');
+                    result = (result.slice(0, -2) + 'ȯjm');
                 }
                 else {
                     result = (result.slice(0, -1) + 'm');
                 }
             }
             else if (result === 'vzę') {
-                result = 'vòzm';
+                result = 'vȯzm';
             }
             else {
                 result = (result.slice(0, -1) + 'n');
@@ -331,15 +331,15 @@ function secondary_present_tense_stem(ps) {
 
 function l_participle(pref, pts, is) {
     let result = '';
-    if ((is == 'vojd') || (is == 'vòjd')) {
-        result = 'všèl';
+    if ((is == 'vojd') || (is == 'vȯjd')) {
+        result = 'všėl';
     }
     else if ((is == 'id') || (is == 'jd')) {
-        result = pref + 'šèl';
+        result = pref + 'šėl';
     }
     else if ((is.slice(-2) == 'id') ||
         (is.slice(-2) == 'jd')) {
-        result = pref + is.slice(0, -2) + 'šèl';
+        result = pref + is.slice(0, -2) + 'šėl';
     }
     //treti - trl (by Ranmaru Rei)
     else if (is.match(/r[eě]$/) && pts.match(/re$/)) {
@@ -364,22 +364,22 @@ function build_infinitive(pref, is, refl) {
 function buildPresent(pref, ps, psi, refl) {
     switch (ps) {
         case 'jes':
-            return ['jesm','jesi','jest (je)','jesmò','jeste','sųt']
+            return ['jesm','jesi','jest (je)','jesmȯ','jeste','sųt']
                 .map(transliterateBack);
         case 'da':
-            return ['dam', 'daš', 'da', 'damò', 'date', 'dadųt']
+            return ['dam', 'daš', 'da', 'damȯ', 'date', 'dadųt']
                 .map((word) => transliterateBack(`${pref}${word}${refl}`));
         case 'vě':
-            return ['věm', 'věš', 'vě', 'věmò', 'věte', 'vědųt']
+            return ['věm', 'věš', 'vě', 'věmȯ', 'věte', 'vědųt']
                 .map((word) => transliterateBack(`${pref}${word}${refl}`));
         case 'jě':
-            return ['jěm', 'jěš', 'jě', 'jěmò', 'jěte', 'jědųt']
+            return ['jěm', 'jěš', 'jě', 'jěmȯ', 'jěte', 'jědųt']
                 .map((word) => transliterateBack(`${pref}${word}${refl}`));
         case 'je':
-            return ['jem', 'ješ', 'je', 'jemò', 'jete', 'jedųt']
+            return ['jem', 'ješ', 'je', 'jemȯ', 'jete', 'jedųt']
                 .map((word) => transliterateBack(`${pref}${word}${refl}`));
         case 'ja':
-            return ['jam', 'jaš', 'ja', 'jamò', 'jate', 'jadųt']
+            return ['jam', 'jaš', 'ja', 'jamȯ', 'jate', 'jadųt']
                 .map((word) => transliterateBack(`${pref}${word}${refl}`));
     }
 
@@ -391,7 +391,7 @@ function buildPresent(pref, ps, psi, refl) {
                 `${pref}${pps}ų${refl}, ${pref}${cut}m${refl}`,
                 `${pref}${pps}eš${refl}, ${pref}${cut}š${refl}`,
                 `${pref}${pps}e${refl}, ${pref}${cut}${refl}`,
-                `${pref}${pps}emò${refl}, ${pref}${cut}mo${refl}`,
+                `${pref}${pps}emȯ${refl}, ${pref}${cut}mo${refl}`,
                 `${pref}${pps}ete${refl}, ${pref}${cut}te${refl}`,
                 `${pref}${pps}ųt${refl}`,
             ].map(transliterateBack);
@@ -402,7 +402,7 @@ function buildPresent(pref, ps, psi, refl) {
                 `${pref}${cut}xų${refl}, ${pref}${ps}m${refl}`,
                 `${pref}${ps}š${refl}`,
                 `${pref}${ps}${refl}`,
-                `${pref}${ps}mò${refl}`,
+                `${pref}${ps}mȯ${refl}`,
                 `${pref}${ps}te${refl}`,
                 `${pref}${cut}ęt${refl}`,
             ].map(transliterateBack);
@@ -412,7 +412,7 @@ function buildPresent(pref, ps, psi, refl) {
                 `${pref}${ps}ų${refl}, ${pref}${psi}em${refl}`,
                 `${pref}${psi}eš${refl}`,
                 `${pref}${psi}e${refl}`,
-                `${pref}${psi}emò${refl}`,
+                `${pref}${psi}emȯ${refl}`,
                 `${pref}${psi}ete${refl}`,
                 `${pref}${ps}ųt${refl}`,
                 '',
@@ -423,7 +423,7 @@ function buildPresent(pref, ps, psi, refl) {
 function build_imperfect(pref, is, refl) {
     let impst = '';
     let i = is.length - 1;
-    if (!is.charAt(i).match(/[aeiouyęųåėěèò)]/)) {
+    if (!is.charAt(i).match(/[aeiouyęųåěėȯ)]/)) {
         if (is.charAt(i) == 'k') {
             impst = is.substring(0, i) + 'če';
         }
@@ -448,7 +448,7 @@ function build_imperfect(pref, is, refl) {
         `${pref}${impst}h${refl}`,
         `${pref}${impst}še${refl}`,
         `${pref}${impst}še${refl}`,
-        `${pref}${impst}hmò${refl}`,
+        `${pref}${impst}hmȯ${refl}`,
         `${pref}${impst}ste${refl}`,
         `${pref}${impst}hų${refl}`,
     ].map(transliterateBack);
@@ -464,7 +464,7 @@ function buildFuture(infinitive, ps) {
         `bųdų ${verb}`,
         `bųdeš ${verb}`,
         `bųde ${verb}`,
-        `bųdemò ${verb}`,
+        `bųdemȯ ${verb}`,
         `bųdete ${verb}`,
         `bųdųt ${verb}`,
     ];
@@ -477,14 +477,14 @@ function buildPerfect(lpa, refl) {
         `(je) ${lpa}${refl}`,
         `(je) ${lpa}a${refl}`,
         `(je) ${lpa}o${refl}`,
-        `jesmò ${lpa}i${refl}`,
+        `jesmȯ ${lpa}i${refl}`,
         `jeste ${lpa}i${refl}`,
         `(sųt) ${lpa}i${refl}`,
         ''
     ];
 
     return result.map((line) => {
-        let res = line.includes('šèl') ?  idti(line) : line;
+        let res = line.includes('šėl') ?  idti(line) : line;
         res = res.includes('žegl') ?  zegti(res) : res;
         return transliterateBack(res);
     });
@@ -504,7 +504,7 @@ function buildPluralPerfect(lpa, refl) {
     ];
 
     return result.map((line) => {
-        let res = line.indexOf('šèl') !== -1 ?  idti(line) : line;
+        let res = line.indexOf('šėl') !== -1 ?  idti(line) : line;
         res = res.includes('žegl') ?  zegti(res) : res;
         return transliterateBack(res);
     });
@@ -517,14 +517,14 @@ function buildConditional(lpa, refl) {
         `by ${lpa}${refl}`,
         `by ${lpa}a${refl}`,
         `by ${lpa}o${refl}`,
-        `byhmò ${lpa}i${refl}`,
+        `byhmȯ ${lpa}i${refl}`,
         `byste ${lpa}i${refl}`,
         `by ${lpa}i${refl}`,
         ''
     ];
 
     return result.map((line) => {
-        let res = line.indexOf('šèl') !== -1 ?  idti(line) : line;
+        let res = line.indexOf('šėl') !== -1 ?  idti(line) : line;
         res = res.includes('žegl') ?  zegti(res) : res;
         return transliterateBack(res);
     });
@@ -565,7 +565,7 @@ function build_imperative(pref, ps, refl) {
         p2s = pref + ps + 'i';
     }
 
-    let result = p2s + refl + ', ' + p2s + 'mò' + refl + ', ' + p2s + 'te' + refl;
+    let result = p2s + refl + ', ' + p2s + 'mȯ' + refl + ', ' + p2s + 'te' + refl;
     result = result.replace(/jij/g, 'j');
     result = result.replace(/ĵij/g, 'ĵ');
     result = transliterateBack(result);
@@ -660,13 +660,13 @@ function build_prpp(pref, ps, psi) {
 
 function build_pfap(lpa, refl) {
     let result = '';
-    if (lpa.slice(-2, -1).match(/[aeiouyęųåėěèò)]/)) {
+    if (lpa.slice(-2, -1).match(/[aeiouyęųåěėȯ)]/)) {
         result = lpa.substring(0, lpa.length - 1) + 'vši' + refl;
     }
     else {
         result = lpa.substring(0, lpa.length - 1) + 'ši' + refl;
     }
-    if (result.indexOf('šèv') != -1) {
+    if (result.indexOf('šėv') != -1) {
         result = idti(result);
     }
     result = result + ' (' + result.slice(0, -1) + "á, " + result.slice(0, -1) + "é)";
@@ -743,19 +743,19 @@ function build_gerund(pfpp, refl) {
 
 function idti(sel) {
     return sel
-        .replace('šèl(a)', 'šèl/šla')
-        .replace('šèl(a)', 'šèl/šla')
-        .replace('všèl/šla', 'všèl/vòšla')
-        .replace('všèl/šla', 'všèl/vòšla')
-        .replace(/šèla/g, 'šla')
-        .replace(/šèlo/g, 'šlo')
-        .replace(/šèli/g, 'šli')
-        .replace(/všl/g, 'vòšl')
-        .replace(/iz[oò]š/g, 'izš')
-        .replace(/ob[oò]š/g, 'obš')
-        .replace(/od[oò]š/g, 'odš')
-        .replace(/pod[oò]š/g, 'podš')
-        .replace(/nad[oò]š/g, 'nadš')
+        .replace('šėl(a)', 'šėl/šla')
+        .replace('šėl(a)', 'šėl/šla')
+        .replace('všėl/šla', 'všėl/vȯšla')
+        .replace('všėl/šla', 'všėl/vȯšla')
+        .replace(/šėla/g, 'šla')
+        .replace(/šėlo/g, 'šlo')
+        .replace(/šėli/g, 'šli')
+        .replace(/všl/g, 'vȯšl')
+        .replace(/iz[oȯ]š/g, 'izš')
+        .replace(/ob[oȯ]š/g, 'obš')
+        .replace(/od[oȯ]š/g, 'odš')
+        .replace(/pod[oȯ]š/g, 'podš')
+        .replace(/nad[oȯ]š/g, 'nadš')
     ;
 }
 

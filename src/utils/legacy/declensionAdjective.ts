@@ -215,7 +215,7 @@ function comparative_adj(root) {
     let result = '';
     const hacek = root.indexOf('^');
     const lastchar = hacek !== -1 ? root.length - 2 : root.length - 1;
-    const vowel = /[aåeěęioòuųy]/;
+    const vowel = /[aåeěęėioȯuųy]/;
     const liquid = /[lrŕ]/;
     const nasal = /[nm]/;
 
@@ -261,7 +261,7 @@ function comparative_adv(root) {
     let result = '';
     const hacek = root.indexOf('^');
     const lastchar = hacek !== -1 ? root.length - 2 : root.length - 1;
-    const vowel = /[aåeěęioòuųy]/;
+    const vowel = /[aåeěęėioȯuųy]/;
     const liquid = /[lrŕ]/;
 
     if (root == 'velik') {
@@ -339,7 +339,7 @@ function rules(word: string): string {
         .replace('ž^', 'ž')
         .replace('ć^', 'ć')
         .replace('c^', 'c')
-        .replace(/l^/g, 'lj')
+        .replace(/l\^/g, 'lj')
         .replace('n^', 'ń')
         .replace('r^', 'ŕ')
         .replace('j^', 'j')
