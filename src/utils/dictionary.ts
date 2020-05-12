@@ -74,8 +74,8 @@ const isvReplacebleLetters = [
     ['ŕ', 'r'],
     ['ĺ', 'l'],
     ['ń', 'n'],
-    ['t́', 't'],
-    ['d́', 'd'],
+    ['ť', 't'],
+    ['ď', 'd'],
     ['ś', 's'],
     ['ź', 'z'],
 ];
@@ -267,6 +267,7 @@ class DictionaryClass {
                 isvText = isvText.replace(/[ȯòъ]/g, '{ȯ}');
             }
             isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType), flavorisationType);
+            isvText = this.inputPrepare('isv-src', isvText);
         }
 
         // option -end - search by ending of word
@@ -503,8 +504,6 @@ class DictionaryClass {
                 .replace(/t́/g, 'ť')
                 .replace(/d́/g, 'ď')
                 .replace(/[\u0300-\u036f]/g, '')
-                .replace(/ť/g, 't́')
-                .replace(/ď/g, 'd́')
             ;
         }
         switch (lang) {
