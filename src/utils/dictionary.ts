@@ -459,7 +459,7 @@ class DictionaryClass {
         return item[this.headerIndexes.get(fieldName)];
     }
     public changeIsvSearchLetters(letters: string): {from: string[], to: string[]} {
-        for (const letter of letters.match(/.[\u0300-\u036f]?/g)) {
+        for (const letter of letters) {
             isvReplacebleLetters
                 .filter((replacement) => replacement[0] === letter)
                 .map((replacement) => {
