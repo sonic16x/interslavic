@@ -19,6 +19,14 @@
     padding: 16px;
   }
 
+  &__author {
+    margin-bottom: 5px;
+
+    a {
+      margin-left: 5px;
+    }
+  }
+
   &__release-date {
     text-align: center;
     color: var(--muted-text-color);
