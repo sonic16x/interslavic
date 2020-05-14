@@ -23,8 +23,24 @@ export const About: React.FC =
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
                         <hr/>
-                        <p>{t('aboutDeveloper')}</p>
-                        <a target={'_blank'} href={`email:${email}`}>{t('aboutDeveloperName')} ({email})</a>
+                        <h6>{t('aboutDeveloper')}</h6>
+                        <div className={'about-page__author'}>
+                            {t('aboutAuthorSergeyCherebedov')}:
+                            <a target={'_blank'} href={'https://github.com/scherebedov'}>GitHub</a>
+                            <a target={'_blank'} href={'https://www.linkedin.com/in/scherebedov/'}>LinkedIn</a>
+                            <a target={'_blank'} href={'https://www.facebook.com/profile.php?id=100009366550621'}>Facebook</a>
+                            <a target={'_blank'} href={`email:${email}`}>{email}</a>
+                        </div>
+                        <h6>{t('aboutDeveloperCoauthors')}</h6>
+                        <div className={'about-page__author'}>
+                            {t('aboutAuthorDenisShabalin')}:
+                            <a target={'_blank'} href={'https://github.com/ru-danko'}>GitHub</a>
+                            <a target={'_blank'} href={'https://www.facebook.com/d.y.shabalin'}>Facebook</a>
+                        </div>
+                        <div className={'about-page__author'}>
+                            {t('aboutAuthorJaroslavSerhieiev')}:
+                            <a target={'_blank'} href={'https://github.com/noomorph'}>GitHub</a>
+                        </div>
                         <hr/>
                         {t('aboutSourceCode')} <a target={'_blank'} href={github}>{github}</a>
                         <hr/>
