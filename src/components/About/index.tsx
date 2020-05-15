@@ -40,11 +40,12 @@ export const About: React.FC =
                         <div className={'about-page__author'}>
                             {t('aboutAuthorJaroslavSerhieiev')}:
                             <a target={'_blank'} href={'https://github.com/noomorph'}>GitHub</a>
+                            <a target={'_blank'} href={'email:noomorph@gmail.com'}>noomorph@gmail.com</a>
                         </div>
                         <hr/>
                         {t('aboutSourceCode')} <a target={'_blank'} href={github}>{github}</a>
                         <hr/>
-                        <p>{t('aboutOurFriends')}</p>
+                        <h6>{t('aboutOurFriends')}</h6>
                         <a
                             title={'Interslavic Facebook'}
                             href={'http://www.facebook.com/groups/interslavic'}
