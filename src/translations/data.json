@@ -360,19 +360,19 @@
     "bg": "Автор и основен разработчик на проекта:"
   },
   "aboutDeveloperCoauthors": {
-    "en": "Also participated:",
-    "isv": "Takože učestvovali:",
-    "ru": "Также участвовали:",
-    "uk": "Також брали участь:",
-    "be": "Таксама ўдзельнічалі:",
-    "pl": "Uczestniczyli także:",
-    "cs": "Také spolupracovali:",
-    "sk": "Tiež spolupracovali:",
-    "sl": "Sodelovali so tudi:",
-    "hr": "Također su sudjelovali:",
-    "sr": "Такође су суделовали:",
-    "mk": "Тие исто така учествуваа:",
-    "bg": "Те също участваха:"
+    "en": "Contributors:",
+    "isv": "Surabotniki:",
+    "ru": "Участники проекта:",
+    "uk": "Учасники проекту:",
+    "be": "Удзельнікі праекта:",
+    "pl": "Współtwórcy:",
+    "cs": "Přispěvatelé:",
+    "sk": "Prispievatelia:",
+    "sl": "Sodelavci:",
+    "hr": "Suradnici:",
+    "sr": "Сарадници:",
+    "mk": "Соработници:",
+    "bg": "Cътрудници:"
   },
   "aboutAuthorSergeyCherebedov": {
     "en": "Sergey Cherebedov",
