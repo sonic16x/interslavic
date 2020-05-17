@@ -16,7 +16,6 @@ export const About: React.FC =
                     <div className={'about-page__common'}>
                         <p>{t('aboutInterslavic')}</p>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
-                        <p>{t('aboutAuthors')}</p>
                         <hr/>
                         <i>{t('nonCommercialDisclaimer')}</i>
                         <hr/>
@@ -41,6 +40,10 @@ export const About: React.FC =
                             {t('aboutAuthorJaroslavSerhieiev')}:
                             <a target={'_blank'} href={'https://github.com/noomorph'}>GitHub</a>
                             <a target={'_blank'} href={'email:noomorph@gmail.com'}>noomorph@gmail.com</a>
+                        </div>
+                        <h6>{t('aboutTranslators')}</h6>
+                        <div className={'about-page__author'}>
+                            {t('aboutTranslatorsText')}
                         </div>
                         <hr/>
                         {t('aboutSourceCode')} <a target={'_blank'} href={github}>{github}</a>
