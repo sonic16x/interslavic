@@ -17,6 +17,9 @@ export const About: React.FC =
                         <p>{t('aboutInterslavic')}</p>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
                         <hr/>
+                        <p>{t('aboutJoinText')}</p>
+                        <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
+                        <hr/>
                         <i>{t('nonCommercialDisclaimer')}</i>
                         <hr/>
                         <h6>{t('aboutDeveloper')}</h6>
@@ -44,9 +47,6 @@ export const About: React.FC =
                         </div>
                         <hr/>
                         {t('aboutSourceCode')} <a target={'_blank'} href={github}>{github}</a>
-                        <hr/>
-                        <p>{t('aboutJoinText')}</p>
-                        <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
                         <hr/>
                         <h6>{t('aboutOurFriends')}</h6>
                         <a
