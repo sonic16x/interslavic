@@ -19,9 +19,6 @@ export const About: React.FC =
                         <hr/>
                         <i>{t('nonCommercialDisclaimer')}</i>
                         <hr/>
-                        <p>{t('aboutJoinText')}</p>
-                        <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
-                        <hr/>
                         <h6>{t('aboutDeveloper')}</h6>
                         <div className={'about-page__author'}>
                             {t('aboutAuthorSergeyCherebedov')}:
@@ -47,6 +44,9 @@ export const About: React.FC =
                         </div>
                         <hr/>
                         {t('aboutSourceCode')} <a target={'_blank'} href={github}>{github}</a>
+                        <hr/>
+                        <p>{t('aboutJoinText')}</p>
+                        <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
                         <hr/>
                         <h6>{t('aboutOurFriends')}</h6>
                         <a
