@@ -13,6 +13,7 @@ export enum ActionTypes {
     ALPHABET_TYPE = 'ALPHABET_TYPE',
     RUN_SEARCH = 'RUN_SEARCH',
     CHANGE_ISV_SEARCH_LETTERS = 'CHANGE_ISV_SEARCH_LETTERS',
+    CHANGE_ISV_SEARCH_BY_WORDFORMS = 'CHANGE_ISV_SEARCH_BY_WORDFORMS',
     POS_FILTER = 'POS_FILTER',
     SET_ALPHABETS = 'SET_ALPHABETS',
     SHOW_MODAL_DIALOG = 'SHOW_MODAL_DIALOG',
@@ -121,6 +122,13 @@ export function setInterfaceLang(data: string) {
 export function changeIsvSearchLetters(data: string) {
     return {
         type: ActionTypes.CHANGE_ISV_SEARCH_LETTERS,
+        data,
+    };
+}
+
+export function changeIsvSearchByWordForms(data: boolean) {
+    return {
+        type: ActionTypes.CHANGE_ISV_SEARCH_BY_WORDFORMS,
         data,
     };
 }

@@ -1790,6 +1790,8 @@ function nmsify (iW)
     iW = iW.replace (/ѫ/g,"ų");
     iW = iW.replace (/ѱ/g,"ps");
     iW = iW.replace (/ѯ/g,"ks");
+    iW = iW.replace (/ӑ/g,"å"); //Added by D.Š
+
     iW = iW.replace (/⁙/g,".");
 
     iW = iW.replace (/zsk/g,"z#sk");
