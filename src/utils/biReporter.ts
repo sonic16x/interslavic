@@ -2,7 +2,6 @@ import { IMainState } from '../reducers';
 import debounce from 'lodash/debounce';
 import { objectSetToString } from './objectSetToString';
 import { toQueryString } from './toQueryString';
-import { Dictionary, ITranslateResult } from './dictionary';
 
 declare function ga(...args: any[]): void;
 
@@ -88,6 +87,7 @@ export class BiReporter {
             searchLanguage: state.lang.from === 'isv' ? state.lang.to : state.lang.from,
             searchFilterPos: state.posFilter,
             searchFilterPart: state.searchType,
+            searchByWordForms: state.isvSearchByWordForms,
             interfaceLanguage: state.interfaceLang,
             alphabets: objectSetToString(state.alphabets),
             flavorisationType: state.flavorisationType,
@@ -106,6 +106,7 @@ export class BiReporter {
                 filterPart: dimensions.searchFilterPart,
                 flavor: dimensions.flavorisationType,
                 filterPos: dimensions.searchFilterPos,
+                wordForms: dimensions.searchByWordForms ? 1 : 0,
             }),
         });
     }
@@ -173,6 +174,14 @@ export class BiReporter {
         if (dimensions.clipboardContent !== undefined) {
             this.ga('set', 'dimension12', dimensions.clipboardContent);
         }
+
+        if (dimensions.cardIndex !== undefined) {
+            this.ga('set', 'metric1', dimensions.cardIndex);
+        }
+
+        if (dimensions.searchByWordForms !== undefined) {
+            this.ga('set', 'metric2', dimensions.searchByWordForms ? 1 : 0);
+        }
     }
 
     private _sendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue?: number) {
@@ -193,6 +202,7 @@ interface ICustomAnalytics {
     searchLanguage: string;
     searchFilterPos: string;
     searchFilterPart: string;
+    searchByWordForms: boolean;
     interfaceLanguage: string;
     flavorisationType: string;
     alphabets: string;
