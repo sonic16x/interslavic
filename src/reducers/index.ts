@@ -33,6 +33,7 @@ export interface IMainState {
         from: string[];
         to: string[]
     };
+    isvSearchByWordForms: boolean;
     fromText: string;
     searchType: string;
     posFilter: string;
@@ -148,6 +149,27 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 isvSearchLetters,
+                rawResults,
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets),
+            };
+        }
+        case ActionTypes.CHANGE_ISV_SEARCH_BY_WORDFORMS: {
+            const { searchType, flavorisationType, lang, fromText, posFilter} = state;
+            const isvSearchByWordForms = data;
+            Dictionary.setIsvSearchByWordForms(data);
+            const [rawResults, translateTime] = Dictionary.translate({
+                inputText: fromText,
+                ...lang,
+                searchType,
+                posFilter,
+                flavorisationType,
+            });
+
+            biReporter.performanceSearch(translateTime);
+
+            return {
+                ...state,
+                isvSearchByWordForms,
                 rawResults,
                 results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets),
             };

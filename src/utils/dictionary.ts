@@ -154,6 +154,7 @@ class DictionaryClass {
     private words: string[][];
     private splittedMap: Map<string, string[]>;
     private isvSearchLetters: { from: string[], to: string[] };
+    private isvSearchByWordForms: boolean;
 
     private constructor() {
         this.header = [];
@@ -259,8 +260,11 @@ class DictionaryClass {
 
         const startTranslateTime = performance.now();
 
+        // option -b - two-way search
+        const twoWaySearch = inputOptions.some((o) => o === 'b');
+
         let isvText = '';
-        if (from === 'isv') {
+        if (from === 'isv' || twoWaySearch) {
             isvText = inputWord;
             // Fix for search by character ȯ
             if (flavorisationType === '2' && this.isvSearchLetters.from.includes('ȯ')) {
@@ -280,9 +284,6 @@ class DictionaryClass {
             (flavorisationType === '2' &&
             isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
 
-        // option -b - two-way search
-        const twoWaySearch = inputOptions.some((o) => o === 'b');
-
         // filter by part of speech
         let filterPartOfSpeech = [];
         //   option -p, for example "-p noun.m+v.ipf" - search for masculine nouns or imperfective verbs
@@ -301,24 +302,15 @@ class DictionaryClass {
             .filter((item) => {
                 let filterResult = false;
                 if (from === 'isv' || twoWaySearch) {
-                    // hard etymological search for isv
-                    if (hardEtymSearch) {
-                        const splittedField = this.getSplittedField('isv-src', item);
-                        if (inputWord.length === 1) {
-                            filterResult = searchTypes[searchType](splittedField[0], inputWord);
-                        } else {
-                            filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk, inputWord));
-                        }
-                        // for isv only: when entered 1 symbol - searching by first entry of cell
-                    } else {
-                        const splittedField = this.getSplittedField('isv', item);
-                        if (inputIsvPrepared.length === 1) {
-                            filterResult = searchTypes[searchType](splittedField[0], inputIsvPrepared);
-                        } else {
-                            filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk,
-                                inputIsvPrepared));
-                        }
+                    // hardEtymSearch - hard etymological search for isv, otherwise - simple search
+                    // when isvSearchByWordForms = false OR entered 1 symbol - searching without word forms
+                    let splittedField = this.getSplittedField(hardEtymSearch ? 'isv-src' : 'isv', item);
+                    if ( !this.isvSearchByWordForms || inputIsvPrepared.length === 1 ) {
+                        const wordsCount = this.getField(item, 'isv').split(',').length;
+                        splittedField = splittedField.slice(0, wordsCount);
                     }
+                    filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk,
+                            hardEtymSearch ? inputWord : inputIsvPrepared));
                 }
                 if (to === 'isv' || twoWaySearch) {
                     const splittedField = this.getSplittedField(lang, item);
@@ -345,16 +337,16 @@ class DictionaryClass {
                 if ((from === 'isv' || twoWaySearch) &&
                    !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&
                     this.isvSearchLetters.to.some((letter) => inputIsvPrepared.includes(letter))) {
-                    const splittedField = this.getSplittedField('isv-src', item);
-                    if (isvText.length === 1) {
-                        filterResult = searchTypes[searchType](this.applyIsvSearchLetters(splittedField[0],
-                            flavorisationType), isvText);
-                    } else {
-                        filterResult = splittedField.some((chunk) => {
+                    let splittedField = this.getSplittedField('isv-src', item);
+                    if ( !this.isvSearchByWordForms || inputIsvPrepared.length === 1 ) {
+                        const wordsCount = this.getField(item, 'isv').split(',').length;
+                        splittedField = splittedField.slice(0, wordsCount);
+                    }
+                    filterResult = splittedField.some((chunk) => {
                             return searchTypes[searchType](this.applyIsvSearchLetters(chunk,
                                 flavorisationType), isvText);
                         });
-                    }
+
                 }
                 if (!filterResult && (to === 'isv' || twoWaySearch)) {
                     const splittedField = this.getSplittedField(lang, item);
@@ -477,6 +469,9 @@ class DictionaryClass {
     }
     public setIsvSearchLetters(letters: {from: string[], to: string[]}): void {
         this.isvSearchLetters = letters;
+    }
+    public setIsvSearchByWordForms(isvSearchByWordForms: boolean): void {
+        this.isvSearchByWordForms = isvSearchByWordForms;
     }
     private getSplittedField(from: string, item: string[]): string[] {
         const key = `${this.getField(item, 'id')}-${from}`;

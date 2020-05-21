@@ -2,7 +2,7 @@ import * as React from 'react';
 import './index.scss';
 
 function matchStr(str) {
-    return str.match(/\{[^{}]+\}+\[[\w,]+\]/g);
+    return str.match(/\{[^{}]*\}+\[[\w,]+\]/g);
 }
 
 export function parseStr(rawStr) {

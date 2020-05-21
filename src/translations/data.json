@@ -150,7 +150,7 @@
     "bg": "Спрежение"
   },
   "translates": {
-    "en": "Translates",
+    "en": "Translations",
     "isv": "Prěklady",
     "ru": "Переводы",
     "uk": "Переклади",
@@ -660,8 +660,8 @@
     "bg": ""
   },
   "searchSensitiveLettersForInterslavic": {
-    "en": "Search-sensitive letters for Interslavic",
-    "isv": "Značime bukvy pri iskanju na medžuslovjanskom",
+    "en": "Search sensitive letters for Interslavic",
+    "isv": "Značime bukvy pri iskanju na medžuslovjanskom jezyku",
     "ru": "Учитывать буквы при поиске на межславянском",
     "uk": "Зважати на літери при пошуку міжслав'янською мовою",
     "be": "Ўлічваць літары пры пошуку на міжславянскай мове",
@@ -673,6 +673,21 @@
     "sr": "Значајна слова при претраживању на међуславенском",
     "mk": "Важни букви кога пребарувате на меѓусловенски",
     "bg": "Значителни букви при търсене на междуславянски език"
+  },
+  "searchByIsvWordForms": {
+    "en": "Using word forms when searching in Interslavic",
+    "isv": "Koriščenje form slov pri iskanju v medžuslovjanskom jezyku",
+    "ru": "Использование словоформ при поиске на межславянском",
+    "uk": "Використання форми слів при пошуку міжслав'янською мовою",
+    "be": "Выкарыстанне формы слоў пры пошуку на міжславянскай мове",
+    "pl": "Zastosowanie form słownych podczas wyszukiwania w języku międzysłowiańskim",
+    "cs": "Používání forem slov při hledání v mezislovanském jazyce",
+    "sk": "Použitie slovných tvarov pri hľadaní v mezislovanském jazyku",
+    "sl": "Uporaba besednih oblik pri iskanju v medslovanskem jeziku",
+    "hr": "Upotreba oblika riječi pri pretraživanju na međuslavenskom",
+    "sr": "Употреба облика речи при претраживању на међуславенском",
+    "mk": "Користење на форми на зборови при пребарување на меѓусловенски",
+    "bg": "Използване словоформи при търсене в междуславянски език"
   },
   "standardOrthography": {
     "en": "Standard orthography",
@@ -690,19 +705,19 @@
     "bg": "Стандартен правопис"
   },
   "etymologicalOrthography": {
-    "en": "Etymological orthography:",
-    "isv": "Etimologičny pravopis:",
-    "ru": "Этимологическое правописание:",
-    "uk": "Етимологічний правопис:",
-    "be": "Этымалагічнае правапісанне:",
-    "pl": "Pisownia etymologiczna:",
-    "cs": "Etymologický pravopis:",
-    "sk": "Etymologický pravopis:",
-    "sl": "Etimološki pravopis:",
-    "hr": "Etimološki pravopis:",
-    "sr": "Етимолошки правопис:",
-    "mk": "Етимолошки правопис:",
-    "bg": "Етимологичен правопис:"
+    "en": "Etymological orthography",
+    "isv": "Etimologičny pravopis",
+    "ru": "Этимологическое правописание",
+    "uk": "Етимологічний правопис",
+    "be": "Этымалагічнае правапісанне",
+    "pl": "Pisownia etymologiczna",
+    "cs": "Etymologický pravopis",
+    "sk": "Etymologický pravopis",
+    "sl": "Etimološki pravopis",
+    "hr": "Etimološki pravopis",
+    "sr": "Етимолошки правопис",
+    "mk": "Етимолошки правопис",
+    "bg": "Етимологичен правопис"
   },
   "partOfSpeech": {
     "en": "Part of speech",
@@ -1905,7 +1920,7 @@
     "bg": "словоформа"
   },
   "translatesModalTitle": {
-    "en": "Translates",
+    "en": "Translations",
     "isv": "Prěklady",
     "ru": "Переводы",
     "uk": "Переклади",
@@ -2191,7 +2206,7 @@
   },
   "showSlavicWordsInAlphabets": {
     "en": "Show interslavic words using selected alphabets",
-    "isv": "Pokazyvati medžuslovjaske slova na izbranyh alfabetah",
+    "isv": "Pokazyvati medžuslovjanske slova na izbranyh alfabetah",
     "ru":  "Отображать межславянские слова на выбранных алфавитах",
     "uk": "Показувати міжслов'янські слова на обраних алфавітах",
     "be": "Паказваць міжславянскія словы на абраных алфавітах",
@@ -2353,5 +2368,20 @@
     "sr": "Јужна флаворизација",
     "mk": "Јужна флаворизација",
     "bg": "Южна флаворизация"
+  },
+  "enable": {
+    "en": "Enable",
+    "isv": "Vključiti",
+    "ru": "Включить",
+    "uk": "Включити",
+    "be": "Ўключыць",
+    "pl": "Włącz",
+    "cs": "Zapnout",
+    "sk": "Zapnúť",
+    "sl": "Preklopiti",
+    "hr": "Uključiti",
+    "sr": "Укључити",
+    "mk": "Вклучи",
+    "bg": "Включи"
   }
 }

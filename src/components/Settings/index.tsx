@@ -1,4 +1,4 @@
-import { changeIsvSearchLetters, setInterfaceLang, setAlphabets } from 'actions';
+import { changeIsvSearchLetters, setInterfaceLang, setAlphabets, changeIsvSearchByWordForms } from 'actions';
 import { Selector } from 'components/Selector';
 import * as React from 'react';
 import { t } from 'translations';
@@ -9,6 +9,7 @@ import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
 import { useResults } from 'hooks/useResults';
+import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
 
 const interfaceLanguageList = [
     {
@@ -79,6 +80,7 @@ export const Settings: React.FC =
         const interfaceLang = useInterfaceLang();
         const alphabets = useAlphabets();
         const isvSearchLetters = useIsvSearchLetters();
+        const isvSearchByWordForms = useIsvSearchByWordForms();
         useResults();
 
         return (
@@ -157,6 +159,13 @@ export const Settings: React.FC =
                         onChange={() => dispatch(changeIsvSearchLetters('đ'))}
                     />
                 </div>
+                <hr/>
+                <h5>{t('searchByIsvWordForms')}</h5>
+                <Checkbox
+                    title={t('enable')}
+                    checked={isvSearchByWordForms}
+                    onChange={() => dispatch(changeIsvSearchByWordForms(!isvSearchByWordForms))}
+                />
                 <hr/>
                 <h5>{t('showSlavicWordsInAlphabets')}</h5>
                 <Checkbox

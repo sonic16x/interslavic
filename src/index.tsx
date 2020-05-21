@@ -68,6 +68,7 @@ export const defaultState: IMainState = {
         from: [],
         to: [],
     },
+    isvSearchByWordForms: true,
     fromText: '',
     searchType: 'begin',
     posFilter: '',
@@ -120,6 +121,7 @@ function getInitialState(): IMainState {
 
     setLang(state.interfaceLang);
     Dictionary.setIsvSearchLetters(state.isvSearchLetters);
+    Dictionary.setIsvSearchByWordForms(state.isvSearchByWordForms);
 
     return state;
 }
