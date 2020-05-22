@@ -1,0 +1,7899 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should parse correctly "" 1`] = `Object {}`;
+
+exports[`should parse correctly "#ru cz" 1`] = `
+Object {
+  "ces": "+",
+  "rus": "#",
+}
+`;
+
+exports[`should parse correctly "#v" 1`] = `
+Object {
+  "bel": "#",
+  "chu": "#",
+  "orv": "#",
+  "rue": "#",
+  "rus": "#",
+  "ukr": "#",
+}
+`;
+
+exports[`should parse correctly "#yu" 1`] = `
+Object {
+  "bos": "#",
+  "cnr": "#",
+  "hrv": "#",
+  "slv": "#",
+  "srp": "#",
+}
+`;
+
+exports[`should parse correctly "be cs j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be cs sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be pl cs" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "pol": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "be pl sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be pl sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be pl sk bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "pol": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "be pl" 1`] = `
+Object {
+  "bel": "+",
+  "pol": "+",
+}
+`;
+
+exports[`should parse correctly "be sh bm cu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be z j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be z ru~ uk~" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "~",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "be z sh bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be z sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be z sl" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "be z yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be z yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "be z" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "be" 1`] = `
+Object {
+  "bel": "+",
+}
+`;
+
+exports[`should parse correctly "be~ z" 1`] = `
+Object {
+  "bel": "~",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "bg ru~ sh~ mk~" 1`] = `
+Object {
+  "bos": "~",
+  "bul": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "rus": "~",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "bg" 1`] = `
+Object {
+  "bul": "+",
+}
+`;
+
+exports[`should parse correctly "bm" 1`] = `
+Object {
+  "bul": "+",
+  "mkd": "+",
+}
+`;
+
+exports[`should parse correctly "cs bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "cs bm" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "cs hsb yu cu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs hsb" 1`] = `
+Object {
+  "ces": "+",
+  "hsb": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "cs j cu" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs ps" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "cs rue" 1`] = `
+Object {
+  "ces": "+",
+  "rue": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "cs sb j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs sb sl" 1`] = `
+Object {
+  "ces": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs sb yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs sh bm sb" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs sh~ bg~" 1`] = `
+Object {
+  "bos": "~",
+  "bul": "~",
+  "ces": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "slk": "+",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "cs sl bm" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs sl csb sb" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs sl cu" 1`] = `
+Object {
+  "ces": "+",
+  "chu": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs sl hsb rue" 1`] = `
+Object {
+  "ces": "+",
+  "hsb": "+",
+  "rue": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs sl mk" 1`] = `
+Object {
+  "ces": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs sl rue" 1`] = `
+Object {
+  "ces": "+",
+  "rue": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs sl sb" 1`] = `
+Object {
+  "ces": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs sl" 1`] = `
+Object {
+  "ces": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cs yu cu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs yu mk (pl)" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "()",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs" 1`] = `
+Object {
+  "ces": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "cs~ j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs~ sl sh~ mk~ bg" 1`] = `
+Object {
+  "bos": "~",
+  "bul": "+",
+  "ces": "~",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "slk": "~",
+  "slv": "+",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "cs~ yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cs~ yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cu" 1`] = `
+Object {
+  "chu": "+",
+}
+`;
+
+exports[`should parse correctly "cz j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cz ps" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "cz sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cz sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cz sl hr" 1`] = `
+Object {
+  "ces": "+",
+  "hrv": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "cz yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cz" 1`] = `
+Object {
+  "ces": "+",
+}
+`;
+
+exports[`should parse correctly "cz~ sk sl sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cz~ sk yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "cz~ sk" 1`] = `
+Object {
+  "ces": "~",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "dsb" 1`] = `
+Object {
+  "dsb": "+",
+}
+`;
+
+exports[`should parse correctly "hsb" 1`] = `
+Object {
+  "hsb": "+",
+}
+`;
+
+exports[`should parse correctly "j z" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "j+z" 1`] = `Object {}`;
+
+exports[`should parse correctly "mk" 1`] = `
+Object {
+  "mkd": "+",
+}
+`;
+
+exports[`should parse correctly "n" 1`] = `Object {}`;
+
+exports[`should parse correctly "ns" 1`] = `Object {}`;
+
+exports[`should parse correctly "pl bg" 1`] = `
+Object {
+  "bul": "+",
+  "pol": "+",
+}
+`;
+
+exports[`should parse correctly "pl cs sl" 1`] = `
+Object {
+  "ces": "+",
+  "pol": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "pl cz sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl cz yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl cz" 1`] = `
+Object {
+  "ces": "+",
+  "pol": "+",
+}
+`;
+
+exports[`should parse correctly "pl j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl sk j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl sk sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl sk yu" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl sl bg" 1`] = `
+Object {
+  "bul": "+",
+  "pol": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "pl sl" 1`] = `
+Object {
+  "pol": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "pl uk" 1`] = `
+Object {
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "pl yu bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl yu" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl" 1`] = `
+Object {
+  "pol": "+",
+}
+`;
+
+exports[`should parse correctly "pl~ cs yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "~",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl~ cs yu~" 1`] = `
+Object {
+  "bos": "~",
+  "ces": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "pol": "~",
+  "slk": "+",
+  "slv": "~",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "pl~ cz sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "~",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "pl~ sb~ cs" 1`] = `
+Object {
+  "ces": "+",
+  "dsb": "~",
+  "hsb": "~",
+  "pol": "~",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "pl~ sl" 1`] = `
+Object {
+  "pol": "~",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru (cz sh)" 1`] = `
+Object {
+  "bos": "()",
+  "ces": "()",
+  "cnr": "()",
+  "hrv": "()",
+  "rus": "+",
+  "srp": "()",
+}
+`;
+
+exports[`should parse correctly "ru (sh)" 1`] = `
+Object {
+  "bos": "()",
+  "cnr": "()",
+  "hrv": "()",
+  "rus": "+",
+  "srp": "()",
+}
+`;
+
+exports[`should parse correctly "ru be bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru be bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "mkd": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru be cs j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be cs sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be cs sr bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be cs" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru be cz bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru be cz sl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru be cz sl mk bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru be dsb sk sl" 1`] = `
+Object {
+  "bel": "+",
+  "dsb": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru be dsb yu bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be j~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "rus": "+",
+  "slv": "~",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "ru be pl bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru be pl cs bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "pol": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru be pl cz" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "pol": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru be pl sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be pl sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be pl" 1`] = `
+Object {
+  "bel": "+",
+  "pol": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru be sh bm uk~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "ru be sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be sk bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru be sl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru be yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be z j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be z sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be z yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru be z" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru be" 1`] = `
+Object {
+  "bel": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru bg cs~" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "~",
+  "rus": "+",
+  "slk": "~",
+}
+`;
+
+exports[`should parse correctly "ru bg cu" 1`] = `
+Object {
+  "bul": "+",
+  "chu": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru bg" 1`] = `
+Object {
+  "bul": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru bm sb" 1`] = `
+Object {
+  "bul": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru bm" 1`] = `
+Object {
+  "bul": "+",
+  "mkd": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs (sh)" 1`] = `
+Object {
+  "bos": "()",
+  "ces": "+",
+  "cnr": "()",
+  "hrv": "()",
+  "rus": "+",
+  "slk": "+",
+  "srp": "()",
+}
+`;
+
+exports[`should parse correctly "ru cs bg cu" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs sb" 1`] = `
+Object {
+  "ces": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs sl bm" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs sl hr" 1`] = `
+Object {
+  "ces": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs sl" 1`] = `
+Object {
+  "ces": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs yu bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs" 1`] = `
+Object {
+  "ces": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs~ bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "~",
+  "rus": "+",
+  "slk": "~",
+}
+`;
+
+exports[`should parse correctly "ru cs~ j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs~ sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "~",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs~ yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cs~" 1`] = `
+Object {
+  "ces": "~",
+  "rus": "+",
+  "slk": "~",
+}
+`;
+
+exports[`should parse correctly "ru cz bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz hsb yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz sb sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz sh bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz sl hr" 1`] = `
+Object {
+  "ces": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz sl" 1`] = `
+Object {
+  "ces": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz" 1`] = `
+Object {
+  "ces": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz~ sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru cz~ sh~" 1`] = `
+Object {
+  "bos": "~",
+  "ces": "~",
+  "cnr": "~",
+  "hrv": "~",
+  "rus": "+",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "ru j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl (cz)" 1`] = `
+Object {
+  "ces": "()",
+  "pol": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl bg" 1`] = `
+Object {
+  "bul": "+",
+  "pol": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl bm" 1`] = `
+Object {
+  "bul": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl cs sl" 1`] = `
+Object {
+  "ces": "+",
+  "pol": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl cs" 1`] = `
+Object {
+  "ces": "+",
+  "pol": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl cz sl hr" 1`] = `
+Object {
+  "ces": "+",
+  "hrv": "+",
+  "pol": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl cz" 1`] = `
+Object {
+  "ces": "+",
+  "pol": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sb sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sk j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sk sl" 1`] = `
+Object {
+  "pol": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sk" 1`] = `
+Object {
+  "pol": "+",
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sl bg" 1`] = `
+Object {
+  "bul": "+",
+  "pol": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl sl bm" 1`] = `
+Object {
+  "bul": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl yu" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl" 1`] = `
+Object {
+  "pol": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl~ bg" 1`] = `
+Object {
+  "bul": "+",
+  "pol": "~",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl~ cz" 1`] = `
+Object {
+  "ces": "+",
+  "pol": "~",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl~ cz~" 1`] = `
+Object {
+  "ces": "~",
+  "pol": "~",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl~ j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "~",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl~ sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "~",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru pl~ sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "~",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sb bm" 1`] = `
+Object {
+  "bul": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru sh (cz)" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "()",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sh bg sl" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sh bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sh mk bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sh~" 1`] = `
+Object {
+  "bos": "~",
+  "cnr": "~",
+  "hrv": "~",
+  "rus": "+",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "ru sk j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru sk sl mk" 1`] = `
+Object {
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru sk" 1`] = `
+Object {
+  "rus": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru sl bg" 1`] = `
+Object {
+  "bul": "+",
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru sl" 1`] = `
+Object {
+  "rus": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru ub cs yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru ub cz bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru ub sh bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru ub~ sh~ mk~ bg" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "~",
+  "bul": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "rus": "+",
+  "srp": "~",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "ru uk bg" 1`] = `
+Object {
+  "bul": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk bm pl~ be~" 1`] = `
+Object {
+  "bel": "~",
+  "bul": "+",
+  "mkd": "+",
+  "pol": "~",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk bm" 1`] = `
+Object {
+  "bul": "+",
+  "mkd": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cs bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cs bm" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cs j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cs mk" 1`] = `
+Object {
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cs" 1`] = `
+Object {
+  "ces": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cz mk" 1`] = `
+Object {
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cz sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cz sl bm" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk cz sl cu" 1`] = `
+Object {
+  "ces": "+",
+  "chu": "+",
+  "rus": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk hr bg" 1`] = `
+Object {
+  "bul": "+",
+  "hrv": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk hr" 1`] = `
+Object {
+  "hrv": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk pl bg" 1`] = `
+Object {
+  "bul": "+",
+  "pol": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk pl bm" 1`] = `
+Object {
+  "bul": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk pl cz bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "pol": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk pl j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk pl sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk pl sk bm" 1`] = `
+Object {
+  "bul": "+",
+  "mkd": "+",
+  "pol": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk pl sk" 1`] = `
+Object {
+  "pol": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk pl" 1`] = `
+Object {
+  "pol": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk yu bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk yu~ bg" 1`] = `
+Object {
+  "bos": "~",
+  "bul": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "rus": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk z j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk z sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk z sl" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk z yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk z yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk z" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk z~ j~" 1`] = `
+Object {
+  "bos": "~",
+  "bul": "~",
+  "ces": "~",
+  "cnr": "~",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "~",
+  "hsb": "~",
+  "mkd": "~",
+  "pol": "~",
+  "pox": "~",
+  "rus": "+",
+  "sli": "~",
+  "slk": "~",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk" 1`] = `
+Object {
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru uk~ pl~ j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "~",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "ru yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru yu" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru z bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru z bm" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru z j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru z sl" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "ru z yu bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru z yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru z yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru z" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "ru" 1`] = `
+Object {
+  "rus": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ be~ uk hsb sh bm" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "rus": "~",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ be~ uk z sh~" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "~",
+  "ces": "+",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "~",
+  "sli": "+",
+  "slk": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ cs yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "~",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rus": "~",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rus": "~",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ ub pl sk j~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "pol": "+",
+  "rus": "~",
+  "slk": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ ub pl sk~" 1`] = `
+Object {
+  "bel": "+",
+  "pol": "+",
+  "rus": "~",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ ub z j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "~",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ ub z yu bg~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "~",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "~",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ uk pl bg~" 1`] = `
+Object {
+  "bul": "~",
+  "pol": "+",
+  "rus": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ uk pl cs~ sl sh~" 1`] = `
+Object {
+  "bos": "~",
+  "ces": "~",
+  "cnr": "~",
+  "hrv": "~",
+  "pol": "+",
+  "rus": "~",
+  "slk": "~",
+  "slv": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ru~ z bg~" 1`] = `
+Object {
+  "bul": "~",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "rus": "~",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "rue cs yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "rue": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "rue cs yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "rue": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "rue z yu mk (ub)" 1`] = `
+Object {
+  "bel": "()",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "()",
+}
+`;
+
+exports[`should parse correctly "sb cs sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sb" 1`] = `
+Object {
+  "dsb": "+",
+  "hsb": "+",
+}
+`;
+
+exports[`should parse correctly "sh (ub pl)" 1`] = `
+Object {
+  "bel": "()",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "()",
+  "srp": "+",
+  "ukr": "()",
+}
+`;
+
+exports[`should parse correctly "sh bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sk bg" 1`] = `
+Object {
+  "bul": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "sk j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sk sl" 1`] = `
+Object {
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "sk yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sk yu" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sk" 1`] = `
+Object {
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "sl bg" 1`] = `
+Object {
+  "bul": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "sl bm" 1`] = `
+Object {
+  "bul": "+",
+  "mkd": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "sl rue" 1`] = `
+Object {
+  "rue": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "sl sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "sl sk~ uk~" 1`] = `
+Object {
+  "slk": "~",
+  "slv": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "sl" 1`] = `
+Object {
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "sx" 1`] = `Object {}`;
+
+exports[`should parse correctly "ub bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub cs yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub cs yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub cs" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub hsb" 1`] = `
+Object {
+  "bel": "+",
+  "hsb": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl bg (sh)" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "()",
+  "bul": "+",
+  "cnr": "()",
+  "hrv": "()",
+  "pol": "+",
+  "srp": "()",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "mkd": "+",
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl cs" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "pol": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl cs~ yu " 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl cs~ yu~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "~",
+  "cnr": "~",
+  "hrv": "~",
+  "pol": "+",
+  "slk": "~",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl cs~" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "~",
+  "pol": "+",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl cz" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl hsb yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl hsb" 1`] = `
+Object {
+  "bel": "+",
+  "hsb": "+",
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl mk~" 1`] = `
+Object {
+  "bel": "+",
+  "mkd": "~",
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sb cz" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sb sl" 1`] = `
+Object {
+  "bel": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sk bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "pol": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sk j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sk sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sk sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sk sl" 1`] = `
+Object {
+  "bel": "+",
+  "pol": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sk yu bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sk yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sk" 1`] = `
+Object {
+  "bel": "+",
+  "pol": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl sl hr" 1`] = `
+Object {
+  "bel": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl yu~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "cnr": "~",
+  "hrv": "~",
+  "pol": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl" 1`] = `
+Object {
+  "bel": "+",
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl~ cs sl~" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "pol": "~",
+  "slk": "+",
+  "slv": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub pl~ j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "~",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub sk bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "mkd": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z mk" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z sh~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "+",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z sl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z sl sh~ mk~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "+",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "mkd": "~",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z sl" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z yu~ mk~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "+",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "mkd": "~",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub z~ sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "~",
+  "cnr": "+",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "+",
+  "hsb": "~",
+  "mkd": "+",
+  "pol": "~",
+  "pox": "~",
+  "sli": "~",
+  "slk": "~",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub" 1`] = `
+Object {
+  "bel": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "ub~ z j" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "uk cs j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk cs sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk cs yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk cs" 1`] = `
+Object {
+  "ces": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk cz j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk cz sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl cs~" 1`] = `
+Object {
+  "ces": "~",
+  "pol": "+",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl hr bg" 1`] = `
+Object {
+  "bul": "+",
+  "hrv": "+",
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl sb sk sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl sk bg" 1`] = `
+Object {
+  "bul": "+",
+  "pol": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl sk sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl sk yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl sl bg" 1`] = `
+Object {
+  "bul": "+",
+  "pol": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl yu" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "pol": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk pl" 1`] = `
+Object {
+  "pol": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk rue pl cz" 1`] = `
+Object {
+  "ces": "+",
+  "pol": "+",
+  "rue": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sb" 1`] = `
+Object {
+  "dsb": "+",
+  "hsb": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sh bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sh" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sk sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sk sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sk" 1`] = `
+Object {
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk sl" 1`] = `
+Object {
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk z bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk z j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk z sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk z sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk z sl" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk z yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk z yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk z" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk" 1`] = `
+Object {
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "uk~ pl cs sb" 1`] = `
+Object {
+  "ces": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "slk": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "uk~ pl" 1`] = `
+Object {
+  "pol": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "uk~ z sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "uk~ z" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v bg sb" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v bm sh~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs mk" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs sh bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs sh~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs sl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs sl bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs sl mk" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs sl" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs yu bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs yu bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs~ sh~ bm~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "ces": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs~ sl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "~",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs~ sl sh~ bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "+",
+  "ces": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "slv": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs~ sl~ bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "~",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "slv": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs~ yu~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cs~" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "~",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v csb hsb cs" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "hsb": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cz bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cz j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cz sh bm pl~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cz sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cz sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cz sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cz sl" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v cz" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v dsb" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "dsb": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v hr" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "hrv": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v j cu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v j~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v mk" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v mk~ bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "mkd": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl (cs)" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "()",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "()",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl (sh)" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "()",
+  "chu": "+",
+  "cnr": "()",
+  "hrv": "()",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "()",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl ? bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl bg cs~" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "~",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl bm~" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "~",
+  "chu": "+",
+  "mkd": "~",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cs" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cs~ bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "~",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cs~ j~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "ces": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cs~ yu~ bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "+",
+  "ces": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cs~" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "~",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl csb" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "csb": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cz sh bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cz sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cz sl~" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cz yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cz" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl cz~ sl~" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "~",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl mk" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sb bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sb" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sh bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sh~ mk~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk sl" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk yu bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sk~" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sl bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sl" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sl~ bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl sl~" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl yu bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl yu bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl yu~ mk~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ cs sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ cs sh~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ j~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ sh~ bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ sk j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~ yu~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v pl~" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "pol": "~",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sh bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sk bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sk bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sk j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sk j~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sk sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sk" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sk~ sh~ bg~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slk": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v sl" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v yu bm~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "~",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v yu~ mk~ bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "+",
+  "chu": "+",
+  "cnr": "~",
+  "hrv": "~",
+  "mkd": "~",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z j~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "mkd": "~",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z mk" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sh bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sh bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sh mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sh" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sl bg" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sl bm" 1`] = `
+Object {
+  "bel": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sl mk" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sl" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z sl~ sh bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "~",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z yu bg" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z yu bm" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z yu mk" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z yu mk~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "~",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z yu" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z yu~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "+",
+  "chu": "+",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "chu": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "orv": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "rus": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z~ j" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "+",
+  "bul": "+",
+  "ces": "~",
+  "chu": "+",
+  "cnr": "+",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "+",
+  "hsb": "~",
+  "mkd": "+",
+  "orv": "+",
+  "pol": "~",
+  "pox": "~",
+  "rue": "+",
+  "rus": "+",
+  "sli": "~",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z~ j~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "bul": "~",
+  "ces": "~",
+  "chu": "+",
+  "cnr": "~",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "~",
+  "hsb": "~",
+  "mkd": "~",
+  "orv": "+",
+  "pol": "~",
+  "pox": "~",
+  "rue": "+",
+  "rus": "+",
+  "sli": "~",
+  "slk": "~",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z~ sh~" 1`] = `
+Object {
+  "bel": "+",
+  "bos": "~",
+  "ces": "~",
+  "chu": "+",
+  "cnr": "~",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "~",
+  "hsb": "~",
+  "orv": "+",
+  "pol": "~",
+  "pox": "~",
+  "rue": "+",
+  "rus": "+",
+  "sli": "~",
+  "slk": "~",
+  "srp": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v z~" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "~",
+  "chu": "+",
+  "csb": "~",
+  "dsb": "~",
+  "hsb": "~",
+  "orv": "+",
+  "pol": "~",
+  "pox": "~",
+  "rue": "+",
+  "rus": "+",
+  "sli": "~",
+  "slk": "~",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v" 1`] = `
+Object {
+  "bel": "+",
+  "chu": "+",
+  "orv": "+",
+  "rue": "+",
+  "rus": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "v~ " 1`] = `
+Object {
+  "bel": "~",
+  "chu": "~",
+  "orv": "~",
+  "rue": "~",
+  "rus": "~",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ bg" 1`] = `
+Object {
+  "bel": "~",
+  "bul": "+",
+  "chu": "~",
+  "orv": "~",
+  "rue": "~",
+  "rus": "~",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ cs yu bm~" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "bul": "~",
+  "ces": "+",
+  "chu": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "~",
+  "orv": "~",
+  "rue": "~",
+  "rus": "~",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ cs" 1`] = `
+Object {
+  "bel": "~",
+  "ces": "+",
+  "chu": "~",
+  "orv": "~",
+  "rue": "~",
+  "rus": "~",
+  "slk": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ pl j" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "bul": "+",
+  "chu": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "~",
+  "pol": "+",
+  "rue": "~",
+  "rus": "~",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ pl~ yu mk" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "chu": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "~",
+  "pol": "~",
+  "rue": "~",
+  "rus": "~",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ sh bm" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "bul": "+",
+  "chu": "~",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "orv": "~",
+  "rue": "~",
+  "rus": "~",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ z j" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "chu": "~",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "orv": "~",
+  "pol": "+",
+  "pox": "+",
+  "rue": "~",
+  "rus": "~",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ z j~" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "~",
+  "bul": "~",
+  "ces": "+",
+  "chu": "~",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "mkd": "~",
+  "orv": "~",
+  "pol": "+",
+  "pox": "+",
+  "rue": "~",
+  "rus": "~",
+  "sli": "+",
+  "slk": "+",
+  "slv": "~",
+  "srp": "~",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ z sl" 1`] = `
+Object {
+  "bel": "~",
+  "ces": "+",
+  "chu": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "orv": "~",
+  "pol": "+",
+  "pox": "+",
+  "rue": "~",
+  "rus": "~",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ z~ sh mk" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "ces": "~",
+  "chu": "~",
+  "cnr": "+",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "+",
+  "hsb": "~",
+  "mkd": "+",
+  "orv": "~",
+  "pol": "~",
+  "pox": "~",
+  "rue": "~",
+  "rus": "~",
+  "sli": "~",
+  "slk": "~",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ z~ yu mk~" 1`] = `
+Object {
+  "bel": "~",
+  "bos": "+",
+  "ces": "~",
+  "chu": "~",
+  "cnr": "+",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "+",
+  "hsb": "~",
+  "mkd": "~",
+  "orv": "~",
+  "pol": "~",
+  "pox": "~",
+  "rue": "~",
+  "rus": "~",
+  "sli": "~",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "v~ z~" 1`] = `
+Object {
+  "bel": "~",
+  "ces": "~",
+  "chu": "~",
+  "csb": "~",
+  "dsb": "~",
+  "hsb": "~",
+  "orv": "~",
+  "pol": "~",
+  "pox": "~",
+  "rue": "~",
+  "rus": "~",
+  "sli": "~",
+  "slk": "~",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "yu bg" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "yu cu" 1`] = `
+Object {
+  "bos": "+",
+  "chu": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "yu mk uk~ z~" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "~",
+  "cnr": "+",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "+",
+  "hsb": "~",
+  "mkd": "+",
+  "pol": "~",
+  "pox": "~",
+  "sli": "~",
+  "slk": "~",
+  "slv": "+",
+  "srp": "+",
+  "ukr": "~",
+}
+`;
+
+exports[`should parse correctly "yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "yu mk~" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "mkd": "~",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "yu" 1`] = `
+Object {
+  "bos": "+",
+  "cnr": "+",
+  "hrv": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "z cs j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z j rue" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "rue": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z j" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z j~" 1`] = `
+Object {
+  "bos": "~",
+  "bul": "~",
+  "ces": "+",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "mkd": "~",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "~",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "z sh bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z sh mk bg~" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "~",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z sh mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z sh" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z sl bg" 1`] = `
+Object {
+  "bul": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "z sl bg~" 1`] = `
+Object {
+  "bul": "~",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "z sl mk" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "z sl sh~ bg~" 1`] = `
+Object {
+  "bos": "~",
+  "bul": "~",
+  "ces": "+",
+  "cnr": "~",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "~",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "~",
+}
+`;
+
+exports[`should parse correctly "z sl" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+}
+`;
+
+exports[`should parse correctly "z ub" 1`] = `
+Object {
+  "bel": "+",
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "ukr": "+",
+}
+`;
+
+exports[`should parse correctly "z yu bm" 1`] = `
+Object {
+  "bos": "+",
+  "bul": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z yu mk" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "mkd": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z yu" 1`] = `
+Object {
+  "bos": "+",
+  "ces": "+",
+  "cnr": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hrv": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+  "slv": "+",
+  "srp": "+",
+}
+`;
+
+exports[`should parse correctly "z" 1`] = `
+Object {
+  "ces": "+",
+  "csb": "+",
+  "dsb": "+",
+  "hsb": "+",
+  "pol": "+",
+  "pox": "+",
+  "sli": "+",
+  "slk": "+",
+}
+`;
+
+exports[`should parse correctly "z~ sh~" 1`] = `
+Object {
+  "bos": "~",
+  "ces": "~",
+  "cnr": "~",
+  "csb": "~",
+  "dsb": "~",
+  "hrv": "~",
+  "hsb": "~",
+  "pol": "~",
+  "pox": "~",
+  "sli": "~",
+  "slk": "~",
+  "srp": "~",
+}
+`;
