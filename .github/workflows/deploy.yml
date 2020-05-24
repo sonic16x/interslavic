@@ -28,9 +28,11 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          SSH: true
+          BASE_BRANCH: master
           BRANCH: gh-pages
-          FOLDER: dist
+          FOLDER: build
+          CLEAN: true
+          SSH: true
 
       - name: Purge cache on Cloudflare
         uses: wei/curl@v1
