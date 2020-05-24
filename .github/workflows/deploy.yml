@@ -27,6 +27,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: dist
+
       - name: Purge cache on Cloudflare
         uses: wei/curl@v1
         with:
