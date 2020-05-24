@@ -14,7 +14,7 @@ jobs:
 
       - uses: bahmutov/npm-install@v1
 
-      - name: Install and Build
+      - name: Build
         run: |
           npm run generateDictionary
           npm run build
@@ -22,7 +22,7 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: dist
       - name: Purge ache on Cloudflare
