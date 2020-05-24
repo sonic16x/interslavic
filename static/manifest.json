@@ -4,7 +4,7 @@
   "description": "Word dictionary for interslavic language",
   "lang": "en",
   "dir": "ltr",
-  "scope": "#{BASE_URL}",
+  "scope": "https://interslavic-dictionary.com/",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -48,11 +48,11 @@
     }
   ],
   "serviceworker": {
-    "src": "sw.#{HASH_ID}.js",
-    "scope": "#{BASE_URL}",
+    "src": "sw.prod.js",
+    "scope": "https://interslavic-dictionary.com/",
     "update_via_cache": "none"
   },
-  "start_url": "./index.html",
+  "start_url": "https://interslavic-dictionary.com/",
   "background_color": "#343a40",
   "display": "standalone",
   "orientation": "portrait-primary",
