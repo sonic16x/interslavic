@@ -18,8 +18,6 @@ jobs:
         run: |
           npm run generateDictionary
           npm run build
-          npm run test
-          npm run coveralls
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
