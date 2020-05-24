@@ -85,10 +85,13 @@ module.exports = {
     plugins: [
         // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: path.join(srcPath, 'index.html'),
+            template: path.join(srcPath, 'index.html.ejs'),
             filename: 'index.html',
             path: outputPath,
             excludeChunks: ['sw', 'grammarComponent'],
+            env: {
+                PROD: false,
+            },
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
@@ -100,19 +103,6 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin(),
         new CopyPlugin([{
             from: 'static',
-            transform: (content, path) => {
-                if (path.indexOf('manifest.json') !== -1) {
-                    return '{}';
-                }
-                if (path.indexOf('.json') !== -1 || path.indexOf('.html') !== -1) {
-                    return content
-                        .toString()
-                        .replace(/#{HASH_ID}/, bundleId)
-                        .replace(/#{BASE_URL}/, baseUrl)
-                        ;
-                }
-                return content;
-            },
         }]),
         new WriteFilePlugin(),
         new Dotenv({

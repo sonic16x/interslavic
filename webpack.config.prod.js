@@ -105,10 +105,13 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: path.join(srcPath, 'index.html'),
+            template: path.join(srcPath, 'index.html.ejs'),
             filename: 'index.html',
             path: outputPath,
             excludeChunks: ['sw', 'grammarComponent'],
+            env: {
+                PROD: true,
+            },
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
@@ -120,16 +123,6 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin(),
         new CopyPlugin([{
             from: 'static',
-            transform: (content, path) => {
-                if (path.indexOf('.json') !== -1 || path.indexOf('.html') !== -1) {
-                    return content
-                        .toString()
-                        .replace(/#{HASH_ID}/g, bundleId)
-                        .replace(/#{BASE_URL}/g, baseUrl)
-                        ;
-                }
-                return content;
-            },
         }]),
         new ExtractTextPlugin('styles/[name].[hash].css'),
         new OptimizeCssAssetsPlugin({
