@@ -1,10 +1,6 @@
 language: node_js
 node_js: stable
 
-env:
-  - CLOUDFLARE_ZONE_ID=$CLOUDFLARE_ZONE_ID
-  - CLOUDFLARE_AUTH_TOKEN=$CLOUDFLARE_AUTH_TOKEN
-
 cache:
   directories:
     - node_modules
@@ -13,7 +9,11 @@ before_deploy:
   - npm run generateDictionary
   - npm run build
 after_deploy:
-  - npm run purgeCloudflareCache
+  - |
+    curl -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache" \
+     -H "Authorization: Bearer ${CLOUDFLARE_AUTH_TOKEN}" \
+     -H "Content-Type: application/json" \
+     --data '{"purge_everything":true}'
 
 script:
   - npm test
