@@ -31,7 +31,7 @@ jobs:
           BASE_BRANCH: master
           BRANCH: gh-pages
           FOLDER: dist
-          CLEAN: true
+          CLEAN: false
           SSH: true
 
       - name: Purge cache on Cloudflare
