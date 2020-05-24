@@ -12,6 +12,8 @@ jobs:
         with:
           persist-credentials: false
 
+      - uses: bahmutov/npm-install@v1
+
       - name: Install and Build
         run: |
           npm run generateDictionary
