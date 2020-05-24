@@ -52,7 +52,7 @@
     "scope": "#{BASE_URL}",
     "update_via_cache": "none"
   },
-  "start_url": "/",
+  "start_url": "./index.html",
   "background_color": "#343a40",
   "display": "standalone",
   "orientation": "portrait-primary",
