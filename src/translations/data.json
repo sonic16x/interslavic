@@ -675,19 +675,19 @@
     "bg": "Значителни букви при търсене на междуславянски език"
   },
   "searchByIsvWordForms": {
-    "en": "Using word forms when searching in Interslavic",
-    "isv": "Koriščenje form slov pri iskanju v medžuslovjanskom jezyku",
-    "ru": "Использование словоформ при поиске на межславянском",
-    "uk": "Використання форми слів при пошуку міжслав'янською мовою",
-    "be": "Выкарыстанне формы слоў пры пошуку на міжславянскай мове",
-    "pl": "Zastosowanie form słownych podczas wyszukiwania w języku międzysłowiańskim",
-    "cs": "Používání forem slov při hledání v mezislovanském jazyce",
-    "sk": "Použitie slovných tvarov pri hľadaní v mezislovanském jazyku",
-    "sl": "Uporaba besednih oblik pri iskanju v medslovanskem jeziku",
-    "hr": "Upotreba oblika riječi pri pretraživanju na međuslavenskom",
-    "sr": "Употреба облика речи при претраживању на међуславенском",
-    "mk": "Користење на форми на зборови при пребарување на меѓусловенски",
-    "bg": "Използване словоформи при търсене в междуславянски език"
+    "en": "Use inflected forms of words when searching in Interslavic",
+    "isv": "Koristiti formy slovoizměny pri iskanju na medžuslovjanskom jezyku",
+    "ru": "Использовать формы словоизменения при поиске на межславянском",
+    "uk": "Використовувати форми словозміни при пошуку міжслав'янською мовою",
+    "be": "Выкарыстоўваць формы словазмянення пры пошуку на міжславянскай мове",
+    "pl": "Zastosowanie odmiennych form słów podczas wyszukiwania w języku międzysłowiańskim",
+    "cs": "Používat inflexní formy slov při hledání v mezislovanském jazyce",
+    "sk": "Používať inflexné formy slov pri hľadaní v mezislovanském jazyku",
+    "sl": "Uporabljati pregibne oblike pri iskanju v medslovanskem jeziku",
+    "hr": "Koristiti flektivne oblici riječi pri pretraživanju na međuslavenskom",
+    "sr": "Користити флективне облици речи при претраживању на међуславенском",
+    "mk": "Користење на сменети форми на зборови при пребарување на меѓусловенски",
+    "bg": "Използване наклонени форми на думите при търсене в междуславянски език"
   },
   "standardOrthography": {
     "en": "Standard orthography",
@@ -2369,19 +2369,19 @@
     "mk": "Јужна флаворизација",
     "bg": "Южна флаворизация"
   },
-  "enable": {
-    "en": "Enable",
-    "isv": "Vključiti",
-    "ru": "Включить",
-    "uk": "Включити",
-    "be": "Ўключыць",
-    "pl": "Włącz",
-    "cs": "Zapnout",
-    "sk": "Zapnúť",
-    "sl": "Preklopiti",
-    "hr": "Uključiti",
-    "sr": "Укључити",
-    "mk": "Вклучи",
-    "bg": "Включи"
+  "shortCardView": {
+    "en": "Compact view of search results",
+    "isv": "Kompaktny vid rezultatov iskanja",
+    "ru": "Компактный вид результатов поиска",
+    "uk": "Компактний вид результатів пошуку",
+    "be": "Кампактны выгляд вынікаў пошуку",
+    "pl": "Kompaktowy widok wyników wyszukiwania",
+    "cs": "Kompaktní zobrazení výsledků vyhledávání",
+    "sk": "Kompaktné zobrazenie výsledkov vyhľadávania",
+    "sl": "Kompakten prikaz rezultatov iskanja",
+    "hr": "Kompaktni prikaz rezultata pretraživanja",
+    "sr": "Компактан приказ резултата претраге",
+    "mk": "Компактен преглед на резултатите од пребарувањето",
+    "bg": "Компактен изглед на резултатите от търсенето"
   }
 }
