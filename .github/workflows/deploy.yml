@@ -26,7 +26,8 @@ jobs:
       - name: Purge ache on Cloudflare
         uses: wei/curl@v1
         with:
-          args: -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
+          args: |
+                -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
                 -H "Authorization: Bearer ${{ secrets.CF_AUTH_TOKEN }}" \
                 -H "Content-Type: application/json" \
-                --data '{"purge_everything":true}'
+                --data '{"purge_everything":true}\'
