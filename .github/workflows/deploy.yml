@@ -22,10 +22,10 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: dist
-      - name: Purge ache on Cloudflare
+      - name: Purge cache on Cloudflare
         uses: wei/curl@v1
         with:
           args: |
