@@ -28,7 +28,7 @@ jobs:
           cname: interslavic-dictionary.com
 
       - name: Purge cache on Cloudflare
-          uses: jakejarvis/cloudflare-purge-action@master
-          env:
-            CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
-            CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
+        uses: jakejarvis/cloudflare-purge-action@v0.3.0
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
