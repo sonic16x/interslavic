@@ -13,6 +13,9 @@ import { useIntersect } from 'hooks/useIntersect';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useFavorite } from 'hooks/useFavorite';
 import { useLang } from 'hooks/useLang';
+import { useShortCardView } from 'hooks/useShortCardView';
+import FormsIcon from './images/forms-icon.svg';
+import TranslationsIcon from './images/translations-icon.svg';
 
 interface IResultsCardProps {
     item: ITranslateResult;
@@ -139,9 +142,10 @@ export const ResultsCard: React.FC<IResultsCardProps> =
         const setFavorite = React.useCallback(() => {
             dispatch(setFavoriteAction(id));
         }, [id]);
+        const short = useShortCardView();
 
         return (
-            <div className={'results-card'} ref={setRef} tabIndex={0} onClick={reportClick}>
+            <div className={classNames('results-card', {short})} ref={setRef} tabIndex={0} onClick={reportClick}>
                 <div className={'results-card__translate'}>
                     {lang.to !== 'isv' ? (
                         <Clipboard
@@ -152,8 +156,16 @@ export const ResultsCard: React.FC<IResultsCardProps> =
                             lang={lang.to}
                         />
                     ) : renderOriginal(item, alphabets, index)}
+                    {lang.to === 'isv' && short && (
+                        <>
+                            &nbsp;
+                            <span className={'results-card__details'}>{item.details}</span>
+                        </>
+                    )}
                 </div>
-                <div className={'results-card__details'}>{item.details}</div>
+                {!short && (
+                    <span className={'results-card__details'}>{item.details}</span>
+                )}
                 <div className={'results-card__original'}>
                     {lang.to === 'isv' ? (
                         <Clipboard
@@ -164,6 +176,9 @@ export const ResultsCard: React.FC<IResultsCardProps> =
                             lang={lang.from}
                         />
                     ) : renderOriginal(item, alphabets, index)}
+                    {lang.to !== 'isv' && short && (
+                        <span className={'results-card__details'}>{item.details}</span>
+                    )}
                 </div>
                 <button
                     className={'results-card__favorite-button'}
@@ -180,7 +195,7 @@ export const ResultsCard: React.FC<IResultsCardProps> =
                         aria-label={'Show translates'}
                         onClick={showTranslations}
                     >
-                        {t('translates')}
+                        {short ? <TranslationsIcon /> : t('translates')}
                     </button>
                     {showFormsButtonIsVisible(item) && (
                         <button
@@ -189,12 +204,16 @@ export const ResultsCard: React.FC<IResultsCardProps> =
                             aria-label={'Show forms'}
                             onClick={showDetail}
                         >
-                            {pos === 'verb' ? t('conjugation') : t('declensions')}
+                            {short ? (
+                                <FormsIcon />
+                            ) : (
+                                pos === 'verb' ? t('conjugation') : t('declensions')
+                            )}
                         </button>
                     )}
                 </div>
                 <div className={classNames('results-card__status-badge', {verified: item.checked})}>
-                    {item.checked ? t('verified') : t('autoTranslation')}
+                    {!short && (item.checked ? t('verified') : t('autoTranslation'))}
                 </div>
             </div>
         );

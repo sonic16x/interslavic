@@ -39,7 +39,7 @@ export const SearchTypeSelector: React.FC =
 
         return (
             <LineSelector
-                className={'searchTypeSelector'}
+                className={'search-type-selector'}
                 options={options}
                 value={searchType}
                 onSelect={onSelect}

@@ -13,6 +13,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {},
+    "typeRoots": ["./custom.d.ts", "node_modules/@types"],
     "lib": [
       "dom",
       "es5",

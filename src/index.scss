@@ -9,7 +9,7 @@
   --yellow-color: #ffeb3b;
   --shadow: 0 8px 16px rgba(0, 0, 0, .15);
   --border: 1px solid rgba(0, 0, 0, .125);
-  --border-radius-s: 4px;
+  --border-radius-s: 5px;
   --border-radius-m: 8px;
   --line-width: 3px;
   --line-length: 25px;
@@ -29,6 +29,7 @@
   --text-xs-line: 16px;
 
   --gap-size: 16px;
+  --gap-size-s: 8px;
 }
 
 html, body {
@@ -54,6 +55,10 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.bold {
+  font-weight: bold;
 }
 
 h4 {

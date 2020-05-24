@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 15px 0 15px;
 
   option, select {
     text-transform: capitalize;
@@ -39,11 +38,13 @@
     outline: none;
     border: none;
     cursor: pointer;
-    font-weight: 600;
-    color: var(--primary-color);
     padding: 0;
     width: 30px;
-    font-size: 20px;
     height: 30px;
+    transition: transform var(--animation-duration) ease-in-out;
+
+    &.rotate {
+      transform: rotate(180deg);
+    }
   }
 }

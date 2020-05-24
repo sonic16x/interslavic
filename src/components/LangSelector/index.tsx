@@ -1,9 +1,11 @@
 import { langAction } from 'actions';
 import * as React from 'react';
+import classNames from 'classnames';
 import { t } from 'translations';
 import { Selector } from 'components/Selector';
 import { langs } from 'consts';
 import './index.scss';
+import DirectionIcon from './images/direction-icon.svg';
 import { useDispatch } from 'react-redux';
 import { useLang } from 'hooks/useLang';
 
@@ -63,13 +65,13 @@ export const LangSelector: React.FC =
                 <button
                     type={'button'}
                     aria-label={'Change translation direction'}
-                    className={'lang-selector__change-dir-button'}
+                    className={classNames('lang-selector__change-dir-button', {rotate: from === 'isv'})}
                     onClick={() => dispatch(langAction({
                         from: to,
                         to: from,
                     }))}
                 >
-                    ⇄
+                    <DirectionIcon />
                 </button>
                 <LangPart
                     dir={'to'}

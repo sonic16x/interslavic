@@ -74,32 +74,9 @@ module.exports = {
                 })
             },
             {
-                test: /\.(png|jpe?g)$/,
-                exclude: /node_modules/,
-                use: [
-                    'preload-image-loader',
-                    'file-loader?[path][name].[ext]'
-                ]
+                test: /\.svg$/,
+                use: ['@svgr/webpack'],
             },
-            {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                use: 'file-loader'
-            },
-            {
-                test: /\.(woff|woff2)$/,
-                use: 'url-loader?prefix=font/&limit=50000'
-            },
-            {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                use: 'url-loader?limit=10000&mimetype=application/octet-stream'
-            },
-            {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'svg-sprite-loader',
-                options: {
-                    runtimeCompat: true
-                }
-            }
         ]
     },
     plugins: [

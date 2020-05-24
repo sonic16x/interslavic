@@ -16,9 +16,11 @@
     align-items: center;
 
     &::before {
+      flex: 1 0 auto;
       cursor: pointer;
       margin-right: 8px;
       display: block;
+      font-weight: 400 !important;
       content: "✔";
       color: #fff;
       width: 16px;
