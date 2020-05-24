@@ -30,7 +30,7 @@ jobs:
         with:
           BASE_BRANCH: master
           BRANCH: gh-pages
-          FOLDER: build
+          FOLDER: dist
           CLEAN: true
           SSH: true
 
