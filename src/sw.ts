@@ -36,7 +36,7 @@ self.addEventListener('fetch', (event: any) => {
             },
         ).then((cachedResponse) => {
             let lastModified;
-            let fetchRequest = event.request.clone();
+            let fetchRequest;
 
             // If exist.
             if (cachedResponse) {
@@ -44,6 +44,7 @@ self.addEventListener('fetch', (event: any) => {
                 lastModified = new Date(cachedResponse.headers.get('last-modified'));
                 // If it is expired
                 if (lastModified && (Date.now() - lastModified.getTime()) > MAX_AGE) {
+                    fetchRequest = event.request.clone();
                     // Cretae new.
                     return fetch(fetchRequest).then((response) => {
                         // If error then load from cache.
@@ -51,16 +52,16 @@ self.addEventListener('fetch', (event: any) => {
                             return cachedResponse;
                         }
                         // Update cache.
-                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, response.clone()));
+                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, response));
                         // Return new data.
-                        return response;
+                        return response.clone();
                     }).catch(() => cachedResponse);
                 }
                 return cachedResponse;
             }
 
             // Request from network.
-            return fetch(fetchRequest);
+            return fetch(event.request);
         })
     );
 });
