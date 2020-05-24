@@ -11,7 +11,6 @@ const cacheUrls = [
     `styles/grammarComponent~index.${HASH_ID}.css`,
     `styles/index.${HASH_ID}.css`,
     // `vendors~index.${HASH_ID}.js`,
-    `logo.svg`,
 ];
 
 self.addEventListener('install', (event: any) => {

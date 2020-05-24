@@ -7,6 +7,7 @@ import { t } from 'translations';
 import { useDispatch } from 'react-redux';
 import { usePage } from 'hooks/usePage';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
+import LogoIcon from './images/logo-icon.svg';
 
 export const Header: React.FC =
     () => {
@@ -18,16 +19,15 @@ export const Header: React.FC =
         return (
             <header className={classNames('header', {active: menuIsVisible})}>
                 <h1 className={'header__logo'}>
-                    <img
-                        src={`${BASE_URL}/logo.svg`.replace(/\/\//, '/')}
-                        height={'30'}
+                    <span
                         className={'header__logo-img'}
-                        alt={'logo'}
                         onClick={() => {
                             dispatch(setPageAction('dictionary'));
                             setMenuIsVisible(false);
                         }}
-                    />
+                    >
+                        <LogoIcon />
+                    </span>
                     <span className={'header__logo-text'}>
                         {t('mainTitle')}
                     </span>
