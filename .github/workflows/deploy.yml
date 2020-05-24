@@ -28,10 +28,7 @@ jobs:
           cname: interslavic-dictionary.com
 
       - name: Purge cache on Cloudflare
-        uses: wei/curl@v1
-        with:
-          args: |
-                -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
-                -H "Authorization: Bearer ${{ secrets.CF_AUTH_TOKEN }}" \
-                -H "Content-Type: application/json" \
-                --data '{"purge_everything":true}\'
+          uses: jakejarvis/cloudflare-purge-action@master
+          env:
+            CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
+            CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
