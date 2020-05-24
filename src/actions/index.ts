@@ -20,6 +20,7 @@ export enum ActionTypes {
     HIDE_MODAL_DIALOG = 'HIDE_MODAL_DIALOG',
     SET_FAVORITE = 'SET_FAVORITE',
     SET_NOTIFICATION = 'SET_NOTIFICATION',
+    CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -81,6 +82,12 @@ export function searchTypeAction(data: string) {
     return {
         type: ActionTypes.SEARCH_TYPE,
         data,
+    };
+}
+
+export function changeCardViewAction() {
+    return {
+        type: ActionTypes.CHANGE_CARD_VIEW,
     };
 }
 

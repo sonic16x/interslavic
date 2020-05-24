@@ -16,11 +16,20 @@
     max-width: 1024px;
     padding: var(--gap-size);
   }
+
+  &.short {
+    padding: var(--gap-size-s);
+    margin-bottom: 48px;
+  }
 }
 
 @media (max-width: 1024px) {
   .results {
     padding-left: var(--gap-size);
     padding-right: var(--gap-size);
+
+    &.short {
+      padding: var(--gap-size-s);
+    }
   }
 }

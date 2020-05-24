@@ -1,17 +1,20 @@
 import * as React from 'react';
+import classNames from 'classnames';
 import './index.scss';
 
 interface ICheckboxProps {
+    className?: string;
     title: string;
     checked: boolean;
     onChange: () => void;
 }
 
 export const Checkbox: React.FC<ICheckboxProps> =
-    ({title, checked, onChange}: ICheckboxProps) => {
+    ({className, title, checked, onChange}: ICheckboxProps) => {
         const id = `id_${title.toLowerCase()}`;
+
         return (
-            <span className={'checkbox'}>
+            <span className={classNames('checkbox', className)}>
                 <input
                     onChange={() => onChange()}
                     type={'checkbox'}

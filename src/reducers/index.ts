@@ -29,6 +29,7 @@ export interface IModalDialog {
 export interface IMainState {
     lang: ILang;
     interfaceLang: string;
+    isShortCardView?: boolean;
     isvSearchLetters: {
         from: string[];
         to: string[]
@@ -262,6 +263,11 @@ export function mainReducer(state: IMainState, { type, data }) {
                     ...data,
                     show: true,
                 },
+            };
+        case ActionTypes.CHANGE_CARD_VIEW:
+            return {
+                ...state,
+                isShortCardView: !state.isShortCardView,
             };
         case ActionTypes.HIDE_MODAL_DIALOG:
             return {
