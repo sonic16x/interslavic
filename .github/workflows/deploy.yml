@@ -17,6 +17,8 @@ jobs:
 
       - name: Build
         run: |
+          npm run lint
+          npm run test
           npm run generateDictionary
           npm run build
 
@@ -32,3 +34,8 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
