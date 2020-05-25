@@ -1,0 +1,56 @@
+@import "src/index";
+
+.details-modal {
+  background: #fff;
+  border: var(--border);
+  border-radius: var(--border-radius-s);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: var(--border);
+    padding: 16px;
+
+    &-title {
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 600;
+      color: #000;
+
+      .details {
+        font-weight: 400;
+        font-style: italic;
+      }
+    }
+
+    &-close {
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 700;
+      color: var(--light-gray-color);
+      transition: 100ms color ease-in-out;
+
+      &:hover {
+        color: var(--muted-text-color);
+      }
+    }
+  }
+
+  &__body {
+    padding: .5vh 2.5vw;
+
+    @media (max-width: 678px) {
+      * {
+        font-size: 2.5vw !important;
+      }
+    }
+  }
+
+  &__footer {
+    border-top: var(--border);
+    padding: 16px;
+  }
+}

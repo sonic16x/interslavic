@@ -3,6 +3,7 @@ import './index.scss';
 import { MODAL_DIALOG_TYPES } from 'reducers';
 import { DetailModal } from 'components/DetailModal';
 import { TranslationsModal } from 'components/TranslationsModal';
+import { IntelligibilityModal } from 'components/IntelligibilityModal';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 import { hideModalDialog } from 'actions';
@@ -14,6 +15,8 @@ function getModalDialog(type: MODAL_DIALOG_TYPES) {
             return <TranslationsModal />;
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS:
             return <DetailModal />;
+        case MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY:
+            return <IntelligibilityModal />;
         default:
             return null;
     }
