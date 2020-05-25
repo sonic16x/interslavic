@@ -26,6 +26,7 @@ jobs:
           publish_dir: ./static
           cname: interslavic-dictionary.com
           keep_files: true
+          allow_empty_commit: true
 
       - name: Purge cache on Cloudflare
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
