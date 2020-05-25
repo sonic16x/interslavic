@@ -1,7 +1,7 @@
 name: Update dictionary
 on:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 0 * * *'
 jobs:
   update-dictionary:
     runs-on: ubuntu-latest
@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+          ref: master
 
       - name: NPM install
         uses: bahmutov/npm-install@v1
