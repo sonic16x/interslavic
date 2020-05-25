@@ -15,4 +15,3 @@ Recommended to use and install as PWA (Progressive Web App):
 ## Acknowledgements
 
 Using dictionary from: [http://steen.free.fr/interslavic/dynamic_dictionary.html](http://steen.free.fr/interslavic/dynamic_dictionary.html)  
-
