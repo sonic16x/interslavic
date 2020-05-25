@@ -1,9 +1,9 @@
-name: Build and Deploy
+name: Update dictionary
 on:
   schedule:
     - cron:  '0 1 * * *'
 jobs:
-  build-and-deploy:
+  update-dictionary:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
