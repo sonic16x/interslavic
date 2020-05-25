@@ -91,6 +91,7 @@ export class BiReporter {
             interfaceLanguage: state.interfaceLang,
             alphabets: objectSetToString(state.alphabets),
             flavorisationType: state.flavorisationType,
+            isShortView: state.isShortCardView,
         };
 
         this._setCustomDimensions({
@@ -107,6 +108,7 @@ export class BiReporter {
                 flavor: dimensions.flavorisationType,
                 filterPos: dimensions.searchFilterPos,
                 wordForms: dimensions.searchByWordForms ? 1 : 0,
+                shortView: dimensions.isShortView ? 1 : 0,
             }),
         });
     }
@@ -182,6 +184,10 @@ export class BiReporter {
         if (dimensions.searchByWordForms !== undefined) {
             this.ga('set', 'metric2', dimensions.searchByWordForms ? 1 : 0);
         }
+
+        if (dimensions.isShortView !== undefined) {
+            this.ga('set', 'metric3', dimensions.isShortView ? 1 : 0);
+        }
     }
 
     private _sendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue?: number) {
@@ -205,6 +211,7 @@ interface ICustomAnalytics {
     searchByWordForms: boolean;
     interfaceLanguage: string;
     flavorisationType: string;
+    isShortView: boolean;
     alphabets: string;
     appState: string;
     wordId: string;
