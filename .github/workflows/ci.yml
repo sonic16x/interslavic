@@ -78,8 +78,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - run: PR=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
-      - run: echo $PR
+      - run: echo $(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
 
 #      - name: NPM install
 #        uses: bahmutov/npm-install@v1
