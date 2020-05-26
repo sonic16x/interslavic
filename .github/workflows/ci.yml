@@ -79,39 +79,39 @@ jobs:
           persist-credentials: false
 
       - run: PR=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
-      - run: echo "PR number is ${{ PR }}"
+      - run: echo $PR
 
-      - name: NPM install
-        uses: bahmutov/npm-install@v1
-
-      - name: Build
-        env:
-          DEMO: true
-          NODE_ENV: production
-          BASE_URL: /${{ PR }}/
-        run: |
-          npm run generateDictionary
-          npm run webpack
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/${{ PR }}
-          keep_files: true
-          allow_empty_commit: true
-
-      - name: Purge cache on Cloudflare
-        uses: jakejarvis/cloudflare-purge-action@v0.3.0
-        env:
-          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          PURGE_URLS: \[\"https://interslavic-dictionary.com/${{ PR }}/*\"\]
-
-      - name: Create GitHub deployment
-        uses: chrnorm/deployment-action@releases/v1
-        id: deployment
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          target_url: https://interslavic-dictionary.com/${{ PR }}/
-          environment: production
+#      - name: NPM install
+#        uses: bahmutov/npm-install@v1
+#
+#      - name: Build
+#        env:
+#          DEMO: true
+#          NODE_ENV: production
+#          BASE_URL: /${{ PR }}/
+#        run: |
+#          npm run generateDictionary
+#          npm run webpack
+#
+#      - name: Deploy
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./dist/${{ PR }}
+#          keep_files: true
+#          allow_empty_commit: true
+#
+#      - name: Purge cache on Cloudflare
+#        uses: jakejarvis/cloudflare-purge-action@v0.3.0
+#        env:
+#          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
+#          CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
+#          PURGE_URLS: \[\"https://interslavic-dictionary.com/${{ PR }}/*\"\]
+#
+#      - name: Create GitHub deployment
+#        uses: chrnorm/deployment-action@releases/v1
+#        id: deployment
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          target_url: https://interslavic-dictionary.com/${{ PR }}/
+#          environment: production
