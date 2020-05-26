@@ -78,6 +78,12 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Deployment pending
+        uses: deliverybot/deployment-status@v1
+        with:
+          state: pending
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: pr-number-action
         id: pr_number
         uses: kkak10/pr-number-action@v1.3
@@ -111,11 +117,9 @@ jobs:
           CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
           PURGE_URLS: '["https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*"]'
 
-      - name: Create GitHub deployment
-        uses: chrnorm/deployment-action@releases/v1
+      - name: Deployment success
+        uses: deliverybot/deployment-status@v1
         with:
+          state: success
           token: ${{ secrets.GITHUB_TOKEN }}
-          target_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
-          environment: production
-          state: "success"
-          deployment_id: /${{ steps.pr_number.outputs.pr }}
+          environment-url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
