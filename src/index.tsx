@@ -17,17 +17,15 @@ declare global {
     const HASH_ID: string;
     const DATE: string;
     const BASE_URL: string;
+    const SW: boolean;
     interface Window {
-        HASH_ID: string;
-        dataLayer: any[];
         __REDUX_DEVTOOLS_EXTENSION__: any;
     }
 }
 
 setInitialPage();
 
-if (process.env.NODE_ENV === 'production') {
-    // Service worker
+if (SW) {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register(`sw.${HASH_ID}.js`)
             .then((registration) => {

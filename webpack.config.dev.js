@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 
@@ -67,7 +66,8 @@ module.exports = {
             path: outputPath,
             excludeChunks: ['sw', 'grammarComponent'],
             env: {
-                PROD: false,
+                ANALYTICS: false,
+                BASE_URL: baseUrl,
             },
         }),
         new webpack.DefinePlugin({
@@ -82,13 +82,6 @@ module.exports = {
             from: 'static',
         }]),
         new WriteFilePlugin(),
-        new Dotenv({
-            path: './.env.local',
-            safe: true,
-            systemvars: true,
-            silent: true,
-            defaults: './.env'
-        })
     ],
     devServer: {
         stats: 'errors-only',

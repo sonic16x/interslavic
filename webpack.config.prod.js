@@ -2,16 +2,16 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-const outputPath = path.resolve(__dirname, './dist');
+const baseUrl = process.env.BASE_URL || '/';
+const isDemo = process.env.DEMO !== undefined;
+const outputPath = path.resolve(__dirname, `./dist${baseUrl}`);
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const bundleId = 'prod';
-const baseUrl = process.env.BASE_URL || '/';
 
 function customHashFunction() {
     return {
@@ -87,12 +87,23 @@ module.exports = {
             path: outputPath,
             excludeChunks: ['sw', 'grammarComponent'],
             env: {
-                PROD: true,
+                ANALYTICS: !isDemo,
+                BASE_URL: baseUrl,
+            },
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(srcPath, '404.html.ejs'),
+            filename: '404.html',
+            path: outputPath,
+            inject: false,
+            env: {
+                BASE_URL: baseUrl,
             },
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
+            SW: !isDemo,
             HASH_ID: JSON.stringify(bundleId),
             BASE_URL: JSON.stringify(baseUrl),
             DATE: JSON.stringify(new Date().toISOString()),
@@ -110,12 +121,5 @@ module.exports = {
             },
             canPrint: true
         }),
-        new Dotenv({
-            path: './.env.prod',
-            safe: true,
-            systemvars: true,
-            silent: true,
-            defaults: './.env'
-        })
     ]
 };

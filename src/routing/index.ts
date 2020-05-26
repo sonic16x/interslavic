@@ -2,28 +2,27 @@ export const pages = [
     {
         name: 'dictionaryTitle',
         value: 'dictionary',
-        path: `${BASE_URL}/`.replace(/\/\//, '/'),
+        path: BASE_URL,
     },
     {
         name: 'grammarTitle',
         value: 'grammar',
-        path: `${BASE_URL}/grammar`.replace(/\/\//, '/'),
+        path: `${BASE_URL}grammar`,
     },
     {
         name: 'settingsTitle',
         value: 'settings',
-        path: `${BASE_URL}/settings`.replace(/\/\//, '/'),
+        path: `${BASE_URL}settings`,
     },
     {
         name: 'aboutTitle',
         value: 'about',
-        path: `${BASE_URL}/about`.replace(/\/\//, '/'),
+        path: `${BASE_URL}about`,
     },
 ];
 
 export function goToPage(path: string) {
-    const preparedPath = path.replace(/\/\//, '/');
-    window.history.pushState({}, document.title, `${preparedPath}${location.hash}`);
+    window.history.pushState({}, document.title, `${path}${location.hash}`);
 }
 
 export function getPageFromPath(): string {
