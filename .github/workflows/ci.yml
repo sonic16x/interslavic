@@ -86,7 +86,7 @@ jobs:
         uses: unacast/actions-github-deployment-status@master
         with:
           status: pending
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: NPM install
         uses: bahmutov/npm-install@v1
@@ -119,5 +119,5 @@ jobs:
         uses: unacast/actions-github-deployment-status@master
         with:
           status: success
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           environment_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
