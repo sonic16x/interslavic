@@ -79,13 +79,13 @@ jobs:
           persist-credentials: false
 
       - name: Create GitHub deployment
-          uses: chrnorm/deployment-action@releases/v1
-          id: deployment
-          ref: ${{ github.ref }}
-          with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            state: pending
-            environment: production
+        uses: chrnorm/deployment-action@releases/v1
+        id: deployment
+        ref: ${{ github.ref }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: pending
+          environment: production
 
       - name: pr-number-action
         id: pr_number
