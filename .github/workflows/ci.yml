@@ -81,8 +81,8 @@ jobs:
       - name: Create GitHub deployment
         uses: chrnorm/deployment-action@releases/v1
         id: deployment
-        ref: ${{ github.ref }}
         with:
+          ref: ${{ github.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
           state: pending
           environment: production
