@@ -82,6 +82,8 @@ jobs:
         id: pr_number
         uses: kkak10/pr-number-action@v1.3
 
+      - run: echo "PR number is ${{ steps.pr_number.outputs.pr }}"
+
       - name: NPM install
         uses: bahmutov/npm-install@v1
 
