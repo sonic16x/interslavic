@@ -84,7 +84,7 @@ jobs:
         uses: chrnorm/deployment-action@releases/v1
         id: deployment
         with:
-          ref: ${{ BRANCH_NAME }}
+          ref: $BRANCH_NAME
           token: ${{ secrets.GITHUB_TOKEN }}
           state: pending
           environment: demo
