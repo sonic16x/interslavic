@@ -78,13 +78,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: nelonoel/branch-name@v1
+      - uses: mdecoleman/pr-branch-name@1.0.0
+        id: vars
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deployment pending
         uses: chrnorm/deployment-action@releases/v1
         id: deployment
         with:
-          ref: ${BRANCH_NAME}
+          ref: ${{ steps.vars.outputs.branch }}
           token: ${{ secrets.GITHUB_TOKEN }}
           state: pending
           environment: demo
