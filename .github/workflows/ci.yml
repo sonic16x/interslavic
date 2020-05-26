@@ -78,14 +78,24 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Create GitHub deployment
+      - name: get pull request ref
+        id: get_pull_request_ref
+        uses: octokit/request-action@v2.x
+        with:
+          route: GET /repos/:repository/pulls/:issue_id
+          repository: ${{ github.repository }}
+          issue_id: ${{ github.event.issue.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deployment pending
         uses: chrnorm/deployment-action@releases/v1
         id: deployment
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ fromJson(steps.get_pull_request_ref.outputs.data).head.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
           state: pending
-          environment: ${{ github.ref }}
+          environment: demo
 
       - name: pr-number-action
         id: pr_number
@@ -122,6 +132,7 @@ jobs:
         uses: chrnorm/deployment-status@releases/v1
         with:
           state: success
+          ref: ${{ fromJson(steps.get_pull_request_ref.outputs.data).head.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
           target_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
