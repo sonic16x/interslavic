@@ -70,6 +70,7 @@ jobs:
         run: npm run build
 
   build-and-deploy-demo:
+    name: Create demo
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -82,17 +83,15 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: echo "PR number is ${PR}"
-        if: success() && steps.findPr.outputs.number
-        env:
-          PR: ${{ steps.findPr.outputs.pr }}
-          DEMO: true
-          BASE_URL: /${{ steps.findPr.outputs.pr }}/
+      - run: echo "PR number is ${{ steps.findPr.outputs.pr }}"
 
       - name: NPM install
         uses: bahmutov/npm-install@v1
 
       - name: Build
+        env:
+          DEMO: true
+          BASE_URL: /${{ steps.findPr.outputs.pr }}/
         run: |
           npm run generateDictionary
           npm run build
@@ -101,19 +100,21 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: "./dist/${PR}"
+          publish_dir: ./dist/${{ steps.findPr.outputs.pr }}
+          keep_files: true
+          allow_empty_commit: true
 
       - name: Purge cache on Cloudflare
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          PURGE_URLS: "[\"https://interslavic-dictionary.com/${PR}/*\"]"
+          PURGE_URLS: \[\"https://interslavic-dictionary.com/${{ steps.findPr.outputs.pr }}/*\"\]
 
       - name: Create GitHub deployment
         uses: chrnorm/deployment-action@releases/v1
         id: deployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          target_url: "https://interslavic-dictionary.com/${PR}/"
+          target_url: https://interslavic-dictionary.com/${{ steps.findPr.outputs.pr }}/
           environment: production
