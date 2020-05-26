@@ -94,13 +94,13 @@ jobs:
           BASE_URL: /${{ steps.pr_number.outputs.pr }}/
         run: |
           npm run generateDictionary
-          npm run webpack
+          npx webpack
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/${{ steps.pr_number.outputs.pr }}
+          publish_dir: ./dist
           keep_files: true
           allow_empty_commit: true
 
@@ -109,7 +109,7 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          PURGE_URLS: \[\"https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*\"\]
+          PURGE_URLS: '["https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*"]'
 
       - name: Create GitHub deployment
         uses: chrnorm/deployment-action@releases/v1
