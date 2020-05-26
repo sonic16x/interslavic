@@ -14,6 +14,6 @@ describe('toBCP47', () => {
   });
 
   it('should passthrough unknown language codes', () => {
-    expect(toBCP47('whatever')).toBe('whateverasdasd');
+    expect(toBCP47('whatever')).toBe('whatever');
   });
 });
