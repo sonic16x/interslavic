@@ -129,4 +129,4 @@ jobs:
           state: success
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          target_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
+          environment_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
