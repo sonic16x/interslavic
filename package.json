@@ -11,7 +11,8 @@
     "lint": "tslint -c tslint.json '{src,tests}/**/*.{ts,tsx}' -t stylish --fix",
     "updateTestSnapshot": "ts-node -r tsconfig-paths/register ./tests/updateTestSnapshot.ts",
     "generateDictionary": "ts-node -r tsconfig-paths/register ./src/generateDictionary.ts",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "webpack": "webpack"
   },
   "jest": {
     "transform": {
