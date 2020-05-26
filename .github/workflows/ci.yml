@@ -82,11 +82,13 @@ jobs:
         id: pr_number
         uses: kkak10/pr-number-action@v1.3
 
-      - name: Deployment pending
-        uses: unacast/actions-github-deployment-status@master
+      - name: Create GitHub deployment
+        uses: chrnorm/deployment-action@releases/v1
+        id: deployment
         with:
-          status: pending
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: pending
+          environment: production
 
       - name: NPM install
         uses: bahmutov/npm-install@v1
@@ -116,8 +118,9 @@ jobs:
           PURGE_URLS: '["https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*"]'
 
       - name: Deployment success
-        uses: unacast/actions-github-deployment-status@master
+        uses: chrnorm/deployment-status@releases/v1
         with:
-          status: success
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          environment_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
+          state: success
+          token: ${{ secrets.GITHUB_TOKEN }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          target_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
