@@ -83,10 +83,9 @@ jobs:
         uses: kkak10/pr-number-action@v1.3
 
       - name: Deployment pending
-        uses: deliverybot/deployment-status@v1
-        id: deployment-pending-${{ steps.pr_number.outputs.pr }}
+        uses: unacast/actions-github-deployment-status@master
         with:
-          state: pending
+          status: pending
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: NPM install
@@ -117,9 +116,8 @@ jobs:
           PURGE_URLS: '["https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*"]'
 
       - name: Deployment success
-        uses: deliverybot/deployment-status@v1
-        id: deployment-success-${{ steps.pr_number.outputs.pr }}
+        uses: unacast/actions-github-deployment-status@master
         with:
-          state: success
+          status: success
           token: ${{ secrets.GITHUB_TOKEN }}
-          environment-url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
+          environment_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
