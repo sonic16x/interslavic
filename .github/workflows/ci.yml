@@ -17,8 +17,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Lint
-        run: |
-          npm run lint
+        run: npm run lint
 
   test:
     name: Test
@@ -33,8 +32,12 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Test
-        run: |
-          npm run test
+        run: npm run test
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   generate-dictionary:
     name: Generate dictionary
@@ -49,8 +52,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Generate dictionary
-        run: |
-          npm run generateDictionary
+        run: npm run generateDictionary
 
   build:
     name: Build
@@ -65,11 +67,9 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Build
-        run: |
-          npm run build
+        run: npm run build
 
-  coveralls:
-    name: Coveralls
+  build-and-deploy-demo:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -77,14 +77,43 @@ jobs:
         with:
           persist-credentials: false
 
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: echo "PR number is ${PR}"
+        if: success() && steps.findPr.outputs.number
+        env:
+          PR: ${{ steps.findPr.outputs.pr }}
+          DEMO: true
+          BASE_URL: /${{ steps.findPr.outputs.pr }}/
+
       - name: NPM install
         uses: bahmutov/npm-install@v1
 
-      - name: Test
+      - name: Build
         run: |
-          npm run test
+          npm run generateDictionary
+          npm run build
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: "./dist/${PR}"
+
+      - name: Purge cache on Cloudflare
+        uses: jakejarvis/cloudflare-purge-action@v0.3.0
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
+          PURGE_URLS: "[\"https://interslavic-dictionary.com/${PR}/*\"]"
+
+      - name: Create GitHub deployment
+        uses: chrnorm/deployment-action@releases/v1
+        id: deployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_url: "https://interslavic-dictionary.com/${PR}/"
+          environment: production
