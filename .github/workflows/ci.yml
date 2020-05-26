@@ -113,8 +113,9 @@ jobs:
 
       - name: Create GitHub deployment
         uses: chrnorm/deployment-action@releases/v1
-        id: deployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
           environment: production
+          state: "success"
+          deployment_id: /${{ steps.pr_number.outputs.pr }}

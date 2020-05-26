@@ -28,6 +28,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           cname: interslavic-dictionary.com
+          keep_files: true
 
       - name: Purge cache on Cloudflare
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
