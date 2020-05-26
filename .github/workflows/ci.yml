@@ -78,17 +78,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Deployment pending
-        uses: deliverybot/deployment-status@v1
-        with:
-          state: pending
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: pr-number-action
         id: pr_number
         uses: kkak10/pr-number-action@v1.3
 
-      - run: echo "PR number is ${{ steps.pr_number.outputs.pr }}"
+      - name: Deployment pending
+        uses: deliverybot/deployment-status@v1
+        id: deployment-pending-${{ steps.pr_number.outputs.pr }}
+        with:
+          state: pending
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: NPM install
         uses: bahmutov/npm-install@v1
@@ -119,6 +118,7 @@ jobs:
 
       - name: Deployment success
         uses: deliverybot/deployment-status@v1
+        id: deployment-success-${{ steps.pr_number.outputs.pr }}
         with:
           state: success
           token: ${{ secrets.GITHUB_TOKEN }}
