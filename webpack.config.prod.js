@@ -106,7 +106,7 @@ module.exports = {
             SW: !isDemo,
             HASH_ID: JSON.stringify(bundleId),
             BASE_URL: JSON.stringify(baseUrl),
-            DATE: JSON.stringify(new Date().toISOString()),
+            VERSION: JSON.stringify(require('./package.json').version),
         }),
         new webpack.NoEmitOnErrorsPlugin(),
         new CopyPlugin([{

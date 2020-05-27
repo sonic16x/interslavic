@@ -15,7 +15,7 @@ import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
 /* tslint:disable */
 declare global {
     const HASH_ID: string;
-    const DATE: string;
+    const VERSION: string;
     const BASE_URL: string;
     const SW: boolean;
     interface Window {

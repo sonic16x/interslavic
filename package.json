@@ -2,7 +2,7 @@
   "name": "interslavic",
   "version": "1.0.1",
   "license": "MIT",
-  "description": "Interslavic wordbook",
+  "description": "Interslavic dictionary",
   "author": "Sergey Cherebedov",
   "scripts": {
     "start": "npm run dev",
