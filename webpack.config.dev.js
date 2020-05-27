@@ -72,6 +72,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
+            SW: false,
             HASH_ID: JSON.stringify(bundleId),
             BASE_URL: JSON.stringify(baseUrl),
             DATE: JSON.stringify(new Date().toISOString()),
