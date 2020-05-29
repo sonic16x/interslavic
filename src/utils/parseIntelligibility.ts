@@ -23,11 +23,11 @@ export enum SlavicLanguage {
 }
 
 export enum IntelligibilityLevel {
-  Full = '+',
-  Incomplete = '~',
-  Disputed = '#',
-  Other1 = '()',
-  Unknown = '?',
+  Full = 1,
+  Incomplete = 0.5,
+  Disputed = 0.5,
+  Other1 = 0.5,
+  Unknown = 0.1,
 }
 
 export type IIntelligibilityReport = Partial<Record<SlavicLanguage, IntelligibilityLevel>>;
