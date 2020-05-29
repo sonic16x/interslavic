@@ -54,6 +54,7 @@ module.exports = {
                 test: /\.s?css$/,
                 include: [
                     srcPath,
+                    path.join(nodeModulesPath, 'react-svg-radar-chart')
                 ],
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',

@@ -51,9 +51,9 @@ export const validFields = [
     'isv',
     'addition',
     'partOfSpeech',
-    // 'type',
+    'type',
     'en',
-    // 'sameInLanguages',
+    'sameInLanguages',
     // 'genesis',
     ...langs,
 ];

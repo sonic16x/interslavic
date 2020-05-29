@@ -1,0 +1,7899 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should parse correctly "" 1`] = `Object {}`;
+
+exports[`should parse correctly "#ru cz" 1`] = `
+Object {
+  "ces": 1,
+  "rus": 0.5,
+}
+`;
+
+exports[`should parse correctly "#v" 1`] = `
+Object {
+  "bel": 0.5,
+  "chu": 0.5,
+  "orv": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "#yu" 1`] = `
+Object {
+  "bos": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "slv": 0.5,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "be cs j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be cs sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be pl cs" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "pol": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "be pl sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be pl sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be pl sk bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "pol": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "be pl" 1`] = `
+Object {
+  "bel": 1,
+  "pol": 1,
+}
+`;
+
+exports[`should parse correctly "be sh bm cu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be z j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be z ru~ uk~" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 0.5,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "be z sh bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be z sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be z sl" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "be z yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be z yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "be z" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "be" 1`] = `
+Object {
+  "bel": 1,
+}
+`;
+
+exports[`should parse correctly "be~ z" 1`] = `
+Object {
+  "bel": 0.5,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "bg ru~ sh~ mk~" 1`] = `
+Object {
+  "bos": 0.5,
+  "bul": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "rus": 0.5,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "bg" 1`] = `
+Object {
+  "bul": 1,
+}
+`;
+
+exports[`should parse correctly "bm" 1`] = `
+Object {
+  "bul": 1,
+  "mkd": 1,
+}
+`;
+
+exports[`should parse correctly "cs bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "cs bm" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "cs hsb yu cu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs hsb" 1`] = `
+Object {
+  "ces": 1,
+  "hsb": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "cs j cu" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs ps" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "cs rue" 1`] = `
+Object {
+  "ces": 1,
+  "rue": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "cs sb j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs sb sl" 1`] = `
+Object {
+  "ces": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs sb yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs sh bm sb" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs sh~ bg~" 1`] = `
+Object {
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "slk": 1,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "cs sl bm" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs sl csb sb" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs sl cu" 1`] = `
+Object {
+  "ces": 1,
+  "chu": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs sl hsb rue" 1`] = `
+Object {
+  "ces": 1,
+  "hsb": 1,
+  "rue": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs sl mk" 1`] = `
+Object {
+  "ces": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs sl rue" 1`] = `
+Object {
+  "ces": 1,
+  "rue": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs sl sb" 1`] = `
+Object {
+  "ces": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs sl" 1`] = `
+Object {
+  "ces": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cs yu cu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs yu mk (pl)" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 0.5,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs" 1`] = `
+Object {
+  "ces": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "cs~ j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs~ sl sh~ mk~ bg" 1`] = `
+Object {
+  "bos": 0.5,
+  "bul": 1,
+  "ces": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "cs~ yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cs~ yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cu" 1`] = `
+Object {
+  "chu": 1,
+}
+`;
+
+exports[`should parse correctly "cz j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cz ps" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "cz sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cz sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cz sl hr" 1`] = `
+Object {
+  "ces": 1,
+  "hrv": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "cz yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cz" 1`] = `
+Object {
+  "ces": 1,
+}
+`;
+
+exports[`should parse correctly "cz~ sk sl sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cz~ sk yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "cz~ sk" 1`] = `
+Object {
+  "ces": 0.5,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "dsb" 1`] = `
+Object {
+  "dsb": 1,
+}
+`;
+
+exports[`should parse correctly "hsb" 1`] = `
+Object {
+  "hsb": 1,
+}
+`;
+
+exports[`should parse correctly "j z" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "j+z" 1`] = `Object {}`;
+
+exports[`should parse correctly "mk" 1`] = `
+Object {
+  "mkd": 1,
+}
+`;
+
+exports[`should parse correctly "n" 1`] = `Object {}`;
+
+exports[`should parse correctly "ns" 1`] = `Object {}`;
+
+exports[`should parse correctly "pl bg" 1`] = `
+Object {
+  "bul": 1,
+  "pol": 1,
+}
+`;
+
+exports[`should parse correctly "pl cs sl" 1`] = `
+Object {
+  "ces": 1,
+  "pol": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "pl cz sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl cz yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl cz" 1`] = `
+Object {
+  "ces": 1,
+  "pol": 1,
+}
+`;
+
+exports[`should parse correctly "pl j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl sk j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl sk sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl sk yu" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl sl bg" 1`] = `
+Object {
+  "bul": 1,
+  "pol": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "pl sl" 1`] = `
+Object {
+  "pol": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "pl uk" 1`] = `
+Object {
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "pl yu bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl yu" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl" 1`] = `
+Object {
+  "pol": 1,
+}
+`;
+
+exports[`should parse correctly "pl~ cs yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 0.5,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl~ cs yu~" 1`] = `
+Object {
+  "bos": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "pol": 0.5,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "pl~ cz sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 0.5,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "pl~ sb~ cs" 1`] = `
+Object {
+  "ces": 1,
+  "dsb": 0.5,
+  "hsb": 0.5,
+  "pol": 0.5,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "pl~ sl" 1`] = `
+Object {
+  "pol": 0.5,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru (cz sh)" 1`] = `
+Object {
+  "bos": 0.5,
+  "ces": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "rus": 1,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru (sh)" 1`] = `
+Object {
+  "bos": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "rus": 1,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru be bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru be bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "mkd": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru be cs j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be cs sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be cs sr bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be cs" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru be cz bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru be cz sl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru be cz sl mk bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru be dsb sk sl" 1`] = `
+Object {
+  "bel": 1,
+  "dsb": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru be dsb yu bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be j~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "rus": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru be pl bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru be pl cs bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "pol": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru be pl cz" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "pol": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru be pl sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be pl sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be pl" 1`] = `
+Object {
+  "bel": 1,
+  "pol": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru be sh bm uk~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru be sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be sk bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru be sl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru be yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be z j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be z sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be z yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru be z" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru be" 1`] = `
+Object {
+  "bel": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru bg cs~" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 0.5,
+  "rus": 1,
+  "slk": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru bg cu" 1`] = `
+Object {
+  "bul": 1,
+  "chu": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru bg" 1`] = `
+Object {
+  "bul": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru bm sb" 1`] = `
+Object {
+  "bul": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru bm" 1`] = `
+Object {
+  "bul": 1,
+  "mkd": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs (sh)" 1`] = `
+Object {
+  "bos": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "rus": 1,
+  "slk": 1,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru cs bg cu" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs sb" 1`] = `
+Object {
+  "ces": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs sl bm" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs sl hr" 1`] = `
+Object {
+  "ces": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs sl" 1`] = `
+Object {
+  "ces": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs yu bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs" 1`] = `
+Object {
+  "ces": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs~ bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 0.5,
+  "rus": 1,
+  "slk": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru cs~ j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs~ sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs~ yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cs~" 1`] = `
+Object {
+  "ces": 0.5,
+  "rus": 1,
+  "slk": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru cz bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz hsb yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz sb sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz sh bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz sl hr" 1`] = `
+Object {
+  "ces": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz sl" 1`] = `
+Object {
+  "ces": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz" 1`] = `
+Object {
+  "ces": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz~ sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru cz~ sh~" 1`] = `
+Object {
+  "bos": 0.5,
+  "ces": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "rus": 1,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl (cz)" 1`] = `
+Object {
+  "ces": 0.5,
+  "pol": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl bg" 1`] = `
+Object {
+  "bul": 1,
+  "pol": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl bm" 1`] = `
+Object {
+  "bul": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl cs sl" 1`] = `
+Object {
+  "ces": 1,
+  "pol": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl cs" 1`] = `
+Object {
+  "ces": 1,
+  "pol": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl cz sl hr" 1`] = `
+Object {
+  "ces": 1,
+  "hrv": 1,
+  "pol": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl cz" 1`] = `
+Object {
+  "ces": 1,
+  "pol": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sb sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sk j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sk sl" 1`] = `
+Object {
+  "pol": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sk" 1`] = `
+Object {
+  "pol": 1,
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sl bg" 1`] = `
+Object {
+  "bul": 1,
+  "pol": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl sl bm" 1`] = `
+Object {
+  "bul": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl yu" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl" 1`] = `
+Object {
+  "pol": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl~ bg" 1`] = `
+Object {
+  "bul": 1,
+  "pol": 0.5,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl~ cz" 1`] = `
+Object {
+  "ces": 1,
+  "pol": 0.5,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl~ cz~" 1`] = `
+Object {
+  "ces": 0.5,
+  "pol": 0.5,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl~ j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 0.5,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl~ sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 0.5,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru pl~ sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 0.5,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sb bm" 1`] = `
+Object {
+  "bul": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru sh (cz)" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sh bg sl" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sh bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sh mk bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sh~" 1`] = `
+Object {
+  "bos": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "rus": 1,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru sk j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru sk sl mk" 1`] = `
+Object {
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru sk" 1`] = `
+Object {
+  "rus": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru sl bg" 1`] = `
+Object {
+  "bul": 1,
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru sl" 1`] = `
+Object {
+  "rus": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru ub cs yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru ub cz bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru ub sh bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru ub~ sh~ mk~ bg" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 0.5,
+  "bul": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "rus": 1,
+  "srp": 0.5,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru uk bg" 1`] = `
+Object {
+  "bul": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk bm pl~ be~" 1`] = `
+Object {
+  "bel": 0.5,
+  "bul": 1,
+  "mkd": 1,
+  "pol": 0.5,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk bm" 1`] = `
+Object {
+  "bul": 1,
+  "mkd": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cs bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cs bm" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cs j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cs mk" 1`] = `
+Object {
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cs" 1`] = `
+Object {
+  "ces": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cz mk" 1`] = `
+Object {
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cz sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cz sl bm" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk cz sl cu" 1`] = `
+Object {
+  "ces": 1,
+  "chu": 1,
+  "rus": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk hr bg" 1`] = `
+Object {
+  "bul": 1,
+  "hrv": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk hr" 1`] = `
+Object {
+  "hrv": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk pl bg" 1`] = `
+Object {
+  "bul": 1,
+  "pol": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk pl bm" 1`] = `
+Object {
+  "bul": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk pl cz bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "pol": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk pl j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk pl sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk pl sk bm" 1`] = `
+Object {
+  "bul": 1,
+  "mkd": 1,
+  "pol": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk pl sk" 1`] = `
+Object {
+  "pol": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk pl" 1`] = `
+Object {
+  "pol": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk yu bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk yu~ bg" 1`] = `
+Object {
+  "bos": 0.5,
+  "bul": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "rus": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk z j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk z sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk z sl" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk z yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk z yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk z" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk z~ j~" 1`] = `
+Object {
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 0.5,
+  "cnr": 0.5,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 0.5,
+  "hsb": 0.5,
+  "mkd": 0.5,
+  "pol": 0.5,
+  "pox": 0.5,
+  "rus": 1,
+  "sli": 0.5,
+  "slk": 0.5,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk" 1`] = `
+Object {
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru uk~ pl~ j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 0.5,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "ru yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru yu" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru z bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru z bm" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru z j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru z sl" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "ru z yu bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru z yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru z yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru z" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "ru" 1`] = `
+Object {
+  "rus": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ be~ uk hsb sh bm" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "rus": 0.5,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ be~ uk z sh~" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 0.5,
+  "sli": 1,
+  "slk": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ cs yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 0.5,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rus": 0.5,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rus": 0.5,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ ub pl sk j~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "pol": 1,
+  "rus": 0.5,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ ub pl sk~" 1`] = `
+Object {
+  "bel": 1,
+  "pol": 1,
+  "rus": 0.5,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ ub z j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 0.5,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ ub z yu bg~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 0.5,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 0.5,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ uk pl bg~" 1`] = `
+Object {
+  "bul": 0.5,
+  "pol": 1,
+  "rus": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ uk pl cs~ sl sh~" 1`] = `
+Object {
+  "bos": 0.5,
+  "ces": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "pol": 1,
+  "rus": 0.5,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ru~ z bg~" 1`] = `
+Object {
+  "bul": 0.5,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "rus": 0.5,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "rue cs yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "rue": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "rue cs yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "rue": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "rue z yu mk (ub)" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "sb cs sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sb" 1`] = `
+Object {
+  "dsb": 1,
+  "hsb": 1,
+}
+`;
+
+exports[`should parse correctly "sh (ub pl)" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 0.5,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "sh bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sk bg" 1`] = `
+Object {
+  "bul": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "sk j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sk sl" 1`] = `
+Object {
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "sk yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sk yu" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sk" 1`] = `
+Object {
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "sl bg" 1`] = `
+Object {
+  "bul": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "sl bm" 1`] = `
+Object {
+  "bul": 1,
+  "mkd": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "sl rue" 1`] = `
+Object {
+  "rue": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "sl sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "sl sk~ uk~" 1`] = `
+Object {
+  "slk": 0.5,
+  "slv": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "sl" 1`] = `
+Object {
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "sx" 1`] = `Object {}`;
+
+exports[`should parse correctly "ub bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub cs yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub cs yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub cs" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub hsb" 1`] = `
+Object {
+  "bel": 1,
+  "hsb": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl bg (sh)" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "pol": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "mkd": 1,
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl cs" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "pol": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl cs~ yu " 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl cs~ yu~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "pol": 1,
+  "slk": 0.5,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl cs~" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 0.5,
+  "pol": 1,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl cz" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl hsb yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl hsb" 1`] = `
+Object {
+  "bel": 1,
+  "hsb": 1,
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl mk~" 1`] = `
+Object {
+  "bel": 1,
+  "mkd": 0.5,
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sb cz" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sb sl" 1`] = `
+Object {
+  "bel": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sk bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "pol": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sk j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sk sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sk sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sk sl" 1`] = `
+Object {
+  "bel": 1,
+  "pol": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sk yu bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sk yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sk" 1`] = `
+Object {
+  "bel": 1,
+  "pol": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl sl hr" 1`] = `
+Object {
+  "bel": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl yu~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "pol": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl" 1`] = `
+Object {
+  "bel": 1,
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl~ cs sl~" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "pol": 0.5,
+  "slk": 1,
+  "slv": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub pl~ j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 0.5,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub sk bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "mkd": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z mk" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z sh~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z sl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z sl sh~ mk~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "mkd": 0.5,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z sl" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z yu~ mk~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "mkd": 0.5,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub z~ sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 1,
+  "hsb": 0.5,
+  "mkd": 1,
+  "pol": 0.5,
+  "pox": 0.5,
+  "sli": 0.5,
+  "slk": 0.5,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub" 1`] = `
+Object {
+  "bel": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "ub~ z j" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "uk cs j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk cs sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk cs yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk cs" 1`] = `
+Object {
+  "ces": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk cz j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk cz sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl cs~" 1`] = `
+Object {
+  "ces": 0.5,
+  "pol": 1,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl hr bg" 1`] = `
+Object {
+  "bul": 1,
+  "hrv": 1,
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl sb sk sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl sk bg" 1`] = `
+Object {
+  "bul": 1,
+  "pol": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl sk sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl sk yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl sl bg" 1`] = `
+Object {
+  "bul": 1,
+  "pol": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl yu" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "pol": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk pl" 1`] = `
+Object {
+  "pol": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk rue pl cz" 1`] = `
+Object {
+  "ces": 1,
+  "pol": 1,
+  "rue": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sb" 1`] = `
+Object {
+  "dsb": 1,
+  "hsb": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sh bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sh" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sk sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sk sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sk" 1`] = `
+Object {
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk sl" 1`] = `
+Object {
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk z bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk z j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk z sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk z sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk z sl" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk z yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk z yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk z" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk" 1`] = `
+Object {
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "uk~ pl cs sb" 1`] = `
+Object {
+  "ces": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "slk": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "uk~ pl" 1`] = `
+Object {
+  "pol": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "uk~ z sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "uk~ z" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v bg sb" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v bm sh~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs mk" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs sh bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs sh~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs sl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs sl bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs sl mk" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs sl" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs yu bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs yu bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs~ sh~ bm~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs~ sl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs~ sl sh~ bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs~ sl~ bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "slv": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs~ yu~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cs~" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v csb hsb cs" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "hsb": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cz bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cz j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cz sh bm pl~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cz sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cz sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cz sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cz sl" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v cz" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v dsb" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "dsb": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v hr" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "hrv": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v j cu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v j~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v mk" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v mk~ bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "mkd": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl (cs)" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl (sh)" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl ? bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl bg cs~" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl bm~" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 0.5,
+  "chu": 1,
+  "mkd": 0.5,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cs" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cs~ bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cs~ j~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cs~ yu~ bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cs~" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl csb" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "csb": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cz sh bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cz sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cz sl~" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cz yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cz" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl cz~ sl~" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl mk" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sb bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sb" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sh bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sh~ mk~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk sl" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk yu bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sk~" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sl bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sl" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sl~ bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl sl~" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl yu bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl yu bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl yu~ mk~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ cs sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ cs sh~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ j~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ sh~ bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ sk j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~ yu~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v pl~" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "pol": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sh bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sk bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sk bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sk j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sk j~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sk sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sk" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sk~ sh~ bg~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slk": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v sl" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v yu bm~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 0.5,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v yu~ mk~ bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 1,
+  "chu": 1,
+  "cnr": 0.5,
+  "hrv": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z j~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "mkd": 0.5,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z mk" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sh bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sh bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sh mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sh" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sl bg" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sl bm" 1`] = `
+Object {
+  "bel": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sl mk" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sl" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z sl~ sh bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z yu bg" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z yu bm" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z yu mk" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z yu mk~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 0.5,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z yu" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z yu~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 1,
+  "chu": 1,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "chu": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "orv": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "rus": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z~ j" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 1,
+  "bul": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "cnr": 1,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 1,
+  "hsb": 0.5,
+  "mkd": 1,
+  "orv": 1,
+  "pol": 0.5,
+  "pox": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "sli": 0.5,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z~ j~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 0.5,
+  "hsb": 0.5,
+  "mkd": 0.5,
+  "orv": 1,
+  "pol": 0.5,
+  "pox": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "sli": 0.5,
+  "slk": 0.5,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z~ sh~" 1`] = `
+Object {
+  "bel": 1,
+  "bos": 0.5,
+  "ces": 0.5,
+  "chu": 1,
+  "cnr": 0.5,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 0.5,
+  "hsb": 0.5,
+  "orv": 1,
+  "pol": 0.5,
+  "pox": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "sli": 0.5,
+  "slk": 0.5,
+  "srp": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v z~" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 0.5,
+  "chu": 1,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hsb": 0.5,
+  "orv": 1,
+  "pol": 0.5,
+  "pox": 0.5,
+  "rue": 1,
+  "rus": 1,
+  "sli": 0.5,
+  "slk": 0.5,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v" 1`] = `
+Object {
+  "bel": 1,
+  "chu": 1,
+  "orv": 1,
+  "rue": 1,
+  "rus": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "v~ " 1`] = `
+Object {
+  "bel": 0.5,
+  "chu": 0.5,
+  "orv": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ bg" 1`] = `
+Object {
+  "bel": 0.5,
+  "bul": 1,
+  "chu": 0.5,
+  "orv": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ cs yu bm~" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "bul": 0.5,
+  "ces": 1,
+  "chu": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 0.5,
+  "orv": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ cs" 1`] = `
+Object {
+  "bel": 0.5,
+  "ces": 1,
+  "chu": 0.5,
+  "orv": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "slk": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ pl j" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "bul": 1,
+  "chu": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 0.5,
+  "pol": 1,
+  "rue": 0.5,
+  "rus": 0.5,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ pl~ yu mk" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "chu": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 0.5,
+  "pol": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ sh bm" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "bul": 1,
+  "chu": 0.5,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "orv": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ z j" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "chu": 0.5,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "orv": 0.5,
+  "pol": 1,
+  "pox": 1,
+  "rue": 0.5,
+  "rus": 0.5,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ z j~" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 1,
+  "chu": 0.5,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "mkd": 0.5,
+  "orv": 0.5,
+  "pol": 1,
+  "pox": 1,
+  "rue": 0.5,
+  "rus": 0.5,
+  "sli": 1,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ z sl" 1`] = `
+Object {
+  "bel": 0.5,
+  "ces": 1,
+  "chu": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "orv": 0.5,
+  "pol": 1,
+  "pox": 1,
+  "rue": 0.5,
+  "rus": 0.5,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ z~ sh mk" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "ces": 0.5,
+  "chu": 0.5,
+  "cnr": 1,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 1,
+  "hsb": 0.5,
+  "mkd": 1,
+  "orv": 0.5,
+  "pol": 0.5,
+  "pox": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "sli": 0.5,
+  "slk": 0.5,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ z~ yu mk~" 1`] = `
+Object {
+  "bel": 0.5,
+  "bos": 1,
+  "ces": 0.5,
+  "chu": 0.5,
+  "cnr": 1,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 1,
+  "hsb": 0.5,
+  "mkd": 0.5,
+  "orv": 0.5,
+  "pol": 0.5,
+  "pox": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "sli": 0.5,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "v~ z~" 1`] = `
+Object {
+  "bel": 0.5,
+  "ces": 0.5,
+  "chu": 0.5,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hsb": 0.5,
+  "orv": 0.5,
+  "pol": 0.5,
+  "pox": 0.5,
+  "rue": 0.5,
+  "rus": 0.5,
+  "sli": 0.5,
+  "slk": 0.5,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "yu bg" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "yu cu" 1`] = `
+Object {
+  "bos": 1,
+  "chu": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "yu mk uk~ z~" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 0.5,
+  "cnr": 1,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 1,
+  "hsb": 0.5,
+  "mkd": 1,
+  "pol": 0.5,
+  "pox": 0.5,
+  "sli": 0.5,
+  "slk": 0.5,
+  "slv": 1,
+  "srp": 1,
+  "ukr": 0.5,
+}
+`;
+
+exports[`should parse correctly "yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "yu mk~" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "mkd": 0.5,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "yu" 1`] = `
+Object {
+  "bos": 1,
+  "cnr": 1,
+  "hrv": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "z cs j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z j rue" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "rue": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z j" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z j~" 1`] = `
+Object {
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "mkd": 0.5,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 0.5,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "z sh bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z sh mk bg~" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 0.5,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z sh mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z sh" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z sl bg" 1`] = `
+Object {
+  "bul": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "z sl bg~" 1`] = `
+Object {
+  "bul": 0.5,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "z sl mk" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "z sl sh~ bg~" 1`] = `
+Object {
+  "bos": 0.5,
+  "bul": 0.5,
+  "ces": 1,
+  "cnr": 0.5,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 0.5,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 0.5,
+}
+`;
+
+exports[`should parse correctly "z sl" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+}
+`;
+
+exports[`should parse correctly "z ub" 1`] = `
+Object {
+  "bel": 1,
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "ukr": 1,
+}
+`;
+
+exports[`should parse correctly "z yu bm" 1`] = `
+Object {
+  "bos": 1,
+  "bul": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z yu mk" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "mkd": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z yu" 1`] = `
+Object {
+  "bos": 1,
+  "ces": 1,
+  "cnr": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hrv": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+  "slv": 1,
+  "srp": 1,
+}
+`;
+
+exports[`should parse correctly "z" 1`] = `
+Object {
+  "ces": 1,
+  "csb": 1,
+  "dsb": 1,
+  "hsb": 1,
+  "pol": 1,
+  "pox": 1,
+  "sli": 1,
+  "slk": 1,
+}
+`;
+
+exports[`should parse correctly "z~ sh~" 1`] = `
+Object {
+  "bos": 0.5,
+  "ces": 0.5,
+  "cnr": 0.5,
+  "csb": 0.5,
+  "dsb": 0.5,
+  "hrv": 0.5,
+  "hsb": 0.5,
+  "pol": 0.5,
+  "pox": 0.5,
+  "sli": 0.5,
+  "slk": 0.5,
+  "srp": 0.5,
+}
+`;

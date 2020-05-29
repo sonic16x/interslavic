@@ -132,6 +132,13 @@ export const ResultsCard: React.FC<IResultsCardProps> =
                 index,
             }));
         }, [index]);
+        const showIntelligibility = React.useCallback(() => {
+            biReporter.cardInteraction('show intelligibility', cardBiInfo);
+            dispatch(showModalDialog({
+                type: MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY,
+                index,
+            }));
+        }, [index]);
         const showDetail = React.useCallback(() => {
             biReporter.cardInteraction('show translations', cardBiInfo);
             dispatch(showModalDialog({
@@ -196,6 +203,14 @@ export const ResultsCard: React.FC<IResultsCardProps> =
                         onClick={showTranslations}
                     >
                         {short ? <TranslationsIcon /> : t('translates')}
+                    </button>
+                    <button
+                        className={'results-card__show-translates-button'}
+                        type={'button'}
+                        aria-label={'Show intelligibility'}
+                        onClick={showIntelligibility}
+                    >
+                        {t('intelligibility')}
                     </button>
                     {showFormsButtonIsVisible(item) && (
                         <button
