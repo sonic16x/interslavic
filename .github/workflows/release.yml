@@ -1,10 +1,10 @@
-name: Build and Deploy
+name: Release
 on:
-  push:
-    branches:
-      - master
+  release:
+    types:
+      - published
 jobs:
-  build-and-deploy:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,8 +35,3 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}

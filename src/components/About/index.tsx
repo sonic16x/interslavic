@@ -8,6 +8,11 @@ export const About: React.FC =
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/scherebedov/interslavic';
         const source = 'http://steen.free.fr/interslavic';
+        let version = `v${VERSION}`;
+        const trimmedBaseUrl = BASE_URL.replace('/', '');
+        if (trimmedBaseUrl !== '') {
+            version += `-${trimmedBaseUrl}`;
+        }
 
         return (
             <div className={'about-page'}>
@@ -85,7 +90,7 @@ export const About: React.FC =
                             />
                         </a>
                     </div>
-                    <div className={'about-page__release-date'}>{DATE}</div>
+                    <div className={'about-page__release-date'}>{version}</div>
                 </div>
             </div>
         );
