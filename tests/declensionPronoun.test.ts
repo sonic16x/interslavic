@@ -1,6 +1,7 @@
 
-import { declensionPronoun } from '../src/utils/legacy/declensionPronoun';
-import { getPronounType } from '../src/utils/wordDetails';
+import { declensionPronoun } from 'legacy/declensionPronoun';
+import { getPronounType } from 'utils/wordDetails';
+// @ts-ignore
 import { pronoun } from './testCases.json';
 
 describe('pronoun', () => {

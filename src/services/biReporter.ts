@@ -1,7 +1,7 @@
-import { IMainState } from '../reducers';
+import { IMainState } from 'reducers';
 import debounce from 'lodash/debounce';
-import { objectSetToString } from './objectSetToString';
-import { toQueryString } from './toQueryString';
+import { objectSetToString } from 'utils/objectSetToString';
+import { toQueryString } from 'utils/toQueryString';
 
 declare function ga(...args: any[]): void;
 

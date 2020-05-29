@@ -1,4 +1,4 @@
-import { searchTypes } from 'utils/dictionary';
+import { searchTypes } from 'services/dictionary';
 
 describe('searchTypes', () => {
     test('begin', () => {

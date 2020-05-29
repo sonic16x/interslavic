@@ -1,4 +1,5 @@
-import { declensionAdjective } from '../src/utils/legacy/declensionAdjective';
+import { declensionAdjective } from 'legacy/declensionAdjective';
+// @ts-ignore
 import { adjective } from './testCases.json';
 
 describe('adjective', () => {

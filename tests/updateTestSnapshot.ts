@@ -1,11 +1,11 @@
 import { dictionaryUrl } from 'consts';
 import * as fs from 'fs';
 import request from 'request';
-import { conjugationVerb } from 'utils/legacy/conjugationVerb';
-import { declensionAdjective } from 'utils/legacy/declensionAdjective';
-import { declensionNoun, declensionNounFlat } from 'utils/legacy/declensionNoun';
-import { declensionNumeral } from 'utils/legacy/declensionNumeral';
-import { declensionPronoun } from 'utils/legacy/declensionPronoun';
+import { conjugationVerb } from 'legacy/conjugationVerb';
+import { declensionAdjective } from 'legacy/declensionAdjective';
+import { declensionNoun, declensionNounFlat } from 'legacy/declensionNoun';
+import { declensionNumeral } from 'legacy/declensionNumeral';
+import { declensionPronoun } from 'legacy/declensionPronoun';
 import {
     getGender, getNumeralType,
     getPartOfSpeech, getPronounType,

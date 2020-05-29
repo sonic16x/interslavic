@@ -1,12 +1,13 @@
-import { declensionNoun } from '../src/utils/legacy/declensionNoun';
+import { declensionNoun } from 'legacy/declensionNoun';
 import {
     getGender,
     isAnimated,
     isIndeclinable,
     isPlural,
     isSingular,
-} from '../src/utils/wordDetails';
+} from 'utils/wordDetails';
 
+// @ts-ignore
 import { noun } from './testCases.json';
 
 describe('noun', () => {

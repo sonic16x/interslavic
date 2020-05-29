@@ -2,7 +2,7 @@ import { worksheetUrl } from 'consts';
 import * as React from 'react';
 import classNames from 'classnames';
 import { t } from 'translations';
-import { Dictionary, ITranslateResult } from 'utils/dictionary';
+import { Dictionary, ITranslateResult } from 'services/dictionary';
 import './index.scss';
 import { ResultsCard } from 'components/ResultsCard';
 import { ResultsEmpty } from 'components/ResultsEmpty';

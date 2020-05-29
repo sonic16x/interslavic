@@ -1,8 +1,8 @@
 import { ActionTypes } from 'actions';
 import { getPathFromPage, goToPage } from 'routing';
 import { setLang } from 'translations';
-import { Dictionary, ITranslateResult } from 'utils/dictionary';
-import { biReporter } from 'utils/biReporter';
+import { Dictionary, ITranslateResult } from 'services/dictionary';
+import { biReporter } from 'services/biReporter';
 
 export interface IAlphabets {
     latin: boolean;

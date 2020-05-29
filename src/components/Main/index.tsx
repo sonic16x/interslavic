@@ -8,7 +8,7 @@ import { Notification } from 'components/Notification';
 import { ModalDialog } from 'components/ModalDialog';
 import { Router } from 'components/Router';
 
-import { fetchDictionary } from 'services';
+import { fetchDictionary } from 'services/fetchDictionary';
 import './index.scss';
 
 export const Main: React.FC =
