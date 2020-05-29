@@ -1,6 +1,6 @@
 import { isLoadingAction, runSearch, loadingProgressAction } from 'actions';
-import { dataDelimiter, Dictionary } from 'utils/dictionary';
-import { biReporter } from 'utils/biReporter';
+import { dataDelimiter, Dictionary } from 'services/dictionary';
+import { biReporter } from 'services/biReporter';
 
 function progressHelper(onProgress) {
     return (response) => {

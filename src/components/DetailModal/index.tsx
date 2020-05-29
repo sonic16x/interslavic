@@ -5,14 +5,14 @@ import Text from 'components/Text';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { t } from 'translations';
-import { Dictionary } from 'utils/dictionary';
+import { Dictionary } from 'services/dictionary';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
-import { conjugationVerb } from 'utils/legacy/conjugationVerb';
-import { declensionAdjective } from 'utils/legacy/declensionAdjective';
-import { declensionNoun } from 'utils/legacy/declensionNoun';
-import { declensionNumeral } from 'utils/legacy/declensionNumeral';
-import { declensionPronoun } from 'utils/legacy/declensionPronoun';
+import { conjugationVerb } from 'legacy/conjugationVerb';
+import { declensionAdjective } from 'legacy/declensionAdjective';
+import { declensionNoun } from 'legacy/declensionNoun';
+import { declensionNumeral } from 'legacy/declensionNumeral';
+import { declensionPronoun } from 'legacy/declensionPronoun';
 import {
     getGender,
     getNumeralType,

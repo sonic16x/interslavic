@@ -54,7 +54,7 @@ export const Router: React.FC =
         const onChangeUrl = React.useCallback(() => {
             const currentPage = getPageFromPath();
 
-            if (getPathFromPage(page) !== currentPage) {
+            if (getPathFromPage(page) !== `${BASE_URL}${currentPage}`) {
                 dispatch(setPageAction(currentPage));
             }
         }, [dispatch, page]);

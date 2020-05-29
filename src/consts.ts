@@ -1,5 +1,6 @@
 export const dictionaryUrl = 'https://docs.google.com/spreadsheets/u/0/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY/export?format=tsv';
 export const worksheetUrl = 'https://docs.google.com/spreadsheets/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY';
+
 export const alphabetTypes = [
     {
         name: 'latin',
@@ -14,6 +15,7 @@ export const alphabetTypes = [
         value: 'glagolitic',
     },
 ];
+
 export const langs = [
     'ru',
     'be',
@@ -26,5 +28,4 @@ export const langs = [
     'sr',
     'mk',
     'bg',
-    'de',
 ];

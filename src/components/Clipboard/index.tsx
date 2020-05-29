@@ -4,8 +4,8 @@ import { setNotificationAction } from 'actions';
 import { t } from 'translations';
 import './index.scss';
 import classNames from 'classnames';
-import { biReporter, IClipboardAnalytics } from 'utils/biReporter';
-import { Dictionary, ITranslateResult } from 'utils/dictionary';
+import { biReporter, IClipboardAnalytics } from 'services/biReporter';
+import { Dictionary, ITranslateResult } from 'services/dictionary';
 
 interface IClipboardProps {
     str: string;

@@ -1,4 +1,4 @@
-import { transliterate } from 'utils/legacy/transliterate';
+import { transliterate } from 'legacy/transliterate';
 
 export function getGlagolitic(text: string, flavorisationType: string): string {
     if (!text) {

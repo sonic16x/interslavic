@@ -22,7 +22,7 @@ export const pages = [
 ];
 
 export function goToPage(path: string) {
-    window.history.pushState({}, document.title, `${path}${location.hash}`);
+    window.history.pushState({}, document.title, `${path}`);
 }
 
 export function getPageFromPath(): string {

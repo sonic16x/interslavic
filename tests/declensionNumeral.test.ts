@@ -1,6 +1,7 @@
 
-import { declensionNumeral } from '../src/utils/legacy/declensionNumeral';
-import { getNumeralType } from '../src/utils/wordDetails';
+import { declensionNumeral } from 'legacy/declensionNumeral';
+import { getNumeralType } from 'utils/wordDetails';
+// @ts-ignore
 import { numeral } from './testCases.json';
 
 describe('numeral', () => {

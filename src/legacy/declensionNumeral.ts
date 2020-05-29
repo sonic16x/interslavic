@@ -1,6 +1,6 @@
 import { getLatin } from 'utils/getLatin';
-import { declensionAdjective } from 'utils/legacy/declensionAdjective';
-import { declensionNoun } from 'utils/legacy/declensionNoun';
+import { declensionAdjective } from 'legacy/declensionAdjective';
+import { declensionNoun } from 'legacy/declensionNoun';
 import { normalize } from 'utils/normalize';
 import {
     getGender,

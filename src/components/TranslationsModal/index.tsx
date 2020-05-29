@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { t } from 'translations';
 import './index.scss';
 import { langs } from 'consts';
-import { validFields } from 'utils/dictionary';
+import { validFields } from 'services/dictionary';
 import { getLatin } from 'utils/getLatin';
 import { getCyrillic } from 'utils/getCyrillic';
 import { useResults } from 'hooks/useResults';

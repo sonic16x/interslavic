@@ -1,4 +1,5 @@
-import { conjugationVerb } from '../src/utils/legacy/conjugationVerb';
+import { conjugationVerb } from 'legacy/conjugationVerb';
+// @ts-ignore
 import { verb } from './testCases.json';
 
 describe('verb', () => {

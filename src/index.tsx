@@ -8,7 +8,7 @@ import { getPageFromPath } from 'routing';
 import { setLang } from 'translations';
 import { Main } from 'components/Main';
 import './index.scss';
-import { Dictionary } from 'utils/dictionary';
+import { Dictionary } from 'services/dictionary';
 import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
 import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
 
