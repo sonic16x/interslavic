@@ -1,8 +1,12 @@
 /* tslint:disable */
+import { addLangs } from 'consts';
+
 const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
     'index.html',
-    'data.txt',
+    'data/basic.txt',
+    'data/translateStatistic.json',
+    ...addLangs.map((lang) => `data/${lang}.txt`),
     'manifest.json',
     `grammarComponent.${HASH_ID}.js`,
     `grammarComponent~index.${HASH_ID}.js`,

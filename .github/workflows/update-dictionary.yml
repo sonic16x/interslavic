@@ -33,4 +33,4 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          PURGE_URLS: '["https://interslavic-dictionary.com/data.txt"]'
+          PURGE_URLS: '["https://interslavic-dictionary.com/data/*"]'

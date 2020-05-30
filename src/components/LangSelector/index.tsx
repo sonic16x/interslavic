@@ -3,11 +3,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { t } from 'translations';
 import { Selector } from 'components/Selector';
-import { langs } from 'consts';
+import { langs , addLangs } from 'consts';
 import './index.scss';
 import DirectionIcon from './images/direction-icon.svg';
 import { useDispatch } from 'react-redux';
 import { useLang } from 'hooks/useLang';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
 interface ILangPart {
     dir: string;
@@ -17,6 +18,8 @@ interface ILangPart {
 
 const LangPart: React.FC<ILangPart> =
     ({lang, dir, onSelect}: ILangPart) => {
+        const langs = useDictionaryLanguages();
+
         if (lang === 'isv') {
             return (
                 <div className={'lang-selector__isv'}>

@@ -11,15 +11,25 @@ import { usePosFilter } from 'hooks/usePosFilter';
 import { useLang } from 'hooks/useLang';
 import { useFromText } from 'hooks/useFromText';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { useScrollbarWidth } from 'hooks/useScrollbarWidth';
+import { isScrollBarVisible } from 'utils/isScrollBarVisible';
+import { useRef, useEffect, useState } from 'react';
 
 export const Results: React.FC =
     () => {
         const results = useResults();
         const posFilter = usePosFilter();
         const lang = useLang();
+        const containerRef = useRef<HTMLDivElement>();
         const fromText = useFromText();
         const short = useShortCardView();
         const empty = results.length === 0 && fromText.length !== 0;
+        const scrollWidth = useScrollbarWidth();
+        const [scrollIsVisible, setScrollBarVisible] = useState(false);
+
+        useEffect(() => {
+            setScrollBarVisible(isScrollBarVisible(containerRef));
+        }, [containerRef, setScrollBarVisible, results.length]);
 
         if (!results || !results.length) {
             if (empty) {
@@ -34,7 +44,13 @@ export const Results: React.FC =
         const translatedPart = Dictionary.getPercentsOfTranslated()[lang.from === 'isv' ? lang.to : lang.from];
 
         return (
-            <div className={classNames('results', {short})}>
+            <div
+                className={classNames('results', {short})}
+                style={{
+                    paddingLeft: scrollIsVisible ? scrollWidth : 0,
+                }}
+                ref={containerRef}
+            >
                 {results.map((item: ITranslateResult, index) => (
                     <ResultsCard
                         item={item}

@@ -11,6 +11,7 @@ import './index.scss';
 import { Dictionary } from 'services/dictionary';
 import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
 import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
+import { langs } from 'consts';
 
 /* tslint:disable */
 declare global {
@@ -20,6 +21,7 @@ declare global {
     const SW: boolean;
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
+        INDEX: any;
     }
 }
 
@@ -51,6 +53,7 @@ export const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     posFilter: '',
+    dictionaryLanguages: langs,
     flavorisationType: '3',
     alphabetType: 'latin',
     page: 'dictionary',

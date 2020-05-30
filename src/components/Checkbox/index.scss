@@ -39,4 +39,15 @@
       }
     }
   }
+
+  &.disabled {
+    .checkbox__label {
+      &[data-checked=true] {
+        &::before {
+          background: var(--light-gray-color);
+          border-color: transparent;
+        }
+      }
+    }
+  }
 }

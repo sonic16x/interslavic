@@ -4,16 +4,17 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { t } from 'translations';
 import './index.scss';
-import { langs } from 'consts';
-import { validFields } from 'services/dictionary';
+import { addLangs, langs } from 'consts';
+import { Dictionary } from 'services/dictionary';
 import { getLatin } from 'utils/getLatin';
 import { getCyrillic } from 'utils/getCyrillic';
 import { useResults } from 'hooks/useResults';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { useModalDialog } from 'hooks/useModalDialog';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
 function renderTranslate(str: string): string {
-    if (str[0] === '!') {
+    if (str && str[0] === '!') {
         return `{${str.slice(1)}}[s]@ts;`;
     }
     return `{✓}[g] ${str}@ts`;
@@ -24,6 +25,7 @@ export const TranslationsModal: React.FC =
         const results = useResults();
         const dispatch = useDispatch();
         const modalDialog = useModalDialog();
+        const dictionaryLanguages = useDictionaryLanguages();
         useInterfaceLang();
 
         const item = results[modalDialog.index];
@@ -40,23 +42,25 @@ export const TranslationsModal: React.FC =
             'isv',
             'en',
             ...langs,
+            ...addLangs.filter((lang) => dictionaryLanguages.includes(lang)),
         ];
 
-        const translates = item.raw.filter((_, i) => (allLangs.includes(validFields[i])));
         const tableData = allLangs.reduce((arr, lang, i) => {
+            const translate = Dictionary.getField(item.raw, lang).toString();
+
             if (lang === 'isv') {
                 return [
                     [
                         `{${t('isvEtymologicLatinLang')}}[B]@ts;b;sw=130px;nowrap`,
-                        `${getLatin(translates[i], '2')}@ts`,
+                        `${getLatin(translate, '2')}@ts`,
                     ],
                     [
                         `{${t('isvLatinLang')}}[B]@ts;b`,
-                        `${getLatin(translates[i], '3')}@ts`,
+                        `${getLatin(translate, '3')}@ts`,
                     ],
                     [
                         `{${t('isvCyrillicLang')}}[B]@ts;b`,
-                        `${getCyrillic(translates[i], '3')}@ts`,
+                        `${getCyrillic(translate, '3')}@ts`,
                     ],
                     [
                         `@w=2;S`,
@@ -68,10 +72,28 @@ export const TranslationsModal: React.FC =
                 ...arr,
                 [
                     `{${t(`${lang}Lang`)}}[B]@ts;b`,
-                    renderTranslate(translates[i]),
+                    renderTranslate(translate),
                 ],
+                (
+                        lang === 'bg' ? (
+                            [
+                                `@w=2;S`,
+                            ]
+                        ) : ([])
+                    ),
             ];
         }, []);
+
+        // console.log(tableData.length, translates);
+
+        // dictionaryLanguages.forEach((lang, i) => {
+        //     tableData.push(
+        //         [
+        //             `{${t(`${lang}Lang`)}}[B]@ts;b`,
+        //             renderTranslate(translates[tableData.length + i]),
+        //         ],
+        //     );
+        // });
 
         return (
             <>
