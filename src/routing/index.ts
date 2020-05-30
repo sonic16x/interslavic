@@ -10,6 +10,11 @@ export const pages = [
         path: `${BASE_URL}grammar`,
     },
     {
+        name: 'editorTitle',
+        value: 'editor',
+        path: `${BASE_URL}editor`,
+    },
+    {
         name: 'settingsTitle',
         value: 'settings',
         path: `${BASE_URL}settings`,

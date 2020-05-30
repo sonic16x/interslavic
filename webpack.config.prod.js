@@ -66,7 +66,7 @@ module.exports = {
                 use: 'ts-loader?configFile=tsconfig.json'
             },
             {
-                test: /\.s?css$/,
+                test: /\.scss$/,
                 include: [
                     srcPath,
                 ],
@@ -87,6 +87,18 @@ module.exports = {
                         }
                     ]
                 })
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true,
+                        }
+                    },
+                ]
             },
             {
                 test: /\.svg$/,

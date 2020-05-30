@@ -52,10 +52,10 @@ export const initialFields = [
     'isv',
     'addition',
     'partOfSpeech',
-    // 'type',
+    'type',
     'en',
-    // 'sameInLanguages',
-    // 'genesis',
+    'sameInLanguages',
+    'genesis',
 ];
 
 export const basicFields = [
@@ -201,10 +201,10 @@ class DictionaryClass {
 
         if (!searchIndexExist) {
             this.langsList.forEach((lang) => {
-               this.splittedMap[lang] = new Map();
-               if (lang === 'isv') {
-                   this.splittedMap['isv-src'] = new Map();
-               }
+                this.splittedMap[lang] = new Map();
+                if (lang === 'isv') {
+                    this.splittedMap['isv-src'] = new Map();
+                }
             });
             this.words.forEach((item) => {
                 this.langsList.forEach((from) => {
@@ -246,7 +246,7 @@ class DictionaryClass {
 
         let initTime = 0;
 
-        if (typeof performance !== 'undefined' && typeof window !== 'undefined') {
+        if (typeof performance !== 'undefined') {
             initTime = Math.round(performance.now() - startInitTime);
         }
 
@@ -256,6 +256,9 @@ class DictionaryClass {
         }
 
         return initTime;
+    }
+    public getHeader() {
+        return this.header;
     }
     public addLang(wordList: string[], searchIndex?: any) {
         const lang = wordList[0];
@@ -340,7 +343,7 @@ class DictionaryClass {
         // option -etym - hard search by etymological orthography for Isv
         const hardEtymSearch = from === 'isv' && (inputOptions.some((o) => o === 'etym') ||
             (flavorisationType === '2' &&
-            isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
+                isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
 
         // filter by part of speech
         let filterPartOfSpeech = [];
@@ -350,7 +353,7 @@ class DictionaryClass {
             filterPartOfSpeech = optionPOS
                 .slice(2).replace(/[ \/]/g, '')
                 .split('+').filter(Boolean).map((elem) => elem.split('.').filter(Boolean));
-        //   filter by interface selector
+            //   filter by interface selector
         } else if (posFilter) {
             filterPartOfSpeech = [[posFilter]];
         }
@@ -374,7 +377,7 @@ class DictionaryClass {
                         splittedField = splittedField.slice(0, wordsCount);
                     }
                     filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk,
-                            hardEtymSearch ? inputWord : inputIsvPrepared));
+                        hardEtymSearch ? inputWord : inputIsvPrepared));
                 }
                 if (to === 'isv' || twoWaySearch) {
                     const splittedField = this.getSplittedField(lang, item);
@@ -399,7 +402,7 @@ class DictionaryClass {
                 let filterResult = true;
                 // search in isv with search sensitive letters
                 if ((from === 'isv' || twoWaySearch) &&
-                   !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&
+                    !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&
                     this.isvSearchLetters.to.some((letter) => inputIsvPrepared.includes(letter))) {
                     let splittedField = this.getSplittedField('isv-src', item);
                     if ( !this.isvSearchByWordForms || inputIsvPrepared.length === 1 ) {
@@ -407,9 +410,9 @@ class DictionaryClass {
                         splittedField = splittedField.slice(0, wordsCount);
                     }
                     filterResult = splittedField.some((chunk) => {
-                            return searchTypes[searchType](this.applyIsvSearchLetters(chunk,
-                                flavorisationType), isvText);
-                        });
+                        return searchTypes[searchType](this.applyIsvSearchLetters(chunk,
+                            flavorisationType), isvText);
+                    });
 
                 }
                 if (!filterResult && (to === 'isv' || twoWaySearch)) {

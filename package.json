@@ -45,6 +45,8 @@
     "test"
   ],
   "dependencies": {
+    "@ag-grid-community/client-side-row-model": "^25.2.0",
+    "@ag-grid-community/core": "^25.2.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.21",
     "react": "^16.14.0",

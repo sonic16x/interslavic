@@ -1,5 +1,6 @@
 import { About } from 'components/About';
 import { Dictionary } from 'components/Dictionary';
+import { Editor } from 'components/Editor';
 import { Settings } from 'components/Settings';
 import React, { lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
@@ -24,6 +25,10 @@ function renderPageContent(page) {
         case 'dictionary':
             return (
                 <Dictionary/>
+            );
+        case 'editor':
+            return (
+                <Editor/>
             );
         case 'settings':
             return (
