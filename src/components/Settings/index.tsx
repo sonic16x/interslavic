@@ -5,6 +5,8 @@ import {
     changeIsvSearchByWordForms,
     changeCardViewAction,
     changeOrderOfCases,
+    changeDictionaryLangAction,
+    langAction,
 } from 'actions';
 import { Selector } from 'components/Selector';
 import * as React from 'react';
@@ -19,6 +21,13 @@ import { useResults } from 'hooks/useResults';
 import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
 import { useShortCardView } from 'hooks/useShortCardView';
 import { useOrderOfCases } from 'hooks/useOrderOfCases';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
+import { addLangs } from 'consts';
+import { fetchLang } from 'services/fetchDictionary';
+import { useState } from 'react';
+import { Spinner } from 'components/Spinner';
+import classNames from 'classnames';
+import { useLang } from 'hooks/useLang';
 
 const interfaceLanguageList = [
     {
@@ -100,6 +109,9 @@ export const Settings: React.FC =
         const isShortCardView = useShortCardView();
         const isvSearchByWordForms = useIsvSearchByWordForms();
         const orderOfCases = useOrderOfCases();
+        const dictionaryLanguages = useDictionaryLanguages();
+        const {from, to} = useLang();
+        const [isLoading, setLoading] = useState(false);
         useResults();
 
         return (
@@ -221,6 +233,50 @@ export const Settings: React.FC =
                     value={orderOfCases.join(',')}
                     onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases.split(',')))}
                 />
+                <hr />
+                <h6 className={'settings__add-langs-title'}>
+                    {t('addDictionaryLanguages')}
+                    {isLoading && (
+                        <Spinner
+                            size={'10px'}
+                            borderWidth={'3px'}
+                        />
+                    )}
+                </h6>
+                <div className={classNames('settings__add-langs', { 'settings__add-langs-loading': isLoading})}>
+                    {addLangs.map((lang, i) => {
+                        const checked = dictionaryLanguages.includes(lang);
+
+                        return (
+                            <Checkbox
+                                key={i}
+                                title={t(`${lang}Lang`)}
+                                checked={checked}
+                                onChange={async () => {
+                                    setLoading(true);
+                                    await fetchLang(lang);
+
+                                    if (checked && from === lang) {
+                                        dispatch(langAction({
+                                            from: 'en',
+                                            to,
+                                        }));
+                                    }
+
+                                    if (checked && to === lang) {
+                                        dispatch(langAction({
+                                            from,
+                                            to: 'en',
+                                        }));
+                                    }
+
+                                    dispatch(changeDictionaryLangAction(lang));
+                                    setLoading(false);
+                                }}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         );
     };

@@ -1,0 +1,15 @@
+.spinner {
+  display: inline-block;
+  vertical-align: text-bottom;
+  border-color: var(--primary-color);
+  border-style: solid;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-animation .75s linear infinite;
+}
+
+@keyframes spinner-animation {
+  to {
+    transform: rotate(360deg);
+  }
+}
