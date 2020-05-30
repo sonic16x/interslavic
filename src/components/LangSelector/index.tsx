@@ -3,7 +3,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { t } from 'translations';
 import { Selector } from 'components/Selector';
-import { langs } from 'consts';
+import { langs , addLangs } from 'consts';
 import './index.scss';
 import DirectionIcon from './images/direction-icon.svg';
 import { useDispatch } from 'react-redux';
@@ -25,7 +25,7 @@ const LangPart: React.FC<ILangPart> =
             );
         }
 
-        const options = ['en', ...langs].map((value) => ({
+        const options = ['en', ...langs, ...addLangs].map((value) => ({
             name: t(`${value}Lang`),
             value,
         }));

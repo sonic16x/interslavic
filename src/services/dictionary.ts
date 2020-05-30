@@ -25,7 +25,7 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { langs } from 'consts';
+import { langs, addLangs } from 'consts';
 import { IAlphabets } from 'reducers';
 
 export const searchTypes = {
@@ -56,6 +56,7 @@ export const validFields = [
     // 'sameInLanguages',
     // 'genesis',
     ...langs,
+    ...addLangs,
 ];
 
 const isvReplacebleLetters = [
@@ -152,7 +153,7 @@ class DictionaryClass {
     private headerIndexes: Map<string, number>;
     private percentsOfChecked: {[lang: string]: string};
     private words: string[][];
-    private splittedMap: Map<string, string[]>;
+    private splittedMap: {[lang: string]: Map<string, string[]>};
     private isvSearchLetters: { from: string[], to: string[] };
     private isvSearchByWordForms: boolean;
 
@@ -160,8 +161,7 @@ class DictionaryClass {
         this.header = [];
         this.langsList = [];
         this.headerIndexes = new Map();
-        this.splittedMap = new Map();
-        this.percentsOfChecked = {};
+        this.splittedMap = {};
         this.percentsOfChecked = {};
         this.isvSearchLetters =  { from: [], to: [] };
     }
@@ -177,17 +177,29 @@ class DictionaryClass {
             startInitTime = window.performance.now();
         }
 
-        this.header = validFields;
-        this.langsList = ['isv', 'en', ...langs];
+        this.header = wordList[0];
+
+        this.langsList = [
+            'isv',
+            'en',
+            ...langs,
+            ...addLangs,
+        ];
 
         this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
-        this.words = wordList;
+        this.words = wordList.slice(1);
         const searchIndexExist = Boolean(searchIndex);
 
         if (!searchIndexExist) {
+            this.langsList.forEach((lang) => {
+               this.splittedMap[lang] = new Map();
+               if (lang === 'isv') {
+                   this.splittedMap['isv-src'] = new Map();
+               }
+            });
             this.words.forEach((item) => {
                 this.langsList.forEach((from) => {
-                    const key = `${this.getField(item, 'id')}-${from}`;
+                    const key = `${this.getField(item, 'id')}`;
                     let fromField = this.getField(item, from);
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
@@ -198,13 +210,13 @@ class DictionaryClass {
                             .splitWords(fromField)
                             .concat(getWordForms(item))
                         ;
-                        this.splittedMap.set(key + '-src',
+                        this.splittedMap['isv-src'].set(key,
                             splittedField.map((chunk) => this.searchPrepare('isv-src', getLatin(chunk, '2'))));
                     } else {
                         fromField = removeExclamationMark(fromField);
                         splittedField = this.splitWords(fromField);
                     }
-                    this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
+                    this.splittedMap[from].set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
                 });
             });
             this.langsList.forEach((fieldName) => {
@@ -213,7 +225,13 @@ class DictionaryClass {
                 this.percentsOfChecked[fieldName] = count.toFixed(1);
             });
         } else {
-            this.splittedMap = new Map(searchIndex);
+            [
+                'isv-src',
+                ...this.langsList,
+            ].forEach((lang) => {
+                this.splittedMap[lang] = new Map(searchIndex[lang]);
+            });
+
             this.percentsOfChecked = percentsOfChecked;
         }
 
@@ -234,10 +252,17 @@ class DictionaryClass {
         return this.words;
     }
     public getIndex() {
-        return Array.from(this.splittedMap.keys()).map((key: string) => [
-            key,
-            this.splittedMap.get(key),
-        ]);
+        const searchIndex = {};
+        [
+            'isv-src',
+            ...this.langsList,
+        ].forEach((lang) => {
+            searchIndex[lang] = Array.from(this.splittedMap[lang].keys()).map((key: string) => [
+                key,
+                this.splittedMap[lang].get(key),
+            ]);
+        });
+        return searchIndex;
     }
     public translate(translateParams: ITranslateParams): [string[][], number] {
         const {
@@ -474,8 +499,8 @@ class DictionaryClass {
         this.isvSearchByWordForms = isvSearchByWordForms;
     }
     private getSplittedField(from: string, item: string[]): string[] {
-        const key = `${this.getField(item, 'id')}-${from}`;
-        return this.splittedMap.get(key);
+        const key = this.getField(item, 'id');
+        return this.splittedMap[from].get(key);
     }
     private splitWords(text: string): string[] {
         return text.includes(';') ? text.split(';') : text.split(',');

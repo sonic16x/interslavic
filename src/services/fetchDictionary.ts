@@ -57,12 +57,13 @@ export function fetchDictionary(dispatch): void {
                 .replace(/#/g, '')
                 .split('\n')
                 .map((l) => l.split('\t'));
-            const searchIndex = searchIndexStr
-                .split('\n')
-                .map((l) => {
-                    const [key, forms] = l.split('\t');
-                    return [key, forms.split('|')];
-                });
+            const searchIndex = {};
+            const searchIndexObj = JSON.parse(searchIndexStr);
+            for (const lang in searchIndexObj) {
+                if (searchIndexObj.hasOwnProperty(lang)) {
+                    searchIndex[lang] = searchIndexObj[lang];
+                }
+            }
             const percentsOfChecked = JSON.parse(percentsOfCheckedStr);
             const initTime = Dictionary.init(wordList, searchIndex, percentsOfChecked);
             // dispatch(loadingProgressAction(100));
