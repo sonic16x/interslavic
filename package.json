@@ -52,7 +52,8 @@
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.3",
     "react-transition-group": "^4.4.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "request-promise": "^4.2.6"
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",

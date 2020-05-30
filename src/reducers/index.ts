@@ -39,6 +39,7 @@ export interface IMainState {
     searchType: string;
     posFilter: string;
     flavorisationType: string;
+    dictionaryLanguages: string[];
     page: string;
     isLoading: boolean;
     loadingProgress: number;
@@ -281,6 +282,16 @@ export function mainReducer(state: IMainState, { type, data }) {
                     ...state.modalDialog,
                     show: false,
                 },
+            };
+        case ActionTypes.DICTIONARY_LANGUAGES:
+            const { dictionaryLanguages } = state;
+
+            return {
+                ...state,
+                dictionaryLanguages:
+                    dictionaryLanguages.includes(data) ?
+                        dictionaryLanguages.filter((lang) => (lang !== data)) :
+                        [...dictionaryLanguages, data],
             };
         case ActionTypes.SET_ALPHABETS:
             let alphabetType = state.alphabetType;

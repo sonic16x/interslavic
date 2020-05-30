@@ -24,6 +24,7 @@ export enum ActionTypes {
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
     DISMISS_SURVEY_BANNER = 'DISMISS_SURVEY_BANNER',
     MARK_ABOUT_SURVEY_AS_READ = 'MARK_ABOUT_SURVEY_AS_READ',
+    DICTIONARY_LANGUAGES = 'DICTIONARY_LANGUAGES',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -173,5 +174,12 @@ export function changeOrderOfCases(data) {
 export function dismissSurveyBanner() {
     return {
         type: ActionTypes.DISMISS_SURVEY_BANNER,
+    };
+}
+
+export function changeDictionaryLangAction(data) {
+    return {
+        type: ActionTypes.DICTIONARY_LANGUAGES,
+        data,
     };
 }
