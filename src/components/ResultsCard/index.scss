@@ -43,7 +43,6 @@
     font-size: var(--text-m);
     line-height: var(--text-m-line);
     color: #000;
-    padding-right: 55px;
   }
 
 
@@ -104,6 +103,11 @@
     margin-bottom: 8px;
 
     .results-card {
+
+      &__original {
+        padding-right: 55px;
+      }
+
       &__details {
         margin-left: 8px;
         color: var(--muted-text-color);
