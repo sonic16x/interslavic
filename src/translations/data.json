@@ -510,19 +510,19 @@
     "bg": "Преводите са направени от:"
   },
   "aboutTranslatorsText": {
-    "en": "Jan van Steenbergen (English, Polish), Michał Swat (Polish), Zdeněk Kučera (Czech), Denis Shabalin (Russian), Toni Stojcevski (Macedonian) and others volunteers. The work is continuing.",
-    "isv": "Jan van Steenbergen (anglijsky, poljsky), Mihal Svat (poljsky), Zdeněk Kučera (češsky), Denis Šabalin (russky), Toni Stojcevsky (makedonsky) i ini dobrovoljci. Rabota trvaje.",
-    "ru": "Ян ван Стенберген (английский, польский), Михал Сват (польский), Зденек Кучера (чешский), Денис Шабалин (русский), Тони Стойцевски (македонский) и другие добровольцы. Работа продолжается.",
-    "uk": "Ян ван Стенберген (англійська, польська), Міхал Сват (польська), Зденек Кучера (чеська), Деніс Шабалін (російська), Тоні Стойцевскі (македонська) і інші добровольці. Робота триває.",
-    "be": "Ян ван Стенберген (англійская, польская), Міхал Сват (польская), Здэнек Кучэра (чэшская), Дзяніс Шабалін (руская), Тоні Стойцевскі (македонская) і іншыя добраахвотнікі. Праца ідзе.",
-    "pl": "Jan van Steenbergen (angielski, polski), Michał Swat (polski), Zdeněk Kučera (czeski), Denis Szabalin (rosyjski), Toni Stojcevski (macedoński) i inni wolontariusze. Prace trwają.",
-    "cs": "Jan van Steenbergen (angličtina, polština), Michał Swat (polština), Zdeněk Kučera (čeština), Denis Šabalin (ruština), Toni Stojcevski (makedonština) a další dobrovolníci. Práce pokračuje.",
-    "sk": "Jan van Steenbergen (angličtina, poľština), Michał Swat (poľština), Zdeněk Kučera (čeština), Denis Šabalin (ruština), Toni Stojcevski (makedonština) a ďalší dobrovoľníci. Práca pokračuje.",
-    "sl": "Jan van Steenbergen (angleščina, poljski), Michał Swat (poljski), Zdeněk Kučera (češki), Denis Šabalin (ruski), Toni Stojcevski (makedonski) in drugi prostovoljci. Delo se nadaljuje.",
-    "hr": "Jan van Steenbergen (engleski, poljski), Michał Swat (poljski), Zdeněk Kučera (češki), Denis Šabalin (ruski), Toni Stojcevski (makedonski) i drugi dobrovoljci. Rad se nastavlja.",
-    "sr": "Јан ван Стеенберген (енглески, пољски), Михал Сват (пољски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стојцевски (македонски) и други добровољци. Рад се наставља.",
-    "mk": "Јан ван Стеенберген (англиски, полски), Михал Сват (полски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стојцевски (македонски) и други доброволци. Работата продолжува.",
-    "bg": "Ян ван Стеенберген (английски, полски), Михал Сват (полски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стойцевски (македонски) и други доброволци. Работата продължава."
+    "en": "Jan van Steenbergen (English, Polish, Dutch), Michał Swat (Polish), Zdeněk Kučera (Czech), Denis Shabalin (Russian), Toni Stojcevski (Macedonian), Filip Kovčin (Serbian) and others volunteers. The work is continuing.",
+    "isv": "Jan van Steenbergen (anglijsky, poljsky, niderlandsky), Mihal Svat (poljsky), Zdeněk Kučera (češsky), Denis Šabalin (russky), Toni Stojcevsky (makedonsky), Filip Kovčin (srbsky) i ini dobrovoljci. Rabota trvaje.",
+    "ru": "Ян ван Стенберген (английский, польский, нидерландский), Михал Сват (польский), Зденек Кучера (чешский), Денис Шабалин (русский), Тони Стойцевски (македонский), Филип Ковчин (сербский) и другие добровольцы. Работа продолжается.",
+    "uk": "Ян ван Стенберген (англійська, польська, нідерландська), Міхал Сват (польська), Зденек Кучера (чеська), Деніс Шабалін (російська), Тоні Стойцевскі (македонська), Филип Ковчин (сербська) і інші добровольці. Робота триває.",
+    "be": "Ян ван Стенберген (англійская, польская, нідэрландская), Міхал Сват (польская), Здэнек Кучэра (чэшская), Дзяніс Шабалін (руская), Тоні Стойцевскі (македонская), Филип Ковчин (сербская) і іншыя добраахвотнікі. Праца ідзе.",
+    "pl": "Jan van Steenbergen (angielski, polski, niderlandzki), Michał Swat (polski), Zdeněk Kučera (czeski), Denis Szabalin (rosyjski), Toni Stojcevski (macedoński), Filip Kovčin (serbsky) i inni wolontariusze. Prace trwają.",
+    "cs": "Jan van Steenbergen (angličtina, polština, nizozemština), Michał Swat (polština), Zdeněk Kučera (čeština), Denis Šabalin (ruština), Toni Stojcevski (makedonština), Filip Kovčin (srbština) a další dobrovolníci. Práce pokračuje.",
+    "sk": "Jan van Steenbergen (angličtina, poľština, holandčina), Michał Swat (poľština), Zdeněk Kučera (čeština), Denis Šabalin (ruština), Toni Stojcevski (makedonština), Filip Kovčin (srbčina) a ďalší dobrovoľníci. Práca pokračuje.",
+    "sl": "Jan van Steenbergen (angleščina, poljski, nizozemski), Michał Swat (poljski), Zdeněk Kučera (češki), Denis Šabalin (ruski), Toni Stojcevski (makedonski), Filip Kovčin (srbski) in drugi prostovoljci. Delo se nadaljuje.",
+    "hr": "Jan van Steenbergen (engleski, poljski, nizozemski), Michał Swat (poljski), Zdeněk Kučera (češki), Denis Šabalin (ruski), Toni Stojcevski (makedonski), Filip Kovčin (srpski) i drugi dobrovoljci. Rad se nastavlja.",
+    "sr": "Јан ван Стеенберген (енглески, пољски, холандски), Михал Сват (пољски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стојцевски (македонски), Филип Ковчин (српски) и други добровољци. Рад се наставља.",
+    "mk": "Јан ван Стеенберген (англиски, полски, холандски), Михал Сват (полски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стојцевски (македонски), Филип Ковчин (српски) и други доброволци. Работата продолжува.",
+    "bg": "Ян ван Стеенберген (английски, полски, холандски), Михал Сват (полски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стойцевски (македонски), Филип Ковчин (сръбски) и други доброволци. Работата продължава."
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
