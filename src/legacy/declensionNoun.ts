@@ -669,7 +669,6 @@ function declensionPluralNoun(word: string, add: string, gender: string) {
     }
     else if (gender === 'feminine' && word.match(/[ye]$/ )  ||
         gender === 'neuter' && word.match(/[a]$/)) {
-
         return {
             nom: [null, word],
             acc: [null, word],
