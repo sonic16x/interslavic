@@ -329,26 +329,26 @@ function superlative(root, comp, srt) {
 
 function rules(word: string): string {
     return word
-        .replace('^o', '^e')
-        .replace('^y', '^i')
-        .replace('s|^e', 'se')
-        .replace('s|^i', 'si')
+        .replace(/\^o/g, '^e')
+        .replace(/\^y/g, '^i')
+        .replace(/s\|\^e/g, 'se')
+        .replace(/s\|\^i/g, 'si')
         .replace(/\|/g, '')
-        .replace('č^', 'č')
+        /*.replace('č^', 'č')
         .replace('š^', 'š')
         .replace('ž^', 'ž')
         .replace('ć^', 'ć')
-        .replace('c^', 'c')
+        .replace('c^', 'c')*/
         .replace(/l\^/g, 'lj')
-        .replace('n^', 'ń')
-        .replace('r^', 'ŕ')
-        .replace('j^', 'j')
-        .replace('t^', 'ť')
-        .replace('d^', 'ď')
-        .replace('s^', 'ś')
-        .replace('z^', 'ź')
-        .replace('^', '')
-        .replace('jy', 'ji')
-        .replace('cy', 'ci')
-    ;
+        .replace(/n\^/g, 'ń')
+        .replace(/r\^/g, 'ŕ')
+        .replace(/j\^/g, 'j')
+        .replace(/t\^/g, 'ť')
+        .replace(/d\^/g, 'ď')
+        .replace(/s\^/g, 'ś')
+        .replace(/z\^/g, 'ź')
+        .replace(/\^/g, '')
+        .replace(/jy/g, 'ji')
+        .replace(/cy/g, 'ci')
+        ;
 }
