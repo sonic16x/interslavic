@@ -548,7 +548,11 @@ function genitive_pl(root, gender) {
     else {
         result = root + 'ij';
     }
-    result = result.replace('jsk%', 'jsk')
+    return rules(plural_gen_ending(result));
+}
+
+function plural_gen_ending(word) {
+    word = word.replace('jsk%', 'jsk')
         .replace('mš%', 'meš')
         .replace('zl%', 'zȯl')
         .replace('tl%', 'tȯl')
@@ -563,9 +567,8 @@ function genitive_pl(root, gender) {
         .replace(/^ťm%/, 'tem')
         .replace(/^sto%/, 'sȯt')
         .replace(/%/g, '')
-    ;
-
-    return rules(result);
+        ;
+    return word;
 }
 
 function dative_pl(root, gender) {
@@ -664,28 +667,26 @@ function declensionPluralNoun(word: string, add: string, gender: string) {
             voc: [null, word],
         };
     }
-    else if (gender === 'feminine' && word.match(/[ye]$/) ||
+    else if (gender === 'feminine' && word.match(/[ye]$/ )  ||
         gender === 'neuter' && word.match(/[a]$/)) {
-
         return {
             nom: [null, word],
             acc: [null, word],
-            gen: [null, wordWithoutLast],
+            gen: [null, rules(plural_gen_ending(wordWithoutLast + '%'))],
             loc: [null, wordWithoutLast + 'ah'],
             dat: [null, wordWithoutLast + 'am'],
             ins: [null, wordWithoutLast + 'ami'],
             voc: [null, word],
         };
     }
-    else if (gender === 'feminine' && word.match(/[i]$/)) {
-
+   else if (gender === 'feminine' && word.match(/[i]$/)) {
         return {
             nom: [null, word],
             acc: [null, word],
             gen: [null, wordWithoutLast + 'ij'],
-            loc: [null, wordWithoutLast + 'jah'],
-            dat: [null, wordWithoutLast + 'jam'],
-            ins: [null, wordWithoutLast + 'jami'],
+            loc: [null, wordWithoutLast + 'ah'],
+            dat: [null, wordWithoutLast + 'am'],
+            ins: [null, wordWithoutLast + 'ami'],
             voc: [null, word],
         };
     }
