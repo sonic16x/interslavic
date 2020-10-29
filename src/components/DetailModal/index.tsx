@@ -37,6 +37,7 @@ interface IDetailModalInternal {
     flavorisationType: string;
     interfaceLang: string;
     setAlphabetType: (type: string) => void;
+    orderOfCases: string[];
 }
 
 class DetailModalInternal extends React.Component<IDetailModalInternal> {
@@ -427,13 +428,15 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
         paradigmArray.columns.forEach((col) => {
             tableDataCases[0].push(t(col) + '@b');
         });
-        Object.keys(paradigmArray.cases).forEach((caseItem) => {
-            const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
-            const tableRow = [`${caseName}@b`];
-            paradigmArray.cases[caseItem].forEach((caseForm) => {
-                tableRow.push(`${this.formatStr(caseForm)}@`);
-            });
-            tableDataCases.push(tableRow);
+        this.props.orderOfCases.forEach((caseItem) => {
+            if (paradigmArray.cases.hasOwnProperty(caseItem)) {
+                const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
+                const tableRow = [`${caseName}@b`];
+                paradigmArray.cases[caseItem].forEach((caseForm) => {
+                    tableRow.push(`${this.formatStr(caseForm)}@`);
+                });
+                tableDataCases.push(tableRow);
+            }
         });
         return tableDataCases;
     }
@@ -627,13 +630,15 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({modalDialog, results, alphabetType, flavorisationType, alphabets, interfaceLang}: IMainState) {
+function mapStateToProps({modalDialog, results, alphabetType, flavorisationType, alphabets, interfaceLang,
+                         orderOfCases}: IMainState) {
     return {
         item: results[modalDialog.index],
         alphabetType,
         alphabets,
         flavorisationType,
         interfaceLang,
+        orderOfCases,
     };
 }
 

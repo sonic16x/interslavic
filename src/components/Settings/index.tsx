@@ -84,11 +84,11 @@ const interfaceLanguageList = [
 ];
 
 const orderOfCasesList = [
-    'Nom,Acc,Gen,Loc,Dat,Ins,Voc',
-    'Nom,Acc,Gen,Dat,Loc,Ins,Voc',
-    'Nom,Gen,Dat,Acc,Ins,Loc,Voc',
-    'Nom,Gen,Dat,Acc,Voc,Loc,Ins',
-    'Nom,Gen,Dat,Acc,Voc,Ins,Loc',
+    'nom,acc,gen,loc,dat,ins,voc',
+    'nom,acc,gen,dat,loc,ins,voc',
+    'nom,gen,dat,acc,ins,loc,voc',
+    'nom,gen,dat,acc,voc,loc,ins',
+    'nom,gen,dat,acc,voc,ins,loc',
 ];
 
 export const Settings: React.FC =
@@ -214,11 +214,11 @@ export const Settings: React.FC =
                 <Selector
                     options={orderOfCasesList.map((e) => {
                         return {
-                            name: e.split(',').map((c) => t(`case${c}`)).join(', '),
+                            name: e.split(',').map((c) => t(`case${c[0].toUpperCase()}${c.slice(1)}`)).join(', '),
                             value: e,
                         };
                     })}
-                    value={orderOfCases}
+                    value={orderOfCases.join(',')}
                     onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases.split(',')))}
                 />
             </div>
