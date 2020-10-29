@@ -2388,15 +2388,15 @@
     "en": "Order of cases",
     "isv": "Poredok padežev",
     "ru": "Порядок падежей",
-    "uk": "",
-    "be": "",
-    "pl": "",
-    "cs": "",
-    "sk": "",
-    "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
-    "bg": ""
+    "uk": "Порядок відмінків",
+    "be": "Парадак склонаў",
+    "pl": "Kolejność przypadków",
+    "cs": "Pořadí případu",
+    "sk": "Poradie prípadov",
+    "sl": "Vrstni red sklonov",
+    "hr": "Poredak padeža",
+    "sr": "Ред падежа",
+    "mk": "Редослед на падежите",
+    "bg": "Последователност на падежите"
   }
 }
