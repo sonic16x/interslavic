@@ -52,7 +52,7 @@ export interface IMainState {
     favoriteList: {
         [key: string]: boolean;
     };
-    orderOfCases: string;
+    orderOfCases: string[];
 }
 
 export function mainReducer(state: IMainState, { type, data }) {

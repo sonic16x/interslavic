@@ -85,7 +85,7 @@ const interfaceLanguageList = [
 
 const orderOfCasesList = [
     'Nom,Acc,Gen,Loc,Dat,Ins,Voc',
-    'Nom,Acc,Gem,Dat,Loc,Ins,Voc',
+    'Nom,Acc,Gen,Dat,Loc,Ins,Voc',
     'Nom,Gen,Dat,Acc,Ins,Loc,Voc',
     'Nom,Gen,Dat,Acc,Voc,Loc,Ins',
     'Nom,Gen,Dat,Acc,Voc,Ins,Loc',
@@ -219,7 +219,7 @@ export const Settings: React.FC =
                         };
                     })}
                     value={orderOfCases}
-                    onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases))}
+                    onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases.split(',')))}
                 />
             </div>
         );

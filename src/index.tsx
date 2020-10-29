@@ -69,7 +69,7 @@ export const defaultState: IMainState = {
         glagolitic: false,
     },
     favoriteList: {},
-    orderOfCases: 'Nom,Acc,Gen,Loc,Dat,Ins,Voc',
+    orderOfCases: ['Nom','Acc','Gen','Loc','Dat','Ins','Voc'],
 };
 
 function reduxDevTools() {
