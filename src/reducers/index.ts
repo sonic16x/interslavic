@@ -52,6 +52,7 @@ export interface IMainState {
     favoriteList: {
         [key: string]: boolean;
     };
+    orderOfCases: string;
 }
 
 export function mainReducer(state: IMainState, { type, data }) {
@@ -297,6 +298,11 @@ export function mainReducer(state: IMainState, { type, data }) {
                 alphabets,
                 alphabetType,
                 results: Dictionary.formatTranslate(state.rawResults, state.lang.from, state.lang.to, state.flavorisationType, alphabets),
+            };
+        case ActionTypes.CHANGE_ORDER_OF_CASES:
+            return {
+                ...state,
+                orderOfCases: data,
             };
         default:
             return state;

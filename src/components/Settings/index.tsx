@@ -1,7 +1,15 @@
-import { changeIsvSearchLetters, setInterfaceLang, setAlphabets, changeIsvSearchByWordForms, changeCardViewAction } from 'actions';
+import {
+    changeIsvSearchLetters,
+    setInterfaceLang,
+    setAlphabets,
+    changeIsvSearchByWordForms,
+    changeCardViewAction,
+    changeOrderOfCases,
+} from 'actions';
 import { Selector } from 'components/Selector';
 import * as React from 'react';
 import { t } from 'translations';
+import { useOrderOfCases } from '../../hooks/useOrderOfCases';
 import { Checkbox } from '../Checkbox';
 import './index.scss';
 import { useDispatch } from 'react-redux';
@@ -75,6 +83,14 @@ const interfaceLanguageList = [
     },
 ];
 
+const orderOfCasesList = [
+    'NAGLDIV',
+    'NAGDLIV',
+    'NGDAILV',
+    'NGDAVLI',
+    'NGDAVIL',
+];
+
 export const Settings: React.FC =
     () => {
         const dispatch = useDispatch();
@@ -83,6 +99,7 @@ export const Settings: React.FC =
         const isvSearchLetters = useIsvSearchLetters();
         const isShortCardView = useShortCardView();
         const isvSearchByWordForms = useIsvSearchByWordForms();
+        const orderOfCases = useOrderOfCases();
         useResults();
 
         return (
@@ -191,6 +208,27 @@ export const Settings: React.FC =
                     title={t('searchByIsvWordForms')}
                     checked={isvSearchByWordForms}
                     onChange={() => dispatch(changeIsvSearchByWordForms(!isvSearchByWordForms))}
+                />
+                <hr/>
+                <h6>{t('orderOfCases')}</h6>
+                <Selector
+                    options={orderOfCasesList.map((e) => {
+                        return {
+                            name: e.split('').map((c) => {
+                                switch (c) {
+                                    case 'N': return t('caseNom');
+                                    case 'A': return t('caseAcc');
+                                    case 'G': return t('caseGen');
+                                    case 'L': return t('caseLoc');
+                                    case 'I': return t('caseIns');
+                                    case 'V': return t('caseVoc');
+                                }
+                            }).join(', '),
+                            value: e,
+                        };
+                    })}
+                    value={orderOfCases}
+                    onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases))}
                 />
             </div>
         );
