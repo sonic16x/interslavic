@@ -84,11 +84,11 @@ const interfaceLanguageList = [
 ];
 
 const orderOfCasesList = [
-    'NAGLDIV',
-    'NAGDLIV',
-    'NGDAILV',
-    'NGDAVLI',
-    'NGDAVIL',
+    'Nom,Acc,Gen,Loc,Dat,Ins,Voc',
+    'Nom,Acc,Gem,Dat,Loc,Ins,Voc',
+    'Nom,Gen,Dat,Acc,Ins,Loc,Voc',
+    'Nom,Gen,Dat,Acc,Voc,Loc,Ins',
+    'Nom,Gen,Dat,Acc,Voc,Ins,Loc',
 ];
 
 export const Settings: React.FC =
@@ -214,16 +214,7 @@ export const Settings: React.FC =
                 <Selector
                     options={orderOfCasesList.map((e) => {
                         return {
-                            name: e.split('').map((c) => {
-                                switch (c) {
-                                    case 'N': return t('caseNom');
-                                    case 'A': return t('caseAcc');
-                                    case 'G': return t('caseGen');
-                                    case 'L': return t('caseLoc');
-                                    case 'I': return t('caseIns');
-                                    case 'V': return t('caseVoc');
-                                }
-                            }).join(', '),
+                            name: e.split(',').map((c) => t(`case${c}`)).join(', '),
                             value: e,
                         };
                     })}
