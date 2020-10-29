@@ -58,7 +58,7 @@ export function declensionAdjective(adj: string, postfix: string): any {
     return {
         singular: {
             nom: applyRules([m_nom_sg, n_nom_sg, f_nom_sg], postfix),
-            acc: applyRules([m_acc_sg, f_acc_sg], postfix),
+            acc: applyRules([m_acc_sg, n_nom_sg, f_acc_sg], postfix),
             gen: applyRules([mn_gen_sg, f_gdl_sg], postfix),
             loc: applyRules([mn_loc_sg, f_gdl_sg], postfix),
             dat: applyRules([mn_dat_sg, f_gdl_sg], postfix),

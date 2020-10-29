@@ -123,11 +123,13 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
                 if (numeralType) {
                     arr.push(t('numeral-' + numeralType));
                 }
+                break;
             case 'pronoun':
                 const pronounType = getPronounType(details);
                 if (pronounType) {
                     arr.push(t('pronoun-' + pronounType));
                 }
+                break;
         }
         return (
             <span className={'modal-dialog__header-title'}>
@@ -454,53 +456,31 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
                 `${t('feminine')}@b`,
             ],
         ];
-        if (singular.acc.length === 3) {
-            table.push([
-                    `${t('caseNom')}@b`,
-                    `${this.formatStr(singular.nom[0])}@`,
-                    `${this.formatStr(singular.nom[1])}@`,
-                    `${this.formatStr(singular.nom[2])}@`,
-                ],
-                [
-                    `${t('caseAcc')}@b`,
-                    `${this.formatStr(singular.acc[0])}@`,
-                    `${this.formatStr(singular.acc[1])}@`,
-                    `${this.formatStr(singular.acc[2])}@`,
-                ]);
-        } else {
-            table.push([
-                    `${t('caseNom')}@b`,
-                    `${this.formatStr(singular.nom[0])}@`,
-                    `${this.formatStr(singular.nom[1])}@h=2`,
-                    `${this.formatStr(singular.nom[2])}@`,
-                ],
-                [
-                    `${t('caseAcc')}@b`,
-                    `${this.formatStr(singular.acc[0])}@`,
-                    `${this.formatStr(singular.acc[1])}@`,
-                ]);
-        }
-        table.push(
-            [
-                `${t('caseGen')}@b`,
-                `${this.formatStr(singular.gen[0])}@w=2`,
-                `${this.formatStr(singular.gen[1])}@`,
-            ],
-            [
-                `${t('caseLoc')}@b`,
-                `${this.formatStr(singular.loc[0])}@w=2`,
-                `${this.formatStr(singular.loc[1])}@`,
-            ],
-            [
-                `${t('caseDat')}@b`,
-                `${this.formatStr(singular.dat[0])}@w=2`,
-                `${this.formatStr(singular.dat[1])}@`,
-            ],
-            [
-                `${t('caseIns')}@b`,
-                `${this.formatStr(singular.ins[0])}@w=2`,
-                `${this.formatStr(singular.ins[1])}@`,
-            ]);
+
+        this.props.orderOfCases.forEach((caseItem) => {
+            if (singular.hasOwnProperty(caseItem)) {
+                const tableRow = [
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b`,
+                ];
+                switch (caseItem) {
+                    case 'nom':
+                    case 'acc':
+                        tableRow.push(
+                            `${this.formatStr(singular[caseItem][0])}@`,
+                            `${this.formatStr(singular[caseItem][1])}@`,
+                            `${this.formatStr(singular[caseItem][2])}@`,
+                        );
+                        break;
+                    default:
+                        tableRow.push(
+                            `${this.formatStr(singular[caseItem][0])}@w=2`,
+                            `${this.formatStr(singular[caseItem][1])}@`,
+                        );
+                        break;
+                }
+                table.push(tableRow);
+            }
+        });
         return table;
     }
 
@@ -516,47 +496,28 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
                 `${t('feminineOrNeuter')}@b`,
             ],
         ];
-        if (plural.acc.length === 2 && plural.nom[1] !== plural.acc[1]) {
-            table.push(
-                [
-                    `${t('caseNom')}@b`,
-                    `${this.formatStr(plural.nom[0])}@`,
-                    `${this.formatStr(plural.nom[1])}@`,
-                ],
-                [
-                    `${t('caseAcc')}@b`,
-                    `${this.formatStr(plural.acc[0])}@`,
-                    `${this.formatStr(plural.acc[1])}@`,
-                ]);
-        } else {
-            table.push(
-                [
-                    `${t('caseNom')}@b`,
-                    `${this.formatStr(plural.nom[0])}@`,
-                    `${this.formatStr(plural.nom[1])}@h=2`,
-                ],
-                [
-                    `${t('caseAcc')}@b`,
-                    `${this.formatStr(plural.acc[0])}@`,
-                ]);
-        }
-        table.push(
-            [
-                `${t('caseGen')}@b`,
-                `${this.formatStr(plural.gen[0])}@w=2`,
-            ],
-            [
-                `${t('caseLoc')}@b`,
-                `${this.formatStr(plural.loc[0])}@w=2`,
-            ],
-            [
-                `${t('caseDat')}@b`,
-                `${this.formatStr(plural.dat[0])}@w=2`,
-            ],
-            [
-                `${t('caseIns')}@b`,
-                `${this.formatStr(plural.ins[0])}@w=2`,
-            ]);
+        this.props.orderOfCases.forEach((caseItem) => {
+            if (plural.hasOwnProperty(caseItem)) {
+                const tableRow = [
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b`,
+                ];
+                switch (caseItem) {
+                    case 'nom':
+                    case 'acc':
+                        tableRow.push(
+                            `${this.formatStr(plural[caseItem][0])}@`,
+                            `${this.formatStr(plural[caseItem][1])}@`,
+                        );
+                        break;
+                    default:
+                        tableRow.push(
+                            `${this.formatStr(plural[caseItem][0])}@w=2`,
+                        );
+                        break;
+                }
+                table.push(tableRow);
+            }
+        });
         return table;
     }
 
