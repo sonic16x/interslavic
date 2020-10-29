@@ -9,7 +9,6 @@ import {
 import { Selector } from 'components/Selector';
 import * as React from 'react';
 import { t } from 'translations';
-import { useOrderOfCases } from '../../hooks/useOrderOfCases';
 import { Checkbox } from '../Checkbox';
 import './index.scss';
 import { useDispatch } from 'react-redux';
@@ -19,6 +18,7 @@ import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
 import { useResults } from 'hooks/useResults';
 import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { useOrderOfCases } from 'hooks/useOrderOfCases';
 
 const interfaceLanguageList = [
     {
