@@ -723,15 +723,15 @@
     "en": "Part of speech",
     "isv": "Čest molvy",
     "ru": "Часть речи",
-    "uk": "",
-    "be": "",
-    "pl": "",
+    "uk": "Частина мови",
+    "be": "Часціна мовы",
+    "pl": "Część mowy",
     "cs": "Slovní druh",
     "sk": "Slovný druh",
-    "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "sl": "Besedna vrsta",
+    "hr": "Vrsta riječi",
+    "sr": "Врста речи",
+    "mk": "Зборовна група",
     "bg": "Част на речта"
   },
   "noun": {
@@ -744,9 +744,9 @@
     "cs": "podstatné jméno",
     "sk": "podstatné meno",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "imenica",
+    "sr": "именица",
+    "mk": "именка",
     "bg": "съществително"
   },
   "pronoun": {
@@ -759,9 +759,9 @@
     "cs": "zájméno",
     "sk": "zámeno",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "zamjenica",
+    "sr": "заменица",
+    "mk": "заменка",
     "bg": "местоимение"
   },
   "adjective": {
@@ -774,9 +774,9 @@
     "cs": "přídavné jméno",
     "sk": "prídavné meno",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "pridjev",
+    "sr": "придев",
+    "mk": "придавка",
     "bg": "прилагателно"
   },
   "adverb": {
@@ -789,9 +789,9 @@
     "cs": "příslovce",
     "sk": "príslovka",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "prilog",
+    "sr": "прилог",
+    "mk": "прилог",
     "bg": "наречие"
   },
   "preposition": {
@@ -804,9 +804,9 @@
     "cs": "předložka",
     "sk": "predložka",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "prijedlog",
+    "sr": "предлог",
+    "mk": "предлог",
     "bg": "предлог"
   },
   "numeral": {
@@ -819,9 +819,9 @@
     "cs": "číslovka",
     "sk": "číslovka",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "broj",
+    "sr": "број",
+    "mk": "број",
     "bg": "числително"
   },
   "interjection": {
@@ -834,9 +834,9 @@
     "cs": "citoslovce",
     "sk": "citoslovce",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "usklik",
+    "sr": "узвик",
+    "mk": "извик",
     "bg": "междуметие"
   },
   "conjunction": {
@@ -849,9 +849,9 @@
     "cs": "spojka",
     "sk": "spojka",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "veznik",
+    "sr": "везник",
+    "mk": "сврзник",
     "bg": "съюз"
   },
   "verb": {
@@ -864,9 +864,9 @@
     "cs": "sloveso",
     "sk": "sloveso",
     "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
+    "hr": "glagol",
+    "sr": "глагол",
+    "mk": "глагол",
     "bg": "глагол"
   },
   "prefix": {
@@ -883,6 +883,21 @@
     "sr": "",
     "mk": "",
     "bg": "представка"
+  },
+  "particle": {
+    "en": "particle",
+    "isv": "čestica",
+    "ru": "частица",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "čestica",
+    "sr": "речца",
+    "mk": "честичка",
+    "bg": "частица"
   },
   "anyPartOfSpeech": {
     "en": "any",
