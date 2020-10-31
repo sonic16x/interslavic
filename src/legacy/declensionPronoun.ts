@@ -33,7 +33,7 @@ export function declensionPronounFlat(rawWord: string, pronounType: string): str
         .filter(Boolean)
         .reduce((acc, item) => {
             if (item.indexOf('(') !== -1 || item.indexOf(')') !== -1) {
-                acc.push(item.replace(/\(|\)/g, ''));
+                acc.push(item.replace(/[()]/g, ''));
                 acc.push(item.replace(/\(.*\)/, ''));
             } else {
                 acc.push(item);
@@ -126,7 +126,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                 ins: [rawWord],
             },
         };
-    } else if ((pronounType === 'indefinite' || pronounType === 'interrogative' || pronounType === 'relative' ) &&
+    } else if (['indefinite', 'interrogative', 'negative', 'relative'].includes(pronounType) &&
         (rawWord.includes('čto') || rawWord.includes('kto') || rawWord === 'kogo') && !rawWord.includes('ktory')) {
         let prefix = '';
         let postfix = '';
@@ -197,7 +197,7 @@ export function declensionPronoun(rawWord: string, pronounType: string): IPronou
                 ins: ['(n)jimiže'],
             },
         };
-    } else if (['demonstrative', 'indefinite', 'interrogative', 'relative', 'possessive'].includes(pronounType)) {
+    } else if (['demonstrative', 'indefinite', 'interrogative', 'relative', 'possessive', 'negative', 'universal'].includes(pronounType)) {
         let origWord = rawWord;
         let postfix = '';
         if (origWord === 'te') {
