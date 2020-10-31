@@ -1767,7 +1767,7 @@
     "sl": "sedanji aktivni deležnik",
     "hr": "radni glagol. pridjev sadaš. vrem.",
     "sr": "радни глагол. придев садаш. врем.",
-    "mk": "",
+    "mk": "сегашен активен партицип",
     "bg": "сег. деят. причастие"
   },
   "presentPassiveParticiple": {
@@ -1782,7 +1782,7 @@
     "sl": "sedanji pasivni deležnik",
     "hr": "radni glagol. pridjev sadaš. vrem.",
     "sr": "трпни глагол. придев садаш. врем.",
-    "mk": "",
+    "mk": "сегашен пасивен партицип",
     "bg": "сег. страд. причастие"
   },
   "pastActiveParticiple": {
@@ -1797,7 +1797,7 @@
     "sl": "pretekli aktivni deležnik",
     "hr": "radni glagol. pridjev proš. vrem.",
     "sr": "радни глагол. придев прош. врем.",
-    "mk": "",
+    "mk": "минат активен партицип",
     "bg": "мин. деят. причастие"
   },
   "pastPassiveParticiple": {
@@ -1812,7 +1812,7 @@
     "sl": "pretekli pasivni deležnik",
     "hr": "trpni glagol. pridjev proš. vrem.",
     "sr": "трпни глагол. придев прош. врем.",
-    "mk": "",
+    "mk": "минат пасивен партицип",
     "bg": "мин. страд. причастие"
   },
   "verbalNoun": {
