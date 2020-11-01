@@ -11,7 +11,7 @@ interface ITranslateParams {
 
 function replaceParams(str, params?: ITranslateParams) {
     return Object.keys(params).reduce((acc, paramKey) => (
-        acc.replace(/\{|\}/g, '').replace(new RegExp(`__${paramKey}__`, 'g'), params[paramKey])
+        acc.replace(/[{}]/g, '').replace(new RegExp(`__${paramKey}__`, 'g'), params[paramKey])
     ), str);
 }
 
