@@ -22,6 +22,8 @@
     rel.	relative
     poss.	possessive
     int.	interrogative
+    neg.    negative
+    univ.   universal
     v.	verb
     ipf.	imperfective
     pf.	perfective
@@ -180,6 +182,12 @@ export function getPronounType(details: string): string {
     }
     if (arr.includes('int')) {
         return 'interrogative';
+    }
+    if (arr.includes('neg')) {
+        return 'negative';
+    }
+    if (arr.includes('univ')) {
+        return 'universal';
     }
 }
 

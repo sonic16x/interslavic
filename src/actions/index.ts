@@ -21,6 +21,7 @@ export enum ActionTypes {
     SET_FAVORITE = 'SET_FAVORITE',
     SET_NOTIFICATION = 'SET_NOTIFICATION',
     CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
+    CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -156,6 +157,13 @@ export function runSearch() {
 export function setAlphabets(data) {
     return {
         type: ActionTypes.SET_ALPHABETS,
+        data,
+    };
+}
+
+export function changeOrderOfCases(data) {
+    return {
+        type: ActionTypes.CHANGE_ORDER_OF_CASES,
         data,
     };
 }

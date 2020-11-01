@@ -1,4 +1,11 @@
-import { changeIsvSearchLetters, setInterfaceLang, setAlphabets, changeIsvSearchByWordForms, changeCardViewAction } from 'actions';
+import {
+    changeIsvSearchLetters,
+    setInterfaceLang,
+    setAlphabets,
+    changeIsvSearchByWordForms,
+    changeCardViewAction,
+    changeOrderOfCases,
+} from 'actions';
 import { Selector } from 'components/Selector';
 import * as React from 'react';
 import { t } from 'translations';
@@ -11,6 +18,7 @@ import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
 import { useResults } from 'hooks/useResults';
 import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { useOrderOfCases } from 'hooks/useOrderOfCases';
 
 const interfaceLanguageList = [
     {
@@ -75,6 +83,14 @@ const interfaceLanguageList = [
     },
 ];
 
+const orderOfCasesList = [
+    'nom,acc,gen,loc,dat,ins,voc',
+    'nom,acc,gen,dat,loc,ins,voc',
+    'nom,gen,dat,acc,ins,loc,voc',
+    'nom,gen,dat,acc,voc,loc,ins',
+    'nom,gen,dat,acc,voc,ins,loc',
+];
+
 export const Settings: React.FC =
     () => {
         const dispatch = useDispatch();
@@ -83,6 +99,7 @@ export const Settings: React.FC =
         const isvSearchLetters = useIsvSearchLetters();
         const isShortCardView = useShortCardView();
         const isvSearchByWordForms = useIsvSearchByWordForms();
+        const orderOfCases = useOrderOfCases();
         useResults();
 
         return (
@@ -191,6 +208,18 @@ export const Settings: React.FC =
                     title={t('searchByIsvWordForms')}
                     checked={isvSearchByWordForms}
                     onChange={() => dispatch(changeIsvSearchByWordForms(!isvSearchByWordForms))}
+                />
+                <hr/>
+                <h6>{t('orderOfCases')}</h6>
+                <Selector
+                    options={orderOfCasesList.map((e) => {
+                        return {
+                            name: e.split(',').map((c) => t(`case${c[0].toUpperCase()}${c.slice(1)}`)).join(', '),
+                            value: e,
+                        };
+                    })}
+                    value={orderOfCases.join(',')}
+                    onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases.split(',')))}
                 />
             </div>
         );
