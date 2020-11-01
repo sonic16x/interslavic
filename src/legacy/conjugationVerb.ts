@@ -712,9 +712,6 @@ function build_pfpp(pref, is, psi) {
         ppps = ppps.replace(/ziX/g, 'žX');
         ppps = ppps.replace(/tiX/g, 'ćX');
         ppps = ppps.replace(/diX/g, 'đX');
-        ppps = ppps.replace(/riX/g, 'řX');
-        ppps = ppps.replace(/liX/g, 'ľX');
-        ppps = ppps.replace(/niX/g, 'ňX');
         ppps = ppps.replace(/jiX/g, 'jX');
         ppps = ppps.replace(/šiX/g, 'šX');
         ppps = ppps.replace(/žiX/g, 'žX');
