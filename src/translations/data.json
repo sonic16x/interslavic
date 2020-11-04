@@ -355,7 +355,7 @@
     "sk": "Autor a hlavný developer projektu:",
     "sl": "Avtor in glavni developer projekta:",
     "hr": "Autor i glavni programer projekta:",
-    "sr": "Аутор и главни програмер / девелопер пројекта:",
+    "sr": "Аутор и главни девелопер пројекта:",
     "mk": "Автор и главен развивач на проектот:",
     "bg": "Автор и главен разработчик на проекта:"
   },
@@ -685,7 +685,7 @@
     "sk": "Používať skloňovanie slov pri hľadaní v mezislovanském jazyku",
     "sl": "Uporabljati pregibne oblike pri iskanju v medslovanskem jeziku",
     "hr": "Koristiti flektivne oblici riječi pri pretraživanju na međuslavenskom",
-    "sr": "Користи флективне облике речи при претраживању на међуславенском",
+    "sr": "Користи флективне облике речи при претраживању на међусловенском",
     "mk": "Користење на сменети форми на зборови при пребарување на меѓусловенски",
     "bg": "Използване наклонени форми на думите при търсене в междуславянски език"
   },
