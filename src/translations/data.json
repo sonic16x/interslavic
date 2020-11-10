@@ -55,7 +55,7 @@
     "sk": "Nastavenia",
     "sl": "Nastavitve",
     "hr": "Postavke",
-    "sr": "Поставке",
+    "sr": "Подешавање",
     "mk": "Поставки",
     "bg": "Настройки"
   },
@@ -235,7 +235,7 @@
     "sk": "Začiatok",
     "sl": "Na začetku",
     "hr": "Na početku",
-    "sr": "На почетку",
+    "sr": "Почетак речи",
     "mk": "Почеток",
     "bg": "Начало"
   },
@@ -250,7 +250,7 @@
     "sk": "Úplná zhoda",
     "sl": "V celoti",
     "hr": "U cijelosti",
-    "sr": "У целости",
+    "sr": "Цела реч",
     "mk": "Цело",
     "bg": "Цяла дума"
   },
@@ -355,7 +355,7 @@
     "sk": "Autor a hlavný developer projektu:",
     "sl": "Avtor in glavni developer projekta:",
     "hr": "Autor i glavni programer projekta:",
-    "sr": "Аутор и главни програмер пројекта:",
+    "sr": "Аутор и главни девелопер пројекта:",
     "mk": "Автор и главен развивач на проектот:",
     "bg": "Автор и главен разработчик на проекта:"
   },
@@ -430,7 +430,7 @@
     "sk": "Tabuľka s prekladmi",
     "sl": "Tabela s prevodi",
     "hr": "Tablica s prijevodima",
-    "sr": "Таблица с преводима",
+    "sr": "Табела с преводима",
     "mk": "Табела со преводи",
     "bg": "Таблица с преводи"
   },
@@ -475,7 +475,7 @@
     "sk": "Medzislovanský jazyk je zonálne konštruovaný jazyk založený na slovanských jazykoch. Projekt má históriu od roku 2006. Jeho hlavnými spoluautormi sú Jan van Steenbergen a Vojtěch Merunka.",
     "sl": "Medslovanski jezik je zonsko zgrajen jezik, ki temelji na slovanskih jezikih. Projekt ima svojo zgodovino, saj so 2006. Njeni glavni soavtorji Jan van Steenbergen in Vojtěch Merunka.",
     "hr": "Međuslavenski jezik je zonsko izgrađen jezik zasnovan na slavenskim jezicima. Projekt ima povijest od 2006. godine. Glavni suautori su Jan van Steenbergen i Vojtěch Merunka.",
-    "sr": "Међусловенски језик је зонско изграђен језик заснован на славенским језицима. Пројекат има историју од 2006. године. Главни коаутори су Јан ван Стеенберген и Војтех Мерунка.",
+    "sr": "Међусловенски језик је плански језик зонског типа, заснован на словенским језицима. Пројекат међусловенског језика је покренут 2006. године. Главни коаутори су Јан ван Стеенберген и Војтех Мерунка.",
     "mk": "Меѓусловенски јазик е зонски изградени јазик базиран на словенски јазици. Проектот има своја историја од 2006 година. Главни коавтори се Јан ван Стенберген и Војтех Мерунка.",
     "bg": "Междуславянски език е зонално конструиран език, базиран на славянските езици. Проектът има своя история от 2006 г. Основните му съавтори са Ян ван Стеенберген и Войтех Мерунка."
   },
@@ -505,24 +505,24 @@
     "sk": "Preklady vyhotovili:",
     "sl": "Prevode so naredili:",
     "hr": "Prijevodi održali su:",
-    "sr": "Преводи одржали су:",
+    "sr": "Преводе су радили:",
     "mk": "Преводите беа направени од:",
     "bg": "Преводите са направени от:"
   },
   "aboutTranslatorsText": {
-    "en": "Jan van Steenbergen (English, Polish, Dutch), Michał Swat (Polish), Zdeněk Kučera (Czech), Denis Shabalin (Russian), Toni Stojcevski (Macedonian), Filip Kovčin (Serbian) and others volunteers. The work is continuing.",
-    "isv": "Jan van Steenbergen (anglijsky, poljsky, niderlandsky), Mihal Svat (poljsky), Zdeněk Kučera (češsky), Denis Šabalin (russky), Toni Stojcevsky (makedonsky), Filip Kovčin (srbsky) i ini dobrovoljci. Rabota trvaje.",
-    "ru": "Ян ван Стенберген (английский, польский, нидерландский), Михал Сват (польский), Зденек Кучера (чешский), Денис Шабалин (русский), Тони Стойцевски (македонский), Филип Ковчин (сербский) и другие добровольцы. Работа продолжается.",
-    "uk": "Ян ван Стенберген (англійська, польська, нідерландська), Міхал Сват (польська), Зденек Кучера (чеська), Деніс Шабалін (російська), Тоні Стойцевскі (македонська), Филип Ковчин (сербська) і інші добровольці. Робота триває.",
-    "be": "Ян ван Стенберген (англійская, польская, нідэрландская), Міхал Сват (польская), Здэнек Кучэра (чэшская), Дзяніс Шабалін (руская), Тоні Стойцевскі (македонская), Филип Ковчин (сербская) і іншыя добраахвотнікі. Праца ідзе.",
-    "pl": "Jan van Steenbergen (angielski, polski, niderlandzki), Michał Swat (polski), Zdeněk Kučera (czeski), Denis Szabalin (rosyjski), Toni Stojcevski (macedoński), Filip Kovčin (serbsky) i inni wolontariusze. Prace trwają.",
-    "cs": "Jan van Steenbergen (angličtina, polština, nizozemština), Michał Swat (polština), Zdeněk Kučera (čeština), Denis Šabalin (ruština), Toni Stojcevski (makedonština), Filip Kovčin (srbština) a další dobrovolníci. Práce pokračuje.",
-    "sk": "Jan van Steenbergen (angličtina, poľština, holandčina), Michał Swat (poľština), Zdeněk Kučera (čeština), Denis Šabalin (ruština), Toni Stojcevski (makedonština), Filip Kovčin (srbčina) a ďalší dobrovoľníci. Práca pokračuje.",
-    "sl": "Jan van Steenbergen (angleščina, poljski, nizozemski), Michał Swat (poljski), Zdeněk Kučera (češki), Denis Šabalin (ruski), Toni Stojcevski (makedonski), Filip Kovčin (srbski) in drugi prostovoljci. Delo se nadaljuje.",
-    "hr": "Jan van Steenbergen (engleski, poljski, nizozemski), Michał Swat (poljski), Zdeněk Kučera (češki), Denis Šabalin (ruski), Toni Stojcevski (makedonski), Filip Kovčin (srpski) i drugi dobrovoljci. Rad se nastavlja.",
-    "sr": "Јан ван Стеенберген (енглески, пољски, холандски), Михал Сват (пољски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стојцевски (македонски), Филип Ковчин (српски) и други добровољци. Рад се наставља.",
-    "mk": "Јан ван Стеенберген (англиски, полски, холандски), Михал Сват (полски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стојцевски (македонски), Филип Ковчин (српски) и други доброволци. Работата продолжува.",
-    "bg": "Ян ван Стеенберген (английски, полски, холандски), Михал Сват (полски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стойцевски (македонски), Филип Ковчин (сръбски) и други доброволци. Работата продължава."
+    "en": "Jan van Steenbergen (English, Polish, Dutch), Michał Swat (Polish), Zdeněk Kučera (Czech), Denis Shabalin (Russian), Toni Stojčevski (Macedonian), Filip Kovčin (Serbian) and others volunteers. The work is continuing.",
+    "isv": "Jan van Steenbergen (anglijsky, poljsky, niderlandsky), Mihal Svat (poljsky), Zdeněk Kučera (češsky), Denis Šabalin (russky), Toni Stojčevsky (makedonsky), Filip Kovčin (srbsky) i ini dobrovoljci. Rabota trvaje.",
+    "ru": "Ян ван Стенберген (английский, польский, нидерландский), Михал Сват (польский), Зденек Кучера (чешский), Денис Шабалин (русский), Тони Стойчевски (македонский), Филип Ковчин (сербский) и другие добровольцы. Работа продолжается.",
+    "uk": "Ян ван Стенберген (англійська, польська, нідерландська), Міхал Сват (польська), Зденек Кучера (чеська), Деніс Шабалін (російська), Тоні Стойчевскі (македонська), Филип Ковчин (сербська) і інші добровольці. Робота триває.",
+    "be": "Ян ван Стенберген (англійская, польская, нідэрландская), Міхал Сват (польская), Здэнек Кучэра (чэшская), Дзяніс Шабалін (руская), Тоні Стойчевскі (македонская), Филип Ковчин (сербская) і іншыя добраахвотнікі. Праца ідзе.",
+    "pl": "Jan van Steenbergen (angielski, polski, niderlandzki), Michał Swat (polski), Zdeněk Kučera (czeski), Denis Szabalin (rosyjski), Toni Stojčevski (macedoński), Filip Kovčin (serbsky) i inni wolontariusze. Prace trwają.",
+    "cs": "Jan van Steenbergen (angličtina, polština, nizozemština), Michał Swat (polština), Zdeněk Kučera (čeština), Denis Šabalin (ruština), Toni Stojčevski (makedonština), Filip Kovčin (srbština) a další dobrovolníci. Práce pokračuje.",
+    "sk": "Jan van Steenbergen (angličtina, poľština, holandčina), Michał Swat (poľština), Zdeněk Kučera (čeština), Denis Šabalin (ruština), Toni Stojčevski (makedonština), Filip Kovčin (srbčina) a ďalší dobrovoľníci. Práca pokračuje.",
+    "sl": "Jan van Steenbergen (angleščina, poljski, nizozemski), Michał Swat (poljski), Zdeněk Kučera (češki), Denis Šabalin (ruski), Toni Stojčevski (makedonski), Filip Kovčin (srbski) in drugi prostovoljci. Delo se nadaljuje.",
+    "hr": "Jan van Steenbergen (engleski, poljski, nizozemski), Michał Swat (poljski), Zdeněk Kučera (češki), Denis Šabalin (ruski), Toni Stojčevski (makedonski), Filip Kovčin (srpski) i drugi dobrovoljci. Rad se nastavlja.",
+    "sr": "Јан ван Стеенберген (енглески, пољски, холандски), Михал Сват (пољски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стојчевски (македонски), Филип Ковчин (српски) и други добровољци. Рад се наставља.",
+    "mk": "Јан ван Стеенберген (англиски, полски, холандски), Михал Сват (полски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стојчевски (македонски), Филип Ковчин (српски) и други доброволци. Работата продолжува.",
+    "bg": "Ян ван Стеенберген (английски, полски, холандски), Михал Сват (полски), Зденек Кучера (чешки), Денис Шабалин (руски), Тони Стойчевски (македонски), Филип Ковчин (сръбски) и други доброволци. Работата продължава."
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
@@ -535,7 +535,7 @@
     "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
     "sl": "Rezultati iskanja vsebujejo nepravilne samodejne prevode. Trenutno je preverjenih part% besed izbranega jezika. Če govorite ta jezik, se pridružite in sodelujte pri izboljšanju prevodov!",
     "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, priključite se i sudjelujte na poboljšanju prijevoda!",
-    "sr": "Резултати претраге садрже нетачне аутоматске преводе. Тренутно је проверено part% речи изабраног језика. Ако говорите тај језик, прикључите се и суделујте на побољшању превода!",
+    "sr": "Резултати претраге садрже нетачне аутоматске преводе. Тренутно је проверено part% речи изабраног језика. Ако говорите тај језик, прикључите се и сарађујте на побољшању превода!",
     "mk": "Пребаруваните резултати содржат неточни автоматски преводи. Во моментов, part% од зборовите на избраниот јазик се потврдени. Ако го зборувате овој јазик, приклучете се да помогнете во подобрувањето на преводите!",
     "bg": "Резултатите от търсенето съдържат неточни автоматични преводи. В момента part% от думите на избрания език са потвърдени. Ако говорите този език, включете се да помогнете с подобряването на преводите!"
   },
@@ -550,7 +550,7 @@
     "sk": "Pracová tabuľka sa nachádza na tomto linku.",
     "sl": "Delovni list se nahaja na tej povezavi.",
     "hr": "Radna tablica se nalazi na ovoj poveznici.",
-    "sr": "Радна таблица се налази на овој вези.",
+    "sr": "Радна табела се налази на овој повезници (линку).",
     "mk": "Работната табела се наоѓа на следната врска.",
     "bg": "Работната таблица се намира на тази връзка."
   },
@@ -565,7 +565,7 @@
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "sl": "To je neprofiten odprtokodni projekt. Delamo brezplačno, za zabavo. Z njim ne služimo in za pomoč ne plačujemo.",
     "hr": "Ovo je neprofitan projekt otvorenog koda. Radimo besplatno, iz zadovoljstva. Ne zarađujemo od toga i ne plaćamo za pomoć.",
-    "sr": "Ово је непрофитан пројекат отвореног кода. Радимо бесплатно, из задовољства. Не зарађујемо од тога и не плаћамо за помоћ.",
+    "sr": "Ово је непрофитан пројекат отвореног кода. Радимо бесплатно, из задовољства. Не зарађујемо на томе и не плаћамо за помоћ.",
     "mk": "Ова е непрофитен проект со отворен код. Ова го правиме бесплатно, од задоволство. Не заработуваме пари од ова и не плаќаме за помагање.",
     "bg": "Това е проект с нестопанска цел и отворен код. Участваме в него безплатно и за удоволствие. Не печелим пари от това и не плащаме за помощ."
   },
@@ -580,7 +580,7 @@
     "sk": "Používame súbory cookie",
     "sl": "Uporabljamo piškotke",
     "hr": "Koristimo datoteke kolačića",
-    "sr": "Ми користимо колачиће",
+    "sr": "Користимо колачиће",
     "mk": "Ние користиме колачиња",
     "bg": "Ние използваме бисквитки"
   },
@@ -595,7 +595,7 @@
     "sk": "Používame súbory cookie a ďalšie technológie sledovania, aby sme zlepšili vaše prehliadanie našich webových stránok, zobrazovali vám prispôsobený obsah a cielené reklamy, analyzovali prevádzku na našich webových stránkach a porozumeli, odkiaľ naši návštevníci prichádzajú. Prehliadaním našich webových stránok súhlasíte s naším používaním súborov cookie a ďalších sledovacích technológií.",
     "sl": "Piškotke in druge sledilne tehnologije uporabljamo za izboljšanje vaše uporabniške izkušnje med brskanjem po naši spletni strani, za prikazovanje personaliziranih vsebin oz. targetiranih oglasov, za analizo obiskov naše spletne strani in za vpogled v to, iz kje prihajajo naši gostje. Z brskanjem po naši spletni strani soglašate z našo rabo piškotkov in drugih sledilnih tehnologij.",
     "hr": "",
-    "sr": "Ми користимо колачиће и остале технологије за праћење како би унапредили вашу претрагу на нашем веб сајту, како би вам приказали персонализовани садржај и циљане рекламе, анализирали посете на нашем сајту и разумели одакле наши посетиоци сајта долазе. Прегледањем нашег сајта, пристајете на коришћење колачић и других технологија праћења.",
+    "sr": "Kористимо колачиће и остале технологије за праћење како би побољшали вашу претрагу на нашем веб сајту, како би вам приказали персонализовани садржај и циљане рекламе, анализирали посете на нашем сајту и разумели одакле наши посетиоци сајта долазе. Прегледањем нашег сајта, пристајете на коришћење колачића и других технологија праћења.",
     "mk": "",
     "bg": "Ние използваме бисквитки и други, проследяващи, технологии, за да подобрим сърфирането ви в нашия сайт, като ви покажем персонализирано съдържание и реклами, да анализираме трафика на нашия сайт и да разберем откъде идват нашите посетители. Разглеждайки нашия уебсайт, вие се съгласявате с използването на бисквитки и други технологии за проследяване."
   },
@@ -610,7 +610,7 @@
     "sk": "Dobre",
     "sl": "V redu",
     "hr": "U redu",
-    "sr": "Добро",
+    "sr": "Прихватам",
     "mk": "Добро",
     "bg": "Добре"
   },
@@ -670,7 +670,7 @@
     "sk": "Zmysluplná písmená pri hľadaní v mezislovanském jazyku",
     "sl": "Pomembne črke pri iskanju v medslovanskem jeziku",
     "hr": "Značajna slova pri pretraživanju na međuslavenskom",
-    "sr": "Значајна слова при претраживању на међуславенском",
+    "sr": "Значајна слова при претраживању на међусловенском",
     "mk": "Важни букви кога пребарувате на меѓусловенски",
     "bg": "Значителни букви при търсене на междуславянски език"
   },
@@ -685,7 +685,7 @@
     "sk": "Používať skloňovanie slov pri hľadaní v mezislovanském jazyku",
     "sl": "Uporabljati pregibne oblike pri iskanju v medslovanskem jeziku",
     "hr": "Koristiti flektivne oblici riječi pri pretraživanju na međuslavenskom",
-    "sr": "Користити флективне облици речи при претраживању на међуславенском",
+    "sr": "Користи флективне облике речи при претраживању на међусловенском",
     "mk": "Користење на сменети форми на зборови при пребарување на меѓусловенски",
     "bg": "Използване наклонени форми на думите при търсене в междуславянски език"
   },
@@ -910,7 +910,7 @@
     "sk": "akýkoľvek",
     "sl": "katera koli",
     "hr": "svaka",
-    "sr": "свака",
+    "sr": "свe врсте",
     "mk": "секоја",
     "bg": "всяка"
   },
@@ -1120,7 +1120,7 @@
     "sk": "životné",
     "sl": "animirani",
     "hr": "animirana",
-    "sr": "анимирана",
+    "sr": "жива",
     "mk": "жива",
     "bg": "одушевено"
   },
@@ -1586,7 +1586,7 @@
     "sk": "Inš",
     "sl": "Orod.",
     "hr": "Ins.",
-    "sr": "Инс.",
+    "sr": "Инст.",
     "mk": "Инс.",
     "bg": "Твор."
   },
@@ -1631,7 +1631,7 @@
     "sk": "pozitív",
     "sl": "pozitivna",
     "hr": "pozitivan",
-    "sr": "позитиван",
+    "sr": "позитив",
     "mk": "позитивен",
     "bg": "положителна"
   },
@@ -1646,7 +1646,7 @@
     "sk": "komparatív",
     "sl": "primernik",
     "hr": "komparativni",
-    "sr": "компаративни",
+    "sr": "компаратив",
     "mk": "компаративен",
     "bg": "сравнителна"
   },
@@ -1661,7 +1661,7 @@
     "sk": "superlatív",
     "sl": "presežnik",
     "hr": "vrhovni",
-    "sr": "одличан",
+    "sr": "суперлатив",
     "mk": "суперлативен",
     "bg": "превъзходна"
   },
@@ -1691,7 +1691,7 @@
     "sk": "minulý nedok.",
     "sl": "nepopolni preteklik",
     "hr": "imperfekt",
-    "sr": "имперфект",
+    "sr": "имперфекат",
     "mk": "минато несвршено",
     "bg": "мин. несв."
   },
@@ -1721,7 +1721,7 @@
     "sk": "minulý dok.",
     "sl": "popolni preteklik",
     "hr": "perfekt",
-    "sr": "перфект",
+    "sr": "перфекат",
     "mk": "минато свршено",
     "bg": "мин. неопр."
   },
@@ -1736,7 +1736,7 @@
     "sk": "predminulý",
     "sl": "predpreteklik",
     "hr": "pluperfekt",
-    "sr": "плуперфект",
+    "sr": "плусквамперфекат",
     "mk": "предминато",
     "bg": "мин. предвар."
   },
@@ -1796,7 +1796,7 @@
     "sk": "príčastie prítomné činné",
     "sl": "sedanji aktivni deležnik",
     "hr": "radni glagol. pridjev sadaš. vrem.",
-    "sr": "радни глагол. придев садаш. врем.",
+    "sr": "глаг. придев радни сад. врем.",
     "mk": "сегашен активен партицип",
     "bg": "сег. деят. причастие"
   },
@@ -1811,7 +1811,7 @@
     "sk": "príčastie prítomné trpné",
     "sl": "sedanji pasivni deležnik",
     "hr": "radni glagol. pridjev sadaš. vrem.",
-    "sr": "трпни глагол. придев садаш. врем.",
+    "sr": "глаг. придев трпни сад. врем.",
     "mk": "сегашен пасивен партицип",
     "bg": "сег. страд. причастие"
   },
@@ -1826,7 +1826,7 @@
     "sk": "príčastie minulé činné",
     "sl": "pretekli aktivni deležnik",
     "hr": "radni glagol. pridjev proš. vrem.",
-    "sr": "радни глагол. придев прош. врем.",
+    "sr": "глаг. придев радни прошл. врем.",
     "mk": "минат активен партицип",
     "bg": "мин. деят. причастие"
   },
@@ -1841,7 +1841,7 @@
     "sk": "príčastie minulé trpné",
     "sl": "pretekli pasivni deležnik",
     "hr": "trpni glagol. pridjev proš. vrem.",
-    "sr": "трпни глагол. придев прош. врем.",
+    "sr": "глаг. придев трпни прошл. врем.",
     "mk": "минат пасивен партицип",
     "bg": "мин. страд. причастие"
   },
@@ -1871,7 +1871,7 @@
     "sk": "1.jed.",
     "sl": "1.ed.",
     "hr": "1.jed.",
-    "sr": "1.јед",
+    "sr": "1.јед.",
     "mk": "1.ед.",
     "bg": "1.ед."
   },
@@ -1886,7 +1886,7 @@
     "sk": "2.jed.",
     "sl": "2.ed.",
     "hr": "2.jed.",
-    "sr": "2.јед",
+    "sr": "2.јед.",
     "mk": "2.ед.",
     "bg": "2.ед."
   },
@@ -1901,7 +1901,7 @@
     "sk": "3.jed.",
     "sl": "3.ed.",
     "hr": "3.jed.",
-    "sr": "3.јед",
+    "sr": "3.јед.",
     "mk": "3.ед.",
     "bg": "3.ед."
   },
@@ -2246,7 +2246,7 @@
     "sk": "Text \"{__str__}\" bol skopírovaný do schránky",
     "sl": "Besedilo \"{__str__}\" kopirano v odložišče",
     "hr": "Tekst \"{__str__}\" kopiran je u međuspremnik",
-    "sr": "Текст \"{__str__}\" је копиран у међуспремник",
+    "sr": "Текст \"{__str__}\" је копиран у клипборд",
     "mk": "Текстот \"{__str__}\" копиран во клипборд",
     "bg": "Текстът \"{__str__}\" е копиран в клипборда"
   },
@@ -2261,7 +2261,7 @@
     "sk": "Zobraziť medzislovanské slová vo vybraných abecedách",
     "sl": "Pokazati medslovanske besede v izbranih abecedah",
     "hr": "Pokazati međuslovenske riječi u odabranim pismima",
-    "sr": "Показати међусловенске речи у одабраним писмима",
+    "sr": "Покажи међусловенске речи у одабраним писмима",
     "mk": "Покажи меѓусловенски зборови со избрани азбуки",
     "bg": "Покажи междуславянски думите с избрани азбука"
   },
@@ -2336,7 +2336,7 @@
     "sk": "Resetovať filtre",
     "sl": "Ponastavi filtre",
     "hr": "Resetirati filtre",
-    "sr": "Ресетирати филтере",
+    "sr": "Ресетирај филтере",
     "mk": "Ресетирај ги филтрите",
     "bg": "Нулиране на филтрите"
   },
@@ -2441,7 +2441,7 @@
     "sk": "Poradie pádov",
     "sl": "Vrstni red sklonov",
     "hr": "Poredak padeža",
-    "sr": "Ред падежа",
+    "sr": "Редослед падежа",
     "mk": "Редослед на падежите",
     "bg": "Последователност на падежите"
   }
