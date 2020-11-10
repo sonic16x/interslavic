@@ -174,7 +174,7 @@
     "cs": "Jazyk rozhraní",
     "sk": "Jazyk rozhrania",
     "sl": "Jezik vmesnika",
-    "hr": "Jezik interfejsa",
+    "hr": "Jezik sučelja",
     "sr": "Језик интерфејса",
     "mk": "Јазик на интерфејс",
     "bg": "Език на интерфейса"
@@ -219,7 +219,7 @@
     "cs": "Zadej slovo",
     "sk": "Zadaj slovo",
     "sl": "Tu vpiši besedo",
-    "hr": "Upiši riječ ovdje",
+    "hr": "Unesi riječ ovdje",
     "sr": "Упиши реч овде",
     "mk": "Впиши збор",
     "bg": "Въведи дума"
@@ -234,7 +234,7 @@
     "cs": "Začátek",
     "sk": "Začiatok",
     "sl": "Na začetku",
-    "hr": "Na početku",
+    "hr": "Početak riječi",
     "sr": "Почетак речи",
     "mk": "Почеток",
     "bg": "Начало"
@@ -249,7 +249,7 @@
     "cs": "Úplná shoda",
     "sk": "Úplná zhoda",
     "sl": "V celoti",
-    "hr": "U cijelosti",
+    "hr": "Cijela riječ",
     "sr": "Цела реч",
     "mk": "Цело",
     "bg": "Цяла дума"
@@ -264,7 +264,7 @@
     "cs": "Konec",
     "sk": "Koniec",
     "sl": "Konec",
-    "hr": "Kraj",
+    "hr": "Kraj riječi",
     "sr": "Крај",
     "mk": "Крај",
     "bg": "Край"
@@ -324,7 +324,7 @@
     "cs": "Slovník mezislovanského jazyka",
     "sk": "Slovník medzislovanského jazyka",
     "sl": "Slovar medslovanskega jezika",
-    "hr": "Rječnik međuslavenskog jezika",
+    "hr": "Rječnik međuslavenskoga jezika",
     "sr": "Речник међусловенског језика",
     "mk": "Речник на меѓусловенскиот јазик",
     "bg": "Речник на междуславянския език"
@@ -339,7 +339,7 @@
     "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!",
     "sk": "Pripojte sa, prosím, k práci na vylepšní prekladu do vášho rodného jazyka!",
     "sl": "Prosimo sodelujte pri izboljšanju prevodov za vaš materni jezik!",
-    "hr": "Molimo, priključite se i sudjelujte na poboljšanju prijevoda na vaš materinski jezik!",
+    "hr": "Molimo, priključite se i sudjelujte u poboljšanju prijevoda na vaš materinski jezik!",
     "sr": "Молимо, прикључите се и суделујте на побољшању превода на ваш матерњи језик!",
     "mk": "Ве молиме, приклучете се и помогнете за подобрување на преводот на зборовите на вашиот мајчин јазик!",
     "bg": "Молим Ви, включете се и помогнете да подобрим преводите на Вашия роден език!"
@@ -354,7 +354,7 @@
     "cs": "Autor a hlavní developer projektu:",
     "sk": "Autor a hlavný developer projektu:",
     "sl": "Avtor in glavni developer projekta:",
-    "hr": "Autor i glavni programer projekta:",
+    "hr": "Autor i glavni razvojni programer projekta:",
     "sr": "Аутор и главни девелопер пројекта:",
     "mk": "Автор и главен развивач на проектот:",
     "bg": "Автор и главен разработчик на проекта:"
@@ -459,7 +459,7 @@
     "cs": "Mezislovanské internetové společenství:",
     "sk": "Medzislovanská internetová komunita:",
     "sl": "Medslovanska spletna skupnost:",
-    "hr": "Međuslavenska internetska zajednica:",
+    "hr": "Međuslavenska zajednica na internetu:",
     "sr": "Међусловенска интернет заједница:",
     "mk": "Меѓусловенска интернет заедница:",
     "bg": "Междуславянска интернет общност:"
@@ -474,7 +474,7 @@
     "cs": "Mezislovanský jazyk je zonálně konstruovaný jazyk založený na slovanských jazycích. Projekt má svou historii od roku 2006. Jeho hlavními spoluautory jsou Jan van Steenbergen a Vojtěch Merunka.",
     "sk": "Medzislovanský jazyk je zonálne konštruovaný jazyk založený na slovanských jazykoch. Projekt má históriu od roku 2006. Jeho hlavnými spoluautormi sú Jan van Steenbergen a Vojtěch Merunka.",
     "sl": "Medslovanski jezik je zonsko zgrajen jezik, ki temelji na slovanskih jezikih. Projekt ima svojo zgodovino, saj so 2006. Njeni glavni soavtorji Jan van Steenbergen in Vojtěch Merunka.",
-    "hr": "Međuslavenski jezik je zonsko izgrađen jezik zasnovan na slavenskim jezicima. Projekt ima povijest od 2006. godine. Glavni suautori su Jan van Steenbergen i Vojtěch Merunka.",
+    "hr": "Međuslavenski jezik je zonski umjetni jezik, konstruiran na temelju slavenskih jezika. Projekt postoji od 2006. godine. Glavni suautori su Jan van Steenbergen i Vojtěch Merunka.",
     "sr": "Међусловенски језик је плански језик зонског типа, заснован на словенским језицима. Пројекат међусловенског језика је покренут 2006. године. Главни коаутори су Јан ван Стеенберген и Војтех Мерунка.",
     "mk": "Меѓусловенски јазик е зонски изградени јазик базиран на словенски јазици. Проектот има своја историја од 2006 година. Главни коавтори се Јан ван Стенберген и Војтех Мерунка.",
     "bg": "Междуславянски език е зонално конструиран език, базиран на славянските езици. Проектът има своя история от 2006 г. Основните му съавтори са Ян ван Стеенберген и Войтех Мерунка."
@@ -504,7 +504,7 @@
     "cs": "Překlady provedli:",
     "sk": "Preklady vyhotovili:",
     "sl": "Prevode so naredili:",
-    "hr": "Prijevodi održali su:",
+    "hr": "Prijevode su napravili:",
     "sr": "Преводе су радили:",
     "mk": "Преводите беа направени од:",
     "bg": "Преводите са направени от:"
@@ -534,7 +534,7 @@
     "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů!",
     "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
     "sl": "Rezultati iskanja vsebujejo nepravilne samodejne prevode. Trenutno je preverjenih part% besed izbranega jezika. Če govorite ta jezik, se pridružite in sodelujte pri izboljšanju prevodov!",
-    "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, priključite se i sudjelujte na poboljšanju prijevoda!",
+    "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, priključite se i sudjelujte u poboljšanju prijevoda!",
     "sr": "Резултати претраге садрже нетачне аутоматске преводе. Тренутно је проверено part% речи изабраног језика. Ако говорите тај језик, прикључите се и сарађујте на побољшању превода!",
     "mk": "Пребаруваните резултати содржат неточни автоматски преводи. Во моментов, part% од зборовите на избраниот јазик се потврдени. Ако го зборувате овој јазик, приклучете се да помогнете во подобрувањето на преводите!",
     "bg": "Резултатите от търсенето съдържат неточни автоматични преводи. В момента part% от думите на избрания език са потвърдени. Ако говорите този език, включете се да помогнете с подобряването на преводите!"
@@ -549,7 +549,7 @@
     "cs": "Pracovní tabulka je umístěna na tomto linku.",
     "sk": "Pracová tabuľka sa nachádza na tomto linku.",
     "sl": "Delovni list se nahaja na tej povezavi.",
-    "hr": "Radna tablica se nalazi na ovoj poveznici.",
+    "hr": "Radna tablica nalazi se na ovoj poveznici.",
     "sr": "Радна табела се налази на овој повезници (линку).",
     "mk": "Работната табела се наоѓа на следната врска.",
     "bg": "Работната таблица се намира на тази връзка."
@@ -564,7 +564,7 @@
     "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "sl": "To je neprofiten odprtokodni projekt. Delamo brezplačno, za zabavo. Z njim ne služimo in za pomoč ne plačujemo.",
-    "hr": "Ovo je neprofitan projekt otvorenog koda. Radimo besplatno, iz zadovoljstva. Ne zarađujemo od toga i ne plaćamo za pomoć.",
+    "hr": "Ovo je neprofitni projekt otvorenog koda. Radimo besplatno, iz zadovoljstva. Ne zarađujemo od toga i ne plaćamo za pomoć.",
     "sr": "Ово је непрофитан пројекат отвореног кода. Радимо бесплатно, из задовољства. Не зарађујемо на томе и не плаћамо за помоћ.",
     "mk": "Ова е непрофитен проект со отворен код. Ова го правиме бесплатно, од задоволство. Не заработуваме пари од ова и не плаќаме за помагање.",
     "bg": "Това е проект с нестопанска цел и отворен код. Участваме в него безплатно и за удоволствие. Не печелим пари от това и не плащаме за помощ."
@@ -579,7 +579,7 @@
     "cs": "Používáme soubory cookie",
     "sk": "Používame súbory cookie",
     "sl": "Uporabljamo piškotke",
-    "hr": "Koristimo datoteke kolačića",
+    "hr": "Koristimo kolačiće",
     "sr": "Користимо колачиће",
     "mk": "Ние користиме колачиња",
     "bg": "Ние използваме бисквитки"
@@ -594,7 +594,7 @@
     "cs": "Používáme soubory cookie a další technologie sledování, abychom zlepšili vaše prohlížení našich webových stránek, zobrazovali vám přizpůsobený obsah a cílené reklamy, analyzovali provoz na našich webových stránkách a porozuměli, odkud naši návštěvníci přicházejí. Procházením našich webových stránek souhlasíte s naším používáním souborů cookie a dalších sledovacích technologií.",
     "sk": "Používame súbory cookie a ďalšie technológie sledovania, aby sme zlepšili vaše prehliadanie našich webových stránok, zobrazovali vám prispôsobený obsah a cielené reklamy, analyzovali prevádzku na našich webových stránkach a porozumeli, odkiaľ naši návštevníci prichádzajú. Prehliadaním našich webových stránok súhlasíte s naším používaním súborov cookie a ďalších sledovacích technológií.",
     "sl": "Piškotke in druge sledilne tehnologije uporabljamo za izboljšanje vaše uporabniške izkušnje med brskanjem po naši spletni strani, za prikazovanje personaliziranih vsebin oz. targetiranih oglasov, za analizo obiskov naše spletne strani in za vpogled v to, iz kje prihajajo naši gostje. Z brskanjem po naši spletni strani soglašate z našo rabo piškotkov in drugih sledilnih tehnologij.",
-    "hr": "",
+    "hr": "Koristimo kolačiće i druge tehnologije za praćenje kako bismo poboljšali vaše iskustvo pregledavanja naše web stranice, prikazali vam personalizirani sadržaj i ciljane oglase, te analizirali promet na našoj web stranici i razumjeli odakle dolaze naši posjetitelji. Pregledavanjem naše web stranice pristajete na upotrebu kolačića i ostalih tehnologija za praćenje.",
     "sr": "Kористимо колачиће и остале технологије за праћење како би побољшали вашу претрагу на нашем веб сајту, како би вам приказали персонализовани садржај и циљане рекламе, анализирали посете на нашем сајту и разумели одакле наши посетиоци сајта долазе. Прегледањем нашег сајта, пристајете на коришћење колачића и других технологија праћења.",
     "mk": "",
     "bg": "Ние използваме бисквитки и други, проследяващи, технологии, за да подобрим сърфирането ви в нашия сайт, като ви покажем персонализирано съдържание и реклами, да анализираме трафика на нашия сайт и да разберем откъде идват нашите посетители. Разглеждайки нашия уебсайт, вие се съгласявате с използването на бисквитки и други технологии за проследяване."
@@ -639,7 +639,7 @@
     "cs": "Dohoda Yandex Metrika",
     "sk": "Dohoda Yandex Metrika",
     "sl": "",
-    "hr": "",
+    "hr": "Sporazum Yandex Metrike",
     "sr": "",
     "mk": "",
     "bg": ""
@@ -654,7 +654,7 @@
     "cs": "Dohoda Google Analytics",
     "sk": "Dohoda Google Analytics",
     "sl": "",
-    "hr": "",
+    "hr": "Sporazum Google Analytics",
     "sr": "",
     "mk": "",
     "bg": ""
@@ -669,7 +669,7 @@
     "cs": "Smysluplná písmena při hledání v mezislovanském jazyce",
     "sk": "Zmysluplná písmená pri hľadaní v mezislovanském jazyku",
     "sl": "Pomembne črke pri iskanju v medslovanskem jeziku",
-    "hr": "Značajna slova pri pretraživanju na međuslavenskom",
+    "hr": "Uzeti u obzir posebna slova pri pretraživanju na međuslavenskom",
     "sr": "Значајна слова при претраживању на међусловенском",
     "mk": "Важни букви кога пребарувате на меѓусловенски",
     "bg": "Значителни букви при търсене на междуславянски език"
@@ -684,7 +684,7 @@
     "cs": "Používat skloňování slov při hledání v mezislovanském jazyce",
     "sk": "Používať skloňovanie slov pri hľadaní v mezislovanském jazyku",
     "sl": "Uporabljati pregibne oblike pri iskanju v medslovanskem jeziku",
-    "hr": "Koristiti flektivne oblici riječi pri pretraživanju na međuslavenskom",
+    "hr": "Koristiti gramatičke oblike riječi pri pretraživanju na međuslavenskome",
     "sr": "Користи флективне облике речи при претраживању на међусловенском",
     "mk": "Користење на сменети форми на зборови при пребарување на меѓусловенски",
     "bg": "Използване наклонени форми на думите при търсене в междуславянски език"
@@ -879,7 +879,7 @@
     "cs": "předpona",
     "sk": "predpona",
     "sl": "predpona",
-    "hr": "predmetak",
+    "hr": "prefiks",
     "sr": "префикс",
     "mk": "претставка",
     "bg": "представка"
@@ -909,7 +909,7 @@
     "cs": "jakýkoli",
     "sk": "akýkoľvek",
     "sl": "katera koli",
-    "hr": "svaka",
+    "hr": "bilo koja",
     "sr": "свe врсте",
     "mk": "секоја",
     "bg": "всяка"
@@ -1119,7 +1119,7 @@
     "cs": "životné",
     "sk": "životné",
     "sl": "animirani",
-    "hr": "animirana",
+    "hr": "živa",
     "sr": "жива",
     "mk": "жива",
     "bg": "одушевено"
@@ -1194,7 +1194,7 @@
     "cs": "podílná",
     "sk": "zlomková",
     "sl": "delni",
-    "hr": "razlomački",
+    "hr": "razlomci",
     "sr": "разломачки",
     "mk": "дробен",
     "bg": "дробно"
@@ -1209,7 +1209,7 @@
     "cs": "substantivná",
     "sk": "substantívna",
     "sl": "samostalniški",
-    "hr": "supstancijalni",
+    "hr": "supstantivizirani",
     "sr": "супстанцијални",
     "mk": "супстантивизиран",
     "bg": "субстантивизирано"
@@ -1240,7 +1240,7 @@
     "cs": "násobná",
     "sk": "násobná",
     "sl": "množilni",
-    "hr": "umnožni",
+    "hr": "množiteljni",
     "sr": "мултипликативни",
     "mk": "множителен",
     "bg": "умножително"
@@ -1315,7 +1315,7 @@
     "cs": "vymezovací",
     "sk": "vymedzovacie",
     "sl": "celostni",
-    "hr": "opšta",
+    "hr": "opća",
     "sr": "општа",
     "mk": "општа",
     "bg": "обобщително"
@@ -1450,7 +1450,7 @@
     "cs": "nepřechodné",
     "sk": "neprechodné",
     "sl": "neprehodni",
-    "hr": "neprelazni",
+    "hr": "neprijelazni",
     "sr": "непрелазни",
     "mk": "непреоден",
     "bg": "непреходен"
@@ -1585,7 +1585,7 @@
     "cs": "7.pád",
     "sk": "Inš",
     "sl": "Orod.",
-    "hr": "Ins.",
+    "hr": "Inst.",
     "sr": "Инст.",
     "mk": "Инс.",
     "bg": "Твор."
@@ -1630,7 +1630,7 @@
     "cs": "pozitiv",
     "sk": "pozitív",
     "sl": "pozitivna",
-    "hr": "pozitivan",
+    "hr": "pozitiv",
     "sr": "позитив",
     "mk": "позитивен",
     "bg": "положителна"
@@ -1645,7 +1645,7 @@
     "cs": "komparativ",
     "sk": "komparatív",
     "sl": "primernik",
-    "hr": "komparativni",
+    "hr": "komparativ",
     "sr": "компаратив",
     "mk": "компаративен",
     "bg": "сравнителна"
@@ -1660,7 +1660,7 @@
     "cs": "superlativ",
     "sk": "superlatív",
     "sl": "presežnik",
-    "hr": "vrhovni",
+    "hr": "superlativ",
     "sr": "суперлатив",
     "mk": "суперлативен",
     "bg": "превъзходна"
@@ -1675,7 +1675,7 @@
     "cs": "přítomný",
     "sk": "prítomný",
     "sl": "sedanjik",
-    "hr": "sadašnje",
+    "hr": "prezent",
     "sr": "садашње",
     "mk": "сегашно",
     "bg": "настояще"
@@ -1705,7 +1705,7 @@
     "cs": "budoucí",
     "sk": "budúci",
     "sl": "prihodnjik",
-    "hr": "buduće",
+    "hr": "futur",
     "sr": "будуће",
     "mk": "идно",
     "bg": "бъдеще"
@@ -1735,7 +1735,7 @@
     "cs": "předminulý",
     "sk": "predminulý",
     "sl": "predpreteklik",
-    "hr": "pluperfekt",
+    "hr": "pluskvamperfekt",
     "sr": "плусквамперфекат",
     "mk": "предминато",
     "bg": "мин. предвар."
@@ -1795,7 +1795,7 @@
     "cs": "příčestí přítomné činné",
     "sk": "príčastie prítomné činné",
     "sl": "sedanji aktivni deležnik",
-    "hr": "radni glagol. pridjev sadaš. vrem.",
+    "hr": "glag. pridjev radni sad. vrem.",
     "sr": "глаг. придев радни сад. врем.",
     "mk": "сегашен активен партицип",
     "bg": "сег. деят. причастие"
@@ -1810,7 +1810,7 @@
     "cs": "příčestí přítomné trpné",
     "sk": "príčastie prítomné trpné",
     "sl": "sedanji pasivni deležnik",
-    "hr": "radni glagol. pridjev sadaš. vrem.",
+    "hr": "glag. pridjev trpni sad. vrem.",
     "sr": "глаг. придев трпни сад. врем.",
     "mk": "сегашен пасивен партицип",
     "bg": "сег. страд. причастие"
@@ -1825,7 +1825,7 @@
     "cs": "příčestí minulé činné",
     "sk": "príčastie minulé činné",
     "sl": "pretekli aktivni deležnik",
-    "hr": "radni glagol. pridjev proš. vrem.",
+    "hr": "glag. pridjev radni prošl. vrem.",
     "sr": "глаг. придев радни прошл. врем.",
     "mk": "минат активен партицип",
     "bg": "мин. деят. причастие"
@@ -1840,7 +1840,7 @@
     "cs": "příčestí minulé trpné",
     "sk": "príčastie minulé trpné",
     "sl": "pretekli pasivni deležnik",
-    "hr": "trpni glagol. pridjev proš. vrem.",
+    "hr": "glag. pridjev trpni prošl. vrem.",
     "sr": "глаг. придев трпни прошл. врем.",
     "mk": "минат пасивен партицип",
     "bg": "мин. страд. причастие"
@@ -2245,7 +2245,7 @@
     "cs": "Text \"{__str__}\" byl zkopírován do schránky",
     "sk": "Text \"{__str__}\" bol skopírovaný do schránky",
     "sl": "Besedilo \"{__str__}\" kopirano v odložišče",
-    "hr": "Tekst \"{__str__}\" kopiran je u međuspremnik",
+    "hr": "Tekst \"{__str__}\" je kopiran u međuspremnik",
     "sr": "Текст \"{__str__}\" је копиран у клипборд",
     "mk": "Текстот \"{__str__}\" копиран во клипборд",
     "bg": "Текстът \"{__str__}\" е копиран в клипборда"
@@ -2260,7 +2260,7 @@
     "cs": "Zobrazit mezislovanská slova ve vybraných abecedách",
     "sk": "Zobraziť medzislovanské slová vo vybraných abecedách",
     "sl": "Pokazati medslovanske besede v izbranih abecedah",
-    "hr": "Pokazati međuslovenske riječi u odabranim pismima",
+    "hr": "Prikazati međuslavenske riječi u odabranim pismima",
     "sr": "Покажи међусловенске речи у одабраним писмима",
     "mk": "Покажи меѓусловенски зборови со избрани азбуки",
     "bg": "Покажи междуславянски думите с избрани азбука"
@@ -2320,7 +2320,7 @@
     "cs": "Pokuste se resetovat filtry nebo najít jiné slovo.",
     "sk": "Pokúste sa resetovať filtre alebo nájsť ďalšie slovo.",
     "sl": "Poskusite ponastaviti filtre ali poiskati drugo besedo.",
-    "hr": "Pokušajte resetirati filtre ili pronađite drugu riječ.",
+    "hr": "Pokušajte resetirati filtere ili pronađite drugu riječ.",
     "sr": "Покушајте ресетовати  филтере или пронађите другу реч.",
     "mk": "Обидете се да го ресетирате филтри или најде друг збор.",
     "bg": "Опитайте да нулирате филтрите или намерете друга дума."
@@ -2335,7 +2335,7 @@
     "cs": "Resetovat filtry",
     "sk": "Resetovať filtre",
     "sl": "Ponastavi filtre",
-    "hr": "Resetirati filtre",
+    "hr": "Resetirati filtere",
     "sr": "Ресетирај филтере",
     "mk": "Ресетирај ги филтрите",
     "bg": "Нулиране на филтрите"
