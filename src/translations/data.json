@@ -264,7 +264,7 @@
     "cs": "Konec",
     "sk": "Koniec",
     "sl": "Konec",
-    "hr": "Kraj",
+    "hr": "Kraj riječi",
     "sr": "Крај",
     "mk": "Крај",
     "bg": "Край"
@@ -339,7 +339,7 @@
     "cs": "Připojte se, prosím, k práci na vylepšení převodu do vašeho rodného jazyka!",
     "sk": "Pripojte sa, prosím, k práci na vylepšní prekladu do vášho rodného jazyka!",
     "sl": "Prosimo sodelujte pri izboljšanju prevodov za vaš materni jezik!",
-    "hr": "Molimo, priključite se i sudjelujte na poboljšanju prijevoda na vaš materinski jezik!",
+    "hr": "Molimo, priključite se i sudjelujte u poboljšanju prijevoda na vaš materinski jezik!",
     "sr": "Молимо, прикључите се и суделујте на побољшању превода на ваш матерњи језик!",
     "mk": "Ве молиме, приклучете се и помогнете за подобрување на преводот на зборовите на вашиот мајчин јазик!",
     "bg": "Молим Ви, включете се и помогнете да подобрим преводите на Вашия роден език!"
@@ -459,7 +459,7 @@
     "cs": "Mezislovanské internetové společenství:",
     "sk": "Medzislovanská internetová komunita:",
     "sl": "Medslovanska spletna skupnost:",
-    "hr": "Međuslavenska internetska zajednica:",
+    "hr": "Međuslavenska zajednica na internetu:",
     "sr": "Међусловенска интернет заједница:",
     "mk": "Меѓусловенска интернет заедница:",
     "bg": "Междуславянска интернет общност:"
@@ -534,7 +534,7 @@
     "cs": "Výsledky hledání obsahují nepřesné automatické překlady. V tento okamžik je ověřeno part% slov vybraného jazyka. Pokud znáte tento jazyk, připojte se k práci na zlepšení překladů!",
     "sk": "Výsledky vyhľadávania obsahujú nepresné automatické preklady. V túto chvíľu je overené part% slov vybraného jazyka. Ak poznáte tento jazyk, pripojte sa k práci na zlepšení prekladov!",
     "sl": "Rezultati iskanja vsebujejo nepravilne samodejne prevode. Trenutno je preverjenih part% besed izbranega jezika. Če govorite ta jezik, se pridružite in sodelujte pri izboljšanju prevodov!",
-    "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, priključite se i sudjelujte na poboljšanju prijevoda!",
+    "hr": "Rezultati pretrage sadrže netočne automatske prijevode. Trenutno je provjereno part% riječi izabranog jezika. Ako govorite taj jezik, priključite se i sudjelujte u poboljšanju prijevoda!",
     "sr": "Резултати претраге садрже нетачне аутоматске преводе. Тренутно је проверено part% речи изабраног језика. Ако говорите тај језик, прикључите се и суделујте на побољшању превода!",
     "mk": "Пребаруваните резултати содржат неточни автоматски преводи. Во моментов, part% од зборовите на избраниот јазик се потврдени. Ако го зборувате овој јазик, приклучете се да помогнете во подобрувањето на преводите!",
     "bg": "Резултатите от търсенето съдържат неточни автоматични преводи. В момента part% от думите на избрания език са потвърдени. Ако говорите този език, включете се да помогнете с подобряването на преводите!"
@@ -564,7 +564,7 @@
     "cs": "Toto je nevýdělečný projekt s otevřeným zdrojovým kódem. Pracujeme na něm bezplatně, pouze pro zábavu. Nevyděláváme na něm a neplatíme za pomoc.",
     "sk": "Toto je neziskový projekt s otvoreným zdrojovým kódom. Pracujeme na ňom bezplatne, len pre potešenie. Nezarábame na ňom a neplatíme za pomoc.",
     "sl": "To je neprofiten odprtokodni projekt. Delamo brezplačno, za zabavo. Z njim ne služimo in za pomoč ne plačujemo.",
-    "hr": "Ovo je neprofitan projekt otvorenog koda. Radimo besplatno, iz zadovoljstva. Ne zarađujemo od toga i ne plaćamo za pomoć.",
+    "hr": "Ovo je neprofitni projekt otvorenog koda. Radimo besplatno, iz zadovoljstva. Ne zarađujemo od toga i ne plaćamo za pomoć.",
     "sr": "Ово је непрофитан пројекат отвореног кода. Радимо бесплатно, из задовољства. Не зарађујемо од тога и не плаћамо за помоћ.",
     "mk": "Ова е непрофитен проект со отворен код. Ова го правиме бесплатно, од задоволство. Не заработуваме пари од ова и не плаќаме за помагање.",
     "bg": "Това е проект с нестопанска цел и отворен код. Участваме в него безплатно и за удоволствие. Не печелим пари от това и не плащаме за помощ."
@@ -684,7 +684,7 @@
     "cs": "Používat skloňování slov při hledání v mezislovanském jazyce",
     "sk": "Používať skloňovanie slov pri hľadaní v mezislovanském jazyku",
     "sl": "Uporabljati pregibne oblike pri iskanju v medslovanskem jeziku",
-    "hr": "Koristiti gramatičke oblike riječi pri pretraživanju na međuslavenskom",
+    "hr": "Koristiti gramatičke oblike riječi pri pretraživanju na međuslavenskome",
     "sr": "Користити флективне облици речи при претраживању на међуславенском",
     "mk": "Користење на сменети форми на зборови при пребарување на меѓусловенски",
     "bg": "Използване наклонени форми на думите при търсене в междуславянски език"
@@ -909,7 +909,7 @@
     "cs": "jakýkoli",
     "sk": "akýkoľvek",
     "sl": "katera koli",
-    "hr": "svaka",
+    "hr": "bilo koja",
     "sr": "свака",
     "mk": "секоја",
     "bg": "всяка"
@@ -2260,7 +2260,7 @@
     "cs": "Zobrazit mezislovanská slova ve vybraných abecedách",
     "sk": "Zobraziť medzislovanské slová vo vybraných abecedách",
     "sl": "Pokazati medslovanske besede v izbranih abecedah",
-    "hr": "Pokazati međuslovenske riječi u odabranim pismima",
+    "hr": "Prikazati međuslavenske riječi u odabranim pismima",
     "sr": "Показати међусловенске речи у одабраним писмима",
     "mk": "Покажи меѓусловенски зборови со избрани азбуки",
     "bg": "Покажи междуславянски думите с избрани азбука"
