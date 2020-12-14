@@ -492,7 +492,7 @@ class DetailModalInternal extends React.Component<IDetailModalInternal> {
             ],
             [
                 `${t('case')}@b`,
-                `${t('plural')}@b`,
+                `${t('noun-masculine')}@b`,
                 `${t('feminineOrNeuter')}@b`,
             ],
         ];
