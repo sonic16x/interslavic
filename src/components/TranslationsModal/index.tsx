@@ -13,6 +13,7 @@ import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { useModalDialog } from 'hooks/useModalDialog';
 
 function renderTranslate(str: string): string {
+    str = str.replace(/@/g, '&commat;')
     if (str[0] === '!') {
         return `{${str.slice(1)}}[s]@ts;`;
     }
