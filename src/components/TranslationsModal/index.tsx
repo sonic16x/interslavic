@@ -13,7 +13,6 @@ import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { useModalDialog } from 'hooks/useModalDialog';
 
 function renderTranslate(str: string): string {
-    str = str.replace(/@/g, '&commat;')
     if (str[0] === '!') {
         return `{${str.slice(1)}}[s]@ts;`;
     }
@@ -43,12 +42,17 @@ export const TranslationsModal: React.FC =
             ...langs,
         ];
 
+		// '&#64;' is HTML escaped code for '@', which breaks table otherwise.
+		// Why '&#64;' instead of '&commat;'? 
+		// Because getCyrillic transforms it into '&цоммат;'
+        item.raw = item.raw.map((item) => (item.replace(/@/g, '&#64;')));
+
         const translates = item.raw.filter((_, i) => (allLangs.includes(validFields[i])));
         const tableData = allLangs.reduce((arr, lang, i) => {
             if (lang === 'isv') {
                 return [
                     [
-                        `{${t('isvEtymologicLatinLang')}}[B]@ts;b;sw=130px;nowrap`,
+                        `{${t('isvEtymologicLatinLang')}.}[B]@ts;b;sw=130px;nowrap`,
                         `${getLatin(translates[i], '2')}@ts`,
                     ],
                     [
