@@ -42,9 +42,9 @@ export const TranslationsModal: React.FC =
             ...langs,
         ];
 
-		// '&#64;' is HTML escaped code for '@', which breaks table otherwise.
-		// Why '&#64;' instead of '&commat;'? 
-		// Because getCyrillic transforms it into '&цоммат;'
+    // '&#64;' is HTML escaped code for '@', which breaks table otherwise.
+    // Why '&#64;' instead of '&commat;'?
+    // Because getCyrillic transforms it into '&цоммат;'
         item.raw = item.raw.map((item) => (item.replace(/@/g, '&#64;')));
 
         const translates = item.raw.filter((_, i) => (allLangs.includes(validFields[i])));
@@ -52,7 +52,7 @@ export const TranslationsModal: React.FC =
             if (lang === 'isv') {
                 return [
                     [
-                        `{${t('isvEtymologicLatinLang')}.}[B]@ts;b;sw=130px;nowrap`,
+                        `{${t('isvEtymologicLatinLang')}}[B]@ts;b;sw=130px;nowrap`,
                         `${getLatin(translates[i], '2')}@ts`,
                     ],
                     [
