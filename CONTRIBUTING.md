@@ -1,6 +1,7 @@
 # Contribute to the Interslavic Dictionary project
 
 First of all, thanks for taking the time to contribute.
+
 Here you can discover how you can help the project and find the [guidelines](#guidelines) for your contribution type.
 
 * [Fix a wrong or a missing translation](#fix-a-translation)
@@ -19,7 +20,21 @@ If you need to check a particular [HOW-TO](#how-to), below is a small table of c
 <a id="fix-a-translation"></a>
 ## Fix a wrong or a missing translation
 
-Vsi prěklady uměščeny v Gugl Tabelah (Google Spreadsheets: <<LINK>>). Najlěpša metoda napraviti prěklad --- ostaviti tam komentar.
+You wish to fix a missing (automatic) translation, or the translation is inaccurate or incomplete, e.g.:
+
+![An example of a missing translation](docs/assets/ui-example-translation.png)
+
+In this case, you should go straight to the [new_interslavic_words_list](https://docs.google.com/spreadsheets/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY) document in _Google Sheets_ and request edit access:
+
+![Request edit access](docs/assets/gsheets-request-access.png)
+
+In the text area you should briefly describe what translation issue you have found, and also specify what languages you know at level of a native speaker to get edit access to the respective translation columns:
+
+![Ask owner form](docs/assets/gsheets-ask-owner.png)
+
+When you gain the access, open a comment at the respective spreadsheet cell that contains the translation issue, or edit that cell yourself in case when the issue is minor and trivial.
+
+Please join the work on improving word translations for your native language!
 
 <a id="fix-word-form"></a>
 ## Fix an incorrect word form
