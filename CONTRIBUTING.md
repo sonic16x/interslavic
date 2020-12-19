@@ -88,11 +88,6 @@ Posle popravok koda potrebno osvěžiti stranicu brauzera (`F5`). Poněkogda mo�
 
 See [https://www.contributor-covenant.org/translations](Contributor Covenant).
 
-## Contact
-
-The Kata Containers community can be reached
-[through various channels](README.md#join-us).
-
 ## Project maintainers
 
 The Interslavic Dictionary project maintainers are the people accepting or rejecting any PR.
