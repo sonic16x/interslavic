@@ -15,7 +15,7 @@ If you need to check a particular [HOW-TO](#how-to), below is a small table of c
 * [Obtaining write access to Google Spreadsheets](#google-spreadsheets)
 * [Local environment setup](#local-environment-setup)
 
-## Guidelines
+# Guidelines
 
 <a id="fix-a-translation"></a>
 ## Fix a wrong or a missing translation
@@ -24,7 +24,43 @@ You wish to fix a missing (automatic) translation, or the translation is inaccur
 
 ![An example of a missing translation](docs/assets/ui-example-translation.png)
 
-In this case, you should go straight to the [new_interslavic_words_list](https://docs.google.com/spreadsheets/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY) document in _Google Sheets_ and request edit access:
+![An example of an incorrect translation](docs/assets/ui-example-wrong-dvoje.png)
+
+This repository does not store the translations themselves; they are located and maintained at Google Sheets [here](https://docs.google.com/spreadsheets/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY). Leave a comment to the document or see [Obtaining write access to Google Spreadsheets](#google-spreadsheets).
+
+<a id="fix-word-form"></a>
+## Fix an incorrect word form
+
+![An example of an mistaken inflection](docs/assets/ui-example-wrong-conj.png)
+
+![An example of an error in inflection](docs/assets/ui-example-wrong-conj-missing.png)
+
+See: [opening an Issue](#issue)
+
+You could try to fix the problem yourself. The code responsible for word inflection is located [here](https://github.com/scherebedov/interslavic/tree/master/src/legacy) (you need some basic JavaScript knowledge to be able to edit it).
+
+<a id="fix-ui-bug"></a>
+## Fix a bug in the user interface
+![Fixing an incorrect interface element](docs/assets/ui-example-wrong-plural.png)
+
+See: [opening an Issue](#issue)
+
+If you want to track and fix the problem yourself, you should look into [local environment setup](local-environment-setup). Having some knowledge of TypeScript and React framework would help here.
+
+<a id="add-a-feature"></a>
+## Add or request a new feature
+
+We conform to the usual git workflow ('gitflow'). If you have a proof-of-concept, feel free to create a pull request; otherwise, open an issue.
+
+<a id="something-else"></a>
+## I have something else...
+
+# HOW-TO
+
+<a id="google-spreadsheets"></a>
+## Obtaining write access to Google Spreadsheets
+
+You should go straight to the [new_interslavic_words_list](https://docs.google.com/spreadsheets/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY) document in _Google Sheets_ and request edit access:
 
 ![Request edit access](docs/assets/gsheets-request-access.png)
 
@@ -36,57 +72,33 @@ When you gain the access, open a comment at the respective spreadsheet cell that
 
 Please join the work on improving word translations for your native language!
 
-<a id="fix-word-form"></a>
-## Fix an incorrect word form
-
-Kod, odgovorny/odpovědalny za tutu možlivost, nahoditi se v <<LINK>>. My imajemo nadeju, že on jest razumliv bez znanja programovanja.
-
-Ako li ne, delaj takože jak 2. 
-
-<a id="fix-ui-bug"></a>
-## Fix a bug in the user interface
-
-Iztvori sde kvestiju (`Issue`), v kojej napiši, čto liho jest. Ako li hočeš davati pomoč --- gledi v sekciji ob instalaciju.
-
-<a id="add-a-feature"></a>
-## Add a new feature
-
-My pracujemo v paradigmu Git WorkFlow. Tebe potrebno izdelati kvestiju (`issue`) ili `pull request`.
-
-<a id="something-else"></a>
-## I have something else...
-
-## HOW-TO
-
-<a id="google-spreadsheets"></a>
-## Obtaining write access to Google Spreadsheets
-
-...
+<a id="issue"></a>
+## Opening an issue
 
 <a id="local-environment-setup"></a>
 ## Local environment setup
 
-Povinno se naslědny kroki sovršiti:
+You need to perform the following steps:
 
-1) izdelati instalaciju node.js: https://nodejs.org/en/download/
+1) Install `node.js`: https://nodejs.org/en/download/
 
-Naslědny kroki potrebno delati v konsoli/terminale.
+The next steps should be done with the help of command line interface.
 
-2) izdelati `git clone https://github.com/<<>>/interslavic`
+2) run `git clone https://github.com/scherebedov/interslavic`
 
-3) vnutri tutoj direktorii izdelati `npm install`
+3) run `npm install` inside the directory created
 
 4) `npm run generateDictionary`
 
-5) `npm start`
+5) `npm start` (`Ctrl+C` to stop)
 
-6) idi v brauzere do `localhost:3000` ili  `http://0.0.0.0:3000/` (`Ctrl+C` za postojku)
+6) Navigate to `localhost:3000` or  `http://0.0.0.0:3000/` in your browser.
 
-Posle popravok koda potrebno osvěžiti stranicu brauzera (`F5`). Poněkogda može potrěbovati si povtarjati `npm install` i `npm start`.
+The code changes should take effect after refresh (`F5`). In some cases, it could be necessary to repeat `npm install` and/or `npm start` commands.
 
 ## Code of Conduct
 
-See [https://www.contributor-covenant.org/translations](Contributor Covenant).
+See [Contributor Covenant](https://www.contributor-covenant.org/translations).
 
 ## Project maintainers
 
