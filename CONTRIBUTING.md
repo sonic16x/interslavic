@@ -35,15 +35,22 @@ This repository does not store the translations themselves; they are located and
 
 ![An example of an error in inflection](docs/assets/ui-example-wrong-conj-missing.png)
 
-See: [opening an Issue](#issue)
+First of all, [open an issue](#opening-an-issue) to get initial feedback and consensus on the correct word forms.
 
-You could try to fix the problem yourself. The code responsible for word inflection is located [here](https://github.com/scherebedov/interslavic/tree/master/src/legacy) (you need some basic JavaScript knowledge to be able to edit it).
+If you feel confident enough around JavaScript code, you could try fixing the problem yourself, here is the workflow:
+
+1. [Set up the repository locally](#local-environment-setup).
+1. Align the test snapshots with the up-to-date dictionary contents from Google Sheets using `npm run updateTestSnapshot` and `git commit` the changed files.
+1. Edit the code responsible for word inflection — most likely you'll need [this folder](https://github.com/scherebedov/interslavic/tree/master/src/legacy).
+1. Run the unit tests and review the errors — that way you'll see what the scope of your change is.
+1. Once you are sure that your change fixes the issue and does not create any new ones, make another Git commit with your fix and the updated snapshots (yes, run `npm run updateTestSnapshot` for the second time).
+1. Create a pull request and pass the review process to get it merged.
 
 <a id="fix-ui-bug"></a>
 ## Fix a bug in the user interface
 ![Fixing an incorrect interface element](docs/assets/ui-example-wrong-plural.png)
 
-See: [opening an Issue](#issue)
+See: [opening an Issue](#opening-issue)
 
 If you want to track and fix the problem yourself, you should look into [local environment setup](local-environment-setup). Having some knowledge of TypeScript and React framework would help here.
 
