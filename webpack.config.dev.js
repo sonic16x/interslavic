@@ -30,6 +30,20 @@ module.exports = {
     module: {
         rules: [
             {
+              test: /\.(png|jpg|jpeg|gif)$/i,
+              issuer: /\.s?css$/,
+              use: [
+                {
+                  loader: 'file-loader',
+                  options: {
+                    name: '[name].[hash].[ext]',
+                    outputPath: 'static',
+                    esModule: false,
+                  }
+                },
+              ],
+            },
+            {
                 test: /\.tsx?$/,
                 include: srcPath,
                 use: 'ts-loader?configFile=tsconfig.json'
