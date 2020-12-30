@@ -94,4 +94,19 @@
     border: none;
     cursor: pointer;
   }
+
+  // Closing animation
+
+  transform-origin: calc(100% - 30px) 5px;
+  transition: transform 0.2s, opacity 0.2s linear;
+  & ~ * { transition: transform 0.2s; }
+  &.closing {
+    transform: matrix(0.03,-0.02,0.04,0.05,0,0);
+    opacity: 0;
+    z-index: 999;
+
+    & ~ * {
+      transform: translateY(calc(-1px * var(--survey-banner-height)));
+    }
+  }
 }
