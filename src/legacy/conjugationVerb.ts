@@ -162,13 +162,15 @@ function infinitive_stem(pref, inf, pts) {
         return result;
     }
 
-    if ( trunc.slice(-2) === 'ti' || trunc.slice(-2) === 'tì') {
-        result = trunc.substring(0, trunc.length - 2);
+    const valid_endings = ['ti', 'tì', 't', 'ť']
+    for (let element of valid_endings) {
+        let len = element.length;
+        if (trunc.slice(-len) == element) {
+            result = trunc.substring(0, trunc.length - len);
+            break;
+        }
     }
-    else if ( trunc.slice(-1) === 't' || trunc.slice(-1) === 'ť' ) {
-        result = trunc.substring(0, trunc.length - 1);
-    }
-    else {
+    if (result == "") {
         result = 'ERROR-2';
     }
 
@@ -177,7 +179,7 @@ function infinitive_stem(pref, inf, pts) {
         if( result === 'jes') {
             result = 'jed';
         }
-        //steam based on pts
+        // stem based on present tense stem
         else if( pts ) {
             result = pts.slice(0, -1);
         }
@@ -210,53 +212,62 @@ function infinitive_stem(pref, inf, pts) {
     return result;
 }
 
+function derive_present_tense_stem(infinitive_stem_string) {
+    let result = infinitive_stem_string;
+
+    if (((result.slice(-3) === 'ova') || (result.slice(-3) === 'eva')) && (result != 'hova')) {
+        result = (result.slice(0, -3) + 'uj');
+    }
+    else if (((result.slice(-2) === 'nu') || (result.slice(-2) === 'nų')) && (result.length > 3)) {
+        result = (result.slice(0, -1));
+    }
+    else if (result.slice(-1) === 'ę') {
+        if (result.slice(-2) === 'ję') {
+            if (result.slice(-3) === 'bję' || result.slice(-3) === 'dję'
+                || result.slice(-3) === 'sję' || result.slice(-3) === 'zję') {
+                result = (result.slice(0, -2) + 'ȯjm');
+            }
+            else {
+                result = (result.slice(0, -1) + 'm');
+            }
+        }
+        else if (result === 'vzę') {
+            result = 'vȯzm';
+        }
+        else {
+            result = (result.slice(0, -1) + 'n');
+        }
+    }
+    else if (result.slice(-1) == 'ų') {
+        result = (result.slice(0, -1) /*+ 'm'*/);
+    }
+    else if ((/*result.slice(-1) == 'i' ||*/ result.slice(-1) == 'y' ||
+        result.slice(-1) == 'o' || result.slice(-1) == 'u' ||
+        result.slice(-1) == 'ě' || result.slice(-1) == 'e') && result.length < 4) {
+        /*if (result == 'uči') {
+            result = 'uči';
+        }
+        else*/
+        if (result.charAt(0) == 'u') {
+            result = result + 'ĵ';
+        }
+        else {
+            result = result + 'j';
+        }
+    }
+    else if (result.slice(-1) == 'a' || result.slice(-1) == 'e' || result.slice(-1) == 'ě') {
+        result = result + 'ĵ';
+    }
+
+    return result;
+}
+
+
 function present_tense_stem(pref, pts, is) {
     let result = is;
 
     if (pts.length == 0) {
-        if (((result.slice(-3) === 'ova') || (result.slice(-3) === 'eva')) && (result != 'hova')) {
-            result = (result.slice(0, -3) + 'uj');
-        }
-        else if (((result.slice(-2) === 'nu') || (result.slice(-2) === 'nų')) && (result.length > 3)) {
-            result = (result.slice(0, -1));
-        }
-        else if (result.slice(-1) === 'ę') {
-            if (result.slice(-2) === 'ję') {
-                if (result.slice(-3) === 'bję' || result.slice(-3) === 'dję'
-                    || result.slice(-3) === 'sję' || result.slice(-3) === 'zję') {
-                    result = (result.slice(0, -2) + 'ȯjm');
-                }
-                else {
-                    result = (result.slice(0, -1) + 'm');
-                }
-            }
-            else if (result === 'vzę') {
-                result = 'vȯzm';
-            }
-            else {
-                result = (result.slice(0, -1) + 'n');
-            }
-        }
-        else if (result.slice(-1) == 'ų') {
-            result = (result.slice(0, -1) /*+ 'm'*/);
-        }
-        else if ((/*result.slice(-1) == 'i' ||*/ result.slice(-1) == 'y' ||
-            result.slice(-1) == 'o' || result.slice(-1) == 'u' ||
-            result.slice(-1) == 'ě' || result.slice(-1) == 'e') && result.length < 4) {
-            /*if (result == 'uči') {
-                result = 'uči';
-            }
-            else*/
-            if (result.charAt(0) == 'u') {
-                result = result + 'ĵ';
-            }
-            else {
-                result = result + 'j';
-            }
-        }
-        else if (result.slice(-1) == 'a' || result.slice(-1) == 'e' || result.slice(-1) == 'ě') {
-            result = result + 'ĵ';
-        }
+        result = derive_present_tense_stem(is);
     }
     else {
         if (((pts.slice(-2) === 'se') || (pts.slice(-2) === 'sę')) && (pts.length > 2)) {
@@ -317,16 +328,7 @@ function present_tense_stem(pref, pts, is) {
 }
 
 function secondary_present_tense_stem(ps) {
-    const i = (ps.length - 1);
-    if (ps.charAt(i) == 'g') {
-        return ps.substring(0, i) + 'ž';
-    }
-    else if (ps.charAt(i) == 'k') {
-        return ps.substring(0, i) + 'č';
-    }
-    else {
-        return ps;
-    }
+    return ps.replace(/g$/, 'ž').replace(/k$/, 'č')
 }
 
 function l_participle(pref, pts, is) {
