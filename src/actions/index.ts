@@ -1,4 +1,4 @@
-import { IModalDialog } from 'reducers';
+import { BANNER_TYPES, IModalDialog } from 'reducers';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -22,6 +22,7 @@ export enum ActionTypes {
     SET_NOTIFICATION = 'SET_NOTIFICATION',
     CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
+    DISMISS_BANNER = 'DISMISS_BANNER',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -164,6 +165,13 @@ export function setAlphabets(data) {
 export function changeOrderOfCases(data) {
     return {
         type: ActionTypes.CHANGE_ORDER_OF_CASES,
+        data,
+    };
+}
+
+export function dismissBanner(data: {name: BANNER_TYPES}) {
+    return {
+        type: ActionTypes.DISMISS_BANNER,
         data,
     };
 }

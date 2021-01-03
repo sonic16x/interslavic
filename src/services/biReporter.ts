@@ -1,4 +1,4 @@
-import { IMainState } from 'reducers';
+import { BANNER_TYPES, IMainState } from 'reducers';
 import debounce from 'lodash/debounce';
 import { objectSetToString } from 'utils/objectSetToString';
 import { toQueryString } from 'utils/toQueryString';
@@ -59,6 +59,14 @@ export class BiReporter {
 
     public performanceSearch(time: number) {
         this._sendEvent('performance', 'performance search', undefined, time);
+    }
+
+    public clickBanner(name: BANNER_TYPES) {
+        this._sendEvent('banner', 'click banner', name);
+    }
+
+    public dismissBanner(name: BANNER_TYPES) {
+        this._sendEvent('banner', 'dismiss banner', name);
     }
 
     public cardInteraction(action: string, details: ICardAnalytics) {

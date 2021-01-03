@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { GDPR } from 'components/GDPR';
 import { Header } from 'components/Header';
-import { SurveyBanner } from 'components/SurveyBanner';
+import { Banner } from 'components/Banner';
 import { Loader } from 'components/Loader';
 import { Notification } from 'components/Notification';
 import { ModalDialog } from 'components/ModalDialog';
@@ -19,7 +19,7 @@ export const Main: React.FC =
 
         return (
             <>
-                <SurveyBanner/>
+                <Banner/>
                 <Header/>
                 <Router/>
                 <GDPR/>
