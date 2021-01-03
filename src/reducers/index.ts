@@ -26,6 +26,10 @@ export interface IModalDialog {
     show?: boolean;
 }
 
+export enum BANNER_TYPES {
+    SURVEY = 'survey',
+}
+
 export interface IMainState {
     lang: ILang;
     interfaceLang: string;
@@ -53,6 +57,9 @@ export interface IMainState {
         [key: string]: boolean;
     };
     orderOfCases: string[];
+    dismissedBanners: {
+        survey: boolean;
+    };
 }
 
 export function mainReducer(state: IMainState, { type, data }) {
@@ -303,6 +310,14 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 orderOfCases: data,
+            };
+        case ActionTypes.DISMISS_BANNER:
+            return {
+                ...state,
+                dismissedBanners: {
+                    ...state.dismissedBanners,
+                    [data.name]: true,
+                },
             };
         default:
             return state;

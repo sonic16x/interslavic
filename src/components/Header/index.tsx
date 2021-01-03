@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useCallback } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 import { setPageAction } from 'actions';
@@ -8,6 +9,9 @@ import { useDispatch } from 'react-redux';
 import { usePage } from 'hooks/usePage';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import LogoIcon from './images/logo-icon.svg';
+import { MenuItem } from './MenuItem';
+import { useBanner } from '../../hooks/useBanner';
+import { BANNER_TYPES } from '../../reducers';
 
 export const Header: React.FC =
     () => {
@@ -15,6 +19,8 @@ export const Header: React.FC =
         const page = usePage();
         useInterfaceLang();
         const [menuIsVisible, setMenuIsVisible] = React.useState(false);
+        const collapseMenu = useCallback(() => setMenuIsVisible(false), [setMenuIsVisible]);
+        const hasCollapsedSurveyBanner = !useBanner(BANNER_TYPES.SURVEY).visible;
 
         return (
             <header className={classNames('header', {active: menuIsVisible})}>
@@ -41,19 +47,16 @@ export const Header: React.FC =
                     <span className={classNames('lines', {active: menuIsVisible})}/>
                 </button>
                 <nav className={classNames('header__menu', {active: menuIsVisible})}>
-                    {pages.map((({name, value}, i) => (
-                        <a
-                            key={i}
-                            className={classNames('header__menu-item', {active: page === value})}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                dispatch(setPageAction(value));
-                                setMenuIsVisible(false);
-                            }}
-                        >
-                            {t(name)}
-                        </a>
-                    )))}
+                  {pages.map((({name, value}, i) => (
+                    <MenuItem
+                      key={value}
+                      name={name}
+                      value={value}
+                      hasBadge={value === 'about' && hasCollapsedSurveyBanner}
+                      active={page === value}
+                      onClick={collapseMenu}
+                    />
+                  )))}
                 </nav>
             </header>
         );

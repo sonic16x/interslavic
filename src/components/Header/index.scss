@@ -107,6 +107,22 @@
       color: #ddd;
       text-decoration: none;
     }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #2962ff;
+      pointer-events: none;
+      opacity: 0;
+      transition: 0.3s opacity;
+    }
+
+    &.hasBadge::after {
+      opacity: 1;
+    }
   }
 
   &__logo {

@@ -13,7 +13,7 @@
     position: absolute;
     background-position: center 48px;
     background-size: auto;
-    background-image: url(./images/slavs.png);
+    background-image: url(images/slavs.png);
     background-repeat: no-repeat;
     left: 0;
     top: 0;
@@ -25,7 +25,7 @@
   &::after {
     content: '';
     position: absolute;
-    background-image: url(./images/sunshine.jpg);
+    background-image: url(images/sunshine.jpg);
     left: calc(50% - 50vw);
     width: 100vw;
     height: 100%;
@@ -97,16 +97,22 @@
 
   // Closing animation
 
-  transform-origin: calc(100% - 30px) 5px;
+  transform-origin: right 5px;
   transition: transform 0.2s, opacity 0.2s linear;
   & ~ * { transition: transform 0.2s; }
-  &.closing {
+
+  &-exit {
     transform: matrix(0.03,-0.02,0.04,0.05,0,0);
     opacity: 0;
     z-index: 999;
 
     & ~ * {
       transform: translateY(calc(-1px * var(--survey-banner-height)));
+    }
+
+    &-done {
+      display: none;
+      & ~ * { transition: none; }
     }
   }
 }
