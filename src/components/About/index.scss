@@ -9,8 +9,26 @@
     padding: 5px 0;
   }
 
+  p.new {
+    background-color: rgba(201, 216, 255, 1);
+    animation: 3s linear fade-highlight forwards;
+  }
+
+  p.new::before {
+    content: 'NEW';
+    background-color: var(--invalid-color);
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    border-radius: 3px;
+    padding: 2px 3px;
+    vertical-align: super;
+    margin: 0 1ch 0 0;
+  }
+
   a {
     display: block;
+    white-space: nowrap;
   }
 
   &__container {
@@ -33,4 +51,9 @@
     font-size: 16px;
     margin-bottom: 45px;
   }
+}
+
+@keyframes fade-highlight {
+  from { background-color: rgba(201, 216, 255, 1); }
+  to { background-color: rgba(201, 216, 255, 0); }
 }

@@ -569,6 +569,36 @@
     "mk": "Ова е непрофитен проект со отворен код. Ова го правиме бесплатно, од задоволство. Не заработуваме пари од ова и не плаќаме за помагање.",
     "bg": "Това е проект с нестопанска цел и отворен код. Участваме в него безплатно и за удоволствие. Не печелим пари от това и не плащаме за помощ."
   },
+  "needsYourHelp": {
+    "en": "Interslavic language **needs your help** to gain a status of internationally recognized language and obtain its individual ISO-639 code for the further development and growing its presence in the world of desktop and mobile applications, websites, video games and content platforms such as **YouTube, Wikipedia/Wiktionary, Vimeo** and others.",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "fillSurvey": {
+    "en": "Please fill out this survey to help us know how many learners of Interslavic are there:",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
   "gdprAlertTitle": {
     "en": "We use the cookie files",
     "isv": "Koristimo fajly {cookies}",

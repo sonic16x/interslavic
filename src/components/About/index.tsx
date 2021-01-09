@@ -1,7 +1,14 @@
-import { worksheetUrl } from 'consts';
+import { surveyUrl, worksheetUrl } from 'consts';
 import * as React from 'react';
 import { t } from 'translations';
 import './index.scss';
+
+function boldify(s: string): React.ReactNode {
+    const fragments = s.split('**');
+    return fragments.map((substr, index) => {
+      return index % 2 === 0 ? substr : <b>{substr}</b>;
+    });
+}
 
 export const About: React.FC =
     () => {
@@ -21,6 +28,12 @@ export const About: React.FC =
                     <div className={'about-page__common'}>
                         <p>{t('aboutInterslavic')}</p>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
+                        <hr/>
+                        <p className={'new'}>{boldify(t('needsYourHelp'))}</p>
+                        <p>
+                            {t('fillSurvey')}&nbsp;
+                            <a target={'_blank'} href={surveyUrl}>📝 Medžuslovjansky Spis / Меджусловјанскы Спис</a>
+                        </p>
                         <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
