@@ -70,8 +70,9 @@ export const defaultState: IMainState = {
     },
     favoriteList: {},
     orderOfCases: ['nom','acc','gen','loc','dat','ins','voc'],
-    dismissedBanners: {
-        survey: false,
+    surveyBanner: {
+        dismissed: false,
+        seenOnAboutPage: false,
     },
 };
 

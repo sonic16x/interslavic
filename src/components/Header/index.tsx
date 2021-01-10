@@ -9,9 +9,7 @@ import { useDispatch } from 'react-redux';
 import { usePage } from 'hooks/usePage';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import LogoIcon from './images/logo-icon.svg';
-import { MenuItem } from './MenuItem';
-import { useBanner } from '../../hooks/useBanner';
-import { BANNER_TYPES } from '../../reducers';
+import { useSurveyBanner } from 'hooks/useSurveyBanner';
 
 export const Header: React.FC =
     () => {
@@ -20,7 +18,7 @@ export const Header: React.FC =
         useInterfaceLang();
         const [menuIsVisible, setMenuIsVisible] = React.useState(false);
         const collapseMenu = useCallback(() => setMenuIsVisible(false), [setMenuIsVisible]);
-        const hasCollapsedSurveyBanner = !useBanner(BANNER_TYPES.SURVEY).visible;
+        const { shouldShowAboutBadge } = useSurveyBanner();
 
         return (
             <header className={classNames('header', {active: menuIsVisible})}>
@@ -40,7 +38,7 @@ export const Header: React.FC =
                 </h1>
                 <button
                     type={'button'}
-                    className={'header__show-menu-button'}
+                    className={classNames('header__show-menu-button', menuIsVisible && 'expanded', shouldShowAboutBadge && 'hasBadge')}
                     aria-label={'Menu button'}
                     onClick={() => setMenuIsVisible(!menuIsVisible)}
                 >
@@ -52,7 +50,7 @@ export const Header: React.FC =
                       key={value}
                       name={name}
                       value={value}
-                      hasBadge={value === 'about' && hasCollapsedSurveyBanner}
+                      hasBadge={value === 'about' && shouldShowAboutBadge}
                       active={page === value}
                       onClick={collapseMenu}
                     />
@@ -61,3 +59,35 @@ export const Header: React.FC =
             </header>
         );
     };
+
+interface IMenuItemProps {
+  name: string;
+  value: string;
+  hasBadge: boolean;
+  active: boolean;
+  onClick: () => void;
+}
+
+const MenuItem: React.FC<IMenuItemProps> = ({
+  name,
+  value,
+  active,
+  onClick: customOnClick,
+  hasBadge,
+}) => {
+  const dispatch = useDispatch();
+  const onClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    dispatch(setPageAction(value));
+    customOnClick();
+  }, [dispatch, setPageAction, customOnClick]);
+
+  return (
+    <a
+      className={classNames('header__menu-item', {active, hasBadge})}
+      onClick={onClick}
+    >
+      {t(name)}
+    </a>
+  );
+};

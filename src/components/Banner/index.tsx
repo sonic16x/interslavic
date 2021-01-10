@@ -1,11 +1,10 @@
 import React from 'react';
-import { useBanner } from '../../hooks/useBanner';
+import { useSurveyBanner } from '../../hooks/useSurveyBanner';
 import { SurveyBanner } from './SurveyBanner';
-import { BANNER_TYPES } from '../../reducers';
 
 export const Banner: React.FC = () => {
-  const surveyBanner = useBanner(BANNER_TYPES.SURVEY);
-  if (surveyBanner.visible) {
+  const { shouldShowBanner } = useSurveyBanner();
+  if (shouldShowBanner) {
     return <SurveyBanner />;
   }
 

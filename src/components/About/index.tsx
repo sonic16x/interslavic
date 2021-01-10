@@ -1,7 +1,9 @@
 import { surveyUrl, worksheetUrl } from 'consts';
 import * as React from 'react';
+import classNames from 'classnames';
 import { t } from 'translations';
 import './index.scss';
+import { useSurveyBanner } from 'hooks/useSurveyBanner';
 
 function boldify(s: string): React.ReactNode {
     const fragments = s.split('**');
@@ -21,6 +23,13 @@ export const About: React.FC =
             version += `-${trimmedBaseUrl}`;
         }
 
+        const { shouldHighlightAboutSection, markAboutSectionAsRead } = useSurveyBanner();
+        React.useEffect(() => {
+            if (shouldHighlightAboutSection) {
+                markAboutSectionAsRead();
+            }
+        });
+
         return (
             <div className={'about-page'}>
                 <div className={'about-page__container'}>
@@ -29,11 +38,17 @@ export const About: React.FC =
                         <p>{t('aboutInterslavic')}</p>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
                         <hr/>
-                        <p className={'new'}>{boldify(t('needsYourHelp'))}</p>
-                        <p>
+                        <div className={classNames('highlight', shouldHighlightAboutSection && 'on')}>
+                          <p className={'new'}>
+                            {boldify(t('needsYourHelp'))}
+                          </p>
+                          <p>
                             {t('fillSurvey')}&nbsp;
-                            <a target={'_blank'} href={surveyUrl}>📝 Medžuslovjansky Spis / Меджусловјанскы Спис</a>
-                        </p>
+                              <a target={'_blank'} href={surveyUrl}>
+                                  📝 Medžuslovjansky&nbsp;Spis / Меджусловјанскы&nbsp;Спис
+                              </a>
+                          </p>
+                        </div>
                         <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>

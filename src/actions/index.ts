@@ -1,4 +1,4 @@
-import { BANNER_TYPES, IModalDialog } from 'reducers';
+import { IModalDialog } from 'reducers';
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -22,7 +22,8 @@ export enum ActionTypes {
     SET_NOTIFICATION = 'SET_NOTIFICATION',
     CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
-    DISMISS_BANNER = 'DISMISS_BANNER',
+    DISMISS_SURVEY_BANNER = 'DISMISS_SURVEY_BANNER',
+    MARK_ABOUT_SURVEY_AS_READ = 'MARK_ABOUT_SURVEY_AS_READ',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -169,9 +170,8 @@ export function changeOrderOfCases(data) {
     };
 }
 
-export function dismissBanner(data: {name: BANNER_TYPES}) {
+export function dismissSurveyBanner() {
     return {
-        type: ActionTypes.DISMISS_BANNER,
-        data,
+        type: ActionTypes.DISMISS_SURVEY_BANNER,
     };
 }

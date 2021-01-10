@@ -1,12 +1,4 @@
-@import "src/index";
-
-@mixin changeState {
-  transition:
-          transform var(--animation-duration) linear,
-          margin var(--animation-duration) linear,
-          background-color var(--animation-duration) linear
-  ;
-}
+@import 'src/mixins';
 
 .header {
   display: flex;
@@ -108,21 +100,6 @@
       text-decoration: none;
     }
 
-    &::after {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #2962ff;
-      pointer-events: none;
-      opacity: 0;
-      transition: 0.3s opacity;
-    }
-
-    &.hasBadge::after {
-      opacity: 1;
-    }
   }
 
   &__logo {
@@ -142,6 +119,18 @@
       cursor: pointer;
     }
   }
+
+  .hasBadge::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    pointer-events: none;
+    opacity: 0;
+    animation: 0.3s show forwards;
+  }
 }
 
 @media (max-width: 630px) {
@@ -159,7 +148,8 @@
       pointer-events: none;
 
       &-item {
-        line-height: 40px;
+        margin-top: 8px;
+        margin-bottom: 8px;
         //height: 40px
       }
 
@@ -189,6 +179,15 @@
       right: 16px;
       top: 12px;
       background: #343a40;
+
+      &.hasBadge::after {
+        right: -4px;
+        top: -4px;
+      }
+
+      &.expanded.hasBadge::after {
+        animation: 0.3s hide forwards;
+      }
     }
   }
 }
