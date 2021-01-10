@@ -1,13 +1,12 @@
 import * as React from 'react';
 import useDimensions from 'react-cool-dimensions';
-import { useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import { surveyUrl } from 'consts';
 import { t } from 'translations';
-import './index.scss';
+import { useSurveyBanner } from 'hooks/useSurveyBanner';
 import CloseImage from './images/close.svg';
-import { biReporter } from '../../../services/biReporter';
-import { BANNER_TYPES } from '../../../reducers';
-import { ActionTypes } from '../../../actions';
+import { biReporter } from 'services/biReporter';
+import './index.scss';
 
 function useBannerHeight() {
   const { ref, height } = useDimensions({});
@@ -21,25 +20,18 @@ function useBannerHeight() {
 }
 
 export const SurveyBanner: React.FC = () => {
-  const dispatch = useDispatch();
+  const onCTAClick = React.useCallback(() => biReporter.clickBanner('survey'), []);
 
   const [isClosing, setClosing] = React.useState(false);
   const close = React.useCallback(() => {
-    biReporter.dismissBanner(BANNER_TYPES.SURVEY);
+    biReporter.dismissBanner('survey');
     setClosing(true);
   }, [setClosing]);
 
-  const onCTAClick = React.useCallback(() => biReporter.clickBanner(BANNER_TYPES.SURVEY), []);
-
-  const onBannerExit = React.useCallback(() => dispatch({
-    type: ActionTypes.DISMISS_BANNER,
-    data: {
-      name: BANNER_TYPES.SURVEY,
-    },
-  }), [dispatch]);
+  const onBannerExit = useSurveyBanner().dismissBanner;
 
   return (
-    <CSSTransition in={!isClosing} timeout={200} classNames={'survey-banner'} onExited={onBannerExit}>
+    <CSSTransition in={!isClosing} timeout={300} classNames={'survey-banner'} onExited={onBannerExit}>
       <aside ref={useBannerHeight()} className={'survey-banner'}>
         <h1 className='survey-banner__caption'>
           {t('surveyBanner.caption')}
@@ -54,7 +46,7 @@ export const SurveyBanner: React.FC = () => {
               role='button'
               target='_blank'
               rel='noopener noreferrer'
-              href='https://docs.google.com/forms/d/e/1FAIpQLSeMWWhHKKd7pQolv-EYPAxKjL5ppMb1ABs751AVz-TAfK1nnA/viewform?usp=sf_link'
+              href={surveyUrl}
               onClick={onCTAClick}
             >
               {t('surveyBanner.action')}

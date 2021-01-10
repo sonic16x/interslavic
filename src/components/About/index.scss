@@ -1,5 +1,3 @@
-@import "src/index";
-
 .about-page {
   width: 100%;
   height: 100%;
@@ -9,25 +7,32 @@
     padding: 5px 0;
   }
 
-  p.new {
-    background-color: rgba(201, 216, 255, 1);
-    animation: 3s linear fade-highlight forwards;
-  }
-
-  p.new::before {
+  .new::before {
     content: 'NEW';
     background-color: var(--invalid-color);
     color: #fff;
+    border-radius: 3px;
     font-size: 10px;
     line-height: 1;
-    border-radius: 3px;
-    padding: 2px 3px;
     vertical-align: super;
+    padding: 2px 3px;
     margin: 0 1ch 0 0;
+  }
+
+  .highlight {
+    background-color: rgba(201, 216, 255, 0);
+    transition: background-color 1s ease-in;
+
+    &.on {
+      background-color: rgba(201, 216, 255, 1);
+    }
   }
 
   a {
     display: block;
+  }
+
+  .no-wrap {
     white-space: nowrap;
   }
 
