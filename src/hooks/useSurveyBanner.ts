@@ -5,7 +5,7 @@ import { ActionTypes } from 'actions';
 export function useSurveyBanner() {
     const dispatch = useDispatch();
     const shouldShowBanner = useSelector((state: IMainState) => !state.surveyBanner.dismissed);
-    const shouldShowAboutBadge = useSelector((state: IMainState) => state.surveyBanner.dismissed && !state.surveyBanner.seenOnAboutPage);
+    const shouldShowAboutBadge = useSelector((state: IMainState) => !state.surveyBanner.seenOnAboutPage);
     const shouldHighlightAboutSection = shouldShowAboutBadge;
 
     return {
