@@ -21,16 +21,16 @@ function useBannerHeight() {
 
 const strings = {
   caption: {
-    'Latn': 'Medžuslovjansky Spis',
-    'Cyrl': 'Меджусловјанскы Спис',
+    Latn: 'Medžuslovjansky Spis',
+    Cyrl: 'Меджусловјанскы Спис',
   },
   description: {
-    'Latn': 'S pomoćjų tutogo spisa my hćemo kalkulovati kako mnogo jest ljudij govoręćih MS językom ili aktualno učęćih sę go.',
-    'Cyrl': 'С помочју тутого списа мы хчемо калкуловати како много јест људиј говоречих МС језыком или актуално учечих се го.',
+    Latn: 'S pomoćjų tutogo spisa my hćemo kalkulovati kako mnogo jest ljudij govoręćih MS językom ili aktualno učęćih sę go.',
+    Cyrl: 'С помочју тутого списа мы хчемо калкуловати како много јест људиј говоречих МС језыком или актуално учечих се го.',
   },
   action: {
-    'Latn': 'Učęstvovati',
-    'Cyrl': 'Учествовати',
+    Latn: 'Učęstvovati',
+    Cyrl: 'Учествовати',
   },
 };
 
