@@ -44,9 +44,9 @@ export const About: React.FC =
                           </p>
                           <p>
                             {t('fillSurvey')}&nbsp;
-                              <a target={'_blank'} href={surveyUrl}>
-                                  📝 Medžuslovjansky&nbsp;Spis / Меджусловјанскы&nbsp;Спис
-                              </a>
+                            <a target={'_blank'} className={'about-page__looping-slavs'} href={surveyUrl}>
+                              <span>📝&nbsp;Medžuslovjansky&nbsp;Spis &mdash;&nbsp;Меджусловјанскы&nbsp;Спис</span>
+                            </a>
                           </p>
                         </div>
                         <hr/>

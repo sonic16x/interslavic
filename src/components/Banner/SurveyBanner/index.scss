@@ -25,7 +25,7 @@
   &::after {
     content: '';
     position: absolute;
-    background-image: url(images/sunshine.jpg);
+    background-image: linear-gradient(135deg, rgb(104, 186, 234) 0%, rgb(84, 185, 239) 76%);
     left: calc(50% - 50vw);
     width: 100vw;
     height: 100%;
