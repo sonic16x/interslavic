@@ -574,15 +574,15 @@
     "isv": "Međuslovjansky język **potrěbuje vašu pomoć** aby on dostal oficialno međunarodno poznańje. Ako on dostane svoj kod ISO-639, bųdųt otvorjene vråta **JuTube, Vikipedija/Vikislovnik, Vimeo** i drugyh velikyh internetovyh platform.",
     "ru": "Межславянскому языку **требуется ваша помощь**, чтобы получить официальное признание на международном уровне. Так, присвоение ему кода ISO-639 откроет двери основных интернет-площадок, как то: **YouTube, Википедия/Викисловарь, Vimeo** и другие.",
     "uk": "Міжслов'янській мові **потрібна ваша допомога**, аби дістати офіційне визнання на міжнародному рівні. Так, призначення власного коду ISO-639 відкриє їй шлях до таких основних інтернет-майданчиків як **YouTube, Вікіпедія/Вікісловник, Vimeo** та інших.",
-    "be": "",
+    "be": "Міжславянскай мове **патрэбна ваша дапамога **, каб атрымаць афіцыйнае прызнанне на міжнародным узроўні. Так, прызначэнне ўласнага кода ISO-639 адкрые ёй шлях да такіх асноўных Інтэрнэт-сайтаў, як **YouTube, Вікіпедыя / Вікіслоўнік, Vimeo** і іншыя.",
     "pl": "Język międzysłowiański **potrzebuje Twojej pomocy** aby zdobyć status pełnoprawnego języka w środowisku międzynarodowym. W momencie otrzymania kodu ISO-639 zostaną mu otwarte wrota do wielkich platform internetowych takich jak YouTube, Wikipedia/Wikisłownik, Vimeo i innych.",
-    "cs": "",
-    "sk": "",
-    "sl": "",
-    "hr": "Međuslavenkomu jeziku **je potrebna vaša pomoć** da dobiva službeno međunarodno priznanje. Kad bude dobio svoj kod ISO-639, bit ću otvorena vrata **YouTube, Wikipedia/Wiktionary, Vimeo** i drugih platforama.",
-    "sr": "Међуславенкому језику **је потребна ваша помоћ** да добива службено међународно признање. Кад буде добио свој код ISO-639, бит ћу отворена врата **YouTube, Wikipedia/Wiktionary, Vimeo** и других платфорама.",
-    "mk": "",
-    "bg": ""
+    "cs": "Mezislovanský jazyk (Interslavic) **potřebuje vaši pomoc**, aby získal status mezinárodně uznávaného jazyka. Jakmile obdrží kód ISO-639, budou mu otevřeny dveře do velkých platforem jako jsou **YouTube, Wikipedia / Wikislovník, Vimeo,** a další.",
+    "sk": "Medzislovanský jazyk (Interslavic) **potrebuje vašu pomoc**, aby získal štatút medzinárodne uznávaného jazyka. Akonáhle dostane kód ISO-639, budú mu otvorené dvere do veľkých platforiem ako sú **YouTube, Wikipedia / Wikislovník, Vimeo,** a ďalšie.",
+    "sl": "Medslovanski jezik **potrebuje vašo pomoč**, da pridobi uradno mednarodno priznanje. Pridobitev kode ISO-639 odpira vrata platformam, kot so **YouTube, Wikipedia, Wikislovar, Vimeo** in druge.",
+    "hr": "Međuslavenskome jeziku **potrebna je vaša pomoć** da dobije službeno međunarodno priznanje. Dobivanje ISO-639 koda otvara vrata ka platformama poput **YouTubea, Wikipedije, Wječnika, Vimea** i drugih.",
+    "sr": "Међусловенском језику **је потребна ваша помоћ** да добије званично међународно признање. Добијање ISO-639 кода отвара врата ка платформама попут **Јутјуба, Википедије, Викиречника, Вимеа** и других.",
+    "mk": "На меѓусловенскиот **потребна му е Ваша помош**, за да добие официјално признание на меѓународно ниво. Така со присвојување на кодот ISO-639 нему ќе му се отворат основните интернет-платформи, како: **Youtube, Википедија/Wiktionary, Vimeo** и на други платформи.",
+    "bg": "Междусловянски език се **нуждае от вашата помощ**. За да придобие официално признание на международното ниво. Присвояване на него кода ISO-639,ще отвори врати на основните Интернет площадки, такива като: **YouTube, Википедия/Викисловар, Vimeo** и др."
   },
   "fillSurvey": {
     "en": "Please fill out this survey to help us know how many learners of Interslavic are there:",
@@ -593,11 +593,11 @@
     "pl": "Prosimy o wypełnienie tej ankiety, abyśmy mogli policzyć, ile osób uczy się języka międzysłowiańskiego:",
     "cs": "Vyplňte prosím tento průzkum, abychom mohli spočítat, kolik lidí se učí mezislovanský jazyk:",
     "sk": "Zúčastnite sa tohto prieskumu, aby sme mohli spočítať, koľko ľudí sa učí interslovanský jazyk:",
-    "sl": "Izpolnite to anketo, da bomo lahko prešteli, koliko ljudi se uči medslovanskega jezika:",
-    "hr": "Molimo vas da popunite ovu anketu kako biste nam pomogli doznati koliko ima govornika međuslavenskoga jezika:",
-    "sr": "Молимо вас да попуните ову анкету како бисте нам помогли дознати колико има говорника међуславенскога језика:",
-    "mk": "Ве молиме, земете ја оваа анкета за да можеме да изброиме колку луѓе учат меѓусловенски јазик:",
-    "bg": "Моля, вземете това проучване, за да можем да преброим колко хора учат междуславянския език:"
+    "sl": "Prosimo, da izpolnite naslednjo anketo, ki nam bo pomagala pridobiti vpogled v to, koliko ljudi se uči medslovanskega jezika:",
+    "hr": "Molimo Vas da popunite sljedeću anketu, koja će nam pomoći da steknemo uvid u to koliki broj ljudi uči međuslavenski jezik:",
+    "sr": "Молимо Вас да попуните следећу анкету, која ће нам помоћи да стекнемо увид у то колики број људи учи међусловенски језик:",
+    "mk": "Ве молиме, пополнете ја оваа анкета за да можеме да изброиме колку луѓе учат меѓусловенски јазик:",
+    "bg": "Молим вас, попълнете този формуляр за да можем да преброим колко хора изучават междуславянският език."
   },
   "gdprAlertTitle": {
     "en": "We use the cookie files",
