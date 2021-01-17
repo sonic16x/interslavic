@@ -4,11 +4,24 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  background-color: #343a40;
+  box-sizing: border-box;
   padding: 8px 16px;
   align-items: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
   z-index: 10;
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -50vw;
+    right: -50vw;
+    height: 100%;
+    background-color: #343a40;
+    z-index: -1;
+  }
 
   &__show-menu-button {
     display: none;
@@ -194,7 +207,7 @@
 
 @media (min-width: 1050px) {
   .header {
-    padding-left: calc(50% - 510px);
-    padding-right: calc(50% - 510px);
+    padding-left: 0;
+    padding-right: 0;
   }
 }

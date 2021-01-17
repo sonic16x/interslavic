@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-content: stretch;
-  min-height: 150px;
+  width: 100%;
   max-width: 1024px;
   margin: 0 auto;
 
@@ -65,13 +65,14 @@
     font-size: var(--text-s);
     line-height: var(--text-s-line);
     flex-basis: 400px;
-    margin: 0 10px 5px 0;
+    margin: 10px 10px 5px 0;
   }
 
   &__action {
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
+    margin: 0 0 3px;
   }
 
   &__button {
@@ -83,7 +84,9 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    padding: 6px 20px;
+    text-align: center;
+    min-width: 15ch;
+    padding: 6px 0;
   }
 
   &__close {
