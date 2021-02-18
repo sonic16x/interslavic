@@ -17,6 +17,9 @@ function prepareGender(gender, animated) {
     if (gender === 'masculine') {
         return animated ? 'm1' : 'm2';
     }
+    console.log("?");
+    console.log(gender);
+    return 'f';  // weird hack
 }
 
 export function declensionNounFlat(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable): any {
@@ -64,6 +67,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
     }
 
     const rawGender = prepareGender(originGender, animated);
+    console.log(originGender, rawGender);
 
     noun = noun + '%';
     noun = noun.replace(/[ńň]%/, 'nj');
@@ -126,6 +130,7 @@ export function declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural
 }
 
 function establishGender(noun: string, gender: string): string {
+    console.log(noun, gender);
     const lastChar = noun.slice(-1);
     const beforeLastChar = noun.slice(-2, -1);
     const lastTwo = noun.slice(-2);
