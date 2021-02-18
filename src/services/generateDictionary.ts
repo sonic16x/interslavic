@@ -23,11 +23,4 @@ request(dictionaryUrl, (err, data) => {
         ].join('\t');
     }).join('\n');
     fs.writeFileSync('./static/data.txt', [wordListStr, searchIndexStr, translateStatisticStr].join(dataDelimiter));
-    const wordFormsStr = searchIndex.map((item) => {
-        return [
-            item[0],
-            item[1],
-        ].join('\t');
-     }).join('\n');
-    fs.writeFileSync('./static/words_forms.txt', wordFormsStr);
 });

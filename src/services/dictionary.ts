@@ -80,48 +80,6 @@ const isvReplacebleLetters = [
     ['ź', 'z'],
 ];
 
-function exportLabeledWordForms(item) {
-    const word =  Dictionary.getField(item, 'isv');
-    const add = Dictionary.getField(item, 'addition');
-    const details = Dictionary.getField(item, 'partOfSpeech');
-    const pos = getPartOfSpeech(details);
-    const wordForms = [];
-    word.split(',').map((wordElement) => {
-        wordElement = wordElement.trim();
-        switch (pos) {
-            case 'verb':
-                wordForms.push(...conjugationVerbFlat(wordElement, add));
-                break;
-            case 'adjective':
-                wordForms.push(...declensionAdjectiveFlat(wordElement, ''));
-                break;
-            case 'noun':
-                const gender = getGender(details);
-                const animated = isAnimated(details);
-                const plural = isPlural(details);
-                const singular = isSingular(details);
-                const indeclinable = isIndeclinable(details);
-                if (details.includes('m./f.')) {
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animated, plural,
-                        singular, indeclinable));
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animated, plural,
-                        singular, indeclinable));
-                } else {
-                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural,
-                        singular, indeclinable));
-                }
-                break;
-            case 'pronoun':
-                wordForms.push(...declensionPronounFlat(wordElement, getPronounType(details)));
-                break;
-            case 'numeral':
-                wordForms.push(...declensionNumeralFlat(wordElement, getNumeralType(details)));
-                break;
-        }
-    });
-    return wordForms;
-}
-
 function getWordForms(item) {
     const word =  Dictionary.getField(item, 'isv');
     const add = Dictionary.getField(item, 'addition');
@@ -238,7 +196,7 @@ class DictionaryClass {
                     if (from === 'isv') {
                         splittedField = this
                             .splitWords(fromField)
-                            .concat(exportLabeledWordForms(item))
+                            .concat(getWordForms(item))
                         ;
                         this.splittedMap.set(key + '-src',
                             splittedField.map((chunk) => this.searchPrepare('isv-src', getLatin(chunk, '2'))));
