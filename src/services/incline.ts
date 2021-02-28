@@ -64,12 +64,9 @@ function getWordMetadata(itemRaw) {
 }
 
 function getWordParadigm(rawItem) {
-        const [ word_id, word, add, details ] = rawItem;
+        const [ wordId, word, add, details ] = rawItem;
         let wordData;
         const remark = '';
-        console.log('----');
-        console.log(String(word_id));
-        console.log(String(word), getPartOfSpeech(details));
         switch (getPartOfSpeech(details)) {
             case 'noun':
                 const gender = getGender(details);
@@ -78,7 +75,6 @@ function getWordParadigm(rawItem) {
                 const singular = isSingular(details);
                 const indeclinable = isIndeclinable(details);
 
-                console.log(word, add, gender, animated, plural, singular, indeclinable);
                 wordData = declensionNoun(word, add, gender, animated, plural, singular, indeclinable);
 
                 if (wordData === null) {
@@ -146,7 +142,7 @@ request(dictionaryUrl, (err, data) => {
     const paradigmData = words.map((item) => {
         // const itemRaw = Dictionary.getField(item, 'isv');
         return [
-            item,
+            JSON.stringify(item),
             JSON.stringify(getWordParadigm(item)),
             getWordMetadata(item),
         ].join('\t');
