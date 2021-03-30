@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 import { setPageAction } from 'actions';
@@ -9,7 +9,10 @@ import { useDispatch } from 'react-redux';
 import { usePage } from 'hooks/usePage';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import LogoIcon from './images/logo-icon.svg';
+import ClownIcon from './images/clown.svg';
 import { useSurveyBanner } from 'hooks/useSurveyBanner';
+import { isApril1 } from '../../utils/isApril1';
+import { getMobileOperatingSystem } from '../../utils/getMobileOperatingSystem';
 
 export const Header: React.FC =
     () => {
@@ -19,9 +22,16 @@ export const Header: React.FC =
         const [menuIsVisible, setMenuIsVisible] = React.useState(false);
         const collapseMenu = useCallback(() => setMenuIsVisible(false), [setMenuIsVisible]);
         const { shouldShowAboutBadge } = useSurveyBanner();
+        const [april1, setApril1] = React.useState(false);
+        const [isAndroid, setAndroid] = React.useState(false);
+
+        React.useEffect(() => {
+          setApril1(isApril1());
+          setAndroid(getMobileOperatingSystem() === 'Android');
+        });
 
         return (
-            <header className={classNames('header', {active: menuIsVisible})}>
+            <header className={classNames('header', { 'active': menuIsVisible, 'april-1': april1, 'is-android': isAndroid })}>
                 <h1 className={'header__logo'}>
                     <span
                         className={'header__logo-img'}
@@ -30,10 +40,10 @@ export const Header: React.FC =
                             setMenuIsVisible(false);
                         }}
                     >
-                        <LogoIcon />
+                        {april1 ? <ClownIcon /> : <LogoIcon />}
                     </span>
                     <span className={'header__logo-text'}>
-                        {t('mainTitle')}
+                        {april1 ? 'Medžuslovjanskы slovnik' : t('mainTitle')}
                     </span>
                 </h1>
                 <button
