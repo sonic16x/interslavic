@@ -131,20 +131,6 @@
       margin-right: 10px;
       cursor: pointer;
     }
-
-    .april-1 &-text {
-      font-family: 'Balkan Sans A Two';
-      font-size: 50px;
-      line-height: 60px;
-      font-weight: 400;
-      font-style: normal;
-      font-variant-ligatures: none;
-      margin: -20px 0 -10px;
-    }
-
-    .april-1.is-android &-text {
-      margin-top: -30px;
-    }
   }
 
   .hasBadge::after {
