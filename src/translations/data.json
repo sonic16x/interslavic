@@ -226,7 +226,7 @@
   },
   "searchTypeBegin": {
     "en": "Begin",
-    "isv": "Počatok",
+    "isv": "Početok",
     "ru": "Начало",
     "uk": "Початок",
     "be": "Пачаток",
@@ -721,7 +721,7 @@
   },
   "standardOrthography": {
     "en": "Standard orthography",
-    "isv": "Standartny pravopis",
+    "isv": "Standardny pravopis",
     "ru": "Стандартное правописание",
     "uk": "Стандартний правопис",
     "be": "Стандартнае правапісанне",
@@ -2387,7 +2387,7 @@
   },
   "flavStandard": {
     "en": "Standard",
-    "isv": "Standartny",
+    "isv": "Standardny",
     "ru": "Стандартное",
     "uk": "Стандартний",
     "be": "Стандартнае",
