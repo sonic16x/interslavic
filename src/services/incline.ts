@@ -63,10 +63,10 @@ function getWordMetadata(itemRaw) {
         return arr.join(', ');
 }
 
-function getWordParadigm(rawItem) {
-        const [ wordId, word, add, details ] = rawItem;
+
+function getSingleWordParadigm(word, add, details) {
         let wordData;
-        const remark = '';
+
         switch (getPartOfSpeech(details)) {
             case 'noun':
                 const gender = getGender(details);
@@ -77,9 +77,6 @@ function getWordParadigm(rawItem) {
 
                 wordData = declensionNoun(word, add, gender, animated, plural, singular, indeclinable);
 
-                if (wordData === null) {
-                    return 'No data for declination this word/phrase';
-                }
                 break;
             case 'adjective':
                 // const { singularAdj, pluralAdj, comparison } = declensionAdjective(word, '');
@@ -104,29 +101,45 @@ function getWordParadigm(rawItem) {
                 }
                 // normal verb
                 wordData = conjugationVerb(word, addVerb);
-                if (wordData === null) {
-                    return `No data for conjugation this verb`;
-                }
                 break;
             case 'numeral':
                 const numeralType = getNumeralType(details);
                 wordData = declensionNumeral(word, numeralType);
-                if (wordData === null) {
-                    return ('No data for declination this word');
-                }
                 break;
             case 'pronoun':
                 const pronounType = getPronounType(details);
                 wordData = declensionPronoun(word, pronounType);
-                if (wordData === null) {
-                    return ('No data for declination this word');
-                }
                 break;
             default:
-                return '';
+                wordData = null;
+        }
+        if (wordData === null) {
+            return ('NO DATA ERROR');
         }
         return wordData;
-    }
+}
+
+
+function getWordParadigm(rawItem) {
+    const [ wordId, word, add, details ] = rawItem;
+    const splitted = word.split(',');
+
+    if (details.indexOf('m./f.') !== -1 ) {
+        if (splitted.length > 1) {
+            return ['UNEXPECTED ERROR'];
+        } else {
+            return [
+                getSingleWordParadigm(word.trim(), add, details.replace('m./f.', 'm.')),
+                getSingleWordParadigm(word.trim(), add, details.replace('m./f.', 'f.'))
+            ];
+        };
+    };
+
+    return splitted.map((word, i) => {
+        return getSingleWordParadigm(word.trim(), add, details);
+    });
+};
+
 
 request(dictionaryUrl, (err, data) => {
     const wordList = data.body
