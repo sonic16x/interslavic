@@ -17,4 +17,18 @@
       font-weight: 600;
     }
   }
+
+  &__reload {
+    cursor: pointer;
+    background: var(--primary-color);
+    border-radius: .35rem;
+    padding: 10px;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    font-weight: 500;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+  }
 }

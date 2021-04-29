@@ -39,45 +39,75 @@ function progressHelper(onProgress) {
     };
 }
 
-export function fetchDictionary(dispatch): void {
+async function fetchStat() {
+    return fetch('data/translateStatistic.json').then((res) => res.json()).then((data) => data);
+}
+
+async function fetchLangs(langList: string[]) {
+    return await Promise
+        .all(langList.map((lang) => fetch(`data/${lang}.txt`)
+        .then((res) => res.text())))
+        .then((rawResults) => {
+            return rawResults.map((rawLangData) => {
+                const [wordListStr, searchIndexStr] = rawLangData.split(dataDelimiter);
+
+                return {
+                    wordList: wordListStr.split('\n'),
+                    searchIndex: JSON.parse(searchIndexStr),
+                };
+            });
+        });
+}
+
+async function fetchBasic() {
+    return await fetch('data/basic.txt')
+        .then((res) => res.text())
+        .then((dataStr) => {
+            const [wordListStr, searchIndexStr] = dataStr.split(dataDelimiter);
+            const wordList: string[][] = wordListStr
+                .replace(/#/g, '')
+                .split('\n')
+                .map((l) => l.split('|'));
+
+            return { wordList, searchIndex: JSON.parse(searchIndexStr) };
+        });
+}
+
+export async function fetchDictionary(dispatch, langList: string[]) {
+    const stat = await fetchStat();
+    const basicData = await fetchBasic();
+    const langsData = await fetchLangs(langList);
+
     const startFidTime = performance.now();
+
     if (process.env.NODE_ENV !== 'production') {
         // tslint:disable-next-line
         console.time('FID');
     }
-    fetch('data.txt')
-        // .then(progressHelper(({loaded, total}) => {
-        //     const p = Math.ceil((loaded / total) * 97);
-        //     dispatch(loadingProgressAction(p));
-        // }))
-        .then((res) => res.text())
-        .then((dataStr) => {
-            const [wordListStr, searchIndexStr, percentsOfCheckedStr] = dataStr.split(dataDelimiter);
-            const wordList = wordListStr
-                .replace(/#/g, '')
-                .split('\n')
-                .map((l) => l.split('\t'));
-            const searchIndex = {};
-            const searchIndexObj = JSON.parse(searchIndexStr);
-            for (const lang in searchIndexObj) {
-                if (searchIndexObj.hasOwnProperty(lang)) {
-                    searchIndex[lang] = searchIndexObj[lang];
-                }
-            }
-            const percentsOfChecked = JSON.parse(percentsOfCheckedStr);
-            const initTime = Dictionary.init(wordList, searchIndex, percentsOfChecked);
-            // dispatch(loadingProgressAction(100));
-            dispatch(isLoadingAction(false));
-            dispatch(runSearch());
 
-            const fidTime = Math.round(performance.now() - startFidTime);
-
-            biReporter.performanceInit(initTime);
-            biReporter.performanceFID(fidTime);
-
-            if (process.env.NODE_ENV !== 'production') {
-                // tslint:disable-next-line
-                console.log('FID', `${fidTime}ms`);
-            }
+    langsData.forEach((langData) => {
+        basicData.searchIndex = {
+            ...basicData.searchIndex,
+            ...langData.searchIndex,
+        };
+        langData.wordList.forEach((langField, i) => {
+            basicData.wordList[i].push(langField);
         });
+    });
+
+    const initTime = Dictionary.init(basicData.wordList, basicData.searchIndex, stat);
+
+    // dispatch(loadingProgressAction(100));
+    dispatch(isLoadingAction(false));
+    dispatch(runSearch());
+
+    const fidTime = Math.round(performance.now() - startFidTime);
+
+    biReporter.performanceInit(initTime);
+    biReporter.performanceFID(fidTime);
+
+    if (process.env.NODE_ENV !== 'production') {
+        // tslint:disable-next-line
+        console.log('FID', `${fidTime}ms`);
+    }
 }

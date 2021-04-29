@@ -8,6 +8,7 @@ import './index.scss';
 import DirectionIcon from './images/direction-icon.svg';
 import { useDispatch } from 'react-redux';
 import { useLang } from 'hooks/useLang';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
 interface ILangPart {
     dir: string;
@@ -17,6 +18,8 @@ interface ILangPart {
 
 const LangPart: React.FC<ILangPart> =
     ({lang, dir, onSelect}: ILangPart) => {
+        const langs = useDictionaryLanguages();
+
         if (lang === 'isv') {
             return (
                 <div className={'lang-selector__isv'}>
@@ -25,7 +28,7 @@ const LangPart: React.FC<ILangPart> =
             );
         }
 
-        const options = ['en', ...langs, ...addLangs].map((value) => ({
+        const options = ['en', ...langs].map((value) => ({
             name: t(`${value}Lang`),
             value,
         }));

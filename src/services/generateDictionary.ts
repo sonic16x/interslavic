@@ -1,14 +1,15 @@
-import {addLangs, dictionaryUrl, dictionaryUrlAdd, langs} from 'consts';
+import { addLangs, dictionaryUrl, dictionaryUrlAdd, langs } from 'consts';
 import * as fs from 'fs';
 import request from 'request-promise';
-import { dataDelimiter, Dictionary, validFields } from 'services/dictionary';
+import { dataDelimiter, Dictionary, validFields, initialFields } from 'services/dictionary';
+import { transposeMatrix } from 'utils/transposeMatrix';
 
 Promise.all([
     request(dictionaryUrl),
     request(dictionaryUrlAdd),
-]).then((results) => {
-    let allData = [];
+]).then((results: string[]) => {
     const existingFields = [];
+    const dataMap: {[id: string]: string[]} = {};
 
     results.forEach((data, i) => {
         const filterHeader = [];
@@ -18,12 +19,7 @@ Promise.all([
             .map((l) => l.replace('\r', '').split('\t').map((e) => e.trim()))
         ;
 
-        const sorteredWordList = [
-            wordList[0],
-            ...wordList.slice(1)
-                .sort((a, b) => parseInt(a[0], 10) - parseInt(b[0], 10)),
-        ];
-        sorteredWordList.forEach((line, i) => {
+        wordList.forEach((line, i) => {
             if (i === 0) {
                 line.forEach((fieldName) => {
                     if (!existingFields.includes(fieldName) && validFields.includes(fieldName)) {
@@ -35,40 +31,75 @@ Promise.all([
                 });
             }
 
+            const id = line[0];
+            if (id === 'id') {
+                return;
+            }
             const filteredLine = line.filter((_, i) => filterHeader[i]);
-
-            if (allData[i]) {
-
-                const newLine = [
-                    ...allData[i],
+            if (dataMap[id]) {
+                dataMap[id] = [
+                    ...dataMap[id],
                     ...filteredLine,
                 ];
-                allData[i] = newLine;
             } else {
-                allData.push(filteredLine);
+                dataMap[id] = filteredLine;
             }
         });
     });
 
-    allData = allData.filter((item) => (item[0] !== '' && item[0] !== '!'));
+    const isvFieldIndex = validFields.indexOf('isv');
+    const allData: string[][] = [
+        validFields,
+            ...Object.values(dataMap)
+            .filter((line) => line.length === validFields.length)
+            .sort((lineA, lineB) => {
+                const textA = lineA[isvFieldIndex].toUpperCase();
+                const textB = lineB[isvFieldIndex].toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            }),
+    ];
 
-    const wordListStr = allData.map((item) => item.join('\t')).join('\n');
     Dictionary.init(allData);
     const searchIndex = Dictionary.getIndex();
+    const transposedData = transposeMatrix(allData);
     const translateStatisticStr = JSON.stringify(Dictionary.getPercentsOfTranslated());
-    const searchIndexAll = {};
-    [
+
+    const basicDataTransposed = [];
+
+    transposedData.forEach((column: string[]) => {
+        const fieldName = column[0];
+        if (initialFields.includes(fieldName)) {
+            basicDataTransposed.push(column);
+        }
+    });
+
+    const basicData = transposeMatrix(basicDataTransposed);
+    const basicDataStr = basicData.map((line) => line.join('|')).join('\n');
+
+    const searchIndexBasic = [
         'isv-src',
+        'isv',
+        'en',
+    ].reduce((searchIndexObj, lang) => {
+        searchIndexObj[lang] = searchIndex[lang];
+        return searchIndexObj;
+    }, {});
+    const searchIndexBasicStr = JSON.stringify(searchIndexBasic);
+    fs.writeFileSync('./static/data/basic.txt', [basicDataStr, searchIndexBasicStr].join(dataDelimiter));
+    fs.writeFileSync('./static/data/translateStatistic.json', translateStatisticStr);
+
+    [
         ...langs,
         ...addLangs,
     ].forEach((lang) => {
-        searchIndexAll[lang] = searchIndex[lang].map((item) => {
-            return [
-                item[0],
-                Array.from(new Set(item[1])).filter(Boolean).join('|'),
-            ].join('\t');
-        }).join('\n');
+        const langDataTransposed = [
+            transposedData.find(([fieldName]) => fieldName === lang),
+        ];
+
+        const langData = transposeMatrix(langDataTransposed);
+        const langDataStr = langData.map((line) => line.join('|')).join('\n');
+
+        const langDataIndexStr = JSON.stringify({[lang]: searchIndex[lang]});
+        fs.writeFileSync(`./static/data/${lang}.txt`, [langDataStr, langDataIndexStr].join(dataDelimiter));
     });
-    const searchIndexStr = JSON.stringify(searchIndex);
-    fs.writeFileSync('./static/data.txt', [wordListStr, searchIndexStr, translateStatisticStr].join(dataDelimiter));
 });

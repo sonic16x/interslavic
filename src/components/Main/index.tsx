@@ -11,11 +11,19 @@ import { Router } from 'components/Router';
 
 import { fetchDictionary } from 'services/fetchDictionary';
 import './index.scss';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
 export const Main: React.FC =
     () => {
         const dispatch = useDispatch();
-        React.useEffect(() => fetchDictionary(dispatch));
+        const dictionaryLanguages = useDictionaryLanguages();
+        React.useEffect( () => {
+                async function fetchAll() {
+                        await fetchDictionary(dispatch, dictionaryLanguages);
+                }
+
+                fetchAll();
+        }, []);
 
         return (
             <>

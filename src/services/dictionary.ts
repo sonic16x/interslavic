@@ -46,7 +46,7 @@ export interface ITranslateParams {
 
 export const dataDelimiter = '<>';
 
-export const validFields = [
+export const initialFields = [
     'id',
     'isv',
     'addition',
@@ -55,7 +55,15 @@ export const validFields = [
     'en',
     // 'sameInLanguages',
     // 'genesis',
+];
+
+export const basicFields = [
+    ...initialFields,
     ...langs,
+];
+
+export const validFields = [
+    ...basicFields,
     ...addLangs,
 ];
 
@@ -173,7 +181,7 @@ class DictionaryClass {
     ): number {
         let startInitTime = 0;
 
-        if (typeof performance !== 'undefined') {
+        if (typeof performance !== 'undefined' && typeof window !== 'undefined') {
             startInitTime = window.performance.now();
         }
 
@@ -184,7 +192,7 @@ class DictionaryClass {
             'en',
             ...langs,
             ...addLangs,
-        ];
+        ].filter((lang) => this.header.includes(lang));
 
         this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
         this.words = wordList.slice(1);

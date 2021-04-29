@@ -5,6 +5,7 @@ import {
     changeIsvSearchByWordForms,
     changeCardViewAction,
     changeOrderOfCases,
+    changeDictionaryLangAction,
 } from 'actions';
 import { Selector } from 'components/Selector';
 import * as React from 'react';
@@ -19,6 +20,9 @@ import { useResults } from 'hooks/useResults';
 import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
 import { useShortCardView } from 'hooks/useShortCardView';
 import { useOrderOfCases } from 'hooks/useOrderOfCases';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
+import { langs, addLangs } from 'consts';
+import { useState } from 'react';
 
 const interfaceLanguageList = [
     {
@@ -100,6 +104,8 @@ export const Settings: React.FC =
         const isShortCardView = useShortCardView();
         const isvSearchByWordForms = useIsvSearchByWordForms();
         const orderOfCases = useOrderOfCases();
+        const dictionaryLanguages = useDictionaryLanguages();
+        const [needReload, setNeedReload] = useState(false);
         useResults();
 
         return (
@@ -221,6 +227,39 @@ export const Settings: React.FC =
                     value={orderOfCases.join(',')}
                     onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases.split(',')))}
                 />
+                <hr />
+                <h6>{t('dictionaryLanguages')}</h6>
+                {langs.map((lang, i) => (
+                    <Checkbox
+                        key={i}
+                        title={t(`${lang}Lang`)}
+                        checked={true}
+                        disabled={true}
+                        onChange={() => false}
+                    />
+                ))}
+                <hr />
+                {addLangs.map((lang, i) => (
+                    <Checkbox
+                        key={i}
+                        title={t(`${lang}Lang`)}
+                        checked={dictionaryLanguages.includes(lang)}
+                        onChange={() => {
+                            dispatch(changeDictionaryLangAction(lang));
+                            setNeedReload(true);
+                        }}
+                    />
+                ))}
+                <hr/>
+                {needReload && (
+                    <a
+                        className={'settings__reload'}
+                        href={'/'}
+                        type={'button'}
+                    >
+                        RELOAD PLEASE
+                    </a>
+                )}
             </div>
         );
     };

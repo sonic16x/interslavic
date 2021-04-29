@@ -6,15 +6,16 @@ interface ICheckboxProps {
     className?: string;
     title: string;
     checked: boolean;
+    disabled?: boolean;
     onChange: () => void;
 }
 
 export const Checkbox: React.FC<ICheckboxProps> =
-    ({className, title, checked, onChange}: ICheckboxProps) => {
+    ({className, title, checked, onChange, disabled}: ICheckboxProps) => {
         const id = `id_${title.toLowerCase()}`;
 
         return (
-            <span className={classNames('checkbox', className)}>
+            <span className={classNames('checkbox', className, {disabled})}>
                 <input
                     onChange={() => onChange()}
                     type={'checkbox'}

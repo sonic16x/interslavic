@@ -11,6 +11,7 @@ import './index.scss';
 import { Dictionary } from 'services/dictionary';
 import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
 import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
+import { langs } from 'consts';
 
 /* tslint:disable */
 declare global {
@@ -52,6 +53,7 @@ export const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     posFilter: '',
+    dictionaryLanguages: langs,
     flavorisationType: '3',
     alphabetType: 'latin',
     page: 'dictionary',
