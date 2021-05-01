@@ -82,6 +82,14 @@ export function declensionAdjective(adj: string, postfix: string): any {
 
 function establish_root(adj) {
     let result = '';
+    if (adj.indexOf(' ') !== -1) {
+        console.log(adj);
+        adj = adj.split(" ").filter(w => {
+            let ending = w.slice(w.length-2, w.length);
+            return (ending == "ny") || (ending == "ky");
+        })[0]
+        console.log(adj);
+    }
     if ((adj == 'naš') || (adj == 'vaš')) {
         result = adj + '|^';
     } else if (adj == 'rad') {

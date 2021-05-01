@@ -63,7 +63,6 @@ function getWordMetadata(itemRaw) {
         return arr.join(', ');
 }
 
-
 function getSingleWordParadigm(word, add, details) {
         let wordData;
 
@@ -119,10 +118,18 @@ function getSingleWordParadigm(word, add, details) {
         return wordData;
 }
 
-
 function getWordParadigm(rawItem) {
-    const [ wordId, word, add, details ] = rawItem;
+    // TODO: remove this when the issue is fixed
+    const [ wordId, word, add, details2 ] = rawItem;
+    let details = details2;
     const splitted = word.split(',');
+    // HOTFIX TIME!!
+    if (wordId === '36649') {
+        details = 'f.';
+    }
+    if (wordId === '36454') {
+        details = 'adj.';
+    }
 
     if (details.indexOf('m./f.') !== -1 ) {
         if (splitted.length > 1) {
@@ -130,16 +137,15 @@ function getWordParadigm(rawItem) {
         } else {
             return [
                 getSingleWordParadigm(word.trim(), add, details.replace('m./f.', 'm.')),
-                getSingleWordParadigm(word.trim(), add, details.replace('m./f.', 'f.'))
+                getSingleWordParadigm(word.trim(), add, details.replace('m./f.', 'f.')),
             ];
-        };
-    };
+        }
+    }
 
     return splitted.map((word, i) => {
         return getSingleWordParadigm(word.trim(), add, details);
     });
-};
-
+}
 
 request(dictionaryUrl, (err, data) => {
     const wordList = data.body
