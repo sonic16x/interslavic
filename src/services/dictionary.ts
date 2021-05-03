@@ -173,7 +173,7 @@ class DictionaryClass {
     ): number {
         let startInitTime = 0;
 
-        if (typeof performance !== 'undefined') {
+        if (typeof performance !== 'undefined' && typeof window !== 'undefined') {
             startInitTime = window.performance.now();
         }
 
@@ -219,7 +219,7 @@ class DictionaryClass {
 
         let initTime = 0;
 
-        if (typeof performance !== 'undefined') {
+        if (typeof performance !== 'undefined' && typeof window !== 'undefined') {
             initTime = Math.round(performance.now() - startInitTime);
         }
 

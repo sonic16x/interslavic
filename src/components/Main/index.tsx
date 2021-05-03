@@ -19,7 +19,7 @@ export const Main: React.FC =
 
         return (
             <>
-                <Banner/>
+                {/*<Banner/>*/}
                 <Header/>
                 <Router/>
                 <GDPR/>
