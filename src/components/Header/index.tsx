@@ -50,7 +50,8 @@ export const Header: React.FC =
                       key={value}
                       name={name}
                       value={value}
-                      hasBadge={value === 'about' && shouldShowAboutBadge}
+                      // hasBadge={value === 'about' && shouldShowAboutBadge}
+                      hasBadge={false}
                       active={page === value}
                       onClick={collapseMenu}
                     />

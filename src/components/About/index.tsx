@@ -37,18 +37,18 @@ export const About: React.FC =
                     <div className={'about-page__common'}>
                         <p>{t('aboutInterslavic')}</p>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
-                        <hr/>
-                        <div className={classNames('highlight', shouldHighlightAboutSection && 'on')}>
-                          <p className={'new'}>
-                            {boldify(t('needsYourHelp'))}
-                          </p>
-                          <p>
-                            {t('fillSurvey')}&nbsp;
-                            <a target={'_blank'} className={'about-page__looping-slavs'} href={surveyUrl}>
-                              <span>📝&nbsp;Medžuslovjansky&nbsp;Spis &mdash;&nbsp;Меджусловјанскы&nbsp;Спис</span>
-                            </a>
-                          </p>
-                        </div>
+                        {/*<hr/>*/}
+                        {/*<div className={classNames('highlight', shouldHighlightAboutSection && 'on')}>*/}
+                        {/*  <p className={'new'}>*/}
+                        {/*    {boldify(t('needsYourHelp'))}*/}
+                        {/*  </p>*/}
+                        {/*  <p>*/}
+                        {/*    {t('fillSurvey')}&nbsp;*/}
+                        {/*    <a target={'_blank'} className={'about-page__looping-slavs'} href={surveyUrl}>*/}
+                        {/*      <span>📝&nbsp;Medžuslovjansky&nbsp;Spis &mdash;&nbsp;Меджусловјанскы&nbsp;Спис</span>*/}
+                        {/*    </a>*/}
+                        {/*  </p>*/}
+                        {/*</div>*/}
                         <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
