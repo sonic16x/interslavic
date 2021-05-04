@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useCallback, useEffect } from 'react';
 import './index.scss';
 import { MODAL_DIALOG_TYPES } from 'reducers';
 import { DetailModal } from 'components/DetailModal';
@@ -19,21 +19,21 @@ function getModalDialog(type: MODAL_DIALOG_TYPES) {
     }
 }
 
-export const ModalDialog: React.FC =
+export const ModalDialog =
     () => {
         const { type, show } = useModalDialog();
         const content = getModalDialog(type);
         const dispatch = useDispatch();
-        const onKeyPress = React.useCallback(({code}) => {
+        const onKeyPress = useCallback(({code}) => {
             if (code === 'Escape') {
                 dispatch(hideModalDialog());
             }
         }, [dispatch]);
-        const onBackdropClick = React.useCallback(() => {
+        const onBackdropClick = useCallback(() => {
             dispatch(hideModalDialog());
         }, [dispatch]);
 
-        React.useEffect(() => {
+        useEffect(() => {
             window.addEventListener('keyup', onKeyPress);
 
             return () => {

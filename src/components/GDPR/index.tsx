@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { t } from 'translations';
 import classNames from 'classnames';
 import './index.scss';
 
-export const GDPR: React.FC =
+export const GDPR =
     () => {
-        const [visible, setVisible] = React.useState(localStorage.getItem('analyticsAlert') !== 'false');
+        const [visible, setVisible] = useState(localStorage.getItem('analyticsAlert') !== 'false');
         const yandexMetrikaLink = 'https://yandex.com/legal/metrica_agreement/';
         const googleAnalyticsLink = 'https://marketingplatform.google.com/about/analytics/terms/us/';
 

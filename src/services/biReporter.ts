@@ -61,14 +61,6 @@ export class BiReporter {
         this._sendEvent('performance', 'performance search', undefined, time);
     }
 
-    public clickBanner(name: string) {
-        this._sendEvent('banner', 'click banner', name);
-    }
-
-    public dismissBanner(name: string) {
-        this._sendEvent('banner', 'dismiss banner', name);
-    }
-
     public cardInteraction(action: string, details: ICardAnalytics) {
         this._setCardDimensions(details);
         this._sendEvent('card', action, details.isv);

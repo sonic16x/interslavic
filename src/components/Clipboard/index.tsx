@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { setNotificationAction } from 'actions';
 import { t } from 'translations';
@@ -16,10 +16,10 @@ interface IClipboardProps {
     lang?: string;
 }
 
-export const Clipboard: React.FC<IClipboardProps> =
+export const Clipboard =
     ({str, className, index, type, item, lang}: IClipboardProps) => {
         const dispatch = useDispatch();
-        const onClick = React.useCallback(() => {
+        const onClick = useCallback(() => {
             navigator.clipboard.writeText(str).then(() => {
                 const notificationText = t('clipboardCopyNotification', {str});
                 dispatch(setNotificationAction(notificationText));

@@ -1,6 +1,6 @@
 import { hideModalDialog } from 'actions';
 import Table from 'components/Table';
-import * as React from 'react';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { t } from 'translations';
 import './index.scss';
@@ -30,7 +30,7 @@ export const TranslationsModal: React.FC =
 
         const item = results[modalDialog.index];
 
-        const onClick = React.useCallback(() => {
+        const onClick = useCallback(() => {
             dispatch(hideModalDialog());
         }, [dispatch]);
 

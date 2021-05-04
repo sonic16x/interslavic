@@ -1,5 +1,5 @@
 import { searchTypeAction } from 'actions';
-import * as React from 'react';
+import { useCallback } from 'react';
 import { t } from 'translations';
 import { LineSelector } from '../LineSelector';
 import './index.scss';
@@ -25,11 +25,11 @@ const searchTypes = [
     },
 ];
 
-export const SearchTypeSelector: React.FC =
+export const SearchTypeSelector =
     () => {
         const dispatch = useDispatch();
         const searchType = useSearchType();
-        const onSelect = React.useCallback((searchType) => {
+        const onSelect = useCallback((searchType) => {
             dispatch(searchTypeAction(searchType));
         }, [dispatch]);
         const options = searchTypes.map((item) => ({

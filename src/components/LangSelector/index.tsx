@@ -1,5 +1,5 @@
 import { langAction } from 'actions';
-import * as React from 'react';
+
 import classNames from 'classnames';
 import { t } from 'translations';
 import { Selector } from 'components/Selector';

@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 import { setPageAction } from 'actions';
@@ -9,16 +8,14 @@ import { useDispatch } from 'react-redux';
 import { usePage } from 'hooks/usePage';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import LogoIcon from './images/logo-icon.svg';
-import { useSurveyBanner } from 'hooks/useSurveyBanner';
 
-export const Header: React.FC =
+export const Header =
     () => {
         const dispatch = useDispatch();
         const page = usePage();
         useInterfaceLang();
-        const [menuIsVisible, setMenuIsVisible] = React.useState(false);
+        const [menuIsVisible, setMenuIsVisible] = useState(false);
         const collapseMenu = useCallback(() => setMenuIsVisible(false), [setMenuIsVisible]);
-        const { shouldShowAboutBadge } = useSurveyBanner();
 
         return (
             <header className={classNames('header', {active: menuIsVisible})}>
@@ -38,7 +35,7 @@ export const Header: React.FC =
                 </h1>
                 <button
                     type={'button'}
-                    className={classNames('header__show-menu-button', menuIsVisible && 'expanded', shouldShowAboutBadge && 'hasBadge')}
+                    className={classNames('header__show-menu-button', menuIsVisible && 'expanded')}
                     aria-label={'Menu button'}
                     onClick={() => setMenuIsVisible(!menuIsVisible)}
                 >

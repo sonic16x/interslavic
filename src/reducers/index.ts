@@ -54,10 +54,6 @@ export interface IMainState {
         [key: string]: boolean;
     };
     orderOfCases: string[];
-    surveyBanner: {
-        dismissed: boolean;
-        seenOnAboutPage: boolean;
-    };
 }
 
 export function mainReducer(state: IMainState, { type, data }) {
@@ -318,22 +314,6 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 orderOfCases: data,
-            };
-        case ActionTypes.DISMISS_SURVEY_BANNER:
-            return {
-                ...state,
-                surveyBanner: {
-                    dismissed: true,
-                    seenOnAboutPage: false,
-                },
-            };
-        case ActionTypes.MARK_ABOUT_SURVEY_AS_READ:
-            return {
-                ...state,
-                surveyBanner: {
-                    ...state.surveyBanner,
-                    seenOnAboutPage: true,
-                },
             };
         default:
             return state;
