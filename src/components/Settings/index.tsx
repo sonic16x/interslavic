@@ -9,7 +9,7 @@ import {
     langAction,
 } from 'actions';
 import { Selector } from 'components/Selector';
-import * as React from 'react';
+
 import { t } from 'translations';
 import { Checkbox } from '../Checkbox';
 import './index.scss';

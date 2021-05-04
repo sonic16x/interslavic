@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { t } from 'translations';
 import './index.scss';
@@ -98,7 +98,7 @@ function renderOriginal(item, alphabets, index) {
     );
 }
 
-export const ResultsCard: React.FC<IResultsCardProps> =
+export const ResultsCard =
     ({item, index}: IResultsCardProps) => {
         const alphabets = useAlphabets();
         const lang = useLang();
@@ -113,7 +113,7 @@ export const ResultsCard: React.FC<IResultsCardProps> =
             index,
         };
 
-        const onShown = React.useCallback((entry) => {
+        const onShown = useCallback((entry) => {
             biReporter.showCard(cardBiInfo);
         }, [id, index]);
 
@@ -122,24 +122,24 @@ export const ResultsCard: React.FC<IResultsCardProps> =
             onShown,
         });
 
-        const reportClick = React.useCallback(() => {
+        const reportClick = useCallback(() => {
             biReporter.cardInteraction('click card', cardBiInfo);
         }, [id, index]);
-        const showTranslations = React.useCallback(() => {
+        const showTranslations = useCallback(() => {
             biReporter.cardInteraction('show forms', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION,
                 index,
             }));
         }, [index]);
-        const showDetail = React.useCallback(() => {
+        const showDetail = useCallback(() => {
             biReporter.cardInteraction('show translations', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
                 index,
             }));
         }, [index]);
-        const setFavorite = React.useCallback(() => {
+        const setFavorite = useCallback(() => {
             dispatch(setFavoriteAction(id));
         }, [id]);
         const short = useShortCardView();

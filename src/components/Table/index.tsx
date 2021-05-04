@@ -1,5 +1,6 @@
+import { Component } from 'react';
 import { parseStr } from 'components/Text';
-import * as React from 'react';
+
 import './index.scss';
 import { Clipboard } from 'components/Clipboard';
 
@@ -7,7 +8,7 @@ interface ITableProps {
     data: string[][];
 }
 
-export default class extends React.Component<ITableProps> {
+export default class extends Component<ITableProps> {
     public render() {
         return (
             <table className={'table'}>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useCallback } from 'react';
 import './index.scss';
 import { fromTextAction } from 'actions';
 import { t } from 'translations';
@@ -7,17 +7,17 @@ import { useDispatch } from 'react-redux';
 import { useLang } from 'hooks/useLang';
 import { useFromText } from 'hooks/useFromText';
 
-export const InputText: React.FC =
+export const InputText =
     () => {
         const dispatch = useDispatch();
         const lang = useLang();
         const fromText = useFromText();
         const spellCheck = lang.from !== 'isv';
         const searchLanguage = toBCP47(lang.from);
-        const onChange = React.useCallback((e) => {
+        const onChange = useCallback((e) => {
             dispatch(fromTextAction(e.target.value));
         }, [dispatch]);
-        const onClick = React.useCallback(() => {
+        const onClick = useCallback(() => {
             dispatch(fromTextAction(''));
         }, [dispatch]);
 

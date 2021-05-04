@@ -8,13 +8,11 @@ const cacheUrls = [
     'data/translateStatistic.json',
     ...addLangs.map((lang) => `data/${lang}.txt`),
     'manifest.json',
-    `grammarComponent.${HASH_ID}.js`,
-    `grammarComponent~index.${HASH_ID}.js`,
-    `index.${HASH_ID}.js`,
-    `sw.${HASH_ID}.js`,
-    `styles/grammarComponent~index.${HASH_ID}.css`,
-    `styles/index.${HASH_ID}.css`,
-    // `vendors~index.${HASH_ID}.js`,
+    'grammarComponent.js',
+    'index.js',
+    'sw.js',
+    'styles/grammarComponent.css',
+    'styles/index.css',
 ];
 
 self.addEventListener('install', (event: any) => {

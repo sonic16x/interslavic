@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { t } from 'translations';
 import './index.scss';
@@ -8,7 +7,7 @@ interface IResultsEmptyProps {
     showReset?: boolean;
 }
 
-export const ResultsEmpty: React.FC<IResultsEmptyProps> =
+export const ResultsEmpty =
     ({showReset}: IResultsEmptyProps) => {
         const dispatch = useDispatch();
 

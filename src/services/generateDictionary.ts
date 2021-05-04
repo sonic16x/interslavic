@@ -1,6 +1,6 @@
 import { addLangs, dictionaryUrl, dictionaryUrlAdd, langs } from 'consts';
 import * as fs from 'fs';
-import request from 'request-promise';
+import fetch from 'node-fetch';
 import { dataDelimiter, Dictionary, validFields, initialFields } from 'services/dictionary';
 import { transposeMatrix } from 'utils/transposeMatrix';
 
@@ -9,8 +9,8 @@ const getId = (line) => line[0];
 const getColumnName = (column) => column[0];
 
 Promise.all([
-    request(dictionaryUrl),
-    request(dictionaryUrlAdd),
+    fetch(dictionaryUrl).then((res) => res.text()),
+    fetch(dictionaryUrlAdd).then((res) => res.text()),
 ]).then((results: string[]) => {
     const existingFields = new Set();
     const allColumns = [];

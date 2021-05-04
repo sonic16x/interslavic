@@ -22,8 +22,6 @@ export enum ActionTypes {
     SET_NOTIFICATION = 'SET_NOTIFICATION',
     CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
-    DISMISS_SURVEY_BANNER = 'DISMISS_SURVEY_BANNER',
-    MARK_ABOUT_SURVEY_AS_READ = 'MARK_ABOUT_SURVEY_AS_READ',
     DICTIONARY_LANGUAGES = 'DICTIONARY_LANGUAGES',
 }
 
@@ -168,12 +166,6 @@ export function changeOrderOfCases(data) {
     return {
         type: ActionTypes.CHANGE_ORDER_OF_CASES,
         data,
-    };
-}
-
-export function dismissSurveyBanner() {
-    return {
-        type: ActionTypes.DISMISS_SURVEY_BANNER,
     };
 }
 

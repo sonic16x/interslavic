@@ -2,7 +2,7 @@ import { hideModalDialog, setAlphabetTypeAction } from 'actions';
 import { LineSelector } from 'components/LineSelector';
 import Table from 'components/Table';
 import Text from 'components/Text';
-import * as React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { t } from 'translations';
 import { Dictionary } from 'services/dictionary';
@@ -40,7 +40,7 @@ interface IDetailModalInternal {
     orderOfCases: string[];
 }
 
-class DetailModalInternal extends React.Component<IDetailModalInternal> {
+class DetailModalInternal extends Component<IDetailModalInternal> {
     public render() {
         if (!this.props.item) {
             return null;

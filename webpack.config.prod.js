@@ -1,25 +1,15 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const baseUrl = process.env.BASE_URL || '/';
 const isDemo = process.env.DEMO !== undefined;
 const outputPath = path.resolve(__dirname, `./dist${baseUrl}`);
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
-const bundleId = 'prod';
-
-function customHashFunction() {
-    return {
-        digest: () => bundleId,
-        update: () => {
-        },
-    }
-}
 
 module.exports = {
     mode: 'production',
@@ -31,17 +21,16 @@ module.exports = {
     output: {
         path: outputPath,
         publicPath: './',
-        filename: `[name].[hash].js`,
-        hashFunction: customHashFunction
+        filename: `[name].js`,
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [nodeModulesPath, srcPath]
     },
     optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
+        minimize: true,
+        emitOnErrors: true,
+        splitChunks: false,
     },
     module: {
         rules: [
@@ -52,7 +41,7 @@ module.exports = {
                 {
                   loader: 'file-loader',
                   options: {
-                    name: '[name].[hash].[ext]',
+                    name: '[name].[contenthash].[ext]',
                     publicPath: `${baseUrl}static`,
                     outputPath: 'static',
                     esModule: false,
@@ -66,27 +55,20 @@ module.exports = {
                 use: 'ts-loader?configFile=tsconfig.json'
             },
             {
-                test: /\.s?css$/,
-                include: [
-                    srcPath,
-                ],
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: true,
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                        },
-                        {
-                            loader: 'sass-loader',
-                        }
-                    ]
-                })
+                test: /\.(css|sass|scss)$/,
+                include: srcPath,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'postcss-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
+                    }
+                ]
             },
             {
                 test: /\.svg$/,
@@ -115,26 +97,19 @@ module.exports = {
                 BASE_URL: baseUrl,
             },
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
             SW: !isDemo,
-            HASH_ID: JSON.stringify(bundleId),
             BASE_URL: JSON.stringify(baseUrl),
             VERSION: JSON.stringify(require('./package.json').version),
         }),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new CopyPlugin([{
-            from: 'static',
-        }]),
-        new ExtractTextPlugin('styles/[name].[hash].css'),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /styles/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorPluginOptions: {
-                preset: ['default', {discardComments: {removeAll: true}}],
-            },
-            canPrint: true
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'static', to: outputPath },
+            ],
+        }),
+            new MiniCssExtractPlugin({
+            filename: 'styles/[name].css',
         }),
     ]
 };

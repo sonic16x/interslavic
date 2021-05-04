@@ -1,9 +1,7 @@
-import { surveyUrl, worksheetUrl } from 'consts';
-import * as React from 'react';
-import classNames from 'classnames';
+import { worksheetUrl } from 'consts';
+
 import { t } from 'translations';
 import './index.scss';
-import { useSurveyBanner } from 'hooks/useSurveyBanner';
 
 function boldify(s: string): React.ReactNode {
     const fragments = s.split('**');
@@ -23,13 +21,6 @@ export const About: React.FC =
             version += `-${trimmedBaseUrl}`;
         }
 
-        const { shouldHighlightAboutSection, markAboutSectionAsRead } = useSurveyBanner();
-        React.useEffect(() => {
-            if (shouldHighlightAboutSection) {
-                markAboutSectionAsRead();
-            }
-        });
-
         return (
             <div className={'about-page'}>
                 <div className={'about-page__container'}>
@@ -37,18 +28,6 @@ export const About: React.FC =
                     <div className={'about-page__common'}>
                         <p>{t('aboutInterslavic')}</p>
                         {t('aboutUsingFrom')} <a target={'_blank'} href={source}>{source}</a>.
-                        {/*<hr/>*/}
-                        {/*<div className={classNames('highlight', shouldHighlightAboutSection && 'on')}>*/}
-                        {/*  <p className={'new'}>*/}
-                        {/*    {boldify(t('needsYourHelp'))}*/}
-                        {/*  </p>*/}
-                        {/*  <p>*/}
-                        {/*    {t('fillSurvey')}&nbsp;*/}
-                        {/*    <a target={'_blank'} className={'about-page__looping-slavs'} href={surveyUrl}>*/}
-                        {/*      <span>📝&nbsp;Medžuslovjansky&nbsp;Spis &mdash;&nbsp;Меджусловјанскы&nbsp;Спис</span>*/}
-                        {/*    </a>*/}
-                        {/*  </p>*/}
-                        {/*</div>*/}
                         <hr/>
                         <p>{t('aboutJoinText')}</p>
                         <a target={'_blank'} href={worksheetUrl}>{t('aboutTranslationsTable')}</a>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IMainState, mainReducer } from 'reducers';
@@ -15,13 +15,11 @@ import { langs } from 'consts';
 
 /* tslint:disable */
 declare global {
-    const HASH_ID: string;
     const VERSION: string;
     const BASE_URL: string;
     const SW: boolean;
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
-        INDEX: any;
     }
 }
 
@@ -29,7 +27,7 @@ setInitialPage();
 
 if (SW) {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(`sw.${HASH_ID}.js`)
+        navigator.serviceWorker.register(`sw.js`)
             .then((registration) => {
                 console.log('Registration successful, scope is:', registration.scope);
             })
@@ -73,10 +71,6 @@ export const defaultState: IMainState = {
     },
     favoriteList: {},
     orderOfCases: ['nom','acc','gen','loc','dat','ins','voc'],
-    surveyBanner: {
-        dismissed: false,
-        seenOnAboutPage: false,
-    },
 };
 
 function reduxDevTools() {

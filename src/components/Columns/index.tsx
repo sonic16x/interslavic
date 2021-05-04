@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Component, createRef } from 'react';
 import './index.scss';
 
 function splitUp(arr, n) {
@@ -32,11 +32,11 @@ interface IColumnsProps {
     children: any;
 }
 
-export default class extends React.Component<IColumnsProps> {
+export default class extends Component<IColumnsProps> {
     private containerRef;
     constructor(props) {
         super(props);
-        this.containerRef = React.createRef();
+        this.containerRef = createRef();
     }
     public render() {
         const columns = this.getColumns();

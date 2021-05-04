@@ -7,27 +7,6 @@
     padding: 5px 0;
   }
 
-  .new::before {
-    content: 'NEW';
-    background-color: var(--invalid-color);
-    color: #fff;
-    border-radius: 3px;
-    font-size: 10px;
-    line-height: 1;
-    vertical-align: super;
-    padding: 2px 3px;
-    margin: 0 1ch 0 0;
-  }
-
-  .highlight {
-    background-color: rgba(201, 216, 255, 0);
-    transition: background-color 1s ease-in;
-
-    &.on {
-      background-color: rgba(201, 216, 255, 1);
-    }
-  }
-
   a {
     display: block;
   }
@@ -56,53 +35,4 @@
     font-size: 16px;
     margin-bottom: 45px;
   }
-
-  &__looping-slavs {
-    position: relative;
-    display: block !important;
-    padding: 115px 5% 0;
-    text-align: center;
-
-    & > span {
-      animation: glowing-link 1s linear infinite alternate;
-    }
-
-    &::before,
-    &::after {
-      position: absolute;
-      content: '';
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      pointer-events: none;
-    }
-
-    &::before {
-      background-image: url(../Banner/SurveyBanner/images/slavs.png);
-      background-repeat: repeat-x;
-      background-position: left 10px;
-      animation: looping-slavs 40s linear infinite;
-      z-index: -1;
-    }
-
-    &::after {
-      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 10%, rgba(0,0,0,0) 90%, rgba(255,255,255,1) 100%);
-    }
-  }
-}
-
-@keyframes fade-highlight {
-  from { background-color: rgba(201, 216, 255, 1); }
-  to { background-color: rgba(201, 216, 255, 0); }
-}
-
-@keyframes looping-slavs {
-  from { background-position-x: 0; }
-  to { background-position-x: 1018px; }
-}
-
-@keyframes glowing-link {
-  from { color: var(--primary-color); transform: scale(1); }
-  to { color: #ca3fca; transform: scale(1.05); }
 }
