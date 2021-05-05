@@ -37,12 +37,14 @@ export const TranslationsModal: React.FC =
         if (!item) {
             return null;
         }
+    
+        const addLangsFiltered = addLangs.filter((lang) => dictionaryLanguages.includes(lang));
 
         const allLangs = [
             'isv',
             'en',
             ...langs,
-            ...addLangs.filter((lang) => dictionaryLanguages.includes(lang)),
+            ...addLangsFiltered,
         ];
 
         const tableData = allLangs.reduce((arr, lang, i) => {
@@ -75,7 +77,7 @@ export const TranslationsModal: React.FC =
                     renderTranslate(translate),
                 ],
                 (
-                        lang === 'bg' ? (
+                        (lang === 'bg' && addLangsFiltered.length) ? (
                             [
                                 `@w=2;S`,
                             ]
@@ -83,17 +85,6 @@ export const TranslationsModal: React.FC =
                     ),
             ];
         }, []);
-
-        // console.log(tableData.length, translates);
-
-        // dictionaryLanguages.forEach((lang, i) => {
-        //     tableData.push(
-        //         [
-        //             `{${t(`${lang}Lang`)}}[B]@ts;b`,
-        //             renderTranslate(translates[tableData.length + i]),
-        //         ],
-        //     );
-        // });
 
         return (
             <>
