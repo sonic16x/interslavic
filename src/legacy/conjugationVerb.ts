@@ -172,8 +172,10 @@ function infinitive_stem(pref, inf, pts) {
             break;
         }
     }
+
     if (result == "") {
         result = 'ERROR-2';
+        return result;
     }
 
     if (result.slice(-1) === 's') {
@@ -340,7 +342,9 @@ function process_present_tense_stem_exceptions(pref, pts, is, result) {
 }
 
 function secondary_present_tense_stem(ps) {
-    return ps.replace(/g$/, 'ž').replace(/k$/, 'č')
+    return ps
+        .replace(/g$/, 'ž')
+        .replace(/k$/, 'č')
 }
 
 function l_participle(pref, pts, is) {
@@ -614,10 +618,8 @@ function build_prpp(pref, ps, psi) {
     if (ps == 'jes') {
         result = '—';
     }
-    else {
-        if (ps in irregular_stems) {
-            ps = ps + 'do';
-        }
+    else if (ps in irregular_stems) {
+        ps = ps + 'do';
     }
 
     const i = (ps.length - 1);
