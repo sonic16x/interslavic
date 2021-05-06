@@ -222,50 +222,40 @@ function derive_present_tense_stem(infinitive_stem_string) {
     // ...ĵ in cases where most Slavic languages have contraction -aje- > -a-
     let result = infinitive_stem_string;
 
-    if (((result.slice(-3) === 'ova') || (result.slice(-3) === 'eva')) && (result != 'hova')) {
-        result = (result.slice(0, -3) + 'uj');
+    if( ['ova','eva'].includes(result.slice(-3)) && result !== 'hova' ) {
+        result = result.slice(0, -3) + 'uj';
     }
-    else if (((result.slice(-2) === 'nu') || (result.slice(-2) === 'nų')) && (result.length > 3)) {
-        result = (result.slice(0, -1));
+    else if( result.length > 3 && ['nu', 'nų'].includes(result.slice(-2))) {
+        result = result.slice(0, -1);
     }
     else if (result.slice(-1) === 'ę') {
         if (result.slice(-2) === 'ję') {
-            if (result.slice(-3) === 'bję' || result.slice(-3) === 'dję'
-                || result.slice(-3) === 'sję' || result.slice(-3) === 'zję') {
-                result = (result.slice(0, -2) + 'ȯjm');
-            }
-            else {
-                result = (result.slice(0, -1) + 'm');
+            if(['bję', 'dję', 'sję', 'zję'].includes(result.slice(-3))) {
+                result = result.slice(0, -2) + 'ȯjm';
+            } else {
+                result = result.slice(0, -1) + 'm';
             }
         }
         else if (result === 'vzę') {
             result = 'vȯzm';
         }
         else {
-            result = (result.slice(0, -1) + 'n');
+            result = result.slice(0, -1) + 'n';
         }
     }
-    else if (result.slice(-1) == 'ų') {
-        result = (result.slice(0, -1) /*+ 'm'*/);
+    else if (result.slice(-1) === 'ų') {
+        result = result.slice(0, -1) /*+ 'm'*/;
     }
-    else if ((/*result.slice(-1) == 'i' ||*/ result.slice(-1) == 'y' ||
-        result.slice(-1) == 'o' || result.slice(-1) == 'u' ||
-        result.slice(-1) == 'ě' || result.slice(-1) == 'e') && result.length < 4) {
-        /*if (result == 'uči') {
-            result = 'uči';
-        }
-        else*/
-        if (result.charAt(0) == 'u') {
+    else if( result.length < 4 && ['y', 'o', 'u', 'e', 'ě'].includes(result.slice(-1))) {
+        if (result.charAt(0) === 'u') {
             result = result + 'ĵ';
-        }
-        else {
+        }  else {
             result = result + 'j';
         }
     }
-    else if (result.slice(-1) == 'a' || result.slice(-1) == 'e' || result.slice(-1) == 'ě') {
+    else if(['a', 'e', 'ě'].includes(result.slice(-1))) {
         result = result + 'ĵ';
     }
-
     return result;
 }
 
