@@ -12,6 +12,7 @@ module.exports = {
     entry: {
         index: './src/index',
         grammarComponent: './src/components/Grammar/index',
+        viewerComponent: './src/components/Viewer/index',
         sw: './src/sw',
     },
     output: {
@@ -75,7 +76,7 @@ module.exports = {
             template: path.join(srcPath, 'index.html.ejs'),
             filename: 'index.html',
             path: outputPath,
-            excludeChunks: ['sw', 'grammarComponent'],
+            excludeChunks: ['sw', 'grammarComponent', 'viewerComponent'],
             env: {
                 ANALYTICS: false,
                 BASE_URL: baseUrl,
@@ -84,6 +85,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
             SW: false,
+            CLIENT: true,
             BASE_URL: JSON.stringify(baseUrl),
             DATE: JSON.stringify(new Date().toISOString()),
             VERSION: JSON.stringify(require('./package.json').version),
@@ -95,6 +97,9 @@ module.exports = {
             ],
         }),
     ],
+    optimization: {
+        noEmitOnErrors: true,
+    },
     devServer: {
         stats: 'errors-only',
         contentBase: outputPath,

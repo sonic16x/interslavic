@@ -2,11 +2,12 @@ import { useCallback, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 import { setPageAction } from 'actions';
-import { pages } from 'routing';
+import { pages, defaultPages } from 'routing';
 import { t } from 'translations';
 import { useDispatch } from 'react-redux';
 import { usePage } from 'hooks/usePage';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
+import { useEnabledPages } from 'hooks/useEnabledPages';
 import LogoIcon from './images/logo-icon.svg';
 
 export const Header =
@@ -16,6 +17,7 @@ export const Header =
         useInterfaceLang();
         const [menuIsVisible, setMenuIsVisible] = useState(false);
         const collapseMenu = useCallback(() => setMenuIsVisible(false), [setMenuIsVisible]);
+        const enabledPages = useEnabledPages();
 
         return (
             <header className={classNames('header', {active: menuIsVisible})}>
@@ -42,7 +44,9 @@ export const Header =
                     <span className={classNames('lines', {active: menuIsVisible})}/>
                 </button>
                 <nav className={classNames('header__menu', {active: menuIsVisible})}>
-                  {pages.map((({name, value}, i) => (
+                  {pages
+                      .filter(({ value }) => defaultPages.includes(value) || enabledPages.includes(value))
+                      .map((({name, value}, i) => (
                     <MenuItem
                       key={value}
                       name={name}

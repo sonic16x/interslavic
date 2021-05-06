@@ -20,7 +20,7 @@ function renderTranslate(str: string): string {
     return `{✓}[g] ${str}@ts`;
 }
 
-export const TranslationsModal: React.FC =
+export const TranslationsModal =
     () => {
         const results = useResults();
         const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export const TranslationsModal: React.FC =
         if (!item) {
             return null;
         }
-    
+
         const addLangsFiltered = addLangs.filter((lang) => dictionaryLanguages.includes(lang));
 
         const allLangs = [

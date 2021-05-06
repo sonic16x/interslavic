@@ -23,6 +23,7 @@ export enum ActionTypes {
     CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
     DICTIONARY_LANGUAGES = 'DICTIONARY_LANGUAGES',
+    TOGGLE_PAGE = 'TOGGLE_PAGE',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -172,6 +173,13 @@ export function changeOrderOfCases(data) {
 export function changeDictionaryLangAction(data) {
     return {
         type: ActionTypes.DICTIONARY_LANGUAGES,
+        data,
+    };
+}
+
+export function togglePage(data) {
+    return {
+        type: ActionTypes.TOGGLE_PAGE,
         data,
     };
 }

@@ -1,6 +1,7 @@
 export const dictionaryUrl = 'https://docs.google.com/spreadsheets/u/0/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY/export?format=tsv';
 export const dictionaryUrlAdd = 'https://docs.google.com/spreadsheets/u/2/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY/export?format=tsv&id=1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY&gid=2005431854';
-export const worksheetUrl = 'https://docs.google.com/spreadsheets/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY';
+export const worksheetUrl = 'https://docs.google.com/spreadsheets/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY/edit#gid=1987833874';
+export const worksheetAddUrl = 'https://docs.google.com/spreadsheets/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY/edit#gid=2005431854';
 
 export const alphabetTypes = [
     {
@@ -47,3 +48,5 @@ export const addLangs = [
     'he',
     'da',
 ];
+
+export const tableColumnsLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');

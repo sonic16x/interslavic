@@ -60,6 +60,18 @@ export type PartOfSpeech =
     'numeral'
     ;
 
+export const partOfSpeechList: PartOfSpeech[] = [
+    'noun',
+    'adjective',
+    'adverb',
+    'conjunction',
+    'preposition',
+    'pronoun',
+    'interjection',
+    'verb',
+    'numeral',
+];
+
 export function getPartOfSpeech(details: string): PartOfSpeech {
     const arr = getArr(details);
     if (arr.includes('adj')) {
@@ -98,8 +110,14 @@ export function getPartOfSpeech(details: string): PartOfSpeech {
 }
 
 // Nouns
-
 export type Gender = 'masculine' | 'feminine' | 'neuter' | 'masculineOrFeminine';
+
+export const genderList: Gender[] = [
+    'masculine',
+    'feminine',
+    'neuter',
+    'masculineOrFeminine',
+];
 
 export function getGender(details: string): Gender {
     const arr = getArr(details);

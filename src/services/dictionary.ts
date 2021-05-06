@@ -52,10 +52,10 @@ export const initialFields = [
     'isv',
     'addition',
     'partOfSpeech',
-    // 'type',
+    'type',
     'en',
-    // 'sameInLanguages',
-    // 'genesis',
+    'sameInLanguages',
+    'genesis',
 ];
 
 export const basicFields = [
