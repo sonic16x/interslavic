@@ -13,7 +13,7 @@ function boldify(s: string): React.ReactNode {
 export const About: React.FC =
     () => {
         const email = 'cherebedov.sergey@gmail.com';
-        const github = 'https://github.com/scherebedov/interslavic';
+        const github = 'https://github.com/sonic16x/interslavic';
         const source = 'http://steen.free.fr/interslavic';
         let version = `v${VERSION}`;
         const trimmedBaseUrl = BASE_URL.replace('/', '');
@@ -37,7 +37,7 @@ export const About: React.FC =
                         <h6>{t('aboutDeveloper')}</h6>
                         <div className={'about-page__author'}>
                             {t('aboutAuthorSergeyCherebedov')}:
-                            <a target={'_blank'} href={'https://github.com/scherebedov'}>GitHub</a>
+                            <a target={'_blank'} href={'https://github.com/sonic16x'}>GitHub</a>
                             <a target={'_blank'} href={'https://www.linkedin.com/in/scherebedov/'}>LinkedIn</a>
                             <a target={'_blank'} href={'https://www.facebook.com/profile.php?id=100009366550621'}>Facebook</a>
                             <a target={'_blank'} href={`email:${email}`}>{email}</a>
