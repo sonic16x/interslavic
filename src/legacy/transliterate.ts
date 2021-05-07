@@ -619,12 +619,9 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/([dzrstln])ьji/g,"$1" + GL_IZHE + GL_I);
         iW = iW.replace (/([dzrstln])ьju/g,"$1" + GL_YERI + GL_YU);
         iW = iW.replace (/([dzrstln])ьjų/g,"$1" + GL_IOTATED_BIG_YUS);
-        iW = iW.replace (/([dzrstln])ьja/g,"$1" + GL_YERI + GL_TROKUTASTI_A);
+        iW = iW.replace (/([dzrstln])ьja/g, "$1" + GL_YERI + GL_TROKUTASTI_A);
         iW = iW.replace (/([dzrstln])ьjo/g,"$1" + GL_YO);
         iW = iW.replace (/([%aeiouyąęųåě])jo/g,"$1" + GL_IZHE + GL_ONU);
-
-        iW = iW.replace (/lj/g,GL_LJUDIJE + GL_YERI);
-        iW = iW.replace (/nj/g,GL_NASHI + GL_YERI);
 
         iW = iW.replace (/je/g,GL_IZHE + GL_YESTU);
         iW = iW.replace (/ję/g,GL_IOTATED_SMALL_YUS);
@@ -633,6 +630,9 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/jų/g,GL_IOTATED_BIG_YUS);
         iW = iW.replace (/ja/g,GL_TROKUTASTI_A);
         iW = iW.replace (/jo/g,GL_YO);
+
+        iW = iW.replace (/lj/g,GL_LJUDIJE + GL_YERI);
+        iW = iW.replace (/nj/g,GL_NASHI + GL_YERI);
         iW = iW.replace (/(šč|šć)/g,GL_SHTA);
         iW = iW.replace (/a/g,GL_CHRIVI);
         iW = iW.replace (/a/g,GL_AZU);
