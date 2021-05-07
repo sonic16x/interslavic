@@ -634,13 +634,12 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/lj/g,GL_LJUDIJE + GL_YERI);
         iW = iW.replace (/nj/g,GL_NASHI + GL_YERI);
         iW = iW.replace (/(šč|šć)/g,GL_SHTA);
-        iW = iW.replace (/a/g,GL_CHRIVI);
         iW = iW.replace (/a/g,GL_AZU);
         iW = iW.replace (/å/g,GL_OTU);
         iW = iW.replace (/b/g,GL_BUKY);
-        iW = iW.replace (/c/g,GL_CHRIVI);
+        iW = iW.replace (/c/g,GL_TSI);
         iW = iW.replace (/ć/g,GL_SHTA);
-        iW = iW.replace (/č/g,GL_IZHE);
+        iW = iW.replace (/č/g,GL_CHRIVI);
         iW = iW.replace (/d/g,GL_DOBRO);
         iW = iW.replace (/dž/g,GL_DOBRO + GL_ZHIVETE);
         iW = iW.replace (/đ/g,GL_DJERVI);
