@@ -114,7 +114,7 @@
     overflow-x: hidden;
 
     &__content {
-      position: absolute;
+      position: fixed;
       top: 70px;
       left: calc(50% - 515px);
       width: 235px;
