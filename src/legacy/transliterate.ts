@@ -657,7 +657,7 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/m/g,GL_LATINATE_MYSLITE);
         iW = iW.replace (/n/g,GL_NASHI);
         iW = iW.replace (/o/g,GL_ONU);
-        iW = iW.replace (/ȯ/g,GL_YO);
+        iW = iW.replace (/ȯ/g,GL_YERU);
         iW = iW.replace (/p/g,GL_POKOJI);
         iW = iW.replace (/r/g,GL_RITSI);
         iW = iW.replace (/s/g,GL_SLOVO);
