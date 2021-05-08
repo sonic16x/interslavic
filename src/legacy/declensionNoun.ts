@@ -170,9 +170,9 @@ function establishGender(noun: string, gender: string): string {
     if (lastChar === 'o' || lastChar === 'e') {
         return 'n1';
     }
-    if (beforeLastChar === 'u' && lastChar === 'm') {
+    /*if (beforeLastChar === 'u' && lastChar === 'm') {
         return 'n1';
-    }
+    }*/
     if (gender == 'm1') {
         return 'm1';
     }
