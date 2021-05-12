@@ -612,6 +612,11 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/ṙ/g,"r");
         iW = iW.replace (/ř/g,"ŕ");
         iW = iW.replace (/([čšžj])ŕ/g,"$1r");
+        //standard, slovianto
+        if (flav == "3" || flav == "4") {
+            iW = iW.replace (/ŕ/g,"r");
+        }
+        //southern
         if (flav == "J") {
             iW = iW.replace (/ŕ/g,"r");
             iW = iW.replace (/ȯ/g,"o");
