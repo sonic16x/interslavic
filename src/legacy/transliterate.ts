@@ -619,7 +619,7 @@ export function transliterateW (iW, type, flav, nms)
         } 
         iW = iW.replace (/ń/g,"nь");
         iW = iW.replace (/ľ/g,"lь");
-        iW = iW.replace (/ř/g,"rь");
+        iW = iW.replace (/ŕ/g,"rь");
         iW = iW.replace (/ť/g,"tь");
         iW = iW.replace (/ď/g,"dь");
         iW = iW.replace (/ś/g,"sь");
