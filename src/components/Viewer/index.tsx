@@ -45,7 +45,7 @@ const customSort = (field: string) => {
     } else if (field === 'isv') {
         return (a: string, b: string) => a.localeCompare(b, 'sk');
     } else if (langs.includes(field) || addLangs.includes(field)) {
-        return (a: string, b: string) => a.localeCompare(b, field);
+        return (a: string, b: string) => a.localeCompare(b, `${field}`);
     } else {
         return undefined;
     }
