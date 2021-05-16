@@ -5,11 +5,12 @@ import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-mod
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-balham.css';
 import './index.scss';
-import { initialFields } from 'services/dictionary';
+import { Dictionary, initialFields } from 'services/dictionary';
 import { useLoading } from 'hooks/useLoading';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { addLangs, langs } from 'consts';
 import { t } from 'translations';
+import { node } from 'webpack';
 import { HeaderComponent } from './HeaderComponent';
 import { POSFilterComponent } from './POSFilterComponent';
 import { Spinner } from 'components/Spinner';
@@ -38,8 +39,33 @@ const getFieldWidth = (field: string): number => {
     return 100;
 };
 
-const numberSort = (num1: number, num2: number) => {
-    return num1 - num2;
+const customSort = (field: string) => {
+    if (field === 'id') {
+        return (a: number, b: number) => a - b;
+    } else if (field === 'isv') {
+        return (a: string, b: string) => a.localeCompare(b, 'sk');
+    } else if (langs.includes(field) || addLangs.includes(field)) {
+        return (a: string, b: string) => a.localeCompare(b, `${field}`);
+    } else {
+        return undefined;
+    }
+};
+
+const customFilterParams = (field: string) => {
+    if (field === 'isv' || langs.includes(field) || addLangs.includes(field)) {
+        return {
+            textFormatter: (gridValue: string): string => {
+                return Dictionary.searchPrepare(`${field}`, gridValue);
+            },
+        };
+    } else if (field === 'id') {
+        return {
+            filterOptions: ['equals', 'notEqual', 'lessThan', 'lessThanOrEqual', 'greaterThan', 'greaterThanOrEqual', 'inRange'],
+            defaultOption: 'equals',
+        };
+    } else {
+        return undefined;
+    }
 };
 
 const prepareRowData = (displayFields, wordList) => {
@@ -60,13 +86,14 @@ const prepareColumnDefs = (displayFields) => {
     return displayFields
         .map((field) => (
             {
-                comparator: field === 'id' ? numberSort : undefined,
+                comparator: customSort(field),
                 headerName: field,
                 field,
                 resizable: true,
                 sortable: true,
                 suppressMovable: true,
-                filter: field === 'partOfSpeech' ? 'posFilter' : true,
+                filter: field === 'partOfSpeech' ? 'posFilter' : 'agTextColumnFilter',
+                filterParams: field === 'partOfSpeech' ? undefined : customFilterParams(field),
                 suppressMenu: true,
                 sort: field === 'isv' ? 'asc' : '',
                 pinned: initialFields.includes(field) ? 'left' : false,

@@ -537,14 +537,7 @@ class DictionaryClass {
     public setIsvSearchByWordForms(isvSearchByWordForms: boolean): void {
         this.isvSearchByWordForms = isvSearchByWordForms;
     }
-    private getSplittedField(from: string, item: string[]): string[] {
-        const key = this.getField(item, 'id');
-        return this.splittedMap[from].get(key);
-    }
-    private splitWords(text: string): string[] {
-        return text.includes(';') ? text.split(';') : text.split(',');
-    }
-    private inputPrepare(lang: string, text: string): string {
+    public inputPrepare(lang: string, text: string): string {
         const preparedText = this.searchPrepare(lang, text);
         if (lang === 'sr') {
             return srGajevicaToVukovica(preparedText);
@@ -552,7 +545,7 @@ class DictionaryClass {
             return preparedText;
         }
     }
-    private searchPrepare(lang: string, text: string): string {
+    public searchPrepare(lang: string, text: string): string {
         let lowerCaseText = text.toLowerCase()
             .replace(/ /g, '')
             .replace(/,/g, '');
@@ -595,6 +588,13 @@ class DictionaryClass {
             default:
                 return lowerCaseText;
         }
+    }
+    private getSplittedField(from: string, item: string[]): string[] {
+        const key = this.getField(item, 'id');
+        return this.splittedMap[from].get(key);
+    }
+    private splitWords(text: string): string[] {
+        return text.includes(';') ? text.split(';') : text.split(',');
     }
     private applyIsvSearchLetters(text: string, flavorisationType: string): string {
         text = this.searchPrepare('isv-src', text);
