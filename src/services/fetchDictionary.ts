@@ -1,5 +1,6 @@
 import { isLoadingAction, runSearch, loadingProgressAction } from 'actions';
-import { dataDelimiter, Dictionary } from 'services/dictionary';
+import { Dictionary } from 'services/dictionary';
+import { dataDelimiter } from 'consts';
 import { biReporter } from 'services/biReporter';
 import { addLangs } from 'consts';
 

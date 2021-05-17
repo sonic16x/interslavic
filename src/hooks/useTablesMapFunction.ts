@@ -1,22 +1,49 @@
-import { useState, useEffect, useCallback } from 'react';
-import { loadTablesMap } from 'utils/loadTablesMap';
-import { getCeilGoogleSheetsLink } from 'utils/getCeilGoogleSheetsLink';
+import { useState, useCallback } from 'react';
+import { IRangeMap } from 'utils/getAllDataFromResults';
+import { tablesData } from 'consts';
+import { getTablePublicUrl } from 'utils/getTablePublicUrl';
 
-export function useTablesMapFunction(): [boolean, (id: string, field: string) => string] {
-    const [tablesMap, setTablesMap] = useState(null);
+export function useTablesMapFunction(): {
+    initTablesMapFunction: (rangesMap: IRangeMap[]) => void,
+    getGoogleSheetsLink: (id: string, field: string) => string,
+} {
+    const [tablesMap, setTablesMap] = useState(true);
 
-    useEffect(() => {
-        loadTablesMap.then((data) => setTablesMap(data));
-    }, []);
-
-    const callback = useCallback(
-        (id, field) => getCeilGoogleSheetsLink(tablesMap, id, field),
+    const initTablesMapFunction = useCallback(
+        (rangesMap) => setTablesMap(rangesMap),
         [tablesMap],
         )
     ;
 
-    return [
-        !tablesMap,
-        callback,
-    ];
+    const getGoogleSheetsLink = useCallback(
+        (id, field) => {
+            let tableIndex;
+            let spreadsheetId;
+            let sheetId;
+            let rangeMap;
+
+            for (let i = 0; i < tablesData.length; i++) {
+                if (tablesData[i].fields.includes(field)) {
+                    tableIndex = i;
+                    spreadsheetId = tablesData[i].spreadsheetId;
+                    sheetId = tablesData[i].sheetId;
+                    rangeMap = tablesMap[i];
+
+                    break;
+                }
+            }
+
+            const publicUrl = getTablePublicUrl(spreadsheetId, sheetId);
+            const letter = rangeMap.header.get(field);
+            const index = rangeMap.columns.get(id);
+
+            return `${publicUrl}&range=${letter}${index}`;
+        },
+        [tablesMap],
+    );
+
+    return {
+        initTablesMapFunction,
+        getGoogleSheetsLink,
+    };
 }

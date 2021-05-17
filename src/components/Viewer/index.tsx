@@ -5,12 +5,11 @@ import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-mod
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-balham.css';
 import './index.scss';
-import { Dictionary, initialFields } from 'services/dictionary';
+import { Dictionary } from 'services/dictionary';
+import { initialFields, validFields } from 'consts';
 import { useLoading } from 'hooks/useLoading';
-import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { addLangs, langs } from 'consts';
 import { t } from 'translations';
-import { node } from 'webpack';
 import { HeaderComponent } from './HeaderComponent';
 import { POSFilterComponent } from './POSFilterComponent';
 import { Spinner } from 'components/Spinner';
@@ -112,21 +111,14 @@ let gridOptions: GridOptions;
 export const Viewer =
     () => {
         const dispatch = useDispatch();
-        const dictionaryLanguages = useDictionaryLanguages();
         const allDataRef = useRef<string[][]>();
         const [isLoadingAllData, setLoadingAllData] = useState(true);
-        const [isTablesMapLoading, getGoogleSheetsLink] = useTablesMapFunction();
+        const { initTablesMapFunction, getGoogleSheetsLink } = useTablesMapFunction();
         const containerRef = useRef<HTMLDivElement>();
         const [resultsCount, setResultsCount] = useState<number>();
         const [contextMenu, setContextMenu] = useState<{ x: number, y: number, value: string, href: string }>();
         const isLoading = useLoading();
-        const allLoaded = !isLoading && !isLoadingAllData && !isTablesMapLoading;
-
-        const displayFields = [
-            ...initialFields,
-            ...langs,
-            ...addLangs.filter((lang) => dictionaryLanguages.includes(lang)),
-        ];
+        const allLoaded = !isLoading && !isLoadingAllData;
 
         const onFilterChanged = useCallback(() => {
             setResultsCount(gridOptions.api.getDisplayedRowCount());
@@ -137,8 +129,9 @@ export const Viewer =
         };
 
         useEffect(() => {
-            loadTablesData.then(({ data }) => {
+            loadTablesData.then(({ data, rangesMap }) => {
                 allDataRef.current = data;
+                initTablesMapFunction(rangesMap);
                 setLoadingAllData(false);
             });
         }, [setLoadingAllData]);
@@ -196,8 +189,8 @@ export const Viewer =
                         agColumnHeader: HeaderComponent,
                         posFilter: POSFilterComponent,
                     },
-                    columnDefs: prepareColumnDefs(displayFields),
-                    rowData: prepareRowData(displayFields, allDataRef.current),
+                    columnDefs: prepareColumnDefs(validFields),
+                    rowData: prepareRowData(validFields, allDataRef.current),
                     onFilterChanged,
                     onCellClicked,
                     onBodyScroll,

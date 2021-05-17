@@ -1,7 +1,8 @@
-import { worksheetUrl } from 'consts';
+import { tablesData } from 'consts';
 
 import { t } from 'translations';
 import './index.scss';
+import { getTablePublicUrl } from 'utils/getTablePublicUrl';
 
 function boldify(s: string): React.ReactNode {
     const fragments = s.split('**');
@@ -12,6 +13,7 @@ function boldify(s: string): React.ReactNode {
 
 export const About: React.FC =
     () => {
+        const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/sonic16x/interslavic';
         const source = 'http://steen.free.fr/interslavic';

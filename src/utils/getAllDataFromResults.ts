@@ -1,18 +1,24 @@
-import { isMainTable } from 'utils/isMainTable';
-import { getId } from 'utils/getId';
 import { transposeMatrix } from 'utils/transposeMatrix';
-import { validFields } from 'services/dictionary';
+import { tableColumnsLetters, validFields } from 'consts';
 import { getColumnName } from 'utils/getColumnName';
+
+export interface IRangeMap {
+    header: Map<string, string>;
+    columns: Map<string, string>;
+}
 
 export interface IAllData {
     data: string[][];
     columns: string[][];
+    rangesMap: IRangeMap[];
 }
+
+const getLineId = (line) => line[0];
 
 export const getAllDataFromResults = (results: string[]): IAllData => {
     const existingFields = new Set();
-    const columns = [];
-    const existingIds = new Set();
+    const idMap = new Map<string, string[]>();
+    const rangesMap: IRangeMap[] = [];
 
     results.map((data, tableNumber) => {
         const wordList = data
@@ -21,37 +27,47 @@ export const getAllDataFromResults = (results: string[]): IAllData => {
             .map((l) => l.replace('\r', '').split('\t').map((e) => e.trim()))
         ;
 
-        if (!isMainTable(tableNumber)) {
-            wordList.forEach((line) => existingIds.add(getId(line)));
-        }
-
-        wordList.sort((a, b) => {
-            if (getId(a) === 'id' || getId(b) === 'id') {
-                return 1;
-            }
-
-            return parseInt(getId(a), 10) - parseInt(getId(b), 10);
+        rangesMap.push({
+            header: new Map(wordList[0].map((filed, i) => [filed, tableColumnsLetters[i]])),
+            columns: new Map(wordList.map((line, i) => [getLineId(line), (i + 1).toString()])),
         });
 
-        return wordList;
-    }).forEach((table) => {
-        const filteredTableByIds = table.filter((line) => existingIds.has(getId(line)));
+        wordList.forEach((line) => {
+            const lineId = getLineId(line);
 
-        transposeMatrix(filteredTableByIds)
-            .filter((column: string[]) => validFields.includes(column[0]))
-            .forEach((column: string[]) => {
-                if (validFields.includes(getColumnName(column)) && !existingFields.has(getColumnName(column))) {
-                    existingFields.add(getColumnName(column));
-                    columns.push(column);
-                }
-            })
-        ;
+            if (idMap.has(lineId)) {
+                const existingLine = idMap.get(lineId);
+
+                idMap.set(lineId, [...existingLine, ...line]);
+            } else {
+                idMap.set(lineId, line);
+            }
+        });
     });
+
+    const sortedWordList = Array
+        .from(idMap.values())
+        .sort((a, b) => parseInt(getLineId(a), 10) - parseInt(getLineId(b), 10))
+    ;
+
+    const columns = transposeMatrix(sortedWordList)
+        .filter((column: string[]) => {
+            const columnName = getColumnName(column);
+            const pass = validFields.includes(columnName) && !existingFields.has(columnName);
+
+            if (pass) {
+                existingFields.add(columnName);
+            }
+
+            return pass;
+        })
+    ;
 
     const data = transposeMatrix<string>(columns);
 
     return {
         data,
         columns,
+        rangesMap,
     };
 };

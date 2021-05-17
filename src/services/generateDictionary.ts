@@ -1,6 +1,7 @@
 import { addLangs, langs } from 'consts';
 import * as fs from 'fs';
-import { dataDelimiter, Dictionary, validFields, initialFields } from 'services/dictionary';
+import { Dictionary } from 'services/dictionary';
+import { dataDelimiter, validFields, initialFields } from 'consts';
 import { transposeMatrix } from 'utils/transposeMatrix';
 import { getColumnName } from 'utils/getColumnName';
 import { loadTablesData } from 'services/loadTablesData';

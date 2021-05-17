@@ -45,29 +45,6 @@ export interface ITranslateParams {
     flavorisationType: string;
 }
 
-export const dataDelimiter = '<>';
-
-export const initialFields = [
-    'id',
-    'isv',
-    'addition',
-    'partOfSpeech',
-    'type',
-    'en',
-    'sameInLanguages',
-    'genesis',
-];
-
-export const basicFields = [
-    ...initialFields,
-    ...langs,
-];
-
-export const validFields = [
-    ...basicFields,
-    ...addLangs,
-];
-
 const isvReplacebleLetters = [
     ['đ', 'dž'],
     ['ć', 'č'],
