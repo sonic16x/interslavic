@@ -4,7 +4,7 @@ import { t } from 'translations';
 import { Checkbox } from 'components/Checkbox';
 import { partOfSpeechList, genderList, Gender, getPartOfSpeech, getGender } from 'utils/wordDetails';
 
-import './POSFilterComponent.scss';
+import './ViewerPOSFilterComponent.scss';
 
 const allFilterList = [
     ...partOfSpeechList,
@@ -105,7 +105,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
     );
 };
 
-export class POSFilterComponent {
+export class ViewerPOSFilterComponent {
     private agParams: any;
     private mainElement: HTMLDivElement;
     private resetCallback: () => void;

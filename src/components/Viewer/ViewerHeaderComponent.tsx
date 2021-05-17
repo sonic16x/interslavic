@@ -93,7 +93,7 @@ const HeaderComponentReact = ({ agParams }: { agParams: any }) => {
     );
 };
 
-export class HeaderComponent {
+export class ViewerHeaderComponent {
     private agParams: any;
     private mainElement: HTMLDivElement;
 

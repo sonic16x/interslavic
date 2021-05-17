@@ -10,8 +10,8 @@ import { initialFields, validFields } from 'consts';
 import { useLoading } from 'hooks/useLoading';
 import { addLangs, langs } from 'consts';
 import { t } from 'translations';
-import { HeaderComponent } from './HeaderComponent';
-import { POSFilterComponent } from './POSFilterComponent';
+import { ViewerHeaderComponent } from './ViewerHeaderComponent';
+import { ViewerPOSFilterComponent } from './ViewerPOSFilterComponent';
 import { Spinner } from 'components/Spinner';
 import { setNotificationAction } from 'actions';
 import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
@@ -191,8 +191,8 @@ export const Viewer =
                 gridOptions = {
                     enableBrowserTooltips: true,
                     components: {
-                        agColumnHeader: HeaderComponent,
-                        posFilter: POSFilterComponent,
+                        agColumnHeader: ViewerHeaderComponent,
+                        posFilter: ViewerPOSFilterComponent,
                     },
                     columnDefs: prepareColumnDefs(validFields),
                     rowData: prepareRowData(validFields, allDataRef.current),
