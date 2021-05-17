@@ -10,6 +10,7 @@ import { initialFields, validFields } from 'consts';
 import { useLoading } from 'hooks/useLoading';
 import { addLangs, langs } from 'consts';
 import { t } from 'translations';
+import { removeExclamationMark } from 'utils/removeExclamationMark';
 import { HeaderComponent } from './HeaderComponent';
 import { POSFilterComponent } from './POSFilterComponent';
 import { Spinner } from 'components/Spinner';
@@ -42,9 +43,9 @@ const customSort = (field: string) => {
     if (field === 'id') {
         return (a: number, b: number) => a - b;
     } else if (field === 'isv') {
-        return (a: string, b: string) => a.localeCompare(b, 'sk');
+        return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), 'sk');
     } else if (langs.includes(field) || addLangs.includes(field)) {
-        return (a: string, b: string) => a.localeCompare(b, `${field}`);
+        return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), `${field}`);
     } else {
         return undefined;
     }
@@ -53,8 +54,40 @@ const customSort = (field: string) => {
 const customFilterParams = (field: string) => {
     if (field === 'isv' || langs.includes(field) || addLangs.includes(field)) {
         return {
-            textFormatter: (gridValue: string): string => {
-                return Dictionary.searchPrepare(`${field}`, gridValue);
+            filterOptions: [
+                'equals', 'notEqual', 'contains', 'notContains', 'startsWith', 'endsWith',
+                {
+                    displayKey: 'unverified',
+                    displayName: 'Unverified words',
+                    test: (filterValue, cellValue) => cellValue && (cellValue.charAt(0) === '!'),
+                    hideFilterInput: true,
+                },
+            ],
+            textCustomComparator: (filter, value, filterText) => {
+                const filterTextLowerCase = Dictionary.inputPrepare(`${field}`, filterText.toLowerCase());
+                const valueLowerCase = removeExclamationMark(value.toString().toLowerCase());
+                return Dictionary.splitWords(valueLowerCase).some((word) => {
+                    const wordPrepared = Dictionary.searchPrepare(`${field}`, word);
+                    switch (filter) {
+                        case 'contains':
+                            return wordPrepared.indexOf(filterTextLowerCase) >= 0;
+                        case 'notContains':
+                            return wordPrepared.indexOf(filterTextLowerCase) === -1;
+                        case 'equals':
+                            return wordPrepared === filterTextLowerCase;
+                        case 'notEqual':
+                            return wordPrepared !== filterTextLowerCase;
+                        case 'startsWith':
+                            return wordPrepared.indexOf(filterTextLowerCase) === 0;
+                        case 'endsWith':
+                            const index = wordPrepared.lastIndexOf(filterTextLowerCase);
+                            return index >= 0 && index === (wordPrepared.length - filterTextLowerCase.length);
+                        default:
+                            // should never happen
+                            // console.warn('invalid filter type ' + filter);
+                            return false;
+                    }
+                });
             },
         };
     } else if (field === 'id') {

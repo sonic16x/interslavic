@@ -566,12 +566,12 @@ class DictionaryClass {
                 return lowerCaseText;
         }
     }
+    public splitWords(text: string): string[] {
+        return text.includes(';') ? text.split(';') : text.split(',');
+    }
     private getSplittedField(from: string, item: string[]): string[] {
         const key = this.getField(item, 'id');
         return this.splittedMap[from].get(key);
-    }
-    private splitWords(text: string): string[] {
-        return text.includes(';') ? text.split(';') : text.split(',');
     }
     private applyIsvSearchLetters(text: string, flavorisationType: string): string {
         text = this.searchPrepare('isv-src', text);
