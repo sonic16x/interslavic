@@ -113,6 +113,7 @@ export const Viewer =
         const dispatch = useDispatch();
         const allDataRef = useRef<string[][]>();
         const [isLoadingAllData, setLoadingAllData] = useState(true);
+        const [isGridReady, setGridReady] = useState(false);
         const { initTablesMapFunction, getGoogleSheetsLink } = useTablesMapFunction();
         const containerRef = useRef<HTMLDivElement>();
         const [resultsCount, setResultsCount] = useState<number>();
@@ -123,6 +124,10 @@ export const Viewer =
         const onFilterChanged = useCallback(() => {
             setResultsCount(gridOptions.api.getDisplayedRowCount());
         }, [setResultsCount]);
+
+        const onGridReady = useCallback(() => {
+            setGridReady(true);
+        }, [setGridReady]);
 
         const onBodyScroll = (params) => {
             setContextMenu(null);
@@ -194,6 +199,7 @@ export const Viewer =
                     onFilterChanged,
                     onCellClicked,
                     onBodyScroll,
+                    onGridReady,
                 };
 
                 /* tslint:disable */
@@ -203,7 +209,7 @@ export const Viewer =
 
         return (
             <div className={'viewer'}>
-                {(!allLoaded) && (
+                {(!allLoaded && !isGridReady) && (
                     <div className={'viewer__loader'}>
                         <Spinner
                             size={'4rem'}

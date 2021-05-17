@@ -100,6 +100,7 @@ module.exports = {
     optimization: {
         noEmitOnErrors: true,
     },
+    devtool: 'inline-source-map',
     devServer: {
         stats: 'errors-only',
         contentBase: outputPath,
