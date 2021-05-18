@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Grid, ModuleRegistry, GridOptions  } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
@@ -11,13 +10,13 @@ import { useLoading } from 'hooks/useLoading';
 import { addLangs, langs } from 'consts';
 import { t } from 'translations';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
-import { removeBrackets } from '../../utils/removeBrackets';
+import { removeBrackets } from 'utils/removeBrackets';
 import { ViewerHeaderComponent } from './ViewerHeaderComponent';
 import { ViewerPOSFilterComponent } from './ViewerPOSFilterComponent';
 import { Spinner } from 'components/Spinner';
-import { hideModalDialog, setNotificationAction } from 'actions';
 import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
 import { loadTablesData } from 'services/loadTablesData';
+import { ViewerContextMenu } from './ViewerContextMenu';
 
 ModuleRegistry.registerModules([
     ClientSideRowModelModule,
@@ -145,16 +144,24 @@ const prepareColumnDefs = (displayFields) => {
 
 let gridOptions: GridOptions;
 
+interface IContextState {
+    position: {
+        x: number;
+        y: number;
+    };
+    text: string;
+    googleLink: string;
+}
+
 export const Viewer =
     () => {
-        const dispatch = useDispatch();
         const allDataRef = useRef<string[][]>();
         const [isLoadingAllData, setLoadingAllData] = useState(true);
         const [isGridReady, setGridReady] = useState(false);
         const { initTablesMapFunction, getGoogleSheetsLink } = useTablesMapFunction();
         const containerRef = useRef<HTMLDivElement>();
         const [resultsCount, setResultsCount] = useState<number>();
-        const [contextMenu, setContextMenu] = useState<{ x: number, y: number, value: string, href: string }>();
+        const [contextMenu, setContextMenu] = useState<IContextState>();
         const isLoading = useLoading();
         const allLoaded = !isLoading && !isLoadingAllData;
 
@@ -166,9 +173,9 @@ export const Viewer =
             setGridReady(true);
         }, [setGridReady]);
 
-        const onBodyScroll = (params) => {
+        const closeContext = useCallback(() => {
             setContextMenu(null);
-        };
+        }, []);
 
         useEffect(() => {
             loadTablesData.then(({ data, rangesMap }) => {
@@ -178,41 +185,18 @@ export const Viewer =
             });
         }, [setLoadingAllData]);
 
-        const onKeyPress = useCallback(({code}) => {
-            if (code === 'Escape') {
-                setContextMenu(null);
-            }
-        }, []);
-
-        useEffect(() => {
-            window.addEventListener('keyup', onKeyPress);
-
-            return () => {
-                window.removeEventListener('keyup', onKeyPress);
-            };
-        }, []);
-
         const onCellClicked = useCallback((data) => {
             const box = data.event.target.getBoundingClientRect();
 
-            let current = contextMenu;
-
-            setContextMenu((a) => {
-                current = a;
-                return a;
-            });
-
-            if (current) {
-                return setContextMenu(null);
-            }
-
             setContextMenu({
-                x: box.x,
-                y: box.y - box.height,
-                value: data.value,
-                href: getGoogleSheetsLink(data.data.id, data.colDef.field),
+                position: {
+                    x: box.x,
+                    y: box.y - box.height,
+                },
+                text: data.value,
+                googleLink: getGoogleSheetsLink(data.data.id, data.colDef.field),
             });
-        }, [getGoogleSheetsLink, contextMenu]);
+        }, [getGoogleSheetsLink]);
 
         const onResetFiltersClick = useCallback(() => {
             gridOptions.api.setFilterModel(null);
@@ -224,22 +208,6 @@ export const Viewer =
                 sort: 'asc',
             }]);
         }, []);
-
-        const closeContext = useCallback(() => {
-            if (contextMenu) {
-                setContextMenu(null);
-            }
-        }, [contextMenu]);
-
-        const onClipboardClick = useCallback(() => {
-            navigator.clipboard.writeText(contextMenu.value).then(() => {
-                const notificationText = t('clipboardCopyNotification', {
-                    str: contextMenu.value,
-                });
-                dispatch(setNotificationAction(notificationText));
-                closeContext();
-            });
-        }, [contextMenu]);
 
         useEffect(() => {
             if (
@@ -260,7 +228,7 @@ export const Viewer =
                     rowData: prepareRowData(validFields, allDataRef.current),
                     onFilterChanged,
                     onCellClicked,
-                    onBodyScroll,
+                    onBodyScroll: closeContext,
                     onGridReady,
                 };
 
@@ -280,35 +248,12 @@ export const Viewer =
                     </div>
                 )}
                 {contextMenu && (
-                    <div
-                        className={'viewer__context-menu'}
-                        style={{
-                            left: contextMenu.x,
-                            top: contextMenu.y,
-                        }}
-                    >
-                        {contextMenu.value && (
-                            <>
-                                <p className={'viewer__context-menu-text'}>
-                                    {contextMenu.value}
-                                </p>
-                                <button
-                                    className={'viewer__context-menu-item button button-m'}
-                                    onClick={onClipboardClick}
-                                >
-                                    {t('viewerCopyToClipboard')}
-                                </button>
-                            </>
-                        )}
-                        <a
-                            className={'viewer__context-menu-item button button-m'}
-                            href={contextMenu.href}
-                            onClick={closeContext}
-                            target={'_blank'}
-                        >
-                            {t('viewerOpenCeilInGoogleSheets')}
-                        </a>
-                    </div>
+                    <ViewerContextMenu
+                        position={contextMenu.position}
+                        text={contextMenu.text}
+                        googleLink={contextMenu.googleLink}
+                        onClose={closeContext}
+                    />
                 )}
                 <div className={'viewer__controls'}>
                     <button

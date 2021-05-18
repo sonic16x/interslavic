@@ -4,8 +4,9 @@ import classNames from 'classnames';
 import FilterIcon from './images/filter-icon.svg';
 import FilterRemoveIcon from './images/filter-remove-icon.svg';
 import SortArrowIcon from './images/sort-arrow-icon.svg';
+import './ViewerHeaderComponent.scss';
 
-const HeaderComponentReact = ({ agParams }: { agParams: any }) => {
+const ViewerHeaderComponentReact = ({ agParams }: { agParams: any }) => {
     const [sort, setSort] = useState<'asc' | 'desc' | null>(agParams.column.getSort());
     const [isFilter, setFilter] = useState<boolean>(agParams.column.isFilterActive());
     const filterRef = useRef();
@@ -55,14 +56,14 @@ const HeaderComponentReact = ({ agParams }: { agParams: any }) => {
     return (
         <>
             <span
-                className={'viewer__ag-header-cell-start-container'}
+                className={'header-cell__start-container'}
             >
                 <span
-                    className={'viewer__ag-header-cell-sort'}
+                    className={'header-cell__sort'}
                     onClick={onSortClick}
                 >
                     <span
-                        className={classNames('viewer__ag-header-cell-sort-arrow', {
+                        className={classNames('header-cell__sort-arrow', {
                             'rotated': true,
                             'primary-color': sort === 'asc',
                             'muted-color': sort !== 'asc',
@@ -71,7 +72,7 @@ const HeaderComponentReact = ({ agParams }: { agParams: any }) => {
                         <SortArrowIcon/>
                     </span>
                     <span
-                        className={classNames('viewer__ag-header-cell-sort-arrow', {
+                        className={classNames('header-cell__sort-arrow', {
                             'primary-color': sort === 'desc',
                             'muted-color': sort !== 'desc',
                         })}
@@ -79,15 +80,15 @@ const HeaderComponentReact = ({ agParams }: { agParams: any }) => {
                         <SortArrowIcon/>
                     </span>
                 </span>
-                <span className={'viewer__ag-header-cell-label'}>
+                <span className={'header-cell__label'}>
                     {agParams.displayName}
                 </span>
             </span>
             <span
-                className={'viewer__ag-header-cell-filter-container'}
+                className={'header-cell__filter-container'}
             >
                 <span
-                    className={classNames('viewer__ag-header-cell-filter', {
+                    className={classNames('header-cell__filter', {
                         'muted-color': !isFilter,
                         'primary-color': isFilter,
                     })}
@@ -98,7 +99,7 @@ const HeaderComponentReact = ({ agParams }: { agParams: any }) => {
                 </span>
                 {isFilter && (
                     <span
-                        className={'viewer__ag-header-cell-filter-remove'}
+                        className={'header-cell__filter-remove'}
                         onClick={onFilterRemoveClick}
                     >
                         <FilterRemoveIcon/>
@@ -116,9 +117,9 @@ export class ViewerHeaderComponent {
     public init(agParams) {
         this.agParams = agParams;
         this.mainElement = document.createElement('div');
-        this.mainElement.className = 'viewer__ag-header-cell';
+        this.mainElement.className = 'header-cell';
 
-        render(<HeaderComponentReact agParams={agParams} />, this.mainElement);
+        render(<ViewerHeaderComponentReact agParams={agParams} />, this.mainElement);
     }
 
     public getGui() {

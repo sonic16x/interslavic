@@ -1,0 +1,29 @@
+.context-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 100;
+  border-radius: var(--border-radius-m);
+  background: #fff;
+  box-shadow: var(--shadow);
+  padding: var(--gap-size-s) var(--gap-size-s) 0;
+  max-width: 250px;
+
+  &__text {
+    font-size: var(--text-m);
+    line-height: var(--text-m-line);
+    margin-bottom: var(--gap-size-s);
+    padding-right: 22px
+  }
+
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .button {
+    text-align: center;
+    margin-bottom: var(--gap-size-s);
+  }
+}
