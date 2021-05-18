@@ -11,6 +11,7 @@ import { useLoading } from 'hooks/useLoading';
 import { addLangs, langs } from 'consts';
 import { t } from 'translations';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
+import { removeBrackets } from '../../utils/removeBrackets';
 import { ViewerHeaderComponent } from './ViewerHeaderComponent';
 import { ViewerPOSFilterComponent } from './ViewerPOSFilterComponent';
 import { Spinner } from 'components/Spinner';
@@ -65,7 +66,10 @@ const customFilterParams = (field: string) => {
             ],
             textCustomComparator: (filter, value, filterText) => {
                 const filterTextLowerCase = Dictionary.inputPrepare(`${field}`, filterText.toLowerCase());
-                const valueLowerCase = removeExclamationMark(value.toString().toLowerCase());
+                let valueLowerCase = value.toString().toLowerCase();
+                valueLowerCase = removeExclamationMark(valueLowerCase);
+                valueLowerCase = removeBrackets(valueLowerCase, '[', ']');
+                valueLowerCase = removeBrackets(valueLowerCase, '(', ')');
                 return Dictionary.splitWords(valueLowerCase).some((word) => {
                     const wordPrepared = Dictionary.searchPrepare(`${field}`, word);
                     switch (filter) {
