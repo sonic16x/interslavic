@@ -15,7 +15,7 @@ import { removeBrackets } from '../../utils/removeBrackets';
 import { ViewerHeaderComponent } from './ViewerHeaderComponent';
 import { ViewerPOSFilterComponent } from './ViewerPOSFilterComponent';
 import { Spinner } from 'components/Spinner';
-import { setNotificationAction } from 'actions';
+import { hideModalDialog, setNotificationAction } from 'actions';
 import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
 import { loadTablesData } from 'services/loadTablesData';
 
@@ -178,8 +178,33 @@ export const Viewer =
             });
         }, [setLoadingAllData]);
 
+        const onKeyPress = useCallback(({code}) => {
+            if (code === 'Escape') {
+                setContextMenu(null);
+            }
+        }, []);
+
+        useEffect(() => {
+            window.addEventListener('keyup', onKeyPress);
+
+            return () => {
+                window.removeEventListener('keyup', onKeyPress);
+            };
+        }, []);
+
         const onCellClicked = useCallback((data) => {
             const box = data.event.target.getBoundingClientRect();
+
+            let current = contextMenu;
+
+            setContextMenu((a) => {
+                current = a;
+                return a;
+            });
+
+            if (current) {
+                return setContextMenu(null);
+            }
 
             setContextMenu({
                 x: box.x,

@@ -74,6 +74,14 @@
       align-items: center;
       flex-direction: row;
       margin-right: 2px;
+
+      &-arrow {
+        display: flex;
+
+        &.rotated {
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import FilterIcon from './images/filter-icon.svg';
 import FilterRemoveIcon from './images/filter-remove-icon.svg';
+import SortArrowIcon from './images/sort-arrow-icon.svg';
 
 const HeaderComponentReact = ({ agParams }: { agParams: any }) => {
     const [sort, setSort] = useState<'asc' | 'desc' | null>(agParams.column.getSort());
@@ -60,8 +61,23 @@ const HeaderComponentReact = ({ agParams }: { agParams: any }) => {
                     className={'viewer__ag-header-cell-sort'}
                     onClick={onSortClick}
                 >
-                    <span className={sort === 'asc' ? 'primary-color' : 'muted-color'}>🠛</span>
-                    <span className={sort === 'desc' ? 'primary-color' : 'muted-color'}>🠙</span>
+                    <span
+                        className={classNames('viewer__ag-header-cell-sort-arrow', {
+                            'rotated': true,
+                            'primary-color': sort === 'asc',
+                            'muted-color': sort !== 'asc',
+                        })}
+                    >
+                        <SortArrowIcon/>
+                    </span>
+                    <span
+                        className={classNames('viewer__ag-header-cell-sort-arrow', {
+                            'primary-color': sort === 'desc',
+                            'muted-color': sort !== 'desc',
+                        })}
+                    >
+                        <SortArrowIcon/>
+                    </span>
                 </span>
                 <span className={'viewer__ag-header-cell-label'}>
                     {agParams.displayName}
