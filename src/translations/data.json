@@ -2807,8 +2807,8 @@
     "bg": "Списък с думи"
   },
   "viewerEnable": {
-    "en": "Add Wordlist in the menu",
-    "isv": "Vključiti v menju «Spis slov»",
+    "en": "Enable Wordlist in the menu",
+    "isv": "Vključiti «Spis slov» v menju ",
     "ru": "Включить в меню «Список слов»",
     "uk": "",
     "be": "",
