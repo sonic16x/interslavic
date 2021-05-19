@@ -44,7 +44,7 @@ const customSort = (field: string) => {
         return (a: number, b: number) => a - b;
     } else if (field === 'isv') {
         return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), 'sk');
-    } else if (langs.includes(field) || addLangs.includes(field)) {
+    } else if (field === 'en' || langs.includes(field) || addLangs.includes(field)) {
         return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), `${field}`);
     } else {
         return undefined;
@@ -52,7 +52,7 @@ const customSort = (field: string) => {
 };
 
 const customFilterParams = (field: string) => {
-    if (field === 'isv' || langs.includes(field) || addLangs.includes(field)) {
+    if (field === 'isv' || field === 'en' || langs.includes(field) || addLangs.includes(field)) {
         return {
             filterOptions: [
                 'equals', 'notEqual', 'contains', 'notContains', 'startsWith', 'endsWith',
