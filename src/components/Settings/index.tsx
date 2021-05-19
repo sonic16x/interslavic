@@ -280,6 +280,7 @@ export const Settings: React.FC =
                         );
                     })}
                 </div>
+                <hr />
                 <div>
                     <h6>{t('devTools')}</h6>
                     <Checkbox
