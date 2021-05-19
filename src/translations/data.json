@@ -2477,7 +2477,7 @@
   },
   "clipboardCopyNotification": {
     "en": "Text \"{__str__}\" copied to clipboard",
-    "isv": "Tekst \"{__str__}\" je skopijovany v bufernu pamet",
+    "isv": "Tekst \"{__str__}\" je skopirovany v bufernu pamet",
     "ru": "Текст \"{__str__}\" скопирован в буфер обмена",
     "uk": "Текст \"{__str__}\" скопійовано у буфер обміну",
     "be": "Тэкст \"{__str__}\"  скапіяваны ў буфер абмену",
@@ -2791,23 +2791,23 @@
     "bg": ""
   },
   "viewerTitle": {
-    "en": "Words list",
-    "isv": "",
+    "en": "Wordlist",
+    "isv": "List slov",
     "ru": "Список слов",
-    "uk": "",
-    "be": "",
-    "pl": "",
-    "cs": "",
-    "sk": "",
-    "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
-    "bg": ""
+    "uk": "Список слів",
+    "be": "Спіс слоў",
+    "pl": "Lista słów",
+    "cs": "Seznam slov",
+    "sk": "Zoznam slov",
+    "sl": "List besed",
+    "hr": "Lista riječi",
+    "sr": "Листа речи",
+    "mk": "Список со зборови",
+    "bg": "Списък с думи"
   },
   "viewerEnable": {
-    "en": "Enable Words list in menu",
-    "isv": "",
+    "en": "Enable Wordlist in menu",
+    "isv": "Vključiti v menju Spis slov",
     "ru": "Включить в меню Список слов",
     "uk": "",
     "be": "",
@@ -2821,9 +2821,9 @@
     "bg": ""
   },
   "devTools": {
-    "en": "Administrator instruments",
-    "isv": "",
-    "ru": "Инструменты аминистратора",
+    "en": "Special tools",
+    "isv": "Specialne orudja",
+    "ru": "Специальные инструменты",
     "uk": "",
     "be": "",
     "pl": "",
@@ -2837,7 +2837,7 @@
   },
   "viewerCopyToClipboard": {
     "en": "Copy to clipboard",
-    "isv": "",
+    "isv": "Kopirovati v bufernu pamet",
     "ru": "Скопировать в буфер обмена",
     "uk": "",
     "be": "",

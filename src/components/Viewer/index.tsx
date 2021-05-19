@@ -58,7 +58,7 @@ const customFilterParams = (field: string) => {
                 'equals', 'notEqual', 'contains', 'notContains', 'startsWith', 'endsWith',
                 {
                     displayKey: 'unverified',
-                    displayName: 'Unverified words',
+                    displayName: 'Unverified translations',
                     test: (filterValue, cellValue) => cellValue && (cellValue.charAt(0) === '!'),
                     hideFilterInput: true,
                 },
