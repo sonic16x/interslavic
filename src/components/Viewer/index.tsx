@@ -266,10 +266,10 @@ export const Viewer =
                         className={'button button-m'}
                         onClick={onResetSortClick}
                     >
-                        {t('viewerResetSort')}
+                        {t('viewerResetSorting')}
                     </button>
                     <span className={'text-l'}>
-                        {t('viewerResultsCount')}: {resultsCount}
+                        {t('viewerResultsNumber')}: {resultsCount}
                     </span>
                 </div>
                 <div

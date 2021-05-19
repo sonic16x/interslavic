@@ -2701,9 +2701,9 @@
     "bg": "Затвори"
   },
   "viewerPosFilter": {
-    "en": "Part of speech filter",
-    "isv": "",
-    "ru": "Фильтр по чати речи",
+    "en": "Parts of speech",
+    "isv": "Česti molvy",
+    "ru": "Части речи",
     "uk": "",
     "be": "",
     "pl": "",
@@ -2717,11 +2717,11 @@
   },
   "viewerResetFilters": {
     "en": "Reset filters",
-    "isv": "",
+    "isv": "Resetovati filtry",
     "ru": "Сбросить фильтры",
     "uk": "",
     "be": "",
-    "pl": "",
+    "pl": "Zresetuj filtry",
     "cs": "",
     "sk": "",
     "sl": "",
@@ -2730,13 +2730,13 @@
     "mk": "",
     "bg": ""
   },
-  "viewerResetSort": {
-    "en": "Reset sort",
-    "isv": "",
+  "viewerResetSorting": {
+    "en": "Reset sorting",
+    "isv": "Resetovati sortovańje",
     "ru": "Сбросить сортировку",
     "uk": "",
     "be": "",
-    "pl": "",
+    "pl": "Zresetuj sortowanie",
     "cs": "",
     "sk": "",
     "sl": "",
@@ -2746,8 +2746,9 @@
     "bg": ""
   },
   "viewerFiltersAll": {
+    "comment" : "All parts of speech",
     "en": "All",
-    "isv": "",
+    "isv": "Vse",
     "ru": "Все",
     "uk": "",
     "be": "",
@@ -2760,10 +2761,10 @@
     "mk": "",
     "bg": ""
   },
-  "viewerResultsCount": {
-    "en": "Results count",
-    "isv": "",
-    "ru": "Количество",
+  "viewerResultsNumber": {
+    "en": "Number of displayed words",
+    "isv": "Kolikost pokazanyh slov",
+    "ru": "Показано слов",
     "uk": "",
     "be": "",
     "pl": "",
@@ -2777,8 +2778,8 @@
   },
   "viewerOpenCeilInGoogleSheets": {
     "en": "Open in Google Sheets",
-    "isv": "",
-    "ru": "Открыть в Гугл Таблице",
+    "isv": "Otvoriti v {Google Sheets}",
+    "ru": "Открыть в Google Sheets",
     "uk": "",
     "be": "",
     "pl": "",
@@ -2792,7 +2793,7 @@
   },
   "viewerTitle": {
     "en": "Wordlist",
-    "isv": "List slov",
+    "isv": "Spis slov",
     "ru": "Список слов",
     "uk": "Список слів",
     "be": "Спіс слоў",
