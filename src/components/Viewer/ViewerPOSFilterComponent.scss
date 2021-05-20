@@ -8,10 +8,30 @@
     flex-direction: column;
   }
 
+  &__line {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__expand-btn {
+    cursor: pointer;
+
+    &.expanded {
+      transform: rotate(180deg);
+    }
+  }
+
   &__sub-list {
     padding-left: var(--gap-size-s);
     display: flex;
     flex-direction: column;
+    height: 0;
+    opacity: 0;
+
+    &.expanded {
+      height: auto;
+      opacity: 1;
+    }
   }
 }
 
