@@ -3,9 +3,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { t } from 'translations';
 import { Checkbox } from 'components/Checkbox';
 import {
-    partOfSpeechList,
-    genderList,
-    Gender,
     getPartOfSpeech,
     getGender,
     isAnimated,
@@ -15,14 +12,6 @@ import ExpandSubListIcon from './images/expand-sub-list-icon.svg';
 
 import './ViewerPOSFilterComponent.scss';
 import classNames from 'classnames';
-
-const nounFilterList = [
-    ...genderList,
-    'animated',
-    'inanimate',
-    'plural',
-    'singular',
-].map((type) => `noun-${type}`);
 
 const globalFiltersState = {
     noun: {
@@ -104,8 +93,6 @@ const getAllCheckedPartLength = () => {
         }
     }).length;
 };
-
-// setFiltersAll(false);
 
 const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, resetEvent: (callback: any) => void }) => {
     const [rerender, setRerender] = useState(false);
