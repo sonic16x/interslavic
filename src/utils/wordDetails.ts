@@ -57,8 +57,12 @@ export type PartOfSpeech =
     'pronoun' |
     'interjection' |
     'verb' |
-    'numeral'
-    ;
+    'numeral' |
+    'particle' |
+    'prefix' |
+    'suffix' |
+    'phrase'
+;
 
 export const partOfSpeechList: PartOfSpeech[] = [
     'noun',
@@ -74,6 +78,18 @@ export const partOfSpeechList: PartOfSpeech[] = [
 
 export function getPartOfSpeech(details: string): PartOfSpeech {
     const arr = getArr(details);
+    if (arr.includes('particle')) {
+        return 'particle';
+    }
+    if (arr.includes('prefix')) {
+        return 'prefix';
+    }
+    if (arr.includes('suffix')) {
+        return 'suffix';
+    }
+    if (arr.includes('phrase')) {
+        return 'phrase';
+    }
     if (arr.includes('adj')) {
         return 'adjective';
     }

@@ -6,7 +6,11 @@ import {
     getPartOfSpeech,
     getGender,
     isAnimated,
-    getPronounType, getNumeralType, getVerbDetails, isPlural, isIndeclinable,
+    getPronounType,
+    getNumeralType,
+    getVerbDetails,
+    isPlural,
+    isIndeclinable,
 } from 'utils/wordDetails';
 import ExpandSubListIcon from './images/expand-sub-list-icon.svg';
 
@@ -26,10 +30,6 @@ const globalFiltersState = {
         indeclinable: true,
         declinable: true,
     },
-    adjective: true,
-    adverb: true,
-    conjunction: true,
-    preposition: true,
     pronoun: {
         personal: true,
         demonstrative: true,
@@ -41,7 +41,6 @@ const globalFiltersState = {
         negative: true,
         universal: true,
     },
-    interjection: true,
     verb: {
         intransitive: true,
         transitive: true,
@@ -60,6 +59,15 @@ const globalFiltersState = {
         multiplicative: true,
         ordinal: true,
     },
+    adjective: true,
+    adverb: true,
+    conjunction: true,
+    preposition: true,
+    interjection: true,
+    particle: true,
+    prefix: true,
+    suffix: true,
+    phrase: true,
 };
 
 const setFiltersAll = (value: boolean) => Object.keys(globalFiltersState).forEach((key) => {
