@@ -103,10 +103,12 @@ const customFilterParams = (field: string) => {
     }
 };
 
-const prepareRowData = (displayFields, wordList) => {
-    return wordList.map((line) => {
-        return displayFields.reduce((obj, field) => {
-            obj[field] = line[displayFields.indexOf(field)];
+const prepareRowData = (wordList) => {
+    const header = wordList.slice(0, 1)[0];
+
+    return wordList.slice(1).map((line) => {
+        return header.reduce((obj, field) => {
+            obj[field] = line[header.indexOf(field)];
 
             return obj;
         }, {});
@@ -217,7 +219,7 @@ export const Viewer =
                 allDataRef &&
                 allDataRef.current
             ) {
-                setResultsCount(allDataRef.current.length);
+                setResultsCount(allDataRef.current.length - 1);
                 gridOptions = {
                     enableBrowserTooltips: true,
                     components: {
@@ -225,7 +227,7 @@ export const Viewer =
                         posFilter: ViewerPOSFilterComponent,
                     },
                     columnDefs: prepareColumnDefs(validFields),
-                    rowData: prepareRowData(validFields, allDataRef.current),
+                    rowData: prepareRowData(allDataRef.current),
                     onFilterChanged,
                     onCellClicked,
                     onBodyScroll: closeContext,

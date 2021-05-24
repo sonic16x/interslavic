@@ -2,11 +2,18 @@ import { render } from 'react-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { t } from 'translations';
 import { Checkbox } from 'components/Checkbox';
-import { partOfSpeechList, genderList, Gender, getPartOfSpeech, getGender } from 'utils/wordDetails';
+import {
+    partOfSpeechList,
+    genderList,
+    Gender,
+    getPartOfSpeech,
+    getGender,
+    isAnimated,
+    getPronounType, getNumeralType, getVerbDetails, isPlural, isIndeclinable,
+} from 'utils/wordDetails';
 import ExpandSubListIcon from './images/expand-sub-list-icon.svg';
 
 import './ViewerPOSFilterComponent.scss';
-import { values } from '@ag-grid-community/core/dist/es6/utils/generic';
 import classNames from 'classnames';
 
 const nounFilterList = [
@@ -32,6 +39,8 @@ const globalFiltersState = {
         inanimate: true,
         plural: true,
         singular: true,
+        indeclinable: true,
+        declinable: true,
     },
     adjective: true,
     adverb: true,
@@ -79,6 +88,30 @@ const setFiltersAll = (value: boolean) => Object.keys(globalFiltersState).forEac
     }
 });
 
+const getAllCheckedLength = () => {
+    return Object.keys(globalFiltersState).filter((key) => {
+        const value = globalFiltersState[key];
+        if (typeof value === 'boolean') {
+            return value;
+        } else {
+            return Object.values(value).filter(Boolean).length !== 0;
+        }
+    }).length;
+};
+
+const getAllCheckedPartLength = () => {
+    return Object.keys(globalFiltersState).filter((key) => {
+        const value = globalFiltersState[key];
+        if (typeof value === 'boolean') {
+            return value;
+        } else {
+            return Object.values(value).filter(Boolean).length === Object.keys(value).length;
+        }
+    }).length;
+};
+
+// setFiltersAll(false);
+
 const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, resetEvent: (callback: any) => void }) => {
     const [rerender, setRerender] = useState(false);
     const expandedState = useRef(new Map(Object.keys(globalFiltersState).filter((key) => typeof globalFiltersState[key] !== 'boolean').map((key) => [key, false])));
@@ -92,32 +125,17 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
     }, []);
 
     useEffect(() => {
+        setTimeout(() => agParams.filterChangedCallback(), 0);
+        // console.log('change', globalFiltersState);
+    }, [rerender]);
 
-        agParams.filterChangedCallback();
-    }, []);
-
-    const allCheckedLength = Object.keys(globalFiltersState).filter((key) => {
-        const value = globalFiltersState[key];
-        if (typeof value === 'boolean') {
-            return value;
-        } else {
-            return Object.values(value).filter(Boolean).length !== 0;
-        }
-    }).length;
-
+    const allCheckedLength = getAllCheckedLength();
     const allChecked = allCheckedLength !== 0;
-    const allPart = allCheckedLength !== Object.keys(globalFiltersState).length;
+    const allPart = Object.keys(globalFiltersState).length !== getAllCheckedPartLength();
 
     const onChange = useCallback((key: string, subKey?: string) => {
         if (key === 'all') {
-            const allCheckedLength = Object.keys(globalFiltersState).filter((key) => {
-                const value = globalFiltersState[key];
-                if (typeof value === 'boolean') {
-                    return value;
-                } else {
-                    return Object.values(value).filter(Boolean).length !== 0;
-                }
-            }).length;
+            const allCheckedLength = getAllCheckedLength();
 
             setFiltersAll(allCheckedLength === 0);
             setRerender(!rerender);
@@ -231,14 +249,108 @@ export class ViewerPOSFilterComponent {
         render(<POSFilterComponentReact agParams={agParams} resetEvent={this.resetEvent} />, this.mainElement);
     }
 
-    public doesFilterPass(params) {
-        let passed = true;
+    public doesFilterPass({ data }) {
+        const details = data.partOfSpeech;
+        const pos = getPartOfSpeech(details);
+        const value: any = globalFiltersState[pos];
 
-        return passed;
+        if (typeof pos === 'undefined') {
+            return true;
+        }
+
+        if (typeof value === 'boolean') {
+            return value;
+        }
+
+        if (Object.values(value).filter(Boolean).length === 0) {
+            return false;
+        }
+
+        if (Object.values(value).filter(Boolean).length === Object.keys(value).length) {
+            return true;
+        }
+
+        switch (pos) {
+            case 'noun':
+                const gender = getGender(details);
+                const animated = isAnimated(details);
+                const plural = isPlural(details);
+                const indeclinable = isIndeclinable(details);
+
+                // gender
+                if (!value[gender]) {
+                    return false;
+                }
+
+                // animated
+                if (!value.animated && animated) {
+                    return false;
+                }
+
+                if (!value.inanimate && !animated) {
+                    return false;
+                }
+
+                if (!value.animated && !value.inanimate) {
+                    return false;
+                }
+
+                // plural
+                if (!value.plural && plural) {
+                    return false;
+                }
+
+                if (!value.singular && !plural) {
+                    return false;
+                }
+
+                if (!value.singular && !value.plural) {
+                    return false;
+                }
+
+                // indeclinable
+                if (!value.indeclinable && indeclinable) {
+                    return false;
+                }
+
+                if (!value.declinable && !indeclinable) {
+                    return false;
+                }
+
+                if (!value.indeclinable && !value.declinable) {
+                    return false;
+                }
+
+                return true;
+            case 'pronoun':
+                const pronounType = getPronounType(details);
+                return value[pronounType];
+            case 'verb':
+                const verbDetails = getVerbDetails(details);
+
+                for (let i = 0; i < verbDetails.length; i++) {
+                    const verbType = verbDetails[i];
+
+                    if (!value[verbType]) {
+                        return false;
+                    }
+                }
+
+                return true;
+            case 'numeral':
+                const numeralType = getNumeralType(details);
+                return value[numeralType];
+        }
+
+        return true;
     }
 
     public isFilterActive() {
-        return false; // Array.from(globalFiltersState).filter(Boolean).length !== allFilterList.length;
+        const allCheckedLength = getAllCheckedLength();
+        const allChecked = allCheckedLength !== 0;
+        const allPart = Object.keys(globalFiltersState).length !== getAllCheckedPartLength();
+
+        return !allChecked || allPart;
     }
 
     public setModel(model) {
@@ -248,7 +360,7 @@ export class ViewerPOSFilterComponent {
     }
 
     public getModel() {
-        return Object.keys(globalFiltersState);
+        return JSON.stringify(globalFiltersState);
     }
 
     public getGui() {

@@ -1184,6 +1184,21 @@
     "mk": "неменлива",
     "bg": "несклоняемо"
   },
+  "noun-declinable": {
+    "en": "declinable",
+    "isv": "sklanjajemy",
+    "ru": "склоняемое",
+    "uk": "відмінюваний",
+    "be": "скланяльны",
+    "pl": "odrzucalny",
+    "cs": "sklonné",
+    "sk": "sklonné",
+    "sl": "določljiv",
+    "hr": "sklonjiva",
+    "sr": "променљива",
+    "mk": "менлива",
+    "bg": "склоняемо"
+  },
   "numeral-cardinal": {
     "en": "cardinal",
     "isv": "kolikostny",
