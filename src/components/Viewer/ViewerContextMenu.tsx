@@ -93,4 +93,4 @@ export const ViewerContextMenu = ({ position, text, googleLink, onClose }: IView
             </span>
         </div>
     );
-}
+};

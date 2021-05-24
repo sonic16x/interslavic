@@ -328,9 +328,7 @@ export class ViewerPOSFilterComponent {
             case 'verb':
                 const verbDetails = getVerbDetails(details);
 
-                for (let i = 0; i < verbDetails.length; i++) {
-                    const verbType = verbDetails[i];
-
+                for (const verbType of verbDetails) {
                     if (!value[verbType]) {
                         return false;
                     }
