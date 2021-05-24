@@ -148,6 +148,31 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
             }
         } else {
             value[subKey] = !value[subKey];
+
+            if (key === 'noun') {
+                if (!value.masculine && !value.feminine && !value.neuter && !value.masculineOrFeminine) {
+                    value.masculine = true;
+                    value.feminine = true;
+                    value.neuter = true;
+                    value.masculineOrFeminine = true;
+                }
+
+                if (!value.animated && !value.inanimate) {
+                    if (subKey === 'animated') {
+                        value.inanimate = true;
+                    } else {
+                        value.animated = true;
+                    }
+                }
+
+                if (!value.indeclinable && !value.declinable) {
+                    if (subKey === 'declinable') {
+                        value.indeclinable = true;
+                    } else {
+                        value.declinable = true;
+                    }
+                }
+            }
         }
 
         setRerender(!rerender);
