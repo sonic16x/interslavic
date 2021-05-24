@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import './ViewerContextMenu.scss';
 
 import ContextMenuCloseIcon from './images/context-menu-close-icon.svg';
+import { Button } from 'components/Button/Button';
 
 export interface IViewerContextMenu {
     position: {
@@ -69,22 +70,18 @@ export const ViewerContextMenu = ({ position, text, googleLink, onClose }: IView
                     <p className={'context-menu__text'}>
                         {text}
                     </p>
-                    <button
-                        className={'context-menu__item button button-m'}
+                    <Button
                         onClick={onClipboardClick}
-                    >
-                        {t('viewerCopyToClipboard')}
-                    </button>
+                        title={t('viewerCopyToClipboard')}
+                    />
                 </>
             )}
-            <a
-                className={'context-menu__item button button-m'}
+            <Button
                 href={googleLink}
                 onClick={onClose}
                 target={'_blank'}
-            >
-                {t('viewerOpenCeilInGoogleSheets')}
-            </a>
+                title={t('viewerOpenCeilInGoogleSheets')}
+            />
             <span
                 className={'context-menu__close muted-color cursor-pointer'}
                 onClick={onClose}

@@ -24,11 +24,6 @@ const nounFilterList = [
     'singular',
 ].map((type) => `noun-${type}`);
 
-const allFilterList = [
-    ...partOfSpeechList,
-    ...nounFilterList,
-];
-
 const globalFiltersState = {
     noun: {
         masculine: true,
@@ -118,6 +113,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
 
     const filterResetCallback = useCallback((event) => {
         setFiltersAll(true);
+        setRerender((rerender) => !rerender);
     }, []);
 
     useEffect(() => {

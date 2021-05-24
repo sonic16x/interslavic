@@ -17,6 +17,7 @@ import { Spinner } from 'components/Spinner';
 import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
 import { loadTablesData } from 'services/loadTablesData';
 import { ViewerContextMenu } from './ViewerContextMenu';
+import { Button } from 'components/Button/Button';
 
 ModuleRegistry.registerModules([
     ClientSideRowModelModule,
@@ -159,6 +160,7 @@ export const Viewer =
     () => {
         const allDataRef = useRef<string[][]>();
         const [isLoadingAllData, setLoadingAllData] = useState(true);
+        const [isSortEnabled, setSortEnabled] = useState(false);
         const [isGridReady, setGridReady] = useState(false);
         const { initTablesMapFunction, getGoogleSheetsLink } = useTablesMapFunction();
         const containerRef = useRef<HTMLDivElement>();
@@ -170,6 +172,11 @@ export const Viewer =
         const onFilterChanged = useCallback(() => {
             setResultsCount(gridOptions.api.getDisplayedRowCount());
         }, [setResultsCount]);
+
+        const onSortChanged = useCallback(() => {
+            const currentSortModel = gridOptions.api.getSortModel();
+            setSortEnabled(currentSortModel[0].colId !== 'isv' || currentSortModel[0].sort !== 'asc');
+        }, [setSortEnabled]);
 
         const onGridReady = useCallback(() => {
             setGridReady(true);
@@ -229,6 +236,7 @@ export const Viewer =
                     columnDefs: prepareColumnDefs(validFields),
                     rowData: prepareRowData(allDataRef.current),
                     onFilterChanged,
+                    onSortChanged,
                     onCellClicked,
                     onBodyScroll: closeContext,
                     onGridReady,
@@ -258,18 +266,16 @@ export const Viewer =
                     />
                 )}
                 <div className={'viewer__controls'}>
-                    <button
-                        className={'button button-m'}
+                    <Button
                         onClick={onResetFiltersClick}
-                    >
-                        {t('viewerResetFilters')}
-                    </button>
-                    <button
-                        className={'button button-m'}
+                        title={t('viewerResetFilters')}
+                        disabled={allDataRef && allDataRef.current && resultsCount === allDataRef.current.length - 1}
+                    />
+                    <Button
                         onClick={onResetSortClick}
-                    >
-                        {t('viewerResetSorting')}
-                    </button>
+                        disabled={!isSortEnabled}
+                        title={t('viewerResetSorting')}
+                    />
                     <span className={'text-l'}>
                         {t('viewerResultsNumber')}: {resultsCount}
                     </span>

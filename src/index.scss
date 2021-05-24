@@ -62,27 +62,6 @@
   }
 }
 
-.button {
-  background: var(--primary-color);
-  color: #fff;
-  border-radius: var(--border-radius-m);
-  padding: 5px 10px;
-  border: none;
-  outline: none;
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  &-m {
-    font-size: var(--text-m);
-    line-height: var(--text-m-line);
-  }
-}
-
 html, body {
   margin: 0;
   padding: 0;
