@@ -82,12 +82,14 @@ export const ViewerContextMenu = ({ position, text, googleLink, onClose }: IView
                 target={'_blank'}
                 title={t('viewerOpenCeilInGoogleSheets')}
             />
-            <span
-                className={'context-menu__close muted-color cursor-pointer'}
-                onClick={onClose}
-            >
-                <ContextMenuCloseIcon/>
-            </span>
+            {text && (
+                <span
+                    className={'context-menu__close muted-color cursor-pointer'}
+                    onClick={onClose}
+                >
+                    <ContextMenuCloseIcon/>
+                </span>
+            )}
         </div>
     );
 };
