@@ -78,12 +78,12 @@ const globalFiltersState = {
 };
 
 const splitLineKeys = [
-    'animated',
-    'countable',
-    'indeclinable',
+    'noun-animated',
+    'noun-countable',
+    'noun-indeclinable',
 
-    'imperfective',
-    'notional',
+    'verb-imperfective',
+    'verb-notional',
 ];
 
 const fixAllFalse = (value: any, group: string[]) => {
@@ -276,7 +276,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
                                 >
                                     {Object.keys(value).map((subKey) => (
                                         <>
-                                            {splitLineKeys.includes(subKey) && <hr/>}
+                                            {splitLineKeys.includes(`${key}-${subKey}`) && <hr/>}
                                             <Checkbox
                                                 key={subKey}
                                                 title={t(`${key}-${subKey}`)}
