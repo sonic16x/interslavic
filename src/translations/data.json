@@ -1109,6 +1109,21 @@
     "mk": "среден или женски род",
     "bg": "мъж. или жен. род"
   },
+  "noun-countable": {
+    "en": "countable",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
   "noun-singular": {
     "en": "singular",
     "isv": "jednina",
@@ -1529,6 +1544,21 @@
     "sr": "повратни",
     "mk": "повратен",
     "bg": "възвратен"
+  },
+  "verb-notional": {
+    "en": "notional",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   },
   "verb-auxiliar": {
     "en": "auxiliar",

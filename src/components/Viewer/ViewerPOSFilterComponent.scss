@@ -29,6 +29,10 @@
     opacity: 0;
     pointer-events: none;
 
+    hr {
+      margin: 0 0 7px;
+    }
+
     &.expanded {
       pointer-events: all;
       height: auto;

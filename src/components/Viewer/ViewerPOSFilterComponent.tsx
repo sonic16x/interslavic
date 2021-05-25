@@ -23,10 +23,14 @@ const globalFiltersState = {
         feminine: true,
         neuter: true,
         masculineOrFeminine: true,
+
         animated: true,
         inanimate: true,
+
+        countable: true,
         plural: true,
         singular: true,
+
         indeclinable: true,
         declinable: true,
     },
@@ -44,11 +48,14 @@ const globalFiltersState = {
     verb: {
         intransitive: true,
         transitive: true,
-        auxiliar: true,
         reflexive: true,
+
         imperfective: true,
         perfective: true,
         imperfectiveOrPerfective: true,
+
+        notional: true,
+        auxiliar: true,
     },
     numeral: {
         cardinal: true,
@@ -68,6 +75,23 @@ const globalFiltersState = {
     prefix: true,
     suffix: true,
     phrase: true,
+};
+
+const splitLineKeys = [
+    'animated',
+    'countable',
+    'indeclinable',
+
+    'imperfective',
+    'notional',
+];
+
+const fixAllFalse = (value: any, group: string[]) => {
+    if (group.filter((key) => value[key]).length === 0) {
+        group.forEach((key) => {
+            value[key] = true;
+        });
+    }
 };
 
 const setFiltersAll = (value: boolean) => Object.keys(globalFiltersState).forEach((key) => {
@@ -150,28 +174,46 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
             value[subKey] = !value[subKey];
 
             if (key === 'noun') {
-                if (!value.masculine && !value.feminine && !value.neuter && !value.masculineOrFeminine) {
-                    value.masculine = true;
-                    value.feminine = true;
-                    value.neuter = true;
-                    value.masculineOrFeminine = true;
-                }
+                fixAllFalse(value, [
+                    'masculine',
+                    'feminine',
+                    'neuter',
+                    'masculineOrFeminine',
+                ]);
 
-                if (!value.animated && !value.inanimate) {
-                    if (subKey === 'animated') {
-                        value.inanimate = true;
-                    } else {
-                        value.animated = true;
-                    }
-                }
+                fixAllFalse(value, [
+                    'inanimate',
+                    'animated',
+                ]);
 
-                if (!value.indeclinable && !value.declinable) {
-                    if (subKey === 'declinable') {
-                        value.indeclinable = true;
-                    } else {
-                        value.declinable = true;
-                    }
-                }
+                fixAllFalse(value, [
+                    'countable',
+                    'singular',
+                    'plural',
+                ]);
+
+                fixAllFalse(value, [
+                    'indeclinable',
+                    'declinable',
+                ]);
+            }
+
+            if (key === 'verb') {
+                fixAllFalse(value, [
+                    'transitive',
+                    'reflexive',
+                ]);
+
+                fixAllFalse(value, [
+                    'imperfective',
+                    'perfective',
+                    'imperfectiveOrPerfective',
+                ]);
+
+                fixAllFalse(value, [
+                    'notional',
+                    'auxiliar',
+                ]);
             }
         }
 
@@ -233,12 +275,15 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
                                     })}
                                 >
                                     {Object.keys(value).map((subKey) => (
-                                        <Checkbox
-                                            key={subKey}
-                                            title={t(`${key}-${subKey}`)}
-                                            checked={value[subKey]}
-                                            onChange={() => onChange(key, subKey)}
-                                        />
+                                        <>
+                                            {splitLineKeys.includes(subKey) && <hr/>}
+                                            <Checkbox
+                                                key={subKey}
+                                                title={t(`${key}-${subKey}`)}
+                                                checked={value[subKey]}
+                                                onChange={() => onChange(key, subKey)}
+                                            />
+                                        </>
                                     ))}
                                 </div>
                             )}
