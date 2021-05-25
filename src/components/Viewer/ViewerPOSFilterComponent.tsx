@@ -128,6 +128,56 @@ const getAllCheckedPartLength = () => {
     }).length;
 };
 
+interface IWordTypes {
+    pos: string;
+    verbTypes?: string[];
+    nounTypes?: any;
+    type?: string;
+}
+
+const idTypesMap = new Map<string, IWordTypes>();
+
+export function initPOSFilterIdTypesMap(data: string[][]) {
+    const header = data.slice(0, 1)[0];
+    const idIndex = header.indexOf('id');
+    const detailsIndex = header.indexOf('partOfSpeech');
+
+    data.slice(1).forEach((line) => {
+        const id = line[idIndex];
+        const details = line[detailsIndex];
+        const pos = getPartOfSpeech(details);
+        const obj: IWordTypes = { pos };
+
+        switch (pos) {
+            case 'noun':
+                obj.nounTypes = {
+                    gender: getGender(details),
+                    animated: isAnimated(details),
+                    plural: isPlural(details),
+                    singular: isSingular(details),
+                    countable: isCountable(details),
+                    indeclinable: isIndeclinable(details),
+                };
+                break;
+            case 'verb':
+                obj.verbTypes = getVerbDetails(details);
+                break;
+            case 'numeral':
+                obj.type = getNumeralType(details);
+                break;
+            case 'pronoun':
+                obj.type = getPronounType(details);
+                break;
+        }
+
+        idTypesMap.set(id, obj);
+    });
+}
+
+function getTypesById(id: string) {
+    return idTypesMap.get(id);
+}
+
 const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, resetEvent: (callback: any) => void }) => {
     const [rerender, setRerender] = useState(false);
     const expandedState = useRef(new Map(Object.keys(globalFiltersState).filter((key) => typeof globalFiltersState[key] !== 'boolean').map((key) => [key, false])));
@@ -142,8 +192,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
     }, []);
 
     useEffect(() => {
-        setTimeout(() => agParams.filterChangedCallback(), 0);
-        // console.log('change', globalFiltersState);
+        agParams.filterChangedCallback();
     }, [rerender]);
 
     const allCheckedLength = getAllCheckedLength();
@@ -315,7 +364,8 @@ export class ViewerPOSFilterComponent {
 
     public doesFilterPass({ data }) {
         const details = data.partOfSpeech;
-        const pos = getPartOfSpeech(details);
+        const id = data.id;
+        const { pos, nounTypes, verbTypes, type } = getTypesById(id);
         const value: any = globalFiltersState[pos];
 
         if (typeof pos === 'undefined') {
@@ -336,12 +386,14 @@ export class ViewerPOSFilterComponent {
 
         switch (pos) {
             case 'noun':
-                const gender = getGender(details);
-                const animated = isAnimated(details);
-                const plural = isPlural(details);
-                const singular = isSingular(details);
-                const countable = isCountable(details);
-                const indeclinable = isIndeclinable(details);
+                const {
+                    gender,
+                    animated,
+                    plural,
+                    singular,
+                    countable,
+                    indeclinable,
+                } = nounTypes;
 
                 // gender
                 if (!value[gender]) {
@@ -380,22 +432,17 @@ export class ViewerPOSFilterComponent {
                 }
 
                 return true;
-            case 'pronoun':
-                const pronounType = getPronounType(details);
-                return value[pronounType];
             case 'verb':
-                const verbDetails = getVerbDetails(details);
-
-                for (const verbType of verbDetails) {
+                for (const verbType of verbTypes) {
                     if (!value[verbType]) {
                         return false;
                     }
                 }
 
                 return true;
+            case 'pronoun':
             case 'numeral':
-                const numeralType = getNumeralType(details);
-                return value[numeralType];
+                return value[type];
         }
 
         return true;

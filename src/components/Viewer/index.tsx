@@ -12,7 +12,7 @@ import { t } from 'translations';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
 import { removeBrackets } from 'utils/removeBrackets';
 import { ViewerHeaderComponent } from './ViewerHeaderComponent';
-import { ViewerPOSFilterComponent } from './ViewerPOSFilterComponent';
+import { initPOSFilterIdTypesMap, ViewerPOSFilterComponent } from './ViewerPOSFilterComponent';
 import { Spinner } from 'components/Spinner';
 import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
 import { loadTablesData } from 'services/loadTablesData';
@@ -227,6 +227,9 @@ export const Viewer =
                 allDataRef.current
             ) {
                 setResultsCount(allDataRef.current.length - 1);
+
+                initPOSFilterIdTypesMap(allDataRef.current);
+
                 gridOptions = {
                     enableBrowserTooltips: true,
                     components: {
