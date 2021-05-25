@@ -10,7 +10,9 @@ import {
     getNumeralType,
     getVerbDetails,
     isPlural,
-    isIndeclinable, isSingular,
+    isIndeclinable,
+    isSingular,
+    isCountable,
 } from 'utils/wordDetails';
 import ExpandSubListIcon from './images/expand-sub-list-icon.svg';
 
@@ -338,7 +340,7 @@ export class ViewerPOSFilterComponent {
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
                 const singular = isSingular(details);
-                const countable = !singular && !plural;
+                const countable = isCountable(details);
                 const indeclinable = isIndeclinable(details);
 
                 // gender

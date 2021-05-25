@@ -157,6 +157,10 @@ export function isSingular(details: string): boolean {
     return getArr(details).includes('sg');
 }
 
+export function isCountable(details: string): boolean {
+    return !isSingular(details) && !isPlural(details);
+}
+
 export function isAnimated(details: string): boolean {
     return getArr(details).includes('anim');
 }
@@ -230,7 +234,7 @@ export function getPronounType(details: string): string {
 export type VerbType = 'intransitive' | 'transitive' | 'auxiliar' | 'reflexive' | 'imperfective' | 'perfective' | 'imperfectiveOrPerfective';
 
 export function getVerbDetails(details: string): VerbType[] {
-    return getArr(details).map((detail) => {
+    const res = getArr(details).map((detail) => {
         switch (detail) {
             case 'intr':
                 return 'intransitive';
@@ -250,4 +254,10 @@ export function getVerbDetails(details: string): VerbType[] {
                 return '';
         }
     }).filter((detail) => detail !== '');
+
+    if (!res.includes('auxiliar')) {
+        res.push('notional');
+    }
+
+    return res;
 }
