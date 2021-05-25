@@ -10,7 +10,7 @@ import {
     getNumeralType,
     getVerbDetails,
     isPlural,
-    isIndeclinable,
+    isIndeclinable, isSingular,
 } from 'utils/wordDetails';
 import ExpandSubListIcon from './images/expand-sub-list-icon.svg';
 
@@ -337,6 +337,8 @@ export class ViewerPOSFilterComponent {
                 const gender = getGender(details);
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
+                const singular = isSingular(details);
+                const countable = !singular && !plural;
                 const indeclinable = isIndeclinable(details);
 
                 // gender
@@ -353,20 +355,16 @@ export class ViewerPOSFilterComponent {
                     return false;
                 }
 
-                if (!value.animated && !value.inanimate) {
-                    return false;
-                }
-
                 // plural
                 if (!value.plural && plural) {
                     return false;
                 }
 
-                if (!value.singular && !plural) {
+                if (!value.singular && singular) {
                     return false;
                 }
 
-                if (!value.singular && !value.plural) {
+                if (!value.countable && countable) {
                     return false;
                 }
 
@@ -376,10 +374,6 @@ export class ViewerPOSFilterComponent {
                 }
 
                 if (!value.declinable && !indeclinable) {
-                    return false;
-                }
-
-                if (!value.indeclinable && !value.declinable) {
                     return false;
                 }
 
