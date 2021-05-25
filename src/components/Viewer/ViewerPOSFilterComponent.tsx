@@ -200,6 +200,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
 
             if (key === 'verb') {
                 fixAllFalse(value, [
+                    'intransitive',
                     'transitive',
                     'reflexive',
                 ]);
