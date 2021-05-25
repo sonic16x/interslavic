@@ -274,7 +274,6 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
 
     const onExpandClick = useCallback((key) => {
         expandedState.current.set(key, !expandedState.current.get(key));
-        // console.log(key, expandedState.current.get(key));
         setRerender(!rerender);
     }, [rerender]);
 

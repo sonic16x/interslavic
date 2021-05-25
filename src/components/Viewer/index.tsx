@@ -174,8 +174,12 @@ export const Viewer =
         }, [setResultsCount]);
 
         const onSortChanged = useCallback(() => {
-            const currentSortModel = gridOptions.api.getSortModel();
-            setSortEnabled(currentSortModel[0].colId !== 'isv' || currentSortModel[0].sort !== 'asc');
+            const isvColumnState = gridOptions.columnApi
+                .getColumnState()
+                .find(({colId}) => colId === 'isv')
+            ;
+
+            setSortEnabled(isvColumnState.sort !== 'asc');
         }, [setSortEnabled]);
 
         const onGridReady = useCallback(() => {
@@ -212,10 +216,7 @@ export const Viewer =
         }, []);
 
         const onResetSortClick = useCallback(() => {
-            gridOptions.api.setSortModel([{
-                colId: 'isv',
-                sort: 'asc',
-            }]);
+            gridOptions.columnApi.resetColumnState();
         }, []);
 
         useEffect(() => {
