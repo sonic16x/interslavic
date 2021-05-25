@@ -929,6 +929,36 @@
     "mk": "честичка",
     "bg": "частица"
   },
+  "suffix": {
+    "en": "suffix",
+    "isv": "sufiks",
+    "ru": "суффикс",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "phrase": {
+    "en": "phrase",
+    "isv": "izraz",
+    "ru": "фраза",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
   "anyPartOfSpeech": {
     "en": "any",
     "isv": "vsaka",
