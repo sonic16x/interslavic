@@ -256,7 +256,7 @@ export function getVerbDetails(details: string): VerbType[] {
     }).filter((detail) => detail !== '');
 
     if (!res.includes('auxiliar')) {
-        res.push('notional');
+        res.push('main');
     }
 
     return res;

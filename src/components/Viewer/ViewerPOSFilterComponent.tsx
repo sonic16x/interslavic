@@ -56,7 +56,7 @@ const globalFiltersState = {
         perfective: true,
         imperfectiveOrPerfective: true,
 
-        notional: true,
+        main: true,
         auxiliar: true,
     },
     numeral: {
@@ -85,7 +85,7 @@ const splitLineKeys = [
     'noun-indeclinable',
 
     'verb-imperfective',
-    'verb-notional',
+    'verb-main',
 ];
 
 const fixAllFalse = (value: any, group: string[]) => {
@@ -214,7 +214,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
                 ]);
 
                 fixAllFalse(value, [
-                    'notional',
+                    'main',
                     'auxiliar',
                 ]);
             }

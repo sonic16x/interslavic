@@ -1111,8 +1111,8 @@
   },
   "noun-countable": {
     "en": "countable",
-    "isv": "",
-    "ru": "",
+    "isv": "čislimy",
+    "ru": "исчисляемое",
     "uk": "",
     "be": "",
     "pl": "",
@@ -1545,10 +1545,10 @@
     "mk": "повратен",
     "bg": "възвратен"
   },
-  "verb-notional": {
-    "en": "notional",
-    "isv": "",
-    "ru": "",
+  "verb-main": {
+    "en": "main",
+    "isv": "glavny",
+    "ru": "основной",
     "uk": "",
     "be": "",
     "pl": "",
