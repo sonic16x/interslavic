@@ -22,7 +22,7 @@ export enum MODAL_DIALOG_TYPES {
 
 export interface IModalDialog {
     type: MODAL_DIALOG_TYPES;
-    index: number;
+    data: any;
     show?: boolean;
 }
 

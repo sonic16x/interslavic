@@ -31,7 +31,9 @@ import { IMainState } from 'reducers';
 
 interface IDetailModalInternal {
     close: () => void;
-    item: any;
+    word: string;
+    add: string;
+    details: string;
     alphabetType: string;
     alphabets: any;
     flavorisationType: string;
@@ -42,11 +44,11 @@ interface IDetailModalInternal {
 
 class DetailModalInternal extends Component<IDetailModalInternal> {
     public render() {
-        if (!this.props.item) {
+        if (!this.props.word) {
             return null;
         }
 
-        const pos = getPartOfSpeech(this.props.item.details);
+        const pos = getPartOfSpeech(this.props.details);
 
         return (
             <>
@@ -93,9 +95,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
     }
 
     private renderTitle(pos: string) {
-        const word = Dictionary.getField(this.props.item.raw, 'isv');
-        const add = Dictionary.getField(this.props.item.raw, 'addition');
-        const { details } = this.props.item;
+        const { details, word, add } = this.props;
         const arr = [t(pos)];
         const animated = isAnimated(details);
         const gender = getGender(details);
@@ -139,9 +139,9 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
     }
 
     private renderBody() {
-        const fieldIsv = Dictionary.getField(this.props.item.raw, 'isv');
-        const fieldAddition = Dictionary.getField(this.props.item.raw, 'addition');
-        const fieldPartOfSpeech = Dictionary.getField(this.props.item.raw, 'partOfSpeech');
+        const fieldIsv = this.props.word;
+        const fieldAddition = this.props.add;
+        const fieldPartOfSpeech = this.props.details;
         const splitted = fieldIsv.split(',');
         if (splitted.length === 1 && fieldPartOfSpeech.indexOf('m./f.') !== -1 ) {
             return [
@@ -176,22 +176,21 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 wordComponent = this.renderAdjectiveDetails(word);
                 break;
             case 'verb':
-                let addVerb = add;
                 // temporary fix for searching addition in parent verb
                 // must be deleted when column 'addition' will be correct filled !!!
-                if (!addVerb && word.includes(' ')) {
-                    const BaseWord = Dictionary.getWordList().filter((item) => {
-                        if (Dictionary.getField(item, 'isv') === word.split(' ')[0] &&
-                            Dictionary.getField(item, 'addition') &&
-                            Dictionary.getField(item, 'partOfSpeech').includes('v.')) { return true; }
-                        return false;
-                    });
-                    if (BaseWord.length > 0) {
-                        addVerb = Dictionary.getField(BaseWord[0], 'addition');
-                    }
-                }
+                // if (!addVerb && word.includes(' ')) {
+                //     const BaseWord = Dictionary.getWordList().filter((item) => {
+                //         if (this.props.word === word.split(' ')[0] &&
+                //             this.props.add &&
+                //             this.props.details.includes('v.')) { return true; }
+                //         return false;
+                //     });
+                //     if (BaseWord.length > 0) {
+                //         addVerb = Dictionary.getField(BaseWord[0], 'addition');
+                //     }
+                // }
                 // normal verb
-                wordComponent = this.renderVerbDetails(word, addVerb);
+                wordComponent = this.renderVerbDetails(word, add);
                 break;
             case 'numeral':
                 wordComponent = this.renderNumeralDetails(word, details);
@@ -591,10 +590,20 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({modalDialog, results, alphabetType, flavorisationType, alphabets, interfaceLang,
-                         orderOfCases}: IMainState) {
+function mapStateToProps({
+    modalDialog,
+    alphabetType,
+    flavorisationType,
+    alphabets,
+    interfaceLang,
+    orderOfCases,
+}: IMainState) {
+    const { word, add, details } = modalDialog.data;
+
     return {
-        item: results[modalDialog.index],
+        word,
+        add,
+        details,
         alphabetType,
         alphabets,
         flavorisationType,

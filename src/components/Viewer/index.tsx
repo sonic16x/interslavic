@@ -18,6 +18,7 @@ import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
 import { loadTablesData } from 'services/loadTablesData';
 import { ViewerContextMenu } from './ViewerContextMenu';
 import { Button } from 'components/Button/Button';
+import { wordHasForms } from 'utils/wordHasForms';
 
 ModuleRegistry.registerModules([
     ClientSideRowModelModule,
@@ -152,6 +153,7 @@ interface IContextState {
         x: number;
         y: number;
     };
+    formsData?: any;
     text: string;
     googleLink: string;
 }
@@ -200,12 +202,24 @@ export const Viewer =
 
         const onCellClicked = useCallback((data) => {
             const box = data.event.target.getBoundingClientRect();
+            let formsData;
+            const hasForms = wordHasForms(data.data.isv, data.data.partOfSpeech);
+            const isvCol = data.colDef.field === 'isv';
+
+            if (isvCol && hasForms) {
+                formsData = {
+                    details: data.data.partOfSpeech,
+                    word: data.data.isv,
+                    add: data.data.addition,
+                };
+            }
 
             setContextMenu({
                 position: {
                     x: box.x,
                     y: box.y - box.height,
                 },
+                formsData,
                 text: data.value,
                 googleLink: getGoogleSheetsLink(data.data.id, data.colDef.field),
             });
@@ -266,6 +280,7 @@ export const Viewer =
                         position={contextMenu.position}
                         text={contextMenu.text}
                         googleLink={contextMenu.googleLink}
+                        formsData={contextMenu.formsData}
                         onClose={closeContext}
                     />
                 )}

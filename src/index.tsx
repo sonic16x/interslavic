@@ -59,7 +59,7 @@ export const defaultState: IMainState = {
     loadingProgress: 0,
     modalDialog: {
         type: null,
-        index: null,
+        data: null,
     },
     searchExpanded: false,
     rawResults: [],

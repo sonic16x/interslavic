@@ -1,12 +1,14 @@
 import { t } from 'translations';
 import { useCallback, useEffect, useRef } from 'react';
-import { setNotificationAction } from 'actions';
+import { setNotificationAction, showModalDialog } from 'actions';
 import { useDispatch } from 'react-redux';
 
 import './ViewerContextMenu.scss';
 
 import ContextMenuCloseIcon from './images/context-menu-close-icon.svg';
 import { Button } from 'components/Button/Button';
+import { MODAL_DIALOG_TYPES } from 'reducers';
+import { getPartOfSpeech } from 'utils/wordDetails';
 
 export interface IViewerContextMenu {
     position: {
@@ -15,10 +17,15 @@ export interface IViewerContextMenu {
     };
     text: string;
     googleLink: string;
+    formsData?: {
+        word: string;
+        add: string;
+        details: string;
+    };
     onClose: () => void;
 }
 
-export const ViewerContextMenu = ({ position, text, googleLink, onClose }: IViewerContextMenu) => {
+export const ViewerContextMenu = ({ position, text, googleLink, onClose, formsData }: IViewerContextMenu) => {
     const dispatch = useDispatch();
     const contextMenuRef = useRef();
 
@@ -56,6 +63,14 @@ export const ViewerContextMenu = ({ position, text, googleLink, onClose }: IView
         };
     }, []);
 
+    const showDetail = useCallback(() => {
+        dispatch(showModalDialog({
+            type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
+            data: formsData,
+        }));
+        onClose();
+    }, [formsData]);
+
     return (
         <div
             className={'context-menu'}
@@ -82,6 +97,12 @@ export const ViewerContextMenu = ({ position, text, googleLink, onClose }: IView
                 target={'_blank'}
                 title={t('viewerOpenCeilInGoogleSheets')}
             />
+            {formsData && (
+                <Button
+                    onClick={showDetail}
+                    title={getPartOfSpeech(formsData.details) === 'verb' ? t('conjugation') : t('declensions')}
+                />
+            )}
             {text && (
                 <span
                     className={'context-menu__close muted-color cursor-pointer'}
