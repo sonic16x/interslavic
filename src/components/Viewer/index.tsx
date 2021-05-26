@@ -138,7 +138,7 @@ const prepareColumnDefs = (displayFields) => {
                 pinned: initialFields.includes(field) ? 'left' : false,
                 lockPinned: initialFields.includes(field),
                 cellClass: initialFields.includes(field) ? 'lock-pinned' : '',
-                headerTooltip: field,
+                headerTooltip: ['isv', ...langs, ...addLangs].includes(field) ? t(`${field}Lang`) : field,
                 tooltipField: field,
                 width: getFieldWidth(field),
                 cellStyle: getCellStyle,
