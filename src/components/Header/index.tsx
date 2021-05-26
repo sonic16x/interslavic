@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 import { setPageAction } from 'actions';
@@ -16,14 +16,48 @@ export const Header =
         const page = usePage();
         useInterfaceLang();
         const [menuIsVisible, setMenuIsVisible] = useState(false);
+        const [mobile, setMobile] = useState(false);
+        const [full, setFull] = useState(false);
         const collapseMenu = useCallback(() => setMenuIsVisible(false), [setMenuIsVisible]);
         const enabledPages = useEnabledPages();
+        const navRef = useRef<HTMLDivElement>();
+        const logoRef = useRef<HTMLDivElement>();
+
+        const onResize = useCallback(() => {
+            if (navRef && navRef.current && logoRef && logoRef.current) {
+                const windowWidth = document.body.clientWidth;
+                const logoWidth = logoRef.current.getBoundingClientRect().width;
+                const navWidth = navRef.current.getBoundingClientRect().width;
+                const full = windowWidth > 1050;
+                const mobile = !full && logoWidth + navWidth + 20 > windowWidth;
+
+                setMobile(mobile);
+                setFull(full);
+            }
+        }, [navRef, logoRef]);
+
+        useEffect(() => {
+            window.addEventListener('resize', onResize);
+
+            return () => {
+                window.removeEventListener('resize', onResize);
+            };
+        }, []);
+
+        useEffect(() => {
+            onResize();
+        }, [navRef, logoRef, enabledPages]);
 
         return (
-            <header className={classNames('header', {active: menuIsVisible})}>
-                <h1 className={'header__logo'}>
+            <header
+                className={classNames('header', {active: menuIsVisible, mobile, full})}
+            >
+                <h1
+                    className={'logo'}
+                    ref={logoRef}
+                >
                     <span
-                        className={'header__logo-img'}
+                        className={'logo-img'}
                         onClick={() => {
                             dispatch(setPageAction('dictionary'));
                             setMenuIsVisible(false);
@@ -31,19 +65,22 @@ export const Header =
                     >
                         <LogoIcon />
                     </span>
-                    <span className={'header__logo-text'}>
+                    <span className={'logo-text'}>
                         {t('mainTitle')}
                     </span>
                 </h1>
                 <button
                     type={'button'}
-                    className={classNames('header__show-menu-button', menuIsVisible && 'expanded')}
+                    className={classNames('show-menu-button', menuIsVisible && 'expanded')}
                     aria-label={'Menu button'}
                     onClick={() => setMenuIsVisible(!menuIsVisible)}
                 >
                     <span className={classNames('lines', {active: menuIsVisible})}/>
                 </button>
-                <nav className={classNames('header__menu', {active: menuIsVisible})}>
+                <nav
+                    className={classNames('menu', {active: menuIsVisible})}
+                    ref={navRef}
+                >
                   {pages
                       .filter(({ value }) => defaultPages.includes(value) || enabledPages.includes(value))
                       .map((({name, value}, i) => (
@@ -51,8 +88,6 @@ export const Header =
                       key={value}
                       name={name}
                       value={value}
-                      // hasBadge={value === 'about' && shouldShowAboutBadge}
-                      hasBadge={false}
                       active={page === value}
                       onClick={collapseMenu}
                     />
@@ -65,7 +100,7 @@ export const Header =
 interface IMenuItemProps {
   name: string;
   value: string;
-  hasBadge: boolean;
+  hasBadge?: boolean;
   active: boolean;
   onClick: () => void;
 }
@@ -86,7 +121,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({
 
   return (
     <a
-      className={classNames('header__menu-item', {active, hasBadge})}
+      className={classNames('menu-item', {active, hasBadge})}
       onClick={onClick}
     >
       {t(name)}

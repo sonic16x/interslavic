@@ -23,7 +23,7 @@
     z-index: -1;
   }
 
-  &__show-menu-button {
+  .show-menu-button {
     display: none;
     border: 1px solid #555;
     border-radius: 4px;
@@ -88,13 +88,13 @@
     }
   }
 
-  &__menu {
+  .menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  &__menu-item {
+  .menu-item {
     cursor: pointer;
     margin-left: 10px;
     font-weight: 500;
@@ -115,7 +115,7 @@
 
   }
 
-  &__logo {
+  .logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -146,68 +146,64 @@
   }
 }
 
-@media (max-width: 630px) {
-  .header {
-    flex-wrap: wrap;
+.header.mobile {
+  flex-wrap: wrap;
 
-    &__menu {
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      top: 54px;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height var(--animation-duration) linear, opacity var(--animation-duration) linear;
-      pointer-events: none;
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    top: 54px;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height var(--animation-duration) linear, opacity var(--animation-duration) linear;
+    pointer-events: none;
 
-      &-item {
-        margin-top: 8px;
-        margin-bottom: 8px;
-        //height: 40px
-      }
-
-      &.active {
-        max-height: 500px;
-        opacity: 1;
-        pointer-events: all;
-      }
+    &-item {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      //height: 40px
     }
 
-    &__logo {
+    &.active {
+      max-height: 500px;
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  .logo {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 33px;
+
+    &-text {
+      display: inline-block;
+      white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      padding-right: 33px;
+    }
+  }
 
-      &-text {
-        display: inline-block;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
+  .show-menu-button {
+    display: block;
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    background: #343a40;
+
+    &.hasBadge::after {
+      right: -4px;
+      top: -4px;
     }
 
-    &__show-menu-button {
-      display: block;
-      position: absolute;
-      right: 16px;
-      top: 12px;
-      background: #343a40;
-
-      &.hasBadge::after {
-        right: -4px;
-        top: -4px;
-      }
-
-      &.expanded.hasBadge::after {
-        animation: 0.3s hide forwards;
-      }
+    &.expanded.hasBadge::after {
+      animation: 0.3s hide forwards;
     }
   }
 }
 
-@media (min-width: 1050px) {
-  .header {
-    padding-left: 0;
-    padding-right: 0;
-  }
+.header.full {
+  padding-left: 0;
+  padding-right: 0;
 }

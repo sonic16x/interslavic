@@ -25,11 +25,10 @@ export interface IViewerContextMenu {
 export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsData }: IViewerContextMenu) => {
     const dispatch = useDispatch();
     const [pos, setPos] = useState<{left: number, top: number}>(null);
-    const contextMenuRef = useRef();
+    const contextMenuRef = useRef<HTMLDivElement>();
 
     useEffect(() => {
         if (buttonRef && contextMenuRef && contextMenuRef.current) {
-            // @ts-ignore
             const contextBox = contextMenuRef.current.getBoundingClientRect();
             const box = buttonRef.getBoundingClientRect();
             const windowHeight = document.body.clientHeight;
@@ -59,7 +58,6 @@ export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsD
     }, []);
 
     const onWindowClick = useCallback((event) => {
-        // @ts-ignore
         if (!contextMenuRef.current.contains(event.target)) {
             event.stopPropagation();
             onClose();
