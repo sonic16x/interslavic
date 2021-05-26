@@ -61,6 +61,7 @@ export const getAllDataFromResults = (results: string[]): IAllData => {
 
             return pass;
         })
+        .map((line) => line.map((el) => typeof el === 'undefined' ? '' : el))
     ;
 
     const data = transposeMatrix<string>(columns);
