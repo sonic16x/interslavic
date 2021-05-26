@@ -121,6 +121,10 @@ const getCellStyle = (params) => (
     params.value[0] === '!' ? { backgroundColor: '#ffcccb' } : null
 );
 
+const removeUnverifiedSymbol = (params) =>
+    params.value && params.value[0] === '!' ? params.value.slice(1) : params.value
+;
+
 const prepareColumnDefs = (displayFields) => {
     return displayFields
         .map((field) => (
@@ -134,6 +138,7 @@ const prepareColumnDefs = (displayFields) => {
                 filter: field === 'partOfSpeech' ? 'posFilter' : 'agTextColumnFilter',
                 filterParams: field === 'partOfSpeech' ? undefined : customFilterParams(field),
                 suppressMenu: true,
+                valueFormatter: removeUnverifiedSymbol,
                 sort: field === 'isv' ? 'asc' : '',
                 pinned: initialFields.includes(field) ? 'left' : false,
                 lockPinned: initialFields.includes(field),
@@ -213,7 +218,7 @@ export const Viewer =
             setContextMenu({
                 buttonRef: data.event.target,
                 formsData,
-                text: data.value,
+                text: removeUnverifiedSymbol(data),
                 googleLink: getGoogleSheetsLink(data.data.id, data.colDef.field),
             });
         }, [getGoogleSheetsLink]);
