@@ -1,5 +1,5 @@
 import { t } from 'translations';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { setNotificationAction, showModalDialog } from 'actions';
 import { useDispatch } from 'react-redux';
 
@@ -11,10 +11,7 @@ import { MODAL_DIALOG_TYPES } from 'reducers';
 import { getPartOfSpeech } from 'utils/wordDetails';
 
 export interface IViewerContextMenu {
-    position: {
-        x: number;
-        y: number;
-    };
+    buttonRef: HTMLElement;
     text: string;
     googleLink: string;
     formsData?: {
@@ -25,9 +22,25 @@ export interface IViewerContextMenu {
     onClose: () => void;
 }
 
-export const ViewerContextMenu = ({ position, text, googleLink, onClose, formsData }: IViewerContextMenu) => {
+export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsData }: IViewerContextMenu) => {
     const dispatch = useDispatch();
+    const [pos, setPos] = useState<{left: number, top: number}>(null);
     const contextMenuRef = useRef();
+
+    useEffect(() => {
+        if (buttonRef && contextMenuRef && contextMenuRef.current) {
+            // @ts-ignore
+            const contextBox = contextMenuRef.current.getBoundingClientRect();
+            const box = buttonRef.getBoundingClientRect();
+            const windowHeight = document.body.clientHeight;
+            const isBottom = box.y + box.height + contextBox.height > windowHeight;
+
+            setPos({
+                left: box.x,
+                top: isBottom ? box.y - contextBox.height - box.height * 2.1 : box.y - box.height,
+            });
+        }
+    }, [buttonRef, contextMenuRef]);
 
     const onClipboardClick = useCallback(() => {
         navigator.clipboard.writeText(text).then(() => {
@@ -74,10 +87,7 @@ export const ViewerContextMenu = ({ position, text, googleLink, onClose, formsDa
     return (
         <div
             className={'context-menu'}
-            style={{
-                left: position.x,
-                top: position.y,
-            }}
+            style={pos ? pos : { opacity: 0 }}
             ref={contextMenuRef}
         >
             {text && (

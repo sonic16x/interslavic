@@ -149,10 +149,7 @@ const prepareColumnDefs = (displayFields) => {
 let gridOptions: GridOptions;
 
 interface IContextState {
-    position: {
-        x: number;
-        y: number;
-    };
+    buttonRef: HTMLElement;
     formsData?: any;
     text: string;
     googleLink: string;
@@ -201,7 +198,6 @@ export const Viewer =
         }, [setLoadingAllData]);
 
         const onCellClicked = useCallback((data) => {
-            const box = data.event.target.getBoundingClientRect();
             let formsData;
             const hasForms = wordHasForms(data.data.isv, data.data.partOfSpeech);
             const isvCol = data.colDef.field === 'isv';
@@ -215,10 +211,7 @@ export const Viewer =
             }
 
             setContextMenu({
-                position: {
-                    x: box.x,
-                    y: box.y - box.height,
-                },
+                buttonRef: data.event.target,
                 formsData,
                 text: data.value,
                 googleLink: getGoogleSheetsLink(data.data.id, data.colDef.field),
@@ -277,7 +270,7 @@ export const Viewer =
                 )}
                 {contextMenu && (
                     <ViewerContextMenu
-                        position={contextMenu.position}
+                        buttonRef={contextMenu.buttonRef}
                         text={contextMenu.text}
                         googleLink={contextMenu.googleLink}
                         formsData={contextMenu.formsData}
