@@ -176,20 +176,10 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 wordComponent = this.renderAdjectiveDetails(word);
                 break;
             case 'verb':
-                // temporary fix for searching addition in parent verb
-                // must be deleted when column 'addition' will be correct filled !!!
-                // if (!addVerb && word.includes(' ')) {
-                //     const BaseWord = Dictionary.getWordList().filter((item) => {
-                //         if (this.props.word === word.split(' ')[0] &&
-                //             this.props.add &&
-                //             this.props.details.includes('v.')) { return true; }
-                //         return false;
-                //     });
-                //     if (BaseWord.length > 0) {
-                //         addVerb = Dictionary.getField(BaseWord[0], 'addition');
-                //     }
-                // }
-                // normal verb
+                if (!add) {
+                    return false;
+                }
+
                 wordComponent = this.renderVerbDetails(word, add);
                 break;
             case 'numeral':
