@@ -1,5 +1,3 @@
-import { worksheetUrl } from 'consts';
-
 import classNames from 'classnames';
 import { t } from 'translations';
 import { Dictionary, ITranslateResult } from 'services/dictionary';
@@ -14,9 +12,12 @@ import { useShortCardView } from 'hooks/useShortCardView';
 import { useScrollbarWidth } from 'hooks/useScrollbarWidth';
 import { isScrollBarVisible } from 'utils/isScrollBarVisible';
 import { useRef, useEffect, useState } from 'react';
+import { getTablePublicUrl } from 'utils/getTablePublicUrl';
+import { tablesData } from 'consts';
 
 export const Results: React.FC =
     () => {
+        const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
         const results = useResults();
         const posFilter = usePosFilter();
         const lang = useLang();

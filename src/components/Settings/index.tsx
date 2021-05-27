@@ -7,6 +7,7 @@ import {
     changeOrderOfCases,
     changeDictionaryLangAction,
     langAction,
+    togglePage,
 } from 'actions';
 import { Selector } from 'components/Selector';
 
@@ -20,6 +21,7 @@ import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
 import { useResults } from 'hooks/useResults';
 import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { useEnabledPages } from 'hooks/useEnabledPages';
 import { useOrderOfCases } from 'hooks/useOrderOfCases';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { addLangs } from 'consts';
@@ -110,6 +112,7 @@ export const Settings: React.FC =
         const isvSearchByWordForms = useIsvSearchByWordForms();
         const orderOfCases = useOrderOfCases();
         const dictionaryLanguages = useDictionaryLanguages();
+        const enabledPages = useEnabledPages();
         const {from, to} = useLang();
         const [isLoading, setLoading] = useState(false);
         useResults();
@@ -276,6 +279,16 @@ export const Settings: React.FC =
                             />
                         );
                     })}
+                </div>
+                <hr />
+                <div>
+                    <h6>{t('devTools')}</h6>
+                    <Checkbox
+                        key={'viewer'}
+                        title={t('viewerEnable')}
+                        checked={enabledPages.includes('viewer')}
+                        onChange={() => dispatch(togglePage('viewer'))}
+                    />
                 </div>
             </div>
         );

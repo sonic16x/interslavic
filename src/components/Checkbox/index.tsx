@@ -1,35 +1,46 @@
-
 import classNames from 'classnames';
 import './index.scss';
+
+import CheckedIcon from './iamges/checked-icon.svg';
+import PartCheckedIcon from './iamges/part-checked-icon.svg';
 
 interface ICheckboxProps {
     className?: string;
     title: string;
     checked: boolean;
     disabled?: boolean;
-    onChange: () => void;
+    part?: boolean;
+    onChange: (event: any) => void;
 }
 
-export const Checkbox: React.FC<ICheckboxProps> =
-    ({className, title, checked, onChange, disabled}: ICheckboxProps) => {
+export const Checkbox =
+    ({ className, title, checked, onChange, disabled, part }: ICheckboxProps) => {
         const id = `id_${title.toLowerCase()}`;
 
         return (
-            <span className={classNames('checkbox', className, {disabled})}>
+            <div className={classNames('checkbox', className, {disabled})}>
                 <input
-                    onChange={() => onChange()}
+                    onChange={onChange}
                     type={'checkbox'}
                     className={'checkbox__input'}
                     id={id}
                     checked={checked}
                 />
+                <span
+                    className={'checkbox__box'}
+                    onClick={onChange}
+                >
+                    <span style={{ opacity: checked ? 1 : 0 }}>
+                        {!part && <CheckedIcon/>}
+                        {part && <PartCheckedIcon/>}
+                    </span>
+                </span>
                 <label
                     className={'checkbox__label'}
                     htmlFor={id}
-                    data-checked={checked}
                 >
                     {title}
                 </label>
-            </span>
+            </div>
         );
     };

@@ -57,11 +57,39 @@ export type PartOfSpeech =
     'pronoun' |
     'interjection' |
     'verb' |
-    'numeral'
-    ;
+    'numeral' |
+    'particle' |
+    'prefix' |
+    'suffix' |
+    'phrase'
+;
+
+export const partOfSpeechList: PartOfSpeech[] = [
+    'noun',
+    'adjective',
+    'adverb',
+    'conjunction',
+    'preposition',
+    'pronoun',
+    'interjection',
+    'verb',
+    'numeral',
+];
 
 export function getPartOfSpeech(details: string): PartOfSpeech {
     const arr = getArr(details);
+    if (arr.includes('particle')) {
+        return 'particle';
+    }
+    if (arr.includes('prefix')) {
+        return 'prefix';
+    }
+    if (arr.includes('suffix')) {
+        return 'suffix';
+    }
+    if (arr.includes('phrase')) {
+        return 'phrase';
+    }
     if (arr.includes('adj')) {
         return 'adjective';
     }
@@ -98,8 +126,14 @@ export function getPartOfSpeech(details: string): PartOfSpeech {
 }
 
 // Nouns
-
 export type Gender = 'masculine' | 'feminine' | 'neuter' | 'masculineOrFeminine';
+
+export const genderList: Gender[] = [
+    'masculine',
+    'feminine',
+    'neuter',
+    'masculineOrFeminine',
+];
 
 export function getGender(details: string): Gender {
     const arr = getArr(details);
@@ -121,6 +155,10 @@ export function isPlural(details: string): boolean {
 
 export function isSingular(details: string): boolean {
     return getArr(details).includes('sg');
+}
+
+export function isCountable(details: string): boolean {
+    return !isSingular(details) && !isPlural(details);
 }
 
 export function isAnimated(details: string): boolean {
@@ -196,7 +234,7 @@ export function getPronounType(details: string): string {
 export type VerbType = 'intransitive' | 'transitive' | 'auxiliar' | 'reflexive' | 'imperfective' | 'perfective' | 'imperfectiveOrPerfective';
 
 export function getVerbDetails(details: string): VerbType[] {
-    return getArr(details).map((detail) => {
+    const res = getArr(details).map((detail) => {
         switch (detail) {
             case 'intr':
                 return 'intransitive';
@@ -216,4 +254,10 @@ export function getVerbDetails(details: string): VerbType[] {
                 return '';
         }
     }).filter((detail) => detail !== '');
+
+    if (!res.includes('auxiliar')) {
+        res.push('main');
+    }
+
+    return res;
 }

@@ -1,4 +1,3 @@
-
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IMainState, mainReducer } from 'reducers';
@@ -18,6 +17,7 @@ declare global {
     const VERSION: string;
     const BASE_URL: string;
     const SW: boolean;
+    const CLIENT: boolean;
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
     }
@@ -59,7 +59,7 @@ export const defaultState: IMainState = {
     loadingProgress: 0,
     modalDialog: {
         type: null,
-        index: null,
+        data: null,
     },
     searchExpanded: false,
     rawResults: [],
@@ -71,6 +71,7 @@ export const defaultState: IMainState = {
     },
     favoriteList: {},
     orderOfCases: ['nom','acc','gen','loc','dat','ins','voc'],
+    enabledPages: [],
 };
 
 function reduxDevTools() {

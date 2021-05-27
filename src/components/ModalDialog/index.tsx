@@ -22,7 +22,7 @@ function getModalDialog(type: MODAL_DIALOG_TYPES) {
 export const ModalDialog =
     () => {
         const { type, show } = useModalDialog();
-        const content = getModalDialog(type);
+        const content = show ? getModalDialog(type) : null;
         const dispatch = useDispatch();
         const onKeyPress = useCallback(({code}) => {
             if (code === 'Escape') {

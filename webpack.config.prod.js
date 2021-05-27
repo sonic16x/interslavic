@@ -16,6 +16,7 @@ module.exports = {
     entry: {
         index: './src/index',
         grammarComponent: './src/components/Grammar/index',
+        viewerComponent: './src/components/Viewer/index',
         sw: './src/sw',
     },
     output: {
@@ -55,19 +56,20 @@ module.exports = {
                 use: 'ts-loader?configFile=tsconfig.json'
             },
             {
-                test: /\.(css|sass|scss)$/,
+                test: /\.scss$/,
                 include: srcPath,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                    },
-                    {
-                        loader: 'postcss-loader',
-                    },
-                    {
-                        loader: 'sass-loader',
-                    }
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
                 ]
             },
             {
@@ -82,7 +84,7 @@ module.exports = {
             template: path.join(srcPath, 'index.html.ejs'),
             filename: 'index.html',
             path: outputPath,
-            excludeChunks: ['sw', 'grammarComponent'],
+            excludeChunks: ['sw', 'grammarComponent', 'viewerComponent'],
             env: {
                 ANALYTICS: !isDemo,
                 BASE_URL: baseUrl,
@@ -100,6 +102,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
             SW: !isDemo,
+            CLIENT: true,
             BASE_URL: JSON.stringify(baseUrl),
             VERSION: JSON.stringify(require('./package.json').version),
         }),
@@ -108,7 +111,7 @@ module.exports = {
                 { from: 'static', to: outputPath },
             ],
         }),
-            new MiniCssExtractPlugin({
+        new MiniCssExtractPlugin({
             filename: 'styles/[name].css',
         }),
     ]

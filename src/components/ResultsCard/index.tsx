@@ -16,28 +16,11 @@ import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
 import FormsIcon from './images/forms-icon.svg';
 import TranslationsIcon from './images/translations-icon.svg';
+import { wordHasForms } from 'utils/wordHasForms';
 
 interface IResultsCardProps {
     item: ITranslateResult;
     index: number;
-}
-
-function showFormsButtonIsVisible(item: ITranslateResult) {
-    const pos = getPartOfSpeech(item.details);
-
-    switch (pos) {
-        case 'noun':
-        case 'numeral':
-        case 'pronoun':
-            if (item.original.includes(' ') && item.original.match(/[^,] [^\[]/)) {
-                return false;
-            }
-        case 'adjective':
-        case 'verb':
-            return true;
-        default:
-            return false;
-    }
 }
 
 function renderOriginal(item, alphabets, index) {
@@ -129,16 +112,20 @@ export const ResultsCard =
             biReporter.cardInteraction('show forms', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION,
-                index,
+                data: { index },
             }));
         }, [index]);
         const showDetail = useCallback(() => {
             biReporter.cardInteraction('show translations', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
-                index,
+                data: {
+                    word: Dictionary.getField(item.raw, 'isv'),
+                    add: Dictionary.getField(item.raw, 'addition'),
+                    details: Dictionary.getField(item.raw, 'partOfSpeech'),
+                },
             }));
-        }, [index]);
+        }, [item]);
         const setFavorite = useCallback(() => {
             dispatch(setFavoriteAction(id));
         }, [id]);
@@ -197,7 +184,7 @@ export const ResultsCard =
                     >
                         {short ? <TranslationsIcon /> : t('translates')}
                     </button>
-                    {showFormsButtonIsVisible(item) && (
+                    {wordHasForms(item.original, item.details) && (
                         <button
                             className={'results-card__show-forms-button'}
                             type={'button'}

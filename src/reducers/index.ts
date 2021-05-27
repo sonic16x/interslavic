@@ -22,7 +22,7 @@ export enum MODAL_DIALOG_TYPES {
 
 export interface IModalDialog {
     type: MODAL_DIALOG_TYPES;
-    index: number;
+    data: any;
     show?: boolean;
 }
 
@@ -54,6 +54,7 @@ export interface IMainState {
         [key: string]: boolean;
     };
     orderOfCases: string[];
+    enabledPages: string[];
 }
 
 export function mainReducer(state: IMainState, { type, data }) {
@@ -314,6 +315,16 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 orderOfCases: data,
+            };
+        case ActionTypes.TOGGLE_PAGE:
+            const { enabledPages } = state;
+
+            return {
+                ...state,
+                enabledPages:
+                    enabledPages.includes(data) ?
+                        enabledPages.filter((lang) => (lang !== data)) :
+                        [...enabledPages, data],
             };
         default:
             return state;
