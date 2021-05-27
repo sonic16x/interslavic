@@ -176,10 +176,6 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 wordComponent = this.renderAdjectiveDetails(word);
                 break;
             case 'verb':
-                if (!add) {
-                    return false;
-                }
-
                 wordComponent = this.renderVerbDetails(word, add);
                 break;
             case 'numeral':
