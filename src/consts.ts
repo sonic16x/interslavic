@@ -57,6 +57,12 @@ export const initialFields = [
     'genesis',
 ];
 
+export const initialAddFields = [
+    'type',
+    'sameInLanguages',
+    'genesis',
+];
+
 export const basicFields = [
     ...initialFields,
     ...langs,

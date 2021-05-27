@@ -1,4 +1,4 @@
-import { addLangs, langs } from 'consts';
+import { addLangs, initialAddFields, langs } from 'consts';
 import * as fs from 'fs';
 import { Dictionary } from 'services/dictionary';
 import { dataDelimiter, validFields, initialFields } from 'consts';
@@ -13,10 +13,12 @@ loadTablesData.then(({ data, columns }) => {
     const translateStatisticStr = JSON.stringify(Dictionary.getPercentsOfTranslated());
 
     const basicDataTransposed = [];
+    const initialFilteredFields = initialFields.filter((field) => !initialAddFields.includes(field));
 
     columns.forEach((column: string[]) => {
         const fieldName = getColumnName(column);
-        if (initialFields.includes(fieldName) || langs.includes(fieldName)) {
+
+        if (initialFilteredFields.includes(fieldName) || langs.includes(fieldName)) {
             basicDataTransposed.push(column);
         }
     });
