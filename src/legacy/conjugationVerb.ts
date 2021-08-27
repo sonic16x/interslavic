@@ -40,7 +40,7 @@ export function conjugationVerb(inf, rawPts): any {
     if (inf === 'sųt' || inf === 'je' || inf === 'jest') {
         inf = 'byti';
     }
-    const pts = rawPts.replace(/[()]/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
+    const pts = rawPts.replace(/\) \(/g, ')(').replace(/[()]/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
     const refl = reflexive(inf);
     const pref = prefix(inf);
     const is = infinitive_stem(pref, inf, pts);

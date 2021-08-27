@@ -59,7 +59,7 @@ fetch(dictionaryUrl)
                     case 'verb':
                         testCases.verb.push({
                             init: { word, add, details },
-                            expected: conjugationVerb(word, add.replace(/[()]/g, '')),
+                            expected: conjugationVerb(word, add),
                         });
                         break;
                     case 'adjective':
