@@ -1,7 +1,8 @@
+import { PureComponent, createRef } from 'react';
 import { Card } from 'components/Card';
 import Table from 'components/Table';
 import Text from 'components/Text';
-import * as React from 'react';
+
 import './index.scss';
 import tables from './tables.json';
 
@@ -25,14 +26,14 @@ const titles = {
     podrobnosti: 'Podrobne pravila (linki)',
 };
 
-class Grammar extends React.PureComponent {
+class Grammar extends PureComponent {
     private containerRef;
     private activeId;
     private userEvent;
     constructor(props) {
         super(props);
         this.activeId = 'abeceda';
-        this.containerRef = React.createRef();
+        this.containerRef = createRef();
         this.onScroll = this.onScroll.bind(this);
         this.onWheel = this.onWheel.bind(this);
     }

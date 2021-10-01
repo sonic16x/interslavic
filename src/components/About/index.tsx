@@ -1,12 +1,21 @@
-import { worksheetUrl } from 'consts';
-import * as React from 'react';
+import { tablesData } from 'consts';
+
 import { t } from 'translations';
 import './index.scss';
+import { getTablePublicUrl } from 'utils/getTablePublicUrl';
+
+function boldify(s: string): React.ReactNode {
+    const fragments = s.split('**');
+    return fragments.map((substr, index) => {
+      return index % 2 === 0 ? substr : <b>{substr}</b>;
+    });
+}
 
 export const About: React.FC =
     () => {
+        const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
         const email = 'cherebedov.sergey@gmail.com';
-        const github = 'https://github.com/scherebedov/interslavic';
+        const github = 'https://github.com/sonic16x/interslavic';
         const source = 'http://steen.free.fr/interslavic';
         let version = `v${VERSION}`;
         const trimmedBaseUrl = BASE_URL.replace('/', '');
@@ -30,7 +39,7 @@ export const About: React.FC =
                         <h6>{t('aboutDeveloper')}</h6>
                         <div className={'about-page__author'}>
                             {t('aboutAuthorSergeyCherebedov')}:
-                            <a target={'_blank'} href={'https://github.com/scherebedov'}>GitHub</a>
+                            <a target={'_blank'} href={'https://github.com/sonic16x'}>GitHub</a>
                             <a target={'_blank'} href={'https://www.linkedin.com/in/scherebedov/'}>LinkedIn</a>
                             <a target={'_blank'} href={'https://www.facebook.com/profile.php?id=100009366550621'}>Facebook</a>
                             <a target={'_blank'} href={`email:${email}`}>{email}</a>

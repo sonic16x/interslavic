@@ -1,0 +1,43 @@
+.viewer-pos-filter {
+  width: 200px;
+  padding: var(--gap-size-s) var(--gap-size-s) 0;
+
+  &__list {
+    margin-top: var(--gap-size-s);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__line {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__expand-btn {
+    cursor: pointer;
+
+    &.expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__sub-list {
+    padding-left: var(--gap-size-s);
+    display: flex;
+    flex-direction: column;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    hr {
+      margin: 0 0 7px;
+    }
+
+    &.expanded {
+      pointer-events: all;
+      height: auto;
+      opacity: 1;
+    }
+  }
+}
+

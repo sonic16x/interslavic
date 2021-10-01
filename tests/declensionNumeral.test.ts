@@ -1,4 +1,3 @@
-
 import { declensionNumeral } from 'legacy/declensionNumeral';
 import { getNumeralType } from 'utils/wordDetails';
 // @ts-ignore

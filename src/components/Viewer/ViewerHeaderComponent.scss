@@ -1,0 +1,26 @@
+.header-cell {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+
+  &__filter-remove {
+    line-height: 12px;
+    margin-left: 2px;
+  }
+
+  &__sort {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+    margin-right: 2px;
+
+    &-arrow {
+      display: flex;
+
+      &.rotated {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

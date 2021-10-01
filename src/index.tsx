@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IMainState, mainReducer } from 'reducers';
@@ -11,13 +10,14 @@ import './index.scss';
 import { Dictionary } from 'services/dictionary';
 import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
 import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
+import { langs } from 'consts';
 
 /* tslint:disable */
 declare global {
-    const HASH_ID: string;
     const VERSION: string;
     const BASE_URL: string;
     const SW: boolean;
+    const CLIENT: boolean;
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
     }
@@ -27,7 +27,7 @@ setInitialPage();
 
 if (SW) {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(`sw.${HASH_ID}.js`)
+        navigator.serviceWorker.register(`sw.js`)
             .then((registration) => {
                 console.log('Registration successful, scope is:', registration.scope);
             })
@@ -51,6 +51,7 @@ export const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     posFilter: '',
+    dictionaryLanguages: langs,
     flavorisationType: '3',
     alphabetType: 'latin',
     page: 'dictionary',
@@ -58,7 +59,7 @@ export const defaultState: IMainState = {
     loadingProgress: 0,
     modalDialog: {
         type: null,
-        index: null,
+        data: null,
     },
     searchExpanded: false,
     rawResults: [],
@@ -70,6 +71,7 @@ export const defaultState: IMainState = {
     },
     favoriteList: {},
     orderOfCases: ['nom','acc','gen','loc','dat','ins','voc'],
+    enabledPages: [],
 };
 
 function reduxDevTools() {

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { PureComponent } from 'react';
 import './index.scss';
 
 function matchStr(str) {
@@ -28,7 +28,7 @@ interface ITextProps {
     indent?: string;
 }
 
-export default class extends React.PureComponent<ITextProps> {
+export default class extends PureComponent<ITextProps> {
     public render() {
         const style = {
             textAlign: this.props.align || 'start',

@@ -1,77 +1,76 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const baseUrl = process.env.BASE_URL || '/';
 const isDemo = process.env.DEMO !== undefined;
 const outputPath = path.resolve(__dirname, `./dist${baseUrl}`);
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
-const bundleId = 'prod';
-
-function customHashFunction() {
-    return {
-        digest: () => bundleId,
-        update: () => {
-        },
-    }
-}
 
 module.exports = {
     mode: 'production',
     entry: {
         index: './src/index',
         grammarComponent: './src/components/Grammar/index',
+        viewerComponent: './src/components/Viewer/index',
         sw: './src/sw',
     },
     output: {
         path: outputPath,
         publicPath: './',
-        filename: `[name].[hash].js`,
-        hashFunction: customHashFunction
+        filename: `[name].js`,
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [nodeModulesPath, srcPath]
     },
     optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
+        minimize: true,
+        emitOnErrors: true,
+        splitChunks: false,
     },
     module: {
         rules: [
+            {
+              test: /\.(png|jpg|jpeg|gif)$/i,
+              issuer: /\.s?css$/,
+              use: [
+                {
+                  loader: 'file-loader',
+                  options: {
+                    name: '[name].[contenthash].[ext]',
+                    publicPath: `${baseUrl}static`,
+                    outputPath: 'static',
+                    esModule: false,
+                  }
+                },
+              ],
+            },
             {
                 test: /\.tsx?$/,
                 include: srcPath,
                 use: 'ts-loader?configFile=tsconfig.json'
             },
             {
-                test: /\.s?css$/,
-                include: [
-                    srcPath,
-                ],
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: true,
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                        },
-                        {
-                            loader: 'sass-loader',
-                        }
-                    ]
-                })
+                test: /\.scss$/,
+                include: srcPath,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                ]
             },
             {
                 test: /\.svg$/,
@@ -85,7 +84,7 @@ module.exports = {
             template: path.join(srcPath, 'index.html.ejs'),
             filename: 'index.html',
             path: outputPath,
-            excludeChunks: ['sw', 'grammarComponent'],
+            excludeChunks: ['sw', 'grammarComponent', 'viewerComponent'],
             env: {
                 ANALYTICS: !isDemo,
                 BASE_URL: baseUrl,
@@ -100,26 +99,20 @@ module.exports = {
                 BASE_URL: baseUrl,
             },
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
             SW: !isDemo,
-            HASH_ID: JSON.stringify(bundleId),
+            CLIENT: true,
             BASE_URL: JSON.stringify(baseUrl),
             VERSION: JSON.stringify(require('./package.json').version),
         }),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new CopyPlugin([{
-            from: 'static',
-        }]),
-        new ExtractTextPlugin('styles/[name].[hash].css'),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /styles/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorPluginOptions: {
-                preset: ['default', {discardComments: {removeAll: true}}],
-            },
-            canPrint: true
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'static', to: outputPath },
+            ],
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'styles/[name].css',
         }),
     ]
 };

@@ -106,7 +106,7 @@ jobs:
           BASE_URL: /${{ steps.pr_number.outputs.pr }}/
         run: |
           npm run generateDictionary
-          npx webpack
+          npx webpack --config webpack.config.prod.js
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

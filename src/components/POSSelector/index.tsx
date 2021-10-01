@@ -1,6 +1,6 @@
 import { posFilterAction } from 'actions';
 import { Selector } from 'components/Selector';
-import * as React from 'react';
+import { useCallback } from 'react';
 import { t } from 'translations';
 import './index.scss';
 import { usePosFilter } from 'hooks/usePosFilter';
@@ -49,7 +49,7 @@ const POSList = [
     },
 ];
 
-export const POSSelector: React.FC =
+export const POSSelector =
     () => {
         const dispatch = useDispatch();
         const posFilter = usePosFilter();
@@ -57,7 +57,7 @@ export const POSSelector: React.FC =
             name: t(name),
             value,
         }));
-        const onSelect = React.useCallback((pos) => {
+        const onSelect = useCallback((pos) => {
             dispatch(posFilterAction(pos));
         }, [dispatch]);
 
