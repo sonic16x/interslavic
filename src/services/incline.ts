@@ -14,10 +14,18 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { dictionaryUrl } from 'consts';
+import { validFields } from 'consts';
 import * as fs from 'fs';
 import request from 'request';
-import { dataDelimiter, Dictionary, validFields } from 'services/dictionary';
+import { Dictionary } from 'services/dictionary';
+
+import { useDispatch } from 'react-redux';
+import { fetchDictionary } from 'services/fetchDictionary';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
+import { loadTablesData } from 'services/loadTablesData';
+
+
+// await fetchDictionary(dispatch, dictionaryLanguages);
 
 function getWordMetadata(itemRaw) {
         const details = Dictionary.getField(itemRaw, 'partOfSpeech');
@@ -147,7 +155,14 @@ function getWordParadigm(rawItem) {
     });
 }
 
-request(dictionaryUrl, (err, data) => {
+
+
+loadTablesData.then(({ data, columns }) => {
+    /*
+    const stat = await fetchStat();
+    const basicData = await fetchBasic();
+    const langsData = await fetchLangs(langList.filter((lang) => addLangs.includes(lang)));
+
     const wordList = data.body
         .replace(/#/g, '')
         .split('\n')
@@ -156,7 +171,9 @@ request(dictionaryUrl, (err, data) => {
     const shortWordList = wordList.map((item) => {
         return validFields.map((fld) => item.find((_, i) => header[i] === fld)).map((e) => e.trim());
     });
-    Dictionary.init(shortWordList);
+    // Dictionary.init(basicData.wordList, basicData.searchIndex, stat);
+    */
+    Dictionary.init(data);
     const words = Dictionary.getWordList();
     const paradigmData = words.map((item) => {
         // const itemRaw = Dictionary.getField(item, 'isv');
