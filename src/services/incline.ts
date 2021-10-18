@@ -24,7 +24,6 @@ import { fetchDictionary } from 'services/fetchDictionary';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { loadTablesData } from 'services/loadTablesData';
 
-
 // await fetchDictionary(dispatch, dictionaryLanguages);
 
 function getWordMetadata(itemRaw) {
@@ -154,8 +153,6 @@ function getWordParadigm(rawItem) {
         return getSingleWordParadigm(word.trim(), add, details);
     });
 }
-
-
 
 loadTablesData.then(({ data, columns }) => {
     /*

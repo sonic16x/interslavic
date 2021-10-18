@@ -17,7 +17,6 @@ function prepareGender(gender, animated) {
     if (gender === 'masculine') {
         return animated ? 'm1' : 'm2';
     }
-    return 'f';  // weird hack
 }
 
 export function declensionNounFlat(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable): any {
