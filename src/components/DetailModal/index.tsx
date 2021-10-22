@@ -477,7 +477,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             ],
             [
                 `${t('case')}@b`,
-                `${t('plural')}@b`,
+                `${t('noun-masculine')}@b`,
                 `${t('feminineOrNeuter')}@b`,
             ],
         ];

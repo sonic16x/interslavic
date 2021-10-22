@@ -194,10 +194,10 @@ export function transliterateW (iW, type, flav, nms)
     iW = iW.replace (/x/g,"ks");
 
     iW = iW.replace (/([ńľřťďśź])j/g,"$1ıj");
-    iW = iW.replace (/([dsz])j/g,"$1#j"); 
-    iW = iW.replace (/%obj/g,"ob#j"); 
-    iW = iW.replace (/%neobj/g,"neob#j"); 
-    iW = iW.replace (/%vj/g,"v#j");
+    iW = iW.replace (/([dsz])j/g,"$1ʲj"); 
+    iW = iW.replace (/%obj/g,"obʲj"); 
+    iW = iW.replace (/%neobj/g,"neobʲj"); 
+    iW = iW.replace (/%vj/g,"vʲj");
 
 
     /* FLAVORIZACIJE */
@@ -207,7 +207,7 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/ȯ%/g,"o%");
         iW = iW.replace (/ŭ/g,"v");
         iW = iW.replace (/[ṱḓ]/g,"");
-        iW = iW.replace (/[’`]/g,"#%");
+        iW = iW.replace (/[’`]/g,"ʲ%");
         iW = iW.replace (/([čšžj])ě/g,"$1e");
     }
 
@@ -248,7 +248,7 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/ṙ/g,"or"); 
         iW = iW.replace (/ŕ/g,"er");
         iW = iW.replace (/([kgh])y/g,"$1i");
-        iW = iW.replace (/[`’]/g,"#%");
+        iW = iW.replace (/[`’]/g,"ʲ%");
     }
     
     else if (flav == "J") { 
@@ -269,7 +269,7 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/y/g,"i");
         iW = iW.replace (/ȯ%/g,"o%");
         iW = iW.replace (/([šžčcj])ě/g,"$1e");
-        iW = iW.replace (/[`’]/g,"#%");
+        iW = iW.replace (/[`’]/g,"ʲ%");
         iW = iW.replace (/ı/g,"");
     }
 
@@ -378,8 +378,8 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/jy/g,"i");
         iW = iW.replace (/([kg])y/g,"$1i");
         iW = iW.replace (/([kg])e/g,"$1ie");
-        iW = iW.replace (/jn/g,"#jn");
-        iW = iW.replace (/js/g,"#js");
+        iW = iW.replace (/jn/g,"ʲjn");
+        iW = iW.replace (/js/g,"ʲjs");
         iW = iW.replace (/cyj/g,"cj");
         iW = iW.replace (/cyi/g,"cji");
         iW = iW.replace (/lij/g,"li");
@@ -388,7 +388,7 @@ export function transliterateW (iW, type, flav, nms)
         iW = iW.replace (/yu/g,"ju");
         iW = iW.replace (/yo/g,"jo");
         iW = iW.replace (/rzj/g,"rj");
-        iW = iW.replace (/#/g,"");
+        iW = iW.replace (/ʲ/g,"");
     }
 
     /* Kirilica */
@@ -450,8 +450,8 @@ export function transliterateW (iW, type, flav, nms)
             iW = iW.replace (/ė/g,"е");
             if (flav == "J")  {
                 iW = iW.replace (/є/g,"е");
-                iW = iW.replace (/л#ј/g,"љ");
-                iW = iW.replace (/н#ј/g,"њ");
+                iW = iW.replace (/лʲј/g,"љ");
+                iW = iW.replace (/нʲј/g,"њ");
             }
             if (flav == "2") {
                 iW = iW.replace (/є/g,"ѣ"); // DŠ  !!!
@@ -479,8 +479,8 @@ export function transliterateW (iW, type, flav, nms)
                 iW = iW.replace (/ш[чћ]/g,"щ");
             }
             else {
-                iW = iW.replace (/([#%аеєиоуы])е/g,"$1э");
-                iW = iW.replace (/([#%])й([еи])/g,"$1$2");
+                iW = iW.replace (/([ʲ%аеєиоуы])е/g,"$1э");
+                iW = iW.replace (/([ʲ%])й([еи])/g,"$1$2");
                 iW = iW.replace (/([аеєиоуы])й([еи])/g,"$1$2");
                 iW = iW.replace (/й([еи])/g,"ь$1");
                 iW = iW.replace (/ѣ/g,"е");
@@ -530,7 +530,7 @@ export function transliterateW (iW, type, flav, nms)
             iW = iW.replace(/m/g,"ⰿ");
             iW = iW.replace(/n/g,"ⱀ");
             iW = iW.replace(/o/g,"ⱁ");
-            iW = iW.replace(/[ȯ#]/g,"ⱏ");
+            iW = iW.replace(/[ȯʲ]/g,"ⱏ");
             iW = iW.replace(/p/g,"ⱂ");
             iW = iW.replace(/r/g,"ⱃ");
             iW = iW.replace(/ṙ/g,"ⱃⱏ");
@@ -1621,7 +1621,7 @@ export function transliterateW (iW, type, flav, nms)
 
 
     iW = iW.replace (/jj/g,"j");
-    iW = iW.replace (/[#ı%]/g,"");
+    iW = iW.replace (/[ʲı%]/g,"");
     OrigW = OrigW.replace (/%/g,"");
 
     /** Hoofdletters maken **/
@@ -1721,36 +1721,36 @@ function abur_upper (iW)
 
 function nmsify (iW)
 {
-    iW = iW.replace (/[яꙗ]/g,"#a");
-    iW = iW.replace (/ьа/g,"#a");
-    iW = iW.replace (/ѥ/g,"#e");
-    iW = iW.replace (/ье/g,"#e");
-    iW = iW.replace (/ї/g,"#i");
-    iW = iW.replace (/ьи/g,"#i");
-    iW = iW.replace (/ё/g,"#o");
-    iW = iW.replace (/ьо/g,"#o");
-    iW = iW.replace (/ю/g,"#u");
-    iW = iW.replace (/ьу/g,"#u");
-    iW = iW.replace (/ѩ/g,"#ę");
-    iW = iW.replace (/ьѧ/g,"#ę");
-    iW = iW.replace (/ѭ/g,"#ų");
-    iW = iW.replace (/ьѫ/g,"#ų");
+    iW = iW.replace (/[яꙗ]/g,"ʲa");
+    iW = iW.replace (/ьа/g,"ʲa");
+    iW = iW.replace (/ѥ/g,"ʲe");
+    iW = iW.replace (/ье/g,"ʲe");
+    iW = iW.replace (/ї/g,"ʲi");
+    iW = iW.replace (/ьи/g,"ʲi");
+    iW = iW.replace (/ё/g,"ʲo");
+    iW = iW.replace (/ьо/g,"ʲo");
+    iW = iW.replace (/ю/g,"ʲu");
+    iW = iW.replace (/ьу/g,"ʲu");
+    iW = iW.replace (/ѩ/g,"ʲę");
+    iW = iW.replace (/ьѧ/g,"ʲę");
+    iW = iW.replace (/ѭ/g,"ʲų");
+    iW = iW.replace (/ьѫ/g,"ʲų");
     iW = iW.replace (/нь/g,"ń");
-    iW = iW.replace (/н#/g,"nj");
+    iW = iW.replace (/нʲ/g,"nj");
     iW = iW.replace (/њ/g,"nj");
     iW = iW.replace (/ль/g,"ĺ");
-    iW = iW.replace (/л#/g,"lj");
+    iW = iW.replace (/лʲ/g,"lj");
     iW = iW.replace (/љ/g,"lj");
     iW = iW.replace (/рь/g,"ŕ");
-    iW = iW.replace (/р#/g,"ŕ");
+    iW = iW.replace (/рʲ/g,"ŕ");
     iW = iW.replace (/ть/g,"ť");
-    iW = iW.replace (/т#/g,"ť");
+    iW = iW.replace (/тʲ/g,"ť");
     iW = iW.replace (/дь/g,"ď");
-    iW = iW.replace (/д#/g,"ď");
+    iW = iW.replace (/дʲ/g,"ď");
     iW = iW.replace (/сь/g,"ś");
-    iW = iW.replace (/с#/g,"ś");
+    iW = iW.replace (/сʲ/g,"ś");
     iW = iW.replace (/зь/g,"ź");
-    iW = iW.replace (/з#/g,"ź");
+    iW = iW.replace (/зʲ/g,"ź");
     iW = iW.replace (/ь%/g,"%");
     iW = iW.replace (/[ђѓ]/g,"đ");
     iW = iW.replace (/[ћќ]/g,"ć");
@@ -1766,7 +1766,7 @@ function nmsify (iW)
     iW = iW.replace (/ж/g,"ž");
     iW = iW.replace (/[зꙁꙀ]/g,"z");
     iW = iW.replace (/[иіѵѷ]/g,"i");
-    iW = iW.replace (/[йјь#]/g,"j");
+    iW = iW.replace (/[йјьʲ]/g,"j");
     iW = iW.replace (/к/g,"k");
     iW = iW.replace (/л/g,"l");
     iW = iW.replace (/м/g,"m");
@@ -1794,15 +1794,15 @@ function nmsify (iW)
 
     iW = iW.replace (/⁙/g,".");
 
-    iW = iW.replace (/zsk/g,"z#sk");
-    iW = iW.replace (/zst/g,"z#st");
-    iW = iW.replace (/%izs/g,"%iz#s");
-    iW = iW.replace (/%bezs/g,"%bez#s");
-    iW = iW.replace (/%razs/g,"%raz#s");
-    iW = iW.replace (/%råzs/g,"%råz#s");
-    iW = iW.replace (/konjug/g,"kon#jug");
-    iW = iW.replace (/konjun/g,"kon#jun");
-    iW = iW.replace (/injek/g,"in#jek");
+    iW = iW.replace (/zsk/g,"zʲsk");
+    iW = iW.replace (/zst/g,"zʲst");
+    iW = iW.replace (/%izs/g,"%izʲs");
+    iW = iW.replace (/%bezs/g,"%bezʲs");
+    iW = iW.replace (/%razs/g,"%razʲs");
+    iW = iW.replace (/%råzs/g,"%råzʲs");
+    iW = iW.replace (/konjug/g,"konʲjug");
+    iW = iW.replace (/konjun/g,"konʲjun");
+    iW = iW.replace (/injek/g,"inʲjek");
 
     iW = iW.replace (/s[xz]/g,"š");
     iW = iW.replace (/c[xz]/g,"č");
@@ -1876,7 +1876,7 @@ function jgedoe (iW, type)
         {
             case "j":
                 if  (iW.charAt (i - 1) == "%") { resC = "j"; break; }
-                else if  (iW.charAt (i - 1) == "#")	{ resC = "j"; break; }
+                else if  (iW.charAt (i - 1) == "ʲ")	{ resC = "j"; break; }
                 else if (iW.charAt (i - 1) == "j")	{ resC = "j"; break; }
                 else if ((vowel.test (iW.charAt (i - 1)) == false)
                         && (vowel.test (iW.charAt (i + 1)) == true)) { resC = "ь"; break; }

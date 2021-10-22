@@ -48,7 +48,7 @@ export const TranslationsModal =
         ];
 
         const tableData = allLangs.reduce((arr, lang, i) => {
-            const translate = Dictionary.getField(item.raw, lang).toString();
+            const translate = Dictionary.getField(item.raw, lang).toString().replace(/@/g, '&#64;');
 
             if (lang === 'isv') {
                 return [
