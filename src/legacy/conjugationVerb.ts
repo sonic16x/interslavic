@@ -10,6 +10,8 @@ const prefixes = [
     'sȯ', 's', 'u', 'vȯ', 'vo', 'v', 'vȯz', 'voz', 'vy', 'za',
 ];
 
+const irregular_stems = {'da': 1, 'je': 1, 'jě': 1, 'ja': 1, 'vě': 1};
+
 export function conjugationVerbFlat(inf, rawPts): any {
     const result: any = conjugationVerb(inf, rawPts);
     if (!result) {
@@ -38,7 +40,7 @@ export function conjugationVerb(inf, rawPts): any {
     if (inf === 'sųt' || inf === 'je' || inf === 'jest') {
         inf = 'byti';
     }
-    const pts = rawPts.replace(/[()]/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
+    const pts = rawPts.replace(/\) \(/g, ')(').replace(/[()]/g, '').split(/[;,/]/)[0].replace(/\+\d/,'');
     const refl = reflexive(inf);
     const pref = prefix(inf);
     const is = infinitive_stem(pref, inf, pts);
@@ -162,14 +164,18 @@ function infinitive_stem(pref, inf, pts) {
         return result;
     }
 
-    if ( trunc.slice(-2) === 'ti' || trunc.slice(-2) === 'tì') {
-        result = trunc.substring(0, trunc.length - 2);
+    const valid_endings = ['ti', 'tì', 't', 'ť']
+    for (let element of valid_endings) {
+        let len = element.length;
+        if (trunc.slice(-len) == element) {
+            result = trunc.substring(0, trunc.length - len);
+            break;
+        }
     }
-    else if ( trunc.slice(-1) === 't' || trunc.slice(-1) === 'ť' ) {
-        result = trunc.substring(0, trunc.length - 1);
-    }
-    else {
+
+    if (result == "") {
         result = 'ERROR-2';
+        return result;
     }
 
     if (result.slice(-1) === 's') {
@@ -177,7 +183,7 @@ function infinitive_stem(pref, inf, pts) {
         if( result === 'jes') {
             result = 'jed';
         }
-        //steam based on pts
+        // stem based on present tense stem
         else if( pts ) {
             result = pts.slice(0, -1);
         }
@@ -210,53 +216,55 @@ function infinitive_stem(pref, inf, pts) {
     return result;
 }
 
+function derive_present_tense_stem(infinitive_stem_string) {
+    // Note that sometimes a special character ĵ is inserted into the string
+    // Naučny Medžuslovjanski uses...
+    // ...ĵ in cases where most Slavic languages have contraction -aje- > -a-
+    let result = infinitive_stem_string;
+
+    if( ['ova','eva'].includes(result.slice(-3)) && result !== 'hova' ) {
+        result = result.slice(0, -3) + 'uj';
+    }
+    else if( result.length > 3 && ['nu', 'nų'].includes(result.slice(-2))) {
+        result = result.slice(0, -1);
+    }
+    else if (result.slice(-1) === 'ę') {
+        if (result.slice(-2) === 'ję') {
+            if(['bję', 'dję', 'sję', 'zję'].includes(result.slice(-3))) {
+                result = result.slice(0, -2) + 'ȯjm';
+            } else {
+                result = result.slice(0, -1) + 'm';
+            }
+        }
+        else if (result === 'vzę') {
+            result = 'vȯzm';
+        }
+        else {
+            result = result.slice(0, -1) + 'n';
+        }
+    }
+    else if (result.slice(-1) === 'ų') {
+        result = result.slice(0, -1) /*+ 'm'*/;
+    }
+    else if( result.length < 4 && ['y', 'o', 'u', 'e', 'ě'].includes(result.slice(-1))) {
+        if (result.charAt(0) === 'u') {
+            result = result + 'ĵ';
+        }  else {
+            result = result + 'j';
+        }
+    }
+    else if(['a', 'e', 'ě'].includes(result.slice(-1))) {
+        result = result + 'ĵ';
+    }
+    return result;
+}
+
+
 function present_tense_stem(pref, pts, is) {
     let result = is;
 
     if (pts.length == 0) {
-        if (((result.slice(-3) === 'ova') || (result.slice(-3) === 'eva')) && (result != 'hova')) {
-            result = (result.slice(0, -3) + 'uj');
-        }
-        else if (((result.slice(-2) === 'nu') || (result.slice(-2) === 'nų')) && (result.length > 3)) {
-            result = (result.slice(0, -1));
-        }
-        else if (result.slice(-1) === 'ę') {
-            if (result.slice(-2) === 'ję') {
-                if (result.slice(-3) === 'bję' || result.slice(-3) === 'dję'
-                    || result.slice(-3) === 'sję' || result.slice(-3) === 'zję') {
-                    result = (result.slice(0, -2) + 'ȯjm');
-                }
-                else {
-                    result = (result.slice(0, -1) + 'm');
-                }
-            }
-            else if (result === 'vzę') {
-                result = 'vȯzm';
-            }
-            else {
-                result = (result.slice(0, -1) + 'n');
-            }
-        }
-        else if (result.slice(-1) == 'ų') {
-            result = (result.slice(0, -1) /*+ 'm'*/);
-        }
-        else if ((/*result.slice(-1) == 'i' ||*/ result.slice(-1) == 'y' ||
-            result.slice(-1) == 'o' || result.slice(-1) == 'u' ||
-            result.slice(-1) == 'ě' || result.slice(-1) == 'e') && result.length < 4) {
-            /*if (result == 'uči') {
-                result = 'uči';
-            }
-            else*/
-            if (result.charAt(0) == 'u') {
-                result = result + 'ĵ';
-            }
-            else {
-                result = result + 'j';
-            }
-        }
-        else if (result.slice(-1) == 'a' || result.slice(-1) == 'e' || result.slice(-1) == 'ě') {
-            result = result + 'ĵ';
-        }
+        result = derive_present_tense_stem(is);
     }
     else {
         if (((pts.slice(-2) === 'se') || (pts.slice(-2) === 'sę')) && (pts.length > 2)) {
@@ -283,9 +291,16 @@ function present_tense_stem(pref, pts, is) {
         }
     }
 
+    result = process_present_tense_stem_exceptions(pref, pts, is, result);
+    return result;
+}
+
+
+function process_present_tense_stem_exceptions(pref, pts, is, result) {
     if ((is == 'by') && (pref == '') || ((result == 'je' || result == 'j') && (is == 'bi'))) {
         result = 'jes';
     }
+    // see: irregular_stems
     else if (result == 'věděĵ') {
         result = 'vě';
     }
@@ -317,16 +332,9 @@ function present_tense_stem(pref, pts, is) {
 }
 
 function secondary_present_tense_stem(ps) {
-    const i = (ps.length - 1);
-    if (ps.charAt(i) == 'g') {
-        return ps.substring(0, i) + 'ž';
-    }
-    else if (ps.charAt(i) == 'k') {
-        return ps.substring(0, i) + 'č';
-    }
-    else {
-        return ps;
-    }
+    return ps
+        .replace(/g$/, 'ž')
+        .replace(/k$/, 'č')
 }
 
 function l_participle(pref, pts, is) {
@@ -362,6 +370,7 @@ function build_infinitive(pref, is, refl) {
 }
 
 function buildPresent(pref, ps, psi, refl) {
+    // see: irregular_stems
     switch (ps) {
         case 'jes':
             return ['jesm','jesi','jest (je)','jesmȯ','jeste','sųt']
@@ -385,6 +394,8 @@ function buildPresent(pref, ps, psi, refl) {
 
     switch (ps.slice(-1)) {
         case 'ĵ': {
+            // Naučny Medžuslovjanski uses...
+            // ...ĵ in cases where most Slavic languages have contraction -aje- > -a-
             const cut = ps.slice(0, -1);
             const pps = `${cut}j`;
             return [
@@ -538,19 +549,11 @@ function build_imperative(pref, ps, refl) {
         p2s = 'bųď';
     }
     else if (ps == 'da') {
-        p2s = pref + 'daj';
+        // this irregular stem is handled slightly differently
+        p2s = pref + ps + 'j';
     }
-    else if (ps == 'je') {
-        p2s = pref + 'jeď';
-    }
-    else if (ps == 'jě') {
-        p2s = pref + 'jěď';
-    }
-    else if (ps == 'ja') {
-        p2s = pref + 'jaď';
-    }
-    else if (ps == 'vě') {
-        p2s = pref + 'věď';
+    else if (ps in irregular_stems) {
+        p2s = pref + ps + 'ď';
     }
     else if ((ps.charAt(i) == 'ĵ') || (ps.charAt(i) == 'j')) {
         p2s = pref + ps;
@@ -573,27 +576,15 @@ function build_imperative(pref, ps, refl) {
 }
 
 function build_prap(pref, ps, refl) {
+    // Present Participle Active (napr., izslědujuči)
     let cut = '';
     const i = (ps.length - 1);
-
 
     if (ps == 'jes') {
         ps = pref + 'sų';
     }
-    else if (ps == 'da') {
-        ps = pref + 'dadų';
-    }
-    else if (ps == 'je') {
-        ps = pref + 'jedų';
-    }
-    else if (ps == 'jě') {
-        ps = pref + 'jědų';
-    }
-    else if (ps == 'ja') {
-        ps = pref + 'jadų';
-    }
-    else if (ps == 'vě') {
-        ps = pref + 'vědų';
+    else if (ps in irregular_stems) {
+        ps = pref + ps + 'dų';
     }
 
     else if ((ps.charAt(i) == 'a') || (ps.charAt(i) == 'e') || (ps.charAt(i) == 'ě')) {
@@ -611,25 +602,14 @@ function build_prap(pref, ps, refl) {
 }
 
 function build_prpp(pref, ps, psi) {
+    // Present Participle Passive (napr., izslědujemy)
     let result = '';
 
     if (ps == 'jes') {
         result = '—';
     }
-    else if (ps == 'da') {
-        ps = 'dado';
-    }
-    else if (ps == 'je') {
-        ps = 'jedo';
-    }
-    else if (ps == 'jě') {
-        ps = 'jědo';
-    }
-    else if (ps == 'ja') {
-        ps = 'jado';
-    }
-    else if (ps == 'vě') {
-        ps = 'vědo';
+    else if (ps in irregular_stems) {
+        ps = ps + 'do';
     }
 
     const i = (ps.length - 1);
@@ -659,6 +639,7 @@ function build_prpp(pref, ps, psi) {
 }
 
 function build_pfap(lpa, refl) {
+    // Past Participle Active (napr., izslědovavši)
     let result = '';
     if (lpa.slice(-2, -1).match(/[aeiouyęųåěėȯ)]/)) {
         result = lpa.substring(0, lpa.length - 1) + 'vši' + refl;
@@ -676,6 +657,7 @@ function build_pfap(lpa, refl) {
 
 
 function build_pfpp(pref, is, psi) {
+    // Past Participle Passive (napr., izslědovany)
     let ppps = '';
     const i = (is.length - 1);
     /* old rule for -t

@@ -4,7 +4,7 @@ import { InputText } from 'components/InputText';
 import { LangSelector } from 'components/LangSelector';
 import { POSSelector } from 'components/POSSelector';
 import { SearchTypeSelector } from 'components/SearchTypeSelector';
-import * as React from 'react';
+import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchExpanded } from 'hooks/useSearchExpanded';
 import { useShortCardView } from 'hooks/useShortCardView';
@@ -12,14 +12,14 @@ import classNames from 'classnames';
 import './index.scss';
 import ExpandIcon from './images/expand-icon.svg';
 
-export const Controls: React.FC =
+export const Controls =
     () => {
         const dispatch = useDispatch();
         const expand = useSearchExpanded();
-        const [expanded, setExpanded] = React.useState<boolean>(expand);
+        const [expanded, setExpanded] = useState<boolean>(expand);
         const short = useShortCardView();
 
-        const onCLick = React.useCallback(() => {
+        const onCLick = useCallback(() => {
             dispatch(setSearchExpand(!expanded));
         }, [dispatch, expanded, expanded]);
 

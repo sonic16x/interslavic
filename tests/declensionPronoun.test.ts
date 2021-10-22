@@ -1,4 +1,3 @@
-
 import { declensionPronoun } from 'legacy/declensionPronoun';
 import { getPronounType } from 'utils/wordDetails';
 // @ts-ignore

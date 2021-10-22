@@ -6,7 +6,7 @@
   --light-gray-color: #999;
   --valid-color: #28a745;
   --invalid-color: #dc3545;
-  --yellow-color: #ffeb3b;
+  --yellow-color: #ffde03;
   --shadow: 0 8px 16px rgba(0, 0, 0, .15);
   --border: 1px solid rgba(0, 0, 0, .125);
   --border-radius-s: 5px;
@@ -30,6 +30,36 @@
 
   --gap-size: 16px;
   --gap-size-s: 8px;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.muted-color {
+  color: var(--muted-text-color);
+}
+
+.text {
+  &-xs {
+    font-size: var(--text-xs);
+    line-height: var(--text-xs-line);
+  }
+
+  &-s {
+    font-size: var(--text-s);
+    line-height: var(--text-s-line);
+  }
+
+  &-m {
+    font-size: var(--text-m);
+    line-height: var(--text-m-line);
+  }
+
+  &-l {
+    font-size: var(--text-l);
+    line-height: var(--text-l-line);
+  }
 }
 
 html, body {
@@ -59,6 +89,9 @@ a {
 
 .bold {
   font-weight: bold;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 
 h4 {

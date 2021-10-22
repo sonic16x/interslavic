@@ -10,6 +10,11 @@ export const pages = [
         path: `${BASE_URL}grammar`,
     },
     {
+        name: 'viewerTitle',
+        value: 'viewer',
+        path: `${BASE_URL}viewer`,
+    },
+    {
         name: 'settingsTitle',
         value: 'settings',
         path: `${BASE_URL}settings`,
@@ -20,6 +25,8 @@ export const pages = [
         path: `${BASE_URL}about`,
     },
 ];
+
+export const defaultPages = ['dictionary', 'grammar', 'settings', 'about'];
 
 export function goToPage(path: string) {
     window.history.pushState({}, document.title, `${path}`);

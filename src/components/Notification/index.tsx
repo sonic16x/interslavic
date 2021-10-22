@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import './index.scss';
 import classNames from 'classnames';
 import { setNotificationAction } from 'actions';

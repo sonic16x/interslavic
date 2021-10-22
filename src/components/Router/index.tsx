@@ -7,6 +7,7 @@ import { usePage } from 'hooks/usePage';
 import { toBCP47 } from 'utils/bcp47';
 
 const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Grammar'));
+const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Viewer'));
 
 import { setPageAction } from 'actions';
 import { getPageFromPath, getPathFromPage } from 'routing';
@@ -24,6 +25,12 @@ function renderPageContent(page) {
         case 'dictionary':
             return (
                 <Dictionary/>
+            );
+        case 'viewer':
+            return (
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <Viewer/>
+                </Suspense>
             );
         case 'settings':
             return (

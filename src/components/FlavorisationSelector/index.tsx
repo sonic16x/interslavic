@@ -1,6 +1,6 @@
 import { flavorisationTypeAction } from 'actions';
 import { Selector } from 'components/Selector';
-import * as React from 'react';
+import { useCallback } from 'react';
 import { t } from 'translations';
 import './index.scss';
 import { useDispatch } from 'react-redux';
@@ -29,7 +29,7 @@ const flavorisationTypes = [
     },
 ];
 
-export const FlavorisationSelector: React.FC =
+export const FlavorisationSelector =
     () => {
         const dispatch = useDispatch();
         const flavorisationType = useFlavorisationType();
@@ -37,7 +37,7 @@ export const FlavorisationSelector: React.FC =
             name: t(name),
             value,
         }));
-        const onSelect = React.useCallback((type) => {
+        const onSelect = useCallback((type) => {
             dispatch(flavorisationTypeAction(type));
         }, [dispatch]);
 

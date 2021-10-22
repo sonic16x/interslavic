@@ -22,7 +22,7 @@ export enum MODAL_DIALOG_TYPES {
 
 export interface IModalDialog {
     type: MODAL_DIALOG_TYPES;
-    index: number;
+    data: any;
     show?: boolean;
 }
 
@@ -39,6 +39,7 @@ export interface IMainState {
     searchType: string;
     posFilter: string;
     flavorisationType: string;
+    dictionaryLanguages: string[];
     page: string;
     isLoading: boolean;
     loadingProgress: number;
@@ -53,6 +54,7 @@ export interface IMainState {
         [key: string]: boolean;
     };
     orderOfCases: string[];
+    enabledPages: string[];
 }
 
 export function mainReducer(state: IMainState, { type, data }) {
@@ -278,6 +280,16 @@ export function mainReducer(state: IMainState, { type, data }) {
                     show: false,
                 },
             };
+        case ActionTypes.DICTIONARY_LANGUAGES:
+            const { dictionaryLanguages } = state;
+
+            return {
+                ...state,
+                dictionaryLanguages:
+                    dictionaryLanguages.includes(data) ?
+                        dictionaryLanguages.filter((lang) => (lang !== data)) :
+                        [...dictionaryLanguages, data],
+            };
         case ActionTypes.SET_ALPHABETS:
             let alphabetType = state.alphabetType;
             const alphabets = {
@@ -303,6 +315,16 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 orderOfCases: data,
+            };
+        case ActionTypes.TOGGLE_PAGE:
+            const { enabledPages } = state;
+
+            return {
+                ...state,
+                enabledPages:
+                    enabledPages.includes(data) ?
+                        enabledPages.filter((lang) => (lang !== data)) :
+                        [...enabledPages, data],
             };
         default:
             return state;

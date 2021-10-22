@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { GDPR } from 'components/GDPR';
@@ -10,11 +10,19 @@ import { Router } from 'components/Router';
 
 import { fetchDictionary } from 'services/fetchDictionary';
 import './index.scss';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
-export const Main: React.FC =
+export const Main =
     () => {
         const dispatch = useDispatch();
-        React.useEffect(() => fetchDictionary(dispatch));
+        const dictionaryLanguages = useDictionaryLanguages();
+        useEffect( () => {
+                async function fetchAll() {
+                        await fetchDictionary(dispatch, dictionaryLanguages);
+                }
+
+                fetchAll();
+        }, []);
 
         return (
             <>
