@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const outputPath = path.resolve(__dirname, './dist');
+const outputPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
 const baseUrl = '/';
@@ -18,7 +18,6 @@ module.exports = {
     output: {
         path: outputPath,
         publicPath: '/',
-        filename: `[name].[contenthash].js`,
         globalObject: 'this',
     },
     resolve: {
@@ -38,7 +37,6 @@ module.exports = {
                 {
                   loader: 'file-loader',
                   options: {
-                    name: '[name].[hash].[ext]',
                     outputPath: 'static',
                     esModule: false,
                   }
@@ -59,8 +57,7 @@ module.exports = {
                     'postcss-loader',
                     'sass-loader'
                 ],
-                include: [srcPath],
-                exclude: [],
+                include: srcPath,
             },
             {
                 test: /\.css$/,
@@ -101,13 +98,10 @@ module.exports = {
         noEmitOnErrors: true,
     },
     devtool: 'inline-source-map',
+    stats: 'errors-only',
     devServer: {
-        stats: 'errors-only',
-        contentBase: outputPath,
         host: '0.0.0.0',
         port: 3000,
-        inline: true,
-        hot: true,
-        historyApiFallback: true
+        historyApiFallback: true,
     }
 };

@@ -4,7 +4,7 @@ export function removeBrackets(text: string, left: string, right: string): strin
     if (posOpen !== -1) {
         const posClose = text.indexOf(right);
         if (posClose > posOpen) {
-            return this.removeBrackets((text.slice(0, posOpen) + text.slice(posClose + 1))
+            return removeBrackets((text.slice(0, posOpen) + text.slice(posClose + 1))
                 .replace('  ', ' ').trim(), left, right);
         }
     }
