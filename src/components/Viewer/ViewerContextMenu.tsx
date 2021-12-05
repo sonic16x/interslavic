@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import './ViewerContextMenu.scss';
 
 import ContextMenuCloseIcon from './images/context-menu-close-icon.svg';
-import { Button } from 'components/Button/Button';
+import { Button } from 'components/Button';
 import { MODAL_DIALOG_TYPES } from 'reducers';
 import { getPartOfSpeech } from 'utils/wordDetails';
 
