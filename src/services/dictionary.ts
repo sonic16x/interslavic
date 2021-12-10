@@ -1,20 +1,24 @@
-import { convertCases } from 'utils/convertCases';
-import { filterLatin } from 'utils/filterLatin';
-import { getCyrillic } from 'utils/getCyrillic';
-import { getLatin } from 'utils/getLatin';
-import { getGlagolitic } from 'utils/getGlagolitic';
-import { latinToIpa } from 'utils/latinToIpa';
-import { levenshteinDistance } from 'utils/levenshteinDistance';
-import { normalize } from 'utils/normalize';
-import { removeBrackets } from 'utils/removeBrackets';
-import { removeExclamationMark } from 'utils/removeExclamationMark';
-import { srGajevicaToVukovica } from 'utils/srGajevicaToVukovica';
+import { addLangs,langs } from 'consts';
+
+import { IAlphabets } from 'reducers';
 
 import { conjugationVerbFlat } from 'legacy/conjugationVerb';
 import { declensionAdjectiveFlat } from 'legacy/declensionAdjective';
 import { declensionNounFlat } from 'legacy/declensionNoun';
 import { declensionNumeralFlat } from 'legacy/declensionNumeral';
 import { declensionPronounFlat } from 'legacy/declensionPronoun';
+import { convertCases } from 'utils/convertCases';
+import { filterLatin } from 'utils/filterLatin';
+import { filterNiqqud } from 'utils/filterNiqqud';
+import { getCyrillic } from 'utils/getCyrillic';
+import { getGlagolitic } from 'utils/getGlagolitic';
+import { getLatin } from 'utils/getLatin';
+import { latinToIpa } from 'utils/latinToIpa';
+import { levenshteinDistance } from 'utils/levenshteinDistance';
+import { normalize } from 'utils/normalize';
+import { removeBrackets } from 'utils/removeBrackets';
+import { removeExclamationMark } from 'utils/removeExclamationMark';
+import { srGajevicaToVukovica } from 'utils/srGajevicaToVukovica';
 import {
     getGender,
     getNumeralType,
@@ -25,9 +29,6 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { langs, addLangs } from 'consts';
-import { IAlphabets } from 'reducers';
-import { filterNiqqud } from '../utils/filterNiqqud';
 
 export const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
@@ -73,6 +74,7 @@ function getWordForms(item) {
     const details = Dictionary.getField(item, 'partOfSpeech');
     const pos = getPartOfSpeech(details);
     const wordForms = [];
+
     word.split(',').map((wordElement) => {
         wordElement = wordElement.trim();
         switch (pos) {
@@ -82,7 +84,7 @@ function getWordForms(item) {
             case 'adjective':
                 wordForms.push(...declensionAdjectiveFlat(wordElement, ''));
                 break;
-            case 'noun':
+            case 'noun': {
                 const gender = getGender(details);
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
@@ -98,6 +100,7 @@ function getWordForms(item) {
                         singular, indeclinable));
                 }
                 break;
+            }
             case 'pronoun':
                 wordForms.push(...declensionPronounFlat(wordElement, getPronounType(details)));
                 break;
@@ -106,6 +109,7 @@ function getWordForms(item) {
                 break;
         }
     });
+    
     return Array.from(new Set(wordForms));
 }
 
@@ -178,10 +182,10 @@ class DictionaryClass {
 
         if (!searchIndexExist) {
             this.langsList.forEach((lang) => {
-               this.splittedMap[lang] = new Map();
-               if (lang === 'isv') {
-                   this.splittedMap['isv-src'] = new Map();
-               }
+                this.splittedMap[lang] = new Map();
+                if (lang === 'isv') {
+                    this.splittedMap['isv-src'] = new Map();
+                }
             });
             this.words.forEach((item) => {
                 this.langsList.forEach((from) => {
@@ -228,7 +232,7 @@ class DictionaryClass {
         }
 
         if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
+            // eslint-disable-next-line no-console
             console.log('INIT', `${initTime}ms`);
         }
 
@@ -267,6 +271,7 @@ class DictionaryClass {
                 this.splittedMap[lang].get(key),
             ]);
         });
+        
         return searchIndex;
     }
     public translate(translateParams: ITranslateParams): [string[][], number] {
@@ -350,8 +355,9 @@ class DictionaryClass {
                         const wordsCount = this.getField(item, 'isv').split(',').length;
                         splittedField = splittedField.slice(0, wordsCount);
                     }
-                    filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk,
-                            hardEtymSearch ? inputWord : inputIsvPrepared));
+                    filterResult = splittedField.some((chunk) => (
+                        searchTypes[searchType](chunk, hardEtymSearch ? inputWord : inputIsvPrepared)
+                    ));
                 }
                 if (to === 'isv' || twoWaySearch) {
                     const splittedField = this.getSplittedField(lang, item);
@@ -370,6 +376,7 @@ class DictionaryClass {
                         return false;
                     }
                 }
+                
                 return filterResult;
             })
             .filter((item) => {
@@ -383,10 +390,9 @@ class DictionaryClass {
                         const wordsCount = this.getField(item, 'isv').split(',').length;
                         splittedField = splittedField.slice(0, wordsCount);
                     }
-                    filterResult = splittedField.some((chunk) => {
-                            return searchTypes[searchType](this.applyIsvSearchLetters(chunk,
-                                flavorisationType), isvText);
-                        });
+                    filterResult = splittedField.some((chunk) => (
+                        searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText)
+                    ));
 
                 }
                 if (!filterResult && (to === 'isv' || twoWaySearch)) {
@@ -394,6 +400,7 @@ class DictionaryClass {
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
+                
                 return filterResult;
             })
             .map((item) => {
@@ -411,6 +418,7 @@ class DictionaryClass {
                         if (lDist < acc) {
                             return lDist;
                         }
+                        
                         return acc;
                     }, Number.MAX_SAFE_INTEGER);
                 if (twoWaySearch) {
@@ -428,11 +436,13 @@ class DictionaryClass {
                             if (lDist < acc) {
                                 return lDist;
                             }
+                            
                             return acc;
                         }, Number.MAX_SAFE_INTEGER);
                     dist = dist2 < dist ? dist2 : dist;
                 }
                 distMap.set(item, dist);
+                
                 return item;
             })
             .sort((a, b) => distMap.get(a) - distMap.get(b))
@@ -442,7 +452,7 @@ class DictionaryClass {
         const translateTime = Math.round(performance.now() - startTranslateTime); // @TODO: send to GA
 
         if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
+            // eslint-disable-next-line no-console
             console.log('TRANSLATE', `${translateTime}ms`);
         }
 
@@ -477,6 +487,7 @@ class DictionaryClass {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
                 formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
             }
+            
             return formattedItem;
         });
 
@@ -506,6 +517,7 @@ class DictionaryClass {
                     }
                 });
         }
+        
         return this.isvSearchLetters;
     }
     public setIsvSearchLetters(letters: {from: string[], to: string[]}): void {
@@ -571,6 +583,7 @@ class DictionaryClass {
     }
     private getSplittedField(from: string, item: string[]): string[] {
         const key = this.getField(item, 'id');
+        
         return this.splittedMap[from].get(key);
     }
     private applyIsvSearchLetters(text: string, flavorisationType: string): string {
@@ -582,6 +595,7 @@ class DictionaryClass {
             .map((replacement) => {
                 text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
             });
+        
         return text;
     }
 }

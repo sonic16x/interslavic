@@ -1,45 +1,47 @@
-import { isLoadingAction, runSearch, loadingProgressAction } from 'actions';
-import { Dictionary } from 'services/dictionary';
 import { dataDelimiter } from 'consts';
-import { biReporter } from 'services/biReporter';
 import { addLangs } from 'consts';
 
-function progressHelper(onProgress) {
-    return (response) => {
-        if (!response.body) {
-            return response;
-        }
+import { isLoadingAction, runSearch } from 'actions';
 
-        let loaded = 0;
-        const contentLength = response.headers.get('content-length');
-        const total = !contentLength ? -1 : parseInt(contentLength, 10);
+import { biReporter } from 'services/biReporter';
+import { Dictionary } from 'services/dictionary';
 
-        return new Response(
-            new ReadableStream({
-                start(controller) {
-                    const reader = response.body.getReader();
-                    return read();
-
-                    function read() {
-                        return reader.read()
-                            .then(({ done, value }) => {
-                                if (done) {
-                                    return void controller.close();
-                                }
-                                loaded += value.byteLength;
-                                onProgress({ loaded, total });
-                                controller.enqueue(value);
-                                return read();
-                            })
-                            .catch((error) => {
-                                controller.error(error);
-                            });
-                    }
-                },
-            }),
-        );
-    };
-}
+// function progressHelper(onProgress) {
+//     return (response) => {
+//         if (!response.body) {
+//             return response;
+//         }
+//
+//         let loaded = 0;
+//         const contentLength = response.headers.get('content-length');
+//         const total = !contentLength ? -1 : parseInt(contentLength, 10);
+//
+//         return new Response(
+//             new ReadableStream({
+//                 start(controller) {
+//                     const reader = response.body.getReader();
+//                     return read();
+//
+//                     function read() {
+//                         return reader.read()
+//                             .then(({ done, value }) => {
+//                                 if (done) {
+//                                     return void controller.close();
+//                                 }
+//                                 loaded += value.byteLength;
+//                                 onProgress({ loaded, total });
+//                                 controller.enqueue(value);
+//                                 return read();
+//                             })
+//                             .catch((error) => {
+//                                 controller.error(error);
+//                             });
+//                     }
+//                 },
+//             }),
+//         );
+//     };
+// }
 
 async function fetchStat() {
     return fetch('data/translateStatistic.json').then((res) => res.json()).then((data) => data);
@@ -47,8 +49,7 @@ async function fetchStat() {
 
 async function fetchLangs(langList: string[]) {
     return await Promise
-        .all(langList.map((lang) => fetch(`data/${lang}.txt`)
-        .then((res) => res.text())))
+        .all(langList.map((lang) => fetch(`data/${lang}.txt`).then((res) => res.text())))
         .then((rawResults) => {
             return rawResults.map((rawLangData) => {
                 const [wordListStr, searchIndexStr] = rawLangData.split(dataDelimiter);
@@ -93,7 +94,7 @@ export async function fetchDictionary(dispatch, langList: string[]) {
     const startFidTime = performance.now();
 
     if (process.env.NODE_ENV !== 'production') {
-        // tslint:disable-next-line
+        // eslint-disable-next-line no-console
         console.time('FID');
     }
 
@@ -119,7 +120,7 @@ export async function fetchDictionary(dispatch, langList: string[]) {
     biReporter.performanceFID(fidTime);
 
     if (process.env.NODE_ENV !== 'production') {
-        // tslint:disable-next-line
+        // eslint-disable-next-line no-console
         console.log('FID', `${fidTime}ms`);
     }
 }

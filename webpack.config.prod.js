@@ -15,8 +15,8 @@ module.exports = {
     mode: 'production',
     entry: {
         index: './src/index',
-        grammarComponent: './src/components/Grammar/index',
-        viewerComponent: './src/components/Viewer/index',
+        grammarComponent: './src/components/Grammar/Grammar',
+        viewerComponent: './src/components/Viewer/Viewer',
         sw: './src/sw',
     },
     output: {

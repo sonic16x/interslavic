@@ -2,8 +2,6 @@
 * Source http://steen.free.fr/interslavic/adjectivator.html
 */
 
-/* tslint:disable */
-
 function applyRules(arr: string[], postfix: string) {
     return arr.map(rules).map((item) => {
         return item.

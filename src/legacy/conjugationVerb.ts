@@ -2,8 +2,6 @@
 * Source http://steen.free.fr/interslavic/conjugator.html
 */
 
-/* tslint:disable */
-
 const prefixes = [
     'do', 'iz', 'izpo', 'nad', 'na', 'ne', 'ob', 'odpo', 'od', 'o', 'prědpo',
     'pod', 'po', 'prě', 'pre', 'pri', 'pro', 'råzpro', 'razpro', 'råz', 'raz',

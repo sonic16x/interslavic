@@ -1,10 +1,12 @@
-import { render } from 'react-dom';
-import { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { render } from 'react-dom';
+
+import './ViewerHeaderComponent.scss';
+
 import FilterIcon from './images/filter-icon.svg';
 import FilterRemoveIcon from './images/filter-remove-icon.svg';
 import SortArrowIcon from './images/sort-arrow-icon.svg';
-import './ViewerHeaderComponent.scss';
 
 const ViewerHeaderComponentReact = ({ agParams }: { agParams: any }) => {
     const [sort, setSort] = useState<'asc' | 'desc' | null>(agParams.column.getSort());
@@ -12,7 +14,7 @@ const ViewerHeaderComponentReact = ({ agParams }: { agParams: any }) => {
     const filterRef = useRef();
     const fieldId = agParams.column.colId;
 
-    const onSortClick = useCallback(() => {
+    const onSortClick = () => {
         switch (agParams.column.getSort()) {
             case 'asc':
                 return agParams.setSort('desc');
@@ -21,27 +23,27 @@ const ViewerHeaderComponentReact = ({ agParams }: { agParams: any }) => {
             default:
                 return agParams.setSort('asc');
         }
-    }, []);
+    };
 
-    const onFilterClick = useCallback(() => {
+    const onFilterClick = () => {
         if (filterRef && filterRef.current) {
             agParams.showColumnMenu(filterRef.current);
         }
-    }, [filterRef]);
+    };
 
     const onSortChanged = useCallback(() => {
         setSort(agParams.column.getSort());
-    }, [setSort]);
+    }, [setSort, agParams.column]);
 
     const onFilterChanged = useCallback(() => {
         setFilter(agParams.column.isFilterActive());
-    }, [setSort]);
+    }, [setFilter, agParams.column]);
 
-    const onFilterRemoveClick = useCallback(() => {
+    const onFilterRemoveClick = () => {
         const currentFilter = agParams.api.getFilterModel();
         delete currentFilter[fieldId];
         agParams.api.setFilterModel(currentFilter);
-    }, [setSort, fieldId]);
+    };
 
     useEffect(() => {
         agParams.column.addEventListener('sortChanged', onSortChanged);
@@ -51,15 +53,15 @@ const ViewerHeaderComponentReact = ({ agParams }: { agParams: any }) => {
             agParams.column.removeEventListener('sortChanged', onSortChanged);
             agParams.column.removeEventListener('filterChanged', onFilterChanged);
         };
-    }, []);
+    }, [agParams.column, onSortChanged, onFilterChanged]);
 
     return (
         <>
             <span
-                className={'header-cell__start-container'}
+                className="header-cell__start-container"
             >
                 <span
-                    className={'header-cell__sort'}
+                    className="header-cell__sort"
                     onClick={onSortClick}
                 >
                     <span
@@ -80,12 +82,12 @@ const ViewerHeaderComponentReact = ({ agParams }: { agParams: any }) => {
                         <SortArrowIcon/>
                     </span>
                 </span>
-                <span className={'header-cell__label'}>
+                <span className="header-cell__label">
                     {agParams.displayName}
                 </span>
             </span>
             <span
-                className={'header-cell__filter-container'}
+                className="header-cell__filter-container"
             >
                 <span
                     className={classNames('header-cell__filter', {
@@ -99,7 +101,7 @@ const ViewerHeaderComponentReact = ({ agParams }: { agParams: any }) => {
                 </span>
                 {isFilter && (
                     <span
-                        className={'header-cell__filter-remove'}
+                        className="header-cell__filter-remove"
                         onClick={onFilterRemoveClick}
                     >
                         <FilterRemoveIcon/>

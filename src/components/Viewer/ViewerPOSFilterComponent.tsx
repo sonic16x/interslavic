@@ -1,23 +1,27 @@
-import { render } from 'react-dom';
+import classNames from 'classnames';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { render } from 'react-dom';
+
 import { t } from 'translations';
-import { Checkbox } from 'components/Checkbox';
+
 import {
-    getPartOfSpeech,
     getGender,
-    isAnimated,
-    getPronounType,
     getNumeralType,
+    getPartOfSpeech,
+    getPronounType,
     getVerbDetails,
-    isPlural,
-    isIndeclinable,
-    isSingular,
+    isAnimated,
     isCountable,
+    isIndeclinable,
+    isPlural,
+    isSingular,
 } from 'utils/wordDetails';
-import ExpandSubListIcon from './images/expand-sub-list-icon.svg';
+
+import { Checkbox } from 'components/Checkbox';
 
 import './ViewerPOSFilterComponent.scss';
-import classNames from 'classnames';
+
+import ExpandSubListIcon from './images/expand-sub-list-icon.svg';
 
 const globalFiltersState = {
     noun: {
@@ -182,18 +186,18 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
     const [rerender, setRerender] = useState(false);
     const expandedState = useRef(new Map(Object.keys(globalFiltersState).filter((key) => typeof globalFiltersState[key] !== 'boolean').map((key) => [key, false])));
 
-    const filterResetCallback = useCallback((event) => {
+    const filterResetCallback = useCallback(() => {
         setFiltersAll(true);
         setRerender((rerender) => !rerender);
-    }, []);
+    }, [setRerender]);
 
     useEffect(() => {
         resetEvent(filterResetCallback);
-    }, []);
+    }, [resetEvent, filterResetCallback]);
 
     useEffect(() => {
         agParams.filterChangedCallback();
-    }, [rerender]);
+    }, [rerender, agParams]);
 
     const allCheckedLength = getAllCheckedLength();
     const allChecked = allCheckedLength !== 0;
@@ -205,6 +209,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
 
             setFiltersAll(allCheckedLength === 0);
             setRerender(!rerender);
+            
             return;
         }
         const value = globalFiltersState[key];
@@ -279,12 +284,12 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
 
     return (
         <>
-            <p className={'bold text-s'}>
+            <p className="bold text-s">
                 {t('viewerPosFilter')}
             </p>
-            <div className={'viewer-pos-filter__list'}>
+            <div className="viewer-pos-filter__list">
                 <Checkbox
-                    key={'all'}
+                    key="all"
                     title={t('viewerFiltersAll')}
                     checked={allChecked}
                     part={allPart}
@@ -300,7 +305,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
 
                     return (
                         <>
-                            <div className={'viewer-pos-filter__line'}>
+                            <div className="viewer-pos-filter__line">
                                 <Checkbox
                                     key={key}
                                     title={t(key)}
@@ -362,7 +367,6 @@ export class ViewerPOSFilterComponent {
     }
 
     public doesFilterPass({ data }) {
-        const details = data.partOfSpeech;
         const id = data.id;
         const { pos, nounTypes, verbTypes, type } = getTypesById(id);
         const value: any = globalFiltersState[pos];
@@ -384,7 +388,7 @@ export class ViewerPOSFilterComponent {
         }
 
         switch (pos) {
-            case 'noun':
+            case 'noun': {
                 const {
                     gender,
                     animated,
@@ -431,7 +435,8 @@ export class ViewerPOSFilterComponent {
                 }
 
                 return true;
-            case 'verb':
+            }
+            case 'verb': {
                 for (const verbType of verbTypes) {
                     if (!value[verbType]) {
                         return false;
@@ -439,6 +444,7 @@ export class ViewerPOSFilterComponent {
                 }
 
                 return true;
+            }
             case 'pronoun':
             case 'numeral':
                 return value[type];
