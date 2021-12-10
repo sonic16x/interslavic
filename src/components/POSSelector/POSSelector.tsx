@@ -1,10 +1,15 @@
-import { posFilterAction } from 'actions';
-import { Selector } from 'components/Selector';
 import { useCallback } from 'react';
-import { t } from 'translations';
-import './POSSelector.scss';
-import { usePosFilter } from 'hooks/usePosFilter';
 import { useDispatch } from 'react-redux';
+
+import { t } from 'translations';
+
+import { posFilterAction } from 'actions';
+
+import { usePosFilter } from 'hooks/usePosFilter';
+
+import { Selector } from 'components/Selector';
+
+import './POSSelector.scss';
 
 const POSList = [
     {
@@ -53,7 +58,7 @@ export const POSSelector =
     () => {
         const dispatch = useDispatch();
         const posFilter = usePosFilter();
-        const options = POSList.map(({name, value}) => ({
+        const options = POSList.map(({ name, value }) => ({
             name: t(name),
             value,
         }));
@@ -63,7 +68,7 @@ export const POSSelector =
 
         return (
             <Selector
-                className={'pos-selector'}
+                className="pos-selector"
                 options={options}
                 onSelect={onSelect}
                 value={posFilter}

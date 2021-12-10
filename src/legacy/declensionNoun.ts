@@ -2,7 +2,6 @@
 * Source http://steen.free.fr/interslavic/declinator.html
 */
 
-/* tslint:disable */
 import { markFluentVowel } from 'utils/markFluentVowel';
 import { declensionAdjective } from 'legacy/declensionAdjective';
 import { removeBrackets } from 'utils/removeBrackets';

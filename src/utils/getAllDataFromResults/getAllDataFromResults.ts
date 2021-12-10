@@ -1,6 +1,7 @@
-import { transposeMatrix } from 'utils/transposeMatrix';
 import { tableColumnsLetters, validFields } from 'consts';
+
 import { getColumnName } from 'utils/getColumnName';
+import { transposeMatrix } from 'utils/transposeMatrix';
 
 export interface IRangeMap {
     header: Map<string, string>;
@@ -20,7 +21,7 @@ export const getAllDataFromResults = (results: string[]): IAllData => {
     const idMap = new Map<string, string[]>();
     const rangesMap: IRangeMap[] = [];
 
-    results.map((data, tableNumber) => {
+    results.map((data) => {
         const wordList = data
             .replace(/#/g, '')
             .split('\n')

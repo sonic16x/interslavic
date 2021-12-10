@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 
 import './Card.scss';
-import classNames from 'classnames';
 
 interface ICardProps {
     title: string;
@@ -10,10 +10,10 @@ interface ICardProps {
 }
 
 export const Card =
-    ({title, id, children, className}: ICardProps) => (
+    ({ title, id, children, className }: ICardProps) => (
         <div className={classNames('card', className)} id={id}>
-            <h5 className={'card__title'}>{title}</h5>
-            <div className={'card__body'}>
+            <h5 className="card__title">{title}</h5>
+            <div className="card__body">
                 {children}
             </div>
         </div>

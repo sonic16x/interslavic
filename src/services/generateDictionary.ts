@@ -1,10 +1,13 @@
-import { addLangs, initialAddFields, langs } from 'consts';
-import * as fs from 'fs';
+import { addLangs, dataDelimiter, initialAddFields, initialFields,langs } from 'consts';
+
 import { Dictionary } from 'services/dictionary';
-import { dataDelimiter, validFields, initialFields } from 'consts';
-import { transposeMatrix } from 'utils/transposeMatrix';
-import { getColumnName } from 'utils/getColumnName';
 import { loadTablesData } from 'services/loadTablesData';
+
+import { getColumnName } from 'utils/getColumnName';
+import { transposeMatrix } from 'utils/transposeMatrix';
+
+import * as fs from 'fs';
+
 
 loadTablesData.then(({ data, columns }) => {
     Dictionary.init(data);
@@ -54,7 +57,7 @@ loadTablesData.then(({ data, columns }) => {
         const langData = transposeMatrix(langDataTransposed);
         const langDataStr = langData.map((line) => line.join('|')).join('\n');
 
-        const langDataIndexStr = JSON.stringify({[lang]: searchIndex[lang]});
+        const langDataIndexStr = JSON.stringify({ [lang]: searchIndex[lang] });
         fs.writeFileSync(`./static/data/${lang}.txt`, [langDataStr, langDataIndexStr].join(dataDelimiter));
     });
 });

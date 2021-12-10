@@ -1,23 +1,30 @@
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { IMainState, mainReducer } from 'reducers';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { setInitialPage } from 'routing';
-import { getPageFromPath } from 'routing';
-import { setLang } from 'translations';
-import { Main } from 'components/Main';
-import './index.scss';
-import { Dictionary } from 'services/dictionary';
-import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
-import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
+
 import { langs } from 'consts';
 
-/* tslint:disable */
+import { setLang } from 'translations';
+
+import { IMainState, mainReducer } from 'reducers';
+
+import { Dictionary } from 'services/dictionary';
+
+import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
+import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
+import { setInitialPage } from 'routing';
+import { getPageFromPath } from 'routing';
+
+import { Main } from 'components/Main';
+
+import './index.scss';
+
 declare global {
     const VERSION: string;
     const BASE_URL: string;
     const SW: boolean;
     const CLIENT: boolean;
+    // eslint-disable-next-line
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
     }
@@ -29,9 +36,11 @@ if (SW) {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register(`sw.js`)
             .then((registration) => {
+                // eslint-disable-next-line no-console
                 console.log('Registration successful, scope is:', registration.scope);
             })
             .catch((error) => {
+                // eslint-disable-next-line no-console
                 console.log('Service worker registration failed, error:', error);
             });
     }
@@ -99,7 +108,9 @@ function getInitialState(): IMainState {
             page: getPageFromPath(),
             ...savedState,
         };
-    } catch (e) {}
+    } catch (e) {
+
+    }
 
     setLang(state.interfaceLang);
     Dictionary.setIsvSearchLetters(state.isvSearchLetters);

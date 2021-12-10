@@ -1,11 +1,14 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { setNotificationAction } from 'actions';
-import { t } from 'translations';
-import './Clipboard.scss';
 import classNames from 'classnames';
+import { useDispatch } from 'react-redux';
+
+import { t } from 'translations';
+
+import { setNotificationAction } from 'actions';
+
 import { biReporter, IClipboardAnalytics } from 'services/biReporter';
 import { Dictionary, ITranslateResult } from 'services/dictionary';
+
+import './Clipboard.scss';
 
 interface IClipboardProps {
     str: string;
@@ -17,11 +20,11 @@ interface IClipboardProps {
 }
 
 export const Clipboard =
-    ({str, className, index, type, item, lang}: IClipboardProps) => {
+    ({ str, className, index, type, item, lang }: IClipboardProps) => {
         const dispatch = useDispatch();
-        const onClick = useCallback(() => {
+        const onClick = () => {
             navigator.clipboard.writeText(str).then(() => {
-                const notificationText = t('clipboardCopyNotification', {str});
+                const notificationText = t('clipboardCopyNotification', { str });
                 dispatch(setNotificationAction(notificationText));
             });
 
@@ -45,8 +48,7 @@ export const Clipboard =
                     biReporter.clipboardModal(clipboardDetails);
                 }
             }
-
-        }, [str]);
+        };
 
         return (
             <span

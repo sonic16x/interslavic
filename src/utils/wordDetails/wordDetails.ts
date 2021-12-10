@@ -146,6 +146,7 @@ export function getGender(details: string): Gender {
     if (arr.includes('m/f')) {
         return 'masculineOrFeminine';
     }
+    
     return 'neuter';
 }
 

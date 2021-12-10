@@ -1,24 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Grid, ModuleRegistry, GridOptions  } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Grid, GridOptions,ModuleRegistry  } from '@ag-grid-community/core';
+
+import { addLangs, initialFields, langs,validFields } from 'consts';
+
+import { t } from 'translations';
+
+import { Dictionary } from 'services/dictionary';
+import { loadTablesData } from 'services/loadTablesData';
+
+import { useLoading } from 'hooks/useLoading';
+import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
+import { removeBrackets } from 'utils/removeBrackets';
+import { removeExclamationMark } from 'utils/removeExclamationMark';
+import { wordHasForms } from 'utils/wordHasForms';
+
+import { Button } from 'components/Button';
+import { Spinner } from 'components/Spinner';
+
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-balham.css';
 import './Viewer.scss';
-import { Dictionary } from 'services/dictionary';
-import { initialFields, validFields } from 'consts';
-import { useLoading } from 'hooks/useLoading';
-import { addLangs, langs } from 'consts';
-import { t } from 'translations';
-import { removeExclamationMark } from 'utils/removeExclamationMark';
-import { removeBrackets } from 'utils/removeBrackets';
+
+import { ViewerContextMenu } from './ViewerContextMenu';
 import { ViewerHeaderComponent } from './ViewerHeaderComponent';
 import { initPOSFilterIdTypesMap, ViewerPOSFilterComponent } from './ViewerPOSFilterComponent';
-import { Spinner } from 'components/Spinner';
-import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
-import { loadTablesData } from 'services/loadTablesData';
-import { ViewerContextMenu } from './ViewerContextMenu';
-import { Button } from 'components/Button';
-import { wordHasForms } from 'utils/wordHasForms';
 
 ModuleRegistry.registerModules([
     ClientSideRowModelModule,
@@ -34,7 +40,7 @@ const fieldWidthMap = {
 };
 
 const getFieldWidth = (field: string): number => {
-    if (fieldWidthMap.hasOwnProperty(field)) {
+    if (field in fieldWidthMap) {
         return fieldWidthMap[field];
     }
 
@@ -77,6 +83,7 @@ const customFilterParams = (field: string) => {
                 valueLowerCase = removeExclamationMark(valueLowerCase);
                 valueLowerCase = removeBrackets(valueLowerCase, '[', ']');
                 valueLowerCase = removeBrackets(valueLowerCase, '(', ')');
+                
                 return Dictionary.splitWords(valueLowerCase).some((word) => {
                     const wordPrepared = Dictionary.searchPrepare(`${field}`, word);
                     switch (filter) {
@@ -90,9 +97,11 @@ const customFilterParams = (field: string) => {
                             return wordPrepared !== filterTextLowerCase;
                         case 'startsWith':
                             return wordPrepared.indexOf(filterTextLowerCase) === 0;
-                        case 'endsWith':
+                        case 'endsWith': {
                             const index = wordPrepared.lastIndexOf(filterTextLowerCase);
+                            
                             return index >= 0 && index === (wordPrepared.length - filterTextLowerCase.length);
+                        }
                         default:
                             // should never happen
                             // console.warn('invalid filter type ' + filter);
@@ -186,7 +195,7 @@ const Viewer =
         const onSortChanged = useCallback(() => {
             const isvColumnState = gridOptions.columnApi
                 .getColumnState()
-                .find(({colId}) => colId === 'isv')
+                .find(({ colId }) => colId === 'isv')
             ;
 
             setSortEnabled(isvColumnState.sort !== 'asc');
@@ -206,7 +215,7 @@ const Viewer =
                 initTablesMapFunction(rangesMap);
                 setLoadingAllData(false);
             });
-        }, [setLoadingAllData]);
+        }, [setLoadingAllData, initTablesMapFunction]);
 
         const onCellClicked = useCallback((data) => {
             let formsData;
@@ -264,18 +273,17 @@ const Viewer =
                     onGridReady,
                 };
 
-                /* tslint:disable */
                 new Grid(containerRef.current, gridOptions);
             }
-        }, [containerRef, allLoaded]);
+        }, [containerRef, allLoaded, closeContext, onCellClicked, onFilterChanged, onGridReady, onSortChanged]);
 
         return (
-            <div className={'viewer'}>
+            <div className="viewer">
                 {(!allLoaded && !isGridReady) && (
-                    <div className={'viewer__loader'}>
+                    <div className="viewer__loader">
                         <Spinner
-                            size={'4rem'}
-                            borderWidth={'.3em'}
+                            size="4rem"
+                            borderWidth=".3em"
                         />
                     </div>
                 )}
@@ -288,7 +296,7 @@ const Viewer =
                         onClose={closeContext}
                     />
                 )}
-                <div className={'viewer__controls'}>
+                <div className="viewer__controls">
                     <Button
                         onClick={onResetFiltersClick}
                         title={t('viewerResetFilters')}
@@ -299,12 +307,12 @@ const Viewer =
                         disabled={!isSortEnabled}
                         title={t('viewerResetSorting')}
                     />
-                    <span className={'text-l'}>
+                    <span className="text-l">
                         {t('viewerResultsNumber')}: {resultsCount}
                     </span>
                 </div>
                 <div
-                    className={'viewer__container ag-theme-balham'}
+                    className="viewer__container ag-theme-balham"
                     ref={containerRef}
                 />
             </div>

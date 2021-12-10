@@ -1,30 +1,31 @@
-import { useState, useCallback } from 'react';
-import { IRangeMap } from 'utils/getAllDataFromResults';
+import { useCallback,useState } from 'react';
+
 import { tablesData } from 'consts';
+
+import { IRangeMap } from 'utils/getAllDataFromResults';
 import { getTablePublicUrl } from 'utils/getTablePublicUrl';
 
-export function useTablesMapFunction(): {
+export interface ITablesMapFunction {
     initTablesMapFunction: (rangesMap: IRangeMap[]) => void,
     getGoogleSheetsLink: (id: string, field: string) => string,
-} {
+}
+
+export function useTablesMapFunction(): ITablesMapFunction {
     const [tablesMap, setTablesMap] = useState(true);
 
     const initTablesMapFunction = useCallback(
         (rangesMap) => setTablesMap(rangesMap),
-        [tablesMap],
-        )
-    ;
+        [setTablesMap],
+    );
 
     const getGoogleSheetsLink = useCallback(
         (id, field) => {
-            let tableIndex;
             let spreadsheetId;
             let sheetId;
             let rangeMap;
 
             for (let i = 0; i < tablesData.length; i++) {
                 if (tablesData[i].fields.includes(field)) {
-                    tableIndex = i;
                     spreadsheetId = tablesData[i].spreadsheetId;
                     sheetId = tablesData[i].sheetId;
                     rangeMap = tablesMap[i];

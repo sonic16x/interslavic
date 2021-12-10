@@ -15,5 +15,5 @@ export function filterLatin(text: string): string {
         .replace(/[úůüȕ]/g, 'u')
         .replace(/[ý]/g, 'y')
         .replace(/[źżž]/g, 'z')
-        ;
+    ;
 }

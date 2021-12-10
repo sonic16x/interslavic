@@ -1,17 +1,21 @@
-import { hideModalDialog, setAlphabetTypeAction } from 'actions';
-import { LineSelector } from 'components/LineSelector';
-import { Table } from 'components/Table';
-import { Text } from 'components/Text';
 import { Component } from 'react';
 import { connect } from 'react-redux';
+
+import { alphabetTypes } from 'consts';
+
 import { t } from 'translations';
-import { getCyrillic } from 'utils/getCyrillic';
-import { getLatin } from 'utils/getLatin';
+
+import { hideModalDialog, setAlphabetTypeAction } from 'actions';
+import { IMainState } from 'reducers';
+
 import { conjugationVerb } from 'legacy/conjugationVerb';
 import { declensionAdjective } from 'legacy/declensionAdjective';
 import { declensionNoun } from 'legacy/declensionNoun';
 import { declensionNumeral } from 'legacy/declensionNumeral';
 import { declensionPronoun } from 'legacy/declensionPronoun';
+import { getCyrillic } from 'utils/getCyrillic';
+import { getGlagolitic } from 'utils/getGlagolitic';
+import { getLatin } from 'utils/getLatin';
 import {
     getGender,
     getNumeralType,
@@ -23,10 +27,12 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
+
+import { LineSelector } from 'components/LineSelector';
+import { Table } from 'components/Table';
+import { Text } from 'components/Text';
+
 import './DetailModal.scss';
-import { getGlagolitic } from 'utils/getGlagolitic';
-import { alphabetTypes } from 'consts';
-import { IMainState } from 'reducers';
 
 interface IDetailModalInternal {
     close: () => void;
@@ -51,17 +57,17 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         return (
             <>
-                <div className={'modal-dialog__header'}>
+                <div className="modal-dialog__header">
                     {this.renderTitle(pos)}
                     <button
-                        className={'modal-dialog__header-close'}
+                        className="modal-dialog__header-close"
                         onClick={this.props.close}
-                        aria-label={'Close'}
+                        aria-label="Close"
                     >
                         &times;
                     </button>
                 </div>
-                <div className={'modal-dialog__body'}>
+                <div className="modal-dialog__body">
                     {this.renderBody()}
                 </div>
                 {this.renderFooter()}
@@ -71,19 +77,16 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
     private renderFooter() {
         const options = alphabetTypes
-            .filter(({value}) => this.props.alphabets[value])
-            .map((item) => ({
-                    name: t(item.name),
-                    value: item.value,
-                }),
-            );
+            .filter(({ value }) => this.props.alphabets[value])
+            .map((item) => ({ name: t(item.name), value: item.value }))
+        ;
 
         if (options.length === 1) {
             return null;
         }
 
         return (
-            <footer className={'modal-dialog__footer'}>
+            <footer className="modal-dialog__footer">
                 <LineSelector
                     options={options}
                     value={this.props.alphabetType}
@@ -102,37 +105,48 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         const singular = isSingular(details);
         const indeclinable = isIndeclinable(details);
         switch (pos) {
-            case 'noun':
+            case 'noun': {
                 arr.push(t('noun-' + gender));
                 if (gender.match(/masculine/)) {
-                    arr.push(t( animated ? 'noun-animated' : 'noun-inanimate'));
+                    arr.push(t(animated ? 'noun-animated' : 'noun-inanimate'));
                 }
-                if (indeclinable) { arr.push(t('noun-indeclinable')); }
-                if (plural) { arr.push(t('noun-plural')); }
-                if (singular) { arr.push(t('noun-singular')); }
+                if (indeclinable) {
+                    arr.push(t('noun-indeclinable'));
+                }
+                if (plural) {
+                    arr.push(t('noun-plural'));
+                }
+                if (singular) {
+                    arr.push(t('noun-singular'));
+                }
                 break;
-            case 'verb':
+            }
+            case 'verb': {
                 const verbDetails = getVerbDetails(details);
                 if (verbDetails) {
                     arr.push(...verbDetails.map((e) => t('verb-' + e)));
                 }
                 break;
-            case 'numeral':
+            }
+            case 'numeral': {
                 const numeralType = getNumeralType(details);
                 if (numeralType) {
                     arr.push(t('numeral-' + numeralType));
                 }
                 break;
-            case 'pronoun':
+            }
+            case 'pronoun': {
                 const pronounType = getPronounType(details);
                 if (pronounType) {
                     arr.push(t('pronoun-' + pronounType));
                 }
                 break;
+            }
         }
+
         return (
-            <span className={'modal-dialog__header-title'}>
-                {this.formatStr(word)} {this.formatStr(add)} <span className={'details'}>({arr.join(', ')})</span>
+            <span className="modal-dialog__header-title">
+                {this.formatStr(word)} {this.formatStr(add)} <span className="details">({arr.join(', ')})</span>
             </span>
         );
     }
@@ -150,12 +164,14 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     ['showTitle', 'showGender'], 1),
             ];
         }
+
         return splitted.map((word, i) => {
             const options = [];
             if (splitted.length > 1) {
                 options.push('showTitle');
                 if (i < splitted.length - 1) { options.push('oneMore'); }
             }
+            
             return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options, i);
         });
     }
@@ -186,8 +202,9 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             default:
                 return '';
         }
+        
         return (
-            <div className={'word'} key={i}>
+            <div className="word" key={i}>
                 {options.includes('showTitle') ? <h6>{this.formatStr(word)}{remark}</h6> : ''}
                 {wordComponent}
                 {options.includes('oneMore') ? <hr/> : ''}
@@ -373,6 +390,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${this.formatStr(comparison.superlative[1])}@`,
             ],
         ];
+        
         return (
             <>
                 <Table key={0} data={tableDataSingular}/>
@@ -415,7 +433,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             tableDataCases[0].push(t(col) + '@b');
         });
         this.props.orderOfCases.forEach((caseItem) => {
-            if (paradigmArray.cases.hasOwnProperty(caseItem)) {
+            if (caseItem in paradigmArray.cases) {
                 const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
                 const tableRow = [`${caseName}@b`];
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
@@ -424,6 +442,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 tableDataCases.push(tableRow);
             }
         });
+        
         return tableDataCases;
     }
 
@@ -442,7 +461,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         ];
 
         this.props.orderOfCases.forEach((caseItem) => {
-            if (singular.hasOwnProperty(caseItem)) {
+            if (caseItem in singular) {
                 const tableRow = [
                     `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b`,
                 ];
@@ -465,6 +484,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 table.push(tableRow);
             }
         });
+        
         return table;
     }
 
@@ -481,7 +501,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             ],
         ];
         this.props.orderOfCases.forEach((caseItem) => {
-            if (plural.hasOwnProperty(caseItem)) {
+            if (caseItem in plural) {
                 const tableRow = [
                     `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b`,
                 ];
@@ -502,6 +522,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 table.push(tableRow);
             }
         });
+        
         return table;
     }
 
@@ -520,6 +541,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         if (numeralParadigm.type === 'noun') {
             const tableDataCases = this.getSimpleCasesTable(numeralParadigm);
+            
             return <Table data={tableDataCases}/>;
         }
 
@@ -551,6 +573,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         if (pronounParadigm.type === 'noun') {
             const tableDataCases = this.getSimpleCasesTable(pronounParadigm);
+            
             return <Table data={tableDataCases}/>;
         }
 

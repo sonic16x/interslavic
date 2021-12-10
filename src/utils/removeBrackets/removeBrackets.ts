@@ -8,5 +8,6 @@ export function removeBrackets(text: string, left: string, right: string): strin
                 .replace('  ', ' ').trim(), left, right);
         }
     }
+    
     return text;
 }

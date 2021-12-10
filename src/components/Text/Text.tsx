@@ -1,4 +1,5 @@
 import { PureComponent } from 'react';
+
 import './Text.scss';
 
 function matchStr(str) {
@@ -20,6 +21,7 @@ export function parseStr(rawStr) {
         const classList = params.slice(0, -1).split(',').join(' ');
         result = result.replace(item, `<span class="${classList}">${text}</span>`);
     });
+    
     return parseStr(result);
 }
 
@@ -34,11 +36,12 @@ export class Text extends PureComponent<ITextProps> {
             textAlign: this.props.align || 'start',
             textIndent: this.props.indent,
         };
+        
         return (
             <p
                 style={style}
-                className={'custom-text'}
-                dangerouslySetInnerHTML={{__html: parseStr(this.props.children)}}
+                className="custom-text"
+                dangerouslySetInnerHTML={{ __html: parseStr(this.props.children) }}
             />
         );
     }

@@ -1,9 +1,12 @@
-import './Notification.scss';
 import classNames from 'classnames';
-import { setNotificationAction } from 'actions';
 import { useEffect, useState } from 'react';
-import { useNotification } from 'hooks/useNotification';
 import { useDispatch } from 'react-redux';
+
+import { setNotificationAction } from 'actions';
+
+import { useNotification } from 'hooks/useNotification';
+
+import './Notification.scss';
 
 export const Notification =
     () => {
@@ -11,22 +14,25 @@ export const Notification =
         const notification = useNotification();
         const [isVisible, setVisible] = useState(true);
         const [timer, setTimer] = useState(null);
+        const hasNotification = !!notification;
 
         useEffect(() => {
             if (timer) {
                 clearTimeout(timer);
             }
+
             const timerId = setTimeout(() => {
                 dispatch(setNotificationAction(''));
                 setVisible(true);
             }, 2000);
+
             setTimer(timerId);
-        }, [!!notification, dispatch]);
+        }, [hasNotification, dispatch, timer, setTimer]);
 
         return (
-            <div className={'notification-container'}>
+            <div className="notification-container">
                 <div
-                    className={classNames('notification', {show: isVisible && !!notification})}
+                    className={classNames('notification', { show: isVisible && !!notification })}
                     onClick={() => setVisible(false)}
                     onTransitionEnd={() => {
                         if (!isVisible) {

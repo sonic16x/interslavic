@@ -1,14 +1,18 @@
-import { t } from 'translations';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { setNotificationAction, showModalDialog } from 'actions';
 import { useDispatch } from 'react-redux';
+
+import { t } from 'translations';
+
+import { setNotificationAction, showModalDialog } from 'actions';
+import { MODAL_DIALOG_TYPES } from 'reducers';
+
+import { getPartOfSpeech } from 'utils/wordDetails';
+
+import { Button } from 'components/Button';
 
 import './ViewerContextMenu.scss';
 
 import ContextMenuCloseIcon from './images/context-menu-close-icon.svg';
-import { Button } from 'components/Button';
-import { MODAL_DIALOG_TYPES } from 'reducers';
-import { getPartOfSpeech } from 'utils/wordDetails';
 
 export interface IViewerContextMenu {
     buttonRef: HTMLElement;
@@ -49,20 +53,20 @@ export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsD
             dispatch(setNotificationAction(notificationText));
             onClose();
         });
-    }, [text, onClose]);
+    }, [text, onClose, dispatch]);
 
     const onKeyPress = useCallback(({ code }) => {
         if (code === 'Escape') {
             onClose();
         }
-    }, []);
+    }, [onClose]);
 
     const onWindowClick = useCallback((event) => {
         if (!contextMenuRef.current.contains(event.target)) {
             event.stopPropagation();
             onClose();
         }
-    }, [contextMenuRef]);
+    }, [contextMenuRef, onClose]);
 
     useEffect(() => {
         window.addEventListener('keyup', onKeyPress);
@@ -72,7 +76,7 @@ export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsD
             window.removeEventListener('keyup', onKeyPress);
             window.removeEventListener('click', onWindowClick, true);
         };
-    }, []);
+    }, [onKeyPress, onWindowClick]);
 
     const showDetail = useCallback(() => {
         dispatch(showModalDialog({
@@ -80,17 +84,17 @@ export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsD
             data: formsData,
         }));
         onClose();
-    }, [formsData]);
+    }, [formsData, dispatch, onClose]);
 
     return (
         <div
-            className={'context-menu'}
+            className="context-menu"
             style={pos ? pos : { opacity: 0 }}
             ref={contextMenuRef}
         >
             {text && (
                 <>
-                    <p className={'context-menu__text'}>
+                    <p className="context-menu__text">
                         {text}
                     </p>
                     <Button
@@ -102,7 +106,7 @@ export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsD
             <Button
                 href={googleLink}
                 onClick={onClose}
-                target={'_blank'}
+                target="_blank"
                 title={t('viewerOpenCeilInGoogleSheets')}
             />
             {formsData && (
@@ -113,7 +117,7 @@ export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsD
             )}
             {text && (
                 <span
-                    className={'context-menu__close muted-color cursor-pointer'}
+                    className="context-menu__close muted-color cursor-pointer"
                     onClick={onClose}
                 >
                     <ContextMenuCloseIcon/>

@@ -1,19 +1,25 @@
 import classNames from 'classnames';
+import { useEffect, useRef, useState } from 'react';
+
+import { tablesData } from 'consts';
+
 import { t } from 'translations';
+
 import { Dictionary, ITranslateResult } from 'services/dictionary';
-import './Results.scss';
+
+import { useFromText } from 'hooks/useFromText';
+import { useLang } from 'hooks/useLang';
+import { usePosFilter } from 'hooks/usePosFilter';
+import { useResults } from 'hooks/useResults';
+import { useScrollbarWidth } from 'hooks/useScrollbarWidth';
+import { useShortCardView } from 'hooks/useShortCardView';
+import { getTablePublicUrl } from 'utils/getTablePublicUrl';
+import { isScrollBarVisible } from 'utils/isScrollBarVisible';
+
 import { ResultsCard } from 'components/ResultsCard';
 import { ResultsEmpty } from 'components/ResultsEmpty';
-import { useResults } from 'hooks/useResults';
-import { usePosFilter } from 'hooks/usePosFilter';
-import { useLang } from 'hooks/useLang';
-import { useFromText } from 'hooks/useFromText';
-import { useShortCardView } from 'hooks/useShortCardView';
-import { useScrollbarWidth } from 'hooks/useScrollbarWidth';
-import { isScrollBarVisible } from 'utils/isScrollBarVisible';
-import { useRef, useEffect, useState } from 'react';
-import { getTablePublicUrl } from 'utils/getTablePublicUrl';
-import { tablesData } from 'consts';
+
+import './Results.scss';
 
 export const Results =
     () => {
@@ -46,7 +52,7 @@ export const Results =
 
         return (
             <div
-                className={classNames('results', {short})}
+                className={classNames('results', { short })}
                 style={{
                     paddingLeft: scrollIsVisible ? scrollWidth : 0,
                 }}
@@ -60,10 +66,10 @@ export const Results =
                     />
                 ))}
                 {results.some((item) => !item.checked) && (
-                    <div className={'results__message-for-users'}>
+                    <div className="results__message-for-users">
                         {t('notVerifiedText').replace('part%', `${translatedPart}%`)}
                         {` `}
-                        <a target={'_blank'} href={worksheetUrl}>{t('notVerifiedTableLinkText')}</a>
+                        <a target="_blank" href={worksheetUrl} rel="noreferrer">{t('notVerifiedTableLinkText')}</a>
                     </div>
                 )}
             </div>

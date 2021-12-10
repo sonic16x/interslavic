@@ -87,7 +87,6 @@ module.exports = {
             DATE: JSON.stringify(new Date().toISOString()),
             VERSION: JSON.stringify(require('./package.json').version),
         }),
-        new webpack.HotModuleReplacementPlugin(),
         new CopyWebpackPlugin({
             patterns: [
                 { from: 'static', to: outputPath },

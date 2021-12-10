@@ -1,3 +1,3 @@
-export function toQueryString(keyValues: Record<string, any>): string {
+export function toQueryString(keyValues: Record<string, (string | number | boolean)>): string {
     return Object.keys(keyValues).map((key) => `${key}=${keyValues[key]}`).join('&');
 }

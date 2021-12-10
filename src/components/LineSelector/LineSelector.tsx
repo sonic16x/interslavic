@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 
 import './LineSelector.scss';
-import classNames from 'classnames';
 
 export interface ILineSelectorOption {
     name: string;
@@ -15,14 +15,14 @@ interface ILineSelectorProps {
 }
 
 export const LineSelector =
-    ({className, options, value, onSelect}: ILineSelectorProps) => {
+    ({ className, options, value, onSelect }: ILineSelectorProps) => {
         const index = options.findIndex((item) => (item.value === value));
         const length = options.length;
 
         return (
             <div className={classNames('lineSelector', className)}>
                 <span
-                    className={'slide'}
+                    className="slide"
                     style={{
                         width: `calc(100% / ${length})`,
                         marginLeft: `calc(100% / ${length} * ${index})`,
@@ -31,7 +31,7 @@ export const LineSelector =
                 {options.map((item, i) => (
                     <span
                         key={i}
-                        className={classNames('item', {active: value === item.value})}
+                        className={classNames('item', { active: value === item.value })}
                         onClick={() => onSelect(item.value)}
                     >
                         {item.name}

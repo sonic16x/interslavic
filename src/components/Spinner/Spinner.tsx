@@ -1,4 +1,3 @@
-
 import './Spinner.scss';
 
 interface ISpinnerProps {
@@ -9,7 +8,7 @@ interface ISpinnerProps {
 export const Spinner =
     ({ size, borderWidth }: ISpinnerProps) => (
         <div
-            className={'spinner'}
+            className="spinner"
             style={{
                 width: size,
                 height: size,

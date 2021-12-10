@@ -1,10 +1,15 @@
-import { searchTypeAction } from 'actions';
 import { useCallback } from 'react';
-import { t } from 'translations';
-import { LineSelector } from '../LineSelector';
-import './SearchTypeSelector.scss';
 import { useDispatch } from 'react-redux';
+
+import { t } from 'translations';
+
+import { searchTypeAction } from 'actions';
+
 import { useSearchType } from 'hooks/useSearchType';
+
+import { LineSelector } from '../LineSelector';
+
+import './SearchTypeSelector.scss';
 
 const searchTypes = [
     {
@@ -39,7 +44,7 @@ export const SearchTypeSelector =
 
         return (
             <LineSelector
-                className={'search-type-selector'}
+                className="search-type-selector"
                 options={options}
                 value={searchType}
                 onSelect={onSelect}

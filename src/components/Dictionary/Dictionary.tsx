@@ -1,11 +1,11 @@
-import './Dictionary.scss';
-
 import { Controls } from 'components/Controls';
 import { Results } from 'components/Results';
 
+import './Dictionary.scss';
+
 export const Dictionary =
     () => (
-        <div className={'dictionary'}>
+        <div className="dictionary">
             <Controls/>
             <Results/>
         </div>

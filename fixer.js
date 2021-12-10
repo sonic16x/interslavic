@@ -1,39 +1,31 @@
 const fs = require('fs');
 const path = require('path');
 
-const componentsFolder = './src/components';
+const utilsFolder = './src/utils';
 
-const componentsList = fs.readdirSync(componentsFolder);
+const utilsList = fs.readdirSync(utilsFolder).filter((name) => !name.includes('test'));
 
-componentsList.forEach((componentName) => {
-    const oldTsPath = path.resolve(componentsFolder, componentName, 'index.tsx');
+utilsList.forEach((utilNameRaw) => {
+    const utilName = utilNameRaw.replace('.ts', '');
+    const oldFilePath = path.resolve(utilsFolder, `${utilName}.ts`);
+    const newFilePath = path.resolve(utilsFolder, utilName, `${utilName}.ts`);
 
-    if (!fs.existsSync(oldTsPath)) {
-        console.log(`${componentName} skip!`);
-        return;
+    const oldTestFilePath = path.resolve(utilsFolder, `${utilName}.test.ts`);
+    const newTestFilePath = path.resolve(utilsFolder, utilName, `${utilName}.test.ts`);
+
+    const dirName = path.resolve(utilsFolder, utilName);
+    const indexName = path.resolve(dirName, 'index.ts');
+
+    fs.mkdirSync(dirName);
+    fs.renameSync(oldFilePath, newFilePath);
+
+    if (fs.existsSync(oldTestFilePath)) {
+        fs.renameSync(oldTestFilePath, newTestFilePath);
     }
 
-    const newTsPath = path.resolve(componentsFolder, componentName, `${componentName}.tsx`);
-    const newTsPathIndex = path.resolve(componentsFolder, componentName, `index.ts`);
+    const indexContent = `export * from './${utilName}';\n`;
 
-    const oldStylePath = path.resolve(componentsFolder, componentName, 'index.scss');
-    const newStylePath = path.resolve(componentsFolder, componentName, `${componentName}.scss`);
+    fs.writeFileSync(indexName, indexContent);
 
-    fs.renameSync(oldTsPath, newTsPath);
-
-    if (fs.existsSync(oldStylePath)) {
-        fs.renameSync(oldStylePath, newStylePath);
-
-        let tsContent = fs.readFileSync(newTsPath, 'utf8');
-
-        tsContent = tsContent.replace('index.scss', `${componentName}.scss`);
-
-        fs.writeFileSync(newTsPath, tsContent);
-    }
-
-    const indexTsContent = `export * from './${componentName}';\n`;
-
-    fs.writeFileSync(newTsPathIndex, indexTsContent);
-
-    console.log(`${componentName} done!`);
+    console.log(`${utilName} done!`);
 });

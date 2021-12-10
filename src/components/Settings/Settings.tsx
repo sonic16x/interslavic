@@ -1,35 +1,42 @@
-import {
-    changeIsvSearchLetters,
-    setInterfaceLang,
-    setAlphabets,
-    changeIsvSearchByWordForms,
-    changeCardViewAction,
-    changeOrderOfCases,
-    changeDictionaryLangAction,
-    langAction,
-    togglePage,
-} from 'actions';
-import { Selector } from 'components/Selector';
+import classNames from 'classnames';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { addLangs } from 'consts';
 
 import { t } from 'translations';
-import { Checkbox } from '../Checkbox';
-import './Settings.scss';
-import { useDispatch } from 'react-redux';
-import { useInterfaceLang } from 'hooks/useInterfaceLang';
-import { useAlphabets } from 'hooks/useAlphabets';
-import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
-import { useResults } from 'hooks/useResults';
-import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
-import { useShortCardView } from 'hooks/useShortCardView';
-import { useEnabledPages } from 'hooks/useEnabledPages';
-import { useOrderOfCases } from 'hooks/useOrderOfCases';
-import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
-import { addLangs } from 'consts';
+
+import {
+    changeCardViewAction,
+    changeDictionaryLangAction,
+    changeIsvSearchByWordForms,
+    changeIsvSearchLetters,
+    changeOrderOfCases,
+    langAction,
+    setAlphabets,
+    setInterfaceLang,
+    togglePage,
+} from 'actions';
+
 import { fetchLang } from 'services/fetchDictionary';
-import { useState } from 'react';
-import { Spinner } from 'components/Spinner';
-import classNames from 'classnames';
+
+import { useAlphabets } from 'hooks/useAlphabets';
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
+import { useEnabledPages } from 'hooks/useEnabledPages';
+import { useInterfaceLang } from 'hooks/useInterfaceLang';
+import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
+import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
 import { useLang } from 'hooks/useLang';
+import { useOrderOfCases } from 'hooks/useOrderOfCases';
+import { useResults } from 'hooks/useResults';
+import { useShortCardView } from 'hooks/useShortCardView';
+
+import { Selector } from 'components/Selector';
+import { Spinner } from 'components/Spinner';
+
+import { Checkbox } from '../Checkbox';
+
+import './Settings.scss';
 
 const interfaceLanguageList = [
     {
@@ -113,12 +120,12 @@ export const Settings =
         const orderOfCases = useOrderOfCases();
         const dictionaryLanguages = useDictionaryLanguages();
         const enabledPages = useEnabledPages();
-        const {from, to} = useLang();
+        const { from, to } = useLang();
         const [isLoading, setLoading] = useState(false);
         useResults();
 
         return (
-            <div className={'settings'}>
+            <div className="settings">
                 <h4>{t('settingsTitle')}</h4>
                 <hr/>
                 <h6>{t('interfaceLanguage')}</h6>
@@ -129,7 +136,7 @@ export const Settings =
                 />
                 <hr/>
                 <Checkbox
-                    className={'bold'}
+                    className="bold"
                     title={t('shortCardView')}
                     checked={isShortCardView}
                     onChange={() => dispatch(changeCardViewAction())}
@@ -139,87 +146,87 @@ export const Settings =
                 <Checkbox
                     title={t('latin')}
                     checked={alphabets.latin}
-                    onChange={() => dispatch(setAlphabets({latin: !alphabets.latin}))}
+                    onChange={() => dispatch(setAlphabets({ latin: !alphabets.latin }))}
                 />
                 <Checkbox
                     title={t('cyrillic')}
                     checked={alphabets.cyrillic}
-                    onChange={() => dispatch(setAlphabets({cyrillic: !alphabets.cyrillic}))}
+                    onChange={() => dispatch(setAlphabets({ cyrillic: !alphabets.cyrillic }))}
                 />
                 <Checkbox
                     title={t('glagolitic')}
                     checked={alphabets.glagolitic}
-                    onChange={() => dispatch(setAlphabets({glagolitic: !alphabets.glagolitic}))}
+                    onChange={() => dispatch(setAlphabets({ glagolitic: !alphabets.glagolitic }))}
                 />
                 <hr/>
                 <h6>{t('searchSensitiveLettersForInterslavic')}</h6>
-                <div className={'settings__isv-search-letters'}>
+                <div className="settings__isv-search-letters">
                     <p>{t('standardOrthography')}</p>
                     <Checkbox
-                        title={'ž š č (ж ш ч)'}
+                        title="ž š č (ж ш ч)"
                         checked={isvSearchLetters.from.includes('ž')}
                         onChange={() => dispatch(changeIsvSearchLetters('žšč'))}
                     />
                     <Checkbox
-                        title={'ě (є)'}
+                        title="ě (є)"
                         checked={isvSearchLetters.from.includes('ě')}
                         onChange={() => dispatch(changeIsvSearchLetters('ě'))}
                     />
                     <Checkbox
-                        title={'y (ы)'}
+                        title="y (ы)"
                         checked={isvSearchLetters.from.includes('y')}
                         onChange={() => dispatch(changeIsvSearchLetters('y'))}
                     />
                     <p>{t('etymologicalOrthography')}</p>
                     <Checkbox
-                        title={'å'}
+                        title="å"
                         checked={isvSearchLetters.from.includes('å')}
                         onChange={() => dispatch(changeIsvSearchLetters('å'))}
                     />
                     <Checkbox
-                        title={'ę ų'}
+                        title="ę ų"
                         checked={isvSearchLetters.from.includes('ę')}
                         onChange={() => dispatch(changeIsvSearchLetters('ęų'))}
                     />
                     <Checkbox
-                        title={'ė ȯ'}
+                        title="ė ȯ"
                         checked={isvSearchLetters.from.includes('ȯ')}
                         onChange={() => dispatch(changeIsvSearchLetters('ėȯ'))}
                     />
                     <Checkbox
-                        title={'ŕ'}
+                        title="ŕ"
                         checked={isvSearchLetters.from.includes('ŕ')}
                         onChange={() => dispatch(changeIsvSearchLetters('ŕ'))}
                     />
                     <Checkbox
-                        title={'ĺ ń'}
+                        title="ĺ ń"
                         checked={isvSearchLetters.from.includes('ĺ')}
                         onChange={() => dispatch(changeIsvSearchLetters('ĺń'))}
                     />
                     <Checkbox
-                        title={'t́ d́'}
+                        title="t́ d́"
                         checked={isvSearchLetters.from.includes('ť')}
                         onChange={() => dispatch(changeIsvSearchLetters('ťď'))}
                     />
                     <Checkbox
-                        title={'ś ź'}
+                        title="ś ź"
                         checked={isvSearchLetters.from.includes('ś')}
                         onChange={() => dispatch(changeIsvSearchLetters('śź'))}
                     />
                     <Checkbox
-                        title={'ć'}
+                        title="ć"
                         checked={isvSearchLetters.from.includes('ć')}
                         onChange={() => dispatch(changeIsvSearchLetters('ć'))}
                     />
                     <Checkbox
-                        title={'đ'}
+                        title="đ"
                         checked={isvSearchLetters.from.includes('đ')}
                         onChange={() => dispatch(changeIsvSearchLetters('đ'))}
                     />
                 </div>
                 <hr/>
                 <Checkbox
-                    className={'bold'}
+                    className="bold"
                     title={t('searchByIsvWordForms')}
                     checked={isvSearchByWordForms}
                     onChange={() => dispatch(changeIsvSearchByWordForms(!isvSearchByWordForms))}
@@ -237,16 +244,16 @@ export const Settings =
                     onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases.split(',')))}
                 />
                 <hr />
-                <h6 className={'settings__add-langs-title'}>
+                <h6 className="settings__add-langs-title">
                     {t('addDictionaryLanguages')}
                     {isLoading && (
                         <Spinner
-                            size={'10px'}
-                            borderWidth={'3px'}
+                            size="10px"
+                            borderWidth="3px"
                         />
                     )}
                 </h6>
-                <div className={classNames('settings__add-langs', { 'settings__add-langs-loading': isLoading})}>
+                <div className={classNames('settings__add-langs', { 'settings__add-langs-loading': isLoading })}>
                     {addLangs.map((lang, i) => {
                         const checked = dictionaryLanguages.includes(lang);
 
@@ -284,7 +291,7 @@ export const Settings =
                 <div>
                     <h6>{t('devTools')}</h6>
                     <Checkbox
-                        key={'viewer'}
+                        key="viewer"
                         title={t('viewerEnable')}
                         checked={enabledPages.includes('viewer')}
                         onChange={() => dispatch(togglePage('viewer'))}

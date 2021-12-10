@@ -1,6 +1,6 @@
 export function srGajevicaToVukovica(text: string): string {
     // detecting gajevica
-    if ( text.match(/[A-Za-zŽžČčĆćŠš]/) ) {
+    if (text.match(/[A-Za-zŽžČčĆćŠš]/)) {
         return text
             .replace(/dž/g, 'џ').replace(/Dž/g, 'Џ')
             .replace(/lj/g, 'љ').replace(/Lj/g, 'Љ')
@@ -32,7 +32,7 @@ export function srGajevicaToVukovica(text: string): string {
             .replace(/v/g, 'в').replace(/V/g, 'В')
             .replace(/z/g, 'з').replace(/Z/g, 'З')
             .replace(/ž/g, 'ж').replace(/Ž/g, 'Ж')
-            ;
+        ;
     } else {
         return text;
     }

@@ -1,22 +1,30 @@
-import { hideModalDialog } from 'actions';
-import { Table } from 'components/Table';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { t } from 'translations';
-import './TranslationsModal.scss';
+
 import { addLangs, langs } from 'consts';
+
+import { t } from 'translations';
+
+import { hideModalDialog } from 'actions';
+
 import { Dictionary } from 'services/dictionary';
-import { getLatin } from 'utils/getLatin';
-import { getCyrillic } from 'utils/getCyrillic';
-import { useResults } from 'hooks/useResults';
+
+import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { useModalDialog } from 'hooks/useModalDialog';
-import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
+import { useResults } from 'hooks/useResults';
+import { getCyrillic } from 'utils/getCyrillic';
+import { getLatin } from 'utils/getLatin';
+
+import { Table } from 'components/Table';
+
+import './TranslationsModal.scss';
 
 function renderTranslate(str: string): string {
     if (str && str[0] === '!') {
         return `{${str.slice(1)}}[s]@ts;`;
     }
+    
     return `{✓}[g] ${str}@ts`;
 }
 
@@ -47,7 +55,7 @@ export const TranslationsModal =
             ...addLangsFiltered,
         ];
 
-        const tableData = allLangs.reduce((arr, lang, i) => {
+        const tableData = allLangs.reduce((arr, lang) => {
             const translate = Dictionary.getField(item.raw, lang).toString();
 
             if (lang === 'isv') {
@@ -77,33 +85,33 @@ export const TranslationsModal =
                     renderTranslate(translate),
                 ],
                 (
-                        (lang === 'bg' && addLangsFiltered.length) ? (
-                            [
-                                `@w=2;S`,
-                            ]
-                        ) : ([])
-                    ),
+                    (lang === 'bg' && addLangsFiltered.length) ? (
+                        [
+                            `@w=2;S`,
+                        ]
+                    ) : ([])
+                ),
             ];
         }, []);
 
         return (
             <>
-                <div className={'modal-dialog__header'}>
-                    <div className={'modal-dialog__header-title'}>
+                <div className="modal-dialog__header">
+                    <div className="modal-dialog__header-title">
                         {t('translatesModalTitle')}
                     </div>
                     <button
-                        className={'modal-dialog__header-close'}
+                        className="modal-dialog__header-close"
                         onClick={onClick}
-                        aria-label={'Close'}
+                        aria-label="Close"
                     >
                         &times;
                     </button>
                 </div>
-                <div className={'modal-dialog__body'}>
+                <div className="modal-dialog__body">
                     <Table data={tableData}/>
                 </div>
-                <footer className={'modal-dialog__footer'}>
+                <footer className="modal-dialog__footer">
                     {t('translationsBottomText')}
                     <br/>
                     {t('aboutJoinText')}

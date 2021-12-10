@@ -1,14 +1,18 @@
+import classNames from 'classnames';
+import { useDispatch } from 'react-redux';
+
+import { t } from 'translations';
+
 import { langAction } from 'actions';
 
-import classNames from 'classnames';
-import { t } from 'translations';
-import { Selector } from 'components/Selector';
-import { langs , addLangs } from 'consts';
-import './LangSelector.scss';
-import DirectionIcon from './images/direction-icon.svg';
-import { useDispatch } from 'react-redux';
-import { useLang } from 'hooks/useLang';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
+import { useLang } from 'hooks/useLang';
+
+import { Selector } from 'components/Selector';
+
+import './LangSelector.scss';
+
+import DirectionIcon from './images/direction-icon.svg';
 
 interface ILangPart {
     dir: string;
@@ -17,12 +21,12 @@ interface ILangPart {
 }
 
 const LangPart =
-    ({lang, dir, onSelect}: ILangPart) => {
+    ({ lang, dir, onSelect }: ILangPart) => {
         const langs = useDictionaryLanguages();
 
         if (lang === 'isv') {
             return (
-                <div className={'lang-selector__isv'}>
+                <div className="lang-selector__isv">
                     {t('isvLang')}
                 </div>
             );
@@ -35,7 +39,7 @@ const LangPart =
 
         return (
             <Selector
-                className={'lang-selector__another'}
+                className="lang-selector__another"
                 options={options}
                 value={lang}
                 onSelect={(value: string) => {
@@ -52,13 +56,13 @@ const LangPart =
 
 export const LangSelector =
     () => {
-        const {from, to} = useLang();
+        const { from, to } = useLang();
         const dispatch = useDispatch();
 
         return (
-            <div className={'lang-selector'}>
+            <div className="lang-selector">
                 <LangPart
-                    dir={'from'}
+                    dir="from"
                     lang={from}
                     onSelect={(value) => dispatch(langAction({
                         from: value,
@@ -66,9 +70,9 @@ export const LangSelector =
                     }))}
                 />
                 <button
-                    type={'button'}
-                    aria-label={'Change translation direction'}
-                    className={classNames('lang-selector__change-dir-button', {rotate: from === 'isv'})}
+                    type="button"
+                    aria-label="Change translation direction"
+                    className={classNames('lang-selector__change-dir-button', { rotate: from === 'isv' })}
                     onClick={() => dispatch(langAction({
                         from: to,
                         to: from,
@@ -77,7 +81,7 @@ export const LangSelector =
                     <DirectionIcon />
                 </button>
                 <LangPart
-                    dir={'to'}
+                    dir="to"
                     lang={to}
                     onSelect={(value) => dispatch(langAction({
                         from,

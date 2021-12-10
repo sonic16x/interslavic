@@ -1,9 +1,11 @@
-import { PureComponent, createRef } from 'react';
+import { createRef,PureComponent } from 'react';
+
 import { Card } from 'components/Card';
 import { Table } from 'components/Table';
 import { Text } from 'components/Text';
 
 import './Grammar.scss';
+
 import tables from './tables.json';
 
 const titles = {
@@ -40,18 +42,18 @@ export default class Grammar extends PureComponent {
     public render() {
         return (
             <div
-                className={'grammar-container'}
+                className="grammar-container"
                 onWheel={this.onWheel}
                 onScroll={this.onScroll}
                 ref={this.containerRef}
             >
-                <div className={'grammar'}>
-                    <h4 className={'grammar__title'}>Osnovna gramatika medžuslovjanskogo jezyka</h4>
+                <div className="grammar">
+                    <h4 className="grammar__title">Osnovna gramatika medžuslovjanskogo jezyka</h4>
                     <br/>
-                    <Card title={'Sodržanje'} id={'content'} className={'grammar__content'}>
+                    <Card title="Sodržanje" id="content" className="grammar__content">
                         {Object.keys(titles).map((id, i) => (
                             <a
-                                className={'list-group-item link'}
+                                className="list-group-item link"
                                 key={i}
                                 id={this.getLinkId(id)}
                                 onClick={() => this.userEvent = false}
@@ -61,7 +63,7 @@ export default class Grammar extends PureComponent {
                             </a>
                         ))}
                     </Card>
-                    <Card title={titles.abeceda} id={'abeceda'}>
+                    <Card title={titles.abeceda} id="abeceda">
                         <Table data={tables.tableAbeceda} />
                         <Text>
                             {`V latinici i kirilici jest možno vměsto {y}[b,B] pisati prosto {i}[b,B] i vměsto {ě}[g,B] pisati prosto {e}[g,B].
@@ -71,20 +73,20 @@ export default class Grammar extends PureComponent {
                             {`Palatizacija i eufonija: {{k}[k]→{č}[k], {h}[k]→{š}[k], {g}[k]→{ž}[k], {c}[k]{j}[p]→{č}[k], {s}[k]{j}[p]→{š}[k], {zj}[k]→{ž}[k]}[B]
                                 {Napriměr:}[i] {Grě{k}[k]→grě{č}[k]sky}[B], {pra{h}[k]→pra{š}[k]ny}[B], {Bo{g}[k]→bo{ž}[k]sky}[B], {pro{s}[k]{ju}[p]→pro{š}[k]{u}[p]}[B]`}
                         </Text>
-                        <Text indent={'0.5rem'}>
+                        <Text indent="0.5rem">
                             {`{1.}[B,m] Staroslovjansko jatj={ѣ}[g,B]={ě}[g,B] se može pisati bez diakritiky kako {ie}[g,B] ili prosto {e}[g,B]. Podobno {č}[k,B], {š}[k,B], {ž}[k,B] se mogut pisati kako {cz}[k,B], {sz}[k,B], {zs}[k,B].`}
                         </Text>
-                        <Text indent={'0.5rem'}>
+                        <Text indent="0.5rem">
                             {`{2.}[B,m] Staroslovjansko {щ}[k,B] jest na početkah slov kako {šč}[k,B], ale potom kako {č}[k,B] ({Napriměr:}[i] {ščit}[k,B], {pomoč}[k,B], {občina}[k,B], {svěča}[k,B])`}
                         </Text>
-                        <Text indent={'0.5rem'}>
+                        <Text indent="0.5rem">
                             {`{3.}[B,m] V kirilici možno koristiti ligatury: {шч}[k,B] → {щ}[k,B], {ьу}[k,B]/{ју}[k,B] → {ю}[k,B], {ьа}[k,B]/{ја}[k,B] → {я}[k,B]`}
                         </Text>
                         <Text>
                             {`Medžuslovjansky jezyk drži morfologično pravopisanje. Koren slov se piše ravno v vsih padežah. Anglijske, latinske i grečske slova imajut svoje originalno pravopisanje ale s medžuslovjanskymi zakončenjami ({arhitektur}[k,B]{a}[k], {biolog}[k,B]{ija}[k] ...).`}
                         </Text>
                     </Card>
-                    <Card title={titles.imeniky} id={'imeniky'}>
+                    <Card title={titles.imeniky} id="imeniky">
                         <Table data={tables.tableBrat} />
                         <Table data={tables.tableMuz} />
                         <Text>
@@ -121,7 +123,7 @@ export default class Grammar extends PureComponent {
                             - {ot{e}[g]c - od·ca, Decemb{e}[g]r - Decemb·ra, član{o}[p]k - član·ka, p{e}[g]s - p·sa}[B] ...`}
                         </Text>
                     </Card>
-                    <Card title={titles.zaimeniky} id={'zaimeniky'}>
+                    <Card title={titles.zaimeniky} id="zaimeniky">
                         <Table data={tables.tableMest} />
                         <Table data={tables.tableTojTaTo} />
                         <Table data={tables.tableOnOnaOno} />
@@ -134,16 +136,16 @@ export default class Grammar extends PureComponent {
                             - {slyšu j{e}[g]go, rabotaju za {n}[k]j{e}[g]go, idu s {n}[k]j{i}[b]m{i}[b], pišu j{e}[g]m{u}[p], idu k {n}[k]j{e}[g]m{u}[p]}[B]`}
                         </Text>
                     </Card>
-                    <Card title={titles.pridavniky} id={'pridavniky'}>
+                    <Card title={titles.pridavniky} id="pridavniky">
                         <Table data={tables.tableDobry} />
                         <Table data={tables.tableSvezi} />
                         <br/>
                         <Table data={tables.tableGradacija} />
                         <Text>
-                        {`{kračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]`}
+                            {`{kračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]`}
                         </Text>
                     </Card>
-                    <Card title={titles.glagoly} id={'glagoly'}>
+                    <Card title={titles.glagoly} id="glagoly">
                         <Table data={tables.tableImeti} />
                         <Text>
                             {`Pasivny prošly participij tvrdyh glagolov {–{i}[b]ti –{e}[g]ti –{u}[p]ti –yti}[B] jest {–{i}[b]ty –{e}[g]ty –{u}[p]ty –{y}[b]ty:}[B]
@@ -168,7 +170,7 @@ export default class Grammar extends PureComponent {
                              variti → var-{e}[g]-č, var-{i}[b]-v}[B]`}
                         </Text>
                     </Card>
-                    <Card title={titles.byti} id={'byti'}>
+                    <Card title={titles.byti} id="byti">
                         <Table data={tables.tableByti} />
                         <br/>
                         <Text>
@@ -182,7 +184,7 @@ export default class Grammar extends PureComponent {
                              {({krasti}[B], kradenje – kradu, kradeš, krade, krademo ... kradl, kradeh ... kradi!, ...)}[s]`}
                         </Text>
                     </Card>
-                    <Card title={titles.prislovniky} id={'prislovniky'}>
+                    <Card title={titles.prislovniky} id="prislovniky">
                         <Text>
                             {`Poslě tvrdyh soglasnikov jest zakončenje {-{o}[p]}[B], poslě mekkyh {č š ž j}[B,k] jest {-{e}[g]}[B].
                             {Napriměr:}[i] {dobr-{o}[p]}[B], {bystr-{o}[p]}[B], {už-{e}[g]}[B], {daž-{e}[g]}[B], {menš-{e}[g]}[B]`}
@@ -193,10 +195,10 @@ export default class Grammar extends PureComponent {
                         </Text>
                         <Table data={tables.tableGradacija2} />
                     </Card>
-                    <Card title={titles.predlogy} id={'predlogy'}>
+                    <Card title={titles.predlogy} id="predlogy">
                         <Table data={tables.tablePredlogy} />
                     </Card>
-                    <Card title={titles.ciselniky} id={'ciselniky'}>
+                    <Card title={titles.ciselniky} id="ciselniky">
                         <Table data={tables.tableNumbers} />
                         <Text>
                             {`{25 746}[B] = dvadeset pet	tyseč sedmsto četyrideset šest.
@@ -214,35 +216,35 @@ export default class Grammar extends PureComponent {
                             milion, miliona (GRAD)}[B]`}
                         </Text>
                     </Card>
-                    <Card title={titles.sovezniky} id={'sovezniky'}>
+                    <Card title={titles.sovezniky} id="sovezniky">
                         <Table data={tables.tableSovezniky} />
                     </Card>
-                    <Card title={titles.cestice} id={'cestice'}>
+                    <Card title={titles.cestice} id="cestice">
                         <Table data={tables.tableCestice} />
                     </Card>
-                    <Card title={titles.medzuslovniky} id={'medzuslovniky'}>
+                    <Card title={titles.medzuslovniky} id="medzuslovniky">
                         <Text>
                             {`{oh! ah! uva! lutě!}[B]
                             «značenje medžuslovnika takože imajut vse izrěčenja v navodnikah»`}
                         </Text>
                     </Card>
-                    <Card title={titles.podredne} id={'podredne'}>
+                    <Card title={titles.podredne} id="podredne">
                         <Text>
                             {`{..., kde ... ..., ktoromu..., tako ..., kako ... toliko ..., koliko ... ..., že ...}[B]
                             tvary {iže, jegože, jimže}[B], ... sut relativne zaimeniky od on, ona, ono `}
                         </Text>
                     </Card>
-                    {/*<Card title={titles.naucno} id={'naucno'}>*/}
-                    {/*    <div className={'tablesRow'}>*/}
+                    {/*<Card title={titles.naucno} id="naucno">*/}
+                    {/*    <div className="tablesRow">*/}
                     {/*        <Table data={tables.tableNauc1} />*/}
                     {/*        <Table data={tables.tableNauc2} />*/}
                     {/*        <Table data={tables.tableKir} />*/}
                     {/*    </div>*/}
                     {/*</Card>*/}
-                    <Card title={titles.glagolica} id={'glagolica'}>
+                    <Card title={titles.glagolica} id="glagolica">
                         <Table data={tables.tableGlagoljica} />
                     </Card>
-                    <Card title={titles.primetky} id={'primetky'}>
+                    <Card title={titles.primetky} id="primetky">
                         <Text>
                             {`1. Dvojina je shranila se nyně jedino v slovenskom i lužičskyh jezykah, tomu vměsto tutoj formy jest rekomendovano koristati množinu.`}
                         </Text>
@@ -250,7 +252,7 @@ export default class Grammar extends PureComponent {
                             {`2. Prosto prošlo vrěme (aorist, imperfect) je shranilo se jedino v česti slovjanskyh jezykov, tomu vměsto njego jest rekomendovano koristati glagol byti + l-participij (pisah → jesm pisal).`}
                         </Text>
                     </Card>
-                    <Card title={titles.podrobnosti} id={'podrobnosti'}>
+                    <Card title={titles.podrobnosti} id="podrobnosti">
                         <Text>
                             {`Pri sozdanji tutoj stranicy jest upotrěbjeny dokument «Medžuslovjansky jezyk. Abeceda i pravopisanie» (Januar 2018): <a href="http://interslavic-language.org/doc/ns-pregled.pdf" target="_blank">[PDF]</a>`}
                         </Text>

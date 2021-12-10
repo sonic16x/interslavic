@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+
 import './Checkbox.scss';
 
 import CheckedIcon from './iamges/checked-icon.svg';
@@ -18,16 +19,16 @@ export const Checkbox =
         const id = `id_${title.toLowerCase()}`;
 
         return (
-            <div className={classNames('checkbox', className, {disabled})}>
+            <div className={classNames('checkbox', className, { disabled })}>
                 <input
                     onChange={onChange}
-                    type={'checkbox'}
-                    className={'checkbox__input'}
+                    type="checkbox"
+                    className="checkbox__input"
                     id={id}
                     checked={checked}
                 />
                 <span
-                    className={'checkbox__box'}
+                    className="checkbox__box"
                     onClick={onChange}
                 >
                     <span style={{ opacity: checked ? 1 : 0 }}>
@@ -36,7 +37,7 @@ export const Checkbox =
                     </span>
                 </span>
                 <label
-                    className={'checkbox__label'}
+                    className="checkbox__label"
                     htmlFor={id}
                 >
                     {title}

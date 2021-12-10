@@ -1,8 +1,9 @@
 import { Component } from 'react';
+
+import { Clipboard } from 'components/Clipboard';
 import { parseStr } from 'components/Text';
 
 import './Table.scss';
-import { Clipboard } from 'components/Clipboard';
 
 interface ITableProps {
     data: string[][];
@@ -11,7 +12,7 @@ interface ITableProps {
 export class Table extends Component<ITableProps> {
     public render() {
         return (
-            <table className={'table'}>
+            <table className="table">
                 <tbody>{this.renderBody()}</tbody>
             </table>
         );
@@ -31,6 +32,7 @@ export class Table extends Component<ITableProps> {
             }
             attrs[exp[0]] = exp[1];
         });
+        
         return {
             str,
             attrs,
@@ -40,7 +42,7 @@ export class Table extends Component<ITableProps> {
     private renderRow(row: string[]) {
         return row
             .map((item) => this.parseItem(item))
-            .map(({str, attrs}, i) => {
+            .map(({ str, attrs }, i) => {
                 if (str.includes('<') || str.includes('&')) {
                     return (
                         <td
@@ -48,8 +50,8 @@ export class Table extends Component<ITableProps> {
                             className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
                             colSpan={attrs.w}
                             rowSpan={attrs.h}
-                            style={{width: attrs.sw}}
-                            dangerouslySetInnerHTML={{__html: str}}
+                            style={{ width: attrs.sw }}
+                            dangerouslySetInnerHTML={{ __html: str }}
                         />
                     );
                 } else {
@@ -59,7 +61,7 @@ export class Table extends Component<ITableProps> {
                             className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
                             colSpan={attrs.w}
                             rowSpan={attrs.h}
-                            style={{width: attrs.sw}}
+                            style={{ width: attrs.sw }}
                         >
                             <Clipboard str={str}/>
                         </td>

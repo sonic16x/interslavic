@@ -1,11 +1,15 @@
 import { useCallback } from 'react';
-import './InputText.scss';
-import { fromTextAction } from 'actions';
-import { t } from 'translations';
-import { toBCP47 } from 'utils/bcp47';
 import { useDispatch } from 'react-redux';
-import { useLang } from 'hooks/useLang';
+
+import { t } from 'translations';
+
+import { fromTextAction } from 'actions';
+
 import { useFromText } from 'hooks/useFromText';
+import { useLang } from 'hooks/useLang';
+import { toBCP47 } from 'utils/bcp47';
+
+import './InputText.scss';
 
 export const InputText =
     () => {
@@ -22,9 +26,9 @@ export const InputText =
         }, [dispatch]);
 
         return (
-            <div className={'input-text'}>
+            <div className="input-text">
                 <input
-                    className={'input-text__input'}
+                    className="input-text__input"
                     type='search'
                     lang={searchLanguage}
                     autoCapitalize='off'
@@ -36,9 +40,9 @@ export const InputText =
                     onChange={onChange}
                 />
                 <button
-                    className={'input-text__clear-button'}
-                    type={'reset'}
-                    aria-label={'Clear input'}
+                    className="input-text__clear-button"
+                    type="reset"
+                    aria-label="Clear input"
                     disabled={fromText.length === 0}
                     onClick={onClick}
                 >
