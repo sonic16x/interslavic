@@ -8,14 +8,14 @@ import { usePage } from 'hooks/usePage';
 import { getPageFromPath, getPathFromPage } from 'routing';
 import { toBCP47 } from 'utils/bcp47';
 
-import { About } from 'components/About';
-import { Dictionary } from 'components/Dictionary';
-import { Settings } from 'components/Settings';
+import { About } from 'components/Pages/About';
+import { Dictionary } from 'components/Pages/Dictionary';
+import { Settings } from 'components/Pages/Settings';
 
 import './Router.scss';
 
-const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Grammar/Grammar'));
-const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Viewer/Viewer'));
+const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar'));
+const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'));
 
 function renderPageContent(page) {
     switch (page) {

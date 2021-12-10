@@ -17,19 +17,20 @@ export const Notification =
         const hasNotification = !!notification;
 
         useEffect(() => {
+            if (!hasNotification || !isVisible) {
+                return;
+            }
+
             if (timer) {
                 clearTimeout(timer);
-            } else {
-                return;
             }
 
             const timerId = setTimeout(() => {
                 dispatch(setNotificationAction(''));
-                setVisible(true);
             }, 2000);
 
             setTimer(timerId);
-        }, [hasNotification, dispatch, timer, setTimer]);
+        }, [hasNotification, dispatch]);
 
         return (
             <div className="notification-container">

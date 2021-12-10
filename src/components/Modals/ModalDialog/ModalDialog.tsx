@@ -7,8 +7,8 @@ import { MODAL_DIALOG_TYPES } from 'reducers';
 
 import { useModalDialog } from 'hooks/useModalDialog';
 
-import { DetailModal } from 'components/DetailModal';
-import { TranslationsModal } from 'components/TranslationsModal';
+import { DetailModal } from 'components/Modals/DetailModal';
+import { TranslationsModal } from 'components/Modals/TranslationsModal';
 
 import './ModalDialog.scss';
 

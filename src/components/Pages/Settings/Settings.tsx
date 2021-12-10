@@ -31,10 +31,9 @@ import { useOrderOfCases } from 'hooks/useOrderOfCases';
 import { useResults } from 'hooks/useResults';
 import { useShortCardView } from 'hooks/useShortCardView';
 
+import { Checkbox } from 'components/Checkbox';
 import { Selector } from 'components/Selector';
 import { Spinner } from 'components/Spinner';
-
-import { Checkbox } from '../Checkbox';
 
 import './Settings.scss';
 
