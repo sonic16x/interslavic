@@ -32,7 +32,7 @@ export function useScrollbarWidth(): number | undefined {
         });
 
         return () => cancelAnimationFrame(raf);
-    }, []);
+    }, [sbw]);
 
     return sbw;
 }

@@ -1,5 +1,6 @@
-import './Button.scss';
 import classNames from 'classnames';
+
+import './Button.scss';
 
 interface IButtonProps {
     size?: 'S' | 'M' | 'L';

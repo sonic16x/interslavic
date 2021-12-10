@@ -11,8 +11,8 @@ const baseUrl = '/';
 module.exports = {
     entry: {
         index: './src/index',
-        grammarComponent: './src/components/Grammar/index',
-        viewerComponent: './src/components/Viewer/index',
+        grammarComponent: './src/components/Grammar/Grammar',
+        viewerComponent: './src/components/Viewer/Viewer',
         sw: './src/sw',
     },
     output: {
@@ -87,7 +87,6 @@ module.exports = {
             DATE: JSON.stringify(new Date().toISOString()),
             VERSION: JSON.stringify(require('./package.json').version),
         }),
-        new webpack.HotModuleReplacementPlugin(),
         new CopyWebpackPlugin({
             patterns: [
                 { from: 'static', to: outputPath },
@@ -97,7 +96,7 @@ module.exports = {
     optimization: {
         noEmitOnErrors: true,
     },
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     stats: 'errors-only',
     devServer: {
         host: '0.0.0.0',

@@ -2,8 +2,6 @@
 * Source http://steen.free.fr http://steen.free.fr/scripts/transliteration.js
 */
 
-/* tslint:disable */
-
 export function transliterate(iSource, type, flav, caps, nms) {
     var text = iSource;
     var result = "";

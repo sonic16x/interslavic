@@ -1,10 +1,11 @@
-// tslint:disable:no-var-requires
+import { tablesData } from 'consts';
+
+import { getAllDataFromResults, IAllData } from 'utils/getAllDataFromResults';
+import { getTableDataUrl } from 'utils/getTableDataUrl';
+
+// eslint-disable-next-line
 // @ts-ignore
 const fetch = typeof CLIENT !== 'undefined' && CLIENT ? window.fetch : require('node-fetch');
-
-import { getTableDataUrl } from 'utils/getTableDataUrl';
-import { tablesData } from 'consts';
-import { getAllDataFromResults, IAllData } from 'utils/getAllDataFromResults';
 
 export const loadTablesData = new Promise<IAllData>((resolve, reject) => {
     try {
