@@ -19,6 +19,8 @@ export const Notification =
         useEffect(() => {
             if (timer) {
                 clearTimeout(timer);
+            } else {
+                return;
             }
 
             const timerId = setTimeout(() => {
