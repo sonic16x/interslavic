@@ -27,6 +27,9 @@
     "simple-import-sort/imports": ["error", {
       "groups": [
         [
+          "^(fs)(/.*|$)"
+        ],
+        [
           "^(react|redux|react-redux|react-dom|lodash|classnames)(/.*|$)",
           "^(@ag-grid-community|node-fetch)(/.*|$)"
         ],

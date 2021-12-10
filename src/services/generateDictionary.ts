@@ -1,3 +1,5 @@
+import * as fs from 'fs';
+
 import { addLangs, dataDelimiter, initialAddFields, initialFields,langs } from 'consts';
 
 import { Dictionary } from 'services/dictionary';
@@ -5,8 +7,6 @@ import { loadTablesData } from 'services/loadTablesData';
 
 import { getColumnName } from 'utils/getColumnName';
 import { transposeMatrix } from 'utils/transposeMatrix';
-
-import * as fs from 'fs';
 
 
 loadTablesData.then(({ data, columns }) => {
