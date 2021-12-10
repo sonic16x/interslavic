@@ -12,6 +12,7 @@
     "no-fallthrough": "off",
     "no-misleading-character-class": "off",
     "react/prop-types": "off",
+    "react-hooks/exhaustive-deps": "off",
     "no-empty": "off",
     "no-multiple-empty-lines": ["error", {
       "max": 2,

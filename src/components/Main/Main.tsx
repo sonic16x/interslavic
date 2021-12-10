@@ -8,7 +8,7 @@ import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { GDPR } from 'components/GDPR';
 import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
-import { ModalDialog } from 'components/ModalDialog';
+import { ModalDialog } from 'components/Modals/ModalDialog';
 import { Notification } from 'components/Notification';
 import { Router } from 'components/Router';
 
