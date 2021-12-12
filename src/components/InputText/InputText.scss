@@ -14,17 +14,18 @@
     font-size: var(--text-l);
     line-height: 30px;
     font-weight: 500;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--input-border-color);
     padding: 8px 16px;
     width: 100%;
-    color: #999;
+    color: var(--gray-9);
+    background: var(--light);
 
     &:focus {
       outline: none;
     }
 
     &:not([value=""]) {
-      color: #495057;
+      color: var(--gray-4);
     }
 
     &::-webkit-search-decoration,
@@ -45,9 +46,9 @@
     padding: 0;
     top: 9px;
     right: 4px;
-    color: #666;
+    color: var(--gray-6);
     border: 0;
-    background-color: #fff;
+    background-color: var(--light);
     transition: background 200ms;
     outline: none;
     z-index: 10;

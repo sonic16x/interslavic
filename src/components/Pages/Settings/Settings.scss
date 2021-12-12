@@ -1,5 +1,5 @@
 .settings {
-  background: #fff;
+  background: var(--light);
   pointer-events: all;
   max-width: 1024px;
   margin: 0 auto 56px;
@@ -28,8 +28,8 @@
     font-weight: 500;
     outline: none;
     border: none;
-    color: #fff;
-    font-size: 16px;
+    color: var(--light);
+    font-size: var(--text-m);
   }
 
   &__add-langs-title {

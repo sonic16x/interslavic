@@ -19,13 +19,13 @@
     left: -50vw;
     right: -50vw;
     height: 100%;
-    background-color: #343a40;
+    background-color: var(--header-background-color);
     z-index: -1;
   }
 
   .show-menu-button {
     display: none;
-    border: 1px solid #555;
+    border: 1px solid var(--gray-5);
     border-radius: 4px;
     box-sizing: content-box;
     padding: 3px;
@@ -48,7 +48,7 @@
       display: block;
       width: var(--line-length);
       height: var(--line-width);
-      background-color: #fff;
+      background-color: var(--light);
       position: relative;
       @include changeState;
 
@@ -59,7 +59,7 @@
         position: absolute;
         width: var(--line-length);
         height: var(--line-width);
-        background-color: #fff;
+        background-color: var(--light);
       }
 
       &::after {
@@ -98,28 +98,47 @@
     cursor: pointer;
     margin-left: 10px;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #999;
+    font-size: var(--text-m);
+    line-height: var(--text-l-line);
+    color: var(--gray-9);
     white-space: nowrap;
     transition: color var(--animation-duration) linear;
+    position: relative;
 
     &.active {
-      color: #fff;
+      color: var(--light);
+
+      &:after {
+        opacity: 1;
+      }
     }
 
     &:hover {
-      color: #ddd;
+      color: var(--gray-d);
       text-decoration: none;
+
+      &:after {
+        opacity: 1;
+      }
     }
 
+    &:after {
+      transition: opacity var(--animation-duration) linear;
+      opacity: 0.8;
+      content: attr(data-sub-title);
+      color: var(--primary-color);
+      font-size: 10px;
+      position: absolute;
+      right: 0;
+      top: -50%;
+    }
   }
 
   .logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
+    color: var(--light);
     font-size: 20px;
     font-weight: 500;
     padding: 5px 0;
@@ -190,7 +209,7 @@
     position: absolute;
     right: 16px;
     top: 12px;
-    background: #343a40;
+    background: var(--header-background-color);
 
     &.hasBadge::after {
       right: -4px;

@@ -81,7 +81,7 @@ export const Router =
 
         return (
             <div
-                className={`animationContainer ${addClass} ${prevPage}Route`}
+                className={`animation-container ${addClass} ${prevPage}Route`}
                 onAnimationEnd={onAnimationEnd}
             >
                 {renderPageContent(prevPage)}

@@ -43,7 +43,7 @@ export interface ITranslateParams {
     to: string;
     searchType: string;
     posFilter: string;
-    flavorisationType: string;
+    flavorisationType?: string;
 }
 
 const isvReplacebleLetters = [
@@ -123,6 +123,7 @@ export interface ITranslateResult {
     addGla?: string;
     details: string;
     ipa: string;
+    isv: string;
     checked: boolean;
     raw: string[];
 }
@@ -274,7 +275,7 @@ class DictionaryClass {
         
         return searchIndex;
     }
-    public translate(translateParams: ITranslateParams): [string[][], number] {
+    public translate(translateParams: ITranslateParams, showTime = true): [string[][], number] {
         const {
             inputText,
             from,
@@ -451,7 +452,7 @@ class DictionaryClass {
 
         const translateTime = Math.round(performance.now() - startTranslateTime); // @TODO: send to GA
 
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV !== 'production' && showTime) {
             // eslint-disable-next-line no-console
             console.log('TRANSLATE', `${translateTime}ms`);
         }
@@ -464,7 +465,7 @@ class DictionaryClass {
         from: string,
         to: string,
         flavorisationType: string,
-        alphabets: IAlphabets,
+        alphabets?: IAlphabets,
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
@@ -478,12 +479,13 @@ class DictionaryClass {
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
                 raw: item,
+                isv,
             };
-            if (alphabets.cyrillic) {
+            if (alphabets?.cyrillic) {
                 formattedItem.originalCyr = getCyrillic(isv, flavorisationType);
                 formattedItem.addCyr = convertCases(getCyrillic(add, flavorisationType));
             }
-            if (alphabets.glagolitic) {
+            if (alphabets?.glagolitic) {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
                 formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
             }

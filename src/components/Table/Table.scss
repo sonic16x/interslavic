@@ -3,15 +3,14 @@
 .table {
   margin: 10px auto;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--text-m);
   text-align: start;
   width: 100%;
   border-collapse: collapse;
 
   th, td {
-    //white-space: nowrap;
     box-sizing: border-box;
-    border: 2px solid #9E9E9E;
+    border: 2px solid var(--gray-9);
     text-align: center;
     height: 10px;
 
@@ -57,13 +56,13 @@
 
     &.d {
       background: #BDBDBD;
-      color: #fff;
+      color: var(--light);
       text-align: center;
     }
 
     &.D {
       background: #90A4AE;
-      color: #fff;
+      color: var(--light);
       text-align: center;
     }
 

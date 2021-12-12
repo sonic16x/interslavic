@@ -2,73 +2,19 @@
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  overflow: hidden;
-  min-height: 143px;
   box-shadow: var(--shadow);
   border: var(--border);
   border-radius: 0 0 var(--border-radius-s) var(--border-radius-s);
-  transition: min-height var(--animation-duration) ease-in-out;
   z-index: 1;
   max-width: 1024px;
   box-sizing: border-box;
-  background: #fff;
-
-  &__expand-container {
-    overflow: hidden;
-    transition: height var(--animation-duration) linear, opacity var(--animation-duration) ease-in-out;
-    height: 0;
-    opacity: 0;
-    box-sizing: border-box;
-    margin-bottom: 0;
-  }
+  background: var(--light);
 
   .input-text {
-    margin-bottom: 7px;
     transition: margin-bottom var(--animation-duration) ease-in-out;
   }
 
-  &.expand {
-    min-height: 298px;
-
-    .input-text {
-      margin-bottom: 15px;
-    }
-
-    .controls__expand-container {
-      opacity: 1;
-      height: 147px;
-    }
-
-    .controls__expand-button {
-      transform: rotate(180deg);
-    }
-
-    &.short {
-      min-height: 266px;
-
-      .controls__expand-container {
-        height: 131px;
-      }
-    }
-  }
-
-  &__expand-button {
-    display: block;
-    transition: transform var(--animation-duration) ease-in-out;
-    cursor: pointer;
-    background: #fff;
-    width: 21px;
-    height: 16px;
-    padding: 0;
-    border: none;
-    margin: 0 auto;
-    outline: none;
-  }
-
-  .lang-selector,
-  .search-type-selector,
-  .pos-selector,
-  .flavorisation-selector {
+  .lang-selector {
     margin: 0 var(--gap-size) var(--gap-size);
   }
 
@@ -81,27 +27,18 @@
     margin-right: var(--gap-size);
   }
 
-  &.short {
-    min-height: 127px;
+  .search-type-selector,
+  .pos-selector,
+  .flavorisation-selector {
+    flex: 1 1 auto;
+    margin: 0 var(--gap-size);
 
-    .lang-selector,
-    .search-type-selector,
-    .pos-selector,
-    .flavorisation-selector {
-      margin: 0 var(--gap-size-s) var(--gap-size-s);
+    &:first-child {
+      margin-top: var(--gap-size);
     }
 
-    .lang-selector {
-      margin-top: var(--gap-size-s);
-    }
-
-    .pos-selector {
-      margin-bottom: 0;
-    }
-
-    .input-text {
-      margin-left: var(--gap-size-s);
-      margin-right: var(--gap-size-s);
+    &:not(&:last-child) {
+      margin-bottom: var(--gap-size);
     }
   }
 }

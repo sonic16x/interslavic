@@ -1,7 +1,7 @@
 .results-card {
   position: relative;
   width: 100%;
-  background: #fff;
+  background: var(--light);
   box-shadow: var(--shadow);
   border: var(--border);
   border-radius: var(--border-radius-s);
@@ -19,7 +19,7 @@
     font-size: var(--text-l);
     line-height: var(--text-l-line);
     font-weight: 600;
-    color: #000;
+    color: var(--dark);
   }
 
   .word + .word:before {
@@ -40,7 +40,7 @@
   &__original {
     font-size: var(--text-m);
     line-height: var(--text-m-line);
-    color: #000;
+    color: var(--dark);
   }
 
 
@@ -49,7 +49,7 @@
     top: 5px;
     right: 5px;
     background: var(--invalid-color);
-    color: #fff;
+    color: var(--light);
     font-weight: 700;
     font-size: var(--text-xs);
     line-height: var(--text-xs-line);
@@ -124,7 +124,7 @@
         width: 16px;
         height: 16px;
         padding: 0;
-        background: linear-gradient(45deg, #fff 0%, #fff 50%, var(--invalid-color) 50%, var(--invalid-color) 100%);
+        background: linear-gradient(45deg, var(--transperent) 0%, var(--transperent) 50%, var(--invalid-color) 50%, var(--invalid-color) 100%);
         border-radius: 0;
 
         &.verified {
@@ -145,7 +145,7 @@
           border-radius: var(--border-radius-s);
           width: 24px;
           height: 24px;
-          color: #fff;
+          color: var(--light);
           font-size: var(--text-xs);
           line-height: var(--text-xs-line);
           padding: 0;

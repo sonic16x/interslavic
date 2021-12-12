@@ -226,7 +226,7 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.SET_PAGE:
             goToPage(getPathFromPage(data));
-            
+
             return {
                 ...state,
                 page: data,
@@ -266,7 +266,7 @@ export function mainReducer(state: IMainState, { type, data }) {
             };
         case ActionTypes.SET_INTERFACE_LANG:
             setLang(data);
-            
+
             return {
                 ...state,
                 interfaceLang: data,
