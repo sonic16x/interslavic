@@ -1,0 +1,39 @@
+.community {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-link {
+    padding: var(--gap-size);
+    border: var(--border);
+    border-radius: var(--border-radius-m);
+    box-shadow: var(--shadow);
+    margin-bottom: var(--gap-size);
+    max-width: 670px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &__text {
+      color: var(--dark);
+      font-size: var(--text-l);
+      line-height: var(--text-l-line);
+      margin-bottom: var(--gap-size-s);
+    }
+
+    .iframe-wrapper {
+      position: relative;
+      height: 0;
+      padding-top: 56.25%;
+      overflow: hidden;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--border-radius-m);
+      }
+    }
+  }
+}

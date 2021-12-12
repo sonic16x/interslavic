@@ -3136,6 +3136,36 @@
     "mk": "Потврдете дека не сте робот",
     "bg": "Потвърдете, че не сте робот"
   },
+  "communityTitle": {
+    "en": "Community",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "communityPageTitle": {
+    "en": "Community",
+    "isv": "",
+    "ru": "Сообщество",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
   "offline-title": {
     "en": "You are offline",
     "isv": "",
