@@ -22,6 +22,14 @@
   border-radius: var(--border-radius-m);
   box-shadow: var(--shadow);
 
+  &.error {
+    background: var(--invalid-color);
+  }
+
+  &.valid {
+    background: var(--valid-color);
+  }
+
   &.show {
     opacity: 1;
     pointer-events: all;

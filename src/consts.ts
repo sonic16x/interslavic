@@ -93,3 +93,12 @@ export const tablesData: ITableData[] = [
 ];
 
 export const tableColumnsLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+export const wordErrorsTypes = [
+    'translate',
+    'synonym',
+    'interslavic',
+]
+
+export const captchaSiteKey = '6Lccu5kdAAAAACvN1Cnl5THInIZPEmqIyJOMjkpe';
+export const wordErrorTextMaxLength = 120;

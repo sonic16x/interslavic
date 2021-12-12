@@ -1,0 +1,28 @@
+.confirm {
+  border-radius: var(--border-radius-m);
+  background: #fff;
+  width: 300px;
+
+  &__text {
+    padding: 8px;
+
+    font-size: var(--text-m);
+    line-height: var(--text-m-line);
+    text-align: center;
+  }
+
+  &__buttons {
+    border-top: var(--border);
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      width: 100%;
+
+      &:first-child {
+        margin-right: 16px;
+      }
+    }
+  }
+}

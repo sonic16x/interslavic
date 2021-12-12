@@ -1,9 +1,9 @@
 .modal-dialog {
+  position: relative;
   border: none;
   background: none;
   padding: 0;
   background: #fff;
-  border: var(--border);
   border-radius: var(--border-radius-s);
   max-width: 1000px;
   transition: opacity var(--animation-duration) ease-in-out;

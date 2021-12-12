@@ -1,0 +1,28 @@
+.textarea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__error-text {
+    font-size: var(--text-m);
+    line-height: var(--text-m-line);
+    color: var(--invalid-color);
+  }
+
+  &__native {
+    outline: none;
+    -moz-appearance: none;
+    border-radius: var(--border-radius-s);
+    font-size: var(--text-l);
+    border: 1px solid #ced4da;
+    padding: 8px;
+    overflow: auto;
+    resize: none;
+  }
+
+  &.error {
+    .textarea__native {
+      border: 2px solid var(--invalid-color);
+    }
+  }
+}

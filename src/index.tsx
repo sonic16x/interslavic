@@ -19,6 +19,8 @@ import { Main } from 'components/Main';
 
 import './index.scss';
 
+import md5 from 'md5';
+
 declare global {
     const VERSION: string;
     const BASE_URL: string;
@@ -52,6 +54,7 @@ export const defaultState: IMainState = {
         to: 'isv',
     },
     interfaceLang: 'en',
+    clientId: md5(`${Date.now() * Math.random()}`),
     isvSearchLetters: {
         from: [],
         to: [],

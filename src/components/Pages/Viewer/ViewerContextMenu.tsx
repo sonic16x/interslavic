@@ -50,7 +50,7 @@ export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsD
             const notificationText = t('clipboardCopyNotification', {
                 str: text,
             });
-            dispatch(setNotificationAction(notificationText));
+            dispatch(setNotificationAction({ text: notificationText }));
             onClose();
         });
     }, [text, onClose, dispatch]);

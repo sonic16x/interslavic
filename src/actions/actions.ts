@@ -53,7 +53,7 @@ export function setFavoriteAction(data: string) {
     };
 }
 
-export function setNotificationAction(data: string) {
+export function setNotificationAction(data) {
     return {
         type: ActionTypes.SET_NOTIFICATION,
         data,
