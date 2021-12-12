@@ -13,6 +13,7 @@ module.exports = {
         index: './src/index',
         grammarComponent: './src/components/Pages/Grammar/Grammar',
         viewerComponent: './src/components/Pages/Viewer/Viewer',
+        communityComponent: './src/components/Pages/CommunityPage/CommunityPage',
         sw: './src/sw',
     },
     output: {
@@ -31,17 +32,17 @@ module.exports = {
                 use: ['@svgr/webpack'],
             },
             {
-              test: /\.(png|jpg|jpeg|gif)$/i,
-              issuer: /\.s?css$/,
-              use: [
-                {
-                  loader: 'file-loader',
-                  options: {
-                    outputPath: 'static',
-                    esModule: false,
-                  }
-                },
-              ],
+                test: /\.(png|jpg|jpeg|gif)$/i,
+                issuer: /\.s?css$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'static',
+                            esModule: false,
+                        }
+                    },
+                ],
             },
             {
                 test: /\.tsx?$/,

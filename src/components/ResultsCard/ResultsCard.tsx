@@ -15,6 +15,7 @@ import { useFavorite } from 'hooks/useFavorite';
 import { useIntersect } from 'hooks/useIntersect';
 import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { isOnline } from 'utils/isOnline';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
 
@@ -203,14 +204,16 @@ export const ResultsCard =
                     {isFavorite ? '★' : '☆'}
                 </button>
                 <div className="results-card__actions">
-                    <button
-                        className="results-card__report-word-error-button"
-                        type="button"
-                        aria-label={t('reportWordError')}
-                        onClick={showWordErrorModal}
-                    >
-                        {short ? <ErrorIcon /> : t('reportWordError')}
-                    </button>
+                    {isOnline() && (
+                        <button
+                            className="results-card__report-word-error-button"
+                            type="button"
+                            aria-label={t('reportWordError')}
+                            onClick={showWordErrorModal}
+                        >
+                            {short ? <ErrorIcon /> : t('reportWordError')}
+                        </button>
+                    )}
                     <button
                         className="results-card__show-translates-button"
                         type="button"

@@ -1,5 +1,5 @@
 .word-error-dialog {
-  background: #fff;
+  background: var(--light);
   border: var(--border);
   border-radius: var(--border-radius-s);
 
@@ -13,7 +13,7 @@
       font-size: 20px;
       line-height: 24px;
       font-weight: 600;
-      color: #000;
+      color: var(--dark);
 
       .details {
         font-weight: 400;
@@ -56,13 +56,6 @@
 
     &-recaptcha {
       margin-top: 16px;
-      width: 100%;
-
-      &-error {
-        font-size: var(--text-m);
-        line-height: var(--text-m-line);
-        color: var(--invalid-color);
-      }
     }
   }
 

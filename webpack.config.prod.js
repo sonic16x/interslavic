@@ -17,6 +17,7 @@ module.exports = {
         index: './src/index',
         grammarComponent: './src/components/Pages/Grammar/Grammar',
         viewerComponent: './src/components/Pages/Viewer/Viewer',
+        communityComponent: './src/components/Pages/CommunityPage/CommunityPage',
         sw: './src/sw',
     },
     output: {
@@ -36,19 +37,19 @@ module.exports = {
     module: {
         rules: [
             {
-              test: /\.(png|jpg|jpeg|gif)$/i,
-              issuer: /\.s?css$/,
-              use: [
-                {
-                  loader: 'file-loader',
-                  options: {
-                    name: '[name].[contenthash].[ext]',
-                    publicPath: `${baseUrl}static`,
-                    outputPath: 'static',
-                    esModule: false,
-                  }
-                },
-              ],
+                test: /\.(png|jpg|jpeg|gif)$/i,
+                issuer: /\.s?css$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[contenthash].[ext]',
+                            publicPath: `${baseUrl}static`,
+                            outputPath: 'static',
+                            esModule: false,
+                        }
+                    },
+                ],
             },
             {
                 test: /\.tsx?$/,

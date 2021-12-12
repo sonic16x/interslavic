@@ -10,6 +10,7 @@ import { useEnabledPages } from 'hooks/useEnabledPages';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { usePage } from 'hooks/usePage';
 import { defaultPages, pages } from 'routing';
+import { isOnline } from 'utils/isOnline';
 
 import './Header.scss';
 
@@ -87,7 +88,7 @@ export const Header =
                     ref={navRef}
                 >
                     {pages
-                        .filter(({ value }) => defaultPages.includes(value) || enabledPages.includes(value))
+                        .filter(({ value, online }) => (defaultPages.includes(value) || enabledPages.includes(value)) && (online ? isOnline() : true))
                         .map((({ title, value, subTitle }) => (
                             <MenuItem
                                 key={value}

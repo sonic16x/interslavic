@@ -1,6 +1,7 @@
 import { tableColumnsLetters, validFields } from 'consts';
 
 import { getColumnName } from 'utils/getColumnName';
+import { parseTsvTable } from 'utils/parseTsvTable';
 import { transposeMatrix } from 'utils/transposeMatrix';
 
 export interface IRangeMap {
@@ -22,11 +23,7 @@ export const getAllDataFromResults = (results: string[]): IAllData => {
     const rangesMap: IRangeMap[] = [];
 
     results.map((data) => {
-        const wordList = data
-            .replace(/#/g, '')
-            .split('\n')
-            .map((l) => l.replace('\r', '').split('\t').map((e) => e.trim()))
-        ;
+        const wordList = parseTsvTable(data.replace(/#/g, ''));
 
         rangesMap.push({
             header: new Map(wordList[0].map((filed, i) => [filed, tableColumnsLetters[i]])),
