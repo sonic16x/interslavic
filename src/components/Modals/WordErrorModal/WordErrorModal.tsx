@@ -43,7 +43,7 @@ export const WordErrorModal = () => {
         if (textareaError && text !== 0) {
             setTextareaError('');
         }
-    }, [textareaError, textValue, setTextValue])
+    }, [textareaError, textValue, setTextValue]);
 
     const onCloseClick = useCallback(() => {
         if (!isConfirm && textValue.length !== 0) {
@@ -80,7 +80,7 @@ export const WordErrorModal = () => {
                 errorType,
                 text: textValue,
                 captchaToken,
-            }
+            };
 
             const fetchOptions = {
                 method: 'POST',
@@ -139,7 +139,7 @@ export const WordErrorModal = () => {
                 >
                     <Confirm
                         text={t('sendErrorConfirmExit')}
-                        okText={t('ok')}
+                        okText={t('yes')}
                         cancelText={t('no')}
                         onCancel={onConfirmCancel}
                         onConfirm={onCloseClick}
