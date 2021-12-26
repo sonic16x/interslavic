@@ -67,7 +67,7 @@
     right: 5px;
   }
 
-  &__show-forms-button, &__show-translates-button {
+  &__show-forms-button, &__show-translates-button, &__report-word-error-button {
     outline: none;
     cursor: pointer;
     background: none;
@@ -155,7 +155,7 @@
             transform: scale(.9);
           }
 
-          &:last-child {
+          &:not(:first-child) {
             margin-left: 8px;
           }
         }

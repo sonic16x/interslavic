@@ -9,22 +9,30 @@ interface IButtonProps {
     onClick?: () => void;
     title: string;
     disabled?: boolean;
+    fill?: boolean;
+    className?: boolean;
+    type?: 'primary' | 'error' | 'muted';
 }
 
 export const Button = (
     {
         size = 'M',
         href,
+        type = 'primary',
         target,
         onClick,
         title,
         disabled,
+        fill = true,
+        className,
     }: IButtonProps,
 ) => {
+    const clsName = classNames(['button', `button-${size}`, type, className], { disabled, fill });
+
     if (href) {
         return (
             <a
-                className={classNames(['button', `button-${size.toLowerCase()}`], { disabled })}
+                className={clsName}
                 href={href}
                 target={target}
                 onClick={onClick}
@@ -36,7 +44,7 @@ export const Button = (
 
     return (
         <button
-            className={classNames(['button', `button-${size.toLowerCase()}`], { disabled })}
+            className={clsName}
             onClick={onClick}
             disabled={disabled}
         >

@@ -1,6 +1,14 @@
 .input-text {
   position: relative;
 
+  &-size-m {
+
+  }
+
+  &-size-l {
+
+  }
+
   &__input {
     border-radius: var(--border-radius-s);
     font-size: var(--text-l);

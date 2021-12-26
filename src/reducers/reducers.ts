@@ -21,6 +21,7 @@ export interface ILang {
 export enum MODAL_DIALOG_TYPES {
     MODAL_DIALOG_TRANSLATION = 'MODAL_DIALOG_TRANSLATION',
     MODAL_DIALOG_WORD_FORMS = 'MODAL_DIALOG_WORD_FORMS',
+    MODAL_DIALOG_WORD_ERROR = 'MODAL_DIALOG_WORD_ERROR',
 }
 
 export interface IModalDialog {
@@ -29,9 +30,15 @@ export interface IModalDialog {
     show?: boolean;
 }
 
+export interface INotification {
+    text: string;
+    type?: 'error' | 'valid';
+}
+
 export interface IMainState {
     lang: ILang;
     interfaceLang: string;
+    clientId: string;
     isShortCardView?: boolean;
     isvSearchLetters: {
         from: string[];
@@ -51,7 +58,7 @@ export interface IMainState {
     rawResults: string[][];
     results: ITranslateResult[];
     alphabets: IAlphabets;
-    notification?: string;
+    notification?: INotification;
     modalDialog: IModalDialog;
     favoriteList: {
         [key: string]: boolean;

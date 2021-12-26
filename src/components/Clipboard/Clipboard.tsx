@@ -25,7 +25,7 @@ export const Clipboard =
         const onClick = () => {
             navigator.clipboard.writeText(str).then(() => {
                 const notificationText = t('clipboardCopyNotification', { str });
-                dispatch(setNotificationAction(notificationText));
+                dispatch(setNotificationAction({ text: notificationText }));
             });
 
             // NOTE: Google Analytics.

@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "license": "MIT",
   "description": "Interslavic dictionary",
   "author": "Sergey Cherebedov",
@@ -12,7 +12,9 @@
     "lint-fix": "eslint src/**/*.{ts,tsx} --fix",
     "updateTestSnapshot": "ts-node -r tsconfig-paths/register ./tests/updateTestSnapshot.ts",
     "generateDictionary": "ts-node -r tsconfig-paths/register ./src/services/generateDictionary.ts",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build-api": "webpack --config webpack.config.api.js",
+    "deploy-api": "wrangler publish"
   },
   "jest": {
     "transform": {
@@ -40,15 +42,17 @@
       "<rootDir>/src/**/*.{ts,tsx}"
     ]
   },
-  "main": "",
+  "main": "./dist/worker.js",
   "pre-commit": [
     "lint"
   ],
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "25.2.0",
     "@ag-grid-community/core": "25.2.0",
+    "@types/grecaptcha": "^3.0.3",
     "classnames": "2.3.1",
     "lodash": "4.17.21",
+    "md5": "2.3.0",
     "node-fetch": "2.6.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -56,6 +60,7 @@
     "redux": "4.1.2"
   },
   "devDependencies": {
+    "@cloudflare/wrangler": "^1.19.5",
     "@svgr/webpack": "^5.5.0",
     "@types/dialog-polyfill": "^0.5.0",
     "@types/jest": "^27.0.3",

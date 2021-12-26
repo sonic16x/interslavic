@@ -1,11 +1,16 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setSearchExpand } from 'actions';
+import { t } from 'translations';
 
+import { fromTextAction, setSearchExpand } from 'actions';
+
+import { useFromText } from 'hooks/useFromText';
+import { useLang } from 'hooks/useLang';
 import { useSearchExpanded } from 'hooks/useSearchExpanded';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { toBCP47 } from 'utils/bcp47';
 
 import { FlavorisationSelector } from 'components/FlavorisationSelector';
 import { InputText } from 'components/InputText';
@@ -24,6 +29,15 @@ export const Controls =
         const [expanded, setExpanded] = useState<boolean>(expand);
         const short = useShortCardView();
 
+        const lang = useLang();
+        const fromText = useFromText();
+        const spellCheck = lang.from !== 'isv';
+        const searchLanguage = toBCP47(lang.from);
+
+        const onChange = useCallback((value) => {
+            dispatch(fromTextAction(value));
+        }, [dispatch]);
+
         const onCLick = () => {
             dispatch(setSearchExpand(!expanded));
         };
@@ -33,7 +47,18 @@ export const Controls =
                 className={classNames('controls', { expand, short })}
             >
                 <LangSelector/>
-                <InputText/>
+                <InputText
+                    size="L"
+                    value={fromText}
+                    onChange={onChange}
+                    placeholder={t('typeWordLabel')}
+                    type="search"
+                    lang={searchLanguage}
+                    autoCapitalize="off"
+                    autoComplete={spellCheck ? 'on' : 'off'}
+                    autoCorrect={spellCheck ? 'on' : 'off'}
+                    spellCheck={spellCheck}
+                />
                 <div
                     role="region"
                     aria-labelledby="expandControls"

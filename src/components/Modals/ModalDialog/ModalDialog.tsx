@@ -9,6 +9,7 @@ import { useModalDialog } from 'hooks/useModalDialog';
 
 import { DetailModal } from 'components/Modals/DetailModal';
 import { TranslationsModal } from 'components/Modals/TranslationsModal';
+import { WordErrorModal } from 'components/Modals/WordErrorModal';
 
 import './ModalDialog.scss';
 
@@ -18,6 +19,8 @@ function getModalDialog(type: MODAL_DIALOG_TYPES) {
             return <TranslationsModal />;
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS:
             return <DetailModal />;
+        case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR:
+            return <WordErrorModal />;
         default:
             return null;
     }

@@ -22,6 +22,7 @@ import { Clipboard } from 'components/Clipboard';
 
 import './ResultsCard.scss';
 
+import ErrorIcon from './images/error-icon.svg';
 import FormsIcon from './images/forms-icon.svg';
 import TranslationsIcon from './images/translations-icon.svg';
 
@@ -127,6 +128,18 @@ export const ResultsCard =
             }));
         };
 
+        const showWordErrorModal = () => {
+            // biReporter.cardInteraction('show forms', cardBiInfo);
+            dispatch(showModalDialog({
+                type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR,
+                data: {
+                    wordId: item.raw[0],
+                    isvWord: item.original,
+                    translatedWord: item.translate,
+                },
+            }));
+        };
+
         const showDetail = () => {
             biReporter.cardInteraction('show translations', cardBiInfo);
             dispatch(showModalDialog({
@@ -191,9 +204,17 @@ export const ResultsCard =
                 </button>
                 <div className="results-card__actions">
                     <button
+                        className="results-card__report-word-error-button"
+                        type="button"
+                        aria-label={t('reportWordError')}
+                        onClick={showWordErrorModal}
+                    >
+                        {short ? <ErrorIcon /> : t('reportWordError')}
+                    </button>
+                    <button
                         className="results-card__show-translates-button"
                         type="button"
-                        aria-label="Show translates"
+                        aria-label={t('translates')}
                         onClick={showTranslations}
                     >
                         {short ? <TranslationsIcon /> : t('translates')}
@@ -202,7 +223,7 @@ export const ResultsCard =
                         <button
                             className="results-card__show-forms-button"
                             type="button"
-                            aria-label="Show forms"
+                            aria-label={t('declensions')}
                             onClick={showDetail}
                         >
                             {short ? (
