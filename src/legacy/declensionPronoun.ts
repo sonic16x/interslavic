@@ -10,8 +10,11 @@ export interface IPronounParadigm {
     casesPlural?: {};
 }
 
-export function declensionPronounFlat(rawWord: string, pronounType: string): string[] {
-    const result = declensionPronoun(rawWord, pronounType);
+export function declensionPronounFlat(rawWord: string, pronounType: string) {
+    return getDeclensionPronounFlat(declensionPronoun(rawWord, pronounType));
+}
+
+export function getDeclensionPronounFlat(result: IPronounParadigm): string[] {
     if (!result) {
         return [];
     }

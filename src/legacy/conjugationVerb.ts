@@ -10,11 +10,15 @@ const prefixes = [
 
 const irregular_stems = {'da': 1, 'je': 1, 'jě': 1, 'ja': 1, 'vě': 1};
 
-export function conjugationVerbFlat(inf, rawPts): any {
-    const result: any = conjugationVerb(inf, rawPts);
+export function conjugationVerbFlat(inf, rawPts): string[] {
+    return getConjugationVerbFlat(conjugationVerb(inf, rawPts));
+}
+
+export function getConjugationVerbFlat(result: any): string[] {
     if (!result) {
         return [];
     }
+
     const forms = [
         ...result.conditional.filter(Boolean).map((item) => item.split(' ')[1].replace(/[()]/g, '')),
         result.gerund,

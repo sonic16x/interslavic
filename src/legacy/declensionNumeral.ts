@@ -45,7 +45,10 @@ function getExclusionForm(rawWord, caseIndex, formColumns) {
 }
 
 export function declensionNumeralFlat(rawWord: string, numeralType: string): string[] {
-    const result: any = declensionNumeral(rawWord, numeralType);
+    return getDeclensionNumeralFlat(declensionNumeral(rawWord, numeralType));
+}
+
+export function getDeclensionNumeralFlat(result: INumeralParadigm): string[] {
     if (!result) {
         return [];
     }

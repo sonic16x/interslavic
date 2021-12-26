@@ -2,6 +2,8 @@
 * Source http://steen.free.fr/interslavic/adjectivator.html
 */
 
+import { conjugationVerb, getConjugationVerbFlat } from 'legacy/conjugationVerb';
+
 function applyRules(arr: string[], postfix: string) {
     return arr.map(rules).map((item) => {
         return item.
@@ -10,9 +12,15 @@ function applyRules(arr: string[], postfix: string) {
     });
 }
 
+// declensionAdjectiveFlat
+
 export function declensionAdjectiveFlat(adj: string, postfix: string): string[] {
-    const result = declensionAdjective(adj, postfix);
+    return getDeclensionAdjectiveFlat(declensionAdjective(adj, postfix));
+}
+
+export function getDeclensionAdjectiveFlat(result: any): string[] {
     const forms = [];
+
     for (const key in result) {
         if (result.hasOwnProperty(key)) {
             const notFlat: any = Object.values(result[key]);
@@ -23,6 +31,7 @@ export function declensionAdjectiveFlat(adj: string, postfix: string): string[] 
             forms.push(...flatArr);
         }
     }
+
     return Array.from(new Set(forms.filter(Boolean)));
 }
 

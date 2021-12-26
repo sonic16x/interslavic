@@ -1,26 +1,33 @@
-export const pages = [
+interface IPage {
+    title: string,
+    subTitle?: string,
+    value: string,
+    path: string,
+}
+
+export const pages: IPage[] = [
     {
-        name: 'dictionaryTitle',
+        title: 'dictionaryTitle',
         value: 'dictionary',
         path: BASE_URL,
     },
     {
-        name: 'grammarTitle',
+        title: 'grammarTitle',
         value: 'grammar',
         path: `${BASE_URL}grammar`,
     },
     {
-        name: 'viewerTitle',
+        title: 'viewerTitle',
         value: 'viewer',
         path: `${BASE_URL}viewer`,
     },
     {
-        name: 'settingsTitle',
+        title: 'settingsTitle',
         value: 'settings',
         path: `${BASE_URL}settings`,
     },
     {
-        name: 'aboutTitle',
+        title: 'aboutTitle',
         value: 'about',
         path: `${BASE_URL}about`,
     },

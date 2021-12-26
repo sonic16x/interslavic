@@ -1,6 +1,6 @@
 .button {
   border-radius: var(--border-radius-m);
-  background: #fff;
+  background: var(--light);
   border: 2px solid;
   outline: none;
   box-shadow: var(--shadow);
@@ -39,7 +39,7 @@
   }
 
   &.fill {
-    color: #fff;
+    color: var(--light);
 
     &.primary {
       background: var(--primary-color);

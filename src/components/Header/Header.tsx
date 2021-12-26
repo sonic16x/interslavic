@@ -88,10 +88,11 @@ export const Header =
                 >
                     {pages
                         .filter(({ value }) => defaultPages.includes(value) || enabledPages.includes(value))
-                        .map((({ name, value }) => (
+                        .map((({ title, value, subTitle }) => (
                             <MenuItem
                                 key={value}
-                                name={name}
+                                title={title}
+                                subTitle={subTitle}
                                 value={value}
                                 active={page === value}
                                 onClick={collapseMenu}
@@ -103,7 +104,8 @@ export const Header =
     };
 
 interface IMenuItemProps {
-    name: string;
+    title: string;
+    subTitle?: string;
     value: string;
     hasBadge?: boolean;
     active: boolean;
@@ -111,7 +113,8 @@ interface IMenuItemProps {
 }
 
 const MenuItem = ({
-    name,
+    title,
+    subTitle,
     value,
     active,
     onClick: customOnClick,
@@ -128,8 +131,9 @@ const MenuItem = ({
         <a
             className={classNames('menu-item', { active, hasBadge })}
             onClick={onClick}
+            data-sub-title={subTitle}
         >
-            {t(name)}
+            {t(title)}
         </a>
     );
 };

@@ -9,7 +9,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: #fff;
+  background: var(--light);
 
   &.hide {
     opacity: 0;
@@ -22,14 +22,14 @@
   }
 
   &__title {
-    font-size: 24px;
+    font-size: var(--text-xl);
     font-weight: 600;
   }
 
   &__text {
     text-align: center;
     padding: 15px;
-    font-size: 16px;
+    font-size: var(--text-m);
     max-width: 650px;
   }
 
@@ -52,7 +52,7 @@
     font-weight: 500;
     outline: none;
     border: none;
-    color: #fff;
-    font-size: 16px;
+    color: var(--light);
+    font-size: var(--text-m);
   }
 }

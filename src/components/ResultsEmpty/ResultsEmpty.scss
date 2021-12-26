@@ -11,7 +11,7 @@
 
   &__filter {
     margin-top: 5px;
-    font-size: 24px;
+    font-size: var(--text-xl);
     padding: 0 15px;
   }
 
@@ -26,7 +26,7 @@
     font-weight: 500;
     outline: none;
     border: none;
-    color: #fff;
-    font-size: 16px;
+    color: var(--light);
+    font-size: var(--text-m);
   }
 }

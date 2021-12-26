@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
@@ -12,6 +12,7 @@ import { useSearchExpanded } from 'hooks/useSearchExpanded';
 import { useShortCardView } from 'hooks/useShortCardView';
 import { toBCP47 } from 'utils/bcp47';
 
+import { Expand } from 'components/Expand';
 import { FlavorisationSelector } from 'components/FlavorisationSelector';
 import { InputText } from 'components/InputText';
 import { LangSelector } from 'components/LangSelector';
@@ -20,13 +21,10 @@ import { SearchTypeSelector } from 'components/SearchTypeSelector';
 
 import './Controls.scss';
 
-import ExpandIcon from './images/expand-icon.svg';
-
 export const Controls =
     () => {
         const dispatch = useDispatch();
         const expand = useSearchExpanded();
-        const [expanded, setExpanded] = useState<boolean>(expand);
         const short = useShortCardView();
 
         const lang = useLang();
@@ -38,13 +36,13 @@ export const Controls =
             dispatch(fromTextAction(value));
         }, [dispatch]);
 
-        const onCLick = () => {
-            dispatch(setSearchExpand(!expanded));
-        };
+        const onChangeExpand = useCallback(() => {
+            dispatch(setSearchExpand(!expand));
+        }, [expand]);
 
         return (
             <div
-                className={classNames('controls', { expand, short })}
+                className={classNames('controls', { short })}
             >
                 <LangSelector/>
                 <InputText
@@ -54,40 +52,19 @@ export const Controls =
                     placeholder={t('typeWordLabel')}
                     type="search"
                     lang={searchLanguage}
-                    autoCapitalize="off"
-                    autoComplete={spellCheck ? 'on' : 'off'}
-                    autoCorrect={spellCheck ? 'on' : 'off'}
+                    autoCapitalize="false"
+                    autoComplete={spellCheck ? 'true' : 'false'}
+                    autoCorrect={spellCheck ? 'true' : 'false'}
                     spellCheck={spellCheck}
                 />
-                <div
-                    role="region"
-                    aria-labelledby="expandControls"
-                    className={classNames('controls__expand-container', { expand })}
-                    onTransitionEnd={(e: any) => setExpanded(getComputedStyle(e.target).opacity === '1')}
+                <Expand
+                    isExpanded={expand}
+                    onChange={onChangeExpand}
                 >
-                    {(expand || expanded) && (
-                        <>
-                            <SearchTypeSelector key="searchType" />
-                            <FlavorisationSelector key="flavorisation" />
-                            <POSSelector key="posFilter" />
-                        </>
-                    )}
-                </div>
-                <div
-                    className="controls__expand-button-container"
-                    onClick={onCLick}
-                >
-                    <button
-                        id="expandControls"
-                        type="button"
-                        aria-label="Expand search"
-                        aria-expanded={expand}
-                        className="controls__expand-button"
-                        onClick={onCLick}
-                    >
-                        <ExpandIcon />
-                    </button>
-                </div>
+                    <SearchTypeSelector key="searchType" />
+                    <FlavorisationSelector key="flavorisation" />
+                    <POSSelector key="posFilter" />
+                </Expand>
             </div>
         );
     };

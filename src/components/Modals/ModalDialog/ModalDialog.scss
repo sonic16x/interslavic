@@ -3,7 +3,7 @@
   border: none;
   background: none;
   padding: 0;
-  background: #fff;
+  background: var(--light);
   border-radius: var(--border-radius-s);
   max-width: 1000px;
   transition: opacity var(--animation-duration) ease-in-out;
@@ -19,7 +19,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #000;
+    background: var(--dark);
     opacity: 0.5;
   }
 
@@ -53,7 +53,7 @@
       font-size: 20px;
       line-height: 24px;
       font-weight: 600;
-      color: #000;
+      color: var(--dark);
 
       .details {
         font-weight: 400;

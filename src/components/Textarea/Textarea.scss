@@ -10,14 +10,26 @@
   }
 
   &__native {
+    background: var(--light);
+    color: var(--dark);
     outline: none;
     -moz-appearance: none;
     border-radius: var(--border-radius-s);
-    font-size: var(--text-l);
-    border: 1px solid #ced4da;
-    padding: 8px;
+    border: 1px solid var(--input-border-color);
+    padding: var(--gap-size-s);
     overflow: auto;
     resize: none;
+    box-sizing: border-box;
+
+    &.M {
+      font-size: var(--text-m);
+      line-height: var(--text-m-line);
+    }
+
+    &.L {
+      font-size: var(--text-l);
+      line-height: var(--text-l-line);
+    }
   }
 
   &.error {

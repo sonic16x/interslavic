@@ -94,7 +94,8 @@ module.exports = {
         }),
     ],
     optimization: {
-        noEmitOnErrors: true,
+        emitOnErrors: false,
+        runtimeChunk: 'single',
     },
     devtool: 'eval-source-map',
     stats: 'errors-only',

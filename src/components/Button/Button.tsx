@@ -10,7 +10,7 @@ interface IButtonProps {
     title: string;
     disabled?: boolean;
     fill?: boolean;
-    className?: boolean;
+    className?: string;
     type?: 'primary' | 'error' | 'muted';
 }
 

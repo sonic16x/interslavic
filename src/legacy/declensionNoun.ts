@@ -18,11 +18,15 @@ function prepareGender(gender, animated) {
     }
 }
 
-export function declensionNounFlat(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable): any {
-    const result = declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable);
+export function declensionNounFlat(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable): string[] {
+    return getDeclensionNounFlat(declensionNoun(rawNoun, rawAdd, originGender, animated, isPlural, isSingular, isIndeclinable))
+}
+
+export function getDeclensionNounFlat(result: any): string[] {
     if (!result) {
         return [];
     }
+
     const notFlat: any = Object.values(result);
     return Array.from(new Set(notFlat.flat().filter(Boolean)));
 }

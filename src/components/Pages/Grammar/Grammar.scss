@@ -9,7 +9,7 @@
 .grammar {
   margin-right: auto;
   margin-left: auto;
-  background: #fff;
+  background: var(--light);
   pointer-events: all;
   text-align: center;
   max-width: 1024px;
@@ -22,13 +22,6 @@
   .tablesRow {
     display: flex;
     flex-direction: row;
-  }
-
-  .title {
-    text-align: center;
-    font-weight: bold;
-    color: #455A64;
-    font-size: 20px;
   }
 
   .link {
@@ -123,13 +116,13 @@
     .selected {
       transition: color 75ms linear, background-color 75ms linear;
       z-index: 2;
-      color: #fff;
+      color: var(--light);
       background-color: var(--primary-color);
       border-color: var(--primary-color);
       border-radius: var(--border-radius-s);
 
       &:visited {
-        color: #fff;
+        color: var(--light);
       }
     }
   }
