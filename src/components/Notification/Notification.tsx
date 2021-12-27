@@ -35,7 +35,7 @@ export const Notification =
         return (
             <div className="notification-container">
                 <div
-                    className={classNames('notification', [notification.type], { show: isVisible && !!notification })}
+                    className={classNames('notification', [notification?.type], { show: isVisible && !!notification })}
                     onClick={() => setVisible(false)}
                     onTransitionEnd={() => {
                         if (!isVisible) {
@@ -47,7 +47,7 @@ export const Notification =
                         }
                     }}
                 >
-                    {notification.text}
+                    {notification?.text}
                 </div>
             </div>
         );
