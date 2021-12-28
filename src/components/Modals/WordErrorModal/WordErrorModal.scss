@@ -3,6 +3,14 @@
   border: var(--border);
   border-radius: var(--border-radius-s);
 
+  &-offline {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    border-radius: var(--border-radius-s);
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;

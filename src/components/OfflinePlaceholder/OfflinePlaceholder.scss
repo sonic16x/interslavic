@@ -1,0 +1,10 @@
+.offline-placeholder {
+  padding: var(--gap-size);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: var(--light);
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+}

@@ -3,7 +3,6 @@ interface IPage {
     subTitle?: string,
     value: string,
     path: string,
-    online?: boolean,
 }
 
 export const pages: IPage[] = [
@@ -21,7 +20,6 @@ export const pages: IPage[] = [
         title: 'viewerTitle',
         value: 'viewer',
         path: `${BASE_URL}viewer`,
-        online: true,
     },
     {
         title: 'settingsTitle',
