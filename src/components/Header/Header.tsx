@@ -87,7 +87,7 @@ export const Header =
                     ref={navRef}
                 >
                     {pages
-                        .filter(({ value }) => defaultPages.includes(value) || enabledPages.includes(value))
+                        .filter(({ value }) => (defaultPages.includes(value) || enabledPages.includes(value)))
                         .map((({ title, value, subTitle }) => (
                             <MenuItem
                                 key={value}

@@ -31,17 +31,17 @@ module.exports = {
                 use: ['@svgr/webpack'],
             },
             {
-              test: /\.(png|jpg|jpeg|gif)$/i,
-              issuer: /\.s?css$/,
-              use: [
-                {
-                  loader: 'file-loader',
-                  options: {
-                    outputPath: 'static',
-                    esModule: false,
-                  }
-                },
-              ],
+                test: /\.(png|jpg|jpeg|gif)$/i,
+                issuer: /\.s?css$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'static',
+                            esModule: false,
+                        }
+                    },
+                ],
             },
             {
                 test: /\.tsx?$/,

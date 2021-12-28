@@ -6,6 +6,12 @@
   width: 100%;
   height: 100%;
 
+  &-offline {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
   &__loader {
     z-index: 100;
     opacity: .8;

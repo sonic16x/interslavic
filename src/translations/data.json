@@ -3135,5 +3135,35 @@
     "sr": "Потврдите да нисте робот",
     "mk": "Потврдете дека не сте робот",
     "bg": "Потвърдете, че не сте робот"
+  },
+  "offline-title": {
+    "en": "You are offline",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "offline-message": {
+    "en": "This functionality are working only with internet",
+    "isv": "",
+    "ru": "",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   }
 }

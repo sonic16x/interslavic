@@ -62,6 +62,6 @@ export function getPathFromPage(page: string): string {
     if (finded) {
         return finded.path;
     }
-    
+
     return BASE_URL;
 }

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { captchaSiteKey,wordErrorsTypes, wordErrorTextMaxLength } from 'consts';
+import { captchaSiteKey, wordErrorsTypes, wordErrorTextMaxLength } from 'consts';
 
 import { t } from 'translations';
 
@@ -11,9 +11,11 @@ import { useClientId } from 'hooks/useClientId';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { useLang } from 'hooks/useLang';
 import { useModalDialog } from 'hooks/useModalDialog';
+import { isOnline } from 'utils/isOnline';
 
 import { Button } from 'components/Button';
 import { Confirm } from 'components/Confirm';
+import { OfflinePlaceholder } from 'components/OfflinePlaceholder';
 import { Selector } from 'components/Selector';
 import { Spinner } from 'components/Spinner';
 import { Textarea } from 'components/Textarea';
@@ -22,7 +24,7 @@ import './WordErrorModal.scss';
 
 export const WordErrorModal = () => {
     useInterfaceLang();
-
+    const online = isOnline();
     const dispatch = useDispatch();
     const [textValue, setTextValue] = useState<string>('');
     const [captchaToken, setCaptchaToken] = useState<string>('');
@@ -60,14 +62,16 @@ export const WordErrorModal = () => {
     }, [textValue]);
 
     useEffect(() => {
-        grecaptcha.render('recaptcha-element', {
-            sitekey: captchaSiteKey,
-            theme: 'light',
-            callback: (token) => {
-                setCaptchaToken(token);
-                setCaptchaError(false);
-            },
-        });
+        if (online) {
+            grecaptcha.render('recaptcha-element', {
+                sitekey: captchaSiteKey,
+                theme: 'light',
+                callback: (token) => {
+                    setCaptchaToken(token);
+                    setCaptchaError(false);
+                },
+            });
+        }
     }, []);
 
     const onSendClick = useCallback(() => {
@@ -133,6 +137,12 @@ export const WordErrorModal = () => {
 
     return (
         <>
+            {!online && (
+                <OfflinePlaceholder
+                    className="word-error-dialog-offline"
+                    onClick={onCloseClick}
+                />
+            )}
             {isConfirm && (
                 <div
                     className="word-error-dialog-confirm"

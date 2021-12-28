@@ -11,11 +11,13 @@ import { loadTablesData } from 'services/loadTablesData';
 
 import { useLoading } from 'hooks/useLoading';
 import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
+import { isOnline } from 'utils/isOnline';
 import { removeBrackets } from 'utils/removeBrackets';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
 import { wordHasForms } from 'utils/wordHasForms';
 
 import { Button } from 'components/Button';
+import { OfflinePlaceholder } from 'components/OfflinePlaceholder';
 import { Spinner } from 'components/Spinner';
 
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
@@ -177,6 +179,7 @@ interface IContextState {
 
 const Viewer =
     () => {
+        const online = isOnline();
         const allDataRef = useRef<string[][]>();
         const [isLoadingAllData, setLoadingAllData] = useState(true);
         const [isSortEnabled, setSortEnabled] = useState(false);
@@ -210,11 +213,13 @@ const Viewer =
         }, []);
 
         useEffect(() => {
-            loadTablesData.then(({ data, rangesMap }) => {
-                allDataRef.current = data;
-                initTablesMapFunction(rangesMap);
-                setLoadingAllData(false);
-            });
+            if (online) {
+                loadTablesData.then(({ data, rangesMap }) => {
+                    allDataRef.current = data;
+                    initTablesMapFunction(rangesMap);
+                    setLoadingAllData(false);
+                });
+            }
         }, [setLoadingAllData, initTablesMapFunction]);
 
         const onCellClicked = useCallback((data) => {
@@ -276,6 +281,10 @@ const Viewer =
                 new Grid(containerRef.current, gridOptions);
             }
         }, [containerRef, allLoaded, closeContext, onCellClicked, onFilterChanged, onGridReady, onSortChanged]);
+
+        if (!online) {
+            return <OfflinePlaceholder className="viewer-offline"/>
+        }
 
         return (
             <div className="viewer">
