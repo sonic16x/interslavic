@@ -24,6 +24,8 @@ export enum ActionTypes {
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
     DICTIONARY_LANGUAGES = 'DICTIONARY_LANGUAGES',
     TOGGLE_PAGE = 'TOGGLE_PAGE',
+    SET_COMMUNITY_LINKS = 'SET_COMMUNITY_LINKS',
+    SET_BADGES = 'SET_BADGES',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -180,6 +182,20 @@ export function changeDictionaryLangAction(data) {
 export function togglePage(data) {
     return {
         type: ActionTypes.TOGGLE_PAGE,
+        data,
+    };
+}
+
+export function setCommunityLinks(data) {
+    return {
+        type: ActionTypes.SET_COMMUNITY_LINKS,
+        data,
+    };
+}
+
+export function setBadges(data) {
+    return {
+        type: ActionTypes.SET_BADGES,
         data,
     };
 }

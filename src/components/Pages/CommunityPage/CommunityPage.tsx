@@ -1,24 +1,20 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
-
-import { communityLinksTable } from 'consts';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
 
-import { getObjFromTable } from 'utils/getObjFromTable';
-import { getTableDataUrl } from 'utils/getTableDataUrl';
-import { parseTsvTable } from 'utils/parseTsvTable';
+import { setBadges } from 'actions';
+import { ICommunityLink } from 'reducers';
 
-import { Spinner } from 'components/Spinner';
+import { useCommunityLinks } from 'hooks/useCommunityLinks';
+import { isOnline } from 'utils/isOnline';
+
+import { OfflinePlaceholder } from 'components/OfflinePlaceholder';
 
 import './CommunityPage.scss';
 
 type LinkType = 'youtube' | 'facebook';
-
-interface ICommunityLink {
-    link: string;
-    text?: string;
-}
 
 function getLinkType(link: string): LinkType {
     if (link.includes('youtube')) {
@@ -70,41 +66,30 @@ const CommunityLink = ({ link, text }: ICommunityLink) => {
     return null;
 }
 
-const communityFeedLink = getTableDataUrl(communityLinksTable.spreadsheetId, communityLinksTable.sheetId);
 
 export const CommunityPage = () => {
-    const [communityLinks, setCommunityLinks] = useState<ICommunityLink[]>([]);
-    const [isLoading, setLoading] = useState<boolean>(true);
+    const dispatch = useDispatch();
+    const communityLinks = useCommunityLinks();
+    const online = isOnline();
 
     useEffect(() => {
-        fetch(communityFeedLink)
-            .then((res) => res.text())
-            .then((text) => {
-                const rawData = parseTsvTable(text);
-                const linksData: any = getObjFromTable(rawData, communityLinksTable.fields);
+        if (online) {
+            FB.init({
+                xfbml: true,
+                version: 'v12.0'
+            });
 
-                setCommunityLinks(linksData);
-                setLoading(false);
-            })
-        ;
-    }, []);
-
-    useEffect(() => {
-        FB.init({
-            xfbml: true,
-            version: 'v12.0'
-        });
+            dispatch(setBadges([]));
+        }
     }, [communityLinks]);
+
+    if (!online) {
+        return <OfflinePlaceholder className="community-offline"/>
+    }
 
     return (
         <div className="community">
             <h1>{t('communityPageTitle')}</h1>
-            {isLoading && (
-                <Spinner
-                    size="4rem"
-                    borderWidth=".3em"
-                />
-            )}
             {communityLinks.map((linkData, i) => (<CommunityLink key={i} {...linkData} />))}
         </div>
     );

@@ -3,6 +3,12 @@
   flex-direction: column;
   align-items: center;
 
+  &-offline {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
   &-link {
     padding: var(--gap-size);
     border: var(--border);

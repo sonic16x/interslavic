@@ -164,7 +164,7 @@
     }
   }
 
-  .hasBadge::after {
+  .badge::after {
     content: '';
     position: absolute;
     width: 8px;
@@ -223,12 +223,12 @@
     top: 12px;
     background: var(--header-background-color);
 
-    &.hasBadge::after {
+    &.badge::after {
       right: -4px;
       top: -4px;
     }
 
-    &.expanded.hasBadge::after {
+    &.expanded.badge::after {
       animation: 0.3s hide forwards;
     }
   }

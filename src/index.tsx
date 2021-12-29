@@ -84,6 +84,8 @@ export const defaultState: IMainState = {
     favoriteList: {},
     orderOfCases: ['nom','acc','gen','loc','dat','ins','voc'],
     enabledPages: [],
+    communityLinks: [],
+    badges: [],
 };
 
 function reduxDevTools() {

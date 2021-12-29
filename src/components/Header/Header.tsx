@@ -6,6 +6,7 @@ import { t } from 'translations';
 
 import { setPageAction } from 'actions';
 
+import { useBadges } from 'hooks/useBadges';
 import { useEnabledPages } from 'hooks/useEnabledPages';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { usePage } from 'hooks/usePage';
@@ -20,6 +21,7 @@ export const Header =
     () => {
         const dispatch = useDispatch();
         const page = usePage();
+        const badges = useBadges();
         useInterfaceLang();
         const [menuIsVisible, setMenuIsVisible] = useState(false);
         const [mobile, setMobile] = useState(false);
@@ -77,7 +79,7 @@ export const Header =
                 </h1>
                 <button
                     type="button"
-                    className={classNames('show-menu-button', menuIsVisible && 'expanded')}
+                    className={classNames('show-menu-button', { 'expanded': menuIsVisible, 'badge': badges.length })}
                     aria-label="Menu button"
                     onClick={() => setMenuIsVisible(!menuIsVisible)}
                 >
@@ -96,6 +98,7 @@ export const Header =
                                 subTitle={subTitle}
                                 value={value}
                                 active={page === value}
+                                hasBadge={badges.includes(value)}
                                 onClick={collapseMenu}
                             />
                         )))}
@@ -130,7 +133,7 @@ const MenuItem = ({
 
     return (
         <a
-            className={classNames('menu-item', { active, hasBadge })}
+            className={classNames('menu-item', { active, 'badge': hasBadge })}
             onClick={onClick}
             data-sub-title={subTitle}
         >
