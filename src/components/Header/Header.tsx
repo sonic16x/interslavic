@@ -70,7 +70,7 @@ export const Header =
                     >
                         <LogoIcon/>
                     </span>
-                    <span className="logo-text">
+                    <span className="logo-text" onClick={() => initsnow()}>
                         {t('mainTitle')}
                     </span>
                 </h1>
