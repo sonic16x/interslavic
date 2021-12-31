@@ -14,7 +14,10 @@
   margin: 0 auto;
   
   .logo-text {
+    display: flex;
+
     &::after {
+      display: flex;
       content: ' ';
       width: 28px;
       height: 28px;

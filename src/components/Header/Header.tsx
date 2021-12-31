@@ -14,6 +14,7 @@ import { defaultPages, pages } from 'routing';
 import './Header.scss';
 
 import LogoIcon from './images/logo-icon.svg';
+import { initsnow } from './snow';
 
 export const Header =
     () => {
