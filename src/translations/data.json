@@ -3138,8 +3138,8 @@
   },
   "communityTitle": {
     "en": "Community",
-    "isv": "",
-    "ru": "",
+    "isv": "Občina",
+    "ru": "Сообщество",
     "uk": "",
     "be": "",
     "pl": "",
@@ -3152,9 +3152,9 @@
     "bg": ""
   },
   "communityPageTitle": {
-    "en": "Community",
-    "isv": "",
-    "ru": "Сообщество",
+    "en": "Interslavic community",
+    "isv": "Medžuslovjanska Občina",
+    "ru": "Междуславянское сообщество",
     "uk": "",
     "be": "",
     "pl": "",
