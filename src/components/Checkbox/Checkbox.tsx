@@ -19,7 +19,7 @@ export const Checkbox =
         const id = `id_${title.toLowerCase()}`;
 
         return (
-            <div className={classNames('checkbox', className, { disabled })}>
+            <div className={classNames('checkbox', className, { disabled, checked })}>
                 <input
                     onChange={onChange}
                     type="checkbox"
@@ -31,7 +31,7 @@ export const Checkbox =
                     className="checkbox__box"
                     onClick={onChange}
                 >
-                    <span style={{ opacity: checked ? 1 : 0 }}>
+                    <span className="checkbox__icon">
                         {!part && <CheckedIcon/>}
                         {part && <PartCheckedIcon/>}
                     </span>
