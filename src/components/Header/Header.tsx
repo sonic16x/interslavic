@@ -15,7 +15,6 @@ import { defaultPages, pages } from 'routing';
 import './Header.scss';
 
 import LogoIcon from './images/logo-icon.svg';
-import { initsnow } from './snow';
 
 export const Header =
     () => {
@@ -73,7 +72,7 @@ export const Header =
                     >
                         <LogoIcon/>
                     </span>
-                    <span className="logo-text" onClick={() => initsnow()}>
+                    <span className="logo-text">
                         {t('mainTitle')}
                     </span>
                 </h1>
