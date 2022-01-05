@@ -89,7 +89,8 @@ export const CommunityPage = () => {
 
     return (
         <div className="community">
-            <h1>{t('communityPageTitle')}</h1>
+            <h1 className="community__title">{t('communityPageTitle')}</h1>
+            <p className="community__sub-title">{t('communityPageSubTitle')}</p>
             {communityLinks.map((linkData, i) => (<CommunityLink key={i} {...linkData} />))}
         </div>
     );

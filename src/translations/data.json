@@ -3166,6 +3166,21 @@
     "mk": "Меѓусловенска заедница",
     "bg": "Междуславянска общност"
   },
+  "communityPageSubTitle": {
+    "en": "Some interesting links from interslavic online community",
+    "isv": "",
+    "ru": "Интересные ссылки из междуславянского интернет сообщества",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
   "offline-title": {
     "en": "You are offline",
     "isv": "",
