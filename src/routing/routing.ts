@@ -3,6 +3,7 @@ interface IPage {
     subTitle?: string,
     value: string,
     path: string,
+    online?: boolean,
 }
 
 export const pages: IPage[] = [
@@ -10,6 +11,12 @@ export const pages: IPage[] = [
         title: 'dictionaryTitle',
         value: 'dictionary',
         path: BASE_URL,
+    },
+    {
+        title: 'communityTitle',
+        value: 'community',
+        path: `${BASE_URL}community`,
+        online: true,
     },
     {
         title: 'grammarTitle',
@@ -20,6 +27,7 @@ export const pages: IPage[] = [
         title: 'viewerTitle',
         value: 'viewer',
         path: `${BASE_URL}viewer`,
+        online: true,
     },
     {
         title: 'settingsTitle',
@@ -33,7 +41,7 @@ export const pages: IPage[] = [
     },
 ];
 
-export const defaultPages = ['dictionary', 'grammar', 'settings', 'about'];
+export const defaultPages = ['dictionary', 'community', 'grammar', 'settings', 'about'];
 
 export function goToPage(path: string) {
     window.history.pushState({}, document.title, `${path}`);

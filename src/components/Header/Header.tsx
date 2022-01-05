@@ -6,6 +6,7 @@ import { t } from 'translations';
 
 import { setPageAction } from 'actions';
 
+import { useBadges } from 'hooks/useBadges';
 import { useEnabledPages } from 'hooks/useEnabledPages';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { usePage } from 'hooks/usePage';
@@ -14,12 +15,12 @@ import { defaultPages, pages } from 'routing';
 import './Header.scss';
 
 import LogoIcon from './images/logo-icon.svg';
-import { initsnow } from './snow';
 
 export const Header =
     () => {
         const dispatch = useDispatch();
         const page = usePage();
+        const badges = useBadges();
         useInterfaceLang();
         const [menuIsVisible, setMenuIsVisible] = useState(false);
         const [mobile, setMobile] = useState(false);
@@ -71,13 +72,13 @@ export const Header =
                     >
                         <LogoIcon/>
                     </span>
-                    <span className="logo-text" onClick={() => initsnow()}>
+                    <span className="logo-text">
                         {t('mainTitle')}
                     </span>
                 </h1>
                 <button
                     type="button"
-                    className={classNames('show-menu-button', menuIsVisible && 'expanded')}
+                    className={classNames('show-menu-button', { 'expanded': menuIsVisible, 'badge': badges.length })}
                     aria-label="Menu button"
                     onClick={() => setMenuIsVisible(!menuIsVisible)}
                 >
@@ -96,6 +97,7 @@ export const Header =
                                 subTitle={subTitle}
                                 value={value}
                                 active={page === value}
+                                hasBadge={badges.includes(value)}
                                 onClick={collapseMenu}
                             />
                         )))}
@@ -130,7 +132,7 @@ const MenuItem = ({
 
     return (
         <a
-            className={classNames('menu-item', { active, hasBadge })}
+            className={classNames('menu-item', { active, 'badge': hasBadge })}
             onClick={onClick}
             data-sub-title={subTitle}
         >
