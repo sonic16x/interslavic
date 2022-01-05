@@ -2,13 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: var(--gap-size);
 
   &__title {
     margin-bottom: var(--gap-size);
+    text-align: center;
   }
 
   &__sub-title {
     margin-bottom: var(--gap-size);
+    text-align: center;
   }
 
   &-offline {
