@@ -73,7 +73,7 @@ export const CommunityPage = () => {
     const online = isOnline();
 
     useEffect(() => {
-        if (online) {
+        if (online && FB) {
             FB.init({
                 xfbml: true,
                 version: 'v12.0'
@@ -81,7 +81,7 @@ export const CommunityPage = () => {
 
             dispatch(setBadges([]));
         }
-    }, [communityLinks]);
+    }, [communityLinks, FB]);
 
     if (!online) {
         return <OfflinePlaceholder className="community-offline"/>
