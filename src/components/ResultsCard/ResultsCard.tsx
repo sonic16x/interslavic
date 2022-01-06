@@ -13,6 +13,7 @@ import { Dictionary, ITranslateResult } from 'services/dictionary';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useFavorite } from 'hooks/useFavorite';
 import { useIntersect } from 'hooks/useIntersect';
+import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
@@ -23,6 +24,7 @@ import './ResultsCard.scss';
 
 import ErrorIcon from './images/error-icon.svg';
 import FormsIcon from './images/forms-icon.svg';
+import ShareIcon from './images/share-icon.svg';
 import TranslationsIcon from './images/translations-icon.svg';
 
 interface IResultsCardProps {
@@ -91,19 +93,20 @@ function renderOriginal(item, alphabets, index) {
 export const ResultsCard =
     ({ item, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
-        const id = Dictionary.getField(item.raw, 'id').toString();
-        const isFavorite = useFavorite()[id];
+        const wordId = Dictionary.getField(item.raw, 'id').toString();
+        const isFavorite = useFavorite()[wordId];
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
+        const lang = useLang();
 
         const cardBiInfo: ICardAnalytics = useMemo(() => (
             {
                 checked: item.checked,
-                wordId: id,
+                wordId,
                 isv: Dictionary.getField(item.raw, 'isv'),
                 index,
             }
-        ), [item.checked, item.raw, id, index]);
+        ), [item.checked, item.raw, wordId, index]);
 
         const onShown = useCallback(() => {
             biReporter.showCard(cardBiInfo);
@@ -131,7 +134,7 @@ export const ResultsCard =
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR,
                 data: {
-                    wordId: item.raw[0],
+                    wordId,
                     isvWord: item.original,
                     translatedWord: item.translate,
                 },
@@ -150,8 +153,16 @@ export const ResultsCard =
             }));
         };
 
+        const shareWord = () => {
+            const url = `${window.location.origin}/?text=id${wordId}&${lang.from}-${lang.to}`;
+
+            navigator.share({
+                url,
+            });
+        }
+
         const setFavorite = () => {
-            dispatch(setFavoriteAction(id));
+            dispatch(setFavoriteAction(wordId));
         };
 
         const short = useShortCardView();
@@ -207,7 +218,15 @@ export const ResultsCard =
                 </button>
                 <div className="results-card__actions">
                     <button
-                        className="results-card__report-word-error-button"
+                        className="results-card__action-button"
+                        type="button"
+                        aria-label={t('shareWord')}
+                        onClick={shareWord}
+                    >
+                        {short ? <ShareIcon /> : t('shareWord')}
+                    </button>
+                    <button
+                        className="results-card__action-button"
                         type="button"
                         aria-label={t('reportWordError')}
                         onClick={showWordErrorModal}
@@ -215,7 +234,7 @@ export const ResultsCard =
                         {short ? <ErrorIcon /> : t('reportWordError')}
                     </button>
                     <button
-                        className="results-card__show-translates-button"
+                        className="results-card__action-button"
                         type="button"
                         aria-label={t('translates')}
                         onClick={showTranslations}
@@ -224,7 +243,7 @@ export const ResultsCard =
                     </button>
                     {wordHasForms(item.original, item.details) && (
                         <button
-                            className="results-card__show-forms-button"
+                            className="results-card__action-button"
                             type="button"
                             aria-label={t('declensions')}
                             onClick={showDetail}

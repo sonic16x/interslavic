@@ -292,10 +292,12 @@ class DictionaryClass {
         } = translateParams;
         let searchType = translateParams.searchType;
 
-        if (inputText.includes(':')) {
-            const [func, param] = inputText.split(':');
-            if (func === 'id' && param) {
-                const word = this.getWord(param);
+        if (inputText.slice(0, 2) === 'id') {
+            const id = inputText.slice(2);
+            const idIsInt = /^\d+$/.test(id);
+
+            if (idIsInt) {
+                const word = this.getWord(id);
 
                 if (word) {
                     return [[word], 0];
