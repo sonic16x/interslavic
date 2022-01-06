@@ -124,6 +124,8 @@ export interface ITranslateResult {
     details: string;
     ipa: string;
     isv: string;
+    from: string;
+    to: string;
     checked: boolean;
     raw: string[];
 }
@@ -261,6 +263,11 @@ class DictionaryClass {
     public getWordList(): string[][] {
         return this.words;
     }
+    public getWord(wordId: string) {
+        if (this.words && this.words.length) {
+            return this.words.filter((line) => this.getField(line, 'id') === wordId)[0];
+        }
+    }
     public getIndex() {
         const searchIndex = {};
         [
@@ -284,6 +291,17 @@ class DictionaryClass {
             flavorisationType,
         } = translateParams;
         let searchType = translateParams.searchType;
+
+        if (inputText.includes(':')) {
+            const [func, param] = inputText.split(':');
+            if (func === 'id' && param) {
+                const word = this.getWord(param);
+
+                if (word) {
+                    return [[word], 0];
+                }
+            }
+        }
 
         const inputOptions = inputText.split(' -').map((option) => option.trim());
         const inputWord = inputOptions.shift();
@@ -479,6 +497,8 @@ class DictionaryClass {
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
                 raw: item,
+                from,
+                to,
                 isv,
             };
             if (alphabets?.cyrillic) {

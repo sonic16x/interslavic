@@ -13,7 +13,6 @@ import { Dictionary, ITranslateResult } from 'services/dictionary';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useFavorite } from 'hooks/useFavorite';
 import { useIntersect } from 'hooks/useIntersect';
-import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
@@ -92,7 +91,6 @@ function renderOriginal(item, alphabets, index) {
 export const ResultsCard =
     ({ item, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
-        const lang = useLang();
         const id = Dictionary.getField(item.raw, 'id').toString();
         const isFavorite = useFavorite()[id];
         const pos = getPartOfSpeech(item.details);
@@ -159,18 +157,23 @@ export const ResultsCard =
         const short = useShortCardView();
 
         return (
-            <div className={classNames('results-card', { short })} ref={setRef} tabIndex={0} onClick={reportClick}>
+            <div
+                className={classNames('results-card', { short })}
+                ref={setRef}
+                tabIndex={0}
+                onClick={reportClick}
+            >
                 <div className="results-card__translate">
-                    {lang.to !== 'isv' ? (
+                    {item.to !== 'isv' ? (
                         <Clipboard
                             str={item.translate}
                             index={index}
                             type="card"
                             item={item}
-                            lang={lang.to}
+                            lang={item.to}
                         />
                     ) : renderOriginal(item, alphabets, index)}
-                    {lang.to === 'isv' && short && (
+                    {item.to === 'isv' && short && (
                         <>
                             &nbsp;
                             <span className="results-card__details">{item.details}</span>
@@ -181,16 +184,16 @@ export const ResultsCard =
                     <span className="results-card__details">{item.details}</span>
                 )}
                 <div className="results-card__original">
-                    {lang.to === 'isv' ? (
+                    {item.to === 'isv' ? (
                         <Clipboard
                             str={item.translate}
                             index={index}
                             type="card"
                             item={item}
-                            lang={lang.from}
+                            lang={item.from}
                         />
                     ) : renderOriginal(item, alphabets, index)}
-                    {lang.to !== 'isv' && short && (
+                    {item.to !== 'isv' && short && (
                         <span className="results-card__details">{item.details}</span>
                     )}
                 </div>

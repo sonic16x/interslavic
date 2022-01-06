@@ -12,8 +12,10 @@ import { Dictionary } from 'services/dictionary';
 
 import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
 import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
+import { urlParamsMiddleware } from 'middlewares/urlParamsMiddleware';
 import { setInitialPage } from 'routing';
 import { getPageFromPath } from 'routing';
+import { validateLang } from 'utils/validateLang';
 
 import { Main } from 'components/Main';
 
@@ -108,6 +110,23 @@ function getInitialState(): IMainState {
             };
         }
 
+        const urlParams = new URLSearchParams(window.location.search);
+        const text = urlParams.get('text');
+        const lang = urlParams.get('lang');
+
+        if (validateLang(lang)) {
+            const [from, to] = lang.split('-');
+
+            savedState.lang = {
+                from,
+                to,
+            };
+        }
+
+        if (text) {
+            savedState.fromText = text;
+        }
+
         state = {
             ...defaultState,
             page: getPageFromPath(),
@@ -130,6 +149,7 @@ const store = createStore(
     compose(
         applyMiddleware(
             localStorageMiddleware,
+            urlParamsMiddleware,
             analyticsMiddleware,
         ),
         reduxDevTools(),
