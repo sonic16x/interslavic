@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
 
-import { setFavoriteAction, showModalDialog } from 'actions';
+import { setFavoriteAction, setNotificationAction, showModalDialog } from 'actions';
 import { MODAL_DIALOG_TYPES } from 'reducers';
 
 import { biReporter, ICardAnalytics } from 'services/biReporter';
@@ -154,11 +154,20 @@ export const ResultsCard =
         };
 
         const shareWord = () => {
-            const url = `${window.location.origin}/?text=id${wordId}&${lang.from}-${lang.to}`;
+            const url = `${window.location.origin}${window.location.pathname}?text=id${wordId}&${lang.from}-${lang.to}`;
 
-            navigator.share({
-                url,
-            });
+            if (navigator.share) {
+                navigator.share({
+                    url,
+                });
+            } else {
+                navigator.clipboard.writeText(url).then(() => {
+                    const notificationText = t('wordLinkCopied', {
+                        str: url,
+                    });
+                    dispatch(setNotificationAction({ text: notificationText }));
+                });
+            }
         }
 
         const setFavorite = () => {
