@@ -3227,18 +3227,18 @@
     "bg": "Споделяне"
   },
   "wordLinkCopied": {
-    "en": "Link to word copied",
-    "isv": "",
-    "ru": "Ссылка на слово скопированна",
-    "uk": "",
-    "be": "",
-    "pl": "",
-    "cs": "",
-    "sk": "",
-    "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
-    "bg": ""
+    "en": "Link to the word copied to clipboard",
+    "isv": "Link do slova je skopirovany v bufernu pamet",
+    "ru": "Ссылка на слово скопирована в буфер обмена",
+    "uk": "Посилання на слово скопійовано в буфер обміну",
+    "be": "Спасылка на слова скапіравана ў буфер абмену",
+    "pl": "Link do słowa został skopiowany do schowka",
+    "cs": "Odkaz na slovo byl zkopírován do schránky",
+    "sk": "Odkaz na slovo bol skopírovaný do schránky",
+    "sl": "Povezava do besede je kopirana v odložišče",
+    "hr": "Veza na riječ je kopirana u međuspremnik",
+    "sr": "Веза до речи је копирана у клипборд",
+    "mk": "Врската до зборот е копирана во клипборд",
+    "bg": "Връзката към думата е копирана в клипборда"
   }
 }
