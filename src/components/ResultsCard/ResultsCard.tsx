@@ -15,6 +15,7 @@ import { useFavorite } from 'hooks/useFavorite';
 import { useIntersect } from 'hooks/useIntersect';
 import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { toQueryString } from 'utils/toQueryString';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
 
@@ -26,7 +27,6 @@ import ErrorIcon from './images/error-icon.svg';
 import FormsIcon from './images/forms-icon.svg';
 import ShareIcon from './images/share-icon.svg';
 import TranslationsIcon from './images/translations-icon.svg';
-import { toQueryString } from 'utils/toQueryString';
 
 interface IResultsCardProps {
     item: ITranslateResult;
@@ -156,7 +156,7 @@ export const ResultsCard =
 
         const shareWord = () => {
             const { origin, pathname } = window.location;
-            let query = toQueryString({
+            const query = toQueryString({
                 text: `id${wordId}`,
                 lang: `${lang.from}-${lang.to}`,
             });
