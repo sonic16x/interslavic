@@ -3210,5 +3210,35 @@
     "sr": "Ова функција ради само са интернетом.",
     "mk": "Оваа функција работи само со интернет.",
     "bg": "Тази функция работи само с интернет."
+  },
+  "shareWord": {
+    "en": "Share",
+    "isv": "Děliti se",
+    "ru": "Поделиться",
+    "uk": "Поділитися",
+    "be": "Поділитися",
+    "pl": "Udostępnij",
+    "cs": "Sdílet",
+    "sk": "Zdieľať",
+    "sl": "Deli",
+    "hr": "Podijeli",
+    "sr": "Подели",
+    "mk": "Сподели",
+    "bg": "Споделяне"
+  },
+  "wordLinkCopied": {
+    "en": "Link to the word copied to clipboard",
+    "isv": "Link do slova je skopirovany v bufernu pamet",
+    "ru": "Ссылка на слово скопирована в буфер обмена",
+    "uk": "Посилання на слово скопійовано в буфер обміну",
+    "be": "Спасылка на слова скапіравана ў буфер абмену",
+    "pl": "Link do słowa został skopiowany do schowka",
+    "cs": "Odkaz na slovo byl zkopírován do schránky",
+    "sk": "Odkaz na slovo bol skopírovaný do schránky",
+    "sl": "Povezava do besede je kopirana v odložišče",
+    "hr": "Veza na riječ je kopirana u međuspremnik",
+    "sr": "Веза до речи је копирана у клипборд",
+    "mk": "Врската до зборот е копирана во клипборд",
+    "bg": "Връзката към думата е копирана в клипборда"
   }
 }

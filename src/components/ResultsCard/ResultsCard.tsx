@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
 
-import { setFavoriteAction, showModalDialog } from 'actions';
+import { setFavoriteAction, setNotificationAction, showModalDialog } from 'actions';
 import { MODAL_DIALOG_TYPES } from 'reducers';
 
 import { biReporter, ICardAnalytics } from 'services/biReporter';
@@ -24,6 +24,7 @@ import './ResultsCard.scss';
 
 import ErrorIcon from './images/error-icon.svg';
 import FormsIcon from './images/forms-icon.svg';
+import ShareIcon from './images/share-icon.svg';
 import TranslationsIcon from './images/translations-icon.svg';
 
 interface IResultsCardProps {
@@ -92,20 +93,20 @@ function renderOriginal(item, alphabets, index) {
 export const ResultsCard =
     ({ item, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
-        const lang = useLang();
-        const id = Dictionary.getField(item.raw, 'id').toString();
-        const isFavorite = useFavorite()[id];
+        const wordId = Dictionary.getField(item.raw, 'id').toString();
+        const isFavorite = useFavorite()[wordId];
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
+        const lang = useLang();
 
         const cardBiInfo: ICardAnalytics = useMemo(() => (
             {
                 checked: item.checked,
-                wordId: id,
+                wordId,
                 isv: Dictionary.getField(item.raw, 'isv'),
                 index,
             }
-        ), [item.checked, item.raw, id, index]);
+        ), [item.checked, item.raw, wordId, index]);
 
         const onShown = useCallback(() => {
             biReporter.showCard(cardBiInfo);
@@ -133,7 +134,7 @@ export const ResultsCard =
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR,
                 data: {
-                    wordId: item.raw[0],
+                    wordId,
                     isvWord: item.original,
                     translatedWord: item.translate,
                 },
@@ -152,25 +153,47 @@ export const ResultsCard =
             }));
         };
 
+        const shareWord = () => {
+            const url = `${window.location.origin}${window.location.pathname}?text=id${wordId}&${lang.from}-${lang.to}`;
+
+            if (navigator.share) {
+                navigator.share({
+                    url,
+                });
+            } else {
+                navigator.clipboard.writeText(url).then(() => {
+                    const notificationText = t('wordLinkCopied', {
+                        str: url,
+                    });
+                    dispatch(setNotificationAction({ text: notificationText }));
+                });
+            }
+        }
+
         const setFavorite = () => {
-            dispatch(setFavoriteAction(id));
+            dispatch(setFavoriteAction(wordId));
         };
 
         const short = useShortCardView();
 
         return (
-            <div className={classNames('results-card', { short })} ref={setRef} tabIndex={0} onClick={reportClick}>
+            <div
+                className={classNames('results-card', { short })}
+                ref={setRef}
+                tabIndex={0}
+                onClick={reportClick}
+            >
                 <div className="results-card__translate">
-                    {lang.to !== 'isv' ? (
+                    {item.to !== 'isv' ? (
                         <Clipboard
                             str={item.translate}
                             index={index}
                             type="card"
                             item={item}
-                            lang={lang.to}
+                            lang={item.to}
                         />
                     ) : renderOriginal(item, alphabets, index)}
-                    {lang.to === 'isv' && short && (
+                    {item.to === 'isv' && short && (
                         <>
                             &nbsp;
                             <span className="results-card__details">{item.details}</span>
@@ -181,16 +204,16 @@ export const ResultsCard =
                     <span className="results-card__details">{item.details}</span>
                 )}
                 <div className="results-card__original">
-                    {lang.to === 'isv' ? (
+                    {item.to === 'isv' ? (
                         <Clipboard
                             str={item.translate}
                             index={index}
                             type="card"
                             item={item}
-                            lang={lang.from}
+                            lang={item.from}
                         />
                     ) : renderOriginal(item, alphabets, index)}
-                    {lang.to !== 'isv' && short && (
+                    {item.to !== 'isv' && short && (
                         <span className="results-card__details">{item.details}</span>
                     )}
                 </div>
@@ -204,7 +227,15 @@ export const ResultsCard =
                 </button>
                 <div className="results-card__actions">
                     <button
-                        className="results-card__report-word-error-button"
+                        className="results-card__action-button"
+                        type="button"
+                        aria-label={t('shareWord')}
+                        onClick={shareWord}
+                    >
+                        {short ? <ShareIcon /> : t('shareWord')}
+                    </button>
+                    <button
+                        className="results-card__action-button"
                         type="button"
                         aria-label={t('reportWordError')}
                         onClick={showWordErrorModal}
@@ -212,7 +243,7 @@ export const ResultsCard =
                         {short ? <ErrorIcon /> : t('reportWordError')}
                     </button>
                     <button
-                        className="results-card__show-translates-button"
+                        className="results-card__action-button"
                         type="button"
                         aria-label={t('translates')}
                         onClick={showTranslations}
@@ -221,7 +252,7 @@ export const ResultsCard =
                     </button>
                     {wordHasForms(item.original, item.details) && (
                         <button
-                            className="results-card__show-forms-button"
+                            className="results-card__action-button"
                             type="button"
                             aria-label={t('declensions')}
                             onClick={showDetail}

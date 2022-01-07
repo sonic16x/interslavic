@@ -15,6 +15,10 @@
     outline: 2px solid var(--primary-color);
   }
 
+  &.selected {
+    outline: 4px solid var(--primary-color);
+  }
+
   &__translate {
     font-size: var(--text-l);
     line-height: var(--text-l-line);
@@ -67,7 +71,7 @@
     right: 5px;
   }
 
-  &__show-forms-button, &__show-translates-button, &__report-word-error-button {
+  &__action-button {
     outline: none;
     cursor: pointer;
     background: none;
@@ -134,8 +138,8 @@
 
       &__actions {
         display: flex;
-        bottom: 8px;
-        right: 8px;
+        bottom: 4px;
+        right: 4px;
 
         button {
           display: flex;
@@ -156,7 +160,7 @@
           }
 
           &:not(:first-child) {
-            margin-left: 8px;
+            margin-left: 4px;
           }
         }
       }

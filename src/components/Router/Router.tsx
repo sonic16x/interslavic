@@ -9,7 +9,7 @@ import { getPageFromPath, getPathFromPage } from 'routing';
 import { toBCP47 } from 'utils/bcp47';
 
 import { About } from 'components/Pages/About';
-import { Dictionary } from 'components/Pages/Dictionary';
+import { DictionaryPage } from 'components/Pages/DictionaryPage';
 import { Settings } from 'components/Pages/Settings';
 
 import './Router.scss';
@@ -28,7 +28,7 @@ function renderPageContent(page) {
             );
         case 'dictionary':
             return (
-                <Dictionary/>
+                <DictionaryPage/>
             );
         case 'community':
             return (
