@@ -117,10 +117,12 @@ function getInitialState(): IMainState {
         if (validateLang(lang)) {
             const [from, to] = lang.split('-');
 
-            savedState.lang = {
-                from,
-                to,
-            };
+            if (savedState.dictionaryLanguages.includes(from) || savedState.dictionaryLanguages.includes(to)) {
+                savedState.lang = {
+                    from,
+                    to,
+                };
+            }
         }
 
         if (text) {
