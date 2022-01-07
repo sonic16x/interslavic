@@ -117,7 +117,9 @@ function getInitialState(): IMainState {
         if (validateLang(lang)) {
             const [from, to] = lang.split('-');
 
-            if (savedState.dictionaryLanguages.includes(from) || savedState.dictionaryLanguages.includes(to)) {
+            const loadedLangs = ['en', ...savedState.dictionaryLanguages];
+
+            if (loadedLangs.includes(from) || loadedLangs.includes(to)) {
                 savedState.lang = {
                     from,
                     to,
