@@ -26,6 +26,7 @@ import ErrorIcon from './images/error-icon.svg';
 import FormsIcon from './images/forms-icon.svg';
 import ShareIcon from './images/share-icon.svg';
 import TranslationsIcon from './images/translations-icon.svg';
+import { toQueryString } from 'utils/toQueryString';
 
 interface IResultsCardProps {
     item: ITranslateResult;
@@ -154,7 +155,13 @@ export const ResultsCard =
         };
 
         const shareWord = () => {
-            const url = `${window.location.origin}${window.location.pathname}?text=id${wordId}&${lang.from}-${lang.to}`;
+            const { origin, pathname } = window.location;
+            let query = toQueryString({
+                text: `id${wordId}`,
+                lang: `${lang.from}-${lang.to}`,
+            });
+
+            const url = `${origin}${pathname}?${query}`;
 
             if (navigator.share) {
                 navigator.share({
