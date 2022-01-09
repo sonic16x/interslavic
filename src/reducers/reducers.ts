@@ -228,7 +228,7 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 posFilter: data,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, data, state.alphabets),
+                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets),
             };
         }
         case ActionTypes.SET_PAGE:
