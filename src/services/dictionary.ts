@@ -68,7 +68,7 @@ const isvReplacebleLetters = [
     ['ź', 'z'],
 ];
 
-function getWordForms(item) {
+function getWordForms(item): string[] {
     const word =  Dictionary.getField(item, 'isv');
     const add = Dictionary.getField(item, 'addition');
     const details = Dictionary.getField(item, 'partOfSpeech');
@@ -110,7 +110,19 @@ function getWordForms(item) {
         }
     });
     
-    return Array.from(new Set(wordForms));
+    return Array.from(new Set(wordForms.reduce((acc, item) => {
+        if (item.includes('/')) {
+            return [
+                ...acc,
+                ...item.split('/').map((word) => word.trim()),
+            ];
+        }
+
+        return [
+            ...acc,
+            item,
+        ];
+    }, [])));
 }
 
 export interface ITranslateResult {
@@ -181,18 +193,27 @@ class DictionaryClass {
 
         this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
         this.words = wordList.slice(1);
-        const searchIndexExist = Boolean(searchIndex);
 
-        if (!searchIndexExist) {
-            this.langsList.forEach((lang) => {
-                this.splittedMap[lang] = new Map();
-                if (lang === 'isv') {
-                    this.splittedMap['isv-src'] = new Map();
+        const needIndex = [];
+
+        [
+            'isv-src',
+            ...this.langsList,
+        ].forEach((lang) => {
+            if (searchIndex && searchIndex[lang]) {
+                this.splittedMap[lang] = new Map(searchIndex[lang]);
+            } else {
+                if (lang !== 'isv-src') {
+                    needIndex.push(lang);
                 }
-            });
+                this.splittedMap[lang] = new Map();
+            }
+        });
+
+        if (needIndex.length) {
             this.words.forEach((item) => {
-                this.langsList.forEach((from) => {
-                    const key = `${this.getField(item, 'id')}`;
+                const key = `${this.getField(item, 'id')}`;
+                needIndex.forEach((from) => {
                     let fromField = this.getField(item, from);
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
@@ -212,19 +233,15 @@ class DictionaryClass {
                     this.splittedMap[from].set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
                 });
             });
+        }
+
+        if (!percentsOfChecked) {
             this.langsList.forEach((fieldName) => {
                 const notChecked = this.words.filter((item) => this.getField(item, fieldName)[0] === '!');
                 const count = (1 - notChecked.length / this.words.length) * 100;
                 this.percentsOfChecked[fieldName] = count.toFixed(1);
             });
         } else {
-            [
-                'isv-src',
-                ...this.langsList,
-            ].forEach((lang) => {
-                this.splittedMap[lang] = new Map(searchIndex[lang]);
-            });
-
             this.percentsOfChecked = percentsOfChecked;
         }
 
