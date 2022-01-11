@@ -86,16 +86,11 @@
     overflow: hidden;
     margin-bottom: 8px;
 
-    .results-card__bottom {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-    }
-
     .results-card {
-
-      &__original {
-        //padding-right: 55px;
+      &__bottom {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
       }
 
       &__details {
@@ -127,8 +122,8 @@
       &__actions {
         position: initial;
         display: flex;
-        bottom: 4px;
-        right: 4px;
+        margin-bottom: -4px;
+        margin-right: -4px;
 
         button {
           display: flex;
