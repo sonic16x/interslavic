@@ -203,34 +203,44 @@ class DictionaryClass {
             if (searchIndex && searchIndex[lang]) {
                 this.splittedMap[lang] = new Map(searchIndex[lang]);
             } else {
-                if (lang !== 'isv-src') {
-                    needIndex.push(lang);
-                }
+                needIndex.push(lang);
                 this.splittedMap[lang] = new Map();
             }
         });
 
         if (needIndex.length) {
             this.words.forEach((item) => {
-                const key = `${this.getField(item, 'id')}`;
-                needIndex.forEach((from) => {
-                    let fromField = this.getField(item, from);
+                const id = `${this.getField(item, 'id')}`;
+
+                needIndex.forEach((lang) => {
+                    let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang);
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
 
                     let splittedField;
-                    if (from === 'isv') {
-                        splittedField = this
-                            .splitWords(fromField)
-                            .concat(getWordForms(item))
-                        ;
-                        this.splittedMap['isv-src'].set(key,
-                            splittedField.map((chunk) => this.searchPrepare('isv-src', getLatin(chunk, '2'))));
-                    } else {
-                        fromField = removeExclamationMark(fromField);
-                        splittedField = this.splitWords(fromField);
+
+                    switch (lang) {
+                        case 'isv':
+                            splittedField = this
+                                .splittedMap['isv-src']
+                                .get(id)
+                                .map((word) => this.searchPrepare(lang, word))
+                            ;
+                            break;
+                        case 'isv-src':
+                            splittedField = this
+                                .splitWords(fromField)
+                                .concat(getWordForms(item))
+                                .map((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
+                            ;
+                            break;
+                        default:
+                            fromField = removeExclamationMark(fromField);
+                            splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
+                            break;
                     }
-                    this.splittedMap[from].set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
+
+                    this.splittedMap[lang].set(id, splittedField);
                 });
             });
         }
@@ -287,6 +297,7 @@ class DictionaryClass {
     }
     public getIndex() {
         const searchIndex = {};
+
         [
             'isv-src',
             ...this.langsList,
