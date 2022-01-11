@@ -18,7 +18,6 @@ export enum ActionTypes {
     SET_ALPHABETS = 'SET_ALPHABETS',
     SHOW_MODAL_DIALOG = 'SHOW_MODAL_DIALOG',
     HIDE_MODAL_DIALOG = 'HIDE_MODAL_DIALOG',
-    SET_FAVORITE = 'SET_FAVORITE',
     SET_NOTIFICATION = 'SET_NOTIFICATION',
     CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
@@ -45,13 +44,6 @@ export function showModalDialog(data: IModalDialog) {
 export function hideModalDialog() {
     return {
         type: ActionTypes.HIDE_MODAL_DIALOG,
-    };
-}
-
-export function setFavoriteAction(data: string) {
-    return {
-        type: ActionTypes.SET_FAVORITE,
-        data,
     };
 }
 

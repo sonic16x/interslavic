@@ -81,33 +81,21 @@
     color: var(--primary-color);
   }
 
-  &__favorite-button {
-    display: none; // @todo maybe in future will be realised.
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    cursor: pointer;
-    background: none;
-    font-size: 27px;
-    line-height: 22px;
-    width: 22px;
-    height: 22px;
-    text-align: center;
-    padding: 0;
-    border: none;
-    color: var(--yellow-color);
-    outline: none;
-  }
-
   &.short {
     padding: 8px;
     overflow: hidden;
     margin-bottom: 8px;
 
+    .results-card__bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
     .results-card {
 
       &__original {
-        padding-right: 55px;
+        //padding-right: 55px;
       }
 
       &__details {
@@ -137,6 +125,7 @@
       }
 
       &__actions {
+        position: initial;
         display: flex;
         bottom: 4px;
         right: 4px;

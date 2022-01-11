@@ -83,7 +83,6 @@ export const defaultState: IMainState = {
         cyrillic: true,
         glagolitic: false,
     },
-    favoriteList: {},
     orderOfCases: ['nom','acc','gen','loc','dat','ins','voc'],
     enabledPages: [],
     communityLinks: [],
