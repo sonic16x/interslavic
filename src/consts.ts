@@ -44,8 +44,6 @@ export const addLangs = [
     'da',
 ];
 
-export const dataDelimiter = '<>';
-
 export const initialFields = [
     'id',
     'isv',

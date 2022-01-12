@@ -178,8 +178,8 @@ class DictionaryClass {
     ): number {
         let startInitTime = 0;
 
-        if (typeof performance !== 'undefined' && typeof window !== 'undefined') {
-            startInitTime = window.performance.now();
+        if (typeof performance !== 'undefined') {
+            startInitTime = performance.now();
         }
 
         this.header = wordList[0];
@@ -257,7 +257,7 @@ class DictionaryClass {
 
         let initTime = 0;
 
-        if (typeof performance !== 'undefined' && typeof window !== 'undefined') {
+        if (typeof performance !== 'undefined') {
             initTime = Math.round(performance.now() - startInitTime);
         }
 

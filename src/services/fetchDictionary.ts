@@ -1,4 +1,3 @@
-import { dataDelimiter } from 'consts';
 import { addLangs } from 'consts';
 
 import { isLoadingAction, runSearch } from 'actions';
@@ -48,32 +47,13 @@ async function fetchStat() {
 }
 
 async function fetchLangs(langList: string[]) {
-    return await Promise
-        .all(langList.map((lang) => fetch(`data/${lang}.txt`).then((res) => res.text())))
-        .then((rawResults) => {
-            return rawResults.map((rawLangData) => {
-                const [wordListStr, searchIndexStr] = rawLangData.split(dataDelimiter);
-
-                return {
-                    wordList: wordListStr.split('\n'),
-                    searchIndex: JSON.parse(searchIndexStr),
-                };
-            });
-        });
+    return await Promise.all(
+        langList.map((lang) => fetch(`data/${lang}.json`).then((res) => res.json()))
+    );
 }
 
 async function fetchBasic() {
-    return await fetch('data/basic.txt')
-        .then((res) => res.text())
-        .then((dataStr) => {
-            const [wordListStr, searchIndexStr] = dataStr.split(dataDelimiter);
-            const wordList: string[][] = wordListStr
-                .replace(/#/g, '')
-                .split('\n')
-                .map((l) => l.split('|'));
-
-            return { wordList, searchIndex: JSON.parse(searchIndexStr) };
-        });
+    return await fetch('data/basic.json').then((res) => res.json());
 }
 
 export async function fetchLang(lang) {
