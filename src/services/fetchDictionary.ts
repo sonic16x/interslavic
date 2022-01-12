@@ -67,16 +67,11 @@ export async function fetchLang(lang) {
 }
 
 export async function fetchDictionary(dispatch, langList: string[]) {
-    if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.time('FID');
-    }
+    const startFidTime = performance.now();
 
     const stat = await fetchStat();
     const basicData = await fetchBasic();
     const langsData = await fetchLangs(langList.filter((lang) => addLangs.includes(lang)));
-
-    const startFidTime = performance.now();
 
     langsData.forEach((langData) => {
         basicData.searchIndex = {
