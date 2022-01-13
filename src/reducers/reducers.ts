@@ -65,9 +65,6 @@ export interface IMainState {
     alphabets: IAlphabets;
     notification?: INotification;
     modalDialog: IModalDialog;
-    favoriteList: {
-        [key: string]: boolean;
-    };
     orderOfCases: string[];
     enabledPages: string[];
     badges: string[];
@@ -257,14 +254,6 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 alphabetType: data,
-            };
-        case ActionTypes.SET_FAVORITE:
-            return {
-                ...state,
-                favoriteList: {
-                    ...state.favoriteList,
-                    [data]: !state.favoriteList[data],
-                },
             };
         case ActionTypes.SET_SEARCH_EXPAND:
             return {

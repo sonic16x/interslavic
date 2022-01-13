@@ -68,7 +68,7 @@ const isvReplacebleLetters = [
     ['ź', 'z'],
 ];
 
-function getWordForms(item) {
+function getWordForms(item): string[] {
     const word =  Dictionary.getField(item, 'isv');
     const add = Dictionary.getField(item, 'addition');
     const details = Dictionary.getField(item, 'partOfSpeech');
@@ -110,7 +110,19 @@ function getWordForms(item) {
         }
     });
     
-    return Array.from(new Set(wordForms));
+    return Array.from(new Set(wordForms.reduce((acc, item) => {
+        if (item.includes('/')) {
+            return [
+                ...acc,
+                ...item.split('/').map((word) => word.trim()),
+            ];
+        }
+
+        return [
+            ...acc,
+            item,
+        ];
+    }, [])));
 }
 
 export interface ITranslateResult {
@@ -166,8 +178,8 @@ class DictionaryClass {
     ): number {
         let startInitTime = 0;
 
-        if (typeof performance !== 'undefined' && typeof window !== 'undefined') {
-            startInitTime = window.performance.now();
+        if (typeof performance !== 'undefined') {
+            startInitTime = performance.now();
         }
 
         this.header = wordList[0];
@@ -181,56 +193,71 @@ class DictionaryClass {
 
         this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
         this.words = wordList.slice(1);
-        const searchIndexExist = Boolean(searchIndex);
 
-        if (!searchIndexExist) {
-            this.langsList.forEach((lang) => {
+        const needIndex = [];
+
+        [
+            'isv-src',
+            ...this.langsList,
+        ].forEach((lang) => {
+            if (searchIndex && searchIndex[lang]) {
+                this.splittedMap[lang] = new Map(searchIndex[lang]);
+            } else {
+                needIndex.push(lang);
                 this.splittedMap[lang] = new Map();
-                if (lang === 'isv') {
-                    this.splittedMap['isv-src'] = new Map();
-                }
-            });
+            }
+        });
+
+        if (needIndex.length) {
             this.words.forEach((item) => {
-                this.langsList.forEach((from) => {
-                    const key = `${this.getField(item, 'id')}`;
-                    let fromField = this.getField(item, from);
+                const id = `${this.getField(item, 'id')}`;
+
+                needIndex.forEach((lang) => {
+                    let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang);
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
 
                     let splittedField;
-                    if (from === 'isv') {
-                        splittedField = this
-                            .splitWords(fromField)
-                            .concat(getWordForms(item))
-                        ;
-                        this.splittedMap['isv-src'].set(key,
-                            splittedField.map((chunk) => this.searchPrepare('isv-src', getLatin(chunk, '2'))));
-                    } else {
-                        fromField = removeExclamationMark(fromField);
-                        splittedField = this.splitWords(fromField);
+
+                    switch (lang) {
+                        case 'isv':
+                            splittedField = this
+                                .splittedMap['isv-src']
+                                .get(id)
+                                .map((word) => this.searchPrepare(lang, word))
+                            ;
+                            break;
+                        case 'isv-src':
+                            splittedField = this
+                                .splitWords(fromField)
+                                .concat(getWordForms(item))
+                                .map((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
+                            ;
+                            break;
+                        default:
+                            fromField = removeExclamationMark(fromField);
+                            splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
+                            break;
                     }
-                    this.splittedMap[from].set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
+
+                    this.splittedMap[lang].set(id, splittedField);
                 });
             });
+        }
+
+        if (!percentsOfChecked) {
             this.langsList.forEach((fieldName) => {
                 const notChecked = this.words.filter((item) => this.getField(item, fieldName)[0] === '!');
                 const count = (1 - notChecked.length / this.words.length) * 100;
                 this.percentsOfChecked[fieldName] = count.toFixed(1);
             });
         } else {
-            [
-                'isv-src',
-                ...this.langsList,
-            ].forEach((lang) => {
-                this.splittedMap[lang] = new Map(searchIndex[lang]);
-            });
-
             this.percentsOfChecked = percentsOfChecked;
         }
 
         let initTime = 0;
 
-        if (typeof performance !== 'undefined' && typeof window !== 'undefined') {
+        if (typeof performance !== 'undefined') {
             initTime = Math.round(performance.now() - startInitTime);
         }
 
@@ -270,6 +297,7 @@ class DictionaryClass {
     }
     public getIndex() {
         const searchIndex = {};
+
         [
             'isv-src',
             ...this.langsList,

@@ -3,9 +3,9 @@ import { addLangs } from 'consts';
 const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
     'index.html',
-    'data/basic.txt',
+    'data/basic.json',
     'data/translateStatistic.json',
-    ...addLangs.map((lang) => `data/${lang}.txt`),
+    ...addLangs.map((lang) => `data/${lang}.json`),
     'manifest.json',
     'grammarComponent.js',
     'index.js',

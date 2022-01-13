@@ -4,14 +4,13 @@ import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
 
-import { setFavoriteAction, setNotificationAction, showModalDialog } from 'actions';
+import { setNotificationAction, showModalDialog } from 'actions';
 import { MODAL_DIALOG_TYPES } from 'reducers';
 
 import { biReporter, ICardAnalytics } from 'services/biReporter';
 import { Dictionary, ITranslateResult } from 'services/dictionary';
 
 import { useAlphabets } from 'hooks/useAlphabets';
-import { useFavorite } from 'hooks/useFavorite';
 import { useIntersect } from 'hooks/useIntersect';
 import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
@@ -86,7 +85,7 @@ function renderOriginal(item, alphabets, index) {
                         lang={lang}
                     />
                 );
-            })}&nbsp;{item.ipa && <span className="ipa">[{item.ipa}]</span>}
+            })} {item.ipa && <span className="ipa">[{item.ipa}]</span>}
         </>
     );
 }
@@ -95,7 +94,6 @@ export const ResultsCard =
     ({ item, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
         const wordId = Dictionary.getField(item.raw, 'id').toString();
-        const isFavorite = useFavorite()[wordId];
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
         const lang = useLang();
@@ -177,10 +175,6 @@ export const ResultsCard =
             }
         }
 
-        const setFavorite = () => {
-            dispatch(setFavoriteAction(wordId));
-        };
-
         const short = useShortCardView();
 
         return (
@@ -210,67 +204,61 @@ export const ResultsCard =
                 {!short && (
                     <span className="results-card__details">{item.details}</span>
                 )}
-                <div className="results-card__original">
-                    {item.to === 'isv' ? (
-                        <Clipboard
-                            str={item.translate}
-                            index={index}
-                            type="card"
-                            item={item}
-                            lang={item.from}
-                        />
-                    ) : renderOriginal(item, alphabets, index)}
-                    {item.to !== 'isv' && short && (
-                        <span className="results-card__details">{item.details}</span>
-                    )}
-                </div>
-                <button
-                    className="results-card__favorite-button"
-                    type="button"
-                    aria-label="Show translates"
-                    onClick={setFavorite}
-                >
-                    {isFavorite ? '★' : '☆'}
-                </button>
-                <div className="results-card__actions">
-                    <button
-                        className="results-card__action-button"
-                        type="button"
-                        aria-label={t('shareWord')}
-                        onClick={shareWord}
-                    >
-                        {short ? <ShareIcon /> : t('shareWord')}
-                    </button>
-                    <button
-                        className="results-card__action-button"
-                        type="button"
-                        aria-label={t('reportWordError')}
-                        onClick={showWordErrorModal}
-                    >
-                        {short ? <ErrorIcon /> : t('reportWordError')}
-                    </button>
-                    <button
-                        className="results-card__action-button"
-                        type="button"
-                        aria-label={t('translates')}
-                        onClick={showTranslations}
-                    >
-                        {short ? <TranslationsIcon /> : t('translates')}
-                    </button>
-                    {wordHasForms(item.original, item.details) && (
+                <div className="results-card__bottom">
+                    <div className="results-card__original">
+                        {item.to === 'isv' ? (
+                            <Clipboard
+                                str={item.translate}
+                                index={index}
+                                type="card"
+                                item={item}
+                                lang={item.from}
+                            />
+                        ) : renderOriginal(item, alphabets, index)}
+                        {item.to !== 'isv' && short && (
+                            <span className="results-card__details">{item.details}</span>
+                        )}
+                    </div>
+                    <div className="results-card__actions">
                         <button
                             className="results-card__action-button"
                             type="button"
-                            aria-label={t('declensions')}
-                            onClick={showDetail}
+                            aria-label={t('shareWord')}
+                            onClick={shareWord}
                         >
-                            {short ? (
-                                <FormsIcon />
-                            ) : (
-                                pos === 'verb' ? t('conjugation') : t('declensions')
-                            )}
+                            {short ? <ShareIcon /> : t('shareWord')}
                         </button>
-                    )}
+                        <button
+                            className="results-card__action-button"
+                            type="button"
+                            aria-label={t('reportWordError')}
+                            onClick={showWordErrorModal}
+                        >
+                            {short ? <ErrorIcon /> : t('reportWordError')}
+                        </button>
+                        <button
+                            className="results-card__action-button"
+                            type="button"
+                            aria-label={t('translates')}
+                            onClick={showTranslations}
+                        >
+                            {short ? <TranslationsIcon /> : t('translates')}
+                        </button>
+                        {wordHasForms(item.original, item.details) && (
+                            <button
+                                className="results-card__action-button"
+                                type="button"
+                                aria-label={t('declensions')}
+                                onClick={showDetail}
+                            >
+                                {short ? (
+                                    <FormsIcon />
+                                ) : (
+                                    pos === 'verb' ? t('conjugation') : t('declensions')
+                                )}
+                            </button>
+                        )}
+                    </div>
                 </div>
                 <div className={classNames('results-card__status-badge', { verified: item.checked })}>
                     {!short && (item.checked ? t('verified') : t('autoTranslation'))}

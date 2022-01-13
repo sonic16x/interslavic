@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import { addLangs, dataDelimiter, initialAddFields, initialFields,langs } from 'consts';
+import { addLangs, initialAddFields, initialFields,langs } from 'consts';
 
 import { Dictionary } from 'services/dictionary';
 import { loadTablesData } from 'services/loadTablesData';
@@ -27,7 +27,6 @@ loadTablesData.then(({ data, columns }) => {
     });
 
     const basicData = transposeMatrix(basicDataTransposed);
-    const basicDataStr = basicData.map((line) => line.join('|')).join('\n');
 
     const searchIndexBasic = [
         'isv-src',
@@ -40,13 +39,16 @@ loadTablesData.then(({ data, columns }) => {
         return searchIndexObj;
     }, {});
 
-    const searchIndexBasicStr = JSON.stringify(searchIndexBasic);
+    const jsonDataStr = JSON.stringify({
+        wordList: basicData,
+        searchIndex: searchIndexBasic,
+    });
 
     if (!fs.existsSync('./static/data')) {
         fs.mkdirSync('./static/data');
     }
 
-    fs.writeFileSync('./static/data/basic.txt', [basicDataStr, searchIndexBasicStr].join(dataDelimiter));
+    fs.writeFileSync('./static/data/basic.json', jsonDataStr);
     fs.writeFileSync('./static/data/translateStatistic.json', translateStatisticStr);
 
     addLangs.forEach((lang) => {
@@ -55,9 +57,12 @@ loadTablesData.then(({ data, columns }) => {
         ];
 
         const langData = transposeMatrix(langDataTransposed);
-        const langDataStr = langData.map((line) => line.join('|')).join('\n');
 
-        const langDataIndexStr = JSON.stringify({ [lang]: searchIndex[lang] });
-        fs.writeFileSync(`./static/data/${lang}.txt`, [langDataStr, langDataIndexStr].join(dataDelimiter));
+        const jsonDataStr = JSON.stringify({
+            wordList: langData.map(([item]) => item),
+            searchIndex: { [lang]: searchIndex[lang] },
+        });
+
+        fs.writeFileSync(`./static/data/${lang}.json`, jsonDataStr);
     });
 });
