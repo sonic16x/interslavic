@@ -1054,7 +1054,7 @@
       "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
     [
-      "sučno vrěme (tvrde glagoly možut iměti sučny koren @w=4;D;bb;ts"
+      "sučo vrěme (tvrde glagoly možut iměti suči koren @w=4;D;bb;ts"
     ],
     [
       "nerovny s korenom infinitiva)@w=4;D;bt;ts"
@@ -1085,13 +1085,13 @@
     ],
     [
       "&nbsp@d;bb;br;w=2",
-      "aktivny sučny participij@d;bb",
+      "aktivny suči participij@d;bb",
       "{imaj}[k]-{u}[p]či {≈ jesmy}[s]@B"
     ],
     [
       "&nbsp@d;bt;br;w=2",
-      "pasivny sučny participij@d;bt;te",
-      "{imaj}[k]-{e}[g]my {≈ sučny}[s]@b"
+      "pasivny suči participij@d;bt;te",
+      "{imaj}[k]-{e}[g]my {≈ suči}[s]@b"
     ],
     [
       "imperativ@w=2;d",
@@ -1157,7 +1157,7 @@
       "var-j{e}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
     ],
     [
-      "sučno vrěme (tvrde glagoly možut iměti sučny koren @w=4;D;bb"
+      "sučo vrěme (tvrde glagoly možut iměti suči koren @w=4;D;bb"
     ],
     [
       "nerovny s korenom infinitiva)@w=4;D;bt"
@@ -1188,12 +1188,12 @@
     ],
     [
       "&nbsp@d;bb;br;w=2",
-      "aktivny sučny participij@d;bb",
+      "aktivny suči participij@d;bb",
       "var-{e}[g]či@B"
     ],
     [
       "&nbsp@d;bt;br;w=2",
-      "pasivny sučny participij@d;bt;te",
+      "pasivny suči participij@d;bt;te",
       "var-{i}[b]my@b"
     ],
     [
@@ -1255,12 +1255,12 @@
       "budu napisal@R"
     ],
     [
-      "sučno vrěme@D",
+      "sučo vrěme@D",
       "pišu@b",
       "-@b"
     ],
     [
-      "prědsučno vrěme@d",
+      "prědsučo vrěme@d",
       "jesm pisal@B",
       "jesm napisal@B"
     ],
@@ -1327,14 +1327,14 @@
   [
     "&nbsp@d;bt;br;w=2",
     "pasivny buduči participij@d;bt;te",
-    "{bud}[k]-{e}[g]my {≈ sučny}[s]@b"
+    "{bud}[k]-{e}[g]my {≈ suči}[s]@b"
   ],
   [
     "imperativ@w=2;d",
     "{bud}[k]-{i}[b]{!}[s] {bud}[k]-{i}[b]mo{!}[s] {bud}[k]-{i}[b]te{!}[s]@w=2;r"
   ],
   [
-    "sučno vrěme@w=4;D"
+    "sučo vrěme@w=4;D"
   ],
   [
     "&nbsp@d",
@@ -1362,12 +1362,12 @@
   ],
   [
     "&nbsp@d;bb;br;w=2",
-    "aktivny sučny participij@d;bb",
-    "{sučny}[k] {≈ imaj-emy}[s]@B"
+    "aktivny suči participij@d;bb",
+    "{suči}[k] {≈ imaj-emy}[s]@B"
   ],
   [
     "&nbsp@d;bt;br;w=2",
-    "pasivny sučny participij@d;bt;te",
+    "pasivny suči participij@d;bt;te",
     "{jesmy}[k] {≈ imaj-uči}[s]@b"
   ],
   [
