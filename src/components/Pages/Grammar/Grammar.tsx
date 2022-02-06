@@ -165,7 +165,7 @@ export default class Grammar extends PureComponent {
                         </Text>
                         <Table data={tables.tableVremena} />
                         <Text>
-                            {`Aktivne glagolne participy mogut tvoriti aktivny suči i aktivny prošly prislovniky:
+                            {`Aktivne glagolne participy mogut tvoriti aktivny nastoječi i aktivny prošly prislovniky:
                             {dělati → {dělaj}[k]-{u}[p]-č, děl-{a}[r]-v
                              variti → var-{e}[g]-č, var-{i}[b]-v}[B]`}
                         </Text>
