@@ -353,7 +353,7 @@
       "L@d;bb",
       "kost-{i}[b]@bb;g",
       "deset-{i}[b]@bb;g",
-      "kost-{ja}[r]h@G",
+      "kost-{a}[r]h@G",
       "oč-{a}[r]h@G",
       "kost-{ju}[p]@bt;b"
     ],
@@ -361,17 +361,17 @@
       "D@d;bb",
       "kost-{i}[b]@bt;g",
       "deset-{i}[b]@bt;g",
-      "kost-{ja}[r]m@bb;R",
+      "kost-{a}[r]m@bb;R",
       "oč-{a}[r]m@bb;R",
-      "kost-{ja}[r]m{a}[r]@bb;r"
+      "kost-{a}[r]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
       "kost-{ju}[p]@r",
       "deset-{ju}[p]@r",
-      "kost-{ja}[r]m{i}[b]@bt;R",
+      "kost-{a}[r]m{i}[b]@bt;R",
       "oč-{a}[r]m{i}[b]@bt;R",
-      "kost-{ja}[r]m{a}[r]@bt;r"
+      "kost-{a}[r]m{a}[r]@bt;r"
     ],
     [
       "V@d",
