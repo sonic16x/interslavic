@@ -10,15 +10,15 @@ import tables from './tables.json';
 
 const titles = {
     abeceda: 'Abeceda',
-    imeniky: 'Imeniky',
-    zaimeniky: 'Zaimeniky',
+    imeniky: 'Imenniky',
+    zaimeniky: 'Zaimenniky',
     pridavniky: 'Pridavniky',
     glagoly: 'Glagoly',
     byti: 'Neredne glagoly',
     prislovniky: 'Prislovniky',
     predlogy: 'Prědlogy',
-    ciselniky: 'Čiselniky',
-    sovezniky: 'Sovezniky',
+    ciselniky: 'Čislovniky',
+    sovezniky: 'Svezniky',
     cestice: 'Čestice',
     medzuslovniky: 'Medžuslovniky',
     podredne: 'Podredne izrěčenja',
@@ -70,8 +70,8 @@ export default class Grammar extends PureComponent {
                                 {Napriměr:}[i] {r{y}[b]ba→r{i}[b]ba}[B], {r{ě}[g]ka→r{e}[g]ka}[B]`}
                         </Text>
                         <Text>
-                            {`Palatizacija i eufonija: {{k}[k]→{č}[k], {h}[k]→{š}[k], {g}[k]→{ž}[k], {c}[k]{j}[p]→{č}[k], {s}[k]{j}[p]→{š}[k], {zj}[k]→{ž}[k]}[B]
-                                {Napriměr:}[i] {Grě{k}[k]→grě{č}[k]sky}[B], {pra{h}[k]→pra{š}[k]ny}[B], {Bo{g}[k]→bo{ž}[k]sky}[B], {pro{s}[k]{ju}[p]→pro{š}[k]{u}[p]}[B]`}
+                            {`Palatalizacija i evfonija: {{k}[k]→{č}[k], {h}[k]→{š}[k], {g}[k]→{ž}[k], {c}[k]{j}[p]→{č}[k], {s}[k]{j}[p]→{š}[k], {zj}[k]→{ž}[k]}[B]
+                                {Napriměr:}[i] {Gre{k}[k]→gre{č}[k]sky}[B], {pra{h}[k]→pra{š}[k]ny}[B], {Bo{g}[k]→bo{ž}[k]sky}[B], {pro{s}[k]{ju}[p]→pro{š}[k]{u}[p]}[B]`}
                         </Text>
                         <Text indent="0.5rem">
                             {`{1.}[B,m] Staroslovjansko jatj={ѣ}[g,B]={ě}[g,B] se može pisati bez diakritiky kako {ie}[g,B] ili prosto {e}[g,B]. Podobno {č}[k,B], {š}[k,B], {ž}[k,B] se mogut pisati kako {cz}[k,B], {sz}[k,B], {zs}[k,B].`}
@@ -90,13 +90,13 @@ export default class Grammar extends PureComponent {
                         <Table data={tables.tableBrat} />
                         <Table data={tables.tableMuz} />
                         <Text>
-                            {`Mužske objekty, ktore aktivno dělajut někaky proces, sut {životne}[i] (od pytanja KTO?) i po tutoj pričině imajut akuzativ ravny s genitivom.`}
+                            {`Mužske objekty, ktore aktivno dělajut někaky proces, sut {žive}[i] (od pytanja KTO?) i po tutoj pričině imajut akuzativ ravny s genitivom.`}
                         </Text>
                         <Text>
-                            {`Ostalne objekty sut {neživotne}[i] (od pytanija ČTO) i imajut v jednině akuzativ ravny s nominativom.
+                            {`Ostale objekty sut {nežive}[i] (od pytanja ČTO) i imajut v jednině akuzativ ravny s nominativom.
                             {Napriměr:}[i]
-                               - {gospod peče {hlěb}[k].}[B] ({hlěb}[k,B] ne može pečti = jest neživotny)
-                               - {gospod vidi {člověka}[k]}[B]. ({člověk}[k,B] može viděti = jest životny)`}
+                               - {gospod peče {hlěb}[k].}[B] ({hlěb}[k,B] ne može pekti sebe = jest neživy)
+                               - {gospod vidi {člověka}[k]}[B]. ({člověk}[k,B] može viděti = jest živy)`}
                         </Text>
                         <Text>
                             {`Slova mužskogo roda zakončeni na -{a}[r,B] imajut v jednině klonjenje po tvrdom vzoru {žena}[k,B] ili mekkom vzoru {duša}[k,B], ale v množině i dvojině imajut normalny mužsky vzor.
@@ -107,10 +107,10 @@ export default class Grammar extends PureComponent {
                         <Table data={tables.tableZena} />
                         <Table data={tables.tableKost} />
                         <Text>
-                            {`Vse čiselniky zakončene na soglasniky –{T}[B] i –{Č}[B] ({PET}[B], {ŠEST}[B], ... {DESET}[B], {TRINADSET}[B], ... {DVADESET}[B], {TYSEČ}[B]) imajut klonjenje kako {KOST}[B] v jednině: {šest, šest-{i}[b], šest-j{u}[p]}[B] ...`}
+                            {`Vse čislovniky zakončene na soglasky –{T}[B] i –{Č}[B] ({PET}[B], {ŠEST}[B], ... {DESET}[B], {TRINADSET}[B], ... {DVADESET}[B], {TYSEČ}[B]) imajut klonjenje kako {KOST}[B] v jednině: {šest, šest-{i}[b], šest-j{u}[p]}[B] ...`}
                         </Text>
                         <Text>
-                            {`Dualne slova {OKO}[B], {UHO}[B] imajut dual ravne s množinoju vzora {KOST}[B] s palatizovanym korenom: {oč-{i}[b], oč-{ij}[b], oč-{a}[r]m}[B] ... {uš-{i}[b], uš-{i}[b]j, uš-{a}[r]m}[B] ... where {čj,šj,žj → č,š,ž}[B].`}
+                            {`Dvojinne slova {OKO}[B], {UHO}[B] imajut dvojinu ravnu s množinoju vzora {KOST}[B] s palatalizovanym korenem: {oč-{i}[b], oč-{ij}[b], oč-{a}[r]m}[B] ... {uš-{i}[b], uš-{i}[b]j, uš-{a}[r]m}[B] ... kde {čj,šj,žj → č,š,ž}[B].`}
                         </Text>
                         <Table data={tables.tableSelo} />
                         <Table data={tables.tableDen} />
@@ -128,7 +128,7 @@ export default class Grammar extends PureComponent {
                         <Table data={tables.tableTojTaTo} />
                         <Table data={tables.tableOnOnaOno} />
                         <Text>
-                            {`Mekky	vzor klonjenja {(-{e}[g]g{o}[p], -{e}[g]m{u}[p], ...)}[B] imajut zaimeniky:
+                            {`Mekky	vzor klonjenja {(-{e}[g]g{o}[p], -{e}[g]m{u}[p], ...)}[B] imajut zaimenniky:
                             - {MOJ-MOJA-MOJE, TVOJ-TVOJA-TVOJE, NAŠ-NAŠA-NAŠE, VAŠ-VAŠA-VAŠE, VSEj-VSA-VSE, KOJ, KOJA, KOJE, ČIJ, ČIJA, ČIJE ...}[B]`}
                         </Text>
                         <Text>
@@ -142,30 +142,30 @@ export default class Grammar extends PureComponent {
                         <br/>
                         <Table data={tables.tableGradacija} />
                         <Text>
-                            {`{kračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]`}
+                            {`{skračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]`}
                         </Text>
                     </Card>
                     <Card title={titles.glagoly} id="glagoly">
                         <Table data={tables.tableImeti} />
                         <Text>
-                            {`Pasivny prošly participij tvrdyh glagolov {–{i}[b]ti –{e}[g]ti –{u}[p]ti –yti}[B] jest {–{i}[b]ty –{e}[g]ty –{u}[p]ty –{y}[b]ty:}[B]
+                            {`Pasivny prošly particip tvrdyh glagolov {–{i}[b]ti –{e}[g]ti –{u}[p]ti –yti}[B] jest {–{i}[b]ty –{e}[g]ty –{u}[p]ty –{y}[b]ty:}[B]
                             {piti→pity, kleti→klety, obuti→obuty, kryti→kryty}[B] ...	vse	druge imajut {–▪ny}[B].`}
                         </Text>
                         <Table data={tables.tableVariti} />
                         <Text>
-                            {`Pasivny	prošly	participij	mekkyh	glagolov jest {–j{e}[g]ni –j{e}[g]na –j{e}[g]no}[B],
+                            {`Pasivny	prošly	particip	mekkyh	glagolov jest {–j{e}[g]ni –j{e}[g]na –j{e}[g]no}[B],
                             ale {dj→dž (viděti, vidžu, vidiš, vidženy),
                             tj→č (vratiti, vraču, vratiš, vračeny)
                             sj→š (prositi, prošu, prosiš, prošeny),
                             stj→šč (koristiti, korišču, koristiš, koriščeny)}[B]`}
                         </Text>
                         <Text>
-                            {`Pasivny prošly participij	vsih ostalnyh glagolov {–{a}[r]ti –{ě}[g]ti –▪ti jest –{a}[r]ny –{ě}[g]ny –{e}[g]ny:
+                            {`Pasivny prošly particip	vsih ostalyh glagolov {–{a}[r]ti –{ě}[g]ti –▪ti jest –{a}[r]ny –{ě}[g]ny –{e}[g]ny:
                             dělati→dělany, pekti→pek–eny→pečeny ...}[B]`}
                         </Text>
                         <Table data={tables.tableVremena} />
                         <Text>
-                            {`Aktivne glagolne participija možut tvoriti aktivny sučny i aktivny prošly prislovniky:
+                            {`Aktivne glagolne participy mogut tvoriti aktivny suči i aktivny prošly prislovniky:
                             {dělati → {dělaj}[k]-{u}[p]-č, děl-{a}[r]-v
                              variti → var-{e}[g]-č, var-{i}[b]-v}[B]`}
                         </Text>
@@ -186,7 +186,7 @@ export default class Grammar extends PureComponent {
                     </Card>
                     <Card title={titles.prislovniky} id="prislovniky">
                         <Text>
-                            {`Poslě tvrdyh soglasnikov jest zakončenje {-{o}[p]}[B], poslě mekkyh {č š ž j}[B,k] jest {-{e}[g]}[B].
+                            {`Poslě tvrdyh soglasok jest zakončenje {-{o}[p]}[B], poslě mekkyh {č š ž j}[B,k] jest {-{e}[g]}[B].
                             {Napriměr:}[i] {dobr-{o}[p]}[B], {bystr-{o}[p]}[B], {už-{e}[g]}[B], {daž-{e}[g]}[B], {menš-{e}[g]}[B]`}
                         </Text>
                         <Text>
@@ -211,7 +211,7 @@ export default class Grammar extends PureComponent {
                             jedin, jednogo (TOJ)
                             {pet, peti... 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 (KOST)}[g]
                             {nula, nuly (ŽENA)}[p]
-                            {sto, sta (SĚLO)}[b]
+                            {sto, sta (SELO)}[b]
                             {tyseč, tyseči (KOST)}[g]
                             milion, miliona (GRAD)}[B]`}
                         </Text>
@@ -225,13 +225,13 @@ export default class Grammar extends PureComponent {
                     <Card title={titles.medzuslovniky} id="medzuslovniky">
                         <Text>
                             {`{oh! ah! uva! lutě!}[B]
-                            «značenje medžuslovnika takože imajut vse izrěčenja v navodnikah»`}
+                            «značenje medžuslovnika takože imajut vse izrěčenja v navodnicah»`}
                         </Text>
                     </Card>
                     <Card title={titles.podredne} id="podredne">
                         <Text>
                             {`{..., kde ... ..., ktoromu..., tako ..., kako ... toliko ..., koliko ... ..., že ...}[B]
-                            tvary {iže, jegože, jimže}[B], ... sut relativne zaimeniky od on, ona, ono `}
+                            tvary {iže, jegože, jimže}[B], ... sut relativne zaimenniky od on, ona, ono `}
                         </Text>
                     </Card>
                     {/*<Card title={titles.naucno} id="naucno">*/}
@@ -249,12 +249,12 @@ export default class Grammar extends PureComponent {
                             {`1. Dvojina je shranila se nyně jedino v slovenskom i lužičskyh jezykah, tomu vměsto tutoj formy jest rekomendovano koristati množinu.`}
                         </Text>
                         <Text>
-                            {`2. Prosto prošlo vrěme (aorist, imperfect) je shranilo se jedino v česti slovjanskyh jezykov, tomu vměsto njego jest rekomendovano koristati glagol byti + l-participij (pisah → jesm pisal).`}
+                            {`2. Prosto prošlo vrěme (aorist, imperfect) je shranilo se jedino v česti slovjanskyh jezykov, tomu vměsto njego jest rekomendovano koristati glagol byti + l-particip (pisah → jesm pisal).`}
                         </Text>
                     </Card>
                     <Card title={titles.podrobnosti} id="podrobnosti">
                         <Text>
-                            {`Pri sozdanji tutoj stranicy jest upotrěbjeny dokument «Medžuslovjansky jezyk. Abeceda i pravopisanie» (Januar 2018): <a href="http://interslavic-language.org/doc/ns-pregled.pdf" target="_blank">[PDF]</a>`}
+                            {`Pri stvorjenju tutoj stranice jest upotrěbjeny dokument «Medžuslovjansky jezyk. Abeceda i pravopisanie» (Januar 2018): <a href="http://interslavic-language.org/doc/ns-pregled.pdf" target="_blank">[PDF]</a>`}
                         </Text>
                         <Text>
                             {`Podrobne pravila pravopisanja je možno najdti na oficialnyh sajtah:`}
