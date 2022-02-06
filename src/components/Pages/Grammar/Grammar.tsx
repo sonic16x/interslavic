@@ -25,7 +25,7 @@ const titles = {
     // naucno: 'Naučno pravopisanje i kirilica',
     glagolica: 'Glagolica',
     primetky: 'Primětky (*)',
-    podrobnosti: 'Podrobne pravila (linki)',
+    podrobnosti: 'Podrobne pravila (linky)',
 };
 
 export default class Grammar extends PureComponent {
