@@ -353,7 +353,7 @@
       "L@d;bb",
       "kost-{i}[b]@bb;g",
       "deset-{i}[b]@bb;g",
-      "kost-{ja}[r]h@G",
+      "kost-{a}[r]h@G",
       "oč-{a}[r]h@G",
       "kost-{ju}[p]@bt;b"
     ],
@@ -361,17 +361,17 @@
       "D@d;bb",
       "kost-{i}[b]@bt;g",
       "deset-{i}[b]@bt;g",
-      "kost-{ja}[r]m@bb;R",
+      "kost-{a}[r]m@bb;R",
       "oč-{a}[r]m@bb;R",
-      "kost-{ja}[r]m{a}[r]@bb;r"
+      "kost-{a}[r]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
       "kost-{ju}[p]@r",
       "deset-{ju}[p]@r",
-      "kost-{ja}[r]m{i}[b]@bt;R",
+      "kost-{a}[r]m{i}[b]@bt;R",
       "oč-{a}[r]m{i}[b]@bt;R",
-      "kost-{ja}[r]m{a}[r]@bt;r"
+      "kost-{a}[r]m{a}[r]@bt;r"
     ],
     [
       "V@d",
@@ -385,7 +385,7 @@
   "tableSelo": [
     [
       "&nbsp@bt;bl;br;bb",
-      "SĚLO@bt;bl;br",
+      "SELO@bt;bl;br",
       "POLJE@bt;bl;br",
       "&nbsp@bt;bl;br",
       "srědne tvrdy i mekky vzory@bt;bl;br;w=3;te"
@@ -398,65 +398,65 @@
     ],
     [
       "N@d;bb",
-      "sěl-{o}[p]@bb",
+      "sel-{o}[p]@bb",
       "polj-{e}[g]@bb",
-      "sěl-{a}[r]@bb;s",
+      "sel-{a}[r]@bb;s",
       "polj-{a}[r]@bb;s",
-      "sěl-{ě}[g]@bb",
+      "sel-{ě}[g]@bb",
       "polj-{i}[b]@bb"
     ],
     [
       "A@d;bb",
-      "sěl-{o}[p]@bt",
+      "sel-{o}[p]@bt",
       "polj-{e}[g]@bt",
-      "sěl-{a}[r]@bt;s",
+      "sel-{a}[r]@bt;s",
       "polj-{a}[r]@bt;s",
-      "sěl-{ě}[g]@bt",
+      "sel-{ě}[g]@bt",
       "polj-{i}[b]@bt"
     ],
     [
       "G@d;bb",
-      "sěl-{a}[r]@b",
+      "sel-{a}[r]@b",
       "polj-{a}[r]@b",
-      "sěl@B",
+      "sel@B",
       "polj{(-}[s]{e}[g]j{)}[s]@B",
-      "sěl-{u}[p]@bb;b",
+      "sel-{u}[p]@bb;b",
       "polj-{u}[p]@bb;b"
     ],
     [
       "L@d;bb",
-      "sěl-{u}[p]@bb;g",
+      "sel-{u}[p]@bb;g",
       "polj-{u}[p]@bb;g",
-      "sěl-{a}[r]h@G",
+      "sel-{a}[r]h@G",
       "polj-{a}[r]h@G",
-      "sěl-{u}[p]@bt;b",
+      "sel-{u}[p]@bt;b",
       "polj-{u}[p]@bt;b"
     ],
     [
       "D@d;bb",
-      "sěl-{u}[p]@bt;g",
+      "sel-{u}[p]@bt;g",
       "polj-{u}[p]@bt;g",
-      "sěl-{a}[r]m@bb;R",
+      "sel-{a}[r]m@bb;R",
       "polj-{a}[r]m@bb;R",
-      "sěl-{a}[r]m{a}[r]@bb;r",
+      "sel-{a}[r]m{a}[r]@bb;r",
       "polj-{a}[r]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
-      "sěl-{o}[p]m@r",
+      "sel-{o}[p]m@r",
       "polj-{e}[g]m@r",
-      "sěl-{a}[r]m{i}[b]@bt;R",
+      "sel-{a}[r]m{i}[b]@bt;R",
       "polj-{a}[r]m{i}[b]@bt;R",
-      "sěl-{a}[r]m{a}[r]@bt;r",
+      "sel-{a}[r]m{a}[r]@bt;r",
       "polj-{a}[r]m{a}[r]@bt;r"
     ],
     [
       "V@d",
-      "sěl-{o}[p]{!}[s]@s",
+      "sel-{o}[p]{!}[s]@s",
       "polj-{e}[g]{!}[s]@s",
-      "sěl-{a}[r]{!}[s]@S",
+      "sel-{a}[r]{!}[s]@S",
       "polj-{a}[r]{!}[s]@S",
-      "sěl-{ě}[g]{!}[s]@s",
+      "sel-{ě}[g]{!}[s]@s",
       "polj-{i}[b]{!}[s]@s"
     ]
   ],
@@ -1046,18 +1046,18 @@
       "im-{ě}[g]-ti@w=2;ts"
     ],
     [
-      "L-participij@d;w=2",
+      "L-particip@d;w=2",
       "im-{ě}[g]-l, im-{ě}[g]-la, im-{ě}[g]-lo, im-{ě}[g]-li, im-{ě}[g]-le@w=2;ts"
     ],
     [
       "glagolno ime@d;w=2",
-      "im-{ě}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
+      "im-{ě}[g]-nje {(od prošlogo pasivnogo participa)}[s]@w=2;ts"
     ],
     [
-      "sučno vrěme (tvrde glagoly možut iměti sučny koren @w=4;D;bb;ts"
+      "nastoječe vrěme (tvrde glagoly mogut iměti koren v nastoječem @w=4;D;bb;ts"
     ],
     [
-      "nerovny s korenom infinitiva)@w=4;D;bt;ts"
+      "vrěmeni, ne jednaky s korenem infinitiva)@w=4;D;bt;ts"
     ],
     [
       "&nbsp@d",
@@ -1085,20 +1085,20 @@
     ],
     [
       "&nbsp@d;bb;br;w=2",
-      "aktivny sučny participij@d;bb",
+      "aktivny nastoječi particip@d;bb",
       "{imaj}[k]-{u}[p]či {≈ jesmy}[s]@B"
     ],
     [
       "&nbsp@d;bt;br;w=2",
-      "pasivny sučny participij@d;bt;te",
-      "{imaj}[k]-{e}[g]my {≈ sučny}[s]@b"
+      "pasivny nastoječi particip@d;bt;te",
+      "{imaj}[k]-{e}[g]my {≈ nastoječi}[s]@b"
     ],
     [
       "imperativ@w=2;d",
       "{imaj}[k]{!}[s] {imaj}[k]-mo{!}[s] {imaj}[k]-te{!}[s]@w=2;r"
     ],
     [
-      "prosto prošlo vrěme<a href=\"#primetky\">*</a>@w=4;D;bb"
+      "imperfekt<a href=\"#primetky\">*</a>@w=4;D;bb"
     ],
     [
       "(infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bt"
@@ -1129,12 +1129,12 @@
     ],
     [
       "&nbsp@d;bb;w=2",
-      "aktivny prošly participij@d;bb",
+      "aktivny prošly particip@d;bb",
       "im-{ě}[g]-vši {≈ b-y-ty}[s]"
     ],
     [
       "&nbsp@d;bt;w=2",
-      "pasivny prošly participij@d;bt;te",
+      "pasivny prošly particip@d;bt;te",
       "im-{ě}[g]-ny {≈ b-y-vši}[s]@r"
     ]
   ],
@@ -1149,18 +1149,18 @@
       "var-{i}[b]-ti@w=2;ts"
     ],
     [
-      "L-participij@d;w=2",
+      "L-particip@d;w=2",
       "var-{i}[b]-l, var-{i}[b]-la, var-{i}[b]-lo, var-{i}[b]-li, var-{i}[b]-le@w=2;ts"
     ],
     [
       "glagolno ime@d;w=2",
-      "var-j{e}[g]-nje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
+      "var-j{e}[g]-nje {(od prošlogo pasivnogo participa)}[s]@w=2;ts"
     ],
     [
-      "sučno vrěme (tvrde glagoly možut iměti sučny koren @w=4;D;bb"
+      "nastoječe vrěme (tvrde glagoly možut iměti koren v nastoječem @w=4;D;bb"
     ],
     [
-      "nerovny s korenom infinitiva)@w=4;D;bt"
+      "vrěmeni, ktory ne sběgaje se s korenem infinitiva)@w=4;D;bt"
     ],
     [
       "&nbsp@d",
@@ -1188,12 +1188,12 @@
     ],
     [
       "&nbsp@d;bb;br;w=2",
-      "aktivny sučny participij@d;bb",
+      "aktivny nastoječi particip@d;bb",
       "var-{e}[g]či@B"
     ],
     [
       "&nbsp@d;bt;br;w=2",
-      "pasivny sučny participij@d;bt;te",
+      "pasivny nastoječi particip@d;bt;te",
       "var-{i}[b]my@b"
     ],
     [
@@ -1201,7 +1201,7 @@
       "var-{i}[b]{!}[s] var-{i}[b]mo{!}[s] var-{i}[b]te{!}[s]@w=2;r"
     ],
     [
-      "prosto prošlo vrěme<a href=\"#primetky\">*</a> (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bb;bt"
+      "imperfekt<a href=\"#primetky\">*</a> (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bb;bt"
     ],
     [
       "&nbsp@d",
@@ -1229,12 +1229,12 @@
     ],
     [
       "&nbsp@d;bb;w=2",
-      "aktivny prošly participij@d;bb",
+      "aktivny prošly particip@d;bb",
       "var-{i}[b]-vši"
     ],
     [
       "&nbsp@d;bt;w=2",
-      "pasivny prošly participij@d;bt;te",
+      "pasivny prošly particip@d;bt;te",
       "var-j{e}[g]-ny@r"
     ]
   ],
@@ -1255,22 +1255,22 @@
       "budu napisal@R"
     ],
     [
-      "sučno vrěme@D",
+      "nastoječe vrěme@D",
       "pišu@b",
       "-@b"
     ],
     [
-      "prědsučno vrěme@d",
+      "perfekt@d",
       "jesm pisal@B",
       "jesm napisal@B"
     ],
     [
-      "prosto prošlo vrěme<a href=\"#primetky\">*</a>@D",
+      "imperfekt<a href=\"#primetky\">*</a>@D",
       "pisah@",
       "napisah@"
     ],
     [
-      "prědprošlo vrěme@d",
+      "pluskvamperfekt@d",
       "běh pisal@S",
       "běh napisal@S"
     ]
@@ -1285,12 +1285,12 @@
     "b-{y}[b]-ti@w=2;ts"
   ],
   [
-    "L-participij@d;w=2",
+    "L-particip@d;w=2",
     "b-{y}[b]-l, b-{y}[b]-la, b-{y}[b]-lo, b-{y}[b]-li, b-{y}[b]-le@w=2;ts"
   ],
   [
     "glagolno ime@d;w=2",
-    "b-{y}[b]-tje {(od prošlogo pasivnogo participija)}[s]@w=2;ts"
+    "b-{y}[b]-tje {(od prošlogo pasivnogo participa)}[s]@w=2;ts"
   ],
   [
     "buduče vrěme@w=4;D"
@@ -1321,20 +1321,20 @@
   ],
   [
     "&nbsp@d;bb;br;w=2",
-    "aktivny buduči participij@d;bb",
+    "aktivny buduči particip@d;bb",
     "{bud}[k]-{u}[p]či {≈ jesmy}[s]@B"
   ],
   [
     "&nbsp@d;bt;br;w=2",
-    "pasivny buduči participij@d;bt;te",
-    "{bud}[k]-{e}[g]my {≈ sučny}[s]@b"
+    "pasivny buduči particip@d;bt;te",
+    "{bud}[k]-{e}[g]my {≈ nastoječi}[s]@b"
   ],
   [
     "imperativ@w=2;d",
     "{bud}[k]-{i}[b]{!}[s] {bud}[k]-{i}[b]mo{!}[s] {bud}[k]-{i}[b]te{!}[s]@w=2;r"
   ],
   [
-    "sučno vrěme@w=4;D"
+    "nastoječe vrěme@w=4;D"
   ],
   [
     "&nbsp@d",
@@ -1362,16 +1362,16 @@
   ],
   [
     "&nbsp@d;bb;br;w=2",
-    "aktivny sučny participij@d;bb",
-    "{sučny}[k] {≈ imaj-emy}[s]@B"
+    "aktivny nastoječi particip@d;bb",
+    "{nastoječi}[k] {≈ imaj-emy}[s]@B"
   ],
   [
     "&nbsp@d;bt;br;w=2",
-    "pasivny sučny participij@d;bt;te",
+    "pasivny nastoječi particip@d;bt;te",
     "{jesmy}[k] {≈ imaj-uči}[s]@b"
   ],
   [
-    "prosto prošlo vrěme<a href=\"#primetky\">*</a>@w=4;D"
+    "imperfekt<a href=\"#primetky\">*</a>@w=4;D"
   ],
   [
     "&nbsp@d",
@@ -1399,12 +1399,12 @@
   ],
   [
     "&nbsp@d;bb;w=2",
-    "aktivny prošly participij@d;bb",
+    "aktivny prošly particip@d;bb",
     "by-{y}[b]-vši {≈ im-ě-ny}[s]"
   ],
   [
     "&nbsp@d;bt;w=2",
-    "pasivny prošly participij@d;bt;te",
+    "pasivny prošly particip@d;bt;te",
     "b-{y}[b]-ty {≈ im-ě-vši}[s]@r"
   ],
     [
@@ -1569,7 +1569,7 @@
       "20@d",
       "{dvadeset}[g]",
       "200@d",
-      "{dvěsto}[b]",
+      "{dvasto}[b]",
       "2000@d",
       "dva {tyseč}[g]"
     ],
@@ -1662,7 +1662,7 @@
       "30@d",
       "tridesety",
       "201@d",
-      "dvěsto prvy"
+      "dvasto prvy"
     ],
     [
       "4@d",
@@ -1670,7 +1670,7 @@
       "40@d",
       "četyridesety",
       "210@d",
-      "dvěsto desety"
+      "dvasto desety"
     ],
     [
       "5@d",
