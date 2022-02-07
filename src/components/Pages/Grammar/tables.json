@@ -385,7 +385,7 @@
   "tableSelo": [
     [
       "&nbsp@bt;bl;br;bb",
-      "SĚLO@bt;bl;br",
+      "SELO@bt;bl;br",
       "POLJE@bt;bl;br",
       "&nbsp@bt;bl;br",
       "srědne tvrdy i mekky vzory@bt;bl;br;w=3;te"
@@ -398,65 +398,65 @@
     ],
     [
       "N@d;bb",
-      "sěl-{o}[p]@bb",
+      "sel-{o}[p]@bb",
       "polj-{e}[g]@bb",
-      "sěl-{a}[r]@bb;s",
+      "sel-{a}[r]@bb;s",
       "polj-{a}[r]@bb;s",
-      "sěl-{ě}[g]@bb",
+      "sel-{ě}[g]@bb",
       "polj-{i}[b]@bb"
     ],
     [
       "A@d;bb",
-      "sěl-{o}[p]@bt",
+      "sel-{o}[p]@bt",
       "polj-{e}[g]@bt",
-      "sěl-{a}[r]@bt;s",
+      "sel-{a}[r]@bt;s",
       "polj-{a}[r]@bt;s",
-      "sěl-{ě}[g]@bt",
+      "sel-{ě}[g]@bt",
       "polj-{i}[b]@bt"
     ],
     [
       "G@d;bb",
-      "sěl-{a}[r]@b",
+      "sel-{a}[r]@b",
       "polj-{a}[r]@b",
-      "sěl@B",
+      "sel@B",
       "polj{(-}[s]{e}[g]j{)}[s]@B",
-      "sěl-{u}[p]@bb;b",
+      "sel-{u}[p]@bb;b",
       "polj-{u}[p]@bb;b"
     ],
     [
       "L@d;bb",
-      "sěl-{u}[p]@bb;g",
+      "sel-{u}[p]@bb;g",
       "polj-{u}[p]@bb;g",
-      "sěl-{a}[r]h@G",
+      "sel-{a}[r]h@G",
       "polj-{a}[r]h@G",
-      "sěl-{u}[p]@bt;b",
+      "sel-{u}[p]@bt;b",
       "polj-{u}[p]@bt;b"
     ],
     [
       "D@d;bb",
-      "sěl-{u}[p]@bt;g",
+      "sel-{u}[p]@bt;g",
       "polj-{u}[p]@bt;g",
-      "sěl-{a}[r]m@bb;R",
+      "sel-{a}[r]m@bb;R",
       "polj-{a}[r]m@bb;R",
-      "sěl-{a}[r]m{a}[r]@bb;r",
+      "sel-{a}[r]m{a}[r]@bb;r",
       "polj-{a}[r]m{a}[r]@bb;r"
     ],
     [
       "I@d;bb",
-      "sěl-{o}[p]m@r",
+      "sel-{o}[p]m@r",
       "polj-{e}[g]m@r",
-      "sěl-{a}[r]m{i}[b]@bt;R",
+      "sel-{a}[r]m{i}[b]@bt;R",
       "polj-{a}[r]m{i}[b]@bt;R",
-      "sěl-{a}[r]m{a}[r]@bt;r",
+      "sel-{a}[r]m{a}[r]@bt;r",
       "polj-{a}[r]m{a}[r]@bt;r"
     ],
     [
       "V@d",
-      "sěl-{o}[p]{!}[s]@s",
+      "sel-{o}[p]{!}[s]@s",
       "polj-{e}[g]{!}[s]@s",
-      "sěl-{a}[r]{!}[s]@S",
+      "sel-{a}[r]{!}[s]@S",
       "polj-{a}[r]{!}[s]@S",
-      "sěl-{ě}[g]{!}[s]@s",
+      "sel-{ě}[g]{!}[s]@s",
       "polj-{i}[b]{!}[s]@s"
     ]
   ],
