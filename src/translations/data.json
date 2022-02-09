@@ -3124,9 +3124,9 @@
   "captchaError": {
     "en": "Сonfirm you are not a robot",
     "isv": "Podtvrdi, že ne jesi robot",
-    "ru": "Подтвердите, что Вы не робот",
-    "uk": "Підтвердьте, що Ви не робот",
-    "be": "Пацвердзіце, што Вы не робат",
+    "ru": "Подтвердите, что вы не робот",
+    "uk": "Підтвердьте, що ви не робот",
+    "be": "Пацвердзіце, што вы не робат",
     "pl": "Potwierdź, że nie jesteś robotem",
     "cs": "Potvrďte, že nejste robot",
     "sk": "Potvrďte, že nie ste robot",
