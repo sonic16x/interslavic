@@ -79,8 +79,8 @@ export interface ITableData {
 
 export const tablesData: ITableData[] = [
     {
-        spreadsheetId: '1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY',
-        sheetId: '1987833874',
+        spreadsheetId: '11TEUKt52TXnLbCvUWzSFK7zzDOzqsyHKw7dt2iZ0dD8',
+        sheetId: '947967899',
         fields: basicFields,
     },
     {
