@@ -8,6 +8,8 @@ import { Spinner } from 'components/Spinner';
 
 import './Loader.scss';
 
+import PeaceIcon from './images/peace-icon.svg';
+
 export const Loader =
     () => {
         const loading = useLoading();
@@ -19,6 +21,9 @@ export const Loader =
                     borderWidth=".3em"
                 />
                 <span className="loader__title">{t('loading')}</span>
+                <div className="loader__peace">
+                    <PeaceIcon/>
+                </div>
             </div>
         );
     };

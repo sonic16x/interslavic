@@ -25,4 +25,12 @@
     margin-top: 10px;
     color: var(--muted-text-color);
   }
+
+  &__peace {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    color: var(--primary-color);
+  }
 }
