@@ -85,31 +85,33 @@ const customFilterParams = (field: string) => {
                 valueLowerCase = removeExclamationMark(valueLowerCase);
                 valueLowerCase = removeBrackets(valueLowerCase, '[', ']');
                 valueLowerCase = removeBrackets(valueLowerCase, '(', ')');
-                
-                return Dictionary.splitWords(valueLowerCase).some((word) => {
-                    const wordPrepared = Dictionary.searchPrepare(`${field}`, word);
-                    switch (filter) {
-                        case 'contains':
-                            return wordPrepared.indexOf(filterTextLowerCase) >= 0;
-                        case 'notContains':
-                            return wordPrepared.indexOf(filterTextLowerCase) === -1;
-                        case 'equals':
-                            return wordPrepared === filterTextLowerCase;
-                        case 'notEqual':
-                            return wordPrepared !== filterTextLowerCase;
-                        case 'startsWith':
-                            return wordPrepared.indexOf(filterTextLowerCase) === 0;
-                        case 'endsWith': {
-                            const index = wordPrepared.lastIndexOf(filterTextLowerCase);
-                            
-                            return index >= 0 && index === (wordPrepared.length - filterTextLowerCase.length);
+
+                return Dictionary
+                    .splitWords(valueLowerCase)
+                    .flatMap(word => Dictionary.searchPrepare(`${field}`, word))
+                    .some((wordPrepared) => {
+                        switch (filter) {
+                            case 'contains':
+                                return wordPrepared.indexOf(filterTextLowerCase) >= 0;
+                            case 'notContains':
+                                return wordPrepared.indexOf(filterTextLowerCase) === -1;
+                            case 'equals':
+                                return wordPrepared === filterTextLowerCase;
+                            case 'notEqual':
+                                return wordPrepared !== filterTextLowerCase;
+                            case 'startsWith':
+                                return wordPrepared.indexOf(filterTextLowerCase) === 0;
+                            case 'endsWith': {
+                                const index = wordPrepared.lastIndexOf(filterTextLowerCase);
+
+                                return index >= 0 && index === (wordPrepared.length - filterTextLowerCase.length);
+                            }
+                            default:
+                                // should never happen
+                                // console.warn('invalid filter type ' + filter);
+                                return false;
                         }
-                        default:
-                            // should never happen
-                            // console.warn('invalid filter type ' + filter);
-                            return false;
-                    }
-                });
+                    });
             },
         };
     } else if (field === 'id') {
