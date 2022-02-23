@@ -628,7 +628,7 @@ class DictionaryClass {
                 return [
                     lowerCaseText.replace(/(е̖|е̱|е̩)/g, 'е'),
                     lowerCaseText
-                        .replace(/ле̖̩/g, 'ље')
+                        .replace(/ле̖/g, 'ље')
                         .replace(/не̖/g, 'ње')
                         .replace(/е̖/g, 'је')
                         .replace(/е̱/g, 'ије')
