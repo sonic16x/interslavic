@@ -84,6 +84,7 @@ export const defaultState: IMainState = {
         glagolitic: false,
     },
     orderOfCases: ['nom','acc','gen','loc','dat','ins','voc'],
+    srLangVariant: 'ekavicaCyr',
     enabledPages: [],
     communityLinks: [],
     badges: [],

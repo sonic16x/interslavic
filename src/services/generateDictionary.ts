@@ -8,7 +8,6 @@ import { loadTablesData } from 'services/loadTablesData';
 import { getColumnName } from 'utils/getColumnName';
 import { transposeMatrix } from 'utils/transposeMatrix';
 
-
 loadTablesData.then(({ data, columns }) => {
     Dictionary.init(data);
 
@@ -20,7 +19,6 @@ loadTablesData.then(({ data, columns }) => {
 
     columns.forEach((column: string[]) => {
         const fieldName = getColumnName(column);
-
         if (initialFilteredFields.includes(fieldName) || langs.includes(fieldName)) {
             basicDataTransposed.push(column);
         }

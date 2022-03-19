@@ -3240,5 +3240,20 @@
     "sr": "Веза до речи је копирана у клипборд",
     "mk": "Врската до зборот е копирана во клипборд",
     "bg": "Връзката към думата е копирана в клипборда"
+  },
+  "srLangVariant": {
+    "en": "Orthography variant of Serbian language",
+    "isv": "Variant pravopisu srbskogo jezyka",
+    "ru": "Вариант орфографии сербского языка",
+    "uk": "Варіант орфографії сербської мови",
+    "be": "Варыянт арфаграфіі сербскай мовы",
+    "pl": "Wariant ortografii języka serbskiego",
+    "cs": "Varianta srbského jazykového pravopisu",
+    "sk": "Pravopisný variant srbského jazyka",
+    "sl": "Pravopisna različica srbskega jezika",
+    "hr": "Pravopisna varijanta srpskog jezika",
+    "sr": "Правописна варијанта српског језика",
+    "mk": "Правописна варијанта на српски јазик",
+    "bg": "Правописен вариант на сръбския език"
   }
 }

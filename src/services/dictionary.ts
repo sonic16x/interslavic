@@ -8,6 +8,7 @@ import { declensionNounFlat } from 'legacy/declensionNoun';
 import { declensionNumeralFlat } from 'legacy/declensionNumeral';
 import { declensionPronounFlat } from 'legacy/declensionPronoun';
 import { convertCases } from 'utils/convertCases';
+import { filterDiacritics } from 'utils/filterDiacritics';
 import { filterLatin } from 'utils/filterLatin';
 import { filterNiqqud } from 'utils/filterNiqqud';
 import { getCyrillic } from 'utils/getCyrillic';
@@ -18,7 +19,12 @@ import { levenshteinDistance } from 'utils/levenshteinDistance';
 import { normalize } from 'utils/normalize';
 import { removeBrackets } from 'utils/removeBrackets';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
-import { srGajevicaToVukovica } from 'utils/srGajevicaToVukovica';
+import {
+    srGajevicaToVukovica,
+    srGetEkavica,
+    srGetIjekavica,
+    srTransform
+} from 'utils/srTransform';
 import {
     getGender,
     getNumeralType,
@@ -109,7 +115,7 @@ function getWordForms(item): string[] {
                 break;
         }
     });
-    
+
     return Array.from(new Set(wordForms.reduce((acc, item) => {
         if (item.includes('/')) {
             return [
@@ -224,24 +230,23 @@ class DictionaryClass {
                             splittedField = this
                                 .splittedMap['isv-src']
                                 .get(id)
-                                .map((word) => this.searchPrepare(lang, word))
+                                .flatMap((word) => this.searchPrepare(lang, word))
                             ;
                             break;
                         case 'isv-src':
                             splittedField = this
                                 .splitWords(fromField)
                                 .concat(getWordForms(item))
-                                .map((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
+                                .flatMap((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
                             ;
                             break;
                         default:
                             fromField = removeExclamationMark(fromField);
-                            splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
+                            splittedField = this.splitWords(fromField).flatMap((word) => this.searchPrepare(lang, word));
                             break;
                     }
-
                     this.splittedMap[lang].set(id, splittedField);
-                });
+                  });
             });
         }
 
@@ -307,7 +312,7 @@ class DictionaryClass {
                 this.splittedMap[lang].get(key),
             ]);
         });
-        
+
         return searchIndex;
     }
     public translate(translateParams: ITranslateParams, showTime = true): [string[][], number] {
@@ -425,7 +430,7 @@ class DictionaryClass {
                         return false;
                     }
                 }
-                
+
                 return filterResult;
             })
             .filter((item) => {
@@ -449,7 +454,7 @@ class DictionaryClass {
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
-                
+
                 return filterResult;
             })
             .map((item) => {
@@ -461,13 +466,13 @@ class DictionaryClass {
                     splittedField = splittedField.slice(0, 2);
                 }
                 let dist = splittedField
+                    .flatMap(item => this.searchPrepare(from, item))
                     .reduce((acc, item) => {
-                        const lDist = levenshteinDistance(from === 'isv' ? inputIsvPrepared : inputLangPrepared,
-                            this.searchPrepare(from, item));
+                        const lDist = levenshteinDistance(from === 'isv' ? inputIsvPrepared : inputLangPrepared, item);
                         if (lDist < acc) {
                             return lDist;
                         }
-                        
+
                         return acc;
                     }, Number.MAX_SAFE_INTEGER);
                 if (twoWaySearch) {
@@ -479,19 +484,19 @@ class DictionaryClass {
                         splittedField = splittedField.slice(0, 2);
                     }
                     const dist2 = splittedField
+                        .flatMap(item => this.searchPrepare(to, item))
                         .reduce((acc, item) => {
-                            const lDist = levenshteinDistance(from === 'isv' ? inputLangPrepared : inputIsvPrepared,
-                                this.searchPrepare(to, item));
+                            const lDist = levenshteinDistance(from === 'isv' ? inputLangPrepared : inputIsvPrepared, item);
                             if (lDist < acc) {
                                 return lDist;
                             }
-                            
+
                             return acc;
                         }, Number.MAX_SAFE_INTEGER);
                     dist = dist2 < dist ? dist2 : dist;
                 }
                 distMap.set(item, dist);
-                
+
                 return item;
             })
             .sort((a, b) => distMap.get(a) - distMap.get(b))
@@ -513,12 +518,16 @@ class DictionaryClass {
         from: string,
         to: string,
         flavorisationType: string,
-        alphabets?: IAlphabets,
+        alphabets: IAlphabets,
+        srLangVariant: string,
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
             const add = this.getField(item, 'addition');
-            const translate = this.getField(item, (from === 'isv' ? to : from));
+            const lang = (from === 'isv' ? to : from);
+            let translate = this.getField(item, lang);
+            translate = removeExclamationMark(translate);
+            if(lang === 'sr') translate = srTransform(translate, srLangVariant);
             const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
@@ -539,7 +548,7 @@ class DictionaryClass {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
                 formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
             }
-            
+
             return formattedItem;
         });
 
@@ -569,7 +578,7 @@ class DictionaryClass {
                     }
                 });
         }
-        
+
         return this.isvSearchLetters;
     }
     public setIsvSearchLetters(letters: {from: string[], to: string[]}): void {
@@ -579,31 +588,27 @@ class DictionaryClass {
         this.isvSearchByWordForms = isvSearchByWordForms;
     }
     public inputPrepare(lang: string, text: string): string {
-        const preparedText = this.searchPrepare(lang, text);
+        const [preparedText] = this.searchPrepare(lang, text);
         if (lang === 'sr') {
             return srGajevicaToVukovica(preparedText);
         } else {
             return preparedText;
         }
     }
-    public searchPrepare(lang: string, text: string): string {
-        let lowerCaseText = text.toLowerCase()
+    public searchPrepare(lang: string, text: string): string[] {
+        const lowerCaseText = text.toLowerCase()
             .replace(/ /g, '')
             .replace(/,/g, '');
-        if (lang !== 'isv-src') {
-            lowerCaseText = lowerCaseText.replace(/[\u0300-\u036f]/g, '');
-        } else {
-            lowerCaseText = lowerCaseText
-                .replace(/t́/g, 'ť')
-                .replace(/d́/g, 'ď')
-                .replace(/[\u0300-\u036f]/g, '')
-            ;
-        }
+
         switch (lang) {
             case 'isv-src':
-                return lowerCaseText;
+                return [
+                    lowerCaseText
+                        .replace(/t́/g, 'ť')
+                        .replace(/d́/g, 'ď')
+                ].map(filterDiacritics);
             case 'isv':
-                return this.isvToEngLatin(lowerCaseText);
+                return [this.isvToEngLatin(lowerCaseText)].map(filterDiacritics);
             case 'cs':
             case 'pl':
             case 'sk':
@@ -621,13 +626,18 @@ class DictionaryClass {
             case 'fr':
             case 'it':
             case 'da':
-                return filterLatin(lowerCaseText);
+                return [filterLatin(lowerCaseText)].map(filterDiacritics);
+            case 'sr':
+                return [
+                    srGetEkavica(lowerCaseText),
+                    srGetIjekavica(lowerCaseText),
+                ].map(filterDiacritics);
             case 'ru':
-                return lowerCaseText.replace(/ё/g, 'е');
+                return [lowerCaseText.replace(/ё/g, 'е')].map(filterDiacritics);
             case 'he':
-                return filterNiqqud(lowerCaseText);
+                return [lowerCaseText].map(filterNiqqud).map(filterDiacritics);
             default:
-                return lowerCaseText;
+                return [lowerCaseText].map(filterDiacritics);
         }
     }
     public splitWords(text: string): string[] {
@@ -635,11 +645,11 @@ class DictionaryClass {
     }
     private getSplittedField(from: string, item: string[]): string[] {
         const key = this.getField(item, 'id');
-        
+
         return this.splittedMap[from].get(key);
     }
     private applyIsvSearchLetters(text: string, flavorisationType: string): string {
-        text = this.searchPrepare('isv-src', text);
+        text = this.searchPrepare('isv-src', text)[0];
         isvReplacebleLetters
             .filter((replacement) =>
                 !this.isvSearchLetters.from.includes(replacement[0]) ||
@@ -647,7 +657,7 @@ class DictionaryClass {
             .map((replacement) => {
                 text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
             });
-        
+
         return text;
     }
 }

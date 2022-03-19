@@ -25,6 +25,7 @@ export enum ActionTypes {
     TOGGLE_PAGE = 'TOGGLE_PAGE',
     SET_COMMUNITY_LINKS = 'SET_COMMUNITY_LINKS',
     SET_BADGES = 'SET_BADGES',
+    CHANGE_SR_LANG_VARIANT = 'CHANGE_SR_LANG_VARIANT',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -160,6 +161,13 @@ export function setAlphabets(data) {
 export function changeOrderOfCases(data) {
     return {
         type: ActionTypes.CHANGE_ORDER_OF_CASES,
+        data,
+    };
+}
+
+export function changeSrLangVariant(data) {
+    return {
+        type: ActionTypes.CHANGE_SR_LANG_VARIANT,
         data,
     };
 }
