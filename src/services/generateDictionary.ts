@@ -8,9 +8,6 @@ import { loadTablesData } from 'services/loadTablesData';
 import { getColumnName } from 'utils/getColumnName';
 import { transposeMatrix } from 'utils/transposeMatrix';
 
-import { filterIjekavijanDiacritics } from "../utils/filterDiacritics";
-
-
 loadTablesData.then(({ data, columns }) => {
     Dictionary.init(data);
 
@@ -22,13 +19,6 @@ loadTablesData.then(({ data, columns }) => {
 
     columns.forEach((column: string[]) => {
         const fieldName = getColumnName(column);
-
-        if (fieldName === 'sr') {
-            for (let i = 0; i < column.length; i++) {
-                column[i] = filterIjekavijanDiacritics(column[i]);
-            }
-        }
-
         if (initialFilteredFields.includes(fieldName) || langs.includes(fieldName)) {
             basicDataTransposed.push(column);
         }

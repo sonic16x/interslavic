@@ -8,7 +8,7 @@ import { declensionNounFlat } from 'legacy/declensionNoun';
 import { declensionNumeralFlat } from 'legacy/declensionNumeral';
 import { declensionPronounFlat } from 'legacy/declensionPronoun';
 import { convertCases } from 'utils/convertCases';
-import { filterDiacritics, filterIjekavijanDiacritics } from 'utils/filterDiacritics';
+import { filterDiacritics } from 'utils/filterDiacritics';
 import { filterLatin } from 'utils/filterLatin';
 import { filterNiqqud } from 'utils/filterNiqqud';
 import { getCyrillic } from 'utils/getCyrillic';
@@ -19,7 +19,12 @@ import { levenshteinDistance } from 'utils/levenshteinDistance';
 import { normalize } from 'utils/normalize';
 import { removeBrackets } from 'utils/removeBrackets';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
-import { srGajevicaToVukovica } from 'utils/srGajevicaToVukovica';
+import {
+    srGajevicaToVukovica,
+    srGetEkavica,
+    srGetIjekavica,
+    srTransform
+} from 'utils/srTransform';
 import {
     getGender,
     getNumeralType,
@@ -209,8 +214,6 @@ class DictionaryClass {
             }
         });
 
-        const srIndex = this.headerIndexes.get('sr');
-
         if (needIndex.length) {
             this.words.forEach((item) => {
                 const id = `${this.getField(item, 'id')}`;
@@ -242,12 +245,8 @@ class DictionaryClass {
                             splittedField = this.splitWords(fromField).flatMap((word) => this.searchPrepare(lang, word));
                             break;
                     }
-
                     this.splittedMap[lang].set(id, splittedField);
-                    if (lang === 'sr') {
-                        item[srIndex] = filterIjekavijanDiacritics(item[srIndex]);
-                    }
-                });
+                  });
             });
         }
 
@@ -519,12 +518,16 @@ class DictionaryClass {
         from: string,
         to: string,
         flavorisationType: string,
-        alphabets?: IAlphabets,
+        alphabets: IAlphabets,
+        srLangVariant: string,
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
             const add = this.getField(item, 'addition');
-            const translate = this.getField(item, (from === 'isv' ? to : from));
+            const lang = (from === 'isv' ? to : from);
+            let translate = this.getField(item, lang);
+            translate = removeExclamationMark(translate);
+            if(lang === 'sr') translate = srTransform(translate, srLangVariant);
             const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
@@ -626,13 +629,8 @@ class DictionaryClass {
                 return [filterLatin(lowerCaseText)].map(filterDiacritics);
             case 'sr':
                 return [
-                    lowerCaseText.replace(/(е̖|е̱|е̩)/g, 'е'),
-                    lowerCaseText
-                        .replace(/ле̖/g, 'ље')
-                        .replace(/не̖/g, 'ње')
-                        .replace(/е̖/g, 'је')
-                        .replace(/е̱/g, 'ије')
-                        .replace(/е̩/g, 'и')
+                    srGetEkavica(lowerCaseText),
+                    srGetIjekavica(lowerCaseText),
                 ].map(filterDiacritics);
             case 'ru':
                 return [lowerCaseText.replace(/ё/g, 'е')].map(filterDiacritics);

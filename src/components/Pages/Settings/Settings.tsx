@@ -11,7 +11,7 @@ import {
     changeDictionaryLangAction,
     changeIsvSearchByWordForms,
     changeIsvSearchLetters,
-    changeOrderOfCases,
+    changeOrderOfCases, changeSrLangVariant,
     langAction,
     setAlphabets,
     setInterfaceLang,
@@ -30,6 +30,7 @@ import { useLang } from 'hooks/useLang';
 import { useOrderOfCases } from 'hooks/useOrderOfCases';
 import { useResults } from 'hooks/useResults';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { useSrLangVariant } from 'hooks/useSrLangVariant';
 
 import { Checkbox } from 'components/Checkbox';
 import { Selector } from 'components/Selector';
@@ -100,6 +101,25 @@ const interfaceLanguageList = [
     },
 ];
 
+const srLangVariantList = [
+    {
+        name: 'Екавица, ћирилица',
+        value: 'ekavicaCyr'
+    },
+    {
+        name: 'Ијекавица, ћирилица',
+        value: 'ijekavicaCyr'
+    },
+    {
+        name: 'Ekavica, latinica',
+        value: 'ekavicaLat'
+    },
+    {
+        name: 'Ijekavica, latinica',
+        value: 'ijekavicaLat'
+    },
+];
+
 const orderOfCasesList = [
     'nom,acc,gen,loc,dat,ins,voc',
     'nom,acc,gen,dat,loc,ins,voc',
@@ -119,6 +139,7 @@ export const Settings =
         const orderOfCases = useOrderOfCases();
         const dictionaryLanguages = useDictionaryLanguages();
         const enabledPages = useEnabledPages();
+        const srLangVariant = useSrLangVariant();
         const { from, to } = useLang();
         const [isLoading, setLoading] = useState(false);
         useResults();
@@ -285,6 +306,14 @@ export const Settings =
                             />
                         );
                     })}
+                </div>
+                <hr />
+                <div>
+                    <h6>{t('srLangVariant')}</h6>
+                    <Selector
+                        options={srLangVariantList}
+                        value={srLangVariant}
+                     onSelect={(srLangVariant:string) => dispatch(changeSrLangVariant(srLangVariant))}/>
                 </div>
                 <hr />
                 <div>

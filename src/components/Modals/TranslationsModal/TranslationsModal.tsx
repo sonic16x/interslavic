@@ -13,18 +13,22 @@ import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { useModalDialog } from 'hooks/useModalDialog';
 import { useResults } from 'hooks/useResults';
+import { useSrLangVariant } from "hooks/useSrLangVariant";
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
+import { srTransform } from "utils/srTransform";
 
 import { Table } from 'components/Table';
 
 import './TranslationsModal.scss';
 
-function renderTranslate(str: string): string {
+function renderTranslate(str: string, lang: string): string {
+    if (lang === 'sr') {
+        str = srTransform(str, useSrLangVariant());
+    }
     if (str && str[0] === '!') {
         return `{${str.slice(1)}}[s]@ts;`;
     }
-    
     return `{✓}[g] ${str}@ts`;
 }
 
@@ -82,7 +86,7 @@ export const TranslationsModal =
                 ...arr,
                 [
                     `{${t(`${lang}Lang`)}}[B]@ts;b`,
-                    renderTranslate(translate),
+                    renderTranslate(translate, lang),
                 ],
                 (
                     (lang === 'bg' && addLangsFiltered.length) ? (
