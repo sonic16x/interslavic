@@ -35,4 +35,9 @@
     font-size: var(--text-m);
     margin-bottom: 45px;
   }
+
+  &__community-links {
+    display: flex;
+    flex-direction: column;
+  }
 }
