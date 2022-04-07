@@ -4,6 +4,8 @@ import { t } from 'translations';
 
 import { getTablePublicUrl } from 'utils/getTablePublicUrl';
 
+import { Link } from 'components/Link';
+
 import './About.scss';
 
 export const About =
@@ -36,14 +38,26 @@ export const About =
                             {t('aboutAuthorSergeyCherebedov')}:
                             <a target="_blank" rel="noreferrer" href="https://github.com/sonic16x">GitHub</a>
                             <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/scherebedov/">LinkedIn</a>
-                            <a target="_blank" rel="noreferrer" href="https://www.facebook.com/profile.php?id=100009366550621">Facebook</a>
+                            <Link
+                                href="https://www.facebook.com/profile.php?id=100009366550621"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Facebook
+                            </Link>
                             <a target="_blank" rel="noreferrer" href={`email:${email}`}>{email}</a>
                         </div>
                         <h6>{t('aboutDeveloperCoauthors')}</h6>
                         <div className="about-page__author">
                             {t('aboutAuthorDenisShabalin')}:
                             <a target="_blank" rel="noreferrer" href="https://github.com/ru-danko">GitHub</a>
-                            <a target="_blank" rel="noreferrer" href="https://www.facebook.com/d.y.shabalin">Facebook</a>
+                            <Link
+                                href="https://www.facebook.com/d.y.shabalin"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Facebook
+                            </Link>
                         </div>
                         <div className="about-page__author">
                             {t('aboutAuthorJaroslavSerhieiev')}:
@@ -58,32 +72,32 @@ export const About =
                         {t('aboutSourceCode')} <a target="_blank" rel="noreferrer" href={github}>{github}</a>
                         <hr/>
                         <h6>{t('aboutOurFriends')}</h6>
-                        <a
-                            title="Interslavic Facebook"
-                            href="http://www.facebook.com/groups/interslavic"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            Facebook community
-                        </a>
-                        <br/>
-                        <a
-                            title="Interslavic Language Portal"
-                            href="http://interslavic-language.org/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            interslavic-language.org
-                        </a>
-                        <br/>
-                        <a
-                            title="Interslavic journal"
-                            href="http://slovjani.info/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            slovjani.info
-                        </a>
+                        <div className="about-page__community-links">
+                            <Link
+                                title="Interslavic Facebook"
+                                href="https://www.facebook.com/groups/interslavic"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Facebook community
+                            </Link>
+                            <a
+                                title="Interslavic Language Portal"
+                                href="http://interslavic-language.org/"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                interslavic-language.org
+                            </a>
+                            <a
+                                title="Interslavic journal"
+                                href="http://slovjani.info/"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                slovjani.info
+                            </a>
+                        </div>
                         <hr/>
                         <a
                             href="https://play.google.com/store/apps/details?id=org.interslavicdictionary.twa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
