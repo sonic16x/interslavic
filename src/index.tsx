@@ -50,12 +50,16 @@ if (SW) {
     }
 }
 
+// eslint-disable-next-line
+// @ts-ignore
+const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
+
 export const defaultState: IMainState = {
     lang: {
         from: 'en',
         to: 'isv',
     },
-    interfaceLang: 'en',
+    interfaceLang: langs.includes(browserLang) ? browserLang : 'en',
     clientId: md5(`${Date.now() * Math.random()}`),
     isvSearchLetters: {
         from: [],
