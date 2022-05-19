@@ -6,3 +6,5 @@
 .DS_Store
 /static/data/*
 wrangler.toml
+.reg
+.actualScreenshots
