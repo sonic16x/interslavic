@@ -1,0 +1,12 @@
+{
+  "core": {
+    "workingDir": ".reg",
+    "actualDir": ".actualScreenshots",
+    "threshold": 0,
+    "ximgdiff": {
+      "invocationType": "client"
+    }
+  },
+  "plugins": {
+  }
+}
