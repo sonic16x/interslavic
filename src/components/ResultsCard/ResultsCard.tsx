@@ -20,6 +20,9 @@ import { wordHasForms } from 'utils/wordHasForms';
 
 import { Clipboard } from 'components/Clipboard';
 
+import { useIntelligibilityFilter } from "../../hooks/useIntelligibilityFilter";
+import { getIntelligibilityReport } from "../../utils/getIntelligibilityReport";
+
 import './ResultsCard.scss';
 
 import ErrorIcon from './images/error-icon.svg';
@@ -96,6 +99,8 @@ export const ResultsCard =
         const wordId = Dictionary.getField(item.raw, 'id').toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
+        const intFilter = useIntelligibilityFilter();
+        const sameInLanguages = Dictionary.getField(item.raw, 'sameInLanguages');
         const lang = useLang();
 
         const cardBiInfo: ICardAnalytics = useMemo(() => (
@@ -177,6 +182,11 @@ export const ResultsCard =
 
         const short = useShortCardView();
 
+        const status = intFilter ? getIntelligibilityReport(
+            intFilter,
+            sameInLanguages
+        ) : null;
+
         return (
             <div
                 className={classNames('results-card', { short })}
@@ -185,6 +195,13 @@ export const ResultsCard =
                 onClick={reportClick}
             >
                 <div className="results-card__translate">
+                    { status
+                        ? <span
+                            key="intelligibilityStatus"
+                            className={classNames({ 'results-card__status': true, verified: status.verified })}
+                            title={status.status}>{status.emoji}&nbsp;</span>
+                        : undefined
+                    }
                     {item.to !== 'isv' ? (
                         <Clipboard
                             str={item.translate}

@@ -10,6 +10,7 @@ export function analyticsMiddleware({ getState }) {
         switch (action.type) {
             case ActionTypes.FROM_TEXT:
             case ActionTypes.POS_FILTER:
+            case ActionTypes.INTELLIGIBILITY_FILTER:
             case ActionTypes.SEARCH_TYPE:
             case ActionTypes.LANG: {
                 const state: IMainState = getState();

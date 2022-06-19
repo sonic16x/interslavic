@@ -150,4 +150,12 @@
       }
     }
   }
+
+  &__status {
+    opacity: 0.5;
+
+    &.verified {
+      opacity: initial;
+    }
+  }
 }

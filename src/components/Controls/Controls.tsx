@@ -19,6 +19,8 @@ import { LangSelector } from 'components/LangSelector';
 import { POSSelector } from 'components/POSSelector';
 import { SearchTypeSelector } from 'components/SearchTypeSelector';
 
+import { IntelligibilitySelector } from "../IntelligibilitySelector";
+
 import './Controls.scss';
 
 export const Controls =
@@ -64,6 +66,7 @@ export const Controls =
                     <SearchTypeSelector key="searchType" />
                     <FlavorisationSelector key="flavorisation" />
                     <POSSelector key="posFilter" />
+                    <IntelligibilitySelector key="intelligibilityFilter" />
                 </Expand>
             </div>
         );
