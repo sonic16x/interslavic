@@ -15,6 +15,7 @@ import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
 import { urlParamsMiddleware } from 'middlewares/urlParamsMiddleware';
 import { setInitialPage } from 'routing';
 import { getPageFromPath } from 'routing';
+import { getPreferredLanguage } from 'utils/getPreferredLanguage';
 import { validateLang } from 'utils/validateLang';
 
 import { Main } from 'components/Main';
@@ -55,7 +56,7 @@ export const defaultState: IMainState = {
         from: 'en',
         to: 'isv',
     },
-    interfaceLang: 'en',
+    interfaceLang: getPreferredLanguage(),
     clientId: md5(`${Date.now() * Math.random()}`),
     isvSearchLetters: {
         from: [],
