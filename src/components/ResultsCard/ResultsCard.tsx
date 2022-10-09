@@ -100,7 +100,7 @@ export const ResultsCard =
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
         const intFilter = useIntelligibilityFilter();
-        const sameInLanguages = Dictionary.getField(item.raw, 'sameInLanguages');
+        const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
         const lang = useLang();
 
         const cardBiInfo: ICardAnalytics = useMemo(() => (
@@ -184,7 +184,7 @@ export const ResultsCard =
 
         const status = intFilter ? getIntelligibilityReport(
             intFilter,
-            sameInLanguages
+            intelligibility
         ) : null;
 
         return (

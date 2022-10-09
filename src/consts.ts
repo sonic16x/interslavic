@@ -53,10 +53,12 @@ export const initialFields = [
     'en',
     'sameInLanguages',
     'genesis',
+    'intelligibility',
 ];
 
 export const initialAddFields = [
     'type',
+    'sameInLanguages',
     'genesis',
 ];
 
@@ -78,8 +80,8 @@ export interface ITableData {
 
 export const tablesData: ITableData[] = [
     {
-        spreadsheetId: '1MLNRRfQHFnCeaqZO04tw0I2JCcz-zeAsk6QLNll4Up8',
-        sheetId: '1265463098',
+        spreadsheetId: '1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY',
+        sheetId: '1987833874',
         fields: basicFields,
     },
     {
