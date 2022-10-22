@@ -43,6 +43,7 @@ export interface ITranslateParams {
     to: string;
     searchType: string;
     posFilter: string;
+    intelligibilityFilter: string;
     flavorisationType?: string;
 }
 
@@ -316,6 +317,7 @@ class DictionaryClass {
             from,
             to,
             posFilter,
+            intelligibilityFilter,
             flavorisationType,
         } = translateParams;
         let searchType = translateParams.searchType;
@@ -386,6 +388,10 @@ class DictionaryClass {
             filterPartOfSpeech = [[posFilter]];
         }
 
+        const filterIntelligibility = intelligibilityFilter
+            ? new RegExp(`\\b${intelligibilityFilter}\\b`)
+            : null;
+
         const distMap = new WeakMap();
         const results = this.getWordList()
             .filter((item) => {
@@ -425,11 +431,17 @@ class DictionaryClass {
                         return false;
                     }
                 }
-                
+
                 return filterResult;
             })
             .filter((item) => {
                 let filterResult = true;
+                // if (filterIntelligibility) {
+                //     const sameInLanguages = this.getField(item, 'sameInLanguages')
+                //     if (!filterIntelligibility.test(sameInLanguages)) {
+                //         return false;
+                //     }
+                // }
                 // search in isv with search sensitive letters
                 if ((from === 'isv' || twoWaySearch) &&
                    !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&

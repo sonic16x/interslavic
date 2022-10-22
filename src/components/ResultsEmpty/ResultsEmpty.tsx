@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
 
-import { posFilterAction } from 'actions';
+import { intelligibilityFilterAction, posFilterAction } from 'actions';
 
 import './ResultsEmpty.scss';
 
@@ -25,7 +25,10 @@ export const ResultsEmpty =
                         type="button"
                         className="results-empty__button"
                         aria-label="Reset filters"
-                        onClick={() => dispatch(posFilterAction(''))}
+                        onClick={() => {
+                            dispatch(posFilterAction(''));
+                            dispatch(intelligibilityFilterAction(''));
+                        }}
                     >
                         {t('resultsNotFoundResetFilters')}
                     </button>

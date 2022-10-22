@@ -66,6 +66,7 @@ export const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     posFilter: '',
+    intelligibilityFilter: '',
     dictionaryLanguages: langs,
     flavorisationType: '3',
     alphabetType: 'latin',

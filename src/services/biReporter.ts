@@ -87,6 +87,7 @@ export class BiReporter {
             searchLanguageTo: state.lang.to,
             searchLanguage: state.lang.from === 'isv' ? state.lang.to : state.lang.from,
             searchFilterPos: state.posFilter,
+            searchFilterLang: state.intelligibilityFilter,
             searchFilterPart: state.searchType,
             searchByWordForms: state.isvSearchByWordForms,
             interfaceLanguage: state.interfaceLang,

@@ -14,6 +14,7 @@ export enum ActionTypes {
     RUN_SEARCH = 'RUN_SEARCH',
     CHANGE_ISV_SEARCH_LETTERS = 'CHANGE_ISV_SEARCH_LETTERS',
     CHANGE_ISV_SEARCH_BY_WORDFORMS = 'CHANGE_ISV_SEARCH_BY_WORDFORMS',
+    INTELLIGIBILITY_FILTER = 'INTELLIGIBILITY_FILTER',
     POS_FILTER = 'POS_FILTER',
     SET_ALPHABETS = 'SET_ALPHABETS',
     SHOW_MODAL_DIALOG = 'SHOW_MODAL_DIALOG',
@@ -133,6 +134,13 @@ export function changeIsvSearchLetters(data: string) {
 export function changeIsvSearchByWordForms(data: boolean) {
     return {
         type: ActionTypes.CHANGE_ISV_SEARCH_BY_WORDFORMS,
+        data,
+    };
+}
+
+export function intelligibilityFilterAction(data: string) {
+    return {
+        type: ActionTypes.INTELLIGIBILITY_FILTER,
         data,
     };
 }

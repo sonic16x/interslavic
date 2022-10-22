@@ -19,6 +19,8 @@ import { isScrollBarVisible } from 'utils/isScrollBarVisible';
 import { ResultsCard } from 'components/ResultsCard';
 import { ResultsEmpty } from 'components/ResultsEmpty';
 
+import { useIntelligibilityFilter } from "../../hooks/useIntelligibilityFilter";
+
 import './Results.scss';
 
 export const Results =
@@ -26,6 +28,7 @@ export const Results =
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
         const results = useResults();
         const posFilter = usePosFilter();
+        const intelligibilityFilter = useIntelligibilityFilter();
         const lang = useLang();
         const containerRef = useRef<HTMLDivElement>();
         const fromText = useFromText();
@@ -41,7 +44,7 @@ export const Results =
         if (!results || !results.length) {
             if (empty) {
                 return (
-                    <ResultsEmpty showReset={posFilter !== ''}/>
+                    <ResultsEmpty showReset={posFilter !== '' || intelligibilityFilter !== ''}/>
                 );
             }
 
