@@ -89,20 +89,20 @@
     "mk": "Глаголица",
     "bg": "Глаголица"
   },
-  "verified": {
-    "en": "Verified",
-    "isv": "Prověreno",
-    "ru": "Проверено",
-    "uk": "Перевірено",
-    "be": "Праверана",
-    "pl": "Sprawdzone",
-    "cs": "Ověřeno",
-    "sk": "Overené",
-    "sl": "Preverjeno",
-    "hr": "Provjereno",
-    "sr": "Проверено",
-    "mk": "Потврдено",
-    "bg": "Проверена"
+  "notVerified": {
+    "en": "Not verified",
+    "isv": "Ne prověreno",
+    "ru": "Не проверено",
+    "uk": "Не еревірено",
+    "be": "Не праверана",
+    "pl": "Nie sprawdzone",
+    "cs": "Neověřeno",
+    "sk": "Neoverené",
+    "sl": "Ni preverjeno",
+    "hr": "Nije provjereno",
+    "sr": "Није проверено",
+    "mk": "Не е потврдено",
+    "bg": "Непроверено"
   },
   "autoTranslation": {
     "en": "Auto-translation",
@@ -3315,6 +3315,21 @@
     "sr": "Не разумливо",
     "mk": "Не разумливо",
     "bg": "Не разумливо"
+  },
+  "unknownStatus": {
+    "en": "Unknown",
+    "isv": "Neznano",
+    "ru": "Неизвестно",
+    "uk": "Невідомо",
+    "be": "Невядома",
+    "pl": "Nieznane",
+    "cs": "Neznámé",
+    "sk": "Neznáme",
+    "sl": "Neznano",
+    "hr": "Nepoznato",
+    "sr": "Непознато",
+    "mk": "Непознато",
+    "bg": "Неизвестно"
   },
   "falseFriend": {
     "en": "False friend",

@@ -4,8 +4,8 @@ export function getIntelligibilityReport(lang: string, sameInLanguages: string) 
     const record = sameInLanguages.split(' ').find(w => w.replace(/[^a-z]+/g, '') === lang);
 
     const result = {
-        emoji: '🔴',
-        status: t('nonIntelligibleStatus'),
+        emoji: '⚪',
+        status: t('unknownStatus'),
         verified: false,
     };
 
@@ -30,8 +30,8 @@ export function getIntelligibilityReport(lang: string, sameInLanguages: string) 
         }
 
         result.verified = !record.startsWith('!');
-        if (result.verified) {
-            result.status = `(${t('verified')}) ${result.status}`;
+        if (!result.verified) {
+            result.status = `(${t('notVerified')}) ${result.status}`;
         }
     }
 
