@@ -13,7 +13,6 @@ import { filterNiqqud } from 'utils/filterNiqqud';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
-import { latinToIpa } from 'utils/latinToIpa';
 import { levenshteinDistance } from 'utils/levenshteinDistance';
 import { normalize } from 'utils/normalize';
 import { removeBrackets } from 'utils/removeBrackets';
@@ -29,6 +28,8 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
+
+import { transliterate } from '@interslavic/steen-utils';
 
 export const searchTypes = {
     begin: (item, text) => item.indexOf(text) === 0,
@@ -109,7 +110,7 @@ function getWordForms(item): string[] {
                 break;
         }
     });
-    
+
     return Array.from(new Set(wordForms.reduce((acc, item) => {
         if (item.includes('/')) {
             return [
@@ -307,7 +308,7 @@ class DictionaryClass {
                 this.splittedMap[lang].get(key),
             ]);
         });
-        
+
         return searchIndex;
     }
     public translate(translateParams: ITranslateParams, showTime = true): [string[][], number] {
@@ -425,7 +426,7 @@ class DictionaryClass {
                         return false;
                     }
                 }
-                
+
                 return filterResult;
             })
             .filter((item) => {
@@ -449,7 +450,7 @@ class DictionaryClass {
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
-                
+
                 return filterResult;
             })
             .map((item) => {
@@ -467,7 +468,7 @@ class DictionaryClass {
                         if (lDist < acc) {
                             return lDist;
                         }
-                        
+
                         return acc;
                     }, Number.MAX_SAFE_INTEGER);
                 if (twoWaySearch) {
@@ -485,13 +486,13 @@ class DictionaryClass {
                             if (lDist < acc) {
                                 return lDist;
                             }
-                            
+
                             return acc;
                         }, Number.MAX_SAFE_INTEGER);
                     dist = dist2 < dist ? dist2 : dist;
                 }
                 distMap.set(item, dist);
-                
+
                 return item;
             })
             .sort((a, b) => distMap.get(a) - distMap.get(b))
@@ -524,7 +525,7 @@ class DictionaryClass {
                 original: getLatin(isv, flavorisationType),
                 add: convertCases(getLatin(add, flavorisationType)),
                 details: this.getField(item, 'partOfSpeech'),
-                ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
+                ipa: transliterate(getLatin(removeBrackets(isv, '[', ']'), flavorisationType), 'art-x-interslv-fonipa'),
                 checked: translate[0] !== '!',
                 raw: item,
                 from,
@@ -539,7 +540,7 @@ class DictionaryClass {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
                 formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
             }
-            
+
             return formattedItem;
         });
 
@@ -569,7 +570,7 @@ class DictionaryClass {
                     }
                 });
         }
-        
+
         return this.isvSearchLetters;
     }
     public setIsvSearchLetters(letters: {from: string[], to: string[]}): void {
@@ -635,7 +636,7 @@ class DictionaryClass {
     }
     private getSplittedField(from: string, item: string[]): string[] {
         const key = this.getField(item, 'id');
-        
+
         return this.splittedMap[from].get(key);
     }
     private applyIsvSearchLetters(text: string, flavorisationType: string): string {
@@ -647,7 +648,7 @@ class DictionaryClass {
             .map((replacement) => {
                 text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
             });
-        
+
         return text;
     }
 }

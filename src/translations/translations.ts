@@ -1,8 +1,6 @@
 import translations from 'translations/data.json';
 
-import { getCyrillic } from 'utils/getCyrillic';
-import { getGlagolitic } from 'utils/getGlagolitic';
-import { getLatin } from 'utils/getLatin';
+import { transliterate } from "@interslavic/steen-utils";
 
 let currentLang;
 
@@ -22,14 +20,7 @@ function tRaw(key) {
         return key;
     } else if (translations[key][lang]) {
         if (lang === 'isv') {
-            switch (alphabet) {
-                case 'Latn':
-                    return getLatin(translations[key].isv, '3');
-                case 'Cyrl':
-                    return getCyrillic(translations[key].isv, '3');
-                case 'Glag':
-                    return getGlagolitic(translations[key].isv, '3');
-            }
+            return transliterate(translations[key].isv, `art-${alphabet}-x-interslv`);
         } else {
             return translations[key][lang];
         }
