@@ -12,4 +12,8 @@ describe('normalize', () => {
     test('gòltnųti -> goltnuti', () => {
         expect(normalize('gòltnųti')).toBe('goltnuti');
     });
+
+    test('Organizacija Sjedinjenyh Narodov -> ...', () => {
+        expect(normalize('Organizacija Sjedinjenyh Narodov')).toBe('Organizacija Sjedinjenyh Narodov');
+    });
 });

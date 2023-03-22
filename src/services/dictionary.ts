@@ -18,6 +18,7 @@ import { levenshteinDistance } from 'utils/levenshteinDistance';
 import { normalize } from 'utils/normalize';
 import { removeBrackets } from 'utils/removeBrackets';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
+import * as searchStrategies from 'utils/searchStrategies';
 import { srGajevicaToVukovica } from 'utils/srGajevicaToVukovica';
 import {
     getGender,
@@ -31,10 +32,10 @@ import {
 } from 'utils/wordDetails';
 
 export const searchTypes = {
-    begin: (item, text) => item.indexOf(text) === 0,
-    full: (item, text) => item === text,
-    end: (item, text) =>  item.includes(text) && item.indexOf(text) === item.length - text.length,
-    some: (item, text) => item.includes(text),
+    begin: searchStrategies.startsWith,
+    full: searchStrategies.includesExactly,
+    end: searchStrategies.endsWith,
+    some: searchStrategies.includes,
 };
 
 export interface ITranslateParams {
@@ -109,7 +110,7 @@ function getWordForms(item): string[] {
                 break;
         }
     });
-    
+
     return Array.from(new Set(wordForms.reduce((acc, item) => {
         if (item.includes('/')) {
             return [
@@ -307,7 +308,7 @@ class DictionaryClass {
                 this.splittedMap[lang].get(key),
             ]);
         });
-        
+
         return searchIndex;
     }
     public translate(translateParams: ITranslateParams, showTime = true): [string[][], number] {
@@ -425,7 +426,7 @@ class DictionaryClass {
                         return false;
                     }
                 }
-                
+
                 return filterResult;
             })
             .filter((item) => {
@@ -449,7 +450,7 @@ class DictionaryClass {
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
-                
+
                 return filterResult;
             })
             .map((item) => {
@@ -467,7 +468,7 @@ class DictionaryClass {
                         if (lDist < acc) {
                             return lDist;
                         }
-                        
+
                         return acc;
                     }, Number.MAX_SAFE_INTEGER);
                 if (twoWaySearch) {
@@ -485,13 +486,13 @@ class DictionaryClass {
                             if (lDist < acc) {
                                 return lDist;
                             }
-                            
+
                             return acc;
                         }, Number.MAX_SAFE_INTEGER);
                     dist = dist2 < dist ? dist2 : dist;
                 }
                 distMap.set(item, dist);
-                
+
                 return item;
             })
             .sort((a, b) => distMap.get(a) - distMap.get(b))
@@ -539,7 +540,7 @@ class DictionaryClass {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
                 formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
             }
-            
+
             return formattedItem;
         });
 
@@ -569,7 +570,7 @@ class DictionaryClass {
                     }
                 });
         }
-        
+
         return this.isvSearchLetters;
     }
     public setIsvSearchLetters(letters: {from: string[], to: string[]}): void {
@@ -587,9 +588,8 @@ class DictionaryClass {
         }
     }
     public searchPrepare(lang: string, text: string): string {
-        let lowerCaseText = text.toLowerCase()
-            .replace(/ /g, '')
-            .replace(/,/g, '');
+        let lowerCaseText = text.toLowerCase().replace(/,/g, '');
+
         if (lang !== 'isv-src') {
             lowerCaseText = lowerCaseText.replace(/[\u0300-\u036f]/g, '');
         } else {
@@ -635,7 +635,7 @@ class DictionaryClass {
     }
     private getSplittedField(from: string, item: string[]): string[] {
         const key = this.getField(item, 'id');
-        
+
         return this.splittedMap[from].get(key);
     }
     private applyIsvSearchLetters(text: string, flavorisationType: string): string {
@@ -647,7 +647,7 @@ class DictionaryClass {
             .map((replacement) => {
                 text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
             });
-        
+
         return text;
     }
 }
