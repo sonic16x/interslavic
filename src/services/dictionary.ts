@@ -322,7 +322,7 @@ class DictionaryClass {
 
         if (inputText.slice(0, 2) === 'id') {
             const id = inputText.slice(2);
-            const idIsInt = /^\d+$/.test(id);
+            const idIsInt = /^-?\d+$/.test(id);
 
             if (idIsInt) {
                 const word = this.getWord(id);
