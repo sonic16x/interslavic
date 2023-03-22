@@ -8,7 +8,7 @@ export function endsWith(str: string, substr: string): boolean {
     const begin = str.indexOf(substr);
     const end = begin + substr.length;
 
-    return end === str.length || str[end] === ' ';
+    return begin >= 0 && (end === str.length || str[end] === ' ');
 }
 
 export function includesExactly(str: string, substr: string): boolean {

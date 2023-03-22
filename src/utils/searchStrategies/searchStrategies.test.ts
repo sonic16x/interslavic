@@ -34,6 +34,10 @@ describe('searchStrategies', () => {
         test('returns false when substring ends before a non-space', () => {
             expect(endsWith('hello-world', 'ello')).toBe(false);
         });
+
+        test('returns false when substring is nowhere to be found', () => {
+            expect(endsWith('share', 'sphere')).toBe(false);
+        });
     });
 
     describe('includesExactly', () => {
