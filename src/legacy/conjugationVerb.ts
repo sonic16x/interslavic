@@ -248,12 +248,15 @@ function derive_present_tense_stem(infinitive_stem_string) {
     else if (result.slice(-1) === 'ų') {
         result = result.slice(0, -1) /*+ 'm'*/;
     }
-    else if( result.length < 4 && ['y', 'o', 'u', 'e', 'ě'].includes(result.slice(-1))) {
+    else if ( result.length < 4 && ['o', 'u', 'e', 'ě'].includes(result.slice(-1))) {
         if (result.charAt(0) === 'u') {
             result = result + 'ĵ';
         }  else {
             result = result + 'j';
         }
+    }
+    else if(result.slice(-1) === 'y') {
+        result = result + 'j';
     }
     else if(['a', 'e', 'ě'].includes(result.slice(-1))) {
         result = result + 'ĵ';
