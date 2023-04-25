@@ -1,4 +1,3 @@
-import { dictionaryUrl } from 'consts';
 import * as fs from 'fs';
 import { conjugationVerb } from 'legacy/conjugationVerb';
 import { declensionAdjective } from 'legacy/declensionAdjective';
@@ -12,6 +11,8 @@ import {
     isAnimated, isIndeclinable,
     isPlural, isSingular,
 } from 'utils/wordDetails';
+
+const dictionaryUrl = 'https://docs.google.com/spreadsheets/u/0/d/1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY/export?format=tsv';
 
 const testCases = {
     noun: [],
