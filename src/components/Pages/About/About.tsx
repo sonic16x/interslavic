@@ -82,6 +82,14 @@ export const About =
                                 Facebook community
                             </Link>
                             <a
+                                title="Interslavic Discord"
+                                href="https://discord.com/invite/n3saqm27QW"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Discord server
+                            </a>
+                            <a
                                 title="Interslavic Language Portal"
                                 href="http://interslavic-language.org/"
                                 target="_blank"
@@ -99,18 +107,36 @@ export const About =
                             </a>
                         </div>
                         <hr/>
-                        <a
-                            href="https://play.google.com/store/apps/details?id=org.interslavicdictionary.twa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
-                            title="Get it on Google Play"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <img
-                                alt="Get it on Google Play"
-                                width="200px"
-                                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                            />
-                        </a>
+                        <div className="about-page__badges">
+                            <a
+                                href="https://play.google.com/store/apps/details?id=org.interslavicdictionary.twa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+                                className="badge_google-play"
+                                title="Get it on Google Play"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <img
+                                    alt="Get it on Google Play"
+                                    width="200px"
+                                    src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                                />
+                            </a>
+
+                            <a
+                                href="https://discord.com/invite/n3saqm27QW"
+                                title="Get it on Discord"
+                                className="badge_discord"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <img
+                                    alt="Get it on Discord"
+                                    width="165px"
+                                    style={{ padding: "13px 0px" }}
+                                    src="icons/discord-icon-330x102.png"
+                                />
+                            </a>
+                        </div>
                     </div>
                     <div className="about-page__release-date">{version}</div>
                 </div>
