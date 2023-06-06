@@ -82,6 +82,14 @@ export const About =
                                 Facebook community
                             </Link>
                             <a
+                                title="Interslavic Discord"
+                                href="https://discord.com/invite/n3saqm27QW"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Discord server
+                            </a>
+                            <a
                                 title="Interslavic Language Portal"
                                 href="http://interslavic-language.org/"
                                 target="_blank"
@@ -109,6 +117,20 @@ export const About =
                                 alt="Get it on Google Play"
                                 width="200px"
                                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                            />
+                        </a>
+
+                        <a
+                            href="https://discord.com/invite/n3saqm27QW"
+                            title="Get it on Discord"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <img
+                                alt="Get it on Discord"
+                                width="165px"
+                                style={{ padding: "13px 0px" }}
+                                src="icons/discord-icon-330x102.png"
                             />
                         </a>
                     </div>
