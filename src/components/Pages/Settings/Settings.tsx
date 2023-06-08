@@ -87,7 +87,7 @@ export const Settings =
                     className="bold"
                     title={t('darkTheme')}
                     checked={isDarkTheme}
-                    onChange={() => dispatch(toggleThemeAction(isDarkTheme ? 'light' : 'dark'))}
+                    onChange={() => dispatch(toggleThemeAction(data))}
                 />
                 <hr/>
                 <h6>{t('showSlavicWordsInAlphabets')}</h6>
