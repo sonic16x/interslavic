@@ -2,11 +2,6 @@ import { addLangs,langs } from 'consts';
 
 import { IAlphabets } from 'reducers';
 
-import { conjugationVerbFlat } from 'legacy/conjugationVerb';
-import { declensionAdjectiveFlat } from 'legacy/declensionAdjective';
-import { declensionNounFlat } from 'legacy/declensionNoun';
-import { declensionNumeralFlat } from 'legacy/declensionNumeral';
-import { declensionPronounFlat } from 'legacy/declensionPronoun';
 import { convertCases } from 'utils/convertCases';
 import { filterLatin } from 'utils/filterLatin';
 import { filterNiqqud } from 'utils/filterNiqqud';
@@ -30,6 +25,8 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
+
+import { conjugationVerbFlat, declensionAdjectiveFlat, declensionNounFlat, declensionNumeralFlat, declensionPronounFlat } from '@interslavic/utils';
 
 export const searchTypes = {
     begin: searchStrategies.startsWith,

@@ -1,9 +1,15 @@
-import { transliterate } from 'legacy/transliterate';
+import { transliterate } from '@interslavic/utils';
 
 export function getGlagolitic(text: string, flavorisationType: string): string {
     if (!text) {
         return '';
     }
-    
-    return transliterate(text, 7, flavorisationType, 0, 1);
+
+    switch (flavorisationType) {
+        case '2': return transliterate(text, 'art-Glag-x-interslv-etym');
+        case '4': return transliterate(text, 'art-Glag-x-interslv-sloviant');
+        case 'J': return transliterate(text, 'art-Glag-x-interslv-southern');
+        case 'S': return transliterate(text, 'art-Glag-x-interslv-northern');
+        default: return transliterate(text, 'art-Glag-x-interslv');
+    }
 }

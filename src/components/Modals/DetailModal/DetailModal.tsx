@@ -8,11 +8,6 @@ import { t } from 'translations';
 import { hideModalDialog, setAlphabetTypeAction } from 'actions';
 import { IMainState } from 'reducers';
 
-import { conjugationVerb } from 'legacy/conjugationVerb';
-import { declensionAdjective } from 'legacy/declensionAdjective';
-import { declensionNoun } from 'legacy/declensionNoun';
-import { declensionNumeral } from 'legacy/declensionNumeral';
-import { declensionPronoun } from 'legacy/declensionPronoun';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
@@ -33,6 +28,8 @@ import { Table } from 'components/Table';
 import { Text } from 'components/Text';
 
 import './DetailModal.scss';
+
+import { conjugationVerb, declensionAdjective, declensionNoun, declensionNumeral, declensionPronoun } from '@interslavic/utils';
 
 interface IDetailModalInternal {
     close: () => void;
@@ -620,4 +617,4 @@ function mapStateToProps({
     };
 }
 
-export const DetailModal = connect(mapStateToProps, mapDispatchToProps)(DetailModalInternal);
+export const DetailModal = connect(mapStateToProps, mapDispatchToProps)(DetailModalInternal as any);
