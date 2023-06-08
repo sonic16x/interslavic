@@ -23,6 +23,7 @@ import { fetchLang } from 'services/fetchDictionary';
 import { interfaceLanguageList } from 'services/interfaceLanguages';
 
 import { useAlphabets } from 'hooks/useAlphabets';
+import { useDarkTheme } from 'hooks/useDarkTheme';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { useEnabledPages } from 'hooks/useEnabledPages';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
@@ -32,7 +33,6 @@ import { useLang } from 'hooks/useLang';
 import { useOrderOfCases } from 'hooks/useOrderOfCases';
 import { useResults } from 'hooks/useResults';
 import { useShortCardView } from 'hooks/useShortCardView';
-import { useToggleTheme } from 'hooks/useToggleTheme';
 
 import { Checkbox } from 'components/Checkbox';
 import { Selector } from 'components/Selector';
@@ -56,7 +56,7 @@ export const Settings =
         const alphabets = useAlphabets();
         const isvSearchLetters = useIsvSearchLetters();
         const isShortCardView = useShortCardView();
-        const isToggleTheme = useToggleTheme();
+        const isDarkTheme = useDarkTheme();
         const isvSearchByWordForms = useIsvSearchByWordForms();
         const orderOfCases = useOrderOfCases();
         const dictionaryLanguages = useDictionaryLanguages();
@@ -86,8 +86,8 @@ export const Settings =
                 <Checkbox
                     className="bold"
                     title={t('darkTheme')}
-                    checked={isToggleTheme}
-                    onChange={() => dispatch(toggleThemeAction())}
+                    checked={isDarkTheme}
+                    onChange={() => dispatch(toggleThemeAction(isDarkTheme ? 'light' : 'dark'))}
                 />
                 <hr/>
                 <h6>{t('showSlavicWordsInAlphabets')}</h6>

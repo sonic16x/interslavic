@@ -193,8 +193,9 @@ export function setBadges(data) {
     };
 }
 
-export function toggleThemeAction() {
+export function toggleThemeAction(data: 'dark' | 'light') {
     return {
         type: ActionTypes.TOGGLE_THEME,
+        data,
     }    
-};
+}
