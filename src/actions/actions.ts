@@ -25,6 +25,7 @@ export enum ActionTypes {
     TOGGLE_PAGE = 'TOGGLE_PAGE',
     SET_COMMUNITY_LINKS = 'SET_COMMUNITY_LINKS',
     SET_BADGES = 'SET_BADGES',
+    TOGGLE_THEME = 'TOGGLE_THEME',
 }
 
 export function langAction(data: {from: string, to: string}) {
@@ -191,3 +192,9 @@ export function setBadges(data) {
         data,
     };
 }
+
+export function toggleThemeAction() {
+    return {
+        type: ActionTypes.TOGGLE_THEME,
+    }    
+};
