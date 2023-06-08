@@ -284,7 +284,7 @@ export function mainReducer(state: IMainState, { type, data }) {
         case ActionTypes.TOGGLE_THEME:
             return {
                 ...state,
-                colorTheme: data ? 'dark' : 'light',
+                colorTheme: data,
             };
         case ActionTypes.HIDE_MODAL_DIALOG:
             return {
