@@ -57,6 +57,7 @@ export const defaultState: IMainState = {
         to: 'isv',
     },
     interfaceLang: getPreferredLanguage(),
+    colorTheme: 'white',
     clientId: md5(`${Date.now() * Math.random()}`),
     isvSearchLetters: {
         from: [],
