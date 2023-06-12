@@ -42,7 +42,7 @@ export default class Grammar extends PureComponent {
     public render() {
         return (
             <div
-                className="grammar-container"
+                className="grammar-container color-theme--light"
                 onWheel={this.onWheel}
                 onScroll={this.onScroll}
                 ref={this.containerRef}
