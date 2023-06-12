@@ -40,6 +40,7 @@
     --input-border-color: #ced4da;
     --shadow: 0 8px 16px rgba(0, 0, 0, .15);
     --border: 1px solid var(--input-border-color);
+    --table-highlighted-cell: #BBDEFB;
   
     --dark: #000;
     --light: #fff;
@@ -61,16 +62,17 @@
     --gray-e: #eee;
   }
   .color-theme--dark {
-    --primary-color: #1585fd;
+    --primary-color: #428bda;
     --muted-text-color: #6c757d;
     --light-gray-color: #999;
-    --valid-color: #3fb950;
+    --valid-color: #56c666;
     --invalid-color: #dc3545;
     --yellow-color: #ffde03;
     --header-background-color: #343a40;
     --input-border-color: #ced4da;
     --shadow: 0 8px 16px rgba(255, 255, 255, .15);
     --border: 1px solid var(--input-border-color);
+    --table-highlighted-cell: #99b1c6;
   
     --dark: #fff;
     --light: #202124; // фон і колір тексту header

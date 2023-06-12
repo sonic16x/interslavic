@@ -19,7 +19,7 @@
     }
 
     &.b {
-      background: #BBDEFB;
+      background: var(--table-highlighted-cell);
     }
 
     &.G {

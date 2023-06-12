@@ -45,7 +45,7 @@ export interface IMainState {
     interfaceLang: string;
     clientId: string;
     isShortCardView?: boolean;
-    colorTheme: 'dark' | 'white';
+    colorTheme: 'dark' | 'light';
     isvSearchLetters: {
         from: string[];
         to: string[]
