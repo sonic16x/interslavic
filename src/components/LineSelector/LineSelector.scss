@@ -7,7 +7,7 @@
   user-select: none;
 
   .slide {
-    background:  var(--primary-color);
+    background:  var(--primary-color-contrast);
     position: absolute;
     pointer-events: none;
     transition: margin-left 0.1s ease-in-out;
