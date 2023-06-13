@@ -1,10 +1,6 @@
-.body {
-  --always-white: #fff;
-}
-
 .color-theme--light {
   --primary-color: #2962ff;
-  --primary-color-contrast: var(--primary-color);
+  --primary-color-fg: #fff;
   --muted-text-color: #6c757d;
   --light-gray-color: #999;
   --valid-color: #28a745;
@@ -38,8 +34,8 @@
 }
 
 .color-theme--dark {
-  --primary-color: #288efb;
-  --primary-color-contrast: #2682e8;
+  --primary-color: #197de7;
+  --primary-color-fg: #fff;
   --muted-text-color: #6c757d;
   --light-gray-color: #999;
   --valid-color: #56c666;
