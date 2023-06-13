@@ -8,7 +8,8 @@
   width: 100%;
   border-collapse: collapse;
 
-  th, td {
+  th,
+  td {
     box-sizing: border-box;
     border: 2px solid var(--table-border-color);
     text-align: center;
@@ -39,7 +40,7 @@
     }
 
     &.S {
-      background: #E0E0E0;
+      background: var(--table-highlighted-cell);
     }
 
     &.s {
