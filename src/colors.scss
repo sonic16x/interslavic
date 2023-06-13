@@ -1,6 +1,7 @@
 .body {
   --always-white: #fff;
 }
+
 .color-theme--light {
     --primary-color: #2962ff;
     --primary-color-contrast: var(--primary-color);
@@ -34,8 +35,9 @@
     --gray-c: #ccc;
     --gray-d: #ddd;
     --gray-e: #eee;
-  }
-  .color-theme--dark {
+}
+
+.color-theme--dark {
     --primary-color: #288efb;
     --primary-color-contrast: #2682e8;
     --muted-text-color: #6c757d;
@@ -47,7 +49,7 @@
     --input-border-color: var(--gray-9);
     --shadow: 0 8px 16px rgba(255, 255, 255, .15);
     --border: 1px solid var(--input-border-color);
-    --table-highlighted-cell: #719dc3;
+  --table-highlighted-cell: #10324f;
     --table-border-color: #cdcdcd;
   
     --dark: #fff;
@@ -68,4 +70,4 @@
     --gray-c: #333;
     --gray-d: #222;
     --gray-e: #111;
-  }
+}

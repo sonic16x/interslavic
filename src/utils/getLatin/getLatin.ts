@@ -1,9 +1,18 @@
-import { transliterate } from 'legacy/transliterate';
+import { transliterate } from '@interslavic/utils';
 
 export function getLatin(text: string, flavorisationType: string): string {
     if (!text) {
         return '';
     }
-    
-    return transliterate(text, 1, flavorisationType, 0, 1);
+
+    switch (flavorisationType) {
+        case '2': return transliterate(text, 'art-Latn-x-interslv-etym');
+        case '4': return transliterate(text, 'art-Latn-x-interslv-sloviant');
+        case 'J': return transliterate(text, 'art-Latn-x-interslv-southern');
+        case '1':
+        case 'S':
+            return transliterate(text, 'art-Latn-x-interslv-northern');
+        default:
+            return transliterate(text, 'art-Latn-x-interslv');
+    }
 }
