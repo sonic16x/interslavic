@@ -4,12 +4,12 @@
   overflow: auto;
   scroll-behavior: smooth;
   position: relative;
+  background: var(--light);
 }
 
 .grammar {
   margin-right: auto;
   margin-left: auto;
-  background: var(--light);
   pointer-events: all;
   text-align: center;
   max-width: 1024px;

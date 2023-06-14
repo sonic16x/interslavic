@@ -57,7 +57,7 @@ export const Header =
 
         return (
             <header
-                className={classNames('header', { active: menuIsVisible, mobile, full })}
+                className={classNames('header', 'color-theme--light', { active: menuIsVisible, mobile, full })}
             >
                 <h1
                     className="logo"

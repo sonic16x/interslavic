@@ -16,12 +16,14 @@ import {
     setAlphabets,
     setInterfaceLang,
     togglePage,
+    toggleThemeAction,
 } from 'actions';
 
 import { fetchLang } from 'services/fetchDictionary';
 import { interfaceLanguageList } from 'services/interfaceLanguages';
 
 import { useAlphabets } from 'hooks/useAlphabets';
+import { useDarkTheme } from 'hooks/useDarkTheme';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { useEnabledPages } from 'hooks/useEnabledPages';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
@@ -54,6 +56,7 @@ export const Settings =
         const alphabets = useAlphabets();
         const isvSearchLetters = useIsvSearchLetters();
         const isShortCardView = useShortCardView();
+        const isDarkTheme = useDarkTheme();
         const isvSearchByWordForms = useIsvSearchByWordForms();
         const orderOfCases = useOrderOfCases();
         const dictionaryLanguages = useDictionaryLanguages();
@@ -78,6 +81,13 @@ export const Settings =
                     title={t('shortCardView')}
                     checked={isShortCardView}
                     onChange={() => dispatch(changeCardViewAction())}
+                />
+                <hr/>
+                <Checkbox
+                    className="bold"
+                    title={t('darkTheme')}
+                    checked={isDarkTheme}
+                    onChange={() => dispatch(toggleThemeAction(isDarkTheme ? 'light' : 'dark'))}
                 />
                 <hr/>
                 <h6>{t('showSlavicWordsInAlphabets')}</h6>

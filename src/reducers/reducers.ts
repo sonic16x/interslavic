@@ -45,6 +45,7 @@ export interface IMainState {
     interfaceLang: string;
     clientId: string;
     isShortCardView?: boolean;
+    colorTheme: 'dark' | 'light';
     isvSearchLetters: {
         from: string[];
         to: string[]
@@ -279,6 +280,11 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 isShortCardView: !state.isShortCardView,
+            };
+        case ActionTypes.TOGGLE_THEME:
+            return {
+                ...state,
+                colorTheme: data,
             };
         case ActionTypes.HIDE_MODAL_DIALOG:
             return {

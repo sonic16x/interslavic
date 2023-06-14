@@ -5,6 +5,7 @@ import { fetchCommunityLinks } from 'services/fetchCommunityLinks';
 import { fetchDictionary } from 'services/fetchDictionary';
 
 import { useCommunityLinks } from 'hooks/useCommunityLinks';
+import { useDarkTheme } from 'hooks/useDarkTheme';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
 import { GDPR } from 'components/GDPR';
@@ -21,6 +22,8 @@ export const Main =
         const dispatch = useDispatch();
         const dictionaryLanguages = useDictionaryLanguages();
         const communityLinks = useCommunityLinks();
+        const isDarkTheme = useDarkTheme();
+        const theme = isDarkTheme ? 'dark' : 'light';
 
         useEffect(() => {
             async function fetchAll() {
@@ -29,7 +32,8 @@ export const Main =
             }
 
             fetchAll();
-        }, [dispatch, dictionaryLanguages]);
+            document.getElementById('app').className='color-theme--' + theme;
+        }, [dispatch, dictionaryLanguages, theme]);
 
         return (
             <>

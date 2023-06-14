@@ -16,6 +16,7 @@ import { urlParamsMiddleware } from 'middlewares/urlParamsMiddleware';
 import { setInitialPage } from 'routing';
 import { getPageFromPath } from 'routing';
 import { getPreferredLanguage } from 'utils/getPreferredLanguage';
+import { getPreferredTheme } from "utils/getPreferredTheme";
 import { validateLang } from 'utils/validateLang';
 
 import { Main } from 'components/Main';
@@ -57,6 +58,7 @@ export const defaultState: IMainState = {
         to: 'isv',
     },
     interfaceLang: getPreferredLanguage(),
+    colorTheme: getPreferredTheme(),
     clientId: md5(`${Date.now() * Math.random()}`),
     isvSearchLetters: {
         from: [],

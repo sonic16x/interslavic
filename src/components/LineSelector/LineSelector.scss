@@ -7,7 +7,7 @@
   user-select: none;
 
   .slide {
-    background:  var(--primary-color);
+    background: var(--primary-color);
     position: absolute;
     pointer-events: none;
     transition: margin-left 0.1s ease-in-out;
@@ -19,14 +19,14 @@
   .item {
     flex: 1 1 0;
     text-align: center;
-    color:  var(--primary-color);
+    color: var(--primary-color);
     font-weight: 500;
     transition: color 0.1s ease-in-out;
     z-index: 1;
     line-height: 40px;
 
     &.active {
-      color: var(--light);
+      color: var(--primary-color-fg);
     }
   }
 }
