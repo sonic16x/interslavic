@@ -1,0 +1,14 @@
+.translate-results {
+  display: flex;
+  flex-wrap: wrap;
+
+  border-radius: var(--border-radius-s);
+  border: 1px solid var(--input-border-color);
+  padding: var(--gap-size-s);
+
+  &__loader {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+  }
+}

@@ -18,6 +18,7 @@ module.exports = {
         grammarComponent: './src/components/Pages/Grammar/Grammar',
         viewerComponent: './src/components/Pages/Viewer/Viewer',
         communityComponent: './src/components/Pages/CommunityPage/CommunityPage',
+        translatorComponent: './src/components/Pages/TranslatorPage/TranslatorPage',
         sw: './src/sw',
     },
     output: {

@@ -16,6 +16,7 @@ import './Router.scss';
 
 const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar'));
 const CommunityPage = lazy(() => import(/* webpackChunkName: "communityComponent" */'components/Pages/CommunityPage/CommunityPage'));
+const TranslatorPage = lazy(() => import(/* webpackChunkName: "translatorComponent" */'components/Pages/TranslatorPage/TranslatorPage'));
 const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'));
 
 function renderPageContent(page) {
@@ -29,6 +30,12 @@ function renderPageContent(page) {
         case 'dictionary':
             return (
                 <DictionaryPage/>
+            );
+        case 'translator':
+            return (
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <TranslatorPage/>
+                </Suspense>
             );
         case 'community':
             return (

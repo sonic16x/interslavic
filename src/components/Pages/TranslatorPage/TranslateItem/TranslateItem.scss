@@ -1,0 +1,64 @@
+.translate-item {
+  border-radius: 3px;
+  margin: 1px;
+  padding: 0 3px;
+  font-size: var(--text-m);
+  line-height: var(--text-m-line);
+  position: relative;
+
+  &.loading {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  &.br {
+    display: block;
+    width: 100%;
+    height: 0;
+  }
+
+  &.forms {
+    &:before {
+      content: "";
+      width: 100%;
+      height: 3px;
+      background: var(--dark);
+      border-radius: 3px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      opacity: 0.4;
+    }
+  }
+
+  &.error {
+    background: var(--invalid-color);
+  }
+
+  &.maybe {
+    background: var(--yellow-color);
+  }
+
+  &.valid {
+    background: var(--valid-color);
+  }
+
+  &.space {
+    background: var(--light-gray-color);
+  }
+
+  &__form-select {
+    cursor: pointer;
+    font-size: var(--text-m);
+    line-height: var(--text-m-line);
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    height: calc(100% + 2px);
+    z-index: 100;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+  }
+}

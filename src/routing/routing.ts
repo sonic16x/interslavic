@@ -24,6 +24,12 @@ export const pages: IPage[] = [
         path: `${BASE_URL}grammar`,
     },
     {
+        title: 'translatorTitle',
+        value: 'translator',
+        path: `${BASE_URL}translator`,
+        subTitle: 'Beta',
+    },
+    {
         title: 'viewerTitle',
         value: 'viewer',
         path: `${BASE_URL}viewer`,

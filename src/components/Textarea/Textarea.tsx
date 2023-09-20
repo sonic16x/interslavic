@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 
 import './Textarea.scss';
 
@@ -26,8 +26,9 @@ function getLinesHeight(count, size) {
     return sizes[size] * count + 8 * 2;
 }
 
-export const Textarea = ({ value, error, size = 'M', className, onChange, autoresize, placeholder, ...otherProps }: ITextareaProps) => {
-    const textareaRef = useRef(null);
+export const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>((
+    { value, error, size = 'M', className, onChange, autoresize, placeholder, ...otherProps }, ref) => {
+    const divRef = useRef(null);
 
     const minLines = 2;
     const maxLines = 6;
@@ -35,16 +36,18 @@ export const Textarea = ({ value, error, size = 'M', className, onChange, autore
     const maxHeight = getLinesHeight(maxLines, size);
 
     useEffect(() => {
-        if (textareaRef && textareaRef.current && autoresize) {
-            textareaRef.current.style.height = '';
-            const height = Math.min(Math.max(textareaRef.current.scrollHeight, minHeight), maxHeight) + 2;
-            textareaRef.current.style.height = `${height}px`;
+        if (divRef && divRef.current && autoresize) {
+            const textarea = divRef.current.getElementsByTagName('textarea')[0];
+            textarea.style.height = '';
+            const height = Math.min(Math.max(textarea.scrollHeight, minHeight), maxHeight) + 2;
+            textarea.style.height = `${height}px`;
         }
-    }, [value, textareaRef, autoresize]);
+    }, [value, divRef, autoresize]);
 
     return (
         <div
             className={classNames('textarea', [className], { error: error?.length })}
+            ref={divRef}
         >
             {error && (
                 <p className="textarea__error-text">
@@ -52,7 +55,7 @@ export const Textarea = ({ value, error, size = 'M', className, onChange, autore
                 </p>
             )}
             <textarea
-                ref={textareaRef}
+                ref={ref}
                 className={classNames(['textarea__native', size])}
                 placeholder={placeholder}
                 value={value}
@@ -61,4 +64,7 @@ export const Textarea = ({ value, error, size = 'M', className, onChange, autore
             />
         </div>
     );
-};
+});
+
+Textarea.displayName = 'Textarea';
+
