@@ -16,6 +16,7 @@
     display: block;
     transition: transform var(--animation-duration) linear;
     cursor: pointer;
+    color: var(--muted-text-color);
     background: var(--light);
     width: 21px;
     height: 16px;
