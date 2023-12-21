@@ -1,20 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
+@import 'src/colors';
 
-#app {
-  --primary-color: #2962ff;
-  --muted-text-color: #6c757d;
-  --light-gray-color: #999;
-  --valid-color: #28a745;
-  --invalid-color: #dc3545;
-  --yellow-color: #ffde03;
-  --shadow: 0 8px 16px rgba(0, 0, 0, .15);
-  --border: 1px solid rgba(0, 0, 0, .125);
+body {
   --border-radius-s: 5px;
   --border-radius-m: 8px;
   --line-width: 3px;
   --line-length: 25px;
   --base-margin: 8px;
   --animation-duration: .15s;
+  --transition-duration: .1s;
+
+  --text-xl: 24px;
+  --text-xl-line: 24px;
 
   --text-l: 20px;
   --text-l-line: 24px;
@@ -32,6 +29,36 @@
   --gap-size-s: 8px;
 }
 
+.primary-color {
+  color: var(--primary-color);
+}
+
+.muted-color {
+  color: var(--muted-text-color);
+}
+
+.text {
+  &-xs {
+    font-size: var(--text-xs);
+    line-height: var(--text-xs-line);
+  }
+
+  &-s {
+    font-size: var(--text-s);
+    line-height: var(--text-s-line);
+  }
+
+  &-m {
+    font-size: var(--text-m);
+    line-height: var(--text-m-line);
+  }
+
+  &-l {
+    font-size: var(--text-l);
+    line-height: var(--text-l-line);
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -41,7 +68,7 @@ html, body {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-#app, input, select, button, a {
+#app, input, select, button, a, textarea {
   font-family: Roboto, sans-serif;
   -webkit-appearance: none;
 }
@@ -60,21 +87,24 @@ a {
 .bold {
   font-weight: bold;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 
 h4 {
-  font-size: 24px;
-  font-weight: 600;
-  margin: 0 0 8px;
+  font-size: var(--text-xl);
 }
 
 h5 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 8px;
+  font-size: var(--text-l);
 }
 
 h6 {
-  font-size: 16px;
+  font-size: var(--text-m);
+}
+
+h4, h5, h6 {
+  color: var(--dark);
   font-weight: 600;
   margin: 0 0 8px;
 }
@@ -90,4 +120,11 @@ hr {
 p {
   margin: 0;
   padding: 0;
+  color: var(--dark);
+}
+i {
+  color: var(--dark);
+}
+div {
+  color: var(--dark);
 }

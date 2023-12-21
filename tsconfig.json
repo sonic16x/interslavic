@@ -8,12 +8,15 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {},
-    "typeRoots": ["./custom.d.ts", "node_modules/@types"],
+    "typeRoots": [
+      "./src/custom.d.ts",
+      "node_modules/@types"
+    ],
     "lib": [
       "dom",
       "es5",
@@ -21,8 +24,12 @@
       "es2015.collection"
     ]
   },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
   "exclude": [
     "node_modules",
-    "**/*.test.ts"
+//    "**/*.test.ts"
   ]
 }

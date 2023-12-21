@@ -1,0 +1,1838 @@
+{
+  "tableAbeceda": [
+    [
+      "a@bb",
+      "b@bb",
+      "c@bb",
+      "č@bb",
+      "d@bb",
+      "dj@bb",
+      "dž@bb",
+      "e@bb",
+      "ě@bb",
+      "f@bb",
+      "g@bb",
+      "h@bb",
+      "i@bb",
+      "j@bb",
+      "ja@bb",
+      "ju@bb",
+      "k@bb",
+      "l@bb",
+      "lj@bb"
+    ],
+    [
+      "{а}[k]@bt;s",
+      "{б}[k]@bt;s",
+      "{ц}[k]@bt;s",
+      "{ч}[k]@bt;s",
+      "{д}[k]@bt;s",
+      "{дь}[k]@bt;s",
+      "{дж}[k]@bt;s",
+      "{е}[k]@w=2;bt;s",
+      "{ф}[k]@bt;s",
+      "{г}[k]@bt;s",
+      "{х}[k]@bt;s",
+      "{и}[k]@bt;s",
+      "{j}[k]@bt;s",
+      "{я}[k]@bt;s",
+      "{ю}[k]@bt;s",
+      "{к}[k]@bt;s",
+      "{л}[k]@bt;s",
+      "{ль}[k]@bt;s"
+    ],
+    [
+      "m@bb",
+      "n@bb",
+      "nj@bb",
+      "o@bb",
+      "p@bb",
+      "q@bb",
+      "r@bb",
+      "s@bb",
+      "š@bb",
+      "šč@bb",
+      "t@bb",
+      "tj@bb",
+      "u@bb",
+      "v@bb",
+      "w@bb",
+      "x@bb",
+      "y@bb",
+      "z@bb",
+      "ž@bb"
+    ],
+    [
+      "{м}[k]@bt;s",
+      "{н}[k]@bt;s",
+      "{нь}[k]@bt;s",
+      "{о}[k]@bt;s",
+      "{п}[k]@bt;s",
+      "{к}[k]@bt;s",
+      "{р}[k]@bt;s",
+      "{с}[k]@bt;s",
+      "{ш}[k]@bt;s",
+      "{щ}[k]@bt;s",
+      "{т}[k]@bt;s",
+      "{ть}[k]@bt;s",
+      "{у}[k]@bt;s",
+      "{в}[k]@w=2;bt;s",
+      "{кс}[k]@bt;s",
+      "{ы}[k]@bt;s",
+      "{з}[k]@bt;s",
+      "{ж}[k]@bt;s"
+    ]
+  ],
+  "tableBrat": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "BRAT (živ.) GRAD (neživ.)@bt;bl;br;w=3;ts",
+      "mužsky tvrdy vzor@bt;bl;br;w=3;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "jednina@w=2;d",
+      "množina@w=2;d",
+      "dvojina<a href=\"#primetky\">*</a>@w=2;d"
+    ],
+    [
+      "N@d;bb",
+      "brat@br",
+      "grad@bb;bl",
+      "brat-{i}[b]@br;s",
+      "grad-{y}[b]@bb;bl;s",
+      "brat-{a}[r]@br;bb",
+      "grad-{a}[r]@bl;bb"
+    ],
+    [
+      "A@d;bb",
+      "brat-{a}[r]@bb;b",
+      "grad@bt",
+      "brat-{o}[p]v@bb;B",
+      "grad-{y}[b]@bt;s",
+      "brat-{u}[p]@br;bt",
+      "grad-{a}[r]@bl;bt"
+    ],
+    [
+      "G@d;bb",
+      "brat-{a}[r]@br;b",
+      "grad-{a}[r]@bl;b",
+      "brat-{o}[p]v@br;B",
+      "grad-{o}[p]v@bl;B",
+      "brat-{u}[p]@br;bb;b",
+      "grad-{u}[p]@bl;bb;b"
+    ],
+    [
+      "L@d;bb",
+      "brat-{u}[p]@br;bb;g",
+      "grad-{u}[p]@bl;bb;g",
+      "brat-{a}[r]h@br;G",
+      "grad-{a}[r]h@bl;G",
+      "brat-{u}[p]@br;bt;b",
+      "grad-{u}[p]@bl;bt;b"
+    ],
+    [
+      "D@d;bb",
+      "brat-{u}[p]@br;bt;g",
+      "grad-{u}[p]@bl;bt;g",
+      "brat-{a}[r]m@br;R;bb",
+      "grad-{a}[r]m@bl;R;bb",
+      "brat-{a}[r]m{a}[r]@br;bb;r",
+      "grad-{a}[r]m{a}[r]@bl;bb;r"
+    ],
+    [
+      "I@d;bb",
+      "brat-{o}[p]m@br;r",
+      "grad-{o}[p]m@bl;r",
+      "brat-{a}[r]m{i}[b]@br;R;bt",
+      "grad-{a}[r]m{i}[b]@bl;R;bt",
+      "brat-{a}[r]m{a}[r]@br;bt;r",
+      "grad-{a}[r]m{a}[r]@bl;bt;r"
+    ],
+    [
+      "V@d",
+      "brat-{e}[g]{!}[s]@br;s",
+      "grad-{e}[g]{!}[s]@bl;s",
+      "brat-{i}[b]{!}[s]@br;S",
+      "grad-{y}[b]{!}[s]@bl;S",
+      "brat-{a}[r]{!}[s]@br;s",
+      "grad-{a}[r]{!}[s]@bl;s"
+    ]
+  ],
+  "tableMuz": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "MUŽ (živ.) NOŽ (neživ.)@bt;bl;br;w=3;ts",
+      "mužsky mekky vzor@bt;bl;br;w=3;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "jednina@w=2;d",
+      "množina@w=2;d",
+      "dvojina<a href=\"#primetky\">*</a>@w=2;d"
+    ],
+    [
+      "N@d;bb",
+      "muž@br",
+      "nož@bl;bb",
+      "muž-{i}[b]@br;s",
+      "nož-{e}[g]@bl;bb;s",
+      "muž-{a}[r]@br;bb",
+      "nož-{a}[r]@bl;bb"
+    ],
+    [
+      "A@d;bb",
+      "muž-{a}[r]@bb;b",
+      "nož@bt",
+      "muž-{e}[g]v@bb;B",
+      "nož-{e}[g]@bt;s",
+      "muž-{u}[p]@br;bt",
+      "nož-{a}[r]@bl;bt"
+    ],
+    [
+      "G@d;bb",
+      "muž-{a}[r]@br;bt;b",
+      "nož-{a}[r]@bl;b",
+      "muž-{e}[g]v@br;bt;B",
+      "nož-{e}[g]v@bl;B",
+      "muž-{u}[p]@br;bb;b",
+      "nož-{u}[p]@bl;bb;b"
+    ],
+    [
+      "L@d;bb",
+      "muž-{u}[p]@br;bb;g",
+      "nož-{u}[p]@bl;bb;g",
+      "muž-{a}[r]h@br;G",
+      "nož-{a}[r]h@bl;G",
+      "muž-{u}[p]@br;bt;b",
+      "nož-{u}[p]@bl;bt;b"
+    ],
+    [
+      "D@d;bb",
+      "muž-{u}[p]@br;bt;g",
+      "nož-{u}[p]@bl;bt;g",
+      "muž-{a}[r]m@br;R;bb",
+      "nož-{a}[r]m@bl;R;bb",
+      "muž-{a}[r]m{a}[r]@br;bb;r",
+      "nož-{a}[r]m{a}[r]@bl;bb;r"
+    ],
+    [
+      "I@d;bb",
+      "muž-{e}[g]m@br;r",
+      "nož-{e}[g]m@bl;r",
+      "muž-{a}[r]m{i}[b]@br;bt;R",
+      "nož-{a}[r]m{i}[b]@bl;bt;R",
+      "muž-{a}[r]m{a}[r]@br;bt;r",
+      "nož-{a}[r]m{a}[r]@bl;bt;r"
+    ],
+    [
+      "V@d",
+      "muž-{u}[p]{!}[s]@br;s",
+      "nož-{u}[p]{!}[s]@bl;s",
+      "muž-{i}[b]{!}[s]@br;S",
+      "nož-{e}[g]{!}[s]@bl;S",
+      "muž-{a}[r]{!}[s]@br;s",
+      "nož-{a}[r]{!}[s]@bl;s"
+    ]
+  ],
+  "tableZena": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "ŽENA@bt;bl;br",
+      "DUŠA@bt;bl;br",
+      "&nbsp@bt;bl;br;",
+      "ženske tvrdy i mekky vzory@bt;bl;br;w=3;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "jednina@w=2;d",
+      "množina@w=2;d",
+      "dvojina<a href=\"#primetky\">*</a>@w=2;d"
+    ],
+    [
+      "N@d;bb",
+      "žen-{a}[r]",
+      "duš-{a}[r]",
+      "žen-{y}[g]@bb;s",
+      "duš-{e}[g]@bb;s",
+      "žen-{ě}[g]@bb",
+      "duš-{i}[b]@bb"
+    ],
+    [
+      "A@d;bb",
+      "žen-{u}[p]@r",
+      "duš-{u}[p]@r",
+      "žen-{y}[b]@bt;s",
+      "duš-{e}[g]@bt;s",
+      "žen-{ě}[g]@bt;bt",
+      "duš-{i}[b]@bt;bt"
+    ],
+    [
+      "G@d;bb",
+      "žen-{y}[b]@b",
+      "duš-{e}[g]@b",
+      "žen@br;B",
+      "duš{(-}[s]{e}[g]j{)}[s]@B",
+      "žen-{u}[p]@bb;b",
+      "duš-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "žen-{ě}[g]@bb;g",
+      "duš-{i}[b]@bb;g",
+      "žen-{a}[r]h@G",
+      "duš-{a}[r]h@G",
+      "žen-{u}[p]@bt;b",
+      "duš-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "žen-{ě}[g]@bt;g",
+      "duš-{i}[b]@bt;g",
+      "žen-{a}[r]m@bb;R",
+      "duš-{a}[r]m@bb;R",
+      "žen-{a}[r]m{a}[r]@bb;r",
+      "duš-{a}[r]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "žen-{oju}[p]@R",
+      "duš-{e}[g]{ju}[p]@R",
+      "žen-{a}[r]m{i}[b]@R",
+      "duš-{a}[r]m{i}[b]@R",
+      "žen-{a}[r]m{a}[r]@r",
+      "duš-{a}[r]m{a}[r]@r"
+    ],
+    [
+      "V@d",
+      "žen-{o}[p]{!}[s]@s",
+      "duš-{e}[g]{!}[s] {(-}[s]{o}[p]{!)}[s]@s",
+      "žen-{y}[b]{!}[s]@S",
+      "duš-{e}[g]{!}[s]@S",
+      "žen-{ě}[g]{!}[s]@s",
+      "duš-{i}[b]{!}[s]@s"
+    ]
+  ],
+  "tableKost": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "KOST (MYŠ,RADOST,PET,ŠEST,DESET...)@bt;bl;br;w=4;ts",
+      "žensky soglasny vzor@bt;bl;br;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "jednina@w=2;d",
+      "množina@w=2;d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "N@d;bb",
+      "kost@bb",
+      "deset@bb",
+      "kost-{i}[b]@bb;s",
+      "oč-{i}[b]@bb;s",
+      "kost-{i}[b]@bb"
+    ],
+    [
+      "A@d;bt",
+      "kost@bt",
+      "deset@bt",
+      "kost-{i}[b]@bt;s",
+      "oč-{i}[b]@bt;s",
+      "kost-{i}[b]@bt"
+    ],
+    [
+      "G@d;bb",
+      "kost-{i}[b]@b",
+      "deset-{i}[b]@b",
+      "kost-{ij}[b]@B",
+      "oč-{ij}[b]@B",
+      "kost-{ju}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "kost-{i}[b]@bb;g",
+      "deset-{i}[b]@bb;g",
+      "kost-{a}[r]h@G",
+      "oč-{a}[r]h@G",
+      "kost-{ju}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "kost-{i}[b]@bt;g",
+      "deset-{i}[b]@bt;g",
+      "kost-{a}[r]m@bb;R",
+      "oč-{a}[r]m@bb;R",
+      "kost-{a}[r]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "kost-{ju}[p]@r",
+      "deset-{ju}[p]@r",
+      "kost-{a}[r]m{i}[b]@bt;R",
+      "oč-{a}[r]m{i}[b]@bt;R",
+      "kost-{a}[r]m{a}[r]@bt;r"
+    ],
+    [
+      "V@d",
+      "kost-{i}[b]{!}[s]@s",
+      "deset-{i}[b]{!}[s]@s",
+      "kost-{i}[b]{!}[s]@S",
+      "oč-{i}[b]{!}[s]@S",
+      "kost-{i}[b]{!}[s]@s"
+    ]
+  ],
+  "tableSelo": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "SELO@bt;bl;br",
+      "POLJE@bt;bl;br",
+      "&nbsp@bt;bl;br",
+      "srědne tvrdy i mekky vzory@bt;bl;br;w=3;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "jednina@w=2;d",
+      "množina@w=2;d",
+      "dvojina<a href=\"#primetky\">*</a>@w=2;d"
+    ],
+    [
+      "N@d;bb",
+      "sel-{o}[p]@bb",
+      "polj-{e}[g]@bb",
+      "sel-{a}[r]@bb;s",
+      "polj-{a}[r]@bb;s",
+      "sel-{ě}[g]@bb",
+      "polj-{i}[b]@bb"
+    ],
+    [
+      "A@d;bb",
+      "sel-{o}[p]@bt",
+      "polj-{e}[g]@bt",
+      "sel-{a}[r]@bt;s",
+      "polj-{a}[r]@bt;s",
+      "sel-{ě}[g]@bt",
+      "polj-{i}[b]@bt"
+    ],
+    [
+      "G@d;bb",
+      "sel-{a}[r]@b",
+      "polj-{a}[r]@b",
+      "sel@B",
+      "polj{(-}[s]{e}[g]j{)}[s]@B",
+      "sel-{u}[p]@bb;b",
+      "polj-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "sel-{u}[p]@bb;g",
+      "polj-{u}[p]@bb;g",
+      "sel-{a}[r]h@G",
+      "polj-{a}[r]h@G",
+      "sel-{u}[p]@bt;b",
+      "polj-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "sel-{u}[p]@bt;g",
+      "polj-{u}[p]@bt;g",
+      "sel-{a}[r]m@bb;R",
+      "polj-{a}[r]m@bb;R",
+      "sel-{a}[r]m{a}[r]@bb;r",
+      "polj-{a}[r]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "sel-{o}[p]m@r",
+      "polj-{e}[g]m@r",
+      "sel-{a}[r]m{i}[b]@bt;R",
+      "polj-{a}[r]m{i}[b]@bt;R",
+      "sel-{a}[r]m{a}[r]@bt;r",
+      "polj-{a}[r]m{a}[r]@bt;r"
+    ],
+    [
+      "V@d",
+      "sel-{o}[p]{!}[s]@s",
+      "polj-{e}[g]{!}[s]@s",
+      "sel-{a}[r]{!}[s]@S",
+      "polj-{a}[r]{!}[s]@S",
+      "sel-{ě}[g]{!}[s]@s",
+      "polj-{i}[b]{!}[s]@s"
+    ]
+  ],
+  "tableDen": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "N- -R- -T-@bt;bl;br",
+      "&nbsp@bt;bl;br;bb;w=2",
+      "specialne vzory@bt;bl;br;bb;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "jednina@w=4;d"
+    ],
+    [
+      "N@d;bb",
+      "den@bb",
+      "im-{e}[g]@bb",
+      "mat-{i}[b]@bb",
+      "dět-{e}[g]@bb"
+    ],
+    [
+      "A@d;bb",
+      "den@bt",
+      "im-{e}[g]@bt",
+      "mat-{i}[b]@bt",
+      "dět-{e}[g]@bt"
+    ],
+    [
+      "G@d;bb",
+      "dn-{e}[g]@b",
+      "im-{e}[g]n-{e}[g]@b",
+      "mat-{e}[g]r-{e}[g]@b",
+      "dět-{e}[g]t-{e}[g]@b"
+    ],
+    [
+      "L@d;bb",
+      "dn-{i}[b]@bb;g",
+      "im-{e}[g]n-{i}[b]@bb;g",
+      "mat-{e}[g]r-{i}[b]@bb;g",
+      "dět-{e}[g]t-{i}[b]@bb;g"
+    ],
+    [
+      "D@d;bb",
+      "dn-{i}[b]@bt;g",
+      "im-{e}[g]n-{i}[b]@bt;g",
+      "mat-{e}[g]r-{i}[b]@bt;g",
+      "dět-{e}[g]t-{i}[b]@bt;g"
+    ],
+    [
+      "I@d;bb",
+      "dn-{e}[g]m@r",
+      "im-{e}[g]n-{e}[g]m@r",
+      "mat-{e}[g]r-{ju}[p]@r",
+      "dět-{e}[g]t-{e}[g]m@r"
+    ],
+    [
+      "V@d",
+      "dn-{i}[b]{!}[s]@br;s",
+      "im-{e}[g]{!}[s]@bl;s",
+      "mat-{i}[b]{!}[s]@br;s",
+      "dět-{e}[g]{!}[s]@bl;s"
+    ]
+  ],
+  "tableNauc1": [
+    [
+      "zapis@d",
+      "etymologija iz PSL@d"
+    ],
+    [
+      "ę@s",
+      "nasal Ѧ"
+    ],
+    [
+      "ų@s",
+      "nasal Ѫ"
+    ],
+    [
+      "ò@s",
+      "vokalizovany Ъ"
+    ],
+    [
+      "è@s",
+      "vokalizovany Ь"
+    ],
+    [
+      "å@s",
+      "О → А (napr. kråva)"
+    ]
+  ],
+  "tableNauc2": [
+    [
+      "zapis@d",
+      "etymologija iz PSL@d"
+    ],
+    [
+      "ć@s",
+      "redukovany Щ"
+    ],
+    [
+      "ď@s",
+      "ДЬ"
+    ],
+    [
+      "ť@s",
+      "ТЬ"
+    ],
+    [
+      "ň@s",
+      "НЬ"
+    ],
+    [
+      "ľ@s",
+      "ЛЬ"
+    ]
+  ],
+  "tableKir": [
+    [
+      "lat.@d",
+      "kirilica@d;w=2"
+    ],
+    [
+      "ě@s",
+      "Е",
+      "Ѣ"
+    ],
+    [
+      "šč@s",
+      "ШЧ",
+      "Щ"
+    ],
+    [
+      "ja@s",
+      "ЈА",
+      "Я"
+    ],
+    [
+      "ju@s",
+      "ЈУ",
+      "Ю"
+    ]
+  ],
+  "tableMest": [
+    [
+      "&nbsp@bt;bl",
+      "ja@d",
+      "ty@d",
+      "se@d",
+      "my@d",
+      "vy@d",
+      "na<a href=\"#primetky\">*</a>@d",
+      "va<a href=\"#primetky\">*</a>@d",
+      "kto@d",
+      "čto@d"
+    ],
+    [
+      "N@d;bb",
+      "ja {(}[s]az{)}[s]",
+      "ty",
+      "&nbsp@d",
+      "my",
+      "vy",
+      "na@bb",
+      "va@bb",
+      "kto",
+      "čto@bb"
+    ],
+    [
+      "A@d;bb",
+      "mene@bb;b",
+      "tebe@bb;b",
+      "sebe@bb;b",
+      "nas@bb;B",
+      "vas@bb;B",
+      "na@bt",
+      "va@bt",
+      "kogo@bb;b",
+      "čto@bt"
+    ],
+    [
+      "G@d;bb",
+      "mene@bt;b",
+      "tebe@bt;b",
+      "sebe@bt;b",
+      "nas@bb;bt;B",
+      "vas@bb;bt;B",
+      "naj@bb;b",
+      "vaj@bb;b",
+      "kogo@bt;b",
+      "čego@bt;b"
+    ],
+    [
+      "L@d;bb",
+      "mně@bb;g",
+      "tobě@bb;g",
+      "sobě@bb;g",
+      "nas@bt;B",
+      "vas@bt;B",
+      "naj@bt;b",
+      "vaj@bt;b",
+      "kom@bb;g",
+      "čem@bb;g"
+    ],
+    [
+      "D@d;bb",
+      "mně@bt;g",
+      "tobě@bt;g",
+      "sobě@bt;g",
+      "nam@bb;R",
+      "vam@bb;R",
+      "nama@bb;r",
+      "vama@bb;r",
+      "komu@bt;g",
+      "čemu@bt;g"
+    ],
+    [
+      "I@d;bb",
+      "mnoju@r",
+      "toboju@r",
+      "soboju@r",
+      "nami@bt;R",
+      "vami@bt;R",
+      "nama@bt;r",
+      "vama@bt;r",
+      "kym@r",
+      "čim@r"
+    ],
+    [
+      "V@d",
+      "&nbsp@d",
+      "ty{!}[s]@s",
+      "&nbsp@d",
+      "my{!}[s]@s",
+      "vy{!}[s]@s",
+      "na{!}[s]@s",
+      "va{!}[s]@s",
+      "&nbsp@d",
+      "&nbsp@d"
+    ]
+  ],
+  "tableTojTaTo": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "TOJ TA TO@bt;bl;br;w=2",
+      "&nbsp@bt;bl;br;w=4",
+      "tvrdy vzor@bt;bl;br;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "m.ž. jedn.@d",
+      "m.n. jedn.@d",
+      "ž. jedn.@d",
+      "s. jedn.@d",
+      "m.ž.m.@d",
+      "m.n.m. ž.m. s.m.@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "N@d;bb",
+      "t-{o}[p]j@w=2",
+      "t-{a}[r]",
+      "t-{o}[p]@bb",
+      "t-{i}[b]@s",
+      "t-{e}[g]@bb;s",
+      "t-{e}[g]@bb"
+    ],
+    [
+      "A@d;bb",
+      "t-{o}[p]g{o}[p]@bb;b",
+      "t-{o}[p]j@bt",
+      "t-{u}[p]@b",
+      "t-{o}[p]@bt",
+      "t-{y}[b]h@bb;B",
+      "t-{e}[g]@bt;s",
+      "t-{e}[g]@bt"
+    ],
+    [
+      "G@d;bb",
+      "t-{o}[p]g{o}[p]@w=2;b",
+      "t-{o}[p]j@bb;g",
+      "t-{o}[p]g{o}[p]@b",
+      "t-{y}[b]h@w=2;bb;B",
+      "t-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "t-{o}[p]m@w=2;bb;g",
+      "t-{o}[p]j@bb;bt;g",
+      "t-{o}[p]m@bb;g",
+      "t-{y}[b]h@w=2;bt;B",
+      "t-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "t-{o}[p]m{u}[p]@w=2;bt;g",
+      "t-{o}[p]j@bt;g",
+      "t-{o}[p]m{u}[p]@bt;g",
+      "t-{y}[b]m@w=2;bb;R",
+      "t-{y}[b]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "t-{y}[b]m@w=2;r",
+      "t-{o}[p]j{u}[p]@r",
+      "t-{y}[b]m@r",
+      "t-{y}[b]m@w=2;bt;R",
+      "t-{y}[b]m{a}[r]@bt;r"
+    ],
+    [
+      "V@d",
+      "{t-oj!}[s]@w=2;s",
+      "{t-a!}[s]@s",
+      "{t-o!}[s]@s",
+      "{t-i!}[s]@s",
+      "{t-e!}[s]@s",
+      "{t-e!}[s]@s"
+    ]
+  ],
+  "tableOnOnaOno": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "ON ONA ONO@bt;bl;br;w=2",
+      "&nbsp@bt;bl;br;w=4",
+      "mekky vzor@bt;bl;br;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "m.ž. jedn.@d",
+      "m.n. jedn.@d",
+      "ž. jedn.@d",
+      "s. jedn.@d",
+      "m.ž.m.@d",
+      "m.n.m. ž.m. s.m.@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "N@d;bb",
+      "on@w=2",
+      "on-{a}[r]",
+      "on-{o}[p]@",
+      "on-{i}[b]@s",
+      "on-{e}[g]@bb;s",
+      "on-{e}[g]@bb"
+    ],
+    [
+      "A@d;bb",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]g{o}[p]@bb;b",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]j@s",
+      "{(}[s]{n}[k]{)}[s]j-{u}[p]@b",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]@s",
+      "{(}[s]{n}[k]{)}[s]j-{i}[g]h@bb;B",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]@s",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]@"
+    ],
+    [
+      "G@d;bb",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]g{o}[p]@w=2;b",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]j@g;bb",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]g{o}[p]@b",
+      "{(}[s]{n}[k]{)}[s]j-{i}[b]h@w=2;bb;B",
+      "{(}[s]{n}[k]{)}[s]j-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]m@w=2;bb;g",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]j@bb;;bt;g",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]m@bb;g",
+      "{(}[s]{n}[k]{)}[s]j-{i}[b]h@w=2;bt;B",
+      "{(}[s]{n}[k]{)}[s]j-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]m{u}[p]@w=2;bt;g",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]j@bt;g",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]m{u}[p]@bt;g",
+      "{(}[s]{n}[k]{)}[s]j-{i}[b]m@w=2;bb;R",
+      "{(}[s]{n}[k]{)}[s]j-{i}[b]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "{(}[s]{n}[k]{)}[s]j-{i}[b]m@w=2;r",
+      "{(}[s]{n}[k]{)}[s]j-{e}[g]j{u}[p]@r",
+      "{(}[s]{n}[k]{)}[s]j-{i}[b]m@r",
+      "{(}[s]{n}[k]{)}[s]j-{i}[b]m{i}[g]@w=2;bt;R",
+      "{(}[s]{n}[k]{)}[s]j-{i}[b]m{a}[r]@r"
+    ],
+    [
+      "V@d",
+      "{-}[s]@w=2;s",
+      "{-}[s]@s",
+      "{-}[s]@s",
+      "{-}[s]@w=2;s",
+      "{-}[s]@s"
+    ]
+  ],
+  "tableDobry": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "DOBRY@bt;bl;br;w=2",
+      "&nbsp@bt;bl;br;w=4",
+      "tvrdy vzor@bt;bl;br;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "m.ž. jedn.@d",
+      "m.n. jedn.@d",
+      "ž. jedn.@d",
+      "s. jedn.@d",
+      "m.ž.m.@d",
+      "m.n.m. ž.m. s.m.@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "N@d;bb",
+      "dobr-{y}[b]@w=2",
+      "dobr-{a}[r]",
+      "dobr-{o}[p]@bb",
+      "dobr-{i}[b]@s",
+      "dobr-{e}[g]@bb;s",
+      "dobr-{e}[g]@bb"
+    ],
+    [
+      "A@d;bb",
+      "dobr-{o}[p]g{o}[p]@bb;b",
+      "dobr-{y}[b]@bt",
+      "dobr-{u}[p]@b",
+      "dobr-{o}[p]@bt",
+      "dobr-{y}[b]h@bb;B",
+      "dobr-{e}[g]@bt;s",
+      "dobr-{e}[g]@bt"
+    ],
+    [
+      "G@d;bb",
+      "dobr-{o}[p]g{o}[p]@w=2;b",
+      "dobr-{o}[p]j@g;bb",
+      "dobr-{o}[p]g{o}[p]@b",
+      "dobr-{y}[b]h@w=2;bb;B",
+      "dobr-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "dobr-{o}[p]m@w=2;bb;g",
+      "dobr-{o}[p]j@bb;bt;g",
+      "dobr-{o}[p]m@bb;g",
+      "dobr-{y}[b]h@w=2;B",
+      "dobr-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "dobr-{o}[p]m{u}[p]@w=2;bt;g",
+      "dobr-{o}[p]j@bt;g",
+      "dobr-{o}[p]m{u}[p]@bt;g",
+      "dobr-{y}[b]m@w=2;bb;R",
+      "dobr-{y}[b]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "dobr-{y}[b]m@w=2;r",
+      "dobr-{o}[p]j{u}[p]@r",
+      "dobr-{y}[b]m@r",
+      "dobr-{y}[b]m{i}[g]@w=2;bt;R",
+      "dobr-{y}[b]m{a}[r]@r"
+    ],   
+    [
+      "V@d",
+      "dobr-{y}[b]{!}[s]@w=2;s",
+      "dobr-{a}[r]{!}[s]@s",
+      "dobr-{o}[p]{!}[s]@s",
+      "dobr-{i}[b]{!}[s]@S",
+      "dobr-{e}[g]{!}[s]@S",
+      "dobr-{e}[g]{!}[s]@s"
+    ]
+  ],
+  "tableSvezi": [
+    [
+      "&nbsp@bt;bl;br;bb",
+      "SVĚŽI@bt;bl;br;w=2",
+      "&nbsp@bt;bl;br;w=4",
+      "mekky vzor@bt;bl;br;te"
+    ],
+    [
+      "&nbsp@bt;bl",
+      "m.ž. jedn.@d",
+      "m.n. jedn.@d",
+      "ž. jedn.@d",
+      "s. jedn.@d",
+      "m.ž.m.@d",
+      "m.n.m. ž.m. s.m.@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "N@d;bb",
+      "svěž-{i}[b]@w=2",
+      "svěž-{a}[r]",
+      "svěž-{e}[g]@bb",
+      "svěž-{i}[b]@s",
+      "svěž-{e}[g]@bb;s",
+      "svěž-{e}[g]@bb"
+    ],
+    [
+      "A@d;bb",
+      "svěž-{e}[g]g{o}[p]@bb;b",
+      "svěž-{i}[b]@bt",
+      "svěž-{u}[p]@b",
+      "svěž-{e}[g]@bt",
+      "svěž-{i}[b]h@bb;B",
+      "svěž-{e}[g]@bt;s",
+      "svěž-{e}[g]@bt"
+    ],
+    [
+      "G@d;bb",
+      "svěž-{e}[g]g{o}[p]@w=2;b",
+      "svěž-{e}[g]j@g;bb",
+      "svěž-{e}[g]g{o}[p]@b",
+      "svěž-{i}[b]h@w=2;bb;B",
+      "svěž-{u}[p]@bb;b"
+    ],
+    [
+      "L@d;bb",
+      "svěž-{e}[g]m@w=2;bb;g",
+      "svěž-{e}[g]j@bb;bt;g",
+      "svěž-{e}[g]m@bb;g",
+      "svěž-{i}[b]h@w=2;B",
+      "svěž-{u}[p]@bt;b"
+    ],
+    [
+      "D@d;bb",
+      "svěž-{e}[g]m{u}[p]@w=2;bt;g",
+      "svěž-{e}[g]j@bt;g",
+      "svěž-{e}[g]m{u}[p]@bt;g",
+      "svěž-{i}[b]m@w=2;bb;R",
+      "svěž-{i}[b]m{a}[r]@bb;r"
+    ],
+    [
+      "I@d;bb",
+      "svěž-{i}[b]m@w=2;r",
+      "svěž-{e}[g]j{u}[p]@r",
+      "svěž-{i}[b]m@r",
+      "svěž-{i}[b]m{i}[g]@w=2;bt;R",
+      "svěž-{i}[b]m{a}[r]@r"
+    ],
+    [
+      "V@d",
+      "svěž-{i}[b]{!}[s]@w=2;s",
+      "svěž-{a}[r]{!}[s]@s",
+      "svěž-{e}[g]{!}[s]@s",
+      "svěž-{i}[b]{!}[s]@S",
+      "svěž-{e}[g]{!}[s]@S",
+      "svěž-{e}[g]{!}[s]@s"
+    ]
+  ],
+  "tableGradacija": [
+    [
+      "GRADACIJA@bt;bl",
+      "bez palatizacije@d",
+      "s palatizacijeju do č,š,ž@d"
+    ],
+    [
+      "superlativ@d",
+      "naj-bogat-{ě}[g]jš-{i}[b] {(iz ...)}[s]",
+      "naj-dra{ž}[k]-{e}[g]jš-{i}[b] {(iz ...)}[s]"
+    ],
+    [
+      "komparativ@d",
+      "bogat-{ě}[g]jš-{i}[b] {(od ...)}[s]",
+      "dra{ž}[k]-{e}[g]jš-{i}[b] {(od ...)}[s]"
+    ],
+    [
+      "indikativ@d",
+      "bogat-{y}[b]@s",
+      "dra{g}[k]-{y}[b]@s"
+    ],
+    [
+      "augmentativ@d",
+      "naj-bogat-{y}[b]",
+      "naj-dra{g}[k]-{y}[b]"
+    ]
+  ],
+  "tableImeti": [
+    [
+      "IMĚTI@bl;bt;br;w=2",
+      "&nbsp@bl;bt;br",
+      "tvrdy -{e}[g]š vzor@bl;bt;br;te"
+    ],
+    [
+      "infinitiv@d;w=2",
+      "im-{ě}[g]-ti@w=2;ts"
+    ],
+    [
+      "L-particip@d;w=2",
+      "im-{ě}[g]-l, im-{ě}[g]-la, im-{ě}[g]-lo, im-{ě}[g]-li, im-{ě}[g]-le@w=2;ts"
+    ],
+    [
+      "glagolno ime@d;w=2",
+      "im-{ě}[g]-nje {(od prošlogo pasivnogo participa)}[s]@w=2;ts"
+    ],
+    [
+      "nastoječe vrěme (tvrde glagoly mogut iměti koren v nastoječem @w=4;D;bb;ts"
+    ],
+    [
+      "vrěmeni, ne jednaky s korenem infinitiva)@w=4;D;bt;ts"
+    ],
+    [
+      "&nbsp@d",
+      "jednina@d",
+      "množina@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "1@d",
+      "{imaj}[k]-{u}[p]@b",
+      "{imaj}[k]-{e}[g]mo@b",
+      "{imaj}[k]-{e}[g]vě@s"
+    ],
+    [
+      "2@d",
+      "{imaj}[k]-{e}[g]š@b",
+      "{imaj}[k]-{e}[g]te@b",
+      "{imaj}[k]-{e}[g]ta@s"
+    ],
+    [
+      "3@d",
+      "{imaj}[k]-{e}[g]@b",
+      "{imaj}[k]-{u}[p]t@B",
+      "{imaj}[k]-{e}[g]te@s"
+    ],
+    [
+      "&nbsp@d;bb;br;w=2",
+      "aktivny nastoječi particip@d;bb",
+      "{imaj}[k]-{u}[p]či {≈ jesmy}[s]@B"
+    ],
+    [
+      "&nbsp@d;bt;br;w=2",
+      "pasivny nastoječi particip@d;bt;te",
+      "{imaj}[k]-{e}[g]my {≈ nastoječi}[s]@b"
+    ],
+    [
+      "imperativ@w=2;d",
+      "{imaj}[k]{!}[s] {imaj}[k]-mo{!}[s] {imaj}[k]-te{!}[s]@w=2;r"
+    ],
+    [
+      "imperfekt<a href=\"#primetky\">*</a>@w=4;D;bb"
+    ],
+    [
+      "(infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bt"
+    ],
+    [
+      "&nbsp@d",
+      "jednina@d",
+      "množina@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "1@d",
+      "im-{ě}[g]-h",
+      "im-{ě}[g]-hmo",
+      "im-{ě}[g]-hova@s"
+    ],
+    [
+      "2@d",
+      "im-{ě}[g]-še",
+      "im-{ě}[g]-šte",
+      "im-{ě}[g]-šta@s"
+    ],
+    [
+      "3@d",
+      "im-{ě}[g]-še",
+      "im-{ě}[g]-hu",
+      "im-{ě}[g]-šte@s"
+    ],
+    [
+      "&nbsp@d;bb;w=2",
+      "aktivny prošly particip@d;bb",
+      "im-{ě}[g]-vši {≈ b-y-ty}[s]"
+    ],
+    [
+      "&nbsp@d;bt;w=2",
+      "pasivny prošly particip@d;bt;te",
+      "im-{ě}[g]-ny {≈ b-y-vši}[s]@r"
+    ]
+  ],
+  "tableVariti": [
+    [
+      "VARITI@bl;bt;br;w=2",
+      "&nbsp@bl;bt;br",
+      "mekky -{i}[b]š vzor@bl;bt;br;te"
+    ],
+    [
+      "infinitiv@d;w=2",
+      "var-{i}[b]-ti@w=2;ts"
+    ],
+    [
+      "L-particip@d;w=2",
+      "var-{i}[b]-l, var-{i}[b]-la, var-{i}[b]-lo, var-{i}[b]-li, var-{i}[b]-le@w=2;ts"
+    ],
+    [
+      "glagolno ime@d;w=2",
+      "var-j{e}[g]-nje {(od prošlogo pasivnogo participa)}[s]@w=2;ts"
+    ],
+    [
+      "nastoječe vrěme (tvrde glagoly možut iměti koren v nastoječem @w=4;D;bb"
+    ],
+    [
+      "vrěmeni, ktory ne sběgaje se s korenem infinitiva)@w=4;D;bt"
+    ],
+    [
+      "&nbsp@d",
+      "jednina@d",
+      "množina@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "1@d",
+      "var-{ju}[p] {(}[s]var-{i}[b]m{)}[s]@b",
+      "var-{i}[b]mo@b",
+      "var-{i}[b]vě@s"
+    ],
+    [
+      "2@d",
+      "var-{i}[b]š@b",
+      "var-{i}[b]te@b",
+      "var-{i}[b]ta@s"
+    ],
+    [
+      "3@d",
+      "var-{i}[b]@b",
+      "var-{e}[g]t {(}[s]var-{i}[b]t{)}[s]@B",
+      "var-{i}[b]te@s"
+    ],
+    [
+      "&nbsp@d;bb;br;w=2",
+      "aktivny nastoječi particip@d;bb",
+      "var-{e}[g]či@B"
+    ],
+    [
+      "&nbsp@d;bt;br;w=2",
+      "pasivny nastoječi particip@d;bt;te",
+      "var-{i}[b]my@b"
+    ],
+    [
+      "imperativ@w=2;d",
+      "var-{i}[b]{!}[s] var-{i}[b]mo{!}[s] var-{i}[b]te{!}[s]@w=2;r"
+    ],
+    [
+      "imperfekt<a href=\"#primetky\">*</a> (infinitivny koren i samoglasnik iz infinitivnogo zakončenja)@w=4;D;bb;bt"
+    ],
+    [
+      "&nbsp@d",
+      "jednina@d",
+      "množina@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "1@d",
+      "var-{i}[b]-h",
+      "var-{i}[b]-hmo",
+      "var-{i}[b]-hova@s"
+    ],
+    [
+      "2@d",
+      "var-{i}[b]-še",
+      "var-{i}[b]-šte",
+      "var-{i}[b]-šta@s"
+    ],
+    [
+      "3@d",
+      "var-{i}[b]-še",
+      "var-{i}[b]-hu",
+      "var-{i}[b]-šte@s"
+    ],
+    [
+      "&nbsp@d;bb;w=2",
+      "aktivny prošly particip@d;bb",
+      "var-{i}[b]-vši"
+    ],
+    [
+      "&nbsp@d;bt;w=2",
+      "pasivny prošly particip@d;bt;te",
+      "var-j{e}[g]-ny@r"
+    ]
+  ],
+  "tableVremena":[
+    [
+      "GLAGOLNE vrěmena@bt;bl",
+      "neizvršene glagoly@d",
+      "izvršene glagoly@d"
+    ],
+    [
+      "buduče vrěme@D",
+      "budu pisati@r",
+      "budu napisati {(}[s]napišu{)}[s]@r"
+    ],
+    [
+      "prědbuduče vrěme@d",
+      "budu pisal@R",
+      "budu napisal@R"
+    ],
+    [
+      "nastoječe vrěme@D",
+      "pišu@b",
+      "-@b"
+    ],
+    [
+      "perfekt@d",
+      "jesm pisal@B",
+      "jesm napisal@B"
+    ],
+    [
+      "imperfekt<a href=\"#primetky\">*</a>@D",
+      "pisah@",
+      "napisah@"
+    ],
+    [
+      "pluskvamperfekt@d",
+      "běh pisal@S",
+      "běh napisal@S"
+    ]
+  ],
+  "tableByti": [
+  [
+    "BYTI@bl;bt;br;w=2",
+    "&nbsp@bl;bt;br;w=2"
+  ],
+  [
+    "infinitiv@d;w=2",
+    "b-{y}[b]-ti@w=2;ts"
+  ],
+  [
+    "L-particip@d;w=2",
+    "b-{y}[b]-l, b-{y}[b]-la, b-{y}[b]-lo, b-{y}[b]-li, b-{y}[b]-le@w=2;ts"
+  ],
+  [
+    "glagolno ime@d;w=2",
+    "b-{y}[b]-tje {(od prošlogo pasivnogo participa)}[s]@w=2;ts"
+  ],
+  [
+    "buduče vrěme@w=4;D"
+  ],
+  [
+    "&nbsp@d",
+    "jednina@d",
+    "množina@d",
+    "dvojina<a href=\"#primetky\">*</a>@d"
+  ],
+  [
+    "1@d",
+    "{bud}[k]-{u}[p]@b",
+    "{bud}[k]-{e}[g]mo@b",
+    "{bud}[k]-{e}[g]vě@s"
+  ],
+  [
+    "2@d",
+    "{bud}[k]-{e}[g]š@b",
+    "{bud}[k]-{e}[g]te@b",
+    "{bud}[k]-{e}[g]ta@s"
+  ],
+  [
+    "3@d",
+    "{bud}[k]-{e}[g]@b",
+    "{bud}[k]-{u}[p]t@B",
+    "{bud}[k]-{e}[g]te@s"
+  ],
+  [
+    "&nbsp@d;bb;br;w=2",
+    "aktivny buduči particip@d;bb",
+    "{bud}[k]-{u}[p]či {≈ jesmy}[s]@B"
+  ],
+  [
+    "&nbsp@d;bt;br;w=2",
+    "pasivny buduči particip@d;bt;te",
+    "{bud}[k]-{e}[g]my {≈ nastoječi}[s]@b"
+  ],
+  [
+    "imperativ@w=2;d",
+    "{bud}[k]-{i}[b]{!}[s] {bud}[k]-{i}[b]mo{!}[s] {bud}[k]-{i}[b]te{!}[s]@w=2;r"
+  ],
+  [
+    "nastoječe vrěme@w=4;D"
+  ],
+  [
+    "&nbsp@d",
+    "jednina@d",
+    "množina@d",
+    "dvojina<a href=\"#primetky\">*</a>@d"
+  ],
+  [
+    "1@d",
+    "{jesm}[k]@b",
+    "{jesmo}[k]@b",
+    "{jesvě}[k]@s"
+  ],
+  [
+    "2@d",
+    "{jesi}[k]@b",
+    "{jeste}[k]@b",
+    "{jesta}[k]@s"
+  ],
+  [
+    "3@d",
+    "{jest}[k]{=}[s]{je}[k]@b",
+    "{sut}[k]@B",
+    "{jeste}[k]@s"
+  ],
+  [
+    "&nbsp@d;bb;br;w=2",
+    "aktivny nastoječi particip@d;bb",
+    "{nastoječi}[k] {≈ imaj-emy}[s]@B"
+  ],
+  [
+    "&nbsp@d;bt;br;w=2",
+    "pasivny nastoječi particip@d;bt;te",
+    "{jesmy}[k] {≈ imaj-uči}[s]@b"
+  ],
+  [
+    "imperfekt<a href=\"#primetky\">*</a>@w=4;D"
+  ],
+  [
+    "&nbsp@d",
+    "jednina@d",
+    "množina@d",
+    "dvojina<a href=\"#primetky\">*</a>@d"
+  ],
+  [
+    "1@d",
+    "b-{ě}[g]-h",
+    "b-{ě}[g]-hmo",
+    "b-{ě}[g]-hova@s"
+  ],
+  [
+    "2@d",
+    "b-{ě}[g]-še",
+    "b-{ě}[g]-šte",
+    "b-{ě}[g]-šta@s"
+  ],
+  [
+    "3@d",
+    "b-{ě}[g]-še{=}[s]b-{ě}[g]",
+    "b-{ě}[g]-hu",
+    "b-{ě}[g]-šte@s"
+  ],
+  [
+    "&nbsp@d;bb;w=2",
+    "aktivny prošly particip@d;bb",
+    "by-{y}[b]-vši {≈ im-ě-ny}[s]"
+  ],
+  [
+    "&nbsp@d;bt;w=2",
+    "pasivny prošly particip@d;bt;te",
+    "b-{y}[b]-ty {≈ im-ě-vši}[s]@r"
+  ],
+    [
+      "kondicional@w=4;D"
+    ],
+    [
+      "&nbsp@d",
+      "jednina@d",
+      "množina@d",
+      "dvojina<a href=\"#primetky\">*</a>@d"
+    ],
+    [
+      "1@d",
+      "b-{y}[b]-h",
+      "b-{y}[b]-hmo",
+      "b-{y}[b]-hova@s"
+    ],
+    [
+      "2@d",
+      "b-{y}[b]-s",
+      "b-{y}[b]-ste",
+      "b-{y}[b]-sta@s"
+    ],
+    [
+      "3@d",
+      "b-{y}[b]",
+      "b-{y}[b]-hu{=}[s]b-{y}[b]",
+      "b-{y}[b]-ste@s"
+    ]
+  ],
+  "tableGradacija2": [
+    [
+      "GRADACIJA@bt;bl",
+      "bez palatizacije@d",
+      "s palatizacijeju do č,š,ž@d"
+    ],
+    [
+      "superlativ@d",
+      "naj-bogat-{ě}[g]j{e}[g] {(iz ...)}[s]",
+      "naj-dra{ž}[k]-{e}[g]j{e}[g] {(iz ...)}[s]"
+    ],
+    [
+      "komparativ@d",
+      "bogat-{ě}[g]j-{e}[g] {(od ...)}[s]",
+      "dra{ž}[k]-{e}[g]j-{e}[g] {(od ...)}[s]"
+    ],
+    [
+      "indikativ@d",
+      "bogat-{o}[p]",
+      "dra{g}[k]-{o}[p]"
+    ],
+    [
+      "augmentativ@d",
+      "naj-bogat-{o}[p]",
+      "naj-dra{g}[k]-{o}[p]"
+    ]
+  ],
+  "tablePredlogy": [
+    [
+      "s genitivom:@bt;br;bb;bl;ts",
+      "{bez, iz, do, od, u, kromě, poslě, vně, radi, ...}[B]@bt;br;bb;bl;ts"
+    ],
+    [
+      "s dativom:@bt;br;bb;bl;ts",
+      "{k, protiv, ...}[B]@bt;br;bb;bl;ts"
+    ],
+    [
+      "s akuzativom:@bt;br;bb;bl;ts",
+      "{nad, pod, prěd, črěz, v, za, na, vně, medžu, mimo, ... }[B]@bt;br;bb;bl;ts"
+    ],
+    [
+      "s lokativom:@bt;br;bb;bl;ts",
+      "{o, po, pri, v, na, ...}[B]@bt;br;bb;bl;ts"
+    ],
+    [
+      "s instrumentalom:@bt;br;bb;bl;ts",
+      "{s, nad, pod, prěd, za, medžu, ...}[B]@bt;br;bb;bl;ts"
+    ]
+  ],
+  "tableNumbers": [
+    [
+      "1@d",
+      "jedin,jedna,jedno",
+      "11@d",
+      "{jedinnadset}[g]",
+      "21@d",
+      "dvadeset jedin"
+    ],
+    [
+      "2@d",
+      "{dva, dvě, dvě}[r]",
+      "12@d",
+      "{dvanadset}[g]",
+      "22@d",
+      "dvadeset {dva}[p]"
+    ],
+    [
+      "3@d",
+      "{tri}[k]",
+      "13@d",
+      "{trinadset}[g]",
+      "23@d",
+      "dvadeset {tri}[k]"
+    ],
+    [
+      "4@d",
+      "{četyri}[k]",
+      "14@d",
+      "{četyrinadset}[g]",
+      "24@d",
+      "dvadeset {četyri}[k]"
+    ],
+    [
+      "5@d",
+      "{pet}[g]",
+      "15@d",
+      "{petnadset}[g]",
+      "25@d",
+      "dvadeset {pet}[g]"
+    ],
+    [
+      "6@d",
+      "{šest}[g]",
+      "16@d",
+      "{šestnadset}[g]",
+      "26@d",
+      "dvadeset {šest}[g]"
+    ],
+    [
+      "7@d",
+      "{sedm}[g]",
+      "17@d",
+      "{sedmnadset}[g]",
+      "27@d",
+      "dvadeset {sedm}[g]"
+    ],
+    [
+      "8@d",
+      "{osm}[g]",
+      "18@d",
+      "{osmnadset}[g]",
+      "28@d",
+      "dvadeset {osm}[g]"
+    ],
+    [
+      "9@d",
+      "{devet}[g]",
+      "19@d",
+      "{devetnadset}[g]",
+      "29@d",
+      "dvadeset {devet}[g]"
+    ],
+    [
+      "10@d",
+      "{deset}[g]",
+      "110@d",
+      "{sto deset}[g]",
+      "1100@d",
+      "tyseč {sto}[b]"
+    ],
+    [
+      "20@d",
+      "{dvadeset}[g]",
+      "200@d",
+      "{dvasto}[b]",
+      "2000@d",
+      "dva {tyseč}[g]"
+    ],
+    [
+      "30@d",
+      "{trideset}[g]",
+      "300@d",
+      "{tristo}[b]",
+      "3000@d",
+      "tri {tyseč}[g]"
+    ],
+    [
+      "40@d",
+      "{četyrideset}[g]",
+      "400@d",
+      "{četyristo}[b]",
+      "4000@d",
+      "četyri {tyseč}[g]"
+    ],
+    [
+      "50@d",
+      "{petdeset}[g]",
+      "500@d",
+      "{petsto}[b]",
+      "5000@d",
+      "pet {tyseč}[g]"
+    ],
+    [
+      "60@d",
+      "{šestdeset}[g]",
+      "600@d",
+      "{šeststo}[b]",
+      "6000@d",
+      "šest {tyseč}[g]"
+    ],
+    [
+      "70@d",
+      "{sedmdeset}[g]",
+      "700@d",
+      "{sedmsto}[b]",
+      "7000@d",
+      "sedm {tyseč}[g]"
+    ],
+    [
+      "80@d",
+      "{osmdeset}[g]",
+      "800@d",
+      "{osmsto}[b]",
+      "10^6@d",
+      "milion"
+    ],
+    [
+      "90@d",
+      "{devetdeset}[g]",
+      "900@d",
+      "{devetsto}[b]",
+      "10^9@d",
+      "bilion"
+    ],
+    [
+      "100@d",
+      "{sto}[b]",
+      "1000@d",
+      "{tyseč}[g]",
+      "0@d",
+      "{nula}[p]"
+    ],
+    [
+      "&nbsp@w=6;bl;br"
+    ],
+    [
+      "1@d",
+      "prvy",
+      "11@d",
+      "jedinnadsety",
+      "21@d",
+      "dvadeset prvy"
+    ],
+    [
+      "2@d",
+      "vtory",
+      "20@d",
+      "dvadesety",
+      "200@d",
+      "dvěsotny"
+    ],
+    [
+      "3@d",
+      "{tretji}[k] {(mekky vzor)}[s]",
+      "30@d",
+      "tridesety",
+      "201@d",
+      "dvasto prvy"
+    ],
+    [
+      "4@d",
+      "četvrty",
+      "40@d",
+      "četyridesety",
+      "210@d",
+      "dvasto desety"
+    ],
+    [
+      "5@d",
+      "pety",
+      "50@d",
+      "petdesety",
+      "5000@d",
+      "pet tysečny"
+    ],
+    [
+      "6@d",
+      "šesty",
+      "60@d",
+      "šestdesety",
+      "6000@d",
+      "šest tysečny"
+    ],
+    [
+      "7@d",
+      "sedmy",
+      "70@d",
+      "sedmdesety",
+      "7000@d",
+      "sedm tysečny"
+    ],
+    [
+      "8@d",
+      "osmy",
+      "80@d",
+      "osmdesety",
+      "10^6@d",
+      "milionty"
+    ],
+    [
+      "9@d",
+      "devety",
+      "90@d",
+      "devetdesety",
+      "10^9@d",
+      "bilionty"
+    ],
+    [
+      "10@d",
+      "desety",
+      "100@d",
+      "sotny",
+      "0@d",
+      "nulty"
+    ]
+  ],
+  "tableSovezniky": [
+    [
+      "sojednjenja:@d",
+      "{i, ni ... ni}[B]",
+      "razlučenja:@d",
+      "{ili, i ili}[B]",
+      "popisanja:@d",
+      "{že}[B]"
+    ],
+    [
+      "odpora:@d",
+      "{ale, no}[B]",
+      "pričiny:@d",
+      "{bo, zatože}[B]",
+      "smysla:@d",
+      "{da}[B]"
+    ]
+  ],
+  "tableCestice": [
+    [
+      "soglašenja:@d",
+      "{da, ej}[B]",
+      "odpora:@d",
+      "{ne, ni}[B]"
+    ],
+    [
+      "pytanja:@d",
+      "{li}[B]",
+      "naglašenja:@d",
+      "{ako ... potom ... inako}[B]"
+    ]
+  ],
+  "tableGlagoljica": [
+    [
+      "a@bb",
+      "b@bb",
+      "c@bb",
+      "č@bb",
+      "d@bb",
+      "dj@bb",
+      "dž@bb",
+      "e@bb",
+      "ě@bb",
+      "f@bb",
+      "g@bb",
+      "h@bb",
+      "i@bb",
+      "j@bb",
+      "ju@bb",
+      "k@bb",
+      "l@bb",
+      "lj@bb"
+    ],
+    [
+      "{Ⰰ}[k]@bt;s",
+      "{Ⰱ}[k]@bt;s",
+      "{Ⱌ}[k]@bt;s",
+      "{Ⱍ}[k]@bt;s",
+      "{Ⰴ}[k]@bt;s",
+      "{ⰄⰬ}[k]@bt;s",
+      "{Ⰼ}[k]@bt;s",
+      "{Ⰵ}[k]@bt;s",
+      "{Ⱑ}[k]@bt;s",
+      "{Ⱇ}[k]@bt;s",
+      "{Ⰳ}[k]@bt;s",
+      "{Ⱈ}[k]@bt;s",
+      "{ⰻ}[k]@bt;s",
+      "{Ⱜ}[k]@bt;s",
+      "{Ⱓ}[k]@bt;s",
+      "{Ⰽ}[k]@bt;s",
+      "{Ⰾ}[k]@bt;s",
+      "{ⰎⰬ}[k]@bt;s"
+    ],
+    [
+      "m@bb",
+      "n@bb",
+      "nj@bb",
+      "o@bb",
+      "p@bb",
+      "q@bb",
+      "r@bb",
+      "s@bb",
+      "š@bb",
+      "šč@bb",
+      "t@bb",
+      "tj@bb",
+      "u@bb",
+      "v@bb",
+      "x@bb",
+      "y@bb",
+      "z@bb",
+      "ž@bb"
+    ],
+    [
+      "{Ⰿ}[k]@bt;s",
+      "{Ⱀ}[k]@bt;s",
+      "{ⰐⰬ}[k]@bt;s",
+      "{Ⱁ}[k]@bt;s",
+      "{Ⱂ}[k]@bt;s",
+      "{Ⰽ}[k]@bt;s",
+      "{Ⱃ}[k]@bt;s",
+      "{Ⱄ}[k]@bt;s",
+      "{Ⱎ}[k]@bt;s",
+      "{Ⱋ}[k]@bt;s",
+      "{Ⱅ}[k]@bt;s",
+      "{ⰕⰬ}[k]@bt;s",
+      "{Ⱆ}[k]@bt;s",
+      "{Ⰲ}[k]@bt;s",
+      "{ⰍⰔ}[k]@bt;s",
+      "{Ⱐ}[k]@bt;s",
+      "{Ⰷ}[k]@bt;s",
+      "{Ⰶ}[k]@bt;s"
+    ]
+  ]
+}

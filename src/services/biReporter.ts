@@ -1,5 +1,7 @@
-import { IMainState } from 'reducers';
 import debounce from 'lodash/debounce';
+
+import { IMainState } from 'reducers';
+
 import { objectSetToString } from 'utils/objectSetToString';
 import { toQueryString } from 'utils/toQueryString';
 
@@ -18,7 +20,6 @@ export interface IClipboardAnalytics extends ICardAnalytics {
 }
 
 export class BiReporter {
-    // tslint:disable-next-line:no-empty
     private ga = typeof ga === 'function' ? ga : () => {};
     private shownCards = new Set<string>();
 
@@ -28,11 +29,11 @@ export class BiReporter {
     }
 
     public search(state: IMainState) {
-        this._sendEvent('search', `search ${state.lang.from}`, state.fromText);
+        this.sendEvent('search', `search ${state.lang.from}`, state.fromText);
     }
 
     public emptySearch(state: IMainState) {
-        this._sendEvent('search', `empty ${state.lang.from}`, state.fromText);
+        this.sendEvent('search', `empty ${state.lang.from}`, state.fromText);
     }
 
     public showCard(card: ICardAnalytics) {
@@ -41,49 +42,41 @@ export class BiReporter {
         }
 
         this._setCardDimensions(card);
-        this._sendEvent('card', `show card`, card.isv);
+        this.sendEvent('card', `show card`, card.isv);
         if (!card.checked) {
-            this._sendEvent('card', `show autotranslate`, card.isv);
+            this.sendEvent('card', `show autotranslate`, card.isv);
         }
         this._setCardDimensions(null);
         this.shownCards.add(card.wordId);
     }
 
     public performanceInit(time: number) {
-        this._sendEvent('performance', 'performance init', undefined, time);
+        this.sendEvent('performance', 'performance init', undefined, time);
     }
 
     public performanceFID(time: number) {
-        this._sendEvent('performance', 'performance fid', undefined, time);
+        this.sendEvent('performance', 'performance fid', undefined, time);
     }
 
     public performanceSearch(time: number) {
-        this._sendEvent('performance', 'performance search', undefined, time);
-    }
-
-    public clickBanner(name: string) {
-        this._sendEvent('banner', 'click banner', name);
-    }
-
-    public dismissBanner(name: string) {
-        this._sendEvent('banner', 'dismiss banner', name);
+        this.sendEvent('performance', 'performance search', undefined, time);
     }
 
     public cardInteraction(action: string, details: ICardAnalytics) {
         this._setCardDimensions(details);
-        this._sendEvent('card', action, details.isv);
+        this.sendEvent('card', action, details.isv);
         this._setCardDimensions(null);
     }
 
     public clipboardCard(details: IClipboardAnalytics) {
         this._setClipboardDimensions(details);
-        this._sendEvent('clipboard card', `card copy ${details.lang}`, details.isv);
+        this.sendEvent('clipboard card', `card copy ${details.lang}`, details.isv);
         this._setClipboardDimensions(null);
     }
 
     public clipboardModal(details: IClipboardAnalytics) {
         this._setClipboardDimensions(details);
-        this._sendEvent('clipboard modal', `modal copy ${details.lang}`, details.isv);
+        this.sendEvent('clipboard modal', `modal copy ${details.lang}`, details.isv);
         this._setClipboardDimensions(null);
     }
 
@@ -198,7 +191,7 @@ export class BiReporter {
         }
     }
 
-    private _sendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue?: number) {
+    private sendEvent(eventCategory: string, eventAction: string, eventLabel: string, eventValue?: number) {
         this.ga('send', {
             hitType: 'event',
             eventCategory,

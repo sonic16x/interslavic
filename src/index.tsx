@@ -1,23 +1,36 @@
-import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { IMainState, mainReducer } from 'reducers';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { setInitialPage } from 'routing';
-import { getPageFromPath } from 'routing';
+
+import { langs } from 'consts';
+
 import { setLang } from 'translations';
-import { Main } from 'components/Main';
-import './index.scss';
+
+import { IMainState, mainReducer } from 'reducers';
+
 import { Dictionary } from 'services/dictionary';
+
 import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
 import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
+import { urlParamsMiddleware } from 'middlewares/urlParamsMiddleware';
+import { setInitialPage } from 'routing';
+import { getPageFromPath } from 'routing';
+import { getPreferredLanguage } from 'utils/getPreferredLanguage';
+import { getPreferredTheme } from "utils/getPreferredTheme";
+import { validateLang } from 'utils/validateLang';
 
-/* tslint:disable */
+import { Main } from 'components/Main';
+
+import './index.scss';
+
+import md5 from 'md5';
+
 declare global {
-    const HASH_ID: string;
     const VERSION: string;
     const BASE_URL: string;
     const SW: boolean;
+    const CLIENT: boolean;
+    // eslint-disable-next-line
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
     }
@@ -27,11 +40,13 @@ setInitialPage();
 
 if (SW) {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(`sw.${HASH_ID}.js`)
+        navigator.serviceWorker.register(`sw.js`)
             .then((registration) => {
+                // eslint-disable-next-line no-console
                 console.log('Registration successful, scope is:', registration.scope);
             })
             .catch((error) => {
+                // eslint-disable-next-line no-console
                 console.log('Service worker registration failed, error:', error);
             });
     }
@@ -42,7 +57,9 @@ export const defaultState: IMainState = {
         from: 'en',
         to: 'isv',
     },
-    interfaceLang: 'en',
+    interfaceLang: getPreferredLanguage(),
+    colorTheme: getPreferredTheme(),
+    clientId: md5(`${Date.now() * Math.random()}`),
     isvSearchLetters: {
         from: [],
         to: [],
@@ -51,6 +68,7 @@ export const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     posFilter: '',
+    dictionaryLanguages: langs,
     flavorisationType: '3',
     alphabetType: 'latin',
     page: 'dictionary',
@@ -58,7 +76,7 @@ export const defaultState: IMainState = {
     loadingProgress: 0,
     modalDialog: {
         type: null,
-        index: null,
+        data: null,
     },
     searchExpanded: false,
     rawResults: [],
@@ -68,12 +86,10 @@ export const defaultState: IMainState = {
         cyrillic: true,
         glagolitic: false,
     },
-    favoriteList: {},
     orderOfCases: ['nom','acc','gen','loc','dat','ins','voc'],
-    surveyBanner: {
-        dismissed: false,
-        seenOnAboutPage: false,
-    },
+    enabledPages: [],
+    communityLinks: [],
+    badges: [],
 };
 
 function reduxDevTools() {
@@ -96,12 +112,35 @@ function getInitialState(): IMainState {
             };
         }
 
+        const urlParams = new URLSearchParams(window.location.search);
+        const text = urlParams.get('text');
+        const lang = urlParams.get('lang');
+
+        if (validateLang(lang)) {
+            const [from, to] = lang.split('-');
+
+            const loadedLangs = ['en', ...savedState.dictionaryLanguages];
+
+            if (loadedLangs.includes(from) || loadedLangs.includes(to)) {
+                savedState.lang = {
+                    from,
+                    to,
+                };
+            }
+        }
+
+        if (text) {
+            savedState.fromText = text;
+        }
+
         state = {
             ...defaultState,
             page: getPageFromPath(),
             ...savedState,
         };
-    } catch (e) {}
+    } catch (e) {
+
+    }
 
     setLang(state.interfaceLang);
     Dictionary.setIsvSearchLetters(state.isvSearchLetters);
@@ -116,6 +155,7 @@ const store = createStore(
     compose(
         applyMiddleware(
             localStorageMiddleware,
+            urlParamsMiddleware,
             analyticsMiddleware,
         ),
         reduxDevTools(),

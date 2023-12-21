@@ -4,4 +4,5 @@
 /node_modules
 
 .DS_Store
-/static/data.txt
+/static/data/*
+wrangler.toml

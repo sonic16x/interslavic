@@ -1,0 +1,9 @@
+#app {
+  overflow: hidden;
+  background: var(--light);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}

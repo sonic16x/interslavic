@@ -53,8 +53,8 @@
     "update_via_cache": "none"
   },
   "start_url": "https://interslavic-dictionary.com/",
-  "background_color": "#343a40",
+  "background_color": "#313338",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#343a40"
+  "theme_color": "#313338"
 }

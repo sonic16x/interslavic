@@ -1,4 +1,4 @@
-export function localStorageMiddleware({getState}) {
+export function localStorageMiddleware({ getState }) {
     return (next) => (action) => {
         const result = next(action);
         if (action.type === 'IS_LOADING') {
@@ -9,10 +9,12 @@ export function localStorageMiddleware({getState}) {
         };
         delete stateForSave.rawResults;
         delete stateForSave.results;
+        delete stateForSave.modalDialog;
         delete stateForSave.page;
         delete stateForSave.isLoading;
         delete stateForSave.loadingProgress;
         localStorage.setItem('reduxState', JSON.stringify(stateForSave));
+        
         return result;
     };
 }

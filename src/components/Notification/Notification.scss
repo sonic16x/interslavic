@@ -1,0 +1,37 @@
+.notification-container {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.notification {
+  pointer-events: none;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+  margin-top: 10%;
+  font-size: 18px;
+  z-index: 21;
+  background: var(--primary-color);
+  color: var(--light);
+  padding: 2px 10px;
+  border-radius: var(--border-radius-m);
+  box-shadow: var(--shadow);
+
+  &.error {
+    background: var(--invalid-color);
+  }
+
+  &.valid {
+    background: var(--valid-color);
+  }
+
+  &.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

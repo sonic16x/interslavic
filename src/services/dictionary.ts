@@ -1,20 +1,20 @@
+import { addLangs,langs } from 'consts';
+
+import { IAlphabets } from 'reducers';
+
 import { convertCases } from 'utils/convertCases';
 import { filterLatin } from 'utils/filterLatin';
+import { filterNiqqud } from 'utils/filterNiqqud';
 import { getCyrillic } from 'utils/getCyrillic';
-import { getLatin } from 'utils/getLatin';
 import { getGlagolitic } from 'utils/getGlagolitic';
+import { getLatin } from 'utils/getLatin';
 import { latinToIpa } from 'utils/latinToIpa';
 import { levenshteinDistance } from 'utils/levenshteinDistance';
 import { normalize } from 'utils/normalize';
 import { removeBrackets } from 'utils/removeBrackets';
 import { removeExclamationMark } from 'utils/removeExclamationMark';
+import * as searchStrategies from 'utils/searchStrategies';
 import { srGajevicaToVukovica } from 'utils/srGajevicaToVukovica';
-
-import { conjugationVerbFlat } from 'legacy/conjugationVerb';
-import { declensionAdjectiveFlat } from 'legacy/declensionAdjective';
-import { declensionNounFlat } from 'legacy/declensionNoun';
-import { declensionNumeralFlat } from 'legacy/declensionNumeral';
-import { declensionPronounFlat } from 'legacy/declensionPronoun';
 import {
     getGender,
     getNumeralType,
@@ -25,14 +25,14 @@ import {
     isPlural,
     isSingular,
 } from 'utils/wordDetails';
-import { langs } from 'consts';
-import { IAlphabets } from 'reducers';
+
+import { conjugationVerbFlat, declensionAdjectiveFlat, declensionNounFlat, declensionNumeralFlat, declensionPronounFlat } from '@interslavic/utils';
 
 export const searchTypes = {
-    begin: (item, text) => item.indexOf(text) === 0,
-    full: (item, text) => item === text,
-    end: (item, text) =>  item.includes(text) && item.indexOf(text) === item.length - text.length,
-    some: (item, text) => item.includes(text),
+    begin: searchStrategies.startsWith,
+    full: searchStrategies.includesExactly,
+    end: searchStrategies.endsWith,
+    some: searchStrategies.includes,
 };
 
 export interface ITranslateParams {
@@ -41,22 +41,8 @@ export interface ITranslateParams {
     to: string;
     searchType: string;
     posFilter: string;
-    flavorisationType: string;
+    flavorisationType?: string;
 }
-
-export const dataDelimiter = '<>';
-
-export const validFields = [
-    'id',
-    'isv',
-    'addition',
-    'partOfSpeech',
-    // 'type',
-    'en',
-    // 'sameInLanguages',
-    // 'genesis',
-    ...langs,
-];
 
 const isvReplacebleLetters = [
     ['đ', 'dž'],
@@ -80,12 +66,13 @@ const isvReplacebleLetters = [
     ['ź', 'z'],
 ];
 
-function getWordForms(item) {
+function getWordForms(item): string[] {
     const word =  Dictionary.getField(item, 'isv');
     const add = Dictionary.getField(item, 'addition');
     const details = Dictionary.getField(item, 'partOfSpeech');
     const pos = getPartOfSpeech(details);
     const wordForms = [];
+
     word.split(',').map((wordElement) => {
         wordElement = wordElement.trim();
         switch (pos) {
@@ -95,7 +82,7 @@ function getWordForms(item) {
             case 'adjective':
                 wordForms.push(...declensionAdjectiveFlat(wordElement, ''));
                 break;
-            case 'noun':
+            case 'noun': {
                 const gender = getGender(details);
                 const animated = isAnimated(details);
                 const plural = isPlural(details);
@@ -111,6 +98,7 @@ function getWordForms(item) {
                         singular, indeclinable));
                 }
                 break;
+            }
             case 'pronoun':
                 wordForms.push(...declensionPronounFlat(wordElement, getPronounType(details)));
                 break;
@@ -119,7 +107,20 @@ function getWordForms(item) {
                 break;
         }
     });
-    return Array.from(new Set(wordForms));
+
+    return Array.from(new Set(wordForms.reduce((acc, item) => {
+        if (item.includes('/')) {
+            return [
+                ...acc,
+                ...item.split('/').map((word) => word.trim()),
+            ];
+        }
+
+        return [
+            ...acc,
+            item,
+        ];
+    }, [])));
 }
 
 export interface ITranslateResult {
@@ -132,6 +133,9 @@ export interface ITranslateResult {
     addGla?: string;
     details: string;
     ipa: string;
+    isv: string;
+    from: string;
+    to: string;
     checked: boolean;
     raw: string[];
 }
@@ -152,7 +156,7 @@ class DictionaryClass {
     private headerIndexes: Map<string, number>;
     private percentsOfChecked: {[lang: string]: string};
     private words: string[][];
-    private splittedMap: Map<string, string[]>;
+    private splittedMap: {[lang: string]: Map<string, string[]>};
     private isvSearchLetters: { from: string[], to: string[] };
     private isvSearchByWordForms: boolean;
 
@@ -160,8 +164,7 @@ class DictionaryClass {
         this.header = [];
         this.langsList = [];
         this.headerIndexes = new Map();
-        this.splittedMap = new Map();
-        this.percentsOfChecked = {};
+        this.splittedMap = {};
         this.percentsOfChecked = {};
         this.isvSearchLetters =  { from: [], to: [] };
     }
@@ -174,46 +177,79 @@ class DictionaryClass {
         let startInitTime = 0;
 
         if (typeof performance !== 'undefined') {
-            startInitTime = window.performance.now();
+            startInitTime = performance.now();
         }
 
-        this.header = validFields;
-        this.langsList = ['isv', 'en', ...langs];
+        this.header = wordList[0];
+
+        this.langsList = [
+            'isv',
+            'en',
+            ...langs,
+            ...addLangs,
+        ].filter((lang) => this.header.includes(lang));
 
         this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]));
-        this.words = wordList;
-        const searchIndexExist = Boolean(searchIndex);
+        this.words = wordList.slice(1);
 
-        if (!searchIndexExist) {
+        const needIndex = [];
+
+        [
+            'isv-src',
+            ...this.langsList,
+        ].forEach((lang) => {
+            if (searchIndex && searchIndex[lang]) {
+                this.splittedMap[lang] = new Map(searchIndex[lang]);
+            } else {
+                needIndex.push(lang);
+                this.splittedMap[lang] = new Map();
+            }
+        });
+
+        if (needIndex.length) {
             this.words.forEach((item) => {
-                this.langsList.forEach((from) => {
-                    const key = `${this.getField(item, 'id')}-${from}`;
-                    let fromField = this.getField(item, from);
+                const id = `${this.getField(item, 'id')}`;
+
+                needIndex.forEach((lang) => {
+                    let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang);
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
 
                     let splittedField;
-                    if (from === 'isv') {
-                        splittedField = this
-                            .splitWords(fromField)
-                            .concat(getWordForms(item))
-                        ;
-                        this.splittedMap.set(key + '-src',
-                            splittedField.map((chunk) => this.searchPrepare('isv-src', getLatin(chunk, '2'))));
-                    } else {
-                        fromField = removeExclamationMark(fromField);
-                        splittedField = this.splitWords(fromField);
+
+                    switch (lang) {
+                        case 'isv':
+                            splittedField = this
+                                .splittedMap['isv-src']
+                                .get(id)
+                                .map((word) => this.searchPrepare(lang, word))
+                            ;
+                            break;
+                        case 'isv-src':
+                            splittedField = this
+                                .splitWords(fromField)
+                                .concat(getWordForms(item))
+                                .map((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
+                            ;
+                            break;
+                        default:
+                            fromField = removeExclamationMark(fromField);
+                            splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
+                            break;
                     }
-                    this.splittedMap.set(key, splittedField.map((chunk) => this.searchPrepare(from, chunk)));
+
+                    this.splittedMap[lang].set(id, splittedField);
                 });
             });
+        }
+
+        if (!percentsOfChecked) {
             this.langsList.forEach((fieldName) => {
                 const notChecked = this.words.filter((item) => this.getField(item, fieldName)[0] === '!');
                 const count = (1 - notChecked.length / this.words.length) * 100;
                 this.percentsOfChecked[fieldName] = count.toFixed(1);
             });
         } else {
-            this.splittedMap = new Map(searchIndex);
             this.percentsOfChecked = percentsOfChecked;
         }
 
@@ -224,22 +260,55 @@ class DictionaryClass {
         }
 
         if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
+            // eslint-disable-next-line no-console
             console.log('INIT', `${initTime}ms`);
         }
 
         return initTime;
     }
+    public addLang(wordList: string[], searchIndex?: any) {
+        const lang = wordList[0];
+
+        if (this.hasLang(lang)) {
+            return;
+        }
+
+        wordList.slice(1).forEach((word, i) => {
+            this.words[i].push(word);
+        });
+
+        this.splittedMap[lang] = new Map(searchIndex[lang]);
+
+        this.header.push(lang);
+        this.headerIndexes.set(lang, this.header.length - 1);
+    }
+    public hasLang(lang): boolean {
+        return this.headerIndexes.has(lang);
+    }
     public getWordList(): string[][] {
         return this.words;
     }
-    public getIndex() {
-        return Array.from(this.splittedMap.keys()).map((key: string) => [
-            key,
-            this.splittedMap.get(key),
-        ]);
+    public getWord(wordId: string) {
+        if (this.words && this.words.length) {
+            return this.words.filter((line) => this.getField(line, 'id') === wordId)[0];
+        }
     }
-    public translate(translateParams: ITranslateParams): [string[][], number] {
+    public getIndex() {
+        const searchIndex = {};
+
+        [
+            'isv-src',
+            ...this.langsList,
+        ].forEach((lang) => {
+            searchIndex[lang] = Array.from(this.splittedMap[lang].keys()).map((key: string) => [
+                key,
+                this.splittedMap[lang].get(key),
+            ]);
+        });
+
+        return searchIndex;
+    }
+    public translate(translateParams: ITranslateParams, showTime = true): [string[][], number] {
         const {
             inputText,
             from,
@@ -249,12 +318,30 @@ class DictionaryClass {
         } = translateParams;
         let searchType = translateParams.searchType;
 
+        if (inputText.slice(0, 2) === 'id') {
+            const id = inputText.slice(2);
+            const idIsInt = /^-?\d+$/.test(id);
+
+            if (idIsInt) {
+                const word = this.getWord(id);
+
+                if (word) {
+                    return [[word], 0];
+                }
+            }
+        }
+
         const inputOptions = inputText.split(' -').map((option) => option.trim());
         const inputWord = inputOptions.shift();
         const lang = from === 'isv' ? to : from;
         const inputIsvPrepared = this.inputPrepare('isv', inputWord);
         const inputLangPrepared = this.inputPrepare(lang, inputWord);
-        if (!inputLangPrepared || !inputIsvPrepared) {
+
+        if (from === 'isv' && !inputIsvPrepared) {
+            return [[], 0];
+        }
+
+        if (from === lang && !inputLangPrepared) {
             return [[], 0];
         }
 
@@ -298,8 +385,14 @@ class DictionaryClass {
         }
 
         const distMap = new WeakMap();
-        const results = this.words
+        const results = this.getWordList()
             .filter((item) => {
+                const word = this.getField(item, lang);
+
+                if (!word || word === '!') {
+                    return false;
+                }
+
                 let filterResult = false;
                 if (from === 'isv' || twoWaySearch) {
                     // hardEtymSearch - hard etymological search for isv, otherwise - simple search
@@ -309,8 +402,9 @@ class DictionaryClass {
                         const wordsCount = this.getField(item, 'isv').split(',').length;
                         splittedField = splittedField.slice(0, wordsCount);
                     }
-                    filterResult = splittedField.some((chunk) => searchTypes[searchType](chunk,
-                            hardEtymSearch ? inputWord : inputIsvPrepared));
+                    filterResult = splittedField.some((chunk) => (
+                        searchTypes[searchType](chunk, hardEtymSearch ? inputWord : inputIsvPrepared)
+                    ));
                 }
                 if (to === 'isv' || twoWaySearch) {
                     const splittedField = this.getSplittedField(lang, item);
@@ -329,6 +423,7 @@ class DictionaryClass {
                         return false;
                     }
                 }
+
                 return filterResult;
             })
             .filter((item) => {
@@ -342,10 +437,9 @@ class DictionaryClass {
                         const wordsCount = this.getField(item, 'isv').split(',').length;
                         splittedField = splittedField.slice(0, wordsCount);
                     }
-                    filterResult = splittedField.some((chunk) => {
-                            return searchTypes[searchType](this.applyIsvSearchLetters(chunk,
-                                flavorisationType), isvText);
-                        });
+                    filterResult = splittedField.some((chunk) => (
+                        searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText)
+                    ));
 
                 }
                 if (!filterResult && (to === 'isv' || twoWaySearch)) {
@@ -353,6 +447,7 @@ class DictionaryClass {
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
+
                 return filterResult;
             })
             .map((item) => {
@@ -370,6 +465,7 @@ class DictionaryClass {
                         if (lDist < acc) {
                             return lDist;
                         }
+
                         return acc;
                     }, Number.MAX_SAFE_INTEGER);
                 if (twoWaySearch) {
@@ -387,11 +483,13 @@ class DictionaryClass {
                             if (lDist < acc) {
                                 return lDist;
                             }
+
                             return acc;
                         }, Number.MAX_SAFE_INTEGER);
                     dist = dist2 < dist ? dist2 : dist;
                 }
                 distMap.set(item, dist);
+
                 return item;
             })
             .sort((a, b) => distMap.get(a) - distMap.get(b))
@@ -400,8 +498,8 @@ class DictionaryClass {
 
         const translateTime = Math.round(performance.now() - startTranslateTime); // @TODO: send to GA
 
-        if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line
+        if (process.env.NODE_ENV !== 'production' && showTime) {
+            // eslint-disable-next-line no-console
             console.log('TRANSLATE', `${translateTime}ms`);
         }
 
@@ -413,7 +511,7 @@ class DictionaryClass {
         from: string,
         to: string,
         flavorisationType: string,
-        alphabets: IAlphabets,
+        alphabets?: IAlphabets,
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
@@ -427,15 +525,19 @@ class DictionaryClass {
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
                 raw: item,
+                from,
+                to,
+                isv,
             };
-            if (alphabets.cyrillic) {
+            if (alphabets?.cyrillic) {
                 formattedItem.originalCyr = getCyrillic(isv, flavorisationType);
                 formattedItem.addCyr = convertCases(getCyrillic(add, flavorisationType));
             }
-            if (alphabets.glagolitic) {
+            if (alphabets?.glagolitic) {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
                 formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
             }
+
             return formattedItem;
         });
 
@@ -465,6 +567,7 @@ class DictionaryClass {
                     }
                 });
         }
+
         return this.isvSearchLetters;
     }
     public setIsvSearchLetters(letters: {from: string[], to: string[]}): void {
@@ -473,14 +576,7 @@ class DictionaryClass {
     public setIsvSearchByWordForms(isvSearchByWordForms: boolean): void {
         this.isvSearchByWordForms = isvSearchByWordForms;
     }
-    private getSplittedField(from: string, item: string[]): string[] {
-        const key = `${this.getField(item, 'id')}-${from}`;
-        return this.splittedMap.get(key);
-    }
-    private splitWords(text: string): string[] {
-        return text.includes(';') ? text.split(';') : text.split(',');
-    }
-    private inputPrepare(lang: string, text: string): string {
+    public inputPrepare(lang: string, text: string): string {
         const preparedText = this.searchPrepare(lang, text);
         if (lang === 'sr') {
             return srGajevicaToVukovica(preparedText);
@@ -488,10 +584,9 @@ class DictionaryClass {
             return preparedText;
         }
     }
-    private searchPrepare(lang: string, text: string): string {
-        let lowerCaseText = text.toLowerCase()
-            .replace(/ /g, '')
-            .replace(/,/g, '');
+    public searchPrepare(lang: string, text: string): string {
+        let lowerCaseText = text.toLowerCase().replace(/,/g, '');
+
         if (lang !== 'isv-src') {
             lowerCaseText = lowerCaseText.replace(/[\u0300-\u036f]/g, '');
         } else {
@@ -512,12 +607,33 @@ class DictionaryClass {
             case 'sl':
             case 'hr':
             case 'de':
+            case 'nl':
+            case 'eo':
+            case 'csb':
+            case 'dsb':
+            case 'hsb':
+            case 'ia':
+            case 'es':
+            case 'pt':
+            case 'fr':
+            case 'it':
+            case 'da':
                 return filterLatin(lowerCaseText);
             case 'ru':
                 return lowerCaseText.replace(/ё/g, 'е');
+            case 'he':
+                return filterNiqqud(lowerCaseText);
             default:
                 return lowerCaseText;
         }
+    }
+    public splitWords(text: string): string[] {
+        return text.includes(';') ? text.split(';') : text.split(',');
+    }
+    private getSplittedField(from: string, item: string[]): string[] {
+        const key = this.getField(item, 'id');
+
+        return this.splittedMap[from].get(key);
     }
     private applyIsvSearchLetters(text: string, flavorisationType: string): string {
         text = this.searchPrepare('isv-src', text);
@@ -528,6 +644,7 @@ class DictionaryClass {
             .map((replacement) => {
                 text = text.replace(new RegExp(replacement[0], 'g'), replacement[1]);
             });
+
         return text;
     }
 }

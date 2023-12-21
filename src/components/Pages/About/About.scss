@@ -1,0 +1,58 @@
+.about-page {
+  width: 100%;
+  height: 100%;
+  font-size: var(--text-m);
+
+  p {
+    padding: 5px 0;
+  }
+
+  a {
+    display: block;
+  }
+
+  .no-wrap {
+    white-space: nowrap;
+  }
+
+  &__container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: var(--text-m);
+  }
+
+  &__author {
+    margin-bottom: 5px;
+
+    a {
+      margin-left: 5px;
+    }
+  }
+
+  &__release-date {
+    text-align: center;
+    color: var(--muted-text-color);
+    font-size: var(--text-m);
+    margin-bottom: 45px;
+  }
+
+  &__community-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__badges {
+    display: flex;
+    flex-flow: row wrap;
+
+    @media (min-width: 400px) {
+      > .badge_google-play {
+        margin-left: -13px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      justify-content: center;
+    }
+  }
+}

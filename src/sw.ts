@@ -1,16 +1,17 @@
-/* tslint:disable */
+import { addLangs } from 'consts';
+
 const CACHE_NAME = 'interslavic-dictionary';
 const cacheUrls = [
     'index.html',
-    'data.txt',
+    'data/basic.json',
+    'data/translateStatistic.json',
+    ...addLangs.map((lang) => `data/${lang}.json`),
     'manifest.json',
-    `grammarComponent.${HASH_ID}.js`,
-    `grammarComponent~index.${HASH_ID}.js`,
-    `index.${HASH_ID}.js`,
-    `sw.${HASH_ID}.js`,
-    `styles/grammarComponent~index.${HASH_ID}.css`,
-    `styles/index.${HASH_ID}.css`,
-    // `vendors~index.${HASH_ID}.js`,
+    'grammarComponent.js',
+    'index.js',
+    'sw.js',
+    'styles/grammarComponent.css',
+    'styles/index.css',
 ];
 
 self.addEventListener('install', (event: any) => {
@@ -19,9 +20,9 @@ self.addEventListener('install', (event: any) => {
     );
 });
 
-self.addEventListener('activate', (event) => {
-    // console.log('activate');
-});
+// self.addEventListener('activate', () => {
+//     console.log('activate');
+// });
 
 const MAX_AGE = 1000 * 60 * 10; // 10 minutes.
 
@@ -44,6 +45,7 @@ self.addEventListener('fetch', (event: any) => {
                 // If it is expired
                 if (lastModified && (Date.now() - lastModified.getTime()) > MAX_AGE) {
                     fetchRequest = event.request.clone();
+
                     // Cretae new.
                     return fetch(fetchRequest).then((response) => {
                         // If error then load from cache.
@@ -52,10 +54,12 @@ self.addEventListener('fetch', (event: any) => {
                         }
                         // Update cache.
                         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, response));
+
                         // Return new data.
                         return response.clone();
                     }).catch(() => cachedResponse);
                 }
+                
                 return cachedResponse;
             }
 
