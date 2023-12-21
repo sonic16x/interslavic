@@ -78,7 +78,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: mdecoleman/pr-branch-name@1.0.0
+      - uses: mdecoleman/pr-branch-name@1.0.1
         id: vars
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
