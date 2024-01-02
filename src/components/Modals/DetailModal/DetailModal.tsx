@@ -168,7 +168,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 options.push('showTitle');
                 if (i < splitted.length - 1) { options.push('oneMore'); }
             }
-            
+
             return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options, i);
         });
     }
@@ -199,7 +199,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             default:
                 return '';
         }
-        
+
         return (
             <div className="word" key={i}>
                 {options.includes('showTitle') ? <h6>{this.formatStr(word)}{remark}</h6> : ''}
@@ -387,7 +387,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${this.formatStr(comparison.superlative[1])}@`,
             ],
         ];
-        
+
         return (
             <>
                 <Table key={0} data={tableDataSingular}/>
@@ -439,7 +439,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 tableDataCases.push(tableRow);
             }
         });
-        
+
         return tableDataCases;
     }
 
@@ -481,7 +481,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 table.push(tableRow);
             }
         });
-        
+
         return table;
     }
 
@@ -493,7 +493,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             ],
             [
                 `${t('case')}@b`,
-                `${t('plural')}@b`,
+                `${t('masculine')}@b`,
                 `${t('feminineOrNeuter')}@b`,
             ],
         ];
@@ -519,7 +519,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 table.push(tableRow);
             }
         });
-        
+
         return table;
     }
 
@@ -538,7 +538,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         if (numeralParadigm.type === 'noun') {
             const tableDataCases = this.getSimpleCasesTable(numeralParadigm);
-            
+
             return <Table data={tableDataCases}/>;
         }
 
@@ -570,7 +570,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         if (pronounParadigm.type === 'noun') {
             const tableDataCases = this.getSimpleCasesTable(pronounParadigm);
-            
+
             return <Table data={tableDataCases}/>;
         }
 
