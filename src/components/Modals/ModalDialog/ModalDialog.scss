@@ -79,11 +79,11 @@
   }
 
   &__body {
-    padding: .5vh 2.5vw;
     min-width: 500px;
     overflow: auto;
 
     @media (max-width: 678px) {
+      padding: .5vh 2.5vw;
       min-width: 90vw;
     }
 
@@ -96,8 +96,20 @@
     }
   }
 
+  &__body, &__footer {
+    padding: 12px 24px;
+
+    @media (max-width: 678px) {
+      padding: .5vh 2.5vw;
+    }
+  }
+
   &__footer {
     border-top: var(--border);
-    padding: 16px;
+    line-height: 1.5;
+
+    @media (max-width: 450px) {
+      font-size: 3vw;
+    }
   }
 }

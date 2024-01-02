@@ -14,6 +14,7 @@ import { useAlphabets } from 'hooks/useAlphabets';
 import { useIntersect } from 'hooks/useIntersect';
 import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { estimateIntelligibility, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
 import { toQueryString } from 'utils/toQueryString';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
@@ -96,6 +97,8 @@ export const ResultsCard =
         const wordId = Dictionary.getField(item.raw, 'id').toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
+        const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
+        const intelligibilityVector = estimateIntelligibility(intelligibility);
         const lang = useLang();
 
         const cardBiInfo: ICardAnalytics = useMemo(() => (
@@ -194,6 +197,15 @@ export const ResultsCard =
                             lang={item.to}
                         />
                     ) : renderOriginal(item, alphabets, index)}
+                    {'\u00A0'}
+                    { hasIntelligibilityIssues(intelligibilityVector)
+                        ? <button
+                            key="intelligibilityIssues"
+                            onClick={showTranslations}
+                            className={classNames({ 'results-card__status': true })}
+                            title={t('intelligibilityIssues')}>⚠️</button>
+                        : undefined
+                    }
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;
