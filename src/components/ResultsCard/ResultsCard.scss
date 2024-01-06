@@ -150,4 +150,21 @@
       }
     }
   }
+
+  &__status {
+    /* inline text-like button */
+    cursor: pointer;
+    background: none;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: transform .1s ease-in-out;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
 }

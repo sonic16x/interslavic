@@ -15,6 +15,7 @@ import { useModalDialog } from 'hooks/useModalDialog';
 import { useResults } from 'hooks/useResults';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
+import { findIntelligibilityIssues } from "utils/intelligibilityIssues";
 
 import { Table } from 'components/Table';
 
@@ -22,10 +23,10 @@ import './TranslationsModal.scss';
 
 function renderTranslate(str: string): string {
     if (str && str[0] === '!') {
-        return `{${str.slice(1)}}[s]@ts;`;
+        return `🤖 {${str.slice(1)}}[s]@ts;`;
     }
-    
-    return `{✓}[g] ${str}@ts`;
+
+    return `${str}@ts`;
 }
 
 export const TranslationsModal =
@@ -55,6 +56,8 @@ export const TranslationsModal =
             ...addLangsFiltered,
         ];
 
+        const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
+        const marks = findIntelligibilityIssues(intelligibility);
         const tableData = allLangs.reduce((arr, lang) => {
             const translate = Dictionary.getField(item.raw, lang).toString();
 
@@ -81,7 +84,7 @@ export const TranslationsModal =
             return [
                 ...arr,
                 [
-                    `{${t(`${lang}Lang`)}}[B]@ts;b`,
+                    `{${marks[lang] || ''} ${t(`${lang}Lang`)}}[B]@ts;b`,
                     renderTranslate(translate),
                 ],
                 (
@@ -93,6 +96,13 @@ export const TranslationsModal =
                 ),
             ];
         }, []);
+
+        const hasMarks = new Set(Object.values(marks).filter(Boolean)).size > 0;
+        const extraLegend = hasMarks && (<>
+            <br/>
+                ⚠️ – {t('translationsLegendIntelligibilityWarning')}.<br/>
+                🚫 – {t('translationsLegendIntelligibilityNone')}.<br/>
+        </>);
 
         return (
             <>
@@ -112,9 +122,10 @@ export const TranslationsModal =
                     <Table data={tableData}/>
                 </div>
                 <footer className="modal-dialog__footer">
-                    {t('translationsBottomText')}
-                    <br/>
-                    {t('aboutJoinText')}
+                    <div className="modal-legend">
+                        🤖 – {t('translationsLegendMachineTranslations')}.
+                        {extraLegend}
+                    </div>
                 </footer>
             </>
         );
