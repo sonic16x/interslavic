@@ -146,7 +146,7 @@ export function getGender(details: string): Gender {
     if (arr.includes('m/f')) {
         return 'masculineOrFeminine';
     }
-    
+
     return 'neuter';
 }
 
@@ -168,6 +168,14 @@ export function isAnimated(details: string): boolean {
 
 export function isIndeclinable(details: string): boolean {
     return getArr(details).includes('indecl');
+}
+
+export function isComparative(details: string): boolean {
+    return getArr(details).includes('comp');
+}
+
+export function isSuperlative(details: string): boolean {
+    return getArr(details).includes('sup');
 }
 
 // Numerals
