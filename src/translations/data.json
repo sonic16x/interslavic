@@ -1695,6 +1695,21 @@
     "mk": "Степени на споредување",
     "bg": "Степени за сравнение"
   },
+  "degree": {
+    "en": "degree",
+    "isv": "stupenj",
+    "ru": "степень",
+    "uk": "ступінь",
+    "be": "ступень",
+    "pl": "stopień",
+    "cs": "stupeň",
+    "sk": "stupeň",
+    "sl": "stopnja",
+    "hr": "stupanj",
+    "sr": "степен",
+    "mk": "степен",
+    "bg": "степен"
+  },
   "positive": {
     "en": "positive",
     "isv": "pozitivna",
@@ -1712,7 +1727,7 @@
   },
   "comparative": {
     "en": "comparative",
-    "isv": "sravniteljna",
+    "isv": "sravniteljny",
     "ru": "сравнительная",
     "uk": "вищий",
     "be": "вышэйшая",
@@ -1727,7 +1742,7 @@
   },
   "superlative": {
     "en": "superlative",
-    "isv": "superlativna",
+    "isv": "superlativny",
     "ru": "превосходная",
     "uk": "найвищий",
     "be": "найвышэйшая",

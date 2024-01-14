@@ -18,9 +18,11 @@ import {
     getPronounType,
     getVerbDetails,
     isAnimated,
+    isComparative,
     isIndeclinable,
     isPlural,
     isSingular,
+    isSuperlative,
 } from 'utils/wordDetails';
 
 import { LineSelector } from 'components/LineSelector';
@@ -29,7 +31,13 @@ import { Text } from 'components/Text';
 
 import './DetailModal.scss';
 
-import { conjugationVerb, declensionAdjective, declensionNoun, declensionNumeral, declensionPronoun } from '@interslavic/utils';
+import {
+    conjugationVerb,
+    declensionAdjective,
+    declensionNoun,
+    declensionNumeral,
+    declensionPronoun
+} from '@interslavic/utils';
 
 interface IDetailModalInternal {
     close: () => void;
@@ -96,25 +104,31 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
     private renderTitle(pos: string) {
         const { details, word, add } = this.props;
         const arr = [t(pos)];
-        const animated = isAnimated(details);
-        const gender = getGender(details);
-        const plural = isPlural(details);
-        const singular = isSingular(details);
-        const indeclinable = isIndeclinable(details);
+
         switch (pos) {
             case 'noun': {
+                const gender = getGender(details);
+                const animated = isAnimated(details);
                 arr.push(t('noun-' + gender));
                 if (gender.match(/masculine/)) {
                     arr.push(t(animated ? 'noun-animated' : 'noun-inanimate'));
                 }
-                if (indeclinable) {
+                if (isIndeclinable(details)) {
                     arr.push(t('noun-indeclinable'));
                 }
-                if (plural) {
+                if (isPlural(details)) {
                     arr.push(t('noun-plural'));
                 }
-                if (singular) {
+                if (isSingular(details)) {
                     arr.push(t('noun-singular'));
+                }
+                break;
+            }
+            case 'adjective': {
+                if (isComparative(details)) {
+                    arr.push(t('comparative') + ' ' + t('degree'));
+                } else if (isSuperlative(details)) {
+                    arr.push(t('superlative') + ' ' + t('degree'));
                 }
                 break;
             }
@@ -185,7 +199,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 wordComponent = this.renderNounDetails(word, add, details);
                 break;
             case 'adjective':
-                wordComponent = this.renderAdjectiveDetails(word);
+                wordComponent = this.renderAdjectiveDetails(word, details);
                 break;
             case 'verb':
                 wordComponent = this.renderVerbDetails(word, add);
@@ -212,7 +226,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
     private formatStr(str: string): string {
         if (str === '') {
             return '';
-        } else if (str === null) {
+        } else if (str == null) {
             return '&mdash;';
         } else if (str.match(/&\w+;/g)) {
             return str;
@@ -360,8 +374,8 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         );
     }
 
-    private renderAdjectiveDetails(word) {
-        const { singular, plural, comparison } = declensionAdjective(word, '');
+    private renderAdjectiveDetails(word, details) {
+        const { singular, plural, comparison } = declensionAdjective(word, '', details);
 
         const tableDataSingular = this.getAdjectiveSingularCasesTable(singular);
         const tableDataPlural = this.getAdjectivePluralCasesTable(plural);
