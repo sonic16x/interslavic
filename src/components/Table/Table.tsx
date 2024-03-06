@@ -19,7 +19,8 @@ export class Table extends Component<ITableProps> {
     }
 
     private parseItem(raw): { str: string, attrs: any } {
-        let [str, rawAttrs] = raw.split('@');
+        // use negative lookahead for @] to avoid splitting by @ inside []
+        let [str, rawAttrs] = raw.split(/@(?!])/);
         str = parseStr(str);
         const attrs = {};
         if (!rawAttrs) {
@@ -32,7 +33,7 @@ export class Table extends Component<ITableProps> {
             }
             attrs[exp[0]] = exp[1];
         });
-        
+
         return {
             str,
             attrs,

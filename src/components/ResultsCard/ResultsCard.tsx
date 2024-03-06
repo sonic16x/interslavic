@@ -21,6 +21,8 @@ import { wordHasForms } from 'utils/wordHasForms';
 
 import { Clipboard } from 'components/Clipboard';
 
+import { removeBrackets } from "../../utils/removeBrackets";
+
 import './ResultsCard.scss';
 
 import ErrorIcon from './images/error-icon.svg';
@@ -148,7 +150,7 @@ export const ResultsCard =
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
                 data: {
-                    word: Dictionary.getField(item.raw, 'isv'),
+                    word: removeBrackets(Dictionary.getField(item.raw, 'isv'), '[', ']'),
                     add: Dictionary.getField(item.raw, 'addition'),
                     details: Dictionary.getField(item.raw, 'partOfSpeech'),
                 },
