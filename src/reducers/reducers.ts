@@ -116,7 +116,9 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
         case ActionTypes.FROM_TEXT: {
             const { searchType, flavorisationType, lang, posFilter } = state;
-            const fromText = data;
+
+            const fromText = data.replaceAll("ʼ", "'").replaceAll("’", "'");
+          
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
