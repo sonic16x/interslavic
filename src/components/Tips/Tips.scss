@@ -1,21 +1,16 @@
 .tips {
     cursor: help;
-    &::before {
+    &::after {
         position: absolute;
-    }
-    &::before {
-        margin-top: 1.5rem;
         border-radius: 0.25rem;
+        color: rgb(0, 40, 150);
         background-color: rgb(236, 250, 252);
-        padding: 0.25rem;
+        padding: 0.35rem;
         white-space: nowrap;
     }
     &:hover, &:focus {
-        &::before {
-            content: attr(data-tips);
-        }
         &::after {
-            content: '';
+            content: attr(data-tips);
         }
     } 
     .tipsSymbol:after {

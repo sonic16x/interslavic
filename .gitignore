@@ -6,4 +6,3 @@
 .DS_Store
 /static/data/*
 wrangler.toml
-package-lock.json
