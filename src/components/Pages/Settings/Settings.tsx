@@ -42,8 +42,8 @@ import './Settings.scss';
 
 
 const orderOfCasesList = [
-    'nom,acc,gen,loc,dat,ins,voc',
     'nom,acc,gen,dat,loc,ins,voc',
+    'nom,acc,gen,loc,dat,ins,voc',
     'nom,gen,dat,acc,ins,loc,voc',
     'nom,gen,dat,acc,voc,loc,ins',
     'nom,gen,dat,acc,voc,ins,loc',
