@@ -448,13 +448,13 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
                 let caseTips = '';
                 switch (caseItem) {
-                    case 'nom': 'kto? čto?';
-                    case 'acc': 'kogo? čto?';
-                    case 'gen': 'kogo? čego?';
-                    case 'dat': 'komu? čemu?';
-                    case 'ins': 'kym? čim?';
-                    case 'loc': 'kom? čem?';
-                    case 'voc': 'hej!';
+                    case 'nom': caseTips = 'kto? čto?';
+                    case 'acc': caseTips = 'kogo? čto?';
+                    case 'gen': caseTips = 'kogo? čego?';
+                    case 'dat': caseTips = 'komu? čemu?';
+                    case 'ins': caseTips = 'kym? čim?';
+                    case 'loc': caseTips = 'kom? čem?';
+                    case 'voc': caseTips = 'hej!';
                 }
                 const tableRow = [`${caseName}@b@${caseTips}`];
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
