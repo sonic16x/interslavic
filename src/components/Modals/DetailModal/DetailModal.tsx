@@ -420,6 +420,8 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         const cases = declensionNoun(word, add, gender, animated, plural, singular, indeclinable);
 
+        console.log(cases);
+
         if (cases === null) {
             return (
                 <div>
