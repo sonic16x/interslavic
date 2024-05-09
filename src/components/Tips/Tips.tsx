@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 
-import { t } from 'translations';
-
 import { setNotificationAction } from 'actions';
 
 import './Clipboard.scss';

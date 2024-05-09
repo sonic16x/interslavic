@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import { Clipboard } from 'components/Clipboard';
+import { Tips } from 'components/Tips';
 import { parseStr } from 'components/Text';
 
 import './Table.scss';
