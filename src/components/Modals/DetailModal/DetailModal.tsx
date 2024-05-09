@@ -420,8 +420,6 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         const cases = declensionNoun(word, add, gender, animated, plural, singular, indeclinable);
 
-        console.log(cases);
-
         if (cases === null) {
             return (
                 <div>
@@ -448,7 +446,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in paradigmArray.cases) {
                 const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
-                const tableRow = [`${caseName}@b`];
+                const tableRow = [`${caseName}@b@test`];
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
                     tableRow.push(`${this.formatStr(caseForm)}@`);
                 });
