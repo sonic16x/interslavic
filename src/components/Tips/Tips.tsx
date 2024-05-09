@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import './Tips.scss';
 
 interface ITipsProps {
-    str: string;
+    str: any;
     tips: string;
     className?: string;
 }

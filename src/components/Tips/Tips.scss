@@ -3,8 +3,8 @@
     &::after {
         position: absolute;
         border-radius: 0.25rem;
-        color: rgb(0, 40, 150);
-        background-color: rgb(236, 250, 252);
+        color: var(--tips-font-color);
+        background-color: var(--tips-background-color);
         padding: 0.35rem;
         white-space: nowrap;
     }
@@ -13,9 +13,9 @@
             content: attr(data-tips);
         }
     } 
-    .tipsSymbol:after {
+    .tipsSymbol::after {
         content: 'ⓘ';
         font-size: smaller;
-        color: rgb(75, 75, 75);
+        color: var(--muted-text-color);
     }
 }

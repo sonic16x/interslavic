@@ -453,7 +453,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'gen': caseTips = 'kogo? čego?'; break;
                     case 'dat': caseTips = 'komu? čemu?'; break;
                     case 'ins': caseTips = 'kym? čim?'; break;
-                    case 'loc': caseTips = 'kom? čem?'; break;
+                    case 'loc': caseTips = 'o kom? o čem?'; break;
                     case 'voc': caseTips = 'hej!'; break;
                 }
                 const tableRow = [`${caseName}@b@${caseTips}`];
@@ -483,8 +483,17 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in singular) {
+                let caseTips = '';
+                switch (caseItem) {
+                    case 'nom': caseTips = 'kaky? kako? kaka?'; break;
+                    case 'acc': caseTips = 'kakogo? kako? kaku?'; break;
+                    case 'gen': caseTips = 'kakogo? kaky? kako? kaku?'; break;
+                    case 'dat': caseTips = 'kakomu? kakoj?'; break;
+                    case 'ins': caseTips = 'kakym? kakoju?'; break;
+                    case 'loc': caseTips = 'kakom? kakoj?'; break;
+                }
                 const tableRow = [
-                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b`,
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${caseTips}`,
                 ];
                 switch (caseItem) {
                     case 'nom':
@@ -523,8 +532,17 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         ];
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in plural) {
+                let caseTips = '';
+                switch (caseItem) {
+                    case 'nom': caseTips = 'kaki? kake?'; break;
+                    case 'acc': caseTips = 'kakyh? kake?'; break;
+                    case 'gen': caseTips = 'kakyh?'; break;
+                    case 'dat': caseTips = 'kakym?'; break;
+                    case 'ins': caseTips = 'kakymi?'; break;
+                    case 'loc': caseTips = 'kakyh?'; break;
+                }
                 const tableRow = [
-                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b`,
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${caseTips}`,
                 ];
                 switch (caseItem) {
                     case 'nom':
