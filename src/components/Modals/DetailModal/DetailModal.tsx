@@ -487,7 +487,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 switch (caseItem) {
                     case 'nom': caseTips = 'kaky? kako? kaka?'; break;
                     case 'acc': caseTips = 'kakogo? kako? kaku?'; break;
-                    case 'gen': caseTips = 'kakogo? kaky? kako? kaku?'; break;
+                    case 'gen': caseTips = 'kakogo? kakoj?'; break;
                     case 'dat': caseTips = 'kakomu? kakoj?'; break;
                     case 'ins': caseTips = 'kakym? kakoju?'; break;
                     case 'loc': caseTips = 'kakom? kakoj?'; break;
