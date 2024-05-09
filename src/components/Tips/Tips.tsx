@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { setNotificationAction } from 'actions';
 
-import './Clipboard.scss';
+import './Tips.scss';
 
 interface ITipsProps {
     str: string;
