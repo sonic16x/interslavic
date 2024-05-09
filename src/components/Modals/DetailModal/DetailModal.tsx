@@ -452,8 +452,8 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'acc': caseTips = 'kogo? čto?'; break;
                     case 'gen': caseTips = 'kogo? čego?'; break;
                     case 'dat': caseTips = 'komu? čemu?'; break;
-                    case 'ins': caseTips = 'kym? čim?'; break;
-                    case 'loc': caseTips = 'o kom? o čem?'; break;
+                    case 'ins': caseTips = '(s) kym? čim?'; break;
+                    case 'loc': caseTips = '(o) kom? čem?'; break;
                     case 'voc': caseTips = 'hej!'; break;
                 }
                 const tableRow = [`${caseName}@b@${this.formatStr(caseTips)}`];
@@ -489,8 +489,8 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'acc': caseTips = 'kakogo? kako? kaku?'; break;
                     case 'gen': caseTips = 'kakogo? kakoj?'; break;
                     case 'dat': caseTips = 'kakomu? kakoj?'; break;
-                    case 'ins': caseTips = 'kakym? kakoju?'; break;
-                    case 'loc': caseTips = 'kakom? kakoj?'; break;
+                    case 'ins': caseTips = '(s) kakym? kakoju?'; break;
+                    case 'loc': caseTips = '(o) kakom? kakoj?'; break;
                 }
                 const tableRow = [
                     `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(caseTips)}`,
@@ -538,8 +538,8 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'acc': caseTips = 'kakyh? kake?'; break;
                     case 'gen': caseTips = 'kakyh?'; break;
                     case 'dat': caseTips = 'kakym?'; break;
-                    case 'ins': caseTips = 'kakymi?'; break;
-                    case 'loc': caseTips = 'kakyh?'; break;
+                    case 'ins': caseTips = '(s) kakymi?'; break;
+                    case 'loc': caseTips = '(o) kakyh?'; break;
                 }
                 const tableRow = [
                     `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(caseTips)}`,
