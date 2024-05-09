@@ -1,4 +1,26 @@
 .tips {
     cursor: help;
+    &::before {
+        position: absolute;
+    }
+    &::before {
+        margin-top: 1.5rem;
+        border-radius: 0.25rem;
+        background-color: rgb(236, 250, 252);
+        padding: 0.25rem;
+        white-space: nowrap;
+    }
+    &:hover, &:focus {
+        &::before {
+            content: attr(data-tips);
+        }
+        &::after {
+            content: '';
+        }
+    } 
+    .tipsSymbol:after {
+        content: 'ⓘ';
+        font-size: smaller;
+        color: rgb(75, 75, 75);
+    }
 }
-  

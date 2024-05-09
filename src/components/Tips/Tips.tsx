@@ -1,7 +1,4 @@
 import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
-
-import { setNotificationAction } from 'actions';
 
 import './Tips.scss';
 
@@ -13,17 +10,14 @@ interface ITipsProps {
 
 export const Tips =
     ({ str, tips, className }: ITipsProps) => {
-        const dispatch = useDispatch();
-        const onClick = () => {
-            dispatch(setNotificationAction({ text: tips }));
-        };
-
         return (
-            <span
-                onClick={onClick}
-                className={classNames('tips', className)}
-            >
-                {str}
-            </span>
+            <>
+                <span
+                    className={classNames('tips', className)}
+                    data-tips={tips}
+                >
+                    {str} <span className="tipsSymbol" />
+                </span>
+            </>
         );
     };
