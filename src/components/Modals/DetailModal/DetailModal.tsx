@@ -456,7 +456,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'loc': caseTips = 'o kom? o čem?'; break;
                     case 'voc': caseTips = 'hej!'; break;
                 }
-                const tableRow = [`${caseName}@b@${caseTips}`];
+                const tableRow = [`${caseName}@b@${this.formatStr(caseTips)}`];
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
                     tableRow.push(`${this.formatStr(caseForm)}@`);
                 });
@@ -493,7 +493,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'loc': caseTips = 'kakom? kakoj?'; break;
                 }
                 const tableRow = [
-                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${caseTips}`,
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(caseTips)}`,
                 ];
                 switch (caseItem) {
                     case 'nom':
@@ -542,7 +542,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'loc': caseTips = 'kakyh?'; break;
                 }
                 const tableRow = [
-                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${caseTips}`,
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(caseTips)}`,
                 ];
                 switch (caseItem) {
                     case 'nom':
