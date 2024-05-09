@@ -455,7 +455,6 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'ins': caseTips = 'kym? čim?'; break;
                     case 'loc': caseTips = 'kom? čem?'; break;
                     case 'voc': caseTips = 'hej!'; break;
-                    default: caseTips = `test_${caseItem}`;
                 }
                 const tableRow = [`${caseName}@b@${caseTips}`];
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
