@@ -15,7 +15,7 @@ export const Tips =
     ({ str, tips, className }: ITipsProps) => {
         const dispatch = useDispatch();
         const onClick = () => {
-             dispatch(setNotificationAction({ text: tips }));
+            dispatch(setNotificationAction({ text: tips }));
         };
 
         return (
