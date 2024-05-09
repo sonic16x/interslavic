@@ -446,7 +446,17 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in paradigmArray.cases) {
                 const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
-                const tableRow = [`${caseName}@b@test`];
+                let caseTips = '';
+                switch (caseItem) {
+                    case 'nom': 'kto? čto?';
+                    case 'acc': 'kogo? čto?';
+                    case 'gen': 'kogo? čego?';
+                    case 'dat': 'komu? čemu?';
+                    case 'ins': 'kym? čim?';
+                    case 'loc': 'kom? čem?';
+                    case 'voc': 'hej!';
+                }
+                const tableRow = [`${caseName} TEST@b@${caseTips}`];
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
                     tableRow.push(`${this.formatStr(caseForm)}@`);
                 });
