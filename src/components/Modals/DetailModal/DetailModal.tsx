@@ -38,6 +38,7 @@ import {
     declensionNumeral,
     declensionPronoun
 } from '@interslavic/utils';
+import { getCaseTips } from 'utils/getCaseTips';
 
 interface IDetailModalInternal {
     close: () => void;
@@ -446,17 +447,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in paradigmArray.cases) {
                 const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
-                let caseTips = '';
-                switch (caseItem) {
-                    case 'nom': caseTips = 'kto? čto?'; break;
-                    case 'acc': caseTips = 'kogo? čto?'; break;
-                    case 'gen': caseTips = 'kogo? čego?'; break;
-                    case 'dat': caseTips = 'komu? čemu?'; break;
-                    case 'ins': caseTips = '(s) kym? (s) čim?'; break;
-                    case 'loc': caseTips = '(o) kom? (o) čem?'; break;
-                    case 'voc': caseTips = 'hej! ty! vy!'; break;
-                }
-                const tableRow = [`${caseName}@b@${this.formatStr(caseTips)}`];
+                const tableRow = [`${caseName}@b@${this.formatStr(getCaseTips(caseItem, 'noun'))}`];
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
                     tableRow.push(`${this.formatStr(caseForm)}@`);
                 });
@@ -483,17 +474,8 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in singular) {
-                let caseTips = '';
-                switch (caseItem) {
-                    case 'nom': caseTips = 'kaky? kako? kaka?'; break;
-                    case 'acc': caseTips = 'kakogo? kako? kaku?'; break;
-                    case 'gen': caseTips = 'kakogo? kakoj?'; break;
-                    case 'dat': caseTips = 'kakomu? kakoj?'; break;
-                    case 'ins': caseTips = '(s) kakym? (s) kakoju?'; break;
-                    case 'loc': caseTips = '(o) kakom? (o) kakoj?'; break;
-                }
                 const tableRow = [
-                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(caseTips)}`,
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(getCaseTips(caseItem, 'adjectiveSingular'))}`,
                 ];
                 switch (caseItem) {
                     case 'nom':
@@ -532,17 +514,8 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         ];
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in plural) {
-                let caseTips = '';
-                switch (caseItem) {
-                    case 'nom': caseTips = 'kaki? kake?'; break;
-                    case 'acc': caseTips = 'kakyh? kake?'; break;
-                    case 'gen': caseTips = 'kakyh?'; break;
-                    case 'dat': caseTips = 'kakym?'; break;
-                    case 'ins': caseTips = '(s) kakymi?'; break;
-                    case 'loc': caseTips = '(o) kakyh?'; break;
-                }
                 const tableRow = [
-                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(caseTips)}`,
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(getCaseTips(caseItem, 'adjectivePlural'))}`,
                 ];
                 switch (caseItem) {
                     case 'nom':
