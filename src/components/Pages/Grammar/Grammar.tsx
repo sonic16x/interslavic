@@ -7,6 +7,7 @@ import { Text } from 'components/Text';
 import './Grammar.scss';
 
 import tables from './tables.json';
+import { getCaseTips } from 'utils/getCaseTips';
 
 const titles = {
     abeceda: 'Abeceda',
@@ -28,6 +29,7 @@ const titles = {
     podrobnosti: 'Podrobne pravila (linky)',
 };
 
+
 export default class Grammar extends PureComponent {
     private containerRef;
     private activeId;
@@ -38,6 +40,12 @@ export default class Grammar extends PureComponent {
         this.containerRef = createRef();
         this.onScroll = this.onScroll.bind(this);
         this.onWheel = this.onWheel.bind(this);
+    }
+    private addCaseTips(row, type) {
+        let elemArr = row[0].split('@');
+        if(['N','A','G','L','I','D','V'].includes(elemArr[0])) elemArr[2] = getCaseTips(elemArr[0],type);
+        row[0] = elemArr.join('@');
+        return row;
     }
     public render() {
         return (
@@ -87,8 +95,8 @@ export default class Grammar extends PureComponent {
                         </Text>
                     </Card>
                     <Card title={titles.imeniky} id="imeniky">
-                        <Table data={tables.tableBrat} />
-                        <Table data={tables.tableMuz} />
+                        <Table data={tables.tableBrat.map((row) => this.addCaseTips(row, 'noun'))} />
+                        <Table data={tables.tableMuz.map((row) => this.addCaseTips(row, 'noun'))} />
                         <Text>
                             {`Mužske objekty, ktore aktivno dělajut někaky proces, sut {žive}[i] (od pytanja KTO?) i po tutoj pričině imajut akuzativ ravny s genitivom.`}
                         </Text>
@@ -104,16 +112,16 @@ export default class Grammar extends PureComponent {
                                - {vladyk-{a}[r], vladyk-{y}[b], vladyk-{ě}[g,B], vladyk-{u}[p], vladyk-{o}[p],}[B] ... (jednina)
                                - {vladyk-{i}[b], vladyk-{ov}[p], vladyk-{a}[r]m, vladyk-{a}[r]m{i}[b],}[B] ... (množina)`}
                         </Text>
-                        <Table data={tables.tableZena} />
-                        <Table data={tables.tableKost} />
+                        <Table data={tables.tableZena.map((row) => this.addCaseTips(row, 'noun'))} />
+                        <Table data={tables.tableKost.map((row) => this.addCaseTips(row, 'noun'))} />
                         <Text>
                             {`Vse čislovniky zakončene na soglasky –{T}[B] i –{Č}[B] ({PET}[B], {ŠEST}[B], ... {DESET}[B], {TRINADSET}[B], ... {DVADESET}[B], {TYSEČ}[B]) imajut klonjenje kako {KOST}[B] v jednině: {šest, šest-{i}[b], šest-j{u}[p]}[B] ...`}
                         </Text>
                         <Text>
                             {`Dvojinne slova {OKO}[B], {UHO}[B] imajut dvojinu ravnu s množinoju vzora {KOST}[B] s palatalizovanym korenem: {oč-{i}[b], oč-{ij}[b], oč-{a}[r]m}[B] ... {uš-{i}[b], uš-{i}[b]j, uš-{a}[r]m}[B] ... kde {čj,šj,žj → č,š,ž}[B].`}
                         </Text>
-                        <Table data={tables.tableSelo} />
-                        <Table data={tables.tableDen} />
+                        <Table data={tables.tableSelo.map((row) => this.addCaseTips(row, 'noun'))} />
+                        <Table data={tables.tableDen.map((row) => this.addCaseTips(row, 'noun'))} />
                         <Text>
                             {`Na različenje od staroslovjanskogo jezyka, specijalne vzory imajut svoje klonjenje toliko v jednině. Množina i dual jest v normalnyh mekkyh vzorah:
                             - {dn-{i}[b]=kost-{i}[b], imen-{a}[r]=polj-{a}[r], mater-{e}[g]=duš-{e}[g], dět-{i}[b]=kost-{i}[b]}[B], ...`}
@@ -124,9 +132,9 @@ export default class Grammar extends PureComponent {
                         </Text>
                     </Card>
                     <Card title={titles.zaimeniky} id="zaimeniky">
-                        <Table data={tables.tableMest} />
-                        <Table data={tables.tableTojTaTo} />
-                        <Table data={tables.tableOnOnaOno} />
+                        <Table data={tables.tableMest.map((row) => this.addCaseTips(row, 'noun'))} />
+                        <Table data={tables.tableTojTaTo.map((row) => this.addCaseTips(row, 'adjective'))} />
+                        <Table data={tables.tableOnOnaOno.map((row) => this.addCaseTips(row, 'noun'))} />
                         <Text>
                             {`Mekky	vzor klonjenja {(-{e}[g]g{o}[p], -{e}[g]m{u}[p], ...)}[B] imajut zaimenniky:
                             - {MOJ-MOJA-MOJE, TVOJ-TVOJA-TVOJE, NAŠ-NAŠA-NAŠE, VAŠ-VAŠA-VAŠE, VSEj-VSA-VSE, KOJ, KOJA, KOJE, ČIJ, ČIJA, ČIJE ...}[B]`}
@@ -137,8 +145,8 @@ export default class Grammar extends PureComponent {
                         </Text>
                     </Card>
                     <Card title={titles.pridavniky} id="pridavniky">
-                        <Table data={tables.tableDobry} />
-                        <Table data={tables.tableSvezi} />
+                        <Table data={tables.tableDobry.map((row) => this.addCaseTips(row, 'adjective'))} />
+                        <Table data={tables.tableSvezi.map((row) => this.addCaseTips(row, 'adjective'))} />
                         <br/>
                         <Table data={tables.tableGradacija} />
                         <Text>
