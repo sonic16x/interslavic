@@ -22,14 +22,23 @@ function tRaw(key) {
         return key;
     } else if (translations[key][lang]) {
         if (lang === 'isv') {
+            // preserving substitutions in brackets {} from transliteration
+            let isvText = '', isvSubst = [], i = 0;
+            isvText = translations[key].isv.replace(/\{.*?\}/g,(match) => { 
+                isvSubst[i++] = match.slice(1,-1); 
+                return '{' + i + '}';
+            });
+            // transliteration & flavorisation of isv word 
             switch (alphabet) {
                 case 'Latn':
-                    return getLatin(translations[key].isv, '3');
+                    isvText = getLatin(isvText, '3'); break;
                 case 'Cyrl':
-                    return getCyrillic(translations[key].isv, '3');
+                    isvText = getCyrillic(isvText, '3'); break;
                 case 'Glag':
-                    return getGlagolitic(translations[key].isv, '3');
+                    isvText = getGlagolitic(isvText, '3'); break;
             }
+            // restoring substitutions in brackets
+            return isvText.replace(/\{\d+\}/g, (match) => isvSubst[parseInt(match.slice(1,-1))-1]);
         } else {
             return translations[key][lang];
         }
@@ -42,7 +51,6 @@ function tRaw(key) {
 
 export function t(key, params?: ITranslateParams) {
     const rawTranslate = tRaw(key);
-
     if (params) {
         return replaceParams(rawTranslate, params);
     } else {
