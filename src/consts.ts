@@ -53,7 +53,7 @@ export const initialFields = [
     'en',
     'sameInLanguages',
     'genesis',
-    'intelligibility',
+    //'intelligibility',
 ];
 
 export const initialAddFields = [
