@@ -26,7 +26,7 @@ function tRaw(key) {
             let isvText = '', isvSubst = [], i = 0;
             isvText = translations[key].isv.replace(/\{.*?\}/g,(match) => { 
                 isvSubst[i++] = match.slice(1,-1); 
-                return '{' + i + '}';
+                return `{${i}}`;
             });
             // transliteration & flavorisation of isv word 
             switch (alphabet) {
