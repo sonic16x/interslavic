@@ -36,5 +36,6 @@ export function getCaseTips(caseName: string, setName: string): string {
         case 'adjective': 
             return `${getCaseTips(caseName,'adjectiveSingular')} ${getCaseTips(caseName,'adjectivePlural')}`;
     }
+    
     return '';
 }

@@ -1,5 +1,7 @@
 import { createRef,PureComponent } from 'react';
 
+import { getCaseTips } from 'utils/getCaseTips';
+
 import { Card } from 'components/Card';
 import { Table } from 'components/Table';
 import { Text } from 'components/Text';
@@ -7,7 +9,6 @@ import { Text } from 'components/Text';
 import './Grammar.scss';
 
 import tables from './tables.json';
-import { getCaseTips } from 'utils/getCaseTips';
 
 const titles = {
     abeceda: 'Abeceda',
@@ -42,9 +43,10 @@ export default class Grammar extends PureComponent {
         this.onWheel = this.onWheel.bind(this);
     }
     private addCaseTips = (type: string) => (row: any[]) => {
-        let elemArr = row[0].split('@');
+        const elemArr = row[0].split('@');
         if(['N','A','G','L','I','D','V'].includes(elemArr[0])) elemArr[2] = getCaseTips(elemArr[0],type);
         row[0] = elemArr.join('@');
+        
         return row;
     }
     public render() {

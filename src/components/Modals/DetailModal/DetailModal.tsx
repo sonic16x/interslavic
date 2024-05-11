@@ -8,6 +8,7 @@ import { t } from 'translations';
 import { hideModalDialog, setAlphabetTypeAction } from 'actions';
 import { IMainState } from 'reducers';
 
+import { getCaseTips } from 'utils/getCaseTips';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
@@ -38,7 +39,6 @@ import {
     declensionNumeral,
     declensionPronoun
 } from '@interslavic/utils';
-import { getCaseTips } from 'utils/getCaseTips';
 
 interface IDetailModalInternal {
     close: () => void;
