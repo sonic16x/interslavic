@@ -1,10 +1,16 @@
 import translations from 'translations/data.json';
 
+import { createTaggedTemplate } from "utils/createTaggedTemplate";
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
+import { parseI18nString } from "utils/parseI18nString";
 
 let currentLang;
+
+const toLatin = createTaggedTemplate((s) => getLatin(String(s), '3'), 'strings');
+const toCyrillic = createTaggedTemplate((s) => getCyrillic(String(s), '3'), 'strings');
+const toGlagolitic = createTaggedTemplate((s) => getGlagolitic(String(s), '3'), 'strings');
 
 interface ITranslateParams {
     [key: string]: string;
@@ -22,13 +28,15 @@ function tRaw(key) {
         return key;
     } else if (translations[key][lang]) {
         if (lang === 'isv') {
+            const parsed = parseI18nString(translations[key].isv);
+            // transliteration & flavorisation of isv word
             switch (alphabet) {
                 case 'Latn':
-                    return getLatin(translations[key].isv, '3');
+                    return toLatin(...parsed);
                 case 'Cyrl':
-                    return getCyrillic(translations[key].isv, '3');
+                    return toCyrillic(...parsed);
                 case 'Glag':
-                    return getGlagolitic(translations[key].isv, '3');
+                    return toGlagolitic(...parsed);
             }
         } else {
             return translations[key][lang];
@@ -42,7 +50,6 @@ function tRaw(key) {
 
 export function t(key, params?: ITranslateParams) {
     const rawTranslate = tRaw(key);
-
     if (params) {
         return replaceParams(rawTranslate, params);
     } else {
