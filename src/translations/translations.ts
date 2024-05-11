@@ -1,10 +1,16 @@
 import translations from 'translations/data.json';
 
+import { createTaggedTemplate } from "utils/createTaggedTemplate";
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
+import { parseI18nString } from "utils/parseI18nString";
 
 let currentLang;
+
+const toLatin = createTaggedTemplate((s) => getLatin(String(s), '3'), 'strings');
+const toCyrillic = createTaggedTemplate((s) => getCyrillic(String(s), '3'), 'strings');
+const toGlagolitic = createTaggedTemplate((s) => getGlagolitic(String(s), '3'), 'strings');
 
 interface ITranslateParams {
     [key: string]: string;
@@ -22,23 +28,16 @@ function tRaw(key) {
         return key;
     } else if (translations[key][lang]) {
         if (lang === 'isv') {
-            // preserving substitutions in brackets {} from transliteration
-            let isvText = '', isvSubst = [], i = 0;
-            isvText = translations[key].isv.replace(/\{.*?\}/g,(match) => { 
-                isvSubst[i++] = match.slice(1,-1); 
-                return `{${i}}`;
-            });
-            // transliteration & flavorisation of isv word 
+            const parsed = parseI18nString(translations[key].isv);
+            // transliteration & flavorisation of isv word
             switch (alphabet) {
                 case 'Latn':
-                    isvText = getLatin(isvText, '3'); break;
+                    return toLatin(...parsed);
                 case 'Cyrl':
-                    isvText = getCyrillic(isvText, '3'); break;
+                    return toCyrillic(...parsed);
                 case 'Glag':
-                    isvText = getGlagolitic(isvText, '3'); break;
+                    return toGlagolitic(...parsed);
             }
-            // restoring substitutions in brackets
-            return isvText.replace(/\{\d+\}/g, (match) => isvSubst[parseInt(match.slice(1,-1))-1]);
         } else {
             return translations[key][lang];
         }
