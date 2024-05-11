@@ -23,10 +23,10 @@ export class Table extends Component<ITableProps> {
         // use negative lookahead for @] to avoid splitting by @ inside []
         let [str, rawAttrs, tips] = raw.split(/@(?!])/);
         str = parseStr(str);
+        rawAttrs ??= '';
+        tips ??= '';
+
         const attrs = {};
-        if (!rawAttrs) {
-            rawAttrs = '';
-        }
         rawAttrs.split(';').forEach((rawExp) => {
             const exp = rawExp.split('=');
             if (exp.length === 1) {
