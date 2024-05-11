@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import { Clipboard } from 'components/Clipboard';
 import { parseStr } from 'components/Text';
+import { Tips } from 'components/Tips';
 
 import './Table.scss';
 
@@ -18,14 +19,14 @@ export class Table extends Component<ITableProps> {
         );
     }
 
-    private parseItem(raw): { str: string, attrs: any } {
+    private parseItem(raw): { str: string, attrs: any, tips: string } {
         // use negative lookahead for @] to avoid splitting by @ inside []
-        let [str, rawAttrs] = raw.split(/@(?!])/);
+        let [str, rawAttrs, tips] = raw.split(/@(?!])/);
         str = parseStr(str);
+        rawAttrs ??= '';
+        tips ??= '';
+
         const attrs = {};
-        if (!rawAttrs) {
-            rawAttrs = '';
-        }
         rawAttrs.split(';').forEach((rawExp) => {
             const exp = rawExp.split('=');
             if (exp.length === 1) {
@@ -37,14 +38,27 @@ export class Table extends Component<ITableProps> {
         return {
             str,
             attrs,
+            tips,
         };
     }
 
     private renderRow(row: string[]) {
         return row
             .map((item) => this.parseItem(item))
-            .map(({ str, attrs }, i) => {
-                if (str.includes('<') || str.includes('&')) {
+            .map(({ str, attrs, tips }, i) => {
+                if (tips) {
+                    return (
+                        <td
+                            key={i}
+                            className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
+                            colSpan={attrs.w}
+                            rowSpan={attrs.h}
+                            style={{ width: attrs.sw }}
+                        >
+                            <Tips str={str} tips={tips}/>
+                        </td>
+                    );
+                } else if (str.includes('<') || str.includes('&')) {
                     return (
                         <td
                             key={i}

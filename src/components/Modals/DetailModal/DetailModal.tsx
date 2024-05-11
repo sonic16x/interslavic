@@ -8,6 +8,7 @@ import { t } from 'translations';
 import { hideModalDialog, setAlphabetTypeAction } from 'actions';
 import { IMainState } from 'reducers';
 
+import { getCaseTips } from 'utils/getCaseTips';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
@@ -446,7 +447,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in paradigmArray.cases) {
                 const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
-                const tableRow = [`${caseName}@b`];
+                const tableRow = [`${caseName}@b@${this.formatStr(getCaseTips(caseItem, 'noun'))}`];
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
                     tableRow.push(`${this.formatStr(caseForm)}@`);
                 });
@@ -474,7 +475,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in singular) {
                 const tableRow = [
-                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b`,
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(getCaseTips(caseItem, 'adjectiveSingular'))}`,
                 ];
                 switch (caseItem) {
                     case 'nom':
@@ -514,7 +515,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in plural) {
                 const tableRow = [
-                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b`,
+                    `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(getCaseTips(caseItem, 'adjectivePlural'))}`,
                 ];
                 switch (caseItem) {
                     case 'nom':

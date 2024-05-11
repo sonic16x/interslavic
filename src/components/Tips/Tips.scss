@@ -1,0 +1,21 @@
+.tips {
+    cursor: help;
+    &::after {
+        position: absolute;
+        border-radius: 0.25rem;
+        color: var(--tips-font-color);
+        background-color: var(--tips-background-color);
+        padding: 0.35rem;
+        white-space: nowrap;
+    }
+    &:hover, &:focus {
+        &::after {
+            content: attr(data-tips);
+        }
+    } 
+    .tipsSymbol::after {
+        content: 'ⓘ';
+        font-size: smaller;
+        color: var(--muted-text-color);
+    }
+}
