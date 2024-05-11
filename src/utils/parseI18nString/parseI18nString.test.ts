@@ -16,6 +16,11 @@ describe('parseI18nString', () => {
     it('should return string and two substitutions when given string with two substitutions', () => {
         assertEquals(parseI18nString('{substitution} string {substitution2}'), resultOf`${`substitution`} string ${`substitution2`}`);
     });
+
+    /** Verifying full compliance with the specification */
+    it('should have inter-op with String.raw built-in function', () => {
+        expect(String.raw.apply(null, parseI18nString('string {substitution}'))).toBe(String.raw`string ${'substitution'}`);
+    });
 });
 
 function resultOf(strings: TemplateStringsArray, ...substitutions: unknown[]): [TemplateStringsArray, ...unknown[]] {
