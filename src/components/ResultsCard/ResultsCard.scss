@@ -34,6 +34,9 @@
     color: var(--muted-text-color);
     font-weight: 500;
   }
+  .caseInfo {
+    font-style: italic;
+  }
 
   &__details {
     font-size: var(--text-m);

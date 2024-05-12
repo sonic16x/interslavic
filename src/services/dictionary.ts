@@ -131,6 +131,7 @@ export interface ITranslateResult {
     add: string;
     addCyr?: string;
     addGla?: string;
+    caseInfo: string;
     details: string;
     ipa: string;
     isv: string;
@@ -515,12 +516,15 @@ class DictionaryClass {
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
-            const add = this.getField(item, 'addition');
+            const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
+            const add = addArray.find((elem) => elem.indexOf('(+') === -1) || '';
+            const caseInfo = addArray.find((elem) => elem.indexOf('(+') !== -1) || '';
             const translate = this.getField(item, (from === 'isv' ? to : from));
             const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
-                add: convertCases(getLatin(add, flavorisationType)),
+                add: getLatin(add, flavorisationType),
+                caseInfo: convertCases(caseInfo),
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
@@ -531,11 +535,11 @@ class DictionaryClass {
             };
             if (alphabets?.cyrillic) {
                 formattedItem.originalCyr = getCyrillic(isv, flavorisationType);
-                formattedItem.addCyr = convertCases(getCyrillic(add, flavorisationType));
+                formattedItem.addCyr = getCyrillic(add, flavorisationType);
             }
             if (alphabets?.glagolitic) {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
-                formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
+                formattedItem.addGla = getGlagolitic(add, flavorisationType);
             }
 
             return formattedItem;

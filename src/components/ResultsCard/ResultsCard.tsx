@@ -74,6 +74,8 @@ function renderOriginal(item, alphabets, index) {
         });
     }
 
+    const caseInfoTranslated = item.caseInfo ? `(${t(`case${item.caseInfo.slice(2,-1)}`)})` : '';
+
     return (
         <>
             {result.map(({ str, lang }, i) => {
@@ -88,7 +90,9 @@ function renderOriginal(item, alphabets, index) {
                         lang={lang}
                     />
                 );
-            })} {item.ipa && <span className="ipa">[{item.ipa}]</span>}
+            })} 
+            {item.caseInfo && <> <span className="caseInfo">{caseInfoTranslated}</span></>}
+            {item.ipa && <> <span className="ipa">[{item.ipa}]</span></>}
         </>
     );
 }
