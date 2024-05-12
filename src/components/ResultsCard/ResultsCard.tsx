@@ -90,7 +90,7 @@ function renderOriginal(item, alphabets, caseQuestions, index) {
                     />
                 );
             })} 
-            {item.caseInfo && <> <span className="caseInfo">({t(`case${item.caseInfo.slice(2,-1)}`)})</span></>}
+            {item.caseInfo && <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(2,-1)}`)})</span></>}
             {item.ipa && <> <span className="ipa">[{item.ipa}]</span></>}
         </>
     );
