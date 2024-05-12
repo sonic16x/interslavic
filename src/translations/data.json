@@ -2790,6 +2790,21 @@
     "mk": "Редослед на падежите",
     "bg": "Последователност на падежите"
   },
+  "caseQuestionsForPrepositions": {
+    "en": "Show questions instead of case names in search results (for prepositions and some verbs)",
+    "isv": "Pokazyvati pytańja zaměsto nazv padežev v rezultatah iskańja (pri prědlogah i někojih glagolah)",
+    "ru": "Показывать вопросы вместо названий падежей в результатах поиска (при предлогах и некоторых глаголах)",
+    "uk": "Показувати питання замість назв відмінків у результатах пошуку (при прийменниках та деяких дієсловах)",
+    "be": "Паказваць пытанні замест назваў склонаў у выніках пошуку (пры падставах і некаторых дзеясловах)",
+    "pl": "Pokaż pytania zamiast nazw przypadków w wynikach wyszukiwania (dla przyimków i niektórych czasowników)",
+    "cs": "Zobrazovat otázky místo názvů pádů ve výsledcích vyhledávání (pro předložky a některá slovesa)",
+    "sk": "Zobrazovať otázky namiesto názvov pádov v výsledkoch vyhľadávania (pre predložky a niektoré slovesá)",
+    "sl": "Pokazati vprašanja namesto imen sklonov v rezultatih iskanja (za predlogi in nekatere glagole)",
+    "hr": "Prikazati pitanja umjesto imena padeža u rezultatima pretraživanja (za predloške i neke glagole)",
+    "sr": "Покажи питања уместо имена падежа у резултатима претраге (за предлоге и неке глаголе)",
+    "mk": "Покажи прашања наместо имената на падежите во резултатите од пребарувањето (за предлошките и некои глаголи)",
+    "bg": "Покажи въпросите вместо имената на падежите в резултатите от търсенето (за предлозите и някои глаголи)"
+  },
   "close": {
     "en": "Close",
     "isv": "Zatvoriti",
