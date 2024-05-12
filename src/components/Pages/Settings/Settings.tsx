@@ -8,6 +8,7 @@ import { t } from 'translations';
 
 import {
     changeCardViewAction,
+    changeCaseQuestions,
     changeDictionaryLangAction,
     changeIsvSearchByWordForms,
     changeIsvSearchLetters,
@@ -23,6 +24,7 @@ import { fetchLang } from 'services/fetchDictionary';
 import { interfaceLanguageList } from 'services/interfaceLanguages';
 
 import { useAlphabets } from 'hooks/useAlphabets';
+import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useDarkTheme } from 'hooks/useDarkTheme';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 import { useEnabledPages } from 'hooks/useEnabledPages';
@@ -58,6 +60,7 @@ export const Settings =
         const isShortCardView = useShortCardView();
         const isDarkTheme = useDarkTheme();
         const isvSearchByWordForms = useIsvSearchByWordForms();
+        const caseQuestions = useCaseQuestions();
         const orderOfCases = useOrderOfCases();
         const dictionaryLanguages = useDictionaryLanguages();
         const enabledPages = useEnabledPages();
@@ -190,6 +193,13 @@ export const Settings =
                     })}
                     value={orderOfCases.join(',')}
                     onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases.split(',')))}
+                />
+                <hr/>
+                <Checkbox
+                    className="bold"
+                    title={t('caseQuestionsForPrepositions')}
+                    checked={caseQuestions}
+                    onChange={() => dispatch(changeCaseQuestions(!caseQuestions))}
                 />
                 <hr />
                 <h6 className="settings__add-langs-title">

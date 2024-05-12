@@ -5,6 +5,7 @@ import { IAlphabets } from 'reducers';
 import { convertCases } from 'utils/convertCases';
 import { filterLatin } from 'utils/filterLatin';
 import { filterNiqqud } from 'utils/filterNiqqud';
+import { getCaseTips } from 'utils/getCaseTips';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
@@ -513,18 +514,23 @@ class DictionaryClass {
         to: string,
         flavorisationType: string,
         alphabets?: IAlphabets,
+        caseQuestions?: boolean
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
-            const add = addArray.find((elem) => elem.indexOf('(+') === -1) || '';
-            const caseInfo = addArray.find((elem) => elem.indexOf('(+') !== -1) || '';
+            let add = addArray.find((elem) => elem.indexOf('(+') === -1) || '';
+            let caseInfo = convertCases(addArray.find((elem) => elem.indexOf('(+') !== -1) || '');
+            if(caseInfo && caseQuestions) {
+                add = `${add?`${add} `:''}(${getCaseTips(caseInfo.slice(2,3),'nounShort')})`;
+                caseInfo = '';
+            }
             const translate = this.getField(item, (from === 'isv' ? to : from));
             const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
                 add: getLatin(add, flavorisationType),
-                caseInfo: convertCases(caseInfo),
+                caseInfo: caseInfo,
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
