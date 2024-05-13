@@ -367,9 +367,7 @@ class DictionaryClass {
         }
 
         // option -etym - hard search by etymological orthography for Isv
-        const hardEtymSearch = from === 'isv' && (inputOptions.some((o) => o === 'etym') ||
-            (flavorisationType === '2' &&
-            isvReplacebleLetters.every((letter) => this.isvSearchLetters.from.includes(letter[0]))));
+        const hardEtymSearch = from === 'isv' && (inputOptions.some((o) => o === 'etym'));
 
         // filter by part of speech
         let filterPartOfSpeech = [];
