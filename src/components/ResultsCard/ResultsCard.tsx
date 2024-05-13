@@ -11,7 +11,6 @@ import { biReporter, ICardAnalytics } from 'services/biReporter';
 import { Dictionary, ITranslateResult } from 'services/dictionary';
 
 import { useAlphabets } from 'hooks/useAlphabets';
-import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useIntersect } from 'hooks/useIntersect';
 import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
@@ -36,7 +35,7 @@ interface IResultsCardProps {
     index: number;
 }
 
-function renderOriginal(item, alphabets, caseQuestions, index) {
+function renderOriginal(item, alphabets, index) {
     let latin = item.original;
     if (item.add) {
         latin += ` ${item.add}`;
@@ -90,7 +89,7 @@ function renderOriginal(item, alphabets, caseQuestions, index) {
                     />
                 );
             })} 
-            {item.caseInfo && <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(2,-1)}`)})</span></>}
+            {item.caseInfo && <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span></>}
             {item.ipa && <> <span className="ipa">[{item.ipa}]</span></>}
         </>
     );
@@ -99,7 +98,6 @@ function renderOriginal(item, alphabets, caseQuestions, index) {
 export const ResultsCard =
     ({ item, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
-        const caseQuestions = useCaseQuestions();
         const wordId = Dictionary.getField(item.raw, 'id').toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
@@ -202,7 +200,7 @@ export const ResultsCard =
                             item={item}
                             lang={item.to}
                         />
-                    ) : renderOriginal(item, alphabets, caseQuestions, index)}
+                    ) : renderOriginal(item, alphabets, index)}
                     {'\u00A0'}
                     { hasIntelligibilityIssues(intelligibilityVector)
                         ? <button
@@ -232,7 +230,7 @@ export const ResultsCard =
                                 item={item}
                                 lang={item.from}
                             />
-                        ) : renderOriginal(item, alphabets, caseQuestions, index)}
+                        ) : renderOriginal(item, alphabets, index)}
                         {item.to !== 'isv' && short && (
                             <span className="results-card__details">{item.details}</span>
                         )}

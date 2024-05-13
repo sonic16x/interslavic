@@ -519,10 +519,10 @@ class DictionaryClass {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
-            let add = addArray.find((elem) => elem.indexOf('(+') === -1) || '';
-            let caseInfo = convertCases(addArray.find((elem) => elem.indexOf('(+') !== -1) || '');
+            let add = addArray.find((elem) => !elem.startsWith('(+')) || '';
+            let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1,-1) || '');
             if(caseInfo && caseQuestions) {
-                add = `${add?`${add} `:''}(${getCaseTips(caseInfo.slice(2,3),'nounShort')})`;
+                add = `${add?`${add} `:''}(${getCaseTips(caseInfo.slice(1),'nounShort')})`;
                 caseInfo = '';
             }
             const translate = this.getField(item, (from === 'isv' ? to : from));

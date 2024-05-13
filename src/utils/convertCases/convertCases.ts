@@ -1,5 +1,6 @@
-export function convertCases(add: string): string {
-    const caseInfo = add
+export function convertCases(caseInfoRaw: string): string {
+    const caseList = ['+Nom','+Gen','+Dat','+Acc','+Ins','+Loc','+Voc'];
+    const caseInfo = caseInfoRaw
         .replace('+1', '+Nom')
         .replace('+2', '+Gen')
         .replace('+3', '+Dat')
@@ -8,6 +9,6 @@ export function convertCases(add: string): string {
         .replace('+6', '+Loc')
         .replace('+7', '+Voc')
         .replace('.', ''); 
-    
-    return ['+Nom','+Gen','+Dat','+Acc','+Ins','+Loc','+Voc'].find((el) => caseInfo.indexOf(el) !== -1) ? caseInfo : '';
+
+    return caseList.includes(caseInfo) ? caseInfo : '';
 }
