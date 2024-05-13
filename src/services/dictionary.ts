@@ -133,6 +133,8 @@ export interface ITranslateResult {
     addCyr?: string;
     addGla?: string;
     caseInfo: string;
+    caseInfoCyr?: string;
+    caseInfoGla?: string;
     details: string;
     ipa: string;
     isv: string;
@@ -519,11 +521,10 @@ class DictionaryClass {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
-            let add = addArray.find((elem) => !elem.startsWith('(+')) || '';
+            const add = addArray.find((elem) => !elem.startsWith('(+')) || '';
             let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1,-1) || '');
             if(caseInfo && caseQuestions) {
-                add = `${add?`${add} `:''}(${getCaseTips(caseInfo.slice(1),'nounShort')})`;
-                caseInfo = '';
+                caseInfo = getCaseTips(caseInfo.slice(1),'nounShort');
             }
             const translate = this.getField(item, (from === 'isv' ? to : from));
             const formattedItem: ITranslateResult = {
@@ -542,10 +543,12 @@ class DictionaryClass {
             if (alphabets?.cyrillic) {
                 formattedItem.originalCyr = getCyrillic(isv, flavorisationType);
                 formattedItem.addCyr = getCyrillic(add, flavorisationType);
+                if(caseQuestions) formattedItem.caseInfoCyr = getCyrillic(caseInfo, flavorisationType);
             }
             if (alphabets?.glagolitic) {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
                 formattedItem.addGla = getGlagolitic(add, flavorisationType);
+                if(caseQuestions) formattedItem.caseInfoGla = getGlagolitic(caseInfo, flavorisationType);
             }
 
             return formattedItem;

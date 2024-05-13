@@ -11,6 +11,7 @@ import { biReporter, ICardAnalytics } from 'services/biReporter';
 import { Dictionary, ITranslateResult } from 'services/dictionary';
 
 import { useAlphabets } from 'hooks/useAlphabets';
+import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useIntersect } from 'hooks/useIntersect';
 import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
@@ -35,7 +36,7 @@ interface IResultsCardProps {
     index: number;
 }
 
-function renderOriginal(item, alphabets, index) {
+function renderOriginal(item, alphabets, caseQuestions, index) {
     let latin = item.original;
     if (item.add) {
         latin += ` ${item.add}`;
@@ -56,6 +57,7 @@ function renderOriginal(item, alphabets, index) {
     if (alphabets.latin) {
         result.push({
             str: latin,
+            caseInfo: caseQuestions && item.caseInfo,
             lang: 'isv-Latin',
         });
     }
@@ -63,6 +65,7 @@ function renderOriginal(item, alphabets, index) {
     if (alphabets.cyrillic) {
         result.push({
             str: cyrillic,
+            caseInfo: item.caseInfoCyr,
             lang: 'isv-Cyrl',
         });
     }
@@ -70,26 +73,30 @@ function renderOriginal(item, alphabets, index) {
     if (alphabets.glagolitic) {
         result.push({
             str: gla,
+            caseInfo: item.caseInfoGla,
             lang: 'isv-Glag',
         });
     }
 
     return (
         <>
-            {result.map(({ str, lang }, i) => {
+            {result.map(({ str, caseInfo, lang }, i) => {
                 return (
-                    <Clipboard
-                        className="word"
-                        key={i}
-                        str={str}
-                        index={index}
-                        item={item}
-                        type="card"
-                        lang={lang}
-                    />
+                    <span className="word" key={i}>
+                        <Clipboard
+                            str={str}
+                            index={index}
+                            item={item}
+                            type="card"
+                            lang={lang}
+                        />
+                        {caseInfo && <> <span className="caseInfo">({caseInfo})</span></>}
+                    </span>
                 );
             })} 
-            {item.caseInfo && <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span></>}
+            {!caseQuestions && item.caseInfo &&
+                 <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span></>
+            }
             {item.ipa && <> <span className="ipa">[{item.ipa}]</span></>}
         </>
     );
@@ -98,6 +105,7 @@ function renderOriginal(item, alphabets, index) {
 export const ResultsCard =
     ({ item, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
+        const caseQuestions = useCaseQuestions();
         const wordId = Dictionary.getField(item.raw, 'id').toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
@@ -200,7 +208,7 @@ export const ResultsCard =
                             item={item}
                             lang={item.to}
                         />
-                    ) : renderOriginal(item, alphabets, index)}
+                    ) : renderOriginal(item, alphabets, caseQuestions, index)}
                     {'\u00A0'}
                     { hasIntelligibilityIssues(intelligibilityVector)
                         ? <button
@@ -230,7 +238,7 @@ export const ResultsCard =
                                 item={item}
                                 lang={item.from}
                             />
-                        ) : renderOriginal(item, alphabets, index)}
+                        ) : renderOriginal(item, alphabets, caseQuestions, index)}
                         {item.to !== 'isv' && short && (
                             <span className="results-card__details">{item.details}</span>
                         )}
