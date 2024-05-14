@@ -65,7 +65,7 @@ export const defaultState: IMainState = {
         to: [],
     },
     isvSearchByWordForms: true,
-    caseQuestions: false,
+    caseQuestions: true,
     fromText: '',
     searchType: 'begin',
     posFilter: '',
