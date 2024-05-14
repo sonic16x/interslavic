@@ -28,6 +28,7 @@
 
   .word + .word:before {
     content: "/";
+    padding: 0 2px;
   }
 
   .ipa {
