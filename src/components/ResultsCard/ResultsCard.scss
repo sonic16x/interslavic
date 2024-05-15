@@ -29,6 +29,7 @@
   .word + .word:before {
     content: "/";
     padding: 0 2px;
+    font-weight: normal;
   }
 
   .ipa {
@@ -36,7 +37,8 @@
     font-weight: 500;
   }
   .caseInfo {
-    font-style: italic;
+    font-weight: normal;
+    letter-spacing: -0.5pt;
   }
 
   &__details {
@@ -49,6 +51,9 @@
     font-size: var(--text-m);
     line-height: var(--text-m-line);
     color: var(--dark);
+    .caseInfo {
+      font-style: italic;
+    }
   }
 
 
