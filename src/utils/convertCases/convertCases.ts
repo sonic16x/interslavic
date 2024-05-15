@@ -1,5 +1,6 @@
+const caseList = ['+Nom','+Gen','+Dat','+Acc','+Ins','+Loc','+Voc'];
+
 export function convertCases(caseInfoRaw: string): string {
-    const caseList = ['+Nom','+Gen','+Dat','+Acc','+Ins','+Loc','+Voc'];
     const caseInfo = caseInfoRaw
         .replace('+1', '+Nom')
         .replace('+2', '+Gen')
