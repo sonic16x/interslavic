@@ -583,7 +583,10 @@ class DictionaryClass {
         }
     }
     public searchPrepare(lang: string, text: string): string {
-        let lowerCaseText = text.toLowerCase().replace(/,/g, '');
+        let lowerCaseText = text
+            .toLowerCase()
+            .replace(/,/g, '')
+            .replace(/[ʼ’]/g, "'");
 
         if (lang !== 'isv-src') {
             lowerCaseText = lowerCaseText.replace(/[\u0300-\u036f]/g, '');
