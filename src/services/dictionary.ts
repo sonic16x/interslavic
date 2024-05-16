@@ -544,7 +544,7 @@ class DictionaryClass {
         return this.percentsOfChecked;
     }
     public isvToEngLatin(text) {
-        return normalize(getLatin(text, '3'))
+        return normalize(getLatin(text, '3', true))
             .replace(/y/g, 'i');
     }
     public getField(item: string[], fieldName: string) {
