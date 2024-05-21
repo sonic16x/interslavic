@@ -1549,16 +1549,16 @@
     "en": "main",
     "isv": "glavny",
     "ru": "основной",
-    "uk": "",
+    "uk": "головне",
     "be": "асноўны",
-    "pl": "",
-    "cs": "",
-    "sk": "",
-    "sl": "",
-    "hr": "",
-    "sr": "",
-    "mk": "",
-    "bg": ""
+    "pl": "główny",
+    "cs": "hlavní",
+    "sk": "hlavné",
+    "sl": "glavni",
+    "hr": "glavni",
+    "sr": "главни",
+    "mk": "главен",
+    "bg": "главен"
   },
   "verb-auxiliar": {
     "en": "auxiliar",
@@ -2790,6 +2790,21 @@
     "mk": "Редослед на падежите",
     "bg": "Последователност на падежите"
   },
+  "caseQuestionsForPrepositions": {
+    "en": "Show case questions instead of case names for prepositions and verbs",
+    "isv": "Pokazyvati padežne pytańja zaměsto nazv padežev pri prědlogah i někojih glagolah",
+    "ru": "Отображать падежные вопросы вместо названий падежей при предлогах и некоторых глаголах",
+    "uk": "Показувати відмінкові запитання замість назв відмінків при прийменниках та деяких дієсловах",
+    "be": "Паказваць склонныя пытанні замест назваў склонаў пры падставах і некаторых дзеясловах",
+    "pl": "Pokaż pytania przypadkowe zamiast nazw przypadków przy przyimkach i niektórych czasownikach",
+    "cs": "Zobrazit pádové otázky místo názvů pádů u předložek a některých sloves",
+    "sk": "Zobraziť pádové otázky namiesto názvov pádov pri predložkách a niektorých slovesách",
+    "sl": "Pokazati sklonilne vprašanja namesto imen sklonov pri predlogih in nekaterih glagolih",
+    "hr": "Prikazati padežna pitanja umjesto naziva padeža kod prijedloga i nekih glagola",
+    "sr": "Покажи падежна питања уместо назива падежа код предлога и неких глагола",
+    "mk": "Покажи падежни прашања наместо имиња на падежите при предлози и некои глаголи",
+    "bg": "Покажи падежни въпроси вместо имена на падежите при предлози и някои глаголи"
+  },
   "close": {
     "en": "Close",
     "isv": "Zatvoriti",
@@ -3093,7 +3108,7 @@
   },
   "wordErrorInfo": {
     "en": "Select the type of mistake and write what you propose to correct.",
-    "isv": "Izberite tip pogrěšky i napišite, čto prědlagajete popraviti.",
+    "isv": "Izberi tip pogrěšky i napiši, čto prědlagaješ popraviti.",
     "ru": "Выберите тип ошибки и напишите, что вы предлагаете исправить.",
     "uk": "Виберіть тип помилки та напишіть, що ви пропонуєте виправити.",
     "be": "Абярыце тып памылкі і напішыце, што вы прапануеце выправіць.",
