@@ -3153,7 +3153,7 @@
   },
   "wordErrorInfo": {
     "en": "Select the type of mistake and write what you propose to correct.",
-    "isv": "Izberi tip pogrěšky i napiši, čto prědlagaješ popraviti.",
+    "isv": "Izberite tip pogrěšky i napišite, čto prědlagajete popraviti.",
     "ru": "Выберите тип ошибки и напишите, что вы предлагаете исправить.",
     "uk": "Виберіть тип помилки та напишіть, що ви пропонуєте виправити.",
     "be": "Абярыце тып памылкі і напішыце, што вы прапануеце выправіць.",
@@ -3168,7 +3168,7 @@
   },
   "wordErrorEmptyTextValidation": {
     "en": "Enter the text",
-    "isv": "Vpiši tekst",
+    "isv": "Vpišite tekst",
     "ru": "Введите текст",
     "uk": "Введіть текст",
     "be": "Увядзіце тэкст",
@@ -3183,7 +3183,7 @@
   },
   "sendErrorConfirmExit": {
     "en": "The entered data was not sent. Are you sure you want to close the window?",
-    "isv": "Vpisane dane ne byli poslane. Napravdu li hočeš zatvoriti okno?",
+    "isv": "Vpisane dane ne byli poslane. Napravdu li hočete zatvoriti okno?",
     "ru": "Введённые данные не отправлены. Вы уверены что хотите закрыть окно?",
     "uk": "Введені дані не були надіслані. Ви впевнені, що хочете закрити вікно?",
     "be": "Уведзеныя даныя не былі адпраўленыя. Вы ўпэўнены, што хочаце зачыніць акно?",
@@ -3228,7 +3228,7 @@
   },
   "captchaError": {
     "en": "Сonfirm you are not a robot",
-    "isv": "Podtvrdi, že ne jesi robot",
+    "isv": "Podtvrdite, že ne jeste robot",
     "ru": "Подтвердите, что вы не робот",
     "uk": "Підтвердьте, що ви не робот",
     "be": "Пацвердзіце, што вы не робат",
