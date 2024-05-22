@@ -2791,19 +2791,19 @@
     "bg": "Последователност на падежите"
   },
   "caseQuestionsForPrepositions": {
-    "en": "Show case questions instead of case names for prepositions and some verbs",
-    "isv": "Pokazyvati padežne pytańja zaměsto nazv padežev pri prědlogah i někojih glagolah",
-    "ru": "Отображать падежные вопросы вместо названий падежей при предлогах и некоторых глаголах",
-    "uk": "Показувати відмінкові запитання замість назв відмінків при прийменниках та деяких дієсловах",
-    "be": "Паказваць склонныя пытанні замест назваў склонаў пры падставах і некаторых дзеясловах",
-    "pl": "Pokaż pytania przypadkowe zamiast nazw przypadków przy przyimkach i niektórych czasownikach",
-    "cs": "Zobrazit pádové otázky místo názvů pádů u předložek a některých sloves",
-    "sk": "Zobraziť pádové otázky namiesto názvov pádov pri predložkách a niektorých slovesách",
-    "sl": "Pokazati sklonilne vprašanja namesto imen sklonov pri predlogih in nekaterih glagolih",
-    "hr": "Prikazati padežna pitanja umjesto naziva padeža kod prijedloga i nekih glagola",
-    "sr": "Покажи падежна питања уместо назива падежа код предлога и неких глагола",
-    "mk": "Покажи падежни прашања наместо имиња на падежите при предлози и некои глаголи",
-    "bg": "Покажи падежни въпроси вместо имена на падежите при предлози и някои глаголи"
+    "en": "Show case questions instead of case names for prepositions and verbs",
+    "isv": "Pokazyvati padežne pytańja zaměsto nazv padežev pri prědlogah i glagolah",
+    "ru": "Отображать падежные вопросы вместо названий падежей при предлогах и глаголах",
+    "uk": "Показувати відмінкові запитання замість назв відмінків при прийменниках та дієсловах",
+    "be": "Паказваць склонныя пытанні замест назваў склонаў пры падставах і дзеясловах",
+    "pl": "Pokaż pytania przypadkowe zamiast nazw przypadków przy przyimkach i czasownikach",
+    "cs": "Zobrazit pádové otázky místo názvů pádů u předložek a sloves",
+    "sk": "Zobraziť pádové otázky namiesto názvov pádov pri predložkách a slovesách",
+    "sl": "Pokazati sklonilne vprašanja namesto imen sklonov pri predlogih in glagolih",
+    "hr": "Prikazati padežna pitanja umjesto naziva padeža kod prijedloga i glagola",
+    "sr": "Покажи падежна питања уместо назива падежа код предлога и глагола",
+    "mk": "Покажи падежни прашања наместо имиња на падежите при предлози и глаголи",
+    "bg": "Покажи падежни въпроси вместо имена на падежите при предлози и глаголи"
   },
   "close": {
     "en": "Close",
