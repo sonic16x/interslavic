@@ -1,0 +1,1 @@
+export { expandAbbr } from './expandAbbr';

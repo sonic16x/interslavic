@@ -21,6 +21,7 @@ export enum ActionTypes {
     SET_NOTIFICATION = 'SET_NOTIFICATION',
     CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
+    CHANGE_CASE_QUESTIONS = 'CHANGE_CASE_QUESTIONS',
     DICTIONARY_LANGUAGES = 'DICTIONARY_LANGUAGES',
     TOGGLE_PAGE = 'TOGGLE_PAGE',
     SET_COMMUNITY_LINKS = 'SET_COMMUNITY_LINKS',
@@ -161,6 +162,13 @@ export function setAlphabets(data) {
 export function changeOrderOfCases(data) {
     return {
         type: ActionTypes.CHANGE_ORDER_OF_CASES,
+        data,
+    };
+}
+
+export function changeCaseQuestions(data) {
+    return {
+        type: ActionTypes.CHANGE_CASE_QUESTIONS,
         data,
     };
 }
