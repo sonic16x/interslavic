@@ -1277,18 +1277,18 @@
   "numeral-differential": {
     "en": "differential",
     "isv": "različajuči",
-    "ru": "видовое",
-    "uk": "видовий",
-    "be": "відавы",
+    "ru": "разделительное",
+    "uk": "роздільний",
+    "be": "раздзельны",
     "pl": "wieloraki",
     "cs": "druhová",
     "sk": "druhová",
-    "sl": "mnogovrsten",
-    "hr": "višestruki",
-    "sr": "вишеструки",
-    "mk": "видови",
+    "sl": "ločilni",
+    "hr": "distributivni",
+    "sr": "дистрибутивни",
+    "mk": "разделив",
     "bg": "различително",
-    "comment": "This term is used only in some languages, for example in Polish (liczebnik wieloraki), Czech (druhová číslovka). Example: dvojaki, trojaki etc."
+    "comment": "Examples: dvojaki, trojaki etc."
   },
   "numeral-multiplicative": {
     "en": "multiplicative",
