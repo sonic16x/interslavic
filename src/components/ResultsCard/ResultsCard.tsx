@@ -22,6 +22,7 @@ import { wordHasForms } from 'utils/wordHasForms';
 
 import { Clipboard } from 'components/Clipboard';
 
+import { expandAbbr } from "../../utils/expandAbbr";
 import { removeBrackets } from "../../utils/removeBrackets";
 
 import './ResultsCard.scss';
@@ -93,7 +94,7 @@ function renderOriginal(item, alphabets, caseQuestions, index) {
                         {caseInfo && <> <span className="caseInfo">({caseInfo})</span></>}
                     </span>
                 );
-            })} 
+            })}
             {!caseQuestions && item.caseInfo &&
                  <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span></>
             }
@@ -191,6 +192,7 @@ export const ResultsCard =
         }
 
         const short = useShortCardView();
+        const expandedDetails = expandAbbr(item.details).map(key => t(key)).join(', ');
 
         return (
             <div
@@ -221,12 +223,16 @@ export const ResultsCard =
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;
-                            <span className="results-card__details">{item.details}</span>
+                            <abbr title={expandedDetails} className="results-card__details">
+                                {t(`abbr:${item.details}`)}
+                            </abbr>
                         </>
                     )}
                 </div>
                 {!short && (
-                    <span className="results-card__details">{item.details}</span>
+                    <abbr title={expandedDetails} className="results-card__details">
+                        {t(`abbr:${item.details}`)}
+                    </abbr>
                 )}
                 <div className="results-card__bottom">
                     <div className="results-card__original">
@@ -240,7 +246,9 @@ export const ResultsCard =
                             />
                         ) : renderOriginal(item, alphabets, caseQuestions, index)}
                         {item.to !== 'isv' && short && (
-                            <span className="results-card__details">{item.details}</span>
+                            <abbr title={expandedDetails} className="results-card__details">
+                                {t(`abbr:${item.details}`)}
+                            </abbr>
                         )}
                     </div>
                     <div className="results-card__actions">
