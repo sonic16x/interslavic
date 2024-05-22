@@ -17,18 +17,17 @@ import {
     getNumeralType,
     getPartOfSpeech,
     getPronounType,
-    getVerbDetails,
     isAnimated,
-    isComparative,
     isIndeclinable,
     isPlural,
     isSingular,
-    isSuperlative,
 } from 'utils/wordDetails';
 
 import { LineSelector } from 'components/LineSelector';
 import { Table } from 'components/Table';
 import { Text } from 'components/Text';
+
+import { expandAbbr } from "../../../utils/expandAbbr";
 
 import './DetailModal.scss';
 
@@ -59,12 +58,15 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             return null;
         }
 
-        const pos = getPartOfSpeech(this.props.details);
+        const { word, add, details } = this.props;
+        const expandedDetails = expandAbbr(details).map(key => t(key)).join(', ');
 
         return (
             <>
                 <div className="modal-dialog__header">
-                    {this.renderTitle(pos)}
+                    <span className="modal-dialog__header-title">
+                        {this.formatStr(word)} {this.formatStr(add)} <span className="details">({expandedDetails})</span>
+                    </span>
                     <button
                         className="modal-dialog__header-close"
                         onClick={this.props.close}
@@ -99,67 +101,6 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     onSelect={(type) => this.props.setAlphabetType(type)}
                 />
             </footer>
-        );
-    }
-
-    private renderTitle(pos: string) {
-        const { details, word, add } = this.props;
-        const arr = [t(pos)];
-
-        switch (pos) {
-            case 'noun': {
-                const gender = getGender(details);
-                const animated = isAnimated(details);
-                arr.push(t('noun-' + gender));
-                if (gender.match(/masculine/)) {
-                    arr.push(t(animated ? 'noun-animated' : 'noun-inanimate'));
-                }
-                if (isIndeclinable(details)) {
-                    arr.push(t('noun-indeclinable'));
-                }
-                if (isPlural(details)) {
-                    arr.push(t('noun-plural'));
-                }
-                if (isSingular(details)) {
-                    arr.push(t('noun-singular'));
-                }
-                break;
-            }
-            case 'adjective': {
-                if (isComparative(details)) {
-                    arr.push(t('comparative') + ' ' + t('degree'));
-                } else if (isSuperlative(details)) {
-                    arr.push(t('superlative') + ' ' + t('degree'));
-                }
-                break;
-            }
-            case 'verb': {
-                const verbDetails = getVerbDetails(details);
-                if (verbDetails) {
-                    arr.push(...verbDetails.map((e) => t('verb-' + e)));
-                }
-                break;
-            }
-            case 'numeral': {
-                const numeralType = getNumeralType(details);
-                if (numeralType) {
-                    arr.push(t('numeral-' + numeralType));
-                }
-                break;
-            }
-            case 'pronoun': {
-                const pronounType = getPronounType(details);
-                if (pronounType) {
-                    arr.push(t('pronoun-' + pronounType));
-                }
-                break;
-            }
-        }
-
-        return (
-            <span className="modal-dialog__header-title">
-                {this.formatStr(word)} {this.formatStr(add)} <span className="details">({arr.join(', ')})</span>
-            </span>
         );
     }
 

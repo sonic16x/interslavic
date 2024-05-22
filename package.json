@@ -1,8 +1,8 @@
 {
   "name": "interslavic",
-  "version": "1.11.0",
+  "version": "1.18.4",
   "license": "MIT",
-  "description": "Interslavic dictionary",
+  "description": "Interslavic Dictionary",
   "author": "Sergey Cherebedov",
   "scripts": {
     "start": "npm run dev",

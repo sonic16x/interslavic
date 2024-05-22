@@ -108,7 +108,7 @@ export const About =
                         </div>
                         <hr/>
                         <div className="about-page__badges">
-                            <a
+                            {/*<a
                                 href="https://play.google.com/store/apps/details?id=org.interslavicdictionary.twa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
                                 className="badge_google-play"
                                 title="Get it on Google Play"
@@ -120,7 +120,7 @@ export const About =
                                     width="200px"
                                     src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                                 />
-                            </a>
+                            </a>*/}
 
                             <a
                                 href="https://discord.com/invite/n3saqm27QW"

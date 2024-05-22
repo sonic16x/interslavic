@@ -1,7 +1,7 @@
 export function getCaseTips(caseName: string, setName: string): string {
     switch(setName) {
         case 'noun': 
-            switch(caseName.slice(0,1).toUpperCase()) {
+            switch(caseName[0]?.toUpperCase()) {
                 case 'N': return 'kto? čto?';
                 case 'A': return 'kogo? čto?';
                 case 'G': return 'kogo? čego?';
@@ -11,8 +11,19 @@ export function getCaseTips(caseName: string, setName: string): string {
                 case 'V': return 'hej! ty! vy!';
                 default: return '';
             }
+        case 'nounShort': 
+            switch(caseName[0]?.toUpperCase()) {
+                case 'N': return 'kto? čto?';
+                case 'A': return 'kogo? čto?';
+                case 'G': return 'kogo? čego?';
+                case 'D': return 'komu? čemu?';
+                case 'I': return 'kym? čim?';
+                case 'L': return 'kom? čem?';
+                case 'V': return 'hej!';
+                default: return '';
+            }
         case 'adjectiveSingular': 
-            switch(caseName.slice(0,1).toUpperCase()) {
+            switch(caseName[0]?.toUpperCase()) {
                 case 'N': return 'kaky? kako? kaka?';
                 case 'A': return 'kakogo? kako? kaku?';
                 case 'G': return 'kakogo? kakoj?';
@@ -23,7 +34,7 @@ export function getCaseTips(caseName: string, setName: string): string {
                 default: return '';
             }
         case 'adjectivePlural': 
-            switch(caseName.slice(0,1).toUpperCase()) {
+            switch(caseName[0]?.toUpperCase()) {
                 case 'N': return 'kaki? kake?';
                 case 'A': return 'kakyh? kake?';
                 case 'G': return 'kakyh?';

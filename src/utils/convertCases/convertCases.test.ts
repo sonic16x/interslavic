@@ -1,19 +1,31 @@
 import { convertCases } from 'utils/convertCases';
 
 describe('convertCases', () => {
-    it('should convert "+2" to +Gen.', () => {
-        expect(convertCases('+2')).toBe('+Gen.');
+    test.each([
+        ['+1', '+Nom'],
+        ['+2', '+Gen'],
+        ['+3', '+Dat'],
+        ['+4', '+Acc'],
+        ['+5', '+Ins'],
+        ['+6', '+Loc'],
+        ['+7', '+Voc']
+    ])('should convert "%s" to "%s"', (input, expected) => {
+        expect(convertCases(input)).toBe(expected);
     });
-    it('should convert "+3" to +Dat.', () => {
-        expect(convertCases('+3')).toBe('+Dat.');
+    
+    test.each([
+        ['+Nom.', '+Nom'],
+        ['+Gen.', '+Gen'],
+        ['+Dat.', '+Dat'],
+        ['+Acc.', '+Acc'],
+        ['+Ins.', '+Ins'],
+        ['+Loc.', '+Loc'],
+        ['+Voc.', '+Voc']
+    ])('should remove dot from "%s"', (input, expected) => {
+        expect(convertCases(input)).toBe(expected);
     });
-    it('should convert "+4" to +Acc.', () => {
-        expect(convertCases('+4')).toBe('+Acc.');
-    });
-    it('should convert "+5" to +Ins.', () => {
-        expect(convertCases('+5')).toBe('+Ins.');
-    });
-    it('should convert "+6" to +Loc.', () => {
-        expect(convertCases('+6')).toBe('+Loc.');
+    
+    test('should convert unknown abbreviations to an empty string', () => {
+        expect(convertCases('+ABCD')).toBe('');
     });
 });
