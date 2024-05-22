@@ -5,6 +5,7 @@ import { IAlphabets } from 'reducers';
 import { convertCases } from 'utils/convertCases';
 import { filterLatin } from 'utils/filterLatin';
 import { filterNiqqud } from 'utils/filterNiqqud';
+import { getCaseTips } from 'utils/getCaseTips';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
@@ -131,6 +132,9 @@ export interface ITranslateResult {
     add: string;
     addCyr?: string;
     addGla?: string;
+    caseInfo: string;
+    caseInfoCyr?: string;
+    caseInfoGla?: string;
     details: string;
     ipa: string;
     isv: string;
@@ -510,15 +514,22 @@ class DictionaryClass {
         to: string,
         flavorisationType: string,
         alphabets?: IAlphabets,
+        caseQuestions?: boolean
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
-            const add = this.getField(item, 'addition');
+            const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
+            const add = addArray.find((elem) => !elem.startsWith('(+')) || '';
+            let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1,-1) || '');
+            if(caseInfo && caseQuestions) {
+                caseInfo = getCaseTips(caseInfo.slice(1),'nounShort');
+            }
             const translate = this.getField(item, (from === 'isv' ? to : from));
             const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
-                add: convertCases(getLatin(add, flavorisationType)),
+                add: getLatin(add, flavorisationType),
+                caseInfo: caseInfo,
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
@@ -529,11 +540,13 @@ class DictionaryClass {
             };
             if (alphabets?.cyrillic) {
                 formattedItem.originalCyr = getCyrillic(isv, flavorisationType);
-                formattedItem.addCyr = convertCases(getCyrillic(add, flavorisationType));
+                formattedItem.addCyr = getCyrillic(add, flavorisationType);
+                if(caseQuestions) formattedItem.caseInfoCyr = getCyrillic(caseInfo, flavorisationType);
             }
             if (alphabets?.glagolitic) {
                 formattedItem.originalGla = getGlagolitic(isv, flavorisationType);
-                formattedItem.addGla = convertCases(getGlagolitic(add, flavorisationType));
+                formattedItem.addGla = getGlagolitic(add, flavorisationType);
+                if(caseQuestions) formattedItem.caseInfoGla = getGlagolitic(caseInfo, flavorisationType);
             }
 
             return formattedItem;
