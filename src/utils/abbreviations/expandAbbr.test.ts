@@ -1,6 +1,12 @@
+import { setLang, t } from "translations";
+
 import { expandAbbr } from "./expandAbbr";
 
 describe('expandAbbr', () => {
+    beforeAll(() => {
+        setLang('en');
+    });
+
     test.each([
         ['adj.', ['adjective']],
         ['adj.comp.', ['adjective', 'comparative-degree']],
@@ -14,7 +20,7 @@ describe('expandAbbr', () => {
         ['intj.', ['interjection']],
         ['m.', ['noun', 'noun-masculine', 'noun-inanimate']],
         ['m./f.', ['noun', 'noun-masculineOrFeminine', 'noun-inanimate']],
-        ['m.indecl./f.indecl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-indeclinable']],
+        ['m.indecl./f.indecl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-indeclinable']], // TODO: should be 'noun-masculineOrFeminine'
         ['m.anim.', ['noun', 'noun-masculine', 'noun-animated']],
         ['m.anim.indecl.', ['noun', 'noun-masculine', 'noun-animated', 'noun-indeclinable']],
         ['m.indecl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-indeclinable']],
@@ -41,26 +47,27 @@ describe('expandAbbr', () => {
         ['pron.int.', ['pronoun', 'pronoun-interrogative']],
         ['pron.pers.', ['pronoun', 'pronoun-personal']],
         ['pron.poss.', ['pronoun', 'pronoun-possessive']],
-        ['pron.rec.', ['pronoun']],
+        ['pron.rec.', ['pronoun', 'pronoun-reciprocal']],
         ['pron.refl.', ['pronoun', 'pronoun-reflexive']],
         ['pron.rel.', ['pronoun', 'pronoun-relative']],
         ['suffix', ['suffix']],
         ['v.aux. ipf.', ['verb', 'verb-auxiliar', 'verb-imperfective']],
         ['v.aux. pf.', ['verb', 'verb-auxiliar', 'verb-perfective']],
-        ['v.intr. ipf.', ['verb', 'verb-intransitive', 'verb-imperfective', 'verb-main']],
-        ['v.intr. ipf./pf.', ['verb', 'verb-intransitive', 'verb-imperfectiveOrPerfective', 'verb-main']],
-        ['v.intr. pf.', ['verb', 'verb-intransitive', 'verb-perfective', 'verb-main']],
-        ['v.ipf.', ['verb', 'verb-imperfective', 'verb-main']],
-        ['v.pf.', ['verb', 'verb-perfective', 'verb-main']],
-        ['v.refl. ipf.', ['verb', 'verb-reflexive', 'verb-imperfective', 'verb-main']],
-        ['v.refl. ipf./pf.', ['verb', 'verb-reflexive', 'verb-imperfectiveOrPerfective', 'verb-main']],
-        ['v.refl. pf.', ['verb', 'verb-reflexive', 'verb-perfective', 'verb-main']],
-        ['v.tr. ipf.', ['verb', 'verb-transitive', 'verb-imperfective', 'verb-main']],
-        ['v.tr. ipf./pf.', ['verb', 'verb-transitive', 'verb-imperfectiveOrPerfective', 'verb-main']],
-        ['v.tr. pf.', ['verb', 'verb-transitive', 'verb-perfective', 'verb-main']],
+        ['v.intr. ipf.', ['verb', 'verb-intransitive', 'verb-imperfective']],
+        ['v.intr. ipf./pf.', ['verb', 'verb-intransitive', 'verb-imperfectiveOrPerfective']],
+        ['v.intr. pf.', ['verb', 'verb-intransitive', 'verb-perfective']],
+        ['v.ipf.', ['verb', 'verb-imperfective']],
+        ['v.pf.', ['verb', 'verb-perfective']],
+        ['v.refl. ipf.', ['verb', 'verb-reflexive', 'verb-imperfective']],
+        ['v.refl. ipf./pf.', ['verb', 'verb-reflexive', 'verb-imperfectiveOrPerfective']],
+        ['v.refl. pf.', ['verb', 'verb-reflexive', 'verb-perfective']],
+        ['v.tr. ipf.', ['verb', 'verb-transitive', 'verb-imperfective']],
+        ['v.tr. ipf./pf.', ['verb', 'verb-transitive', 'verb-imperfectiveOrPerfective']],
+        ['v.tr. pf.', ['verb', 'verb-transitive', 'verb-perfective']],
         ['invalid', []],
         ['', []],
-    ])('should expand abbreviation %s correctly', (abbr, expected) => {
+    ])('should expand abbreviation %s correctly', (abbr, expectedParts) => {
+        const expected = expectedParts.map(key => t(key)).join(', ');
         expect(expandAbbr(abbr)).toEqual(expected);
     });
 });

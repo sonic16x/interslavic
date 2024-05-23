@@ -12,9 +12,9 @@ import {
     isSuperlative
 } from "../wordDetails";
 
-const t = (s: string) => s;
+const t = (key: string): string => key;
 
-export function expandAbbr(abbr: string): string[] {
+export function analyzeAbbr(abbr: string): string[] {
     const pos = getPartOfSpeech(abbr);
     if (!pos) {
         return [];

@@ -8,6 +8,7 @@ import { t } from 'translations';
 import { hideModalDialog, setAlphabetTypeAction } from 'actions';
 import { IMainState } from 'reducers';
 
+import { expandAbbr } from "utils/abbreviations";
 import { getCaseTips } from 'utils/getCaseTips';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
@@ -26,8 +27,6 @@ import {
 import { LineSelector } from 'components/LineSelector';
 import { Table } from 'components/Table';
 import { Text } from 'components/Text';
-
-import { expandAbbr } from "../../../utils/expandAbbr";
 
 import './DetailModal.scss';
 
@@ -59,13 +58,12 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         }
 
         const { word, add, details } = this.props;
-        const expandedDetails = expandAbbr(details).map(key => t(key)).join(', ');
 
         return (
             <>
                 <div className="modal-dialog__header">
                     <span className="modal-dialog__header-title">
-                        {this.formatStr(word)} {this.formatStr(add)} <span className="details">({expandedDetails})</span>
+                        {this.formatStr(word)} {this.formatStr(add)} <span className="details">({expandAbbr(details)})</span>
                     </span>
                     <button
                         className="modal-dialog__header-close"
