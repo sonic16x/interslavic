@@ -361,10 +361,9 @@ class DictionaryClass {
             if (flavorisationType === '2' && this.isvSearchLetters.from.includes('ȯ')) {
                 isvText = isvText.replace(/[ȯòъ]/g, '{ȯ}');
             }
-            isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType), flavorisationType);
+            isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType, true), flavorisationType);
             isvText = this.inputPrepare('isv-src', isvText);
         }
-
         // option -end - search by ending of word
         if (inputOptions.some((option) => option.trim() === 'end')) {
             searchType = 'end';
@@ -425,7 +424,7 @@ class DictionaryClass {
                         return false;
                     }
                 }
-
+                
                 return filterResult;
             })
             .filter((item) => {
@@ -442,14 +441,13 @@ class DictionaryClass {
                     filterResult = splittedField.some((chunk) => (
                         searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText)
                     ));
-
                 }
                 if (!filterResult && (to === 'isv' || twoWaySearch)) {
                     const splittedField = this.getSplittedField(lang, item);
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
-
+                
                 return filterResult;
             })
             .map((item) => {
