@@ -203,7 +203,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 wordComponent = this.renderAdjectiveDetails(word, details);
                 break;
             case 'verb':
-                wordComponent = this.renderVerbDetails(word, add);
+                wordComponent = this.renderVerbDetails(word, add, details);
                 break;
             case 'numeral':
                 wordComponent = this.renderNumeralDetails(word, details);
@@ -242,8 +242,8 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         }
     }
 
-    private renderVerbDetails(word, add) {
-        const data = conjugationVerb(word, add);
+    private renderVerbDetails(word, add, details) {
+        const data = conjugationVerb(word, add, details);
         if (data === null) {
             return (
                 <div>
