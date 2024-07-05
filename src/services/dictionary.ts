@@ -357,10 +357,6 @@ class DictionaryClass {
         let isvText = '';
         if (from === 'isv' || twoWaySearch) {
             isvText = inputWord;
-            // Fix for search by character ȯ
-            if (flavorisationType === '2' && this.isvSearchLetters.from.includes('ȯ')) {
-                isvText = isvText.replace(/[ȯòъ]/g, '{ȯ}');
-            }
             isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType, true), flavorisationType);
             isvText = this.inputPrepare('isv-src', isvText);
         }
