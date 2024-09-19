@@ -15,14 +15,14 @@ import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useIntersect } from 'hooks/useIntersect';
 import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
+import { expandAbbr, translateAbbr } from "utils/abbreviations";
 import { estimateIntelligibility, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
+import { removeBrackets } from "utils/removeBrackets";
 import { toQueryString } from 'utils/toQueryString';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
 
 import { Clipboard } from 'components/Clipboard';
-
-import { removeBrackets } from "../../utils/removeBrackets";
 
 import './ResultsCard.scss';
 
@@ -93,7 +93,7 @@ function renderOriginal(item, alphabets, caseQuestions, index) {
                         {caseInfo && <> <span className="caseInfo">({caseInfo})</span></>}
                     </span>
                 );
-            })} 
+            })}
             {!caseQuestions && item.caseInfo &&
                  <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span></>
             }
@@ -221,12 +221,16 @@ export const ResultsCard =
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;
-                            <span className="results-card__details">{item.details}</span>
+                            <abbr title={expandAbbr(item.details)} className="results-card__details">
+                                {translateAbbr(item.details)}
+                            </abbr>
                         </>
                     )}
                 </div>
                 {!short && (
-                    <span className="results-card__details">{item.details}</span>
+                    <abbr title={expandAbbr(item.details)} className="results-card__details">
+                        {translateAbbr(item.details)}
+                    </abbr>
                 )}
                 <div className="results-card__bottom">
                     <div className="results-card__original">
@@ -240,7 +244,9 @@ export const ResultsCard =
                             />
                         ) : renderOriginal(item, alphabets, caseQuestions, index)}
                         {item.to !== 'isv' && short && (
-                            <span className="results-card__details">{item.details}</span>
+                            <abbr title={expandAbbr(item.details)} className="results-card__details">
+                                {translateAbbr(item.details)}
+                            </abbr>
                         )}
                     </div>
                     <div className="results-card__actions">
