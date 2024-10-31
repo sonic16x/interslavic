@@ -138,20 +138,22 @@ export const About =
                                 />
                             </a>*/}
 
-                            <a
-                                href="https://discord.com/invite/n3saqm27QW"
-                                title="Get it on Discord"
-                                className="badge_discord"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <img
-                                    alt="Get it on Discord"
-                                    width="165px"
-                                    style={{ padding: "13px 0px" }}
-                                    src="icons/discord-icon-330x102.png"
-                                />
-                            </a>
+                            {!isRU && (
+                                <a
+                                    href="https://discord.com/invite/n3saqm27QW"
+                                    title="Get it on Discord"
+                                    className="badge_discord"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <img
+                                        alt="Get it on Discord"
+                                        width="165px"
+                                        style={{padding: "13px 0px"}}
+                                        src="icons/discord-icon-330x102.png"
+                                    />
+                                </a>
+                            )}
                         </div>
                     </div>
                     <div className="about-page__release-date">{version}</div>
