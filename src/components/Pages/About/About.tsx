@@ -1,7 +1,10 @@
+import { useMemo } from "react";
+
 import { tablesData } from 'consts';
 
 import { t } from 'translations';
 
+import { useCookie } from "hooks/useCookie";
 import { getTablePublicUrl } from 'utils/getTablePublicUrl';
 
 import { Link } from 'components/Link';
@@ -11,6 +14,8 @@ import './About.scss';
 export const About =
     () => {
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
+        const countryCode = useCookie('country')
+        const isRU = useMemo(() => countryCode === 'RU', [countryCode])
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/sonic16x/interslavic';
         const source = 'http://steen.free.fr/interslavic';
@@ -37,27 +42,34 @@ export const About =
                         <div className="about-page__author">
                             {t('aboutAuthorSergeyCherebedov')}:
                             <a target="_blank" rel="noreferrer" href="https://github.com/sonic16x">GitHub</a>
-                            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/scherebedov/">LinkedIn</a>
-                            <Link
-                                href="https://www.facebook.com/profile.php?id=100009366550621"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                Facebook
-                            </Link>
+                            {!isRU && (
+                                <a target="_blank" rel="noreferrer"
+                                    href="https://www.linkedin.com/in/scherebedov/">LinkedIn</a>
+                            )}
+                            {!isRU && (
+                                <Link
+                                    href="https://www.facebook.com/profile.php?id=100009366550621"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Facebook
+                                </Link>
+                            )}
                             <a target="_blank" rel="noreferrer" href={`email:${email}`}>{email}</a>
                         </div>
                         <h6>{t('aboutDeveloperCoauthors')}</h6>
                         <div className="about-page__author">
                             {t('aboutAuthorDenisShabalin')}:
                             <a target="_blank" rel="noreferrer" href="https://github.com/ru-danko">GitHub</a>
-                            <Link
-                                href="https://www.facebook.com/d.y.shabalin"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                Facebook
-                            </Link>
+                            {!isRU && (
+                                <Link
+                                    href="https://www.facebook.com/d.y.shabalin"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Facebook
+                                </Link>
+                            )}
                         </div>
                         <div className="about-page__author">
                             {t('aboutAuthorJaroslavSerhieiev')}:
@@ -73,22 +85,26 @@ export const About =
                         <hr/>
                         <h6>{t('aboutOurFriends')}</h6>
                         <div className="about-page__community-links">
-                            <Link
-                                title="Interslavic Facebook"
-                                href="https://www.facebook.com/groups/interslavic"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                Facebook community
-                            </Link>
-                            <a
-                                title="Interslavic Discord"
-                                href="https://discord.com/invite/n3saqm27QW"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                Discord server
-                            </a>
+                            {!isRU && (
+                                <Link
+                                    title="Interslavic Facebook"
+                                    href="https://www.facebook.com/groups/interslavic"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Facebook community
+                                </Link>
+                            )}
+                            {!isRU && (
+                                <a
+                                    title="Interslavic Discord"
+                                    href="https://discord.com/invite/n3saqm27QW"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Discord server
+                                </a>
+                            )}
                             <a
                                 title="Interslavic Language Portal"
                                 href="http://interslavic-language.org/"
