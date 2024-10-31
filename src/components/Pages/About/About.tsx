@@ -149,7 +149,7 @@ export const About =
                                     <img
                                         alt="Get it on Discord"
                                         width="165px"
-                                        style={{padding: "13px 0px"}}
+                                        style={{ padding: "13px 0px" }}
                                         src="icons/discord-icon-330x102.png"
                                     />
                                 </a>
