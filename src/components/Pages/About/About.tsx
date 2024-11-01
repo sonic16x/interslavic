@@ -1,10 +1,7 @@
-import { useMemo } from "react";
-
 import { tablesData } from 'consts';
 
 import { t } from 'translations';
 
-import { useCookie } from "hooks/useCookie";
 import { getTablePublicUrl } from 'utils/getTablePublicUrl';
 
 import { Link } from 'components/Link';
@@ -14,8 +11,6 @@ import './About.scss';
 export const About =
     () => {
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
-        const countryCode = useCookie('country')
-        const isRU = useMemo(() => countryCode === 'RU', [countryCode])
         const email = 'cherebedov.sergey@gmail.com';
         const github = 'https://github.com/sonic16x/interslavic';
         const source = 'http://steen.free.fr/interslavic';
@@ -42,11 +37,11 @@ export const About =
                         <div className="about-page__author">
                             {t('aboutAuthorSergeyCherebedov')}:
                             <a target="_blank" rel="noreferrer" href="https://github.com/sonic16x">GitHub</a>
-                            {!isRU && (
+                            {IS_COM && (
                                 <a target="_blank" rel="noreferrer"
                                     href="https://www.linkedin.com/in/scherebedov/">LinkedIn</a>
                             )}
-                            {!isRU && (
+                            {IS_COM && (
                                 <Link
                                     href="https://www.facebook.com/profile.php?id=100009366550621"
                                     target="_blank"
@@ -61,7 +56,7 @@ export const About =
                         <div className="about-page__author">
                             {t('aboutAuthorDenisShabalin')}:
                             <a target="_blank" rel="noreferrer" href="https://github.com/ru-danko">GitHub</a>
-                            {!isRU && (
+                            {IS_COM && (
                                 <Link
                                     href="https://www.facebook.com/d.y.shabalin"
                                     target="_blank"
@@ -85,7 +80,7 @@ export const About =
                         <hr/>
                         <h6>{t('aboutOurFriends')}</h6>
                         <div className="about-page__community-links">
-                            {!isRU && (
+                            {IS_COM && (
                                 <Link
                                     title="Interslavic Facebook"
                                     href="https://www.facebook.com/groups/interslavic"
@@ -95,7 +90,7 @@ export const About =
                                     Facebook community
                                 </Link>
                             )}
-                            {!isRU && (
+                            {IS_COM && (
                                 <a
                                     title="Interslavic Discord"
                                     href="https://discord.com/invite/n3saqm27QW"
@@ -138,7 +133,7 @@ export const About =
                                 />
                             </a>*/}
 
-                            {!isRU && (
+                            {IS_COM && (
                                 <a
                                     href="https://discord.com/invite/n3saqm27QW"
                                     title="Get it on Discord"
