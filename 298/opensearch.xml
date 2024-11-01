@@ -1,0 +1,8 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    <ShortName>Interslavic Dictionary</ShortName>
+    <Description>Search Interslavic Dictionary</Description>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Image width="16" height="16" type="image/png">https://interslavic-dictionary.com/icons/favicon-16x16.png</Image>
+    <Url type="text/html" method="get" template="https://interslavic-dictionary.com/?text={searchTerms}&amp;ref=opensearch"/>
+    <moz:SearchForm>https://interslavic-dictionary.com/</moz:SearchForm>
+</OpenSearchDescription>
