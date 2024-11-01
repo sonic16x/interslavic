@@ -90,7 +90,7 @@ export const Header =
                 >
                     {pages
                         .filter(({ value }) => {
-                            if (value === 'community' && IS_COM) {
+                            if (value === 'community' && !IS_COM) {
                                 return false
                             }
                             
