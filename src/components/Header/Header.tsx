@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
@@ -11,8 +11,6 @@ import { useEnabledPages } from 'hooks/useEnabledPages';
 import { useInterfaceLang } from 'hooks/useInterfaceLang';
 import { usePage } from 'hooks/usePage';
 import { defaultPages, pages } from 'routing';
-
-import { useCookie } from "../../hooks/useCookie";
 
 import './Header.scss';
 
@@ -31,8 +29,6 @@ export const Header =
         const enabledPages = useEnabledPages();
         const navRef = useRef<HTMLDivElement>();
         const logoRef = useRef<HTMLDivElement>();
-        const countryCode = useCookie('country')
-        const isRU = useMemo(() => countryCode === 'RU', [countryCode])
 
         const onResize = useCallback(() => {
             if (navRef && navRef.current && logoRef && logoRef.current) {
@@ -94,7 +90,7 @@ export const Header =
                 >
                     {pages
                         .filter(({ value }) => {
-                            if (value === 'community' && isRU) {
+                            if (value === 'community' && IS_COM) {
                                 return false
                             }
                             
