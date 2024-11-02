@@ -1,1 +1,1 @@
-window.IS_COM=!1;
+window.IS_COM = false
