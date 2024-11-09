@@ -90,7 +90,7 @@
     "bg": " (инструкция тук)"
   },
   "mainTitle": {
-    "en": "Interslavic Dictionary",
+    "en": "Interslavic Wordbook",
     "isv": "Medžuslovjansky slovnik",
     "ru": "Межславянский словарь",
     "uk": "Міжслов'янський словник",
@@ -105,7 +105,7 @@
     "bg": "Междуславянски речник"
   },
   "dictionaryTitle": {
-    "en": "Dictionary",
+    "en": "Wordbook",
     "isv": "Slovnik",
     "ru": "Словарь",
     "uk": "Словник",
@@ -390,7 +390,7 @@
     "bg": "Правопис"
   },
   "loading": {
-    "en": "Loading the dictionary",
+    "en": "Loading the wordbook",
     "isv": "Dostava slovnika",
     "ru": "Загрузка словаря",
     "uk": "Завантаження словника",
@@ -405,7 +405,7 @@
     "bg": "Речникът се зарежда"
   },
   "aboutSmallTitle": {
-    "en": "Dictionary of the Interslavic language",
+    "en": "Wordbook of the Interslavic language",
     "isv": "Slovnik medžuslovjanskogo jezyka",
     "ru": "Словарь межславянского языка",
     "uk": "Словник міжслов'янської мови",
