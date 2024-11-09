@@ -24,7 +24,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./static
-          cname: interslavic-dictionary.com
+          cname: interslavic-wordbook.com
           keep_files: true
           allow_empty_commit: true
 
@@ -33,4 +33,4 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          PURGE_URLS: '["https://interslavic-dictionary.com/data/*"]'
+          PURGE_URLS: '["https://interslavic-wordbook.com/data/*"]'

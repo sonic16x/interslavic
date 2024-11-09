@@ -109,3 +109,4 @@ export const wordErrorsTypes = [
 
 export const captchaSiteKey = '6Lccu5kdAAAAACvN1Cnl5THInIZPEmqIyJOMjkpe';
 export const wordErrorTextMaxLength = 120;
+export const REP_LINK = 'https://github.com/sonic16x/interslavic'

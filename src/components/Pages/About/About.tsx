@@ -1,4 +1,5 @@
 import { tablesData } from 'consts';
+import { REP_LINK } from 'consts';
 
 import { t } from 'translations';
 
@@ -12,7 +13,6 @@ export const About =
     () => {
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
         const email = 'cherebedov.sergey@gmail.com';
-        const github = 'https://github.com/sonic16x/interslavic';
         const source = 'http://steen.free.fr/interslavic';
         let version = `v${VERSION}`;
         const trimmedBaseUrl = BASE_URL.replace('/', '');
@@ -76,7 +76,7 @@ export const About =
                             {t('aboutTranslatorsText')}
                         </div>
                         <hr/>
-                        {t('aboutSourceCode')} <a target="_blank" rel="noreferrer" href={github}>{github}</a>
+                        {t('aboutSourceCode')} <a target="_blank" rel="noreferrer" href={REP_LINK}>{REP_LINK}</a>
                         <hr/>
                         <h6>{t('aboutOurFriends')}</h6>
                         <div className="about-page__community-links">

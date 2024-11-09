@@ -4,7 +4,7 @@
   <a href='https://coveralls.io/github/sonic16x/interslavic?branch=master'><img src='https://coveralls.io/repos/github/scherebedov/interslavic/badge.svg?branch=master' alt='Coverage Status' /></a>
 </h1>
 
-[https://interslavic-dictionary.com](https://interslavic-dictionary.com)  
+[https://interslavic-wordbook.com](https://interslavic-wordbook.com)  
 
 Recommended to use and install as PWA (Progressive Web App):
 
