@@ -32,7 +32,7 @@ export const ChangeDomain =
                         {t('changeDomainInstall')}
                         <br/>
                         {t('changeDomainInstall2')}
-                        <a href={REP_LINK} target="_blank" className="new-domain" rel="noreferrer">{t('changeDomainInstruction')}</a>
+                        <a href={REP_LINK + '?tab=readme-ov-file#----interslavic-language-dictionary--'} target="_blank" className="new-domain" rel="noreferrer">{t('changeDomainInstruction')}</a>
                     </h2>
                     <button
                         type="button"
