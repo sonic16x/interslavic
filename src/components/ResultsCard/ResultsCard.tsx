@@ -253,7 +253,7 @@ export const ResultsCard =
                             {short ? <ShareIcon /> : t('shareWord')}
                         </button>
                         <button
-                            className="results-card__action-button"
+                            className="results-card__action-button hide"
                             type="button"
                             aria-label={t('reportWordError')}
                             onClick={showWordErrorModal}

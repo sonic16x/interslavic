@@ -88,6 +88,10 @@
     line-height: var(--text-s-line);
     border: none;
     color: var(--primary-color);
+
+    &.hide {
+      display: none;
+    }
   }
 
   &.short {
