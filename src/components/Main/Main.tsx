@@ -8,6 +8,7 @@ import { useCommunityLinks } from 'hooks/useCommunityLinks';
 import { useDarkTheme } from 'hooks/useDarkTheme';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
+import { ChangeDomain } from 'components/ChangeDomain';
 import { GDPR } from 'components/GDPR';
 import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
@@ -39,6 +40,7 @@ export const Main =
             <>
                 <Header/>
                 <Router/>
+                <ChangeDomain/>
                 <GDPR/>
                 <Loader/>
                 <ModalDialog/>

@@ -1,6 +1,6 @@
 import { addLangs } from 'consts';
 
-const CACHE_NAME = 'interslavic-dictionary';
+const CACHE_NAME = 'interslavic-wordbook';
 const cacheUrls = [
     'index.html',
     'data/basic.json',

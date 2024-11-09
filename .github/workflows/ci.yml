@@ -121,7 +121,7 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          PURGE_URLS: '["https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*"]'
+          PURGE_URLS: '["https://interslavic-wordbook.com/${{ steps.pr_number.outputs.pr }}/*"]'
 
       - name: Deployment success
         uses: chrnorm/deployment-status@releases/v1
@@ -129,4 +129,4 @@ jobs:
           state: success
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          environment_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
+          environment_url: https://interslavic-wordbook.com/${{ steps.pr_number.outputs.pr }}/
