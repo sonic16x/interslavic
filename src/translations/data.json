@@ -46,7 +46,7 @@
   },
   "changeDomainInstall": {
     "en": "Using our web app on iOS/Android?",
-    "isv": "Koristajete našu veb-aplikaciju na iOS/Android?",
+    "isv": "Koristajete našu veb-aplikaciju na {iOS/Android}?",
     "ru": "Используете наше веб-приложение на iOS/Android?",
     "uk": "Використовуєте наш веб-додаток на iOS/Android?",
     "be": "Выкарыстоўваеце наш вэб-дадатак на iOS/Android?",
