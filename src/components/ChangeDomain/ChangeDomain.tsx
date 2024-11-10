@@ -22,11 +22,11 @@ export const ChangeDomain =
                     <h2 className="change-domain-alert__title">
                         {t('changeDomainTitle')}
                     </h2>
-                    <a href="https://interslavic-wordbook.com/" className="new-domain">interslavic-wordbook.com</a>
+                    <a href="https://interslavic-dictionary.com/" className="new-domain">interslavic-dictionary.com</a>
                     <h2 className="change-domain-alert__title">
                         {t('changeDomainSave')}
-                        <span className="old-domain">(interslavic-dictionary.com)</span>
-                        {t('changeDomainStop')}
+                        <br/>
+                        {t('changeDomainSorry')}
                     </h2>
                     <h2 className="change-domain-alert__title">
                         {t('changeDomainInstall')}

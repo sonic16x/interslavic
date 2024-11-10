@@ -95,7 +95,7 @@ export const WordErrorModal = () => {
                 body: JSON.stringify(bodyData),
             };
 
-            fetch('https://interslavic-wordbook.com/api/word-error', fetchOptions)
+            fetch('https://interslavic-dictionary.com/api/word-error', fetchOptions)
                 .then((res) => {
                     if (res.status !== 200) {
                         return Promise.reject(res.status);
