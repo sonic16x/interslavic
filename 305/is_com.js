@@ -1,0 +1,1 @@
+window.IS_COM=!0;
