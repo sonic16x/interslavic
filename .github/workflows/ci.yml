@@ -69,64 +69,64 @@ jobs:
       - name: Build
         run: npm run build
 
-  build-and-deploy-demo:
-    name: Create demo
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - uses: mdecoleman/pr-branch-name@v3.0.0
-        id: vars
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deployment pending
-        uses: chrnorm/deployment-action@releases/v1
-        id: deployment
-        with:
-          ref: ${{ steps.vars.outputs.branch }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          state: pending
-          environment: demo
-
-      - name: pr-number-action
-        id: pr_number
-        uses: kkak10/pr-number-action@v1.3
-
-      - name: NPM install
-        uses: bahmutov/npm-install@v1
-
-      - name: Build
-        env:
-          DEMO: true
-          NODE_ENV: production
-          BASE_URL: /${{ steps.pr_number.outputs.pr }}/
-        run: |
-          npm run generateDictionary
-          npx webpack --config webpack.config.prod.js
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          keep_files: true
-          allow_empty_commit: true
-
-      - name: Purge cache on Cloudflare
-        uses: jakejarvis/cloudflare-purge-action@v0.3.0
-        env:
-          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          PURGE_URLS: '["https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*"]'
-
-      - name: Deployment success
-        uses: chrnorm/deployment-status@releases/v1
-        with:
-          state: success
-          token: ${{ secrets.GITHUB_TOKEN }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          environment_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
+#  build-and-deploy-demo:
+#    name: Create demo
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#        with:
+#          persist-credentials: false
+#
+#      - uses: mdecoleman/pr-branch-name@v3.0.0
+#        id: vars
+#        with:
+#          repo-token: ${{ secrets.GITHUB_TOKEN }}
+#
+#      - name: Deployment pending
+#        uses: chrnorm/deployment-action@releases/v1
+#        id: deployment
+#        with:
+#          ref: ${{ steps.vars.outputs.branch }}
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          state: pending
+#          environment: demo
+#
+#      - name: pr-number-action
+#        id: pr_number
+#        uses: kkak10/pr-number-action@v1.3
+#
+#      - name: NPM install
+#        uses: bahmutov/npm-install@v1
+#
+#      - name: Build
+#        env:
+#          DEMO: true
+#          NODE_ENV: production
+#          BASE_URL: /${{ steps.pr_number.outputs.pr }}/
+#        run: |
+#          npm run generateDictionary
+#          npx webpack --config webpack.config.prod.js
+#
+#      - name: Deploy
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./dist
+#          keep_files: true
+#          allow_empty_commit: true
+#
+#      - name: Purge cache on Cloudflare
+#        uses: jakejarvis/cloudflare-purge-action@v0.3.0
+#        env:
+#          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
+#          CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
+#          PURGE_URLS: '["https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*"]'
+#
+#      - name: Deployment success
+#        uses: chrnorm/deployment-status@releases/v1
+#        with:
+#          state: success
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+#          environment_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/

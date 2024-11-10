@@ -19,14 +19,13 @@ jobs:
         run: |
           npm run generateDictionary
 
-      - name: Deploy dictionary
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./static
-          cname: interslavic-dictionary.com
-          keep_files: true
-          allow_empty_commit: true
+          apiToken: ${{ secrets.CF_AUTH_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: ${{ secrets.CF_PROJECT_NAME }}
+          directory: ./dist
 
       - name: Purge cache on Cloudflare
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
