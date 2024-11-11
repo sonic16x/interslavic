@@ -1,9 +1,0 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "org.interslavicdictionary.twa",
-    "sha256_cert_fingerprints":
-    ["43:42:0C:D5:5A:BD:CE:D5:B1:CC:B0:E1:DF:2D:CF:EB:E7:98:0C:6F:67:C5:CF:C7:9B:F9:CA:ED:75:5D:8E:7E"]
-  }
-}]
