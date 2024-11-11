@@ -15,9 +15,12 @@ jobs:
       - name: NPM install
         uses: bahmutov/npm-install@v1
 
-      - name: Generate dictionary
+      - name: Build
         run: |
+          npm run lint
+          npm run test
           npm run generateDictionary
+          npm run build
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
