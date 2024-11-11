@@ -15,16 +15,19 @@ jobs:
       - name: NPM install
         uses: bahmutov/npm-install@v1
 
-      - name: Generate dictionary
+      - name: Build
         run: |
+          npm run lint
+          npm run test
           npm run generateDictionary
+          npm run build
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_AUTH_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }}
+          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=main
 
       - name: Purge cache on Cloudflare
         uses: jakejarvis/cloudflare-purge-action@v0.3.0

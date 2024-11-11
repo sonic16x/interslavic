@@ -27,7 +27,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_AUTH_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }}
+          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=main
 
       - name: Purge cache on Cloudflare
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
