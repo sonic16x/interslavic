@@ -6,7 +6,7 @@ export async function checkCaptcha(secret, response) {
         response,
     });
 
-    const captchaResponse = await fetch(`https://www.google.com/recaptcha/api/siteverify?${captchaParams}`, {
+    const captchaResponse = await fetch(`https://challenges.cloudflare.com/turnstile/v0/siteverify?${captchaParams}`, {
         method: 'POST',
     });
 
