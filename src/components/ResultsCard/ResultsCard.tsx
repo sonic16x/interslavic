@@ -218,6 +218,13 @@ export const ResultsCard =
                             title={t('intelligibilityIssues')}>⚠️</button>
                         : undefined
                     }
+                    { wordId.substring(0,1) === '-' 
+                        ? <span title={t('newWordSuggested')} className={classNames({ 'results-card__status': true })}>🆕</span>
+                        : (Dictionary.getWord(`-${wordId}`) 
+                            ? <span title={t('deletionSuggested')} className={classNames({ 'results-card__status': true })}>🚮</span> 
+                            : ''
+                        )
+                    }
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;

@@ -3420,5 +3420,35 @@
     "sr": "Реч није универзално разумљива у свим словенским језицима",
     "mk": "Зборот не е универзално разбирлив во сите словенски јазици",
     "bg": "Думата не е универсално разбираема във всички слаавянски езици"
+  },
+  "newWordSuggested": {
+    "en": "The word has not yet been approved",
+    "isv": "Slovo ješče ne jest utvrdženo",
+    "ru": "Слово ещё не утверждено",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
+  },
+  "deletionSuggested": {
+    "en": "Suggested for removal from the dictionary",
+    "isv": "Prědloženo do udaljenja iz slovnika",
+    "ru": "Предложено для удаления из словаря",
+    "uk": "",
+    "be": "",
+    "pl": "",
+    "cs": "",
+    "sk": "",
+    "sl": "",
+    "hr": "",
+    "sr": "",
+    "mk": "",
+    "bg": ""
   }
 }
