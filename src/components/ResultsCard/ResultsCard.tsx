@@ -220,9 +220,9 @@ export const ResultsCard =
                         : undefined
                     }
                     { wordId.substring(0,1) === '-' 
-                        ? <Tips str={'🆕'} tips={t('newWordSuggested')} className="noSymbol"/>
+                        ? <Tips str={'🆕'} tips={t('newWordSuggested')} className="tipsNoSymbol tipsInline"/>
                         : (Dictionary.getWord(`-${wordId}`) 
-                            ? <Tips str={'🚮'} tips={t('deletionSuggested')} className="noSymbol"/> 
+                            ? <Tips str={'🚮'} tips={t('deletionSuggested')} className="tipsNoSymbol tipsInline"/> 
                             : ''
                         )
                     }
