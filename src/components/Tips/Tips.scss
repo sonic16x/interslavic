@@ -7,14 +7,15 @@
         background-color: var(--tips-background-color);
         padding: 0.35rem;
         white-space: nowrap;
+        font-size: var(--text-m);
     }
     &:hover, &:focus {
         &::after {
             content: attr(data-tips);
         }
     } 
-    .tipsSymbol::after {
-        content: 'ⓘ';
+    &:not(.noSymbol) .tipsSymbol::after {
+        content: ' ⓘ';
         font-size: smaller;
         color: var(--muted-text-color);
     }

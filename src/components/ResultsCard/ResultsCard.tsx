@@ -21,6 +21,7 @@ import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
 
 import { Clipboard } from 'components/Clipboard';
+import { Tips } from 'components/Tips';
 
 import { removeBrackets } from "../../utils/removeBrackets";
 
@@ -219,9 +220,9 @@ export const ResultsCard =
                         : undefined
                     }
                     { wordId.substring(0,1) === '-' 
-                        ? <span title={t('newWordSuggested')} className={classNames({ 'results-card__status': true })}>🆕</span>
+                        ? <Tips str={'🆕'} tips={t('newWordSuggested')} className="noSymbol"/>
                         : (Dictionary.getWord(`-${wordId}`) 
-                            ? <span title={t('deletionSuggested')} className={classNames({ 'results-card__status': true })}>🚮</span> 
+                            ? <Tips str={'🚮'} tips={t('deletionSuggested')} className="noSymbol"/> 
                             : ''
                         )
                     }
