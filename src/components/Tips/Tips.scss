@@ -9,7 +9,6 @@
         white-space: nowrap;
         font-size: var(--text-m);
         display: inline-block;
-        opacity: 0;
     }
     &.tipsInline::after {
         position: relative;
@@ -17,7 +16,6 @@
     &:hover, &:focus {
         &::after {
             content: attr(data-tips);
-            opacity: 1;
         }
     } 
     &:not(.tipsNoSymbol) .tipsSymbol::after {
