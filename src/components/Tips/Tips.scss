@@ -10,9 +10,6 @@
         font-size: var(--text-m);
         display: inline-block;
     }
-    &.tipsInline::after {
-        position: relative;
-    }
     &:hover, &:focus {
         &::after {
             content: attr(data-tips);

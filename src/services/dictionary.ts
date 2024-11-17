@@ -655,6 +655,11 @@ class DictionaryClass {
 
         return text;
     }
+    public suggestedChanges(item: string[]): string {
+        const wordId = this.getField(item, 'id');
+        
+        return wordId.substring(0,1) === '-' ? 'newWord' : (Dictionary.getWord(`-${wordId}`) ? 'forRemoval' : '');
+    }
 }
 
 export const Dictionary = DictionaryClass.getInstance();

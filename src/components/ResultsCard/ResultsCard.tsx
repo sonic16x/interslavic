@@ -21,7 +21,6 @@ import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
 
 import { Clipboard } from 'components/Clipboard';
-import { Tips } from 'components/Tips';
 
 import { removeBrackets } from "../../utils/removeBrackets";
 
@@ -112,6 +111,7 @@ export const ResultsCard =
         const dispatch = useDispatch();
         const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
         const intelligibilityVector = estimateIntelligibility(intelligibility);
+        const suggestedChanges = Dictionary.suggestedChanges(item.raw);
         const lang = useLang();
 
         const cardBiInfo: ICardAnalytics = useMemo(() => (
@@ -219,12 +219,21 @@ export const ResultsCard =
                             title={t('intelligibilityIssues')}>⚠️</button>
                         : undefined
                     }
-                    { wordId.substring(0,1) === '-' 
-                        ? <Tips str={'🆕'} tips={t('newWordSuggested')} className="tipsNoSymbol tipsInline"/>
-                        : (Dictionary.getWord(`-${wordId}`) 
-                            ? <Tips str={'🚮'} tips={t('deletionSuggested')} className="tipsNoSymbol tipsInline"/> 
-                            : ''
-                        )
+                    { suggestedChanges === 'newWord'
+                        ? <button
+                            key='suggestedNewWord'
+                            onClick={showTranslations}
+                            className={classNames({ 'results-card__status': true })}
+                            title={t('suggestedNewWord')}>🆕</button>
+                        : undefined 
+                    }
+                    { suggestedChanges === 'forRemoval'
+                        ? <button
+                            key='suggestedForRemoval'
+                            onClick={showTranslations}
+                            className={classNames({ 'results-card__status': true })}
+                            title={t('suggestedForRemoval')}>🚮</button>
+                        : undefined 
                     }
                     {item.to === 'isv' && short && (
                         <>

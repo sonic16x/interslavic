@@ -15,7 +15,7 @@ import { useModalDialog } from 'hooks/useModalDialog';
 import { useResults } from 'hooks/useResults';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
-import { findIntelligibilityIssues } from "utils/intelligibilityIssues";
+import { estimateIntelligibility, findIntelligibilityIssues, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
 
 import { Table } from 'components/Table';
 
@@ -104,6 +104,23 @@ export const TranslationsModal =
                 🚫 – {t('translationsLegendIntelligibilityNone')}.<br/>
         </>);
 
+        const intelligibilityVector = estimateIntelligibility(Dictionary.getField(item.raw, 'intelligibility'));
+        const suggestedChanges = Dictionary.suggestedChanges(item.raw);
+        const warningBlock = <> 
+            {hasIntelligibilityIssues(intelligibilityVector) ? 
+                <div className="modal-dialog__warning">
+                    ⚠️ {t('intelligibilityIssues')}
+                </div> : ''} 
+            {suggestedChanges === 'newWord' ? 
+                <div className="modal-dialog__warning">
+                    🆕 {t('suggestedNewWord')}
+                </div> : ''}
+            {suggestedChanges === 'forRemoval' ? 
+                <div className="modal-dialog__warning">
+                    🚮 {t('suggestedForRemoval')}
+                </div> : ''}
+        </>;
+
         return (
             <>
                 <div className="modal-dialog__header">
@@ -119,7 +136,8 @@ export const TranslationsModal =
                     </button>
                 </div>
                 <div className="modal-dialog__body">
-                    <Table data={tableData}/>
+                    {warningBlock}
+                    {<Table data={tableData}/>}
                 </div>
                 <footer className="modal-dialog__footer">
                     <div className="modal-legend">
