@@ -113,11 +113,11 @@ export const TranslationsModal =
                 </div> : ''} 
             {suggestedChanges === 'newWord' ? 
                 <div className="modal-dialog__warning">
-                    🆕 {t('suggestedNewWord')}
+                    🚧 {t('suggestedNewWord')}
                 </div> : ''}
             {suggestedChanges === 'forRemoval' ? 
                 <div className="modal-dialog__warning">
-                    🚮 {t('suggestedForRemoval')}
+                    🛑 {t('suggestedForRemoval')}
                 </div> : ''}
         </>;
 

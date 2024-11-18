@@ -224,7 +224,7 @@ export const ResultsCard =
                             key='suggestedNewWord'
                             onClick={showTranslations}
                             className={classNames({ 'results-card__status': true })}
-                            title={t('suggestedNewWord')}>🆕</button>
+                            title={t('suggestedNewWord')}>🚧</button>
                         : undefined 
                     }
                     { suggestedChanges === 'forRemoval'
@@ -232,7 +232,7 @@ export const ResultsCard =
                             key='suggestedForRemoval'
                             onClick={showTranslations}
                             className={classNames({ 'results-card__status': true })}
-                            title={t('suggestedForRemoval')}>🚮</button>
+                            title={t('suggestedForRemoval')}>🛑</button>
                         : undefined 
                     }
                     {item.to === 'isv' && short && (
