@@ -123,8 +123,8 @@ export async function googleAuth(googleServiceAccountEmail, googlePrivateKey) {
     });
 
     // Grab the JSON from the response
-    const { access_token } = await response.json();
+    const res: any = await response.json();
 
     // Capture the access token
-    return access_token;
+    return res.access_token;
 }

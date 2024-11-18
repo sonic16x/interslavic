@@ -63,7 +63,7 @@ export const WordErrorModal = () => {
 
     useEffect(() => {
         if (online) {
-            grecaptcha.render('recaptcha-element', {
+            grecaptcha.render('#recaptcha-element', {
                 sitekey: captchaSiteKey,
                 theme: 'light',
                 callback: (token) => {

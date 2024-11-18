@@ -12,8 +12,7 @@
     "lint-fix": "eslint src/**/*.{ts,tsx} --fix",
     "generateDictionary": "ts-node -r tsconfig-paths/register ./src/services/generateDictionary.ts",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build-api": "webpack --config webpack.config.api.js",
-    "deploy-api": "wrangler publish"
+    "deploy-api": "wrangler deploy ./src/server/index.ts --name api --compatibility-date 2024-11-12"
   },
   "jest": {
     "transform": {

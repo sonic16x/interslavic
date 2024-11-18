@@ -4,22 +4,15 @@ import { getTableHeader } from 'server/getTableHeader';
 import { googleAuth } from 'server/googleAuth';
 import { validateData } from 'server/validateData';
 
-addEventListener('fetch', (event) => {
-    // eslint-disable-next-line
-    // @ts-ignore
-    event.respondWith(
-        // eslint-disable-next-line
-        // @ts-ignore
-        handleRequest(event.request).catch(
-            (err) => new Response(err.stack, { status: 500 })
-        )
-    );
-});
 
-const responseHeaders = {
+const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET,HEAD,POST,OPTIONS',
     'Access-Control-Max-Age': '86400',
+}
+
+const responseHeaders = {
+    ...corsHeaders,
     'Content-Type': 'application/json',
 }
 
@@ -30,7 +23,32 @@ function responseError(error) {
     });
 }
 
-async function handleRequest(request) {
+function handleOptions (request) {
+    if (
+        request.headers.get("Origin") !== null &&
+        request.headers.get("Access-Control-Request-Method") !== null &&
+        request.headers.get("Access-Control-Request-Headers") !== null
+    ) {
+        return new Response(null, {
+            headers: {
+                ...corsHeaders,
+                "Access-Control-Allow-Headers": request.headers.get("Access-Control-Request-Headers"),
+            },
+        })
+    } else {
+        return new Response(null, {
+            headers: {
+                Allow: "GET, HEAD, POST, OPTIONS",
+            },
+        })
+    }
+}
+
+async function handleRequest(request, env) {
+    if (request.method === "OPTIONS") {
+        return handleOptions(request)
+    }
+
     const data = await request.json();
     const { pathname } = new URL(request.url);
 
@@ -44,19 +62,20 @@ async function handleRequest(request) {
         return responseError('invalidData');
     }
 
-    const captchaIsOk = await checkCaptcha(GOOGLE_CAPTCHA_SECRET_KEY, data.captchaToken);
+    const ip = request.headers.get('CF-Connecting-IP');
+    const captchaIsOk = await checkCaptcha(env.GOOGLE_CAPTCHA_SECRET_KEY, data.captchaToken, ip);
 
     if (!captchaIsOk) {
         return responseError('invalidCaptcha');
     }
 
-    const googleAccessToken = await googleAuth(GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY);
+    const googleAccessToken = await googleAuth(env.GOOGLE_SERVICE_ACCOUNT_EMAIL, env.GOOGLE_PRIVATE_KEY);
 
     if (!googleAccessToken) {
         return responseError('invalidGoogleAccessToken');
     }
 
-    const tableHeader = await getTableHeader(GOOGLE_WORD_ERRORS_TABLE_ID, googleAccessToken);
+    const tableHeader = await getTableHeader(env.GOOGLE_WORD_ERRORS_TABLE_ID, googleAccessToken);
 
     if (!tableHeader || !tableHeader.length) {
         return responseError('invalidTableHeader');
@@ -70,14 +89,22 @@ async function handleRequest(request) {
         return data[fieldName];
     });
 
-    const addRowResponse = await addRow(GOOGLE_WORD_ERRORS_TABLE_ID, newRow, googleAccessToken);
+    const addRowResponse = await addRow(env.GOOGLE_WORD_ERRORS_TABLE_ID, newRow, googleAccessToken);
 
     if (addRowResponse.status === 200) {
-        return new Response(JSON.stringify({}), {
+        return new Response(JSON.stringify({ error: null }), {
             status: addRowResponse.status,
             headers: responseHeaders,
         });
     } else {
         return responseError('invalidAddRow');
+    }
+}
+
+export default {
+    async fetch(request, env) {
+        return handleRequest(request, env).catch(
+            (err) => responseError(err.stack)
+        )
     }
 }
