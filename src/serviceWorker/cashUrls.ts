@@ -1,15 +1,6 @@
 import { addLangs } from 'consts'
 
-export const CASH_URLS = [
-    '/',
-    '/data/basic.json',
-    '/data/translateStatistic.json',
-    ...addLangs.map((lang) => `/data/${lang}.json`),
-    '/grammarComponent.js',
-    '/index.js',
-    '/sw.js',
-    '/styles/grammarComponent.css',
-    '/styles/index.css',
+const ICONS = [
     '/icons/android-icon-36x36.png',
     '/icons/android-icon-48x48.png',
     '/icons/android-icon-72x72.png',
@@ -45,4 +36,51 @@ export const CASH_URLS = [
     '/icons/ms-icon-144x144.png',
     '/icons/ms-icon-150x150.png',
     '/icons/ms-icon-310x310.png',
+]
+
+const TRANSLATOR_DICTS = [
+    '/dicts/ru/config.json',
+    '/dicts/ru/grammemes.json',
+    '/dicts/ru/gramtab-opencorpora-ext.json',
+    '/dicts/ru/gramtab-opencorpora-int.json',
+    '/dicts/ru/meta.json',
+    '/dicts/ru/p_t_given_w.intdawg',
+    '/dicts/ru/paradigms.array',
+    '/dicts/ru/prediction-suffixes-0.dawg',
+    '/dicts/ru/prediction-suffixes-1.dawg',
+    '/dicts/ru/prediction-suffixes-2.dawg',
+    '/dicts/ru/suffixes.json',
+    '/dicts/ru/words.dawg',
+
+    '/dicts/uk/config.json',
+    '/dicts/uk/grammemes.json',
+    '/dicts/uk/gramtab-opencorpora-ext.json',
+    '/dicts/uk/gramtab-opencorpora-int.json',
+    '/dicts/uk/meta.json',
+    '/dicts/uk/paradigms.array',
+    '/dicts/uk/prediction-suffixes-0.dawg',
+    '/dicts/uk/prediction-suffixes-1.dawg',
+    '/dicts/uk/prediction-suffixes-2.dawg',
+    '/dicts/uk/prediction-suffixes-3.dawg',
+    '/dicts/uk/suffixes.json',
+    '/dicts/uk/words.dawg',
+]
+
+const COMPONENTS = ['index', 'grammarComponent', 'translatorComponent', 'viewerComponent']
+
+const STYLES = COMPONENTS.map((name) => `/styles/${name}.css`)
+
+const SCRIPTS = COMPONENTS.map((name) => `/${name}.js`)
+
+
+export const CASH_URLS = [
+    '/',
+    '/data/basic.json',
+    '/data/translateStatistic.json',
+    '/sw.js',
+    ...addLangs.map((lang) => `/data/${lang}.json`),
+    ...SCRIPTS,
+    ...STYLES,
+    ...ICONS,
+    ...TRANSLATOR_DICTS,
 ]

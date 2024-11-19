@@ -1,27 +1,24 @@
 import classNames from 'classnames'
-import { useDispatch } from 'react-redux'
 
 import { t } from 'translations'
 
-import { langAction } from 'actions'
-
-import { useDictionaryLanguages, useLang } from 'hooks'
-
-import { Selector } from 'components'
+import { Selector } from 'components/Selector'
 
 import './LangSelector.scss'
 
 import DirectionIcon from './images/direction-icon.svg'
+import RightDirectionIcon from './images/right-direction-icon.svg'
 
 interface ILangPart {
     dir: string;
     lang: string;
+    langs: string[];
     onSelect: (lang: string) => void;
 }
 
 const LangPart =
-    ({ lang, dir, onSelect }: ILangPart) => {
-        const langs = useDictionaryLanguages()
+    ({ lang, dir, onSelect, langs }: ILangPart) => {
+        // const langs = useDictionaryLanguages();
 
         if (lang === 'isv') {
             return (
@@ -31,7 +28,7 @@ const LangPart =
             )
         }
 
-        const options = ['en', ...langs].map((value) => ({
+        const options = [...langs].map((value) => ({
             name: t(`${value}Lang`),
             value,
         }))
@@ -54,40 +51,56 @@ const LangPart =
         )
     }
 
+export interface ILangSelectorProps {
+    className?: string;
+    lang: { from: string, to: string };
+    langs: string[];
+    onChange: ({ from, to }: { from: string, to: string }) => void;
+    disabled?: boolean;
+    hideLangSwitch?: boolean;
+}
+
 export const LangSelector =
-    () => {
-        const { from, to } = useLang()
-        const dispatch = useDispatch()
+    ({ className, lang, langs, onChange, disabled, hideLangSwitch }: ILangSelectorProps) => {
+        const { from, to } = lang
 
         return (
-            <div className="lang-selector">
+            <div className={classNames([className, 'lang-selector'], { disabled })}>
                 <LangPart
                     dir="from"
                     lang={from}
-                    onSelect={(value) => dispatch(langAction({
+                    langs={langs}
+                    onSelect={(value) => onChange({
                         from: value,
                         to,
-                    }))}
+                    })}
                 />
-                <button
-                    data-testid="change-direction"
-                    type="button"
-                    aria-label="Change translation direction"
-                    className={classNames('lang-selector__change-dir-button', { rotate: from === 'isv' })}
-                    onClick={() => dispatch(langAction({
-                        from: to,
-                        to: from,
-                    }))}
-                >
-                    <DirectionIcon />
-                </button>
+                {hideLangSwitch ? (
+                    <div>
+                        <RightDirectionIcon />
+                    </div>
+                ) : (
+                    <button
+                        data-testid="change-direction"
+                        type="button"
+                        aria-label="Change translation direction"
+                        className={classNames('lang-selector__change-dir-button', { rotate: from === 'isv' })}
+                        onClick={() => onChange({
+                            from: to,
+                            to: from,
+                        })}
+                    >
+                        <DirectionIcon />
+                    </button>
+                )}
                 <LangPart
                     dir="to"
                     lang={to}
-                    onSelect={(value) => dispatch(langAction({
+                    langs={langs}
+                    onSelect={(value) => onChange({
                         from,
                         to: value,
-                    }))}
+                    })}
                 />
             </div>
         )
