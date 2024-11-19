@@ -89,6 +89,11 @@
     border: none;
     color: var(--primary-color);
 
+    @media (max-width: 395px) {
+      font-size: var(--text-xs);
+      line-height: var(--text-xs-line);
+    }
+
     &.hide {
       display: none;
     }

@@ -3,7 +3,6 @@
   font-weight: 600;
   text-align: center;
   margin-top: 100px;
-  color: var(--muted-text-color);
 
   &__smile {
     white-space: nowrap;
@@ -13,6 +12,7 @@
     margin-top: 5px;
     font-size: var(--text-xl);
     padding: 0 15px;
+    color: var(--muted-text-color);
   }
 
   &__button {
