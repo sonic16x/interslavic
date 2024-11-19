@@ -44,6 +44,7 @@
     "classnames": "2.5.1",
     "md5": "2.3.0",
     "react": "19.0.0",
+    "dawgjs": "^0.1.4",
     "react-dom": "19.0.0",
     "react-redux": "9.2.0",
     "redux": "5.0.1"

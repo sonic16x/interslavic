@@ -3,8 +3,17 @@
   align-items: center;
   justify-content: space-between;
 
+  &.disabled {
+    opacity: .7;
+    pointer-events: none;
+  }
+
   option, select {
     text-transform: capitalize;
+  }
+
+  svg {
+    color: var(--primary-color);
   }
 
   button {
