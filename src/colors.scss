@@ -1,13 +1,13 @@
 .color-theme--light {
-  --primary-color: #2962ff;
+  --primary-color: #1E88E5;
   --primary-color-fg: #fff;
   --muted-text-color: #6c757d;
   --light-gray-color: #999;
-  --valid-color: #28a745;
-  --invalid-color: #dc3545;
-  --yellow-color: #ffde03;
-  --header-background-color: #313338;
-  --input-border-color: #ced4da;
+  --valid-color: #43A047;
+  --invalid-color: #E53935;
+  --yellow-color: #FFB300;
+  --header-background-color: #272727;
+  --input-border-color: #E0E0E0;
   --shadow: 0 8px 16px rgba(0, 0, 0, .05);
   --border: 1px solid var(--input-border-color);
   --table-highlighted-cell: #BBDEFB;
@@ -15,8 +15,9 @@
   --overlay-color: #000;
   --tips-font-color: #122f80;
   --tips-background-color: #e4f1fc;
+  --main-background-color: #FAFAFA;
 
-  --dark: #000;
+  --dark: #212121;
   --light: #fff;
   --transperent: rgba(1, 1, 1, 0);
 
@@ -37,39 +38,40 @@
 }
 
 .color-theme--dark {
-  --primary-color: #0089f2;
+  --primary-color: #1E88E5;
   --primary-color-fg: #fff;
-  --muted-text-color: #b0b5ba;
+  --muted-text-color: #6c757d;
   --light-gray-color: #999;
-  --valid-color: #42cc5f;
-  --invalid-color: #f23f42;
-  --yellow-color: #f0c30f;
-  --header-background-color: #313338;
-  --input-border-color: var(--gray-b);
-  --shadow: 0 8px 16px rgba(255, 255, 255, .05);
+  --valid-color: #43A047;
+  --invalid-color: #E53935;
+  --yellow-color: #FFB300;
+  --header-background-color: #252525;
+  --input-border-color: #323232;
+  --shadow: 0 8px 16px rgba(0, 0, 0, .05);
   --border: 1px solid var(--input-border-color);
-  --table-highlighted-cell: #1f374f;
-  --table-border-color: #cdcdcd;
-  --overlay-color: #666;
-  --tips-font-color: #e4f1fc;
-  --tips-background-color: #122f80;
+  --table-highlighted-cell: #BBDEFB;
+  --table-border-color: var(--gray-9);
+  --overlay-color: #000;
+  --tips-font-color: #122f80;
+  --tips-background-color: #e4f1fc;
+  --main-background-color: #262626;
 
   --dark: #fff;
-  --light: #292931;
-  --transperent: rgba(255, 255, 255, 0);
+  --light: #212121;
+  --transperent: rgba(1, 1, 1, 0);
 
-  --gray-1: #eee;
-  --gray-2: #ddd;
-  --gray-3: #ccc;
-  --gray-4: #bbb;
-  --gray-5: #aaa;
-  --gray-6: #999;
-  --gray-7: #888;
-  --gray-8: #777;
-  --gray-9: #666;
-  --gray-a: #555;
-  --gray-b: #444;
-  --gray-c: #333;
-  --gray-d: #222;
-  --gray-e: #111;
+  --gray-1: #111;
+  --gray-2: #222;
+  --gray-3: #333;
+  --gray-4: #444;
+  --gray-5: #555;
+  --gray-6: #666;
+  --gray-7: #777;
+  --gray-8: #888;
+  --gray-9: #999;
+  --gray-a: #aaa;
+  --gray-b: #bbb;
+  --gray-c: #ccc;
+  --gray-d: #ddd;
+  --gray-e: #eee;
 }

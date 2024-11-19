@@ -29,7 +29,7 @@
   .word + .word:before {
     content: "/";
     padding: 0 2px;
-    font-weight: normal;
+    font-weight: 400;
   }
 
   .ipa {
@@ -37,7 +37,7 @@
     font-weight: 500;
   }
   .caseInfo {
-    font-weight: normal;
+    font-weight: 400;
     letter-spacing: -0.5pt;
   }
 
