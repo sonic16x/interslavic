@@ -21,6 +21,10 @@ export const defaultState: IMainState = {
         from: [],
         to: [],
     },
+    translatorLang: {
+        from: 'ru',
+        to: 'isv',
+    },
     isvSearchByWordForms: true,
     caseQuestions: true,
     displayImperfect: false,
