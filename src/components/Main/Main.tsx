@@ -9,7 +9,6 @@ import { useDarkTheme } from 'hooks/useDarkTheme';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
 import { ChangeDomain } from 'components/ChangeDomain';
-import { GDPR } from 'components/GDPR';
 import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
 import { ModalDialog } from 'components/Modals/ModalDialog';
@@ -41,7 +40,6 @@ export const Main =
                 <Header/>
                 <Router/>
                 <ChangeDomain/>
-                <GDPR/>
                 <Loader/>
                 <ModalDialog/>
                 <Notification/>

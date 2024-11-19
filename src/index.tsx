@@ -10,7 +10,6 @@ import { IMainState, mainReducer } from 'reducers';
 
 import { Dictionary } from 'services/dictionary';
 
-import { analyticsMiddleware } from 'middlewares/analyticsMiddleware';
 import { localStorageMiddleware } from 'middlewares/localStorageMiddleware';
 import { urlParamsMiddleware } from 'middlewares/urlParamsMiddleware';
 import { setInitialPage } from 'routing';
@@ -157,7 +156,6 @@ const store = createStore(
         applyMiddleware(
             localStorageMiddleware,
             urlParamsMiddleware,
-            analyticsMiddleware,
         ),
         reduxDevTools(),
     ),
