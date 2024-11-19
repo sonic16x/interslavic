@@ -40,10 +40,18 @@
     padding: 0;
     width: 30px;
     height: 30px;
-    transition: transform var(--animation-duration) ease-in-out;
+    transition: transform var(--animation-duration) ease-in-out, background-color var(--animation-duration) ease-in-out;
+    border-radius: 50%;
 
     &.rotate {
       transform: rotate(180deg);
+    }
+
+    &:hover {
+      background-color: rgba(0, 123, 255, .25);
+    }
+    &:focus {
+      outline: 2px solid var(--primary-color);
     }
   }
 }

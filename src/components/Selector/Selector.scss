@@ -23,6 +23,10 @@
     border: var(--border);
     border-radius: var(--border-radius-s);
     outline: none;
+
+    &:focus {
+      outline: 2px solid var(--primary-color);
+    }
   }
 
   &:after {

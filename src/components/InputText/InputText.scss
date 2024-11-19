@@ -21,7 +21,7 @@
     background: var(--light);
 
     &:focus {
-      outline: none;
+      outline: 2px solid var(--primary-color);
     }
 
     &:not([value=""]) {
