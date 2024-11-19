@@ -225,8 +225,8 @@ export const ResultsCard =
                             onClick={showTranslations}
                             className={classNames({ 'results-card__status': true })}
                             title={t(suggestedChanges)}>
-                            {suggestedChanges === 'suggestedNewWord' ? '🚧' : 
-                                suggestedChanges === 'suggestedForRemoval' ? '🛑' : 
+                            {suggestedChanges === 'suggestedNewWord' ? '🌱' : 
+                                suggestedChanges === 'suggestedForRemoval' ? '⛔️' : 
                                     ''}
                         </button>
                         : undefined 
