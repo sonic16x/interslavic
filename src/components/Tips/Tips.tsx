@@ -16,7 +16,7 @@ export const Tips =
                     className={classNames('tips', className)}
                     data-tips={tips}
                 >
-                    {str}<span className="tipsSymbol" />
+                    {str}&nbsp;<span className="tipsSymbol" />
                 </span>
             </>
         );
