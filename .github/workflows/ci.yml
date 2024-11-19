@@ -121,4 +121,4 @@ jobs:
           state: success
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          environment_url: ${{ steps.deploy.outputs.deployment-url }}
+          environment_url: https://pr-${{ steps.pr_number.outputs.pr }}.interslavic-dictionary.pages.dev/
