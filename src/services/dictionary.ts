@@ -218,7 +218,7 @@ class DictionaryClass {
                     let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang);
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
-
+                    fromField = removeExclamationMark(fromField);
                     let splittedField;
 
                     switch (lang) {
@@ -237,7 +237,6 @@ class DictionaryClass {
                             ;
                             break;
                         default:
-                            fromField = removeExclamationMark(fromField);
                             splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
                             break;
                     }
@@ -511,7 +510,7 @@ class DictionaryClass {
         caseQuestions?: boolean
     ): ITranslateResult[] {
         return results.map((item) => {
-            const isv = this.getField(item, 'isv');
+            const isv = removeExclamationMark(this.getField(item, 'isv'));
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
             const add = addArray.find((elem) => !elem.startsWith('(+')) || '';
             let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1,-1) || '');
@@ -655,10 +654,9 @@ class DictionaryClass {
 
         return text;
     }
-    public suggestedChanges(item: string[]): string {
-        const wordId = this.getField(item, 'id');
-        
-        return wordId.substring(0,1) === '-' ? 'suggestedNewWord' : (Dictionary.getWord(`-${wordId}`) ? 'suggestedForRemoval' : '');
+    public suggestedChanges(item: string[]): string {  
+        return this.getField(item, 'id').substring(0,1) === '-' ? 'suggestedNewWord' : 
+            this.getField(item, 'isv').substring(0,1) === '!' ? 'suggestedForRemoval' : '';
     }
 }
 
