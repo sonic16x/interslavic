@@ -107,18 +107,16 @@ export const TranslationsModal =
         const intelligibilityVector = estimateIntelligibility(Dictionary.getField(item.raw, 'intelligibility'));
         const suggestedChanges = Dictionary.suggestedChanges(item.raw);
         const warningBlock = <> 
-            {hasIntelligibilityIssues(intelligibilityVector) ? 
+            {hasIntelligibilityIssues(intelligibilityVector) && 
                 <div className="modal-dialog__warning">
                     ⚠️ {t('intelligibilityIssues')}
-                </div> : ''} 
-            {suggestedChanges === 'newWord' ? 
+                </div>} 
+            {suggestedChanges &&
                 <div className="modal-dialog__warning">
-                    🚧 {t('suggestedNewWord')}
-                </div> : ''}
-            {suggestedChanges === 'forRemoval' ? 
-                <div className="modal-dialog__warning">
-                    🛑 {t('suggestedForRemoval')}
-                </div> : ''}
+                    {suggestedChanges === 'suggestedNewWord' ? '🚧' : suggestedChanges === 'suggestedForRemoval' ? '🛑' : ''}
+                    {' '}
+                    {t(suggestedChanges)}
+                </div>}
         </>;
 
         return (

@@ -219,20 +219,16 @@ export const ResultsCard =
                             title={t('intelligibilityIssues')}>⚠️</button>
                         : undefined
                     }
-                    { suggestedChanges === 'newWord'
+                    { suggestedChanges
                         ? <button
-                            key='suggestedNewWord'
+                            key={suggestedChanges}
                             onClick={showTranslations}
                             className={classNames({ 'results-card__status': true })}
-                            title={t('suggestedNewWord')}>🚧</button>
-                        : undefined 
-                    }
-                    { suggestedChanges === 'forRemoval'
-                        ? <button
-                            key='suggestedForRemoval'
-                            onClick={showTranslations}
-                            className={classNames({ 'results-card__status': true })}
-                            title={t('suggestedForRemoval')}>🛑</button>
+                            title={t(suggestedChanges)}>
+                            {suggestedChanges === 'suggestedNewWord' ? '🚧' : 
+                                suggestedChanges === 'suggestedForRemoval' ? '🛑' : 
+                                    ''}
+                        </button>
                         : undefined 
                     }
                     {item.to === 'isv' && short && (

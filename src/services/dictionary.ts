@@ -658,7 +658,7 @@ class DictionaryClass {
     public suggestedChanges(item: string[]): string {
         const wordId = this.getField(item, 'id');
         
-        return wordId.substring(0,1) === '-' ? 'newWord' : (Dictionary.getWord(`-${wordId}`) ? 'forRemoval' : '');
+        return wordId.substring(0,1) === '-' ? 'suggestedNewWord' : (Dictionary.getWord(`-${wordId}`) ? 'suggestedForRemoval' : '');
     }
 }
 
