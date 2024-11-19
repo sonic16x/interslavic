@@ -17,7 +17,7 @@
     border: 1px solid var(--input-border-color);
     padding: 8px 16px;
     width: 100%;
-    color: var(--gray-9);
+    color: var(--dark);
     background: var(--light);
 
     &:focus {
@@ -25,7 +25,7 @@
     }
 
     &:not([value=""]) {
-      color: var(--gray-4);
+      color: var(--dark);
     }
 
     &::-webkit-search-decoration,
