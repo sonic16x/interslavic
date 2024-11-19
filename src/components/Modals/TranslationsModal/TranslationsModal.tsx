@@ -16,6 +16,7 @@ import { useResults } from 'hooks/useResults';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
 import { estimateIntelligibility, findIntelligibilityIssues, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
+import { removeExclamationMark } from 'utils/removeExclamationMark';
 
 import { Table } from 'components/Table';
 
@@ -59,9 +60,11 @@ export const TranslationsModal =
         const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
         const marks = findIntelligibilityIssues(intelligibility);
         const tableData = allLangs.reduce((arr, lang) => {
-            const translate = Dictionary.getField(item.raw, lang).toString();
+            let translate = Dictionary.getField(item.raw, lang).toString();
 
             if (lang === 'isv') {
+                translate = removeExclamationMark(translate);
+                
                 return [
                     [
                         `{${t('isvEtymologicLatinLang')}}[B]@ts;b;sw=130px;nowrap`,
@@ -106,19 +109,7 @@ export const TranslationsModal =
 
         const intelligibilityVector = estimateIntelligibility(Dictionary.getField(item.raw, 'intelligibility'));
         const suggestedChanges = Dictionary.suggestedChanges(item.raw);
-        const warningBlock = <> 
-            {hasIntelligibilityIssues(intelligibilityVector) && 
-                <div className="modal-dialog__warning">
-                    ⚠️ {t('intelligibilityIssues')}
-                </div>} 
-            {suggestedChanges &&
-                <div className="modal-dialog__warning">
-                    {suggestedChanges === 'suggestedNewWord' ? '🌱' : suggestedChanges === 'suggestedForRemoval' ? '⛔️' : ''}
-                    {' '}
-                    {t(suggestedChanges)}
-                </div>}
-        </>;
-
+        
         return (
             <>
                 <div className="modal-dialog__header">
@@ -134,7 +125,16 @@ export const TranslationsModal =
                     </button>
                 </div>
                 <div className="modal-dialog__body">
-                    {warningBlock}
+                    {hasIntelligibilityIssues(intelligibilityVector) && 
+                        <div className="modal-dialog__warning">
+                            ⚠️ {t('intelligibilityIssues')}
+                        </div>} 
+                    {suggestedChanges &&
+                        <div className="modal-dialog__warning">
+                            {suggestedChanges === 'suggestedNewWord' ? '🌱' : suggestedChanges === 'suggestedForRemoval' ? '⛔️' : ''}
+                            {' '}
+                            {t(suggestedChanges)}
+                        </div>}
                     {<Table data={tableData}/>}
                 </div>
                 <footer className="modal-dialog__footer">

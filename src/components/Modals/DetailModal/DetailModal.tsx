@@ -12,6 +12,7 @@ import { getCaseTips } from 'utils/getCaseTips';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
 import { getLatin } from 'utils/getLatin';
+import { removeExclamationMark } from 'utils/removeExclamationMark';
 import {
     getGender,
     getNumeralType,
@@ -618,8 +619,10 @@ function mapStateToProps({
     interfaceLang,
     orderOfCases,
 }: IMainState) {
-    const { word, add, details } = modalDialog.data;
-
+    const word = removeExclamationMark(modalDialog.data.word);
+    const add = modalDialog.data.add;
+    const details = modalDialog.data.details;
+    
     return {
         word,
         add,
