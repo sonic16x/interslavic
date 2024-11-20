@@ -1,9 +1,8 @@
 .results-empty {
-  font-size: 36px;
+  font-size: var(--text-xxl);
   font-weight: 600;
   text-align: center;
   margin-top: 100px;
-  color: var(--muted-text-color);
 
   &__smile {
     white-space: nowrap;
@@ -11,8 +10,9 @@
 
   &__filter {
     margin-top: 5px;
-    font-size: var(--text-xl);
+    font-size: var(--text-l);
     padding: 0 15px;
+    color: var(--muted-text-color);
   }
 
   &__button {

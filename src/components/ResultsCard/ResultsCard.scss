@@ -3,7 +3,6 @@
   width: 100%;
   background: var(--light);
   box-shadow: var(--shadow);
-  border: var(--border);
   border-radius: var(--border-radius-s);
   max-width: 1024px;
   margin-bottom: var(--gap-size);
@@ -29,7 +28,7 @@
   .word + .word:before {
     content: "/";
     padding: 0 2px;
-    font-weight: normal;
+    font-weight: 400;
   }
 
   .ipa {
@@ -37,7 +36,7 @@
     font-weight: 500;
   }
   .caseInfo {
-    font-weight: normal;
+    font-weight: 400;
     letter-spacing: -0.5pt;
   }
 
@@ -88,6 +87,11 @@
     line-height: var(--text-s-line);
     border: none;
     color: var(--primary-color);
+
+    @media (max-width: 395px) {
+      font-size: var(--text-xs);
+      line-height: var(--text-xs-line);
+    }
 
     &.hide {
       display: none;

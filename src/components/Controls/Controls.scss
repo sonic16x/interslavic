@@ -3,13 +3,13 @@
   margin-right: auto;
   margin-left: auto;
   box-shadow: var(--shadow);
-  border: var(--border);
   border-radius: 0 0 var(--border-radius-s) var(--border-radius-s);
   border-top: none;
   z-index: 1;
   max-width: 1024px;
   box-sizing: border-box;
   background: var(--light);
+  padding-bottom: 2px;
 
   .input-text {
     transition: margin-bottom var(--animation-duration) ease-in-out;

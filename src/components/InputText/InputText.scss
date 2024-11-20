@@ -17,15 +17,15 @@
     border: 1px solid var(--input-border-color);
     padding: 8px 16px;
     width: 100%;
-    color: var(--gray-9);
+    color: var(--dark);
     background: var(--light);
 
     &:focus {
-      outline: none;
+      outline: 2px solid var(--primary-color);
     }
 
     &:not([value=""]) {
-      color: var(--gray-4);
+      color: var(--dark);
     }
 
     &::-webkit-search-decoration,
@@ -53,7 +53,7 @@
     outline: none;
     z-index: 10;
     font-size: 30px;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 30px;
     border-radius: 50%;
 
