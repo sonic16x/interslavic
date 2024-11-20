@@ -162,6 +162,7 @@ export const ResultsCard =
             <div
                 className={classNames('results-card', { short })}
                 tabIndex={0}
+                data-testid={`result-${index}`}
             >
                 <div className="results-card__translate">
                     {item.to !== 'isv' ? (

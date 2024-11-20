@@ -87,7 +87,7 @@ export const Header =
                     >
                         <LogoIcon/>
                     </span>
-                    <span className="logo-text">
+                    <span className="logo-text" data-testid="main-title">
                         {t('mainTitle')}
                     </span>
                 </h1>

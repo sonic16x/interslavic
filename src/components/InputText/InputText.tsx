@@ -7,16 +7,18 @@ interface IInputTextProps {
     size?: 'S' | 'M' | 'L';
     onChange: (value: string) => void;
     placeholder?: string;
+    testId?: string;
 
     [x:string]: any;
 }
 
-export const InputText = ({ value, size = 'M', onChange, placeholder, ...otherProps }: IInputTextProps) => {
+export const InputText = ({ value, size = 'M', onChange, placeholder, testId, ...otherProps }: IInputTextProps) => {
     return (
         <div
             className={classNames(['input-text', `input-text-${size.toLowerCase()}`])}
         >
             <input
+                data-testid={testId}
                 className="input-text__input"
                 placeholder={placeholder}
                 value={value}

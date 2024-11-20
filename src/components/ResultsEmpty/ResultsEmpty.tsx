@@ -15,7 +15,7 @@ export const ResultsEmpty =
         const dispatch = useDispatch();
 
         return (
-            <div className="results-empty">
+            <div className="results-empty" data-testid="result-empty">
                 {t('resultsNotFound')} <span className="results-empty__smile">:(</span>
                 <div className="results-empty__filter">
                     {t(showReset ? 'resultsNotFoundMessageFilters' : 'resultsNotFoundMessage')}

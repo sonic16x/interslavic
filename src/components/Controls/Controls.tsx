@@ -46,6 +46,7 @@ export const Controls =
             >
                 <LangSelector/>
                 <InputText
+                    testId="search-input"
                     size="L"
                     value={fromText}
                     onChange={onChange}

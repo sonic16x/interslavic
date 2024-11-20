@@ -39,6 +39,7 @@ const LangPart =
 
         return (
             <Selector
+                testId="lang-selector"
                 className="lang-selector__another"
                 options={options}
                 value={lang}
@@ -70,6 +71,7 @@ export const LangSelector =
                     }))}
                 />
                 <button
+                    data-testid="change-direction"
                     type="button"
                     aria-label="Change translation direction"
                     className={classNames('lang-selector__change-dir-button', { rotate: from === 'isv' })}
