@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
@@ -54,6 +54,21 @@ export const Header =
         useEffect(() => {
             onResize();
         }, [navRef, logoRef, enabledPages, onResize]);
+        
+        const filteredPages = useMemo(() => (
+            pages
+                .filter(({ value }) => {
+                    if (value === 'community' && !IS_COM) {
+                        return false
+                    }
+
+                    return (defaultPages.includes(value) || enabledPages.includes(value))
+                })
+        ), [IS_COM, pages])
+
+        const showBadges = useMemo(() => (
+            filteredPages.some(({ value }) => (badges.includes(value)))
+        ), [badges, filteredPages])
 
         return (
             <header
@@ -78,7 +93,7 @@ export const Header =
                 </h1>
                 <button
                     type="button"
-                    className={classNames('show-menu-button', { 'expanded': menuIsVisible, 'badge': badges.length })}
+                    className={classNames('show-menu-button', { 'expanded': menuIsVisible, 'badge': showBadges })}
                     aria-label="Menu button"
                     onClick={() => setMenuIsVisible(!menuIsVisible)}
                 >
@@ -88,25 +103,17 @@ export const Header =
                     className={classNames('menu', { active: menuIsVisible })}
                     ref={navRef}
                 >
-                    {pages
-                        .filter(({ value }) => {
-                            if (value === 'community' && !IS_COM) {
-                                return false
-                            }
-                            
-                            return (defaultPages.includes(value) || enabledPages.includes(value))
-                        })
-                        .map((({ title, value, subTitle }) => (
-                            <MenuItem
-                                key={value}
-                                title={title}
-                                subTitle={subTitle}
-                                value={value}
-                                active={page === value}
-                                hasBadge={badges.includes(value)}
-                                onClick={collapseMenu}
-                            />
-                        )))}
+                    {filteredPages.map((({ title, value, subTitle }) => (
+                        <MenuItem
+                            key={value}
+                            title={title}
+                            subTitle={subTitle}
+                            value={value}
+                            active={page === value}
+                            hasBadge={badges.includes(value)}
+                            onClick={collapseMenu}
+                        />
+                    )))}
                 </nav>
             </header>
         );
