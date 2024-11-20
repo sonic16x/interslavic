@@ -13,16 +13,17 @@ interface ISelectorProps {
     className?: string;
     value?: string;
     label?: string;
+    testId?: string;
 }
 
-export const Selector = (props: ISelectorProps) => {
-    const { onSelect, options, className, value, label } = props;
+export const Selector = ({ onSelect, options, className, value, label, testId }: ISelectorProps) => {
     const id = label ? label.toLowerCase().replace(/ /, '_') : null;
 
     return (
         <div className={classNames('selector', className)}>
             {label && <label className="selector__title" htmlFor={id}>{label}</label>}
             <select
+                data-testid={testId}
                 id={id}
                 value={value}
                 className="selector__select"

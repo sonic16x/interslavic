@@ -18,7 +18,7 @@ export const Loader =
                     size="4rem"
                     borderWidth=".3em"
                 />
-                <span className="loader__title">{t('loading')}</span>
+                <span className="loader__title" data-testid="dictionary-loading">{t('loading')}</span>
             </div>
         );
     };
