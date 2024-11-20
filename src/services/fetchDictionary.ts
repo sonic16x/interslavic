@@ -2,7 +2,6 @@ import { addLangs } from 'consts';
 
 import { isLoadingAction, runSearch } from 'actions';
 
-import { biReporter } from 'services/biReporter';
 import { Dictionary } from 'services/dictionary';
 
 // function progressHelper(onProgress) {
@@ -91,11 +90,10 @@ export async function fetchDictionary(dispatch, langList: string[]) {
 
     const fidTime = Math.round(performance.now() - startFidTime);
 
-    biReporter.performanceInit(initTime);
-    biReporter.performanceFID(fidTime);
-
     if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.log('FID', `${fidTime}ms`);
+        console.info('FID', `${fidTime}ms`);
+        // eslint-disable-next-line no-console
+        console.info('INIT', `${initTime}ms`);
     }
 }

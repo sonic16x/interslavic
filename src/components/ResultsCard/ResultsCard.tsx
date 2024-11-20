@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
@@ -7,12 +6,10 @@ import { t } from 'translations';
 import { setNotificationAction, showModalDialog } from 'actions';
 import { MODAL_DIALOG_TYPES } from 'reducers';
 
-import { biReporter, ICardAnalytics } from 'services/biReporter';
 import { Dictionary, ITranslateResult } from 'services/dictionary';
 
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useCaseQuestions } from 'hooks/useCaseQuestions';
-import { useIntersect } from 'hooks/useIntersect';
 import { useLang } from 'hooks/useLang';
 import { useShortCardView } from 'hooks/useShortCardView';
 import { estimateIntelligibility, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
@@ -36,7 +33,7 @@ interface IResultsCardProps {
     index: number;
 }
 
-function renderOriginal(item, alphabets, caseQuestions, index) {
+function renderOriginal(item, alphabets, caseQuestions) {
     let latin = item.original;
     if (item.add) {
         latin += ` ${item.add}`;
@@ -80,16 +77,10 @@ function renderOriginal(item, alphabets, caseQuestions, index) {
 
     return (
         <>
-            {result.map(({ str, caseInfo, lang }, i) => {
+            {result.map(({ str, caseInfo }, i) => {
                 return (
                     <span className="word" key={i}>
-                        <Clipboard
-                            str={str}
-                            index={index}
-                            item={item}
-                            type="card"
-                            lang={lang}
-                        />
+                        <Clipboard str={str} />
                         {caseInfo && <> <span className="caseInfo">({caseInfo})</span></>}
                     </span>
                 );
@@ -113,30 +104,7 @@ export const ResultsCard =
         const intelligibilityVector = estimateIntelligibility(intelligibility);
         const lang = useLang();
 
-        const cardBiInfo: ICardAnalytics = useMemo(() => (
-            {
-                checked: item.checked,
-                wordId,
-                isv: Dictionary.getField(item.raw, 'isv'),
-                index,
-            }
-        ), [item.checked, item.raw, wordId, index]);
-
-        const onShown = useCallback(() => {
-            biReporter.showCard(cardBiInfo);
-        }, [cardBiInfo]);
-
-        const [setRef] = useIntersect({
-            threshold: 0.5,
-            onShown,
-        });
-
-        const reportClick = () => {
-            biReporter.cardInteraction('click card', cardBiInfo);
-        };
-
         const showTranslations = () => {
-            biReporter.cardInteraction('show forms', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION,
                 data: { index },
@@ -144,7 +112,6 @@ export const ResultsCard =
         };
 
         const showWordErrorModal = () => {
-            // biReporter.cardInteraction('show forms', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR,
                 data: {
@@ -156,7 +123,6 @@ export const ResultsCard =
         };
 
         const showDetail = () => {
-            biReporter.cardInteraction('show translations', cardBiInfo);
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
                 data: {
@@ -195,20 +161,12 @@ export const ResultsCard =
         return (
             <div
                 className={classNames('results-card', { short })}
-                ref={setRef}
                 tabIndex={0}
-                onClick={reportClick}
             >
                 <div className="results-card__translate">
                     {item.to !== 'isv' ? (
-                        <Clipboard
-                            str={item.translate}
-                            index={index}
-                            type="card"
-                            item={item}
-                            lang={item.to}
-                        />
-                    ) : renderOriginal(item, alphabets, caseQuestions, index)}
+                        <Clipboard str={item.translate} />
+                    ) : renderOriginal(item, alphabets, caseQuestions)}
                     {'\u00A0'}
                     { hasIntelligibilityIssues(intelligibilityVector)
                         ? <button
@@ -231,14 +189,8 @@ export const ResultsCard =
                 <div className="results-card__bottom">
                     <div className="results-card__original">
                         {item.to === 'isv' ? (
-                            <Clipboard
-                                str={item.translate}
-                                index={index}
-                                type="card"
-                                item={item}
-                                lang={item.from}
-                            />
-                        ) : renderOriginal(item, alphabets, caseQuestions, index)}
+                            <Clipboard str={item.translate} />
+                        ) : renderOriginal(item, alphabets, caseQuestions)}
                         {item.to !== 'isv' && short && (
                             <span className="results-card__details">{item.details}</span>
                         )}

@@ -2,7 +2,6 @@ import { setLang } from 'translations';
 
 import { ActionTypes } from 'actions';
 
-import { biReporter } from 'services/biReporter';
 import { Dictionary, ITranslateResult } from 'services/dictionary';
 
 import { getPathFromPage, goToPage } from 'routing';
@@ -86,7 +85,10 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             });
 
-            biReporter.performanceSearch(translateTime);
+            if (process.env.NODE_ENV !== 'production') {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
 
             return {
                 ...state,
@@ -106,7 +108,10 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             });
 
-            biReporter.performanceSearch(translateTime);
+            if (process.env.NODE_ENV !== 'production') {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
 
             return {
                 ...state,
@@ -126,7 +131,10 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             });
 
-            biReporter.performanceSearch(translateTime);
+            if (process.env.NODE_ENV !== 'production') {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
 
             return {
                 ...state,
@@ -145,7 +153,10 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             });
 
-            biReporter.performanceSearch(translateTime);
+            if (process.env.NODE_ENV !== 'production') {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
 
             return {
                 ...state,
@@ -164,7 +175,10 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             });
 
-            biReporter.performanceSearch(translateTime);
+            if (process.env.NODE_ENV !== 'production') {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
 
             return {
                 ...state,
@@ -185,7 +199,10 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             });
 
-            biReporter.performanceSearch(translateTime);
+            if (process.env.NODE_ENV !== 'production') {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
 
             return {
                 ...state,
@@ -205,7 +222,10 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType: data,
             });
 
-            biReporter.performanceSearch(translateTime);
+            if (process.env.NODE_ENV !== 'production') {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
 
             return {
                 ...state,
@@ -223,7 +243,10 @@ export function mainReducer(state: IMainState, { type, data }) {
                 posFilter: data,
             });
 
-            biReporter.performanceSearch(translateTime);
+            if (process.env.NODE_ENV !== 'production') {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
 
             return {
                 ...state,

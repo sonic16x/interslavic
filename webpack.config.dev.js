@@ -76,7 +76,6 @@ module.exports = {
             path: outputPath,
             excludeChunks: ['sw', 'grammarComponent', 'viewerComponent'],
             env: {
-                ANALYTICS: false,
                 BASE_URL: baseUrl,
             },
         }),

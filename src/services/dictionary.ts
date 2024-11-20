@@ -263,11 +263,6 @@ class DictionaryClass {
             initTime = Math.round(performance.now() - startInitTime);
         }
 
-        if (process.env.NODE_ENV !== 'production') {
-            // eslint-disable-next-line no-console
-            console.log('INIT', `${initTime}ms`);
-        }
-
         return initTime;
     }
     public addLang(wordList: string[], searchIndex?: any) {
