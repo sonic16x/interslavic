@@ -8,6 +8,7 @@ const meta = {
         layout: 'padded',
         redux: true,
     },
+    tags: ['autodocs'],
     argTypes: {},
     args: {},
 } satisfies Meta<typeof ResultsCard>;

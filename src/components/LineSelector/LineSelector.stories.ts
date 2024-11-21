@@ -8,6 +8,7 @@ const meta = {
         layout: 'padded',
     },
     argTypes: {},
+    tags: ['autodocs'],
     args: {
         onSelect: fn()
     },

@@ -50,8 +50,8 @@ const config: StorybookConfig = {
     })
 
     config.resolve.modules.push('src')
-    console.log()
-    config.plugins.push(...webpackDevConfig.plugins)
+    config.plugins.push(webpackDevConfig.plugins[1])
+    config.plugins.push(webpackDevConfig.plugins[2])
 
     return config
   }

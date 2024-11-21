@@ -3,7 +3,9 @@
   "version": "1.23.1",
   "license": "MIT",
   "description": "Interslavic Dictionary",
-  "author": "Sergey Cherebedov",
+  "author": {
+    "name": "Sergey Cherebedov"
+  },
   "scripts": {
     "start": "npm run dev",
     "test:units": "jest --logHeapUsage --coverage",
@@ -86,6 +88,7 @@
     "@typescript-eslint/parser": "^6.15.0",
     "acorn": "^8.11.2",
     "autoprefixer": "^10.4.16",
+    "chromatic": "^11.18.1",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "coveralls": "^3.1.1",
