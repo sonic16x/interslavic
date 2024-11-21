@@ -1,7 +1,5 @@
 import { PureComponent } from 'react';
 
-import './Text.scss';
-
 function matchStr(str) {
     return str.match(/\{[^{}]*\}+\[[\w,]+\]/g);
 }

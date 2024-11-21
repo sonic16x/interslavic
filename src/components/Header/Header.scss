@@ -1,5 +1,3 @@
-@import 'src/mixins';
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -50,10 +48,18 @@
       height: var(--line-width);
       background-color: var(--light);
       position: relative;
-      @include changeState;
+      transition:
+        transform var(--animation-duration) linear,
+        margin var(--animation-duration) linear,
+        background-color var(--animation-duration) linear
+      ;
 
       &::before, &::after {
-        @include changeState;
+        transition:
+          transform var(--animation-duration) linear,
+          margin var(--animation-duration) linear,
+          background-color var(--animation-duration) linear
+        ;
         display: block;
         content: '';
         position: absolute;

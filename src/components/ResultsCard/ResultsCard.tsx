@@ -11,7 +11,6 @@ import { Dictionary, ITranslateResult } from 'services/dictionary';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useLang } from 'hooks/useLang';
-import { useShortCardView } from 'hooks/useShortCardView';
 import { estimateIntelligibility, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
 import { toQueryString } from 'utils/toQueryString';
 import { getPartOfSpeech } from 'utils/wordDetails';
@@ -30,6 +29,7 @@ import TranslationsIcon from './images/translations-icon.svg';
 
 interface IResultsCardProps {
     item: ITranslateResult;
+    short: boolean;
     index: number;
 }
 
@@ -94,10 +94,10 @@ function renderOriginal(item, alphabets, caseQuestions) {
 }
 
 export const ResultsCard =
-    ({ item, index }: IResultsCardProps) => {
+    ({ item, short, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
         const caseQuestions = useCaseQuestions();
-        const wordId = Dictionary.getField(item.raw, 'id').toString();
+        const wordId = Dictionary.getField(item.raw, 'id')?.toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
         const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
@@ -155,8 +155,6 @@ export const ResultsCard =
                 });
             }
         }
-
-        const short = useShortCardView();
 
         return (
             <div
