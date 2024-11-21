@@ -18,7 +18,7 @@ const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'com
 const CommunityPage = lazy(() => import(/* webpackChunkName: "communityComponent" */'components/Pages/CommunityPage/CommunityPage'));
 const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'));
 
-function renderPageContent(page) {
+function renderPageContent(page: string) {
     switch (page) {
         case 'grammar':
             return (

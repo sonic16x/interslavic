@@ -21,10 +21,14 @@ import { SearchTypeSelector } from 'components/SearchTypeSelector';
 
 import './Controls.scss';
 
+interface IControlsProps {
+    expanded?: boolean;
+}
+
 export const Controls =
-    () => {
+    ({ expanded }: IControlsProps) => {
         const dispatch = useDispatch();
-        const expand = useSearchExpanded();
+        const expand = useSearchExpanded() || expanded;
         const short = useShortCardView();
 
         const lang = useLang();

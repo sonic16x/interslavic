@@ -82,6 +82,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
             SW: false,
+            IS_COM: true,
             CLIENT: true,
             BASE_URL: JSON.stringify(baseUrl),
             DATE: JSON.stringify(new Date().toISOString()),

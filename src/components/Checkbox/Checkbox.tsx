@@ -2,8 +2,8 @@ import classNames from 'classnames';
 
 import './Checkbox.scss';
 
-import CheckedIcon from './iamges/checked-icon.svg';
-import PartCheckedIcon from './iamges/part-checked-icon.svg';
+import CheckedIcon from './images/checked-icon.svg';
+import PartCheckedIcon from './images/part-checked-icon.svg';
 
 interface ICheckboxProps {
     className?: string;

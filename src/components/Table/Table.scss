@@ -1,4 +1,3 @@
-@import 'src/mixins';
 
 .table {
   margin: 10px auto;
@@ -71,8 +70,6 @@
     &.nowrap {
       white-space: nowrap;
     }
-
-    @include custom-text;
 
     &.bt {
       border-top-color: transparent;

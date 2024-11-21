@@ -62,6 +62,7 @@ export const Results =
                 {results.map((item: ITranslateResult, index) => (
                     <ResultsCard
                         item={item}
+                        short={short}
                         key={index}
                         index={index}
                     />
