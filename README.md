@@ -8,9 +8,8 @@
 
 Recommended to use and install as PWA (Progressive Web App):
 
-|  |  |
-|:---:|:---:|
 | <video width="341" src="https://github.com/user-attachments/assets/41363610-9e66-4912-83d9-f6c0b537f11b" title="iOS"></video> | <video width="360" src="https://github.com/user-attachments/assets/db4a56ff-0363-47c0-82db-ff9b2e0ca000" title="Android"></video> |
+|---|---|
 
 ## Acknowledgements
 
