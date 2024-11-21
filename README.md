@@ -2,6 +2,7 @@
   <img src="src/components/Header/images/logo-icon.svg" alt="Logo" height="32" width="48">
   Interslavic language dictionary
   <a href='https://coveralls.io/github/sonic16x/interslavic?branch=master'><img src='https://coveralls.io/repos/github/scherebedov/interslavic/badge.svg?branch=master' alt='Coverage Status' /></a>
+  <a href="https://master--673f7516f3447911dae3b204.chromatic.com" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>
 </h1>
 
 [https://interslavic-dictionary.com](https://interslavic-dictionary.com)  
