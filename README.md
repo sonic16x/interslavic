@@ -22,7 +22,7 @@ npm i
 
 then run generate dictionary
 ```
-npm run generateDictionary
+npm run generate-dictionary
 ```
 
 and now you can start dev server
@@ -36,7 +36,7 @@ We have a [storybook](https://master--673f7516f3447911dae3b204.chromatic.com)
 
 For some functions we have a unit tests
 ```
-npm run test:units
+npm run test:unit
 ```
 also we have playwright tests for main using flows, for run it install playwright
 ```

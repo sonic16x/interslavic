@@ -32,7 +32,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Test
-        run: npm run test:units
+        run: npm run test:unit
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
@@ -55,7 +55,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Generate dictionary
-        run: npm run generateDictionary
+        run: npm run generate-dictionary
 
       - name: Test
         run: npm run test:pw
@@ -80,7 +80,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Generate dictionary
-        run: npm run generateDictionary
+        run: npm run generate-dictionary
 
   build:
     name: Build
@@ -132,7 +132,7 @@ jobs:
           DEMO: true
           NODE_ENV: production
         run: |
-          npm run generateDictionary
+          npm run generate-dictionary
           npx webpack --config webpack.config.prod.js
 
       - name: Publish to Cloudflare Pages
