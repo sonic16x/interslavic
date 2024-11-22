@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import type { FC,ReactNode } from 'react';
 
 function matchStr(str) {
     return str.match(/\{[^{}]*\}+\[[\w,]+\]/g);
@@ -26,21 +26,16 @@ export function parseStr(rawStr) {
 interface ITextProps {
     align?: 'start' | 'center' | 'end';
     indent?: string;
+    children?: ReactNode
 }
 
-export class Text extends PureComponent<ITextProps> {
-    public render() {
-        const style = {
-            textAlign: this.props.align || 'start',
-            textIndent: this.props.indent,
-        };
-        
-        return (
-            <p
-                style={style}
-                className="custom-text"
-                dangerouslySetInnerHTML={{ __html: parseStr(this.props.children) }}
-            />
-        );
-    }
-}
+export const Text: FC<ITextProps> = ({ children, align, indent }) => (
+    <p
+        style={{
+            textAlign: align || 'start',
+            textIndent: indent,
+        }}
+        className="custom-text"
+        dangerouslySetInnerHTML={{ __html: parseStr(children) }}
+    />
+)

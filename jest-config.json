@@ -1,0 +1,29 @@
+{
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.{ts,tsx}"
+  ],
+  "coverageReporters": [
+    "json-summary",
+    "lcov",
+    "text"
+  ],
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js"
+  ],
+  "modulePaths": [
+    "<rootDir>/src/"
+  ],
+  "roots": [
+    "./src"
+  ],
+  "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js|tsx)$",
+  "transform": {
+    ".(ts|tsx)": "ts-jest"
+  },
+  "transformIgnorePatterns": [
+    "^.+\\.(js|json)$"
+  ],
+  "verbose": false
+}
