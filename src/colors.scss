@@ -1,26 +1,4 @@
-.color-theme--light {
-  --primary-color: #1E88E5;
-  --primary-color-fg: #fff;
-  --muted-text-color: #6c757d;
-  --light-gray-color: #999;
-  --valid-color: #43A047;
-  --invalid-color: #E53935;
-  --yellow-color: #FFB300;
-  --header-background-color: #272727;
-  --input-border-color: #E0E0E0;
-  --shadow: 0 8px 16px rgba(0, 0, 0, .05);
-  --border: 1px solid var(--input-border-color);
-  --table-highlighted-cell: #81D4FA;
-  --table-border-color: var(--gray-9);
-  --overlay-color: #000;
-  --tips-font-color: #122f80;
-  --tips-background-color: #e4f1fc;
-  --main-background-color: #FAFAFA;
-
-  --dark: #212121;
-  --light: #fff;
-  --transperent: rgba(1, 1, 1, 0);
-
+body {
   --gray-1: #111;
   --gray-2: #222;
   --gray-3: #333;
@@ -37,10 +15,34 @@
   --gray-e: #eee;
 }
 
-.color-theme--dark {
+.color-theme--light {
   --primary-color: #1E88E5;
   --primary-color-fg: #fff;
-  --muted-text-color: #6c757d;
+  --muted-text-color: #9E9E9E;
+  --light-gray-color: #999;
+  --valid-color: #43A047;
+  --invalid-color: #E53935;
+  --yellow-color: #FFB300;
+  --header-background-color: #272727;
+  --input-border-color: #E0E0E0;
+  --shadow: 0 8px 16px rgba(0, 0, 0, .05);
+  --border: 1px solid var(--input-border-color);
+  --table-highlighted-cell: #81D4FA;
+  --table-border-color: var(--gray-9);
+  --overlay-color: #000;
+  --tips-font-color: #122f80;
+  --main-background-color: #FAFAFA;
+  --status-badge-color: #fff;
+
+  --dark: #212121;
+  --light: #fff;
+  --transperent: rgba(1, 1, 1, 0);
+}
+
+.color-theme--dark {
+  --primary-color: #42A5F5;
+  --primary-color-fg: #fff;
+  --muted-text-color: #BDBDBD;
   --light-gray-color: #999;
   --valid-color: #43A047;
   --invalid-color: #E53935;
@@ -49,29 +51,14 @@
   --input-border-color: #444;
   --shadow: 0 8px 16px rgba(0, 0, 0, .05);
   --border: 1px solid var(--input-border-color);
-  --table-highlighted-cell: #0288D1;
+  --table-highlighted-cell: #1976D2;
   --table-border-color: var(--gray-9);
   --overlay-color: #000;
   --tips-font-color: #122f80;
-  --tips-background-color: #e4f1fc;
   --main-background-color: #262626;
+  --status-badge-color: #fff;
 
   --dark: #fff;
   --light: #212121;
   --transperent: rgba(1, 1, 1, 0);
-
-  --gray-1: #111;
-  --gray-2: #222;
-  --gray-3: #333;
-  --gray-4: #444;
-  --gray-5: #555;
-  --gray-6: #666;
-  --gray-7: #777;
-  --gray-8: #888;
-  --gray-9: #999;
-  --gray-a: #aaa;
-  --gray-b: #bbb;
-  --gray-c: #ccc;
-  --gray-d: #ddd;
-  --gray-e: #eee;
 }

@@ -83,10 +83,8 @@ export const CommunityPage = () => {
                     setFbAvailable(true);
                 }
             });
-        } catch (err) {
-            // eslint-disable-next-line no-console
-            console.error(err)
-        }
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (err) {}
     }, [setFbAvailable]);
 
     useEffect(() => {
