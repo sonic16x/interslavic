@@ -85,7 +85,7 @@ module.exports = {
             template: path.join(srcPath, 'index.html.ejs'),
             filename: 'index.html',
             path: outputPath,
-            excludeChunks: ['sw', 'grammarComponent', 'viewerComponent'],
+            excludeChunks: ['sw', 'grammarComponent', 'viewerComponent', 'communityComponent'],
             env: {
                 BASE_URL: baseUrl,
             },

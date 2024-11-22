@@ -74,14 +74,14 @@ module.exports = {
             template: path.join(srcPath, 'index.html.ejs'),
             filename: 'index.html',
             path: outputPath,
-            excludeChunks: ['sw', 'grammarComponent', 'viewerComponent'],
+            excludeChunks: ['sw', 'grammarComponent', 'viewerComponent', 'communityComponent'],
             env: {
                 BASE_URL: baseUrl,
             },
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
-            SW: false,
+            SW: true,
             IS_COM: true,
             CLIENT: true,
             BASE_URL: JSON.stringify(baseUrl),

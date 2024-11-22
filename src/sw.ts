@@ -6,11 +6,12 @@ const cacheUrls = [
     'data/basic.json',
     'data/translateStatistic.json',
     ...addLangs.map((lang) => `data/${lang}.json`),
-    'manifest.json',
     'grammarComponent.js',
+    'communityComponent.js',
     'index.js',
     'sw.js',
     'styles/grammarComponent.css',
+    'styles/communityComponent.css',
     'styles/index.css',
 ];
 

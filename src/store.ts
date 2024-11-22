@@ -90,10 +90,8 @@ function getInitialState(): IMainState {
             page: getPageFromPath(),
             ...savedState,
         };
-    } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error(err)
-    }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {}
 
     setLang(state.interfaceLang);
     Dictionary.setIsvSearchLetters(state.isvSearchLetters);

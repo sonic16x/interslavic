@@ -17,7 +17,7 @@ Recommended to use and install as PWA (Progressive Web App):
 
 For start local development install dependencies
 ```
-npm i
+npm ci
 ```
 
 then run generate dictionary
