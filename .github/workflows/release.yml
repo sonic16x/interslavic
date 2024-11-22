@@ -15,6 +15,9 @@ jobs:
       - name: NPM install
         run: npm ci
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - name: Build
         run: |
           npm run lint
