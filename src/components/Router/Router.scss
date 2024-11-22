@@ -10,30 +10,12 @@
   }
 
   &.show {
-    animation: show 0.1s linear;
+    transition: opacity 0.1s ease-in-out;
+    opacity: 1;
   }
 
   &.hide {
-    animation: hide 0.1s linear;
-  }
-}
-
-@keyframes show {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hide {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
+    transition: opacity 0.1s ease-in-out;
     opacity: 0;
   }
 }
