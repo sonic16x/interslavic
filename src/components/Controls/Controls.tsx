@@ -40,9 +40,7 @@ export const Controls =
             dispatch(fromTextAction(value));
         }, [dispatch]);
 
-        const onChangeExpand = useCallback(() => {
-            dispatch(setSearchExpand(!expand));
-        }, [expand]);
+        const onChangeExpand = () => dispatch(setSearchExpand(!expand));
 
         return (
             <div
