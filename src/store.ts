@@ -1,5 +1,3 @@
-import { applyMiddleware, compose, createStore } from "redux";
-
 import { langs } from "./consts";
 import { localStorageMiddleware } from "./middlewares/localStorageMiddleware";
 import { urlParamsMiddleware } from "./middlewares/urlParamsMiddleware";
@@ -10,6 +8,7 @@ import { setLang } from "./translations";
 import { getPreferredLanguage } from "./utils/getPreferredLanguage";
 import { getPreferredTheme } from "./utils/getPreferredTheme";
 import { validateLang } from "./utils/validateLang";
+import { configureStore } from '@reduxjs/toolkit';
 import md5 from 'md5';
 
 export const defaultState: IMainState = {
@@ -53,14 +52,6 @@ export const defaultState: IMainState = {
     badges: [],
 };
 
-function reduxDevTools() {
-    if (process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__) {
-        return window.__REDUX_DEVTOOLS_EXTENSION__();
-    } else {
-        return f => f;
-    }
-}
-
 function getInitialState(): IMainState {
     let state = defaultState;
     try {
@@ -99,8 +90,9 @@ function getInitialState(): IMainState {
             page: getPageFromPath(),
             ...savedState,
         };
-    } catch (e) {
-
+    } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error(err)
     }
 
     setLang(state.interfaceLang);
@@ -110,14 +102,10 @@ function getInitialState(): IMainState {
     return state;
 }
 
-export const store = createStore(
-    mainReducer,
-    getInitialState(),
-    compose(
-        applyMiddleware(
-            localStorageMiddleware,
-            urlParamsMiddleware,
-        ),
-        reduxDevTools(),
-    ),
-);
+export const store = configureStore({
+    reducer: mainReducer,
+    preloadedState: getInitialState(),
+    middleware: (getDefaultMiddleware) => (
+        getDefaultMiddleware().concat(localStorageMiddleware).concat(urlParamsMiddleware)
+    )
+});

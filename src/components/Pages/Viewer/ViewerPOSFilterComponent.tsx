@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { t } from 'translations';
 
@@ -363,7 +363,9 @@ export class ViewerPOSFilterComponent {
 
         this.resetEvent = this.resetEvent.bind(this);
 
-        render(<POSFilterComponentReact agParams={agParams} resetEvent={this.resetEvent} />, this.mainElement);
+        createRoot(this.mainElement).render(
+            <POSFilterComponentReact agParams={agParams} resetEvent={this.resetEvent} />
+        )
     }
 
     public doesFilterPass({ data }) {

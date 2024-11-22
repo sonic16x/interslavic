@@ -1,4 +1,4 @@
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import { setInitialPage } from 'routing';
@@ -37,9 +37,10 @@ if (SW) {
 }
 
 
-render(
+const root = createRoot(document.getElementById('app'));
+
+root.render(
     <Provider store={store}>
         <Main />
-    </Provider>,
-    document.getElementById('app'),
+    </Provider>
 );

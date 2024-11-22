@@ -13,7 +13,7 @@ jobs:
           persist-credentials: false
 
       - name: NPM install
-        uses: bahmutov/npm-install@v1
+        run: npm ci
 
       - name: Build
         run: |
