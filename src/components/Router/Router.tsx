@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense,useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { setPageAction } from 'actions';
@@ -59,28 +59,28 @@ export const Router =
         const dispatch = useDispatch();
         const interfaceLang = useInterfaceLang();
         const page = usePage();
-        const [prevPage, setPrevPage] = React.useState(page);
+        const [prevPage, setPrevPage] = useState(page);
         const addClass = page !== prevPage ? 'hide' : 'show';
 
-        const onAnimationEnd = React.useCallback(() => {
+        const onTransitionEnd = () => {
             if (page !== prevPage) {
                 setPrevPage(page);
             }
-        }, [page, prevPage]);
+        }
 
-        const onChangeUrl = React.useCallback(() => {
+        const onChangeUrl = () => {
             const currentPage = getPageFromPath();
 
             if (getPathFromPage(page) !== `${BASE_URL}${currentPage}`) {
                 dispatch(setPageAction(currentPage));
             }
-        }, [dispatch, page]);
+        };
 
-        React.useEffect(() => {
+        useEffect(() => {
             window.onpopstate = onChangeUrl;
         }, [onChangeUrl]);
 
-        React.useEffect(() => {
+        useEffect(() => {
             if (typeof document !== 'undefined') {
                 document.documentElement.lang = toBCP47(interfaceLang);
             }
@@ -89,7 +89,7 @@ export const Router =
         return (
             <div
                 className={`animation-container ${addClass} ${prevPage}Route`}
-                onAnimationEnd={onAnimationEnd}
+                onTransitionEnd={onTransitionEnd}
             >
                 {renderPageContent(prevPage)}
             </div>
