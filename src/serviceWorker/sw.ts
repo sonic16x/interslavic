@@ -1,11 +1,10 @@
 import { CASH_URLS } from './cashUrls';
 
-const cacheName = VERSION
-
+// Add to cache all data
 self.addEventListener("install", (event: any) => {
     event.waitUntil(
         caches
-            .open(cacheName)
+            .open(VERSION)
             .then((cache) => cache.addAll(CASH_URLS))
     );
 });
@@ -15,30 +14,30 @@ self.addEventListener("fetch", (event: any) => {
         return;
     }
 
+    // Try to find data in cache
     event.respondWith(
         caches
-            .match(
-                event.request,
-                {
-                    ignoreSearch: event.request.url.indexOf('?') != -1,
-                }
-            )
+            .match(event.request)
             .then((cache) => {
+                // Request data from network
                 const network = fetch(event.request)
                     .then((response) => (
                         caches
-                            .open(cacheName)
+                            .open(VERSION)
+                            // Update cache
                             .then((cache) => cache.put(event.request, response.clone()))
                             .then(() => response)
                     ));
 
+                // Prefer get data from cache here
                 return cache || network;
             })
     );
 
+    // Update cache in background
     event.waitUntil(
         caches
-            .open(cacheName)
+            .open(VERSION)
             .then((cache) => (
                 fetch(event.request).then((response) =>
                     cache.put(event.request, response.clone())
@@ -48,12 +47,13 @@ self.addEventListener("fetch", (event: any) => {
 });
 
 self.addEventListener("activate", (event: any) => {
+    // Delete old cache versions
     event.waitUntil(
         caches
             .keys()
             .then((keys) => Promise.all(
                 keys
-                    .filter((key) => key !== cacheName)
+                    .filter((key) => key !== VERSION)
                     .map((key) => caches.delete(key))
             ))
     );
