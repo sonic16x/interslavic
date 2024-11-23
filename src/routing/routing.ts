@@ -10,34 +10,34 @@ export const pages: IPage[] = [
     {
         title: 'dictionaryTitle',
         value: 'dictionary',
-        path: BASE_URL,
+        path: '/',
     },
     {
         title: 'communityTitle',
         value: 'community',
-        path: `${BASE_URL}community`,
+        path: '/community',
         online: true,
     },
     {
         title: 'grammarTitle',
         value: 'grammar',
-        path: `${BASE_URL}grammar`,
+        path: '/grammar',
     },
     {
         title: 'viewerTitle',
         value: 'viewer',
-        path: `${BASE_URL}viewer`,
+        path: '/viewer',
         online: true,
     },
     {
         title: 'settingsTitle',
         value: 'settings',
-        path: `${BASE_URL}settings`,
+        path: '/settings',
     },
     {
         title: 'aboutTitle',
         value: 'about',
-        path: `${BASE_URL}about`,
+        path: '/about',
     },
 ];
 
@@ -61,7 +61,7 @@ export function setInitialPage() {
     const currentPath = window.location.pathname.split('#')[0];
     const page = pages.find(({ path }) => (path === currentPath));
     if (!page) {
-        window.history.replaceState({}, document.title, BASE_URL);
+        window.history.replaceState({}, document.title, '/');
     }
 }
 
@@ -71,5 +71,5 @@ export function getPathFromPage(page: string): string {
         return finded.path;
     }
 
-    return BASE_URL;
+    return '/';
 }

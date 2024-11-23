@@ -11,9 +11,6 @@ import { store } from './store'
 
 declare global {
     const VERSION: string;
-    const BASE_URL: string;
-    const SW: boolean;
-    const CLIENT: boolean;
     // eslint-disable-next-line
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
@@ -22,18 +19,8 @@ declare global {
 
 setInitialPage();
 
-if (SW) {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(`sw.js`)
-            .then((registration) => {
-                // eslint-disable-next-line no-console
-                console.log('Registration successful, scope is:', registration.scope);
-            })
-            .catch((error) => {
-                // eslint-disable-next-line no-console
-                console.log('Service worker registration failed, error:', error);
-            });
-    }
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(`sw.js`, { scope: '.' });
 }
 
 

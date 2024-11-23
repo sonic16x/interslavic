@@ -5,9 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const baseUrl = process.env.BASE_URL || '/';
-const isDemo = process.env.DEMO !== undefined;
-const outputPath = path.resolve(__dirname, `./dist${baseUrl}`);
+const outputPath = path.resolve(__dirname, `./dist`);
 const srcPath = path.resolve(__dirname, './src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
@@ -18,7 +16,7 @@ module.exports = {
         grammarComponent: './src/components/Pages/Grammar/Grammar',
         viewerComponent: './src/components/Pages/Viewer/Viewer',
         communityComponent: './src/components/Pages/CommunityPage/CommunityPage',
-        sw: './src/sw',
+        sw: './src/serviceWorker/sw',
     },
     output: {
         path: outputPath,
@@ -44,7 +42,7 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[contenthash].[ext]',
-                            publicPath: `${baseUrl}static`,
+                            publicPath: 'static',
                             outputPath: 'static',
                             esModule: false,
                         }
@@ -86,24 +84,9 @@ module.exports = {
             filename: 'index.html',
             path: outputPath,
             excludeChunks: ['sw', 'grammarComponent', 'viewerComponent', 'communityComponent'],
-            env: {
-                BASE_URL: baseUrl,
-            },
-        }),
-        new HtmlWebpackPlugin({
-            template: path.join(srcPath, '404.html.ejs'),
-            filename: '404.html',
-            path: outputPath,
-            inject: false,
-            env: {
-                BASE_URL: baseUrl,
-            },
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
-            SW: !isDemo,
-            CLIENT: true,
-            BASE_URL: JSON.stringify(baseUrl),
             VERSION: JSON.stringify(require('./package.json').version),
         }),
         new CopyWebpackPlugin({
