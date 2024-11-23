@@ -8,7 +8,6 @@ import { useCommunityLinks } from 'hooks/useCommunityLinks';
 import { useDarkTheme } from 'hooks/useDarkTheme';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
-import { ChangeDomain } from 'components/ChangeDomain';
 import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
 import { ModalDialog } from 'components/Modals/ModalDialog';
@@ -39,7 +38,6 @@ export const Main =
             <>
                 <Header/>
                 <Router/>
-                <ChangeDomain/>
                 <Loader/>
                 <ModalDialog/>
                 <Notification/>

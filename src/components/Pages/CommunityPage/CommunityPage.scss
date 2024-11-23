@@ -22,13 +22,18 @@
 
   &-link {
     padding: var(--gap-size);
-    border: var(--border);
     border-radius: var(--border-radius-m);
     box-shadow: var(--shadow);
     margin-bottom: var(--gap-size);
     max-width: 670px;
     width: 100%;
     box-sizing: border-box;
+    background: var(--light);
+
+    iframe {
+      background: #fff;
+      border-radius: var(--border-radius-m);
+    }
 
     &__text {
       color: var(--dark);
