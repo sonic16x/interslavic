@@ -4,7 +4,17 @@
   "description": "Word dictionary for interslavic language",
   "lang": "en",
   "dir": "ltr",
-  "scope": "https://pr-342.interslavic-dictionary.pages.dev",
+  "scope": ".",
+  "screenshots": [
+    {
+      "src": "screenshot/android.png",
+      "sizes": "576x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "platform": "android",
+      "label": "Android PWA"
+    }
+  ],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -48,11 +58,11 @@
     }
   ],
   "serviceworker": {
-    "src": "sw.prod.js",
-    "scope": "https://pr-342.interslavic-dictionary.pages.dev",
+    "src": "sw.js",
+    "scope": ".",
     "update_via_cache": "none"
   },
-  "start_url": "https://pr-342.interslavic-dictionary.pages.dev",
+  "start_url": "/",
   "background_color": "#272727",
   "display": "standalone",
   "orientation": "portrait-primary",

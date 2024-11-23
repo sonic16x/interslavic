@@ -22,20 +22,18 @@ declare global {
 
 setInitialPage();
 
-if (SW) {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(`sw.js`, {
-            scope: '.' // <--- THIS BIT IS REQUIRED
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(`sw.js`, {
+        scope: '.' // <--- THIS BIT IS REQUIRED
+    })
+        .then((registration) => {
+            // eslint-disable-next-line no-console
+            console.log('Registration successful, scope is:', registration.scope);
         })
-            .then((registration) => {
-                // eslint-disable-next-line no-console
-                console.log('Registration successful, scope is:', registration.scope);
-            })
-            .catch((error) => {
-                // eslint-disable-next-line no-console
-                console.log('Service worker registration failed, error:', error);
-            });
-    }
+        .catch((error) => {
+            // eslint-disable-next-line no-console
+            console.log('Service worker registration failed, error:', error);
+        });
 }
 
 
