@@ -1,20 +1,10 @@
 {
-  "name": "MS TEST",
-  "short_name": "MS TEST",
+  "name": "Medžuslovjansky slovnik",
+  "short_name": "Medžuslovjansky slovnik",
   "description": "Word dictionary for interslavic language",
   "lang": "en",
   "dir": "ltr",
   "scope": ".",
-  "screenshots": [
-    {
-      "src": "screenshot/android.png",
-      "sizes": "576x1280",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "platform": "android",
-      "label": "Android PWA"
-    }
-  ],
   "icons": [
     {
       "src": "icons/icon-72x72.png",

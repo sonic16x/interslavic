@@ -71,7 +71,7 @@ export const Router =
         const onChangeUrl = () => {
             const currentPage = getPageFromPath();
 
-            if (getPathFromPage(page) !== `${BASE_URL}${currentPage}`) {
+            if (getPathFromPage(page) !== `/${currentPage}`) {
                 dispatch(setPageAction(currentPage));
             }
         };

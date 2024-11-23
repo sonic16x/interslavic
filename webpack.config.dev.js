@@ -6,7 +6,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const outputPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
-const baseUrl = '/';
 
 module.exports = {
     entry: {
@@ -14,7 +13,7 @@ module.exports = {
         grammarComponent: './src/components/Pages/Grammar/Grammar',
         viewerComponent: './src/components/Pages/Viewer/Viewer',
         communityComponent: './src/components/Pages/CommunityPage/CommunityPage',
-        sw: './src/sw',
+        sw: './src/serviceWorker/sw',
     },
     output: {
         path: outputPath,
@@ -75,17 +74,10 @@ module.exports = {
             filename: 'index.html',
             path: outputPath,
             excludeChunks: ['sw', 'grammarComponent', 'viewerComponent', 'communityComponent'],
-            env: {
-                BASE_URL: baseUrl,
-            },
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
-            SW: false,
             IS_COM: true,
-            CLIENT: true,
-            BASE_URL: JSON.stringify(baseUrl),
-            DATE: JSON.stringify(new Date().toISOString()),
             VERSION: JSON.stringify(require('./package.json').version),
         }),
         new CopyWebpackPlugin({
