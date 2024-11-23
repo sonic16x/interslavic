@@ -21,9 +21,29 @@ self.addEventListener('install', (event: any) => {
     );
 });
 
-// self.addEventListener('activate', () => {
-//     console.log('activate');
-// });
+self.addEventListener("activate", (event: any) => {
+    async function deleteOldCaches() {
+        // List all caches by their names.
+        const names = await caches.keys();
+        await Promise.all(names.map(name => {
+            if (name !== CACHE_NAME) {
+                // If a cache's name is the current name, delete it.
+                return caches.delete(name);
+            }
+        }));
+    }
+
+    event.waitUntil(deleteOldCaches());
+});
+
+window.addEventListener("online", () => {
+    // eslint-disable-next-line no-console
+    console.log("You are online!");
+});
+window.addEventListener("offline",() => {
+    // eslint-disable-next-line no-console
+    console.log("Network connection lost!");
+});
 
 const MAX_AGE = 1000 * 60 * 10; // 10 minutes.
 

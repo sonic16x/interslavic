@@ -24,7 +24,9 @@ setInitialPage();
 
 if (SW) {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(`sw.js`)
+        navigator.serviceWorker.register(`sw.js`, {
+            scope: '.' // <--- THIS BIT IS REQUIRED
+        })
             .then((registration) => {
                 // eslint-disable-next-line no-console
                 console.log('Registration successful, scope is:', registration.scope);

@@ -1,10 +1,10 @@
 {
-  "name": "Medžuslovjansky slovnik",
-  "short_name": "Medžuslovjansky slovnik",
+  "name": "MS TEST",
+  "short_name": "MS TEST",
   "description": "Word dictionary for interslavic language",
   "lang": "en",
   "dir": "ltr",
-  "scope": "https://interslavic-dictionary.com/",
+  "scope": "https://pr-342.interslavic-dictionary.pages.dev",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -49,10 +49,10 @@
   ],
   "serviceworker": {
     "src": "sw.prod.js",
-    "scope": "https://interslavic-dictionary.com/",
+    "scope": "https://pr-342.interslavic-dictionary.pages.dev",
     "update_via_cache": "none"
   },
-  "start_url": "https://interslavic-dictionary.com/",
+  "start_url": "https://pr-342.interslavic-dictionary.pages.dev",
   "background_color": "#272727",
   "display": "standalone",
   "orientation": "portrait-primary",
