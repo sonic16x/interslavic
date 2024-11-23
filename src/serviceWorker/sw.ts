@@ -24,8 +24,7 @@ self.addEventListener("fetch", (event: any) => {
                     .then((response) => (
                         caches
                             .open(VERSION)
-                            // Update cache
-                            .then((cache) => cache.put(event.request, response.clone()))
+                            .then((cache) => cache.put(event.request, response.clone())) // Update cache
                             .then(() => response)
                     ));
 
