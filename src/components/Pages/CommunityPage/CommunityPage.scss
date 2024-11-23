@@ -15,38 +15,38 @@
   }
 
   &-offline {
+    position: absolute;
     width: 100%;
     height: 100%;
-    position: absolute;
   }
 
   &-link {
+    width: 100%;
+    max-width: 670px;
+    box-sizing: border-box;
     padding: var(--gap-size);
     border-radius: var(--border-radius-m);
-    box-shadow: var(--shadow);
     margin-bottom: var(--gap-size);
-    max-width: 670px;
-    width: 100%;
-    box-sizing: border-box;
     background: var(--light);
+    box-shadow: var(--shadow);
 
     iframe {
-      background: #fff;
       border-radius: var(--border-radius-m);
+      background: #fff;
     }
 
     &__text {
+      margin-bottom: var(--gap-size-s);
       color: var(--dark);
       font-size: var(--text-l);
       line-height: var(--text-l-line);
-      margin-bottom: var(--gap-size-s);
     }
 
     .iframe-wrapper {
       position: relative;
+      overflow: hidden;
       height: 0;
       padding-top: 56.25%;
-      overflow: hidden;
 
       iframe {
         position: absolute;

@@ -15,13 +15,16 @@
     "generate-dictionary": "ts-node -r tsconfig-paths/register ./src/services/generateDictionary.ts",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "stylelint": "stylelint \"**/*.scss\"",
+    "stylelint:fix": "stylelint \"**/*.scss\" --fix",
     "start": "npm run dev",
     "storybook": "storybook dev -p 6006",
     "test:pw": "playwright test",
     "test:unit": "jest --logHeapUsage --coverage --config jest-config.json"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "stylelint"
   ],
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "25.2.0",
@@ -89,6 +92,11 @@
     "storybook": "^8.4.5",
     "storybook-addon-sass-postcss": "^0.3.2",
     "style-loader": "^4.0.0",
+    "stylelint": "^16.10.0",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-order": "^6.0.4",
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",

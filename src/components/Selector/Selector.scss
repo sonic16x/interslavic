@@ -1,27 +1,27 @@
 .selector {
   position: relative;
   display: flex;
-  white-space: nowrap;
-  align-items: center;
   box-sizing: border-box;
+  align-items: center;
   justify-content: space-between;
   color: var(--dark);
+  white-space: nowrap;
 
   &__title {
     font-size: 18px;
   }
 
   &__select {
-    color: var(--dark);
-    background: var(--light);
-    cursor: pointer;
     width: 100%;
     box-sizing: border-box;
-    font-size: var(--text-m);
-    line-height: var(--text-m-line);
     padding: 6px 28px 6px 12px;
     border: var(--border);
     border-radius: var(--border-radius-s);
+    background: var(--light);
+    color: var(--dark);
+    cursor: pointer;
+    font-size: var(--text-m);
+    line-height: var(--text-m-line);
     outline: none;
 
     &:focus {
@@ -29,17 +29,16 @@
     }
   }
 
-  &:after {
-    content: "";
-    display: block;
+  &::after {
     position: absolute;
     top: 14px;
     right: 7px;
-
+    display: block;
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
     border-top: 8px solid var(--gray-6);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    content: "";
   }
 }

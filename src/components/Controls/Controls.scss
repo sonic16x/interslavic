@@ -1,31 +1,23 @@
 .controls {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  box-shadow: var(--shadow);
-  border-radius: 0 0 var(--border-radius-s) var(--border-radius-s);
-  border-top: none;
   z-index: 1;
+  width: 100%;
   max-width: 1024px;
   box-sizing: border-box;
-  background: var(--light);
   padding-bottom: 2px;
+  border-radius: 0 0 var(--border-radius-s) var(--border-radius-s);
+  border-top: none;
+  margin-right: auto;
+  margin-left: auto;
+  background: var(--light);
+  box-shadow: var(--shadow);
 
   .input-text {
+    margin: 0 var(--gap-size);
     transition: margin-bottom var(--animation-duration) ease-in-out;
   }
 
   .lang-selector {
-    margin: 0 var(--gap-size) var(--gap-size);
-  }
-
-  .lang-selector {
-    margin-top: var(--gap-size);
-  }
-
-  .input-text {
-    margin-left: var(--gap-size);
-    margin-right: var(--gap-size);
+    margin: var(--gap-size);
   }
 
   .pos-selector {
@@ -48,7 +40,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .controls {
     border-radius: 0;
   }

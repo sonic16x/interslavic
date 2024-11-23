@@ -1,21 +1,20 @@
 .confirm {
+  width: 300px;
   border-radius: var(--border-radius-m);
   background: var(--light);
-  width: 300px;
 
   &__text {
     padding: 8px;
-
     font-size: var(--text-m);
     line-height: var(--text-m-line);
     text-align: center;
   }
 
   &__buttons {
-    border-top: var(--border);
-    padding: 8px;
     display: flex;
     justify-content: space-between;
+    padding: 8px;
+    border-top: var(--border);
 
     button {
       width: 100%;

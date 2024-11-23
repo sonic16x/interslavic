@@ -17,8 +17,8 @@
 
   &__container {
     max-width: 1024px;
-    margin: 0 auto;
     padding: var(--text-m);
+    margin: 0 auto;
   }
 
   &__author {
@@ -30,10 +30,10 @@
   }
 
   &__release-date {
-    text-align: center;
+    margin-bottom: 45px;
     color: var(--muted-text-color);
     font-size: var(--text-m);
-    margin-bottom: 45px;
+    text-align: center;
   }
 
   &__community-links {
@@ -45,13 +45,13 @@
     display: flex;
     flex-flow: row wrap;
 
-    @media (min-width: 400px) {
+    @media (width >= 400px) {
       > .badge_google-play {
         margin-left: -13px;
       }
     }
 
-    @media (max-width: 400px) {
+    @media (width <= 400px) {
       justify-content: center;
     }
   }

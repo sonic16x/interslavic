@@ -25,7 +25,7 @@ body {
   --yellow-color: #FFB300;
   --header-background-color: #272727;
   --input-border-color: #E0E0E0;
-  --shadow: 0 8px 16px rgba(0, 0, 0, .05);
+  --shadow: 0 8px 16px rgb(0 0 0 / 5%);
   --border: 1px solid var(--input-border-color);
   --table-highlighted-cell: #81D4FA;
   --table-border-color: var(--gray-9);
@@ -33,10 +33,9 @@ body {
   --tips-font-color: #122f80;
   --main-background-color: #FAFAFA;
   --status-badge-color: #fff;
-
   --dark: #212121;
   --light: #fff;
-  --transperent: rgba(1, 1, 1, 0);
+  --transperent: rgb(1 1 1 / 0%);
 }
 
 .color-theme--dark {
@@ -49,7 +48,7 @@ body {
   --yellow-color: #FFB300;
   --header-background-color: #272727;
   --input-border-color: #444;
-  --shadow: 0 8px 16px rgba(0, 0, 0, .05);
+  --shadow: 0 8px 16px rgb(0 0 0 / 5%);
   --border: 1px solid var(--input-border-color);
   --table-highlighted-cell: #1976D2;
   --table-border-color: var(--gray-9);
@@ -57,8 +56,7 @@ body {
   --tips-font-color: #122f80;
   --main-background-color: #262626;
   --status-badge-color: #fff;
-
   --dark: #fff;
   --light: #212121;
-  --transperent: rgba(1, 1, 1, 0);
+  --transperent: rgb(1 1 1 / 0%);
 }

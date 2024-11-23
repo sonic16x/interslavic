@@ -1,11 +1,11 @@
 .spinner {
   display: inline-block;
-  vertical-align: text-bottom;
-  border-color: var(--primary-color);
   border-style: solid;
-  border-right-color: transparent;
+  border-color: var(--primary-color);
   border-radius: 50%;
+  border-right-color: transparent;
   animation: spinner-animation .75s linear infinite;
+  vertical-align: text-bottom;
 }
 
 @keyframes spinner-animation {

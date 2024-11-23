@@ -1,19 +1,19 @@
 
 .table {
-  margin: 10px auto;
-  font-weight: 600;
-  font-size: var(--text-m);
-  text-align: start;
   width: 100%;
+  margin: 10px auto;
   border-collapse: collapse;
+  font-size: var(--text-m);
+  font-weight: 600;
   line-height: 1.4;
+  text-align: start;
 
   th,
   td {
+    height: 10px;
     box-sizing: border-box;
     border: 2px solid var(--table-border-color);
     text-align: center;
-    height: 10px;
 
     &.B {
       background: #90CAF9;
@@ -44,7 +44,7 @@
     }
 
     &.s {
-      background: #EEEEEE;
+      background: #EEE;
     }
 
     &.ts {

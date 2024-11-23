@@ -10,15 +10,15 @@
   }
 
   &__input {
-    border-radius: var(--border-radius-s);
-    font-size: var(--text-l);
-    line-height: 30px;
-    font-weight: 500;
-    border: 1px solid var(--input-border-color);
-    padding: 8px 16px;
     width: 100%;
-    color: var(--dark);
+    padding: 8px 16px;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius-s);
     background: var(--light);
+    color: var(--dark);
+    font-size: var(--text-l);
+    font-weight: 500;
+    line-height: 30px;
 
     &:focus {
       outline: 2px solid var(--primary-color);
@@ -32,30 +32,30 @@
     &::-webkit-search-cancel-button,
     &::-webkit-search-results-button,
     &::-webkit-search-results-decoration {
-      -webkit-appearance:none;
+      appearance:none;
     }
   }
 
   &__clear-button {
-    font-family: Impact, fantasy;
-    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    top: 9px;
+    right: 4px;
     display: block;
     width: 30px;
     height: 30px;
-    position: absolute;
     padding: 0;
-    top: 9px;
-    right: 4px;
-    color: var(--muted-text-color);
     border: 0;
+    border-radius: 50%;
     background-color: var(--light);
-    transition: background 200ms;
-    outline: none;
-    z-index: 10;
+    color: var(--muted-text-color);
+    cursor: pointer;
+    font-family: Impact, fantasy;
     font-size: 30px;
     font-weight: 600;
     line-height: 30px;
-    border-radius: 50%;
+    outline: none;
+    transition: background 200ms;
 
     &:focus {
       outline: 0;
@@ -63,7 +63,7 @@
 
     &:hover,
     &:focus {
-      background-color: rgba(0, 123, 255, .25);
+      background-color: rgb(0 123 255 / 25%);
     }
 
     &[disabled] {

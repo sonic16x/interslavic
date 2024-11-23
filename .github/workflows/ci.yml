@@ -19,6 +19,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Stylelint
+        run: npm run stylelint
+
   test:
     name: Tests:units
     runs-on: ubuntu-latest
