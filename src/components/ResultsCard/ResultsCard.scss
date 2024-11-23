@@ -1,14 +1,14 @@
 .results-card {
   position: relative;
   width: 100%;
-  background: var(--light);
-  box-shadow: var(--shadow);
-  border-radius: var(--border-radius-s);
   max-width: 1024px;
-  margin-bottom: var(--gap-size);
+  box-sizing: border-box;
   flex-shrink: 0;
   padding: 24px 20px 20px;
-  box-sizing: border-box;
+  border-radius: var(--border-radius-s);
+  margin-bottom: var(--gap-size);
+  background: var(--light);
+  box-shadow: var(--shadow);
 
   &:focus {
     outline: 2px solid var(--primary-color);
@@ -19,15 +19,15 @@
   }
 
   &__translate {
-    font-size: var(--text-l);
-    line-height: var(--text-l-line);
-    font-weight: 600;
     color: var(--dark);
+    font-size: var(--text-l);
+    font-weight: 600;
+    line-height: var(--text-l-line);
   }
 
-  .word + .word:before {
-    content: "/";
+  .word + .word::before {
     padding: 0 2px;
+    content: "/";
     font-weight: 400;
   }
 
@@ -35,21 +35,23 @@
     color: var(--muted-text-color);
     font-weight: 500;
   }
+
   .caseInfo {
     font-weight: 400;
     letter-spacing: -0.5pt;
   }
 
   &__details {
+    color: var(--muted-text-color);
     font-size: var(--text-m);
     line-height: var(--text-m-line);
-    color: var(--muted-text-color);
   }
 
   &__original {
+    color: var(--dark);
     font-size: var(--text-m);
     line-height: var(--text-m-line);
-    color: var(--dark);
+
     .caseInfo {
       font-style: italic;
     }
@@ -60,13 +62,13 @@
     position: absolute;
     top: 5px;
     right: 5px;
-    background: var(--invalid-color);
-    color: var(--status-badge-color);
-    font-weight: 700;
-    font-size: var(--text-xs);
-    line-height: var(--text-xs-line);
     padding: 2px 4px;
     border-radius: var(--border-radius-s);
+    background: var(--invalid-color);
+    color: var(--status-badge-color);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    line-height: var(--text-xs-line);
 
     &.verified {
       background: var(--valid-color);
@@ -75,20 +77,20 @@
 
   &__actions {
     position: absolute;
-    bottom: 5px;
     right: 5px;
+    bottom: 5px;
   }
 
   &__action-button {
-    outline: none;
-    cursor: pointer;
+    border: none;
     background: none;
+    color: var(--primary-color);
+    cursor: pointer;
     font-size: var(--text-s);
     line-height: var(--text-s-line);
-    border: none;
-    color: var(--primary-color);
+    outline: none;
 
-    @media (max-width: 395px) {
+    @media (width <= 395px) {
       font-size: var(--text-xs);
       line-height: var(--text-xs-line);
     }
@@ -99,8 +101,8 @@
   }
 
   &.short {
-    padding: 8px;
     overflow: hidden;
+    padding: 8px;
     margin-bottom: 8px;
 
     .results-card {
@@ -128,8 +130,8 @@
         width: 16px;
         height: 16px;
         padding: 0;
-        background: linear-gradient(45deg, var(--transperent) 0%, var(--transperent) 50%, var(--invalid-color) 50%, var(--invalid-color) 100%);
         border-radius: 0;
+        background: linear-gradient(45deg, var(--transperent) 0%, var(--transperent) 50%, var(--invalid-color) 50%, var(--invalid-color) 100%);
 
         &.verified {
           display: none;
@@ -139,21 +141,21 @@
       &__actions {
         position: initial;
         display: flex;
-        margin-bottom: -4px;
         margin-right: -4px;
+        margin-bottom: -4px;
 
         button {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          background: var(--primary-color);
-          border-radius: var(--border-radius-s);
           width: 24px;
           height: 24px;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border-radius: var(--border-radius-s);
+          background: var(--primary-color);
           color: var(--primary-color-fg);
           font-size: var(--text-xs);
           line-height: var(--text-xs-line);
-          padding: 0;
           transition: transform .1s ease-in-out;
 
           &:active {
@@ -169,15 +171,15 @@
   }
 
   &__status {
+    padding: 0;
+    border: none;
+    margin: 0;
+    appearance: none;
+    background: none;
+
     /* inline text-like button */
     cursor: pointer;
-    background: none;
-    border: none;
-    appearance: none;
-    -webkit-appearance: none;
     font: inherit;
-    margin: 0;
-    padding: 0;
     transition: transform .1s ease-in-out;
 
     &:hover {

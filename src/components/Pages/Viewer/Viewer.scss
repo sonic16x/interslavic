@@ -1,10 +1,10 @@
 .viewer {
   position: relative;
-  overflow: hidden;
   display: flex;
-  flex-direction: column;
+  overflow: hidden;
   width: 100%;
   height: 100%;
+  flex-direction: column;
 
   &-offline {
     position: absolute;
@@ -13,17 +13,17 @@
   }
 
   &__loader {
-    z-index: 100;
-    opacity: .8;
-    background: var(--light);
     position: absolute;
+    z-index: 100;
     top: 0;
     left: 0;
+    display: flex;
     width: 100%;
     height: 100%;
-    display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--light);
+    opacity: .8;
   }
 
   &__container {

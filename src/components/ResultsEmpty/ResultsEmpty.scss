@@ -1,32 +1,32 @@
 .results-empty {
+  margin-top: 100px;
   font-size: var(--text-xxl);
   font-weight: 600;
   text-align: center;
-  margin-top: 100px;
 
   &__smile {
     white-space: nowrap;
   }
 
   &__filter {
-    margin-top: 5px;
-    font-size: var(--text-l);
     padding: 0 15px;
+    margin-top: 5px;
     color: var(--muted-text-color);
+    font-size: var(--text-l);
   }
 
   &__button {
-    margin-top: 20px;
-    cursor: pointer;
-    background: var(--primary-color);
-    border-radius: .35rem;
     height: 40px;
     padding: 0 10px;
+    border: none;
+    border-radius: .35rem;
+    margin-top: 20px;
+    background: var(--primary-color);
     box-shadow: var(--shadow);
+    color: var(--light);
+    cursor: pointer;
+    font-size: var(--text-m);
     font-weight: 500;
     outline: none;
-    border: none;
-    color: var(--light);
-    font-size: var(--text-m);
   }
 }

@@ -3,9 +3,9 @@
   padding: var(--gap-size-s) var(--gap-size-s) 0;
 
   &__list {
-    margin-top: var(--gap-size-s);
     display: flex;
     flex-direction: column;
+    margin-top: var(--gap-size-s);
   }
 
   &__line {
@@ -22,10 +22,10 @@
   }
 
   &__sub-list {
-    padding-left: var(--gap-size-s);
     display: flex;
-    flex-direction: column;
     height: 0;
+    flex-direction: column;
+    padding-left: var(--gap-size-s);
     opacity: 0;
     pointer-events: none;
 
@@ -34,9 +34,9 @@
     }
 
     &.expanded {
-      pointer-events: all;
       height: auto;
       opacity: 1;
+      pointer-events: all;
     }
   }
 }

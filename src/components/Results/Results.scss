@@ -1,18 +1,18 @@
 .results {
-  overflow: auto;
-  padding: var(--gap-size) 0;
   display: flex;
+  overflow: auto;
+  height: 100%;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  padding: var(--gap-size) 0;
   color: var(--dark);
 
   &__message-for-users {
-    white-space: pre-line;
     width: 100%;
     max-width: 1024px;
-    padding: var(--gap-size);
     box-sizing: border-box;
+    padding: var(--gap-size);
+    white-space: pre-line;
   }
 
   &.short {
@@ -20,10 +20,10 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .results {
-    padding-left: var(--gap-size) !important;
     padding-right: var(--gap-size) !important;
+    padding-left: var(--gap-size) !important;
 
     &.short {
       padding: var(--gap-size-s) !important;

@@ -1,53 +1,51 @@
 .header {
-  display: flex;
-  justify-content: space-between;
   position: relative;
-  box-sizing: border-box;
-  padding: 8px 16px;
-  align-items: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
   z-index: 10;
+  display: flex;
   width: 100%;
   max-width: 1020px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
   margin: 0 auto;
+  box-shadow: 0 8px 16px rgb(0 0 0 / 15%);
 
   &::before {
-    content: '';
     position: absolute;
-    left: -50vw;
+    z-index: -1;
     right: -50vw;
+    left: -50vw;
     height: 100%;
     background-color: var(--header-background-color);
-    z-index: -1;
+    content: '';
   }
 
   .show-menu-button {
-    display: none;
-    border: 1px solid var(--gray-5);
-    border-radius: 4px;
-    box-sizing: content-box;
-    padding: 3px;
     z-index: 10;
-
-    background: none;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-
+    display: none;
     width: var(--line-length);
     height: var(--line-length);
+    box-sizing: content-box;
+    padding: 3px;
+    border: 1px solid var(--gray-5);
+    border-radius: 4px;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
 
     &:focus {
       outline:0;
     };
 
     &>.lines {
+      position: relative;
       display: block;
       width: var(--line-length);
       height: var(--line-width);
       background-color: var(--light);
-      position: relative;
       transition:
         transform var(--animation-duration) linear,
         margin var(--animation-duration) linear,
@@ -55,17 +53,17 @@
       ;
 
       &::before, &::after {
+        position: absolute;
+        display: block;
+        width: var(--line-length);
+        height: var(--line-width);
+        background-color: var(--light);
+        content: '';
         transition:
           transform var(--animation-duration) linear,
           margin var(--animation-duration) linear,
           background-color var(--animation-duration) linear
         ;
-        display: block;
-        content: '';
-        position: absolute;
-        width: var(--line-length);
-        height: var(--line-width);
-        background-color: var(--light);
       }
 
       &::after {
@@ -77,7 +75,7 @@
       }
 
       &.active {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: rgb(0 0 0 / 0%);
 
         &::before, &::after {
           margin-top: 0;
@@ -96,62 +94,62 @@
 
   .menu {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
   .menu-item {
-    cursor: pointer;
-    margin-left: 10px;
-    font-weight: 500;
-    font-size: var(--text-m);
-    line-height: var(--text-l-line);
-    color: var(--gray-a);
-    white-space: nowrap;
-    transition: color var(--animation-duration) linear;
     position: relative;
+    margin-left: 10px;
+    color: var(--gray-a);
+    cursor: pointer;
+    font-size: var(--text-m);
+    font-weight: 500;
+    line-height: var(--text-l-line);
+    transition: color var(--animation-duration) linear;
+    white-space: nowrap;
 
     &.active {
       color: var(--light);
 
-      &:after {
+      &::after {
         opacity: 1;
       }
+    }
+
+    &::after {
+      position: absolute;
+      top: -50%;
+      right: 0;
+      color: var(--primary-color);
+      content: attr(data-sub-title);
+      font-size: 10px;
+      opacity: 0.8;
+      transition: opacity var(--animation-duration) linear;
     }
 
     &:hover {
       color: var(--gray-d);
       text-decoration: none;
 
-      &:after {
+      &::after {
         opacity: 1;
       }
-    }
-
-    &:after {
-      transition: opacity var(--animation-duration) linear;
-      opacity: 0.8;
-      content: attr(data-sub-title);
-      color: var(--primary-color);
-      font-size: 10px;
-      position: absolute;
-      right: 0;
-      top: -50%;
     }
   }
 
   .logo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    margin: 0;
     color: var(--light);
     font-size: var(--text-l);
     font-weight: 500;
-    padding: 5px 0;
     white-space: nowrap;
-    margin: 0;
 
-    @media (max-width: 395px) {
+    @media (width <= 395px) {
       font-size: var(--text-ml);
     }
 
@@ -163,15 +161,15 @@
   }
 
   .badge::after {
-    content: '';
     position: absolute;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: var(--primary-color);
-    pointer-events: none;
-    opacity: 0;
     animation: 0.3s show forwards;
+    background-color: var(--primary-color);
+    content: '';
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
@@ -179,19 +177,18 @@
   flex-wrap: wrap;
 
   .menu {
+    top: 54px;
+    width: 100%;
+    max-height: 0;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    top: 54px;
-    max-height: 0;
     opacity: 0;
-    transition: max-height var(--animation-duration) linear, opacity var(--animation-duration) linear;
     pointer-events: none;
+    transition: max-height var(--animation-duration) linear, opacity var(--animation-duration) linear;
 
     &-item {
       margin-top: 8px;
       margin-bottom: 8px;
-      //height: 40px
     }
 
     &.active {
@@ -202,28 +199,28 @@
   }
 
   .logo {
-    text-overflow: ellipsis;
     overflow: hidden;
     padding-right: 33px;
+    text-overflow: ellipsis;
 
     &-text {
       display: inline-block;
-      white-space: nowrap;
-      text-overflow: ellipsis;
       overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 
   .show-menu-button {
-    display: block;
     position: absolute;
-    right: 16px;
     top: 12px;
+    right: 16px;
+    display: block;
     background: var(--header-background-color);
 
     &.badge::after {
-      right: -4px;
       top: -4px;
+      right: -4px;
     }
 
     &.expanded.badge::after {
@@ -233,6 +230,6 @@
 }
 
 .header.full {
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 }

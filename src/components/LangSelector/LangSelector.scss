@@ -1,31 +1,31 @@
 .lang-selector {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   option, select {
     text-transform: capitalize;
   }
 
   &__isv {
-    color: var(--dark);
-    text-transform: capitalize;
-    font-size: var(--text-m);
-    line-height: var(--text-l-line);
+    overflow: hidden;
+    min-width: 40%;
     box-sizing: border-box;
+    flex: 0 1;
     padding: 4px 6px;
     border: var(--border);
     border-radius: var(--border-radius-s);
+    color: var(--dark);
+    font-size: var(--text-m);
+    line-height: var(--text-l-line);
     outline: none;
-    min-width: 40%;
-    flex: 0 1;
-    overflow: hidden;
     text-overflow: ellipsis;
+    text-transform: capitalize;
   }
 
   &__another {
-    flex: 0 1;
     min-width: 40%;
+    flex: 0 1;
 
     .selector__select {
       padding: 6px;
@@ -33,23 +33,24 @@
   }
 
   &__change-dir-button {
-    background: none;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
     width: 30px;
     height: 30px;
-    transition: transform var(--animation-duration) ease-in-out, background-color var(--animation-duration) ease-in-out;
+    padding: 0;
+    border: none;
     border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    transition: transform var(--animation-duration) ease-in-out, background-color var(--animation-duration) ease-in-out;
 
     &.rotate {
       transform: rotate(180deg);
     }
 
     &:hover {
-      background-color: rgba(0, 123, 255, .25);
+      background-color: rgb(0 123 255 / 25%);
     }
+
     &:focus {
       outline: 2px solid var(--primary-color);
     }
