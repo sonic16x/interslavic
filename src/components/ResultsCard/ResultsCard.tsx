@@ -18,8 +18,6 @@ import { wordHasForms } from 'utils/wordHasForms';
 
 import { Clipboard } from 'components/Clipboard';
 
-import { removeBrackets } from "../../utils/removeBrackets";
-
 import './ResultsCard.scss';
 
 import ErrorIcon from './images/error-icon.svg';
@@ -114,7 +112,6 @@ export const ResultsCard =
     ({ item, short, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
         const caseQuestions = useCaseQuestions();
-        const wordId = Dictionary.getField(item.raw, 'id')?.toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
         const lang = useLang();
@@ -130,7 +127,7 @@ export const ResultsCard =
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR,
                 data: {
-                    wordId,
+                    wordId: item.id,
                     isvWord: item.original,
                     translatedWord: item.translate,
                 },
@@ -141,7 +138,7 @@ export const ResultsCard =
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
                 data: {
-                    word: removeBrackets(Dictionary.getField(item.raw, 'isv'), '[', ']'),
+                    word: item.isv,
                     add: Dictionary.getField(item.raw, 'addition'),
                     details: Dictionary.getField(item.raw, 'partOfSpeech'),
                 },
@@ -151,7 +148,7 @@ export const ResultsCard =
         const shareWord = () => {
             const { origin, pathname } = window.location;
             const query = toQueryString({
-                text: `id${wordId}`,
+                text: `id${item.id}`,
                 lang: `${lang.from}-${lang.to}`,
             });
 

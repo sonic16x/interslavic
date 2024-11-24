@@ -512,7 +512,9 @@ class DictionaryClass {
         return results.map((item) => {
             const isvRaw = this.getField(item, 'isv');
             const remove = isvRaw.startsWith('!');
-            const isv = remove ? isvRaw.substring(1) : isvRaw;
+            const isv = removeBrackets(
+                removeExclamationMark(isvRaw), '[', ']'
+            );
 
             const id = this.getField(item, 'id');
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
