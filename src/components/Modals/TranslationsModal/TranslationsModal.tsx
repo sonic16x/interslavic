@@ -15,6 +15,7 @@ import { useModalDialog } from 'hooks/useModalDialog';
 import { useResults } from 'hooks/useResults';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
+import { getWordStatus } from "utils/getWordStatus";
 import { findIntelligibilityIssues } from "utils/intelligibilityIssues";
 
 import { Table } from 'components/Table';
@@ -98,6 +99,7 @@ export const TranslationsModal =
         }, []);
 
         const hasMarks = new Set(Object.values(marks).filter(Boolean)).size > 0;
+        const wordStatus = getWordStatus(item)
         const extraLegend = hasMarks && (<>
             <br/>
                 ⚠️ – {t('translationsLegendIntelligibilityWarning')}.<br/>
@@ -119,6 +121,11 @@ export const TranslationsModal =
                     </button>
                 </div>
                 <div className="modal-dialog__body">
+                    {wordStatus && (
+                        <div>
+                            {wordStatus.icon}&nbsp;{t(wordStatus.text)}
+                        </div>
+                    )}
                     <Table data={tableData}/>
                 </div>
                 <footer className="modal-dialog__footer">

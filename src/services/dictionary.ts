@@ -142,6 +142,10 @@ export interface ITranslateResult {
     to: string;
     checked: boolean;
     raw: string[];
+    id: string;
+    new?: boolean;
+    intelligibility?: string;
+    remove?: boolean;
 }
 
 class DictionaryClass {
@@ -507,6 +511,7 @@ class DictionaryClass {
     ): ITranslateResult[] {
         return results.map((item) => {
             const isv = this.getField(item, 'isv');
+            const id = this.getField(item, 'id');
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
             const add = addArray.find((elem) => !elem.startsWith('(+')) || '';
             let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1,-1) || '');
@@ -514,6 +519,7 @@ class DictionaryClass {
                 caseInfo = getCaseTips(caseInfo.slice(1),'nounShort');
             }
             const translate = this.getField(item, (from === 'isv' ? to : from));
+            const remove = isv.startsWith('!');
             const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
@@ -523,9 +529,13 @@ class DictionaryClass {
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
                 raw: item,
+                new: id.startsWith('-'),
+                intelligibility: this.getField(item, 'intelligibility'),
+                remove,
                 from,
                 to,
-                isv,
+                isv: remove ? isv.substring(1) : isv,
+                id,
             };
             if (alphabets?.cyrillic) {
                 formattedItem.originalCyr = getCyrillic(isv, flavorisationType);

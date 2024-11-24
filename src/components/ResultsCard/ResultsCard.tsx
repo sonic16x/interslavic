@@ -11,7 +11,7 @@ import { Dictionary, ITranslateResult } from 'services/dictionary';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useLang } from 'hooks/useLang';
-import { estimateIntelligibility, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
+import { getWordStatus } from "utils/getWordStatus";
 import { toQueryString } from 'utils/toQueryString';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
@@ -81,16 +81,33 @@ function renderOriginal(item, alphabets, caseQuestions) {
                 return (
                     <span className="word" key={i}>
                         <Clipboard str={str} />
-                        {caseInfo && <> <span className="caseInfo">({caseInfo})</span></>}
+                        {caseInfo && <span className="caseInfo">({caseInfo})</span>}
                     </span>
                 );
             })} 
             {!caseQuestions && item.caseInfo &&
-                 <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span></>
+                <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span>
             }
-            {item.ipa && <> <span className="ipa">[{item.ipa}]</span></>}
+            {item.ipa && <span className="ipa">[{item.ipa}]</span>}
         </>
     );
+}
+
+const WordStatus = ({ item, onClick }: { item: ITranslateResult, onClick: () => void }) => {
+    const wordStatus = getWordStatus(item)
+
+    if (wordStatus) {
+        return (
+            <button
+                key="wordStatus"
+                onClick={onClick}
+                className="results-card__status"
+                title={t(wordStatus.text)}
+            >
+                {wordStatus.icon}
+            </button>
+        );
+    }
 }
 
 export const ResultsCard =
@@ -100,8 +117,6 @@ export const ResultsCard =
         const wordId = Dictionary.getField(item.raw, 'id')?.toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
-        const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
-        const intelligibilityVector = estimateIntelligibility(intelligibility);
         const lang = useLang();
 
         const showTranslations = () => {
@@ -167,14 +182,7 @@ export const ResultsCard =
                         <Clipboard str={item.translate} />
                     ) : renderOriginal(item, alphabets, caseQuestions)}
                     {'\u00A0'}
-                    { hasIntelligibilityIssues(intelligibilityVector)
-                        ? <button
-                            key="intelligibilityIssues"
-                            onClick={showTranslations}
-                            className={classNames({ 'results-card__status': true })}
-                            title={t('intelligibilityIssues')}>⚠️</button>
-                        : undefined
-                    }
+                    <WordStatus item={item} onClick={showTranslations}/>
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;
