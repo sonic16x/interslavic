@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2021",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -19,9 +19,8 @@
     ],
     "lib": [
       "dom",
-      "es5",
+      "es2021",
       "scripthost",
-      "es2015.collection"
     ]
   },
   "include": [

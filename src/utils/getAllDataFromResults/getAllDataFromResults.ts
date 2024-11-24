@@ -1,13 +1,9 @@
 import { tableColumnsLetters, validFields } from 'consts';
 
-import { getColumnName } from 'utils/getColumnName';
-import { parseTsvTable } from 'utils/parseTsvTable';
-import { transposeMatrix } from 'utils/transposeMatrix';
+import { estimateIntelligibility, hasIntelligibilityIssues } from "../intelligibilityIssues";
 
-export interface IRangeMap {
-    header: Map<string, string>;
-    columns: Map<string, string>;
-}
+import rowmap from '@eaterable/rowmap';
+import TSV from '@eaterable/tsv-parser';
 
 export interface IAllData {
     data: string[][];
@@ -15,54 +11,77 @@ export interface IAllData {
     rangesMap: IRangeMap[];
 }
 
-const getLineId = (line) => line[0];
+export interface IRangeMap {
+    header: Map<string, string>;
+    columns: Map<string, string>;
+}
 
-export const getAllDataFromResults = (results: string[]): IAllData => {
-    const existingFields = new Set();
-    const idMap = new Map<string, string[]>();
-    const rangesMap: IRangeMap[] = [];
+interface IRowType {
+    id: string;
+    isv: string;
+    type: string;
+    intelligibility: string;
+    [key: string]: string | undefined;
+}
 
-    results.map((data) => {
-        const wordList = parseTsvTable(data.replace(/#/g, ''));
-
-        rangesMap.push({
-            header: new Map(wordList[0].map((filed, i) => [filed, tableColumnsLetters[i]])),
-            columns: new Map(wordList.map((line, i) => [getLineId(line), (i + 1).toString()])),
-        });
-
-        wordList.forEach((line) => {
-            const lineId = getLineId(line);
-
-            if (idMap.has(lineId)) {
-                const existingLine = idMap.get(lineId);
-
-                idMap.set(lineId, [...existingLine, ...line]);
-            } else {
-                idMap.set(lineId, line);
-            }
-        });
+/**
+ * Parses and merges TSV data from multiple results.
+ * @param tsvResults An array of TSV-formatted strings.
+ * @returns An object containing the processed data, columns, and range mappings.
+ */
+export const getAllDataFromResults = (rawTsvResults: string[]): IAllData => {
+    const tsvResults = rawTsvResults.map(tsv => tsv.replaceAll('#', ''));
+    const tableHeaders = rawTsvResults.map(tsv => TSV.headers(tsv).map(x => x.trim()));
+    const rangesMap: IRangeMap[] = tableHeaders.map((headers) => {
+        return {
+            columns: new Map<string, string>(),
+            header: headers.reduce((map, header) => {
+                return map.set(header, tableColumnsLetters[map.size]);
+            }, new Map<string, string>()),
+        };
     });
 
-    const sortedWordList = Array
-        .from(idMap.values())
-        .sort((a, b) => parseInt(getLineId(a), 10) - parseInt(getLineId(b), 10))
-    ;
+    const Row = rowmap<IRowType>({ headers: tableHeaders.flat(), preventCollisions: true });
+    const rowsById = new Map<string, InstanceType<typeof Row>>();
 
-    const columns = transposeMatrix(sortedWordList)
-        .filter((column: string[]) => {
-            const columnName = getColumnName(column);
-            const pass = validFields.includes(columnName) && !existingFields.has(columnName);
+    for (let k = 0; k < tsvResults.length; k++){
+        const raw = tsvResults[k];
+        let index = 0;
 
-            if (pass) {
-                existingFields.add(columnName);
+        for (const line of TSV.parse(raw)) {
+            index++;
+
+            const row = new Row(line, index);
+            preprocessRow(row);
+
+            const { id } = row;
+            if (!id) continue;
+
+            rangesMap[k].columns.set(id, `${index}`);
+
+            const existing = rowsById.get(id);
+            if (existing) {
+                existing.array.push(...row);
+            } else {
+                rowsById.set(id, row);
             }
+        }
+    }
 
-            return pass;
-        })
-        .map((line) => line.map((el) => typeof el === 'undefined' ? '' : el))
-    ;
+    // Convert the ID map to a sorted array based on IDs
+    const rows = sortRowsById(rowsById);
 
-    const data = transposeMatrix<string>(columns);
+    // Collect all unique, valid field names in the order of uniqueHeaders
+    const columnNames = Object.keys(Row.prototype).filter((header) => validFields.includes(header));
+
+    // Build data matrix
+    const columns: string[][] = columnNames.map((columnName) => {
+        return rows.map((row) => row[columnName] ?? '');
+    });
+
+    const data: string[][] = rows.map((row) => {
+        return columnNames.map((columnName) => row[columnName] ?? '');
+    });
 
     return {
         data,
@@ -70,3 +89,43 @@ export const getAllDataFromResults = (results: string[]): IAllData => {
         rangesMap,
     };
 };
+
+/**
+ * Preprocesses a row object based on special markers.
+ * @param row The row object to preprocess.
+ */
+function preprocessRow(row: IRowType & { readonly array: string[]; }): void {
+    const n = row.array.length;
+    for (let i = 0; i < n; i++) {
+        row[i] = (row[i] || '').trim();
+    }
+
+    const { id, isv, type, intelligibility } = row;
+
+    // Handle deletion suggestions (ID starts with '-')
+    if (id.startsWith('-')) {
+        row.id = id.slice(1);
+        row.type = '9' + (type || '0');
+    }
+
+    // Handle addition suggestions (ISV starts with '!')
+    if (isv.startsWith('!')) {
+        row.isv = isv.slice(1);
+        row.type = '99';
+    }
+
+    // Adjust type based on intelligibility issues
+    const intelligibilityVector = estimateIntelligibility(intelligibility);
+    if (hasIntelligibilityIssues(intelligibilityVector)) {
+        row.type = '98';
+    }
+}
+
+/**
+ * Sorts the rows by their IDs.
+ * @param rowsById The map of rows by ID.
+ * @returns An array of sorted row objects.
+ */
+function sortRowsById(rowsById: Map<string, IRowType>): IRowType[] {
+    return Array.from(rowsById.values()).sort((a, b) => (+a.id - +b.id));
+}

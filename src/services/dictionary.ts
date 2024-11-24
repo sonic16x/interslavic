@@ -415,7 +415,7 @@ class DictionaryClass {
                         return false;
                     }
                 }
-                
+
                 return filterResult;
             })
             .filter((item) => {
@@ -438,7 +438,7 @@ class DictionaryClass {
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
-                
+
                 return filterResult;
             })
             .map((item) => {

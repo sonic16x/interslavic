@@ -16,6 +16,7 @@ import { useResults } from 'hooks/useResults';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
 import { findIntelligibilityIssues } from "utils/intelligibilityIssues";
+import { annotateWordType } from 'utils/wordType';
 
 import { Table } from 'components/Table';
 
@@ -104,6 +105,8 @@ export const TranslationsModal =
                 🚫 – {t('translationsLegendIntelligibilityNone')}.<br/>
         </>);
 
+        const [statusIcon, statusText] = annotateWordType(Dictionary.getField(item.raw, 'type'));
+
         return (
             <>
                 <div className="modal-dialog__header">
@@ -119,7 +122,11 @@ export const TranslationsModal =
                     </button>
                 </div>
                 <div className="modal-dialog__body">
-                    <Table data={tableData}/>
+                    {statusIcon && statusText &&
+                        <div className="modal-dialog__warning" key="status">
+                            {statusIcon} {t(statusText)}
+                        </div>}
+                    {<Table data={tableData}/>}
                 </div>
                 <footer className="modal-dialog__footer">
                     <div className="modal-legend">

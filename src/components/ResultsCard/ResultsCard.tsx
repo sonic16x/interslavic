@@ -11,7 +11,6 @@ import { Dictionary, ITranslateResult } from 'services/dictionary';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useLang } from 'hooks/useLang';
-import { estimateIntelligibility, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
 import { toQueryString } from 'utils/toQueryString';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
@@ -19,6 +18,7 @@ import { wordHasForms } from 'utils/wordHasForms';
 import { Clipboard } from 'components/Clipboard';
 
 import { removeBrackets } from "../../utils/removeBrackets";
+import { annotateWordType } from "../../utils/wordType";
 
 import './ResultsCard.scss';
 
@@ -84,7 +84,7 @@ function renderOriginal(item, alphabets, caseQuestions) {
                         {caseInfo && <> <span className="caseInfo">({caseInfo})</span></>}
                     </span>
                 );
-            })} 
+            })}
             {!caseQuestions && item.caseInfo &&
                  <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span></>
             }
@@ -100,8 +100,8 @@ export const ResultsCard =
         const wordId = Dictionary.getField(item.raw, 'id')?.toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
-        const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
-        const intelligibilityVector = estimateIntelligibility(intelligibility);
+        const wordType = Dictionary.getField(item.raw, 'type');
+        const [statusIcon, statusMessage] = annotateWordType(wordType);
         const lang = useLang();
 
         const showTranslations = () => {
@@ -167,12 +167,12 @@ export const ResultsCard =
                         <Clipboard str={item.translate} />
                     ) : renderOriginal(item, alphabets, caseQuestions)}
                     {'\u00A0'}
-                    { hasIntelligibilityIssues(intelligibilityVector)
+                    { statusIcon && statusMessage
                         ? <button
                             key="intelligibilityIssues"
                             onClick={showTranslations}
                             className={classNames({ 'results-card__status': true })}
-                            title={t('intelligibilityIssues')}>⚠️</button>
+                            title={t(statusMessage)}>{statusIcon}</button>
                         : undefined
                     }
                     {item.to === 'isv' && short && (

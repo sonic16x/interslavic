@@ -3243,7 +3243,7 @@
   },
   "intelligibilityIssues": {
     "en": "The word is not universally intelligible across Slavic languages",
-    "isv": "Slovo ne je universalno razumljivo vo vsih slovjanskyh jezykah",
+    "isv": "Slovo ne je universalno razumlivo vo vsih slovjanskyh jezykah",
     "ru": "Слово не является универсально понятным во всех славянских языках",
     "uk": "Слово не є універсально зрозумілим у всіх слов'янських мовах",
     "be": "Слова не з’яўляецца ўніверсальна зразумелым ва ўсіх славянскіх мовах",
@@ -3255,5 +3255,35 @@
     "sr": "Реч није универзално разумљива у свим словенским језицима",
     "mk": "Зборот не е универзално разбирлив во сите словенски јазици",
     "bg": "Думата не е универсално разбираема във всички слаавянски езици"
+  },
+  "suggestedNewWord": {
+    "en": "The word was recently added and has not yet been approved",
+    "isv": "Slovo bylo dodano nedavno i ješče ne jest odobrjeno",
+    "ru": "Слово добавлено недавно и ещё не утверждено",
+    "uk": "Слово було нещодавно додано та ще не затверджено",
+    "be": "Слова было нядаўна дададзена і яшчэ не зацверджана",
+    "pl": "Słowo zostało dodane niedawno i jeszcze nie zostało zatwierdzone",
+    "cs": "Slovo bylo nedávno přidáno a ještě nebylo schváleno",
+    "sk": "Slovo bolo nedávno pridané a ešte nebolo schválené",
+    "sl": "Beseda je bila nedavno dodana in še ni bila odobrena",
+    "hr": "Riječ je nedavno dodana i još nije odobrena",
+    "sr": "Реч је недавно додата и још увек није одобрена",
+    "mk": "Зборот неодамна беше додаден и сè уште не е одобрен",
+    "bg": "Думата беше добавена наскоро и все още не е одобрена"
+  },
+  "suggestedForRemoval": {
+    "en": "Suggested for removal from the dictionary",
+    "isv": "Prědloženo do udaljeńja iz slovnika",
+    "ru": "Предложено для удаления из словаря",
+    "uk": "Пропонується видалити зі словника",
+    "be": "Прапануецца выдаліць са слоўніка",
+    "pl": "Sugerowane usunięcie ze słownika",
+    "cs": "Doporučeno k odstranění ze slovníku",
+    "sk": "Navrhnuté na odstránenie zo slovníka",
+    "sl": "Predlagano za odstranitev iz slovarja",
+    "hr": "Predloženo za uklanjanje iz rječnika",
+    "sr": "Предложено за уклањање из речника",
+    "mk": "Предложено за отстранување од речникот",
+    "bg": "Предлага се за премахване от речника"
   }
 }

@@ -29,6 +29,8 @@
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "25.2.0",
     "@ag-grid-community/core": "25.2.0",
+    "@eaterable/rowmap": "^1.0.1",
+    "@eaterable/tsv-parser": "^1.0.0",
     "@interslavic/utils": "^3.4.0",
     "@reduxjs/toolkit": "^2.3.0",
     "classnames": "2.5.1",
