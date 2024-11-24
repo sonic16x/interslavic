@@ -17,7 +17,6 @@ import { getCyrillic } from 'utils/getCyrillic';
 import { getLatin } from 'utils/getLatin';
 import { getWordStatus } from "utils/getWordStatus";
 import { findIntelligibilityIssues } from "utils/intelligibilityIssues";
-import { removeExclamationMark } from "utils/removeExclamationMark";
 
 import { Table } from 'components/Table';
 
@@ -67,15 +66,15 @@ export const TranslationsModal =
                 return [
                     [
                         `{${t('isvEtymologicLatinLang')}}[B]@ts;b;sw=130px;nowrap`,
-                        `${getLatin(removeExclamationMark(translate), '2')}@ts`,
+                        `${getLatin(item.isv, '2')}@ts`,
                     ],
                     [
                         `{${t('isvLatinLang')}}[B]@ts;b`,
-                        `${getLatin(removeExclamationMark(translate), '3')}@ts`,
+                        `${getLatin(item.isv, '3')}@ts`,
                     ],
                     [
                         `{${t('isvCyrillicLang')}}[B]@ts;b`,
-                        `${getCyrillic(removeExclamationMark(translate), '3')}@ts`,
+                        `${getCyrillic(item.isv, '3')}@ts`,
                     ],
                     [
                         `@w=2;S`,
