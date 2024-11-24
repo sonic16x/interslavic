@@ -510,7 +510,10 @@ class DictionaryClass {
         caseQuestions?: boolean
     ): ITranslateResult[] {
         return results.map((item) => {
-            const isv = this.getField(item, 'isv');
+            const isvRaw = this.getField(item, 'isv');
+            const remove = isvRaw.startsWith('!');
+            const isv = remove ? isvRaw.substring(1) : isvRaw;
+
             const id = this.getField(item, 'id');
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
             const add = addArray.find((elem) => !elem.startsWith('(+')) || '';
@@ -519,7 +522,6 @@ class DictionaryClass {
                 caseInfo = getCaseTips(caseInfo.slice(1),'nounShort');
             }
             const translate = this.getField(item, (from === 'isv' ? to : from));
-            const remove = isv.startsWith('!');
             const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
@@ -534,7 +536,7 @@ class DictionaryClass {
                 remove,
                 from,
                 to,
-                isv: remove ? isv.substring(1) : isv,
+                isv,
                 id,
             };
             if (alphabets?.cyrillic) {
