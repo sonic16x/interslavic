@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { t } from 'translations';
@@ -71,24 +71,9 @@ export const CommunityPage = () => {
     const dispatch = useDispatch();
     const communityLinks = useCommunityLinks();
     const online = isOnline();
-    const [isFbAvailable, setFbAvailable] = useState(false);
 
     useEffect(() => {
-        try {
-            fetch('https://www.facebook.com', {
-                mode: 'no-cors',
-                cache: 'no-cache',
-            }).then((res) => {
-                if (res) {
-                    setFbAvailable(true);
-                }
-            });
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        } catch (err) {}
-    }, [setFbAvailable]);
-
-    useEffect(() => {
-        if (online && FB && isFbAvailable) {
+        if (online && FB) {
             FB.init({
                 xfbml: true,
                 version: 'v12.0'
@@ -96,7 +81,7 @@ export const CommunityPage = () => {
 
             dispatch(setBadges([]));
         }
-    }, [communityLinks, isFbAvailable, FB]);
+    }, [communityLinks, FB]);
 
     if (!online) {
         return <OfflinePlaceholder className="community-offline"/>
@@ -106,15 +91,12 @@ export const CommunityPage = () => {
         <div className="community">
             <h1 className="community__title">{t('communityPageTitle')}</h1>
             <p className="community__sub-title">{t('communityPageSubTitle')}</p>
-            {
-                communityLinks
-                    .filter(({ link }) => {
-                        const linkType = getLinkType(link);
-                        
-                        return linkType === 'facebook' ? isFbAvailable : true;
-                    })
-                    .map((linkData, i) => (<CommunityLink key={i} {...linkData} />))
-            }
+            {communityLinks.map((linkData, i) => (
+                <CommunityLink
+                    key={i}
+                    {...linkData}
+                />
+            ))}
         </div>
     );
 };
