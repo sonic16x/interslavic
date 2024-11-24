@@ -23,8 +23,8 @@
     "test:unit": "jest --logHeapUsage --coverage --config jest-config.json"
   },
   "pre-commit": [
-    "lint",
-    "stylelint"
+    "lint:fix",
+    "stylelint:fix"
   ],
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "25.2.0",
