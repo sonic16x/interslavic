@@ -102,19 +102,19 @@ function preprocessRow(row: IRowType & { readonly array: string[]; }): void {
 
     const { id, isv, type, intelligibility } = row;
 
-    // Handle deletion suggestions (ID starts with '-')
+    // Handle addition suggestions (ISV starts with '!')
     if (id.startsWith('-')) {
         row.id = id.slice(1);
         row.type = '9' + (type || '0');
     }
 
-    // Handle addition suggestions (ISV starts with '!')
+    // Handle deletion suggestions (ID starts with '-')
     if (isv.startsWith('!')) {
         row.isv = isv.slice(1);
         row.type = '99';
     }
 
-    // Adjust type based on intelligibility issues
+    // Mark to show intelligibility issues
     const intelligibilityVector = estimateIntelligibility(intelligibility);
     if (hasIntelligibilityIssues(intelligibilityVector)) {
         row.type = '98';
