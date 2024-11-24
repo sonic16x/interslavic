@@ -10,10 +10,10 @@ interface IWordStatus {
 export const getWordStatus = (item: ITranslateResult): IWordStatus | undefined => {
     const intelligibilityVector = estimateIntelligibility(item.intelligibility);
 
-    if (hasIntelligibilityIssues(intelligibilityVector)) {
+    if (item.remove) {
         return {
-            icon: '⚠️',
-            text: 'intelligibilityIssues',
+            icon: '⛔️',
+            text: 'suggestedForRemoval',
         }
     }
 
@@ -24,10 +24,10 @@ export const getWordStatus = (item: ITranslateResult): IWordStatus | undefined =
         }
     }
 
-    if (item.remove) {
+    if (hasIntelligibilityIssues(intelligibilityVector)) {
         return {
-            icon: '⛔️',
-            text: 'suggestedForRemoval',
+            icon: '⚠️',
+            text: 'intelligibilityIssues',
         }
     }
 }
