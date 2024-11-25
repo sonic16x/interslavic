@@ -162,7 +162,7 @@ export function isCountable(details: string): boolean {
     return !isSingular(details) && !isPlural(details);
 }
 
-export function isAnimated(details: string): boolean {
+export function isAnimate(details: string): boolean {
     return getArr(details).includes('anim');
 }
 

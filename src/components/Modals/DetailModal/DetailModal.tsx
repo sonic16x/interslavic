@@ -18,7 +18,7 @@ import {
     getPartOfSpeech,
     getPronounType,
     getVerbDetails,
-    isAnimated,
+    isAnimate,
     isComparative,
     isIndeclinable,
     isPlural,
@@ -109,10 +109,10 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         switch (pos) {
             case 'noun': {
                 const gender = getGender(details);
-                const animated = isAnimated(details);
+                const animate = isAnimate(details);
                 arr.push(t('noun-' + gender));
                 if (gender.match(/masculine/)) {
-                    arr.push(t(animated ? 'noun-animate' : 'noun-inanimate'));
+                    arr.push(t(animate ? 'noun-animate' : 'noun-inanimate'));
                 }
                 if (isIndeclinable(details)) {
                     arr.push(t('noun-indeclinable'));
@@ -414,12 +414,12 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
 
     private renderNounDetails(word, add, details) {
         const gender = getGender(details);
-        const animated = isAnimated(details);
+        const animate = isAnimate(details);
         const plural = isPlural(details);
         const singular = isSingular(details);
         const indeclinable = isIndeclinable(details);
 
-        const cases = declensionNoun(word, add, gender, animated, plural, singular, indeclinable);
+        const cases = declensionNoun(word, add, gender, animate, plural, singular, indeclinable);
 
         if (cases === null) {
             return (

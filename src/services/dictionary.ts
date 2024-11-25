@@ -21,7 +21,7 @@ import {
     getNumeralType,
     getPartOfSpeech,
     getPronounType,
-    isAnimated,
+    isAnimate,
     isIndeclinable,
     isPlural,
     isSingular,
@@ -68,7 +68,7 @@ const isvReplacebleLetters = [
 ];
 
 function getWordForms(item): string[] {
-    const word =  removeExclamationMark(Dictionary.getField(item, 'isv'));
+    const word =  Dictionary.getField(item, 'isv');
     const add = Dictionary.getField(item, 'addition');
     const details = Dictionary.getField(item, 'partOfSpeech');
     const pos = getPartOfSpeech(details);
@@ -85,17 +85,17 @@ function getWordForms(item): string[] {
                 break;
             case 'noun': {
                 const gender = getGender(details);
-                const animated = isAnimated(details);
+                const animate = isAnimate(details);
                 const plural = isPlural(details);
                 const singular = isSingular(details);
                 const indeclinable = isIndeclinable(details);
                 if (details.includes('m./f.')) {
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animate, plural,
                         singular, indeclinable));
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animate, plural,
                         singular, indeclinable));
                 } else {
-                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animate, plural,
                         singular, indeclinable));
                 }
                 break;
@@ -220,10 +220,8 @@ class DictionaryClass {
 
                 needIndex.forEach((lang) => {
                     let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang);
-
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
-                    fromField = removeExclamationMark(fromField);
 
                     let splittedField;
 
@@ -243,6 +241,7 @@ class DictionaryClass {
                             ;
                             break;
                         default:
+                            fromField = removeExclamationMark(fromField);
                             splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
                             break;
                     }
