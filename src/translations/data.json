@@ -930,7 +930,7 @@
     "bg": "мъж. род"
   },
   "masculineAnimate": {
-    "en": "animated",
+    "en": "animate",
     "isv": "živy",
     "ru": "одуш.",
     "uk": "живий",
@@ -1109,8 +1109,8 @@
     "mk": "множина",
     "bg": "мн. число"
   },
-  "noun-animated": {
-    "en": "animated",
+  "noun-animate": {
+    "en": "animate",
     "isv": "živy",
     "ru": "одушевлённое",
     "uk": "живий",

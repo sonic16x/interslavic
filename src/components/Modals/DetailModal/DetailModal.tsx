@@ -112,7 +112,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 const animated = isAnimated(details);
                 arr.push(t('noun-' + gender));
                 if (gender.match(/masculine/)) {
-                    arr.push(t(animated ? 'noun-animated' : 'noun-inanimate'));
+                    arr.push(t(animated ? 'noun-animate' : 'noun-inanimate'));
                 }
                 if (isIndeclinable(details)) {
                     arr.push(t('noun-indeclinable'));

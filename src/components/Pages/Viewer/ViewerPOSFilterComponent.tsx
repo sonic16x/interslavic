@@ -84,7 +84,7 @@ const globalFiltersState = {
 };
 
 const splitLineKeys = [
-    'noun-animated',
+    'noun-animate',
     'noun-countable',
     'noun-indeclinable',
 
