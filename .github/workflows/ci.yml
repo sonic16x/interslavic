@@ -132,11 +132,11 @@ jobs:
 
       - name: Build
         env:
-          DEMO: true
           NODE_ENV: production
+          PR_NUMBER: ${{ github.event.number }}
         run: |
           npm run generate-dictionary
-          npx webpack --config webpack.config.prod.js
+          npm run build
 
       - name: Publish to Cloudflare Pages
         id: deploy

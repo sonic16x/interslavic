@@ -88,6 +88,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
             VERSION: JSON.stringify(require('./package.json').version),
+            PR_NUMBER: JSON.stringify(process.env.PR_NUMBER),
         }),
         new CopyWebpackPlugin({
             patterns: [

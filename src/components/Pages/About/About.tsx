@@ -14,6 +14,7 @@ export const About =
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
         const email = 'cherebedov.sergey@gmail.com';
         const source = 'http://steen.free.fr/interslavic';
+        const version = [VERSION, PR_NUMBER].filter((item) => item && item.length).join('-')
 
         return (
             <div className="about-page">
@@ -113,40 +114,8 @@ export const About =
                             </a>
                         </div>
                         <hr/>
-                        <div className="about-page__badges">
-                            {/*<a
-                                href="https://play.google.com/store/apps/details?id=org.interslavicdictionary.twa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
-                                className="badge_google-play"
-                                title="Get it on Google Play"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <img
-                                    alt="Get it on Google Play"
-                                    width="200px"
-                                    src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                                />
-                            </a>*/}
-
-                            {IS_COM && (
-                                <a
-                                    href="https://discord.com/invite/n3saqm27QW"
-                                    title="Get it on Discord"
-                                    className="badge_discord"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <img
-                                        alt="Get it on Discord"
-                                        width="165px"
-                                        style={{ padding: "13px 0px" }}
-                                        src="icons/discord-icon-330x102.png"
-                                    />
-                                </a>
-                            )}
-                        </div>
                     </div>
-                    <div className="about-page__release-date">v{VERSION}</div>
+                    <div className="about-page__release-date">v{version}</div>
                 </div>
             </div>
         );

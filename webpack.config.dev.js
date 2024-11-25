@@ -79,6 +79,7 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify('development'),
             IS_COM: true,
             VERSION: JSON.stringify(require('./package.json').version),
+            PR_NUMBER: '123',
         }),
         new CopyWebpackPlugin({
             patterns: [

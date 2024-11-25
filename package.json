@@ -8,7 +8,7 @@
   },
   "main": "./dist/worker.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js && node build-manifest.js",
     "build-storybook": "storybook build",
     "deploy-api": "wrangler deploy ./src/server/index.ts --name api --compatibility-date 2024-11-12",
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.config.dev.js --progress",
