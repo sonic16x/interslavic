@@ -929,6 +929,36 @@
     "mk": "машки род",
     "bg": "мъж. род"
   },
+  "masculineAnimate": {
+    "en": "animated",
+    "isv": "živy",
+    "ru": "одуш.",
+    "uk": "живий",
+    "be": "адуш.",
+    "pl": "żywotny",
+    "cs": "životné",
+    "sk": "životné",
+    "sl": "animirani",
+    "hr": "živa",
+    "sr": "жива",
+    "mk": "жива",
+    "bg": "одуш."
+  },
+  "masculineInanimate": {
+    "en": "inanimate",
+    "isv": "neživy",
+    "ru": "неодуш.",
+    "uk": "неживий",
+    "be": "неадуш.",
+    "pl": "nieżywotny",
+    "cs": "neživotné",
+    "sk": "neživotné",
+    "sl": "neživi",
+    "hr": "neživa",
+    "sr": "нежива",
+    "mk": "нежива",
+    "bg": "неодуш."
+  },
   "feminine": {
     "en": "feminine",
     "isv": "žen. rod",

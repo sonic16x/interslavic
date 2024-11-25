@@ -462,13 +462,17 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         const table = [
             [
                 '&nbsp@bl;bt',
-                `${t('singular')}@w=3;b`,
+                `${t('singular')}@w=4;b`,
             ],
             [
-                `${t('case')}@b`,
-                `${t('masculine')}@b`,
-                `${t('neuter')}@b`,
-                `${t('feminine')}@b`,
+                `${t('case')}@h=2;b`,
+                `${t('masculine')}@w=2;b`,
+                `${t('neuter')}@h=2;b`,
+                `${t('feminine')}@h=2;b`,
+            ],
+            [
+                `${t('masculineAnimate')}@b`,
+                `${t('masculineInanimate')}@b`,
             ],
         ];
 
@@ -479,16 +483,23 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 ];
                 switch (caseItem) {
                     case 'nom':
+                        tableRow.push(
+                            `${this.formatStr(singular[caseItem][0])}@w=2`,
+                            `${this.formatStr(singular[caseItem][1])}@`,
+                            `${this.formatStr(singular[caseItem][2])}@`,
+                        );
+                        break;
                     case 'acc':
                         tableRow.push(
-                            `${this.formatStr(singular[caseItem][0])}@`,
+                            `${this.formatStr(singular[caseItem][0].split(' / ')[0])}@`,
+                            `${this.formatStr(singular[caseItem][0].split(' / ')[1])}@`,
                             `${this.formatStr(singular[caseItem][1])}@`,
                             `${this.formatStr(singular[caseItem][2])}@`,
                         );
                         break;
                     default:
                         tableRow.push(
-                            `${this.formatStr(singular[caseItem][0])}@w=2`,
+                            `${this.formatStr(singular[caseItem][0])}@w=3`,
                             `${this.formatStr(singular[caseItem][1])}@`,
                         );
                         break;
@@ -504,12 +515,16 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         const table = [
             [
                 '&nbsp@bl;bt',
-                `${t('plural')}@w=2;b`,
+                `${t('plural')}@w=3;b`,
             ],
             [
-                `${t('case')}@b`,
-                `${t('masculine')}@b`,
-                `${t('feminineOrNeuter')}@b`,
+                `${t('case')}@h=2;b`,
+                `${t('masculine')}@w=2;b`,
+                `${t('feminineOrNeuter')}@h=2;b`,
+            ],
+            [
+                `${t('masculineAnimate')}@b`,
+                `${t('masculineInanimate')}@b`,
             ],
         ];
         this.props.orderOfCases.forEach((caseItem) => {
@@ -521,13 +536,14 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     case 'nom':
                     case 'acc':
                         tableRow.push(
-                            `${this.formatStr(plural[caseItem][0])}@`,
+                            `${this.formatStr(plural[caseItem][0].split(' / ')[0])}@`,
+                            `${this.formatStr(plural[caseItem][0].split(' / ')[1])}@`,
                             `${this.formatStr(plural[caseItem][1])}@`,
                         );
                         break;
                     default:
                         tableRow.push(
-                            `${this.formatStr(plural[caseItem][0])}@w=2`,
+                            `${this.formatStr(plural[caseItem][0])}@w=3`,
                         );
                         break;
                 }
