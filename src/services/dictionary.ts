@@ -68,7 +68,7 @@ const isvReplacebleLetters = [
 ];
 
 function getWordForms(item): string[] {
-    const word =  Dictionary.getField(item, 'isv');
+    const word =  removeExclamationMark(Dictionary.getField(item, 'isv'));
     const add = Dictionary.getField(item, 'addition');
     const details = Dictionary.getField(item, 'partOfSpeech');
     const pos = getPartOfSpeech(details);
@@ -142,6 +142,10 @@ export interface ITranslateResult {
     to: string;
     checked: boolean;
     raw: string[];
+    id: string;
+    new?: boolean;
+    intelligibility?: string;
+    remove?: boolean;
 }
 
 class DictionaryClass {
@@ -216,8 +220,10 @@ class DictionaryClass {
 
                 needIndex.forEach((lang) => {
                     let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang);
+
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
+                    fromField = removeExclamationMark(fromField);
 
                     let splittedField;
 
@@ -237,7 +243,6 @@ class DictionaryClass {
                             ;
                             break;
                         default:
-                            fromField = removeExclamationMark(fromField);
                             splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
                             break;
                     }
@@ -506,7 +511,13 @@ class DictionaryClass {
         caseQuestions?: boolean
     ): ITranslateResult[] {
         return results.map((item) => {
-            const isv = this.getField(item, 'isv');
+            const isvRaw = this.getField(item, 'isv');
+            const remove = isvRaw.startsWith('!');
+            const isv = removeBrackets(
+                removeExclamationMark(isvRaw), '[', ']'
+            );
+
+            const id = this.getField(item, 'id');
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
             const add = addArray.find((elem) => !elem.startsWith('(+')) || '';
             let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1,-1) || '');
@@ -523,9 +534,13 @@ class DictionaryClass {
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
                 raw: item,
+                new: id.startsWith('-'),
+                intelligibility: this.getField(item, 'intelligibility'),
+                remove,
                 from,
                 to,
                 isv,
+                id,
             };
             if (alphabets?.cyrillic) {
                 formattedItem.originalCyr = getCyrillic(isv, flavorisationType);

@@ -25,13 +25,15 @@ export const Main =
         const theme = isDarkTheme ? 'dark' : 'light';
 
         useEffect(() => {
-            async function fetchAll() {
-                await fetchDictionary(dispatch, dictionaryLanguages);
-                await fetchCommunityLinks(dispatch, communityLinks);
-            }
-
-            fetchAll();
             document.getElementById('app').className='color-theme--' + theme;
+
+            (async () => {
+                await fetchDictionary(dispatch, dictionaryLanguages);
+
+                if (IS_COM) {
+                    await fetchCommunityLinks(dispatch, communityLinks);
+                }
+            })()
         }, [dispatch, dictionaryLanguages, theme]);
 
         return (

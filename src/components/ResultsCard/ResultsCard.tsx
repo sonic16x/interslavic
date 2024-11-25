@@ -11,14 +11,12 @@ import { Dictionary, ITranslateResult } from 'services/dictionary';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useLang } from 'hooks/useLang';
-import { estimateIntelligibility, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
+import { getWordStatus } from "utils/getWordStatus";
 import { toQueryString } from 'utils/toQueryString';
 import { getPartOfSpeech } from 'utils/wordDetails';
 import { wordHasForms } from 'utils/wordHasForms';
 
 import { Clipboard } from 'components/Clipboard';
-
-import { removeBrackets } from "../../utils/removeBrackets";
 
 import './ResultsCard.scss';
 
@@ -81,27 +79,41 @@ function renderOriginal(item, alphabets, caseQuestions) {
                 return (
                     <span className="word" key={i}>
                         <Clipboard str={str} />
-                        {caseInfo && <> <span className="caseInfo">({caseInfo})</span></>}
+                        {caseInfo && <span className="caseInfo">({caseInfo})</span>}
                     </span>
                 );
             })} 
             {!caseQuestions && item.caseInfo &&
-                 <> <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span></>
+                <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span>
             }
-            {item.ipa && <> <span className="ipa">[{item.ipa}]</span></>}
+            {item.ipa && <span className="ipa">[{item.ipa}]</span>}
         </>
     );
+}
+
+const WordStatus = ({ item, onClick }: { item: ITranslateResult, onClick: () => void }) => {
+    const wordStatus = getWordStatus(item)
+
+    if (wordStatus) {
+        return (
+            <button
+                key="wordStatus"
+                onClick={onClick}
+                className="results-card__status"
+                title={t(wordStatus.text)}
+            >
+                {wordStatus.icon}
+            </button>
+        );
+    }
 }
 
 export const ResultsCard =
     ({ item, short, index }: IResultsCardProps) => {
         const alphabets = useAlphabets();
         const caseQuestions = useCaseQuestions();
-        const wordId = Dictionary.getField(item.raw, 'id')?.toString();
         const pos = getPartOfSpeech(item.details);
         const dispatch = useDispatch();
-        const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
-        const intelligibilityVector = estimateIntelligibility(intelligibility);
         const lang = useLang();
 
         const showTranslations = () => {
@@ -115,7 +127,7 @@ export const ResultsCard =
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR,
                 data: {
-                    wordId,
+                    wordId: item.id,
                     isvWord: item.original,
                     translatedWord: item.translate,
                 },
@@ -126,7 +138,7 @@ export const ResultsCard =
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
                 data: {
-                    word: removeBrackets(Dictionary.getField(item.raw, 'isv'), '[', ']'),
+                    word: item.isv,
                     add: Dictionary.getField(item.raw, 'addition'),
                     details: Dictionary.getField(item.raw, 'partOfSpeech'),
                 },
@@ -136,7 +148,7 @@ export const ResultsCard =
         const shareWord = () => {
             const { origin, pathname } = window.location;
             const query = toQueryString({
-                text: `id${wordId}`,
+                text: `id${item.id}`,
                 lang: `${lang.from}-${lang.to}`,
             });
 
@@ -167,14 +179,7 @@ export const ResultsCard =
                         <Clipboard str={item.translate} />
                     ) : renderOriginal(item, alphabets, caseQuestions)}
                     {'\u00A0'}
-                    { hasIntelligibilityIssues(intelligibilityVector)
-                        ? <button
-                            key="intelligibilityIssues"
-                            onClick={showTranslations}
-                            className={classNames({ 'results-card__status': true })}
-                            title={t('intelligibilityIssues')}>⚠️</button>
-                        : undefined
-                    }
+                    <WordStatus item={item} onClick={showTranslations}/>
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;
