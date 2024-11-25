@@ -68,7 +68,7 @@ const isvReplacebleLetters = [
 ];
 
 function getWordForms(item): string[] {
-    const word =  Dictionary.getField(item, 'isv');
+    const word =  removeExclamationMark(Dictionary.getField(item, 'isv'));
     const add = Dictionary.getField(item, 'addition');
     const details = Dictionary.getField(item, 'partOfSpeech');
     const pos = getPartOfSpeech(details);
@@ -220,8 +220,10 @@ class DictionaryClass {
 
                 needIndex.forEach((lang) => {
                     let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang);
+
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
+                    fromField = removeExclamationMark(fromField);
 
                     let splittedField;
 
@@ -241,7 +243,6 @@ class DictionaryClass {
                             ;
                             break;
                         default:
-                            fromField = removeExclamationMark(fromField);
                             splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
                             break;
                     }
