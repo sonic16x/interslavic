@@ -1,5 +1,5 @@
 .modal-legend {
-  @media (min-width: 678px) {
+  @media (width >= 678px) {
     max-width: 56ch;
   }
 }

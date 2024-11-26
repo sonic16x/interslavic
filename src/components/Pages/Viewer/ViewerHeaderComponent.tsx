@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import './ViewerHeaderComponent.scss';
 
@@ -121,7 +121,9 @@ export class ViewerHeaderComponent {
         this.mainElement = document.createElement('div');
         this.mainElement.className = 'header-cell';
 
-        render(<ViewerHeaderComponentReact agParams={agParams} />, this.mainElement);
+        createRoot(this.mainElement).render(
+            <ViewerHeaderComponentReact agParams={agParams} />
+        );
     }
 
     public getGui() {

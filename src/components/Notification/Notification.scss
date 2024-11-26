@@ -1,26 +1,26 @@
 .notification-container {
   position: absolute;
-  width: 100%;
   top: 0;
   left: 0;
   display: flex;
+  width: 100%;
   justify-content: center;
   pointer-events: none;
 }
 
 .notification {
-  pointer-events: none;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.1s ease-in-out;
-  margin-top: 10%;
-  font-size: 18px;
   z-index: 21;
-  background: var(--primary-color);
-  color: var(--light);
+  display: block;
   padding: 2px 10px;
   border-radius: var(--border-radius-m);
+  margin-top: 10%;
+  background: var(--primary-color);
   box-shadow: var(--shadow);
+  color: var(--light);
+  font-size: 18px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease-in-out;
 
   &.error {
     background: var(--invalid-color);

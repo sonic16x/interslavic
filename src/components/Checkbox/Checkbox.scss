@@ -1,7 +1,7 @@
 .checkbox {
   display: inline-flex;
-  margin: 0 8px 4px 0;
   align-items: center;
+  margin: 0 8px 4px 0;
 
   &__input {
     position: absolute;
@@ -12,6 +12,23 @@
     opacity: 0;
   }
 
+  &__box {
+    width: 16px;
+    height: 16px;
+    border: var(--border);
+    border-radius: var(--border-radius-s);
+    margin-right: var(--gap-size-s);
+    cursor: pointer;
+    line-height: 16px;
+    transition: background-color .1s ease-in-out;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    color: var(--dark);
+  }
+
   &.checked {
     .checkbox__icon {
       opacity: 1;
@@ -20,23 +37,6 @@
     .checkbox__box {
       background: var(--primary-color);
     }
-  }
-
-  &__box {
-    width: 16px;
-    height: 16px;
-    line-height: 16px;
-    cursor: pointer;
-    transition: background-color .1s ease-in-out;
-    border-radius: var(--border-radius-s);
-    border: var(--border);
-    margin-right: var(--gap-size-s);
-  }
-
-  &__label {
-    display: flex;
-    align-items: center;
-    color: var(--dark);
   }
 
   .disabled {

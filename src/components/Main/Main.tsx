@@ -8,7 +8,6 @@ import { useCommunityLinks } from 'hooks/useCommunityLinks';
 import { useDarkTheme } from 'hooks/useDarkTheme';
 import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
 
-import { GDPR } from 'components/GDPR';
 import { Header } from 'components/Header';
 import { Loader } from 'components/Loader';
 import { ModalDialog } from 'components/Modals/ModalDialog';
@@ -26,20 +25,21 @@ export const Main =
         const theme = isDarkTheme ? 'dark' : 'light';
 
         useEffect(() => {
-            async function fetchAll() {
-                await fetchDictionary(dispatch, dictionaryLanguages);
-                await fetchCommunityLinks(dispatch, communityLinks);
-            }
-
-            fetchAll();
             document.getElementById('app').className='color-theme--' + theme;
+
+            (async () => {
+                await fetchDictionary(dispatch, dictionaryLanguages);
+
+                if (IS_COM) {
+                    await fetchCommunityLinks(dispatch, communityLinks);
+                }
+            })()
         }, [dispatch, dictionaryLanguages, theme]);
 
         return (
             <>
                 <Header/>
                 <Router/>
-                <GDPR/>
                 <Loader/>
                 <ModalDialog/>
                 <Notification/>

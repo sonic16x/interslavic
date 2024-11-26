@@ -21,10 +21,14 @@ import { SearchTypeSelector } from 'components/SearchTypeSelector';
 
 import './Controls.scss';
 
+interface IControlsProps {
+    expanded?: boolean;
+}
+
 export const Controls =
-    () => {
+    ({ expanded }: IControlsProps) => {
         const dispatch = useDispatch();
-        const expand = useSearchExpanded();
+        const expand = useSearchExpanded() || expanded;
         const short = useShortCardView();
 
         const lang = useLang();
@@ -36,9 +40,7 @@ export const Controls =
             dispatch(fromTextAction(value));
         }, [dispatch]);
 
-        const onChangeExpand = useCallback(() => {
-            dispatch(setSearchExpand(!expand));
-        }, [expand]);
+        const onChangeExpand = () => dispatch(setSearchExpand(!expand));
 
         return (
             <div
@@ -46,6 +48,7 @@ export const Controls =
             >
                 <LangSelector/>
                 <InputText
+                    testId="search-input"
                     size="L"
                     value={fromText}
                     onChange={onChange}

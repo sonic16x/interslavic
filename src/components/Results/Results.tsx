@@ -53,6 +53,7 @@ export const Results =
         return (
             <div
                 className={classNames('results', { short })}
+                data-testid="results"
                 style={{
                     paddingLeft: scrollIsVisible ? scrollWidth : 0,
                 }}
@@ -61,6 +62,7 @@ export const Results =
                 {results.map((item: ITranslateResult, index) => (
                     <ResultsCard
                         item={item}
+                        short={short}
                         key={index}
                         index={index}
                     />

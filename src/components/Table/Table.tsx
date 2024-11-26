@@ -42,6 +42,13 @@ export class Table extends Component<ITableProps> {
         };
     }
 
+    private getClassName(attrs: any) {
+        return [
+            'custom-text',
+            ...Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h'))
+        ].join(' ')
+    }
+
     private renderRow(row: string[]) {
         return row
             .map((item) => this.parseItem(item))
@@ -50,7 +57,7 @@ export class Table extends Component<ITableProps> {
                     return (
                         <td
                             key={i}
-                            className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
+                            className={this.getClassName(attrs)}
                             colSpan={attrs.w}
                             rowSpan={attrs.h}
                             style={{ width: attrs.sw }}
@@ -62,7 +69,7 @@ export class Table extends Component<ITableProps> {
                     return (
                         <td
                             key={i}
-                            className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
+                            className={this.getClassName(attrs)}
                             colSpan={attrs.w}
                             rowSpan={attrs.h}
                             style={{ width: attrs.sw }}
@@ -73,7 +80,7 @@ export class Table extends Component<ITableProps> {
                     return (
                         <td
                             key={i}
-                            className={Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h')).join(' ')}
+                            className={this.getClassName(attrs)}
                             colSpan={attrs.w}
                             rowSpan={attrs.h}
                             style={{ width: attrs.sw }}

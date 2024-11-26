@@ -287,7 +287,7 @@ const Viewer =
         }
 
         return (
-            <div className="viewer">
+            <div className="viewer color-theme--light">
                 {(!allLoaded && !isGridReady) && (
                     <div className="viewer__loader">
                         <Spinner

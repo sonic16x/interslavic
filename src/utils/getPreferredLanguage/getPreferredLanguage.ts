@@ -1,6 +1,6 @@
-import intersection from 'lodash/intersection';
-
 import { interfaceLanguageList } from 'services/interfaceLanguages';
+
+import { intersection } from 'utils/intersection';
 
 const supportedLanguages = interfaceLanguageList.map(item => item.value);
 

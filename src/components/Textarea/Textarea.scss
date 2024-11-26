@@ -4,22 +4,22 @@
   flex-direction: column;
 
   &__error-text {
+    color: var(--invalid-color);
     font-size: var(--text-m);
     line-height: var(--text-m-line);
-    color: var(--invalid-color);
   }
 
   &__native {
+    overflow: auto;
+    box-sizing: border-box;
+    padding: var(--gap-size-s);
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius-s);
+    appearance: none;
     background: var(--light);
     color: var(--dark);
     outline: none;
-    -moz-appearance: none;
-    border-radius: var(--border-radius-s);
-    border: 1px solid var(--input-border-color);
-    padding: var(--gap-size-s);
-    overflow: auto;
     resize: none;
-    box-sizing: border-box;
 
     &.M {
       font-size: var(--text-m);

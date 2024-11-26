@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
-@import 'src/colors';
+@use './colors';
+@import 'https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap';
+
 
 body {
   --border-radius-s: 5px;
@@ -9,24 +10,58 @@ body {
   --base-margin: 8px;
   --animation-duration: .15s;
   --transition-duration: .1s;
-
+  --text-xxl: 28px;
+  --text-xxl-line: 28px;
   --text-xl: 24px;
   --text-xl-line: 24px;
-
   --text-l: 20px;
   --text-l-line: 24px;
-
+  --text-ml: 18px;
+  --text-ml-line: 22px;
   --text-m: 16px;
   --text-m-line: 20px;
-
   --text-s: 14px;
   --text-s-line: 18px;
-
   --text-xs: 12px;
   --text-xs-line: 16px;
-
   --gap-size: 16px;
   --gap-size-s: 8px;
+
+  .custom-text {
+    span {
+      &.p {
+        color: #9C27B0;
+      }
+
+      &.r {
+        color: #f44336;
+      }
+
+      &.g {
+        color: #4CAF50;
+      }
+
+      &.b {
+        color: #3F51B5;
+      }
+
+      &.s {
+        color: #9E9E9E;
+      }
+
+      &.k {
+        color: #a0522d;
+      }
+
+      &.B {
+        font-weight: 600;
+      }
+
+      &.i {
+        font-style: italic;
+      }
+    }
+  }
 }
 
 .primary-color {
@@ -60,23 +95,24 @@ body {
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
   overflow: hidden;
   width: 100%;
   height: 100%;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 }
 
 #app, input, select, button, a, textarea {
-  font-family: Roboto, "Helvetica Neue", "Segoe UI", "Liberation Sans", Arial, sans-serif;
-  -webkit-appearance: none;
+  appearance: none;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
 }
 
 a {
   display: inline-block !important;
-  cursor: pointer;
   color: var(--primary-color);
+  cursor: pointer;
   text-decoration: none;
 
   &:hover {
@@ -85,8 +121,9 @@ a {
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: 700;
 }
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -104,27 +141,29 @@ h6 {
 }
 
 h4, h5, h6 {
+  margin: 0 0 8px;
   color: var(--dark);
   font-weight: 600;
-  margin: 0 0 8px;
 }
 
 hr {
-  margin: 10px 0;
-  border: none;
-  border-top: var(--border);
   height: 0;
   box-sizing: content-box;
+  border: none;
+  border-top: var(--border);
+  margin: 10px 0;
 }
 
 p {
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: var(--dark);
 }
+
 i {
   color: var(--dark);
 }
+
 div {
   color: var(--dark);
 }

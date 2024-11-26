@@ -21,7 +21,7 @@ import {
     getNumeralType,
     getPartOfSpeech,
     getPronounType,
-    isAnimated,
+    isAnimate,
     isIndeclinable,
     isPlural,
     isSingular,
@@ -68,7 +68,7 @@ const isvReplacebleLetters = [
 ];
 
 function getWordForms(item): string[] {
-    const word =  Dictionary.getField(item, 'isv');
+    const word =  removeExclamationMark(Dictionary.getField(item, 'isv'));
     const add = Dictionary.getField(item, 'addition');
     const details = Dictionary.getField(item, 'partOfSpeech');
     const pos = getPartOfSpeech(details);
@@ -85,17 +85,17 @@ function getWordForms(item): string[] {
                 break;
             case 'noun': {
                 const gender = getGender(details);
-                const animated = isAnimated(details);
+                const animate = isAnimate(details);
                 const plural = isPlural(details);
                 const singular = isSingular(details);
                 const indeclinable = isIndeclinable(details);
                 if (details.includes('m./f.')) {
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animate, plural,
                         singular, indeclinable));
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animate, plural,
                         singular, indeclinable));
                 } else {
-                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animate, plural,
                         singular, indeclinable));
                 }
                 break;
@@ -142,6 +142,10 @@ export interface ITranslateResult {
     to: string;
     checked: boolean;
     raw: string[];
+    id: string;
+    new?: boolean;
+    intelligibility?: string;
+    remove?: boolean;
 }
 
 class DictionaryClass {
@@ -216,8 +220,10 @@ class DictionaryClass {
 
                 needIndex.forEach((lang) => {
                     let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang);
+
                     fromField = removeBrackets(fromField, '[', ']');
                     fromField = removeBrackets(fromField, '(', ')');
+                    fromField = removeExclamationMark(fromField);
 
                     let splittedField;
 
@@ -237,7 +243,6 @@ class DictionaryClass {
                             ;
                             break;
                         default:
-                            fromField = removeExclamationMark(fromField);
                             splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word));
                             break;
                     }
@@ -261,11 +266,6 @@ class DictionaryClass {
 
         if (typeof performance !== 'undefined') {
             initTime = Math.round(performance.now() - startInitTime);
-        }
-
-        if (process.env.NODE_ENV !== 'production') {
-            // eslint-disable-next-line no-console
-            console.log('INIT', `${initTime}ms`);
         }
 
         return initTime;
@@ -357,14 +357,9 @@ class DictionaryClass {
         let isvText = '';
         if (from === 'isv' || twoWaySearch) {
             isvText = inputWord;
-            // Fix for search by character ȯ
-            if (flavorisationType === '2' && this.isvSearchLetters.from.includes('ȯ')) {
-                isvText = isvText.replace(/[ȯòъ]/g, '{ȯ}');
-            }
-            isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType), flavorisationType);
+            isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType, true), flavorisationType);
             isvText = this.inputPrepare('isv-src', isvText);
         }
-
         // option -end - search by ending of word
         if (inputOptions.some((option) => option.trim() === 'end')) {
             searchType = 'end';
@@ -425,7 +420,7 @@ class DictionaryClass {
                         return false;
                     }
                 }
-
+                
                 return filterResult;
             })
             .filter((item) => {
@@ -442,14 +437,13 @@ class DictionaryClass {
                     filterResult = splittedField.some((chunk) => (
                         searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText)
                     ));
-
                 }
                 if (!filterResult && (to === 'isv' || twoWaySearch)) {
                     const splittedField = this.getSplittedField(lang, item);
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared));
                 }
-
+                
                 return filterResult;
             })
             .map((item) => {
@@ -517,7 +511,13 @@ class DictionaryClass {
         caseQuestions?: boolean
     ): ITranslateResult[] {
         return results.map((item) => {
-            const isv = this.getField(item, 'isv');
+            const isvRaw = this.getField(item, 'isv');
+            const remove = isvRaw.startsWith('!');
+            const isv = removeBrackets(
+                removeExclamationMark(isvRaw), '[', ']'
+            );
+
+            const id = this.getField(item, 'id');
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || [];
             const add = addArray.find((elem) => !elem.startsWith('(+')) || '';
             let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1,-1) || '');
@@ -534,9 +534,13 @@ class DictionaryClass {
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
                 raw: item,
+                new: id.startsWith('-'),
+                intelligibility: this.getField(item, 'intelligibility'),
+                remove,
                 from,
                 to,
                 isv,
+                id,
             };
             if (alphabets?.cyrillic) {
                 formattedItem.originalCyr = getCyrillic(isv, flavorisationType);

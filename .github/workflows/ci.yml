@@ -9,62 +9,93 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
       - name: NPM install
-        uses: bahmutov/npm-install@v1
+        run: npm ci
 
       - name: Lint
         run: npm run lint
 
+      - name: Stylelint
+        run: npm run stylelint
+
   test:
-    name: Test
+    name: Tests:units
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
       - name: NPM install
-        uses: bahmutov/npm-install@v1
+        run: npm ci
 
       - name: Test
-        run: npm run test
+        run: npm run test:unit
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+  pw-test:
+    name: Tests:playwright
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: NPM install
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Generate dictionary
+        run: npm run generate-dictionary
+
+      - name: Test
+        run: npm run test:pw
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
   generate-dictionary:
     name: Generate dictionary
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
       - name: NPM install
-        uses: bahmutov/npm-install@v1
+        run: npm ci
 
       - name: Generate dictionary
-        run: npm run generateDictionary
+        run: npm run generate-dictionary
 
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
       - name: NPM install
-        uses: bahmutov/npm-install@v1
+        run: npm ci
 
       - name: Build
         run: npm run build
@@ -74,11 +105,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - uses: mdecoleman/pr-branch-name@1.0.0
+      - uses: mdecoleman/pr-branch-name@v3.0.0
         id: vars
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -97,31 +128,23 @@ jobs:
         uses: kkak10/pr-number-action@v1.3
 
       - name: NPM install
-        uses: bahmutov/npm-install@v1
+        run: npm ci
 
       - name: Build
         env:
-          DEMO: true
           NODE_ENV: production
-          BASE_URL: /${{ steps.pr_number.outputs.pr }}/
+          PR_NUMBER: ${{ github.event.number }}
         run: |
-          npm run generateDictionary
-          npx webpack --config webpack.config.prod.js
+          npm run generate-dictionary
+          npm run build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Publish to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          keep_files: true
-          allow_empty_commit: true
-
-      - name: Purge cache on Cloudflare
-        uses: jakejarvis/cloudflare-purge-action@v0.3.0
-        env:
-          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          PURGE_URLS: '["https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/*"]'
+          apiToken: ${{ secrets.CF_AUTH_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=pr-${{ steps.pr_number.outputs.pr }}
 
       - name: Deployment success
         uses: chrnorm/deployment-status@releases/v1
@@ -129,4 +152,4 @@ jobs:
           state: success
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          environment_url: https://interslavic-dictionary.com/${{ steps.pr_number.outputs.pr }}/
+          environment_url: https://pr-${{ steps.pr_number.outputs.pr }}.interslavic-dictionary.pages.dev/

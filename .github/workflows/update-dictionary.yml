@@ -1,5 +1,6 @@
 name: Update dictionary
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
 jobs:
@@ -7,26 +8,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
           ref: master
 
       - name: NPM install
-        uses: bahmutov/npm-install@v1
+        run: npm ci
 
-      - name: Generate dictionary
+      - name: Build
         run: |
-          npm run generateDictionary
+          npm run generate-dictionary
+          npm run build
 
-      - name: Deploy dictionary
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./static
-          cname: interslavic-dictionary.com
-          keep_files: true
-          allow_empty_commit: true
+          apiToken: ${{ secrets.CF_AUTH_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=main
 
       - name: Purge cache on Cloudflare
         uses: jakejarvis/cloudflare-purge-action@v0.3.0

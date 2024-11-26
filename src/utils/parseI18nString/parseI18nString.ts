@@ -5,7 +5,7 @@ export function parseI18nString(str): [TemplateStringsArray, ...unknown[]] {
     let startIndex = 0;
     let endIndex = 0;
 
-    // eslint-disable-next-line no-constant-condition
+     
     while (true) {
         startIndex = str.indexOf('{', endIndex);
         if (startIndex === -1) {

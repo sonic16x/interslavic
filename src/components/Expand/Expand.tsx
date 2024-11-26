@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import React from 'react';
-import { useState } from 'react';
 
 import './Expand.scss';
 
@@ -9,7 +8,7 @@ import ExpandIcon from './images/expand-icon.svg';
 interface IExpandProps {
     className?: string;
     isExpanded?: boolean;
-    onChange?: (value: boolean) => void;
+    onChange?: () => void;
     children?: React.ReactNode[];
 }
 
@@ -20,35 +19,28 @@ export const Expand = (
         onChange,
         children,
     }: IExpandProps,
-) => {
-    const [expanded, setExpanded] = useState<boolean>(isExpanded);
-    const onClick = () => setExpanded(!expanded);
-
-    return (
+) => (
+    <div
+        className={classNames(['expand', className], { expanded: isExpanded })}
+    >
         <div
-            className={classNames(['expand', className], { expanded })}
-            onTransitionEnd={() => onChange(expanded)}
+            className="expand__container"
         >
-            <div
-                className="expand__container"
-            >
-                {...children}
-            </div>
-            <div
-                className="expand__button-wrap"
-                onClick={onClick}
-            >
-                <button
-                    className="expand__button"
-                    id="expand"
-                    type="button"
-                    aria-label="Expand"
-                    aria-expanded={isExpanded}
-                    onClick={onClick}
-                >
-                    <ExpandIcon />
-                </button>
-            </div>
+            {...children}
         </div>
-    )
-};
+        <div
+            className="expand__button-wrap"
+            onClick={() => onChange()}
+        >
+            <button
+                className="expand__button"
+                id="expand"
+                type="button"
+                aria-label="Expand"
+                aria-expanded={isExpanded}
+            >
+                <ExpandIcon />
+            </button>
+        </div>
+    </div>
+);

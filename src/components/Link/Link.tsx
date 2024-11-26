@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
 
 import './Link.scss';
 
@@ -23,36 +22,16 @@ export const Link = (
     }: ILinkProps,
 ) => {
     const clsName = classNames(['link', className]);
-    const [isAvailable, setAvailable] = useState(false);
 
-    useEffect(() => {
-        try {
-            fetch(href, {
-                mode: 'no-cors',
-                cache: 'no-cache',
-            }).then((res) => {
-                if (res) {
-                    setAvailable(true);
-                }
-            });
-        } catch (err) {
-
-        }
-    }, [href, setAvailable]);
-
-    if (isAvailable) {
-        return (
-            <a
-                className={clsName}
-                href={href}
-                title={title}
-                target={target}
-                rel={rel}
-            >
-                {children}
-            </a>
-        );
-    }
-
-    return null;
+    return (
+        <a
+            className={clsName}
+            href={href}
+            title={title}
+            target={target}
+            rel={rel}
+        >
+            {children}
+        </a>
+    );
 };

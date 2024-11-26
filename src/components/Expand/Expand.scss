@@ -1,11 +1,11 @@
 .expand {
   &__container {
     overflow: hidden;
-    transition: max-height var(--animation-duration) linear, opacity var(--animation-duration) linear;
     max-height: 0;
-    opacity: 0;
     box-sizing: border-box;
     margin-bottom: 0;
+    opacity: 0;
+    transition: max-height var(--animation-duration) linear, opacity var(--animation-duration) linear;
   }
 
   &__button-wrap {
@@ -14,16 +14,16 @@
 
   &__button {
     display: block;
-    transition: transform var(--animation-duration) linear;
-    cursor: pointer;
-    color: var(--muted-text-color);
-    background: var(--light);
     width: 21px;
     height: 16px;
     padding: 0;
     border: none;
     margin: 3px auto;
+    background: var(--light);
+    color: var(--muted-text-color);
+    cursor: pointer;
     outline: none;
+    transition: transform var(--animation-duration) linear;
   }
 
   &.expanded {
