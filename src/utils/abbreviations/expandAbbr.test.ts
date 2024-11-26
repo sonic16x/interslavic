@@ -21,8 +21,8 @@ describe('expandAbbr', () => {
         ['m.', ['noun', 'noun-masculine', 'noun-inanimate']],
         ['m./f.', ['noun', 'noun-masculineOrFeminine', 'noun-inanimate']],
         ['m.indecl./f.indecl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-indeclinable']], // TODO: should be 'noun-masculineOrFeminine'
-        ['m.anim.', ['noun', 'noun-masculine', 'noun-animated']],
-        ['m.anim.indecl.', ['noun', 'noun-masculine', 'noun-animated', 'noun-indeclinable']],
+        ['m.anim.', ['noun', 'noun-masculine', 'noun-animate']],
+        ['m.anim.indecl.', ['noun', 'noun-masculine', 'noun-animate', 'noun-indeclinable']],
         ['m.indecl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-indeclinable']],
         ['m.pl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-plural']],
         ['m.sg.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-singular']],

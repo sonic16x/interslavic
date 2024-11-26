@@ -1,4 +1,4 @@
-import { setLang, t } from "translations";
+import { setLang } from "translations";
 
 import { translateAbbr } from "./translateAbbr";
 

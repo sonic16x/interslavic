@@ -24,6 +24,7 @@ import {
     isIndeclinable,
     isPlural,
     isSingular,
+    isSuperlative,
 } from 'utils/wordDetails';
 
 import { LineSelector } from 'components/LineSelector';

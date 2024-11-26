@@ -4,7 +4,7 @@ import {
     getPartOfSpeech,
     getPronounType,
     getVerbDetails,
-    isAnimated,
+    isAnimate,
     isComparative,
     isIndeclinable,
     isPlural,
@@ -24,10 +24,10 @@ export function analyzeAbbr(abbr: string): string[] {
     switch (pos) {
         case 'noun': {
             const gender = getGender(abbr);
-            const animated = isAnimated(abbr);
+            const animate = isAnimate(abbr);
             arr.push(t('noun-' + gender));
             if (gender.startsWith('masculine')) {
-                arr.push(t(animated ? 'noun-animated' : 'noun-inanimate'));
+                arr.push(t(animate ? 'noun-animate' : 'noun-inanimate'));
             }
             if (isIndeclinable(abbr)) {
                 arr.push(t('noun-indeclinable'));
