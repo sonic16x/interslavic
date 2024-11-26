@@ -8,6 +8,7 @@ import { t } from 'translations';
 import { hideModalDialog, setAlphabetTypeAction } from 'actions';
 import { IMainState } from 'reducers';
 
+import { expandAbbr } from "utils/abbreviations";
 import { getCaseTips } from 'utils/getCaseTips';
 import { getCyrillic } from 'utils/getCyrillic';
 import { getGlagolitic } from 'utils/getGlagolitic';
@@ -59,12 +60,14 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             return null;
         }
 
-        const pos = getPartOfSpeech(this.props.details);
+        const { word, add, details } = this.props;
 
         return (
             <>
                 <div className="modal-dialog__header">
-                    {this.renderTitle(pos)}
+                    <span className="modal-dialog__header-title">
+                        {this.formatStr(word)} {this.formatStr(add)} <span className="details">({expandAbbr(details)})</span>
+                    </span>
                     <button
                         className="modal-dialog__header-close"
                         onClick={this.props.close}

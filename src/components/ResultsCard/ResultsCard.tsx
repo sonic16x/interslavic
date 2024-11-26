@@ -11,6 +11,7 @@ import { Dictionary, ITranslateResult } from 'services/dictionary';
 import { useAlphabets } from 'hooks/useAlphabets';
 import { useCaseQuestions } from 'hooks/useCaseQuestions';
 import { useLang } from 'hooks/useLang';
+import { expandAbbr, translateAbbr } from "utils/abbreviations";
 import { getWordStatus } from "utils/getWordStatus";
 import { toQueryString } from 'utils/toQueryString';
 import { getPartOfSpeech } from 'utils/wordDetails';
@@ -82,7 +83,7 @@ function renderOriginal(item, alphabets, caseQuestions) {
                         {caseInfo && <span className="caseInfo">({caseInfo})</span>}
                     </span>
                 );
-            })} 
+            })}
             {!caseQuestions && item.caseInfo &&
                 <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span>
             }
@@ -183,12 +184,16 @@ export const ResultsCard =
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;
-                            <span className="results-card__details">{item.details}</span>
+                            <abbr title={expandAbbr(item.details)} className="results-card__details">
+                                {translateAbbr(item.details)}
+                            </abbr>
                         </>
                     )}
                 </div>
                 {!short && (
-                    <span className="results-card__details">{item.details}</span>
+                    <abbr title={expandAbbr(item.details)} className="results-card__details">
+                        {translateAbbr(item.details)}
+                    </abbr>
                 )}
                 <div className="results-card__bottom">
                     <div className="results-card__original">
@@ -196,7 +201,9 @@ export const ResultsCard =
                             <Clipboard str={item.translate} />
                         ) : renderOriginal(item, alphabets, caseQuestions)}
                         {item.to !== 'isv' && short && (
-                            <span className="results-card__details">{item.details}</span>
+                            <abbr title={expandAbbr(item.details)} className="results-card__details">
+                                {translateAbbr(item.details)}
+                            </abbr>
                         )}
                     </div>
                     <div className="results-card__actions">
