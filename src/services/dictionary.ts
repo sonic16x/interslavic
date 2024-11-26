@@ -21,7 +21,7 @@ import {
     getNumeralType,
     getPartOfSpeech,
     getPronounType,
-    isAnimated,
+    isAnimate,
     isIndeclinable,
     isPlural,
     isSingular,
@@ -85,17 +85,17 @@ function getWordForms(item): string[] {
                 break;
             case 'noun': {
                 const gender = getGender(details);
-                const animated = isAnimated(details);
+                const animate = isAnimate(details);
                 const plural = isPlural(details);
                 const singular = isSingular(details);
                 const indeclinable = isIndeclinable(details);
                 if (details.includes('m./f.')) {
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'masculine', animate, plural,
                         singular, indeclinable));
-                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, 'feminine', animate, plural,
                         singular, indeclinable));
                 } else {
-                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animated, plural,
+                    wordForms.push(...declensionNounFlat(wordElement, add, gender, animate, plural,
                         singular, indeclinable));
                 }
                 break;

@@ -10,7 +10,7 @@ import {
     getPartOfSpeech,
     getPronounType,
     getVerbDetails,
-    isAnimated,
+    isAnimate,
     isCountable,
     isIndeclinable,
     isPlural,
@@ -30,7 +30,7 @@ const globalFiltersState = {
         neuter: true,
         masculineOrFeminine: true,
 
-        animated: true,
+        animate: true,
         inanimate: true,
 
         countable: true,
@@ -84,7 +84,7 @@ const globalFiltersState = {
 };
 
 const splitLineKeys = [
-    'noun-animated',
+    'noun-animate',
     'noun-countable',
     'noun-indeclinable',
 
@@ -156,7 +156,7 @@ export function initPOSFilterIdTypesMap(data: string[][]) {
             case 'noun':
                 obj.nounTypes = {
                     gender: getGender(details),
-                    animated: isAnimated(details),
+                    animate: isAnimate(details),
                     plural: isPlural(details),
                     singular: isSingular(details),
                     countable: isCountable(details),
@@ -239,7 +239,7 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
 
                 fixAllFalse(value, [
                     'inanimate',
-                    'animated',
+                    'animate',
                 ]);
 
                 fixAllFalse(value, [
@@ -393,7 +393,7 @@ export class ViewerPOSFilterComponent {
             case 'noun': {
                 const {
                     gender,
-                    animated,
+                    animate,
                     plural,
                     singular,
                     countable,
@@ -405,12 +405,12 @@ export class ViewerPOSFilterComponent {
                     return false;
                 }
 
-                // animated
-                if (!value.animated && animated) {
+                // animate
+                if (!value.animate && animate) {
                     return false;
                 }
 
-                if (!value.inanimate && !animated) {
+                if (!value.inanimate && !animate) {
                     return false;
                 }
 
