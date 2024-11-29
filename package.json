@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.24.2",
+  "version": "1.24.3",
   "description": "Interslavic Dictionary",
   "license": "MIT",
   "author": {
@@ -12,7 +12,7 @@
     "build-storybook": "storybook build",
     "deploy-api": "wrangler deploy ./src/server/index.ts --name api --compatibility-date 2024-11-12",
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.config.dev.js --progress",
-    "generate-dictionary": "ts-node -r tsconfig-paths/register ./src/services/generateDictionary.ts",
+    "generate-dictionary": "tsx -r tsconfig-paths/register ./src/services/generateDictionary.ts",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
     "stylelint": "stylelint \"**/*.scss\"",
@@ -101,8 +101,8 @@
     "stylelint-order": "^6.0.4",
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.1",
-    "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",

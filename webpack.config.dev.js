@@ -10,9 +10,6 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules/');
 module.exports = {
     entry: {
         index: './src/index',
-        grammarComponent: './src/components/Pages/Grammar/Grammar',
-        viewerComponent: './src/components/Pages/Viewer/Viewer',
-        communityComponent: './src/components/Pages/CommunityPage/CommunityPage',
         sw: './src/serviceWorker/sw',
     },
     output: {
@@ -73,7 +70,7 @@ module.exports = {
             template: path.join(srcPath, 'index.html.ejs'),
             filename: 'index.html',
             path: outputPath,
-            excludeChunks: ['sw', 'grammarComponent', 'viewerComponent', 'communityComponent'],
+            excludeChunks: ['sw'],
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),

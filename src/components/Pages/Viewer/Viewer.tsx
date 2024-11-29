@@ -20,8 +20,6 @@ import { Button } from 'components/Button';
 import { OfflinePlaceholder } from 'components/OfflinePlaceholder';
 import { Spinner } from 'components/Spinner';
 
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
-import '@ag-grid-community/core/dist/styles/ag-theme-balham.css';
 import './Viewer.scss';
 
 import { ViewerContextMenu } from './ViewerContextMenu';
