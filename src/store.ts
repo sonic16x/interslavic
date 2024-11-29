@@ -48,7 +48,6 @@ export const defaultState: IMainState = {
     },
     orderOfCases: ['nom', 'acc', 'gen', 'loc', 'dat', 'ins', 'voc'],
     enabledPages: [],
-    communityLinks: [],
     badges: [],
 };
 

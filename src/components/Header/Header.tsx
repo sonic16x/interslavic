@@ -56,15 +56,8 @@ export const Header =
         }, [navRef, logoRef, enabledPages, onResize]);
         
         const filteredPages = useMemo(() => (
-            pages
-                .filter(({ value }) => {
-                    if (value === 'community' && !IS_COM) {
-                        return false
-                    }
-
-                    return (defaultPages.includes(value) || enabledPages.includes(value))
-                })
-        ), [IS_COM, pages, enabledPages])
+            pages.filter(({ value }) => (defaultPages.includes(value) || enabledPages.includes(value)))
+        ), [pages, enabledPages])
 
         const showBadges = useMemo(() => (
             filteredPages.some(({ value }) => (badges.includes(value)))

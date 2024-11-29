@@ -24,7 +24,6 @@ export enum ActionTypes {
     CHANGE_CASE_QUESTIONS = 'CHANGE_CASE_QUESTIONS',
     DICTIONARY_LANGUAGES = 'DICTIONARY_LANGUAGES',
     TOGGLE_PAGE = 'TOGGLE_PAGE',
-    SET_COMMUNITY_LINKS = 'SET_COMMUNITY_LINKS',
     SET_BADGES = 'SET_BADGES',
     TOGGLE_THEME = 'TOGGLE_THEME',
 }
@@ -183,13 +182,6 @@ export function changeDictionaryLangAction(data) {
 export function togglePage(data) {
     return {
         type: ActionTypes.TOGGLE_PAGE,
-        data,
-    };
-}
-
-export function setCommunityLinks(data) {
-    return {
-        type: ActionTypes.SET_COMMUNITY_LINKS,
         data,
     };
 }
