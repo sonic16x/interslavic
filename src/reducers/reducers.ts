@@ -34,11 +34,6 @@ export interface INotification {
     type?: 'error' | 'valid';
 }
 
-export interface ICommunityLink {
-    link: string;
-    text?: string;
-}
-
 export interface IMainState {
     lang: ILang;
     interfaceLang: string;
@@ -69,7 +64,6 @@ export interface IMainState {
     orderOfCases: string[];
     enabledPages: string[];
     badges: string[];
-    communityLinks: ICommunityLink[];
 }
 
 export function mainReducer(state: IMainState, { type, data }) {
@@ -378,12 +372,6 @@ export function mainReducer(state: IMainState, { type, data }) {
                     enabledPages.includes(data) ?
                         enabledPages.filter((page) => (page !== data)) :
                         [...enabledPages, data],
-            };
-        }
-        case ActionTypes.SET_COMMUNITY_LINKS: {
-            return {
-                ...state,
-                communityLinks: data,
             };
         }
         case ActionTypes.SET_BADGES: {

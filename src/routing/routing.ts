@@ -13,12 +13,6 @@ export const pages: IPage[] = [
         path: '/',
     },
     {
-        title: 'communityTitle',
-        value: 'community',
-        path: '/community',
-        online: true,
-    },
-    {
         title: 'grammarTitle',
         value: 'grammar',
         path: '/grammar',
@@ -41,7 +35,7 @@ export const pages: IPage[] = [
     },
 ];
 
-export const defaultPages = ['dictionary', 'community', 'grammar', 'settings', 'about'];
+export const defaultPages = ['dictionary', 'grammar', 'settings', 'about'];
 
 export function goToPage(path: string) {
     window.history.pushState({}, document.title, `${path}`);

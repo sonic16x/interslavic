@@ -1,4 +1,4 @@
-import { lazy, Suspense,useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { setPageAction } from 'actions';
@@ -15,7 +15,6 @@ import { Settings } from 'components/Pages/Settings';
 import './Router.scss';
 
 const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar'));
-const CommunityPage = lazy(() => import(/* webpackChunkName: "communityComponent" */'components/Pages/CommunityPage/CommunityPage'));
 const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'));
 
 function renderPageContent(page: string) {
@@ -29,12 +28,6 @@ function renderPageContent(page: string) {
         case 'dictionary':
             return (
                 <DictionaryPage/>
-            );
-        case 'community':
-            return (
-                <Suspense fallback={<div>&nbsp;</div>}>
-                    <CommunityPage/>
-                </Suspense>
             );
         case 'viewer':
             return (

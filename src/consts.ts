@@ -91,14 +91,6 @@ export const tablesData: ITableData[] = [
     },
 ];
 
-export const communityLinksTableHeader = ['link', 'text'];
-
-export const communityLinksTable: ITableData = {
-    spreadsheetId: '199XwtnfJEH2U41GG1-lFjc-s7snAdKlB9_VXwHVG2ZA',
-    sheetId: '0',
-    fields: communityLinksTableHeader,
-};
-
 export const tableColumnsLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 export const wordErrorsTypes = [
