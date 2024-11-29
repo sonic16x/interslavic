@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, `./dist`);
@@ -75,6 +77,11 @@ module.exports = {
         ]
     },
     plugins: [
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'static',
+            reportFilename: path.resolve(__dirname, 'report.html'),
+        }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.join(srcPath, 'index.html.ejs'),
