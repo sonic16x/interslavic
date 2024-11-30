@@ -19,6 +19,8 @@ jobs:
         run: |
           npm run generate-dictionary
           npm run build
+          npm run build-manifest
+          npm run build-sitemap
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
