@@ -21,8 +21,8 @@
     "storybook": "storybook dev -p 6006",
     "test:pw": "playwright test",
     "test:unit": "jest --logHeapUsage --coverage --config jest-config.json",
-    "test:dictionary": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false ts-node -r tsconfig-paths/register ./src/services/dictionary-test",
-    "test:dictionary-update-shanshot": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false ts-node -r tsconfig-paths/register ./src/services/dictionary-test"
+    "test:dictionary": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false tsx -r tsconfig-paths/register ./src/services/dictionary-test",
+    "test:dictionary-update-shanshot": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false tsx -r tsconfig-paths/register ./src/services/dictionary-test"
   },
   "pre-commit": [
     "lint:fix",

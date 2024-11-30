@@ -1,1 +1,1 @@
-export * from './getObjFromTable';
+export * from './getObjFromTable'

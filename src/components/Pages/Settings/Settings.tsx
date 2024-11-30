@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import classNames from 'classnames'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { addLangs } from 'consts';
+import { addLangs, interfaceLanguageList } from 'consts'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
 import {
     changeCardViewAction,
@@ -18,29 +18,28 @@ import {
     setInterfaceLang,
     togglePage,
     toggleThemeAction,
-} from 'actions';
+} from 'actions'
 
-import { fetchLang } from 'services/fetchDictionary';
-import { interfaceLanguageList } from 'services/interfaceLanguages';
+import { fetchLang } from 'services'
 
-import { useAlphabets } from 'hooks/useAlphabets';
-import { useCaseQuestions } from 'hooks/useCaseQuestions';
-import { useDarkTheme } from 'hooks/useDarkTheme';
-import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
-import { useEnabledPages } from 'hooks/useEnabledPages';
-import { useInterfaceLang } from 'hooks/useInterfaceLang';
-import { useIsvSearchByWordForms } from 'hooks/useIsvSearchByWordForms';
-import { useIsvSearchLetters } from 'hooks/useIsvSearchLetters';
-import { useLang } from 'hooks/useLang';
-import { useOrderOfCases } from 'hooks/useOrderOfCases';
-import { useResults } from 'hooks/useResults';
-import { useShortCardView } from 'hooks/useShortCardView';
+import {
+    useAlphabets,
+    useCaseQuestions,
+    useDarkTheme,
+    useDictionaryLanguages,
+    useEnabledPages,
+    useInterfaceLang,
+    useIsvSearchByWordForms,
+    useIsvSearchLetters,
+    useLang,
+    useOrderOfCases,
+    useResults,
+    useShortCardView,
+} from 'hooks'
 
-import { Checkbox } from 'components/Checkbox';
-import { Selector } from 'components/Selector';
-import { Spinner } from 'components/Spinner';
+import { Checkbox, Selector, Spinner } from 'components'
 
-import './Settings.scss';
+import './Settings.scss'
 
 
 const orderOfCasesList = [
@@ -49,24 +48,24 @@ const orderOfCasesList = [
     'nom,gen,dat,acc,ins,loc,voc',
     'nom,gen,dat,acc,voc,loc,ins',
     'nom,gen,dat,acc,voc,ins,loc',
-];
+]
 
 export const Settings =
     () => {
-        const dispatch = useDispatch();
-        const interfaceLang = useInterfaceLang();
-        const alphabets = useAlphabets();
-        const isvSearchLetters = useIsvSearchLetters();
-        const isShortCardView = useShortCardView();
-        const isDarkTheme = useDarkTheme();
-        const isvSearchByWordForms = useIsvSearchByWordForms();
-        const caseQuestions = useCaseQuestions();
-        const orderOfCases = useOrderOfCases();
-        const dictionaryLanguages = useDictionaryLanguages();
-        const enabledPages = useEnabledPages();
-        const { from, to } = useLang();
-        const [isLoading, setLoading] = useState(false);
-        useResults();
+        const dispatch = useDispatch()
+        const interfaceLang = useInterfaceLang()
+        const alphabets = useAlphabets()
+        const isvSearchLetters = useIsvSearchLetters()
+        const isShortCardView = useShortCardView()
+        const isDarkTheme = useDarkTheme()
+        const isvSearchByWordForms = useIsvSearchByWordForms()
+        const caseQuestions = useCaseQuestions()
+        const orderOfCases = useOrderOfCases()
+        const dictionaryLanguages = useDictionaryLanguages()
+        const enabledPages = useEnabledPages()
+        const { from, to } = useLang()
+        const [isLoading, setLoading] = useState(false)
+        useResults()
 
         return (
             <div className="settings">
@@ -189,7 +188,7 @@ export const Settings =
                         return {
                             name: e.split(',').map((c) => t(`case${c[0].toUpperCase()}${c.slice(1)}`)).join(', '),
                             value: e,
-                        };
+                        }
                     })}
                     value={orderOfCases.join(',')}
                     onSelect={(orderOfCases: string) => dispatch(changeOrderOfCases(orderOfCases.split(',')))}
@@ -213,7 +212,7 @@ export const Settings =
                 </h6>
                 <div className={classNames('settings__add-langs', { 'settings__add-langs-loading': isLoading })}>
                     {addLangs.map((lang, i) => {
-                        const checked = dictionaryLanguages.includes(lang);
+                        const checked = dictionaryLanguages.includes(lang)
 
                         return (
                             <Checkbox
@@ -221,28 +220,28 @@ export const Settings =
                                 title={t(`${lang}Lang`)}
                                 checked={checked}
                                 onChange={async () => {
-                                    setLoading(true);
-                                    await fetchLang(lang);
+                                    setLoading(true)
+                                    await fetchLang(lang)
 
                                     if (checked && from === lang) {
                                         dispatch(langAction({
                                             from: 'en',
                                             to,
-                                        }));
+                                        }))
                                     }
 
                                     if (checked && to === lang) {
                                         dispatch(langAction({
                                             from,
                                             to: 'en',
-                                        }));
+                                        }))
                                     }
 
-                                    dispatch(changeDictionaryLangAction(lang));
-                                    setLoading(false);
+                                    dispatch(changeDictionaryLangAction(lang))
+                                    setLoading(false)
                                 }}
                             />
-                        );
+                        )
                     })}
                 </div>
                 <hr />
@@ -256,5 +255,5 @@ export const Settings =
                     />
                 </div>
             </div>
-        );
-    };
+        )
+    }

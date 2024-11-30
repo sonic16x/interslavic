@@ -1,6 +1,6 @@
-import { Button } from './Button';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import { Button } from './Button'
+import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
 
 const meta = {
     title: 'Components/Button',
@@ -13,9 +13,9 @@ const meta = {
 
     },
     args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button>
 
-export default meta;
+export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
@@ -23,53 +23,53 @@ export const Primary: Story = {
         title: 'Button',
         type: 'primary',
     },
-};
+}
 
 export const Error: Story = {
     args: {
         title: 'Button',
         type: 'error',
     },
-};
+}
 
 export const Muter: Story = {
     args: {
         title: 'Button',
         type: 'muted',
     },
-};
+}
 
 export const Small: Story = {
     args: {
         title: 'Button',
         size: 'S',
     },
-};
+}
 
 export const Medium: Story = {
     args: {
         title: 'Button',
         size: 'M',
     },
-};
+}
 
 export const Large: Story = {
     args: {
         title: 'Button',
         size: 'L',
     },
-};
+}
 
 export const NotFill: Story = {
     args: {
         title: 'Button',
         fill: false,
     },
-};
+}
 
 export const Disabled: Story = {
     args: {
         title: 'Button',
         disabled: true,
     },
-};
+}

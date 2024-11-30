@@ -1,1 +1,1 @@
-export * from './convertCases';
+export * from './convertCases'

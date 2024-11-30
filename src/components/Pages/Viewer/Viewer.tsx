@@ -1,34 +1,32 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { Grid, GridOptions,ModuleRegistry  } from '@ag-grid-community/core';
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model'
+import { Grid, GridOptions,ModuleRegistry  } from '@ag-grid-community/core'
 
-import { addLangs, initialFields, langs,validFields } from 'consts';
+import { addLangs, initialFields, langs,validFields } from 'consts'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { Dictionary } from 'services/dictionary';
-import { loadTablesData } from 'services/loadTablesData';
+import { Dictionary, loadTablesData } from 'services'
 
-import { useLoading } from 'hooks/useLoading';
-import { useTablesMapFunction } from 'hooks/useTablesMapFunction';
-import { isOnline } from 'utils/isOnline';
-import { removeBrackets } from 'utils/removeBrackets';
-import { removeExclamationMark } from 'utils/removeExclamationMark';
-import { wordHasForms } from 'utils/wordHasForms';
+import { useLoading, useTablesMapFunction } from 'hooks'
+import {
+    isOnline,
+    removeBrackets,
+    removeExclamationMark,
+    wordHasForms,
+} from 'utils'
 
-import { Button } from 'components/Button';
-import { OfflinePlaceholder } from 'components/OfflinePlaceholder';
-import { Spinner } from 'components/Spinner';
+import { Button, OfflinePlaceholder, Spinner } from 'components'
 
-import './Viewer.scss';
+import './Viewer.scss'
 
-import { ViewerContextMenu } from './ViewerContextMenu';
-import { ViewerHeaderComponent } from './ViewerHeaderComponent';
-import { initPOSFilterIdTypesMap, ViewerPOSFilterComponent } from './ViewerPOSFilterComponent';
+import { ViewerContextMenu } from './ViewerContextMenu'
+import { ViewerHeaderComponent } from './ViewerHeaderComponent'
+import { initPOSFilterIdTypesMap, ViewerPOSFilterComponent } from './ViewerPOSFilterComponent'
 
 ModuleRegistry.registerModules([
     ClientSideRowModelModule,
-]);
+])
 
 const fieldWidthMap = {
     id: 80,
@@ -37,27 +35,27 @@ const fieldWidthMap = {
     type: 10,
     sameInLanguages: 60,
     genesis: 60,
-};
+}
 
 const getFieldWidth = (field: string): number => {
     if (field in fieldWidthMap) {
-        return fieldWidthMap[field];
+        return fieldWidthMap[field]
     }
 
-    return 100;
-};
+    return 100
+}
 
 const customSort = (field: string) => {
     if (field === 'id') {
-        return (a: number, b: number) => a - b;
+        return (a: number, b: number) => a - b
     } else if (field === 'isv') {
-        return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), 'sk');
+        return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), 'sk')
     } else if (field === 'en' || langs.includes(field) || addLangs.includes(field)) {
-        return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), `${field}`);
+        return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), `${field}`)
     } else {
-        return undefined;
+        return undefined
     }
-};
+}
 
 const customFilterParams = (field: string) => {
     if (field === 'isv' || field === 'en' || langs.includes(field) || addLangs.includes(field)) {
@@ -78,67 +76,75 @@ const customFilterParams = (field: string) => {
                 },
             ],
             textCustomComparator: (filter, value, filterText) => {
-                const filterTextLowerCase = Dictionary.inputPrepare(`${field}`, filterText.toLowerCase());
-                let valueLowerCase = value.toString().toLowerCase();
-                valueLowerCase = removeExclamationMark(valueLowerCase);
-                valueLowerCase = removeBrackets(valueLowerCase, '[', ']');
-                valueLowerCase = removeBrackets(valueLowerCase, '(', ')');
+                const filterTextLowerCase = Dictionary.inputPrepare(`${field}`, filterText.toLowerCase())
+                let valueLowerCase = value.toString().toLowerCase()
+                valueLowerCase = removeExclamationMark(valueLowerCase)
+                valueLowerCase = removeBrackets(valueLowerCase, '[', ']')
+                valueLowerCase = removeBrackets(valueLowerCase, '(', ')')
                 
                 return Dictionary.splitWords(valueLowerCase).some((word) => {
-                    const wordPrepared = Dictionary.searchPrepare(`${field}`, word);
+                    const wordPrepared = Dictionary.searchPrepare(`${field}`, word)
                     switch (filter) {
                         case 'contains':
-                            return wordPrepared.indexOf(filterTextLowerCase) >= 0;
+                            return wordPrepared.indexOf(filterTextLowerCase) >= 0
                         case 'notContains':
-                            return wordPrepared.indexOf(filterTextLowerCase) === -1;
+                            return wordPrepared.indexOf(filterTextLowerCase) === -1
                         case 'equals':
-                            return wordPrepared === filterTextLowerCase;
+                            return wordPrepared === filterTextLowerCase
                         case 'notEqual':
-                            return wordPrepared !== filterTextLowerCase;
+                            return wordPrepared !== filterTextLowerCase
                         case 'startsWith':
-                            return wordPrepared.indexOf(filterTextLowerCase) === 0;
+                            return wordPrepared.indexOf(filterTextLowerCase) === 0
                         case 'endsWith': {
-                            const index = wordPrepared.lastIndexOf(filterTextLowerCase);
+                            const index = wordPrepared.lastIndexOf(filterTextLowerCase)
                             
-                            return index >= 0 && index === (wordPrepared.length - filterTextLowerCase.length);
+                            return index >= 0 && index === (wordPrepared.length - filterTextLowerCase.length)
                         }
                         default:
                             // should never happen
                             // console.warn('invalid filter type ' + filter);
-                            return false;
+                            return false
                     }
-                });
+                })
             },
-        };
+        }
     } else if (field === 'id') {
         return {
-            filterOptions: ['equals', 'notEqual', 'lessThan', 'lessThanOrEqual', 'greaterThan', 'greaterThanOrEqual', 'inRange'],
+            filterOptions: [
+                'equals',
+                'notEqual',
+                'lessThan',
+                'lessThanOrEqual',
+                'greaterThan',
+                'greaterThanOrEqual',
+                'inRange',
+            ],
             defaultOption: 'equals',
-        };
+        }
     } else {
-        return undefined;
+        return undefined
     }
-};
+}
 
 const prepareRowData = (wordList) => {
-    const header = wordList.slice(0, 1)[0];
+    const header = wordList.slice(0, 1)[0]
 
     return wordList.slice(1).map((line) => {
         return header.reduce((obj, field) => {
-            obj[field] = line[header.indexOf(field)];
+            obj[field] = line[header.indexOf(field)]
 
-            return obj;
-        }, {});
-    });
-};
+            return obj
+        }, {})
+    })
+}
 
 const getCellStyle = (params) => (
     params.value[0] === '!' ? { backgroundColor: '#ffcccb' } : null
-);
+)
 
 const removeUnverifiedSymbol = (params) =>
     params.value && params.value[0] === '!' ? params.value.slice(1) : params.value
-;
+
 
 const prepareColumnDefs = (displayFields) => {
     return displayFields
@@ -163,10 +169,10 @@ const prepareColumnDefs = (displayFields) => {
                 width: getFieldWidth(field),
                 cellStyle: getCellStyle,
             }
-        ));
-};
+        ))
+}
 
-let gridOptions: GridOptions;
+let gridOptions: GridOptions
 
 interface IContextState {
     buttonRef: HTMLElement;
@@ -177,60 +183,60 @@ interface IContextState {
 
 const Viewer =
     () => {
-        const online = isOnline();
-        const allDataRef = useRef<string[][]>();
-        const [isLoadingAllData, setLoadingAllData] = useState(true);
-        const [isSortEnabled, setSortEnabled] = useState(false);
-        const [isGridReady, setGridReady] = useState(false);
-        const { initTablesMapFunction, getGoogleSheetsLink } = useTablesMapFunction();
-        const containerRef = useRef<HTMLDivElement>();
-        const [resultsCount, setResultsCount] = useState<number>();
-        const [contextMenu, setContextMenu] = useState<IContextState>();
-        const isLoading = useLoading();
-        const allLoaded = !isLoading && !isLoadingAllData;
+        const online = isOnline()
+        const allDataRef = useRef<string[][]>()
+        const [isLoadingAllData, setLoadingAllData] = useState(true)
+        const [isSortEnabled, setSortEnabled] = useState(false)
+        const [isGridReady, setGridReady] = useState(false)
+        const { initTablesMapFunction, getGoogleSheetsLink } = useTablesMapFunction()
+        const containerRef = useRef<HTMLDivElement>()
+        const [resultsCount, setResultsCount] = useState<number>()
+        const [contextMenu, setContextMenu] = useState<IContextState>()
+        const isLoading = useLoading()
+        const allLoaded = !isLoading && !isLoadingAllData
 
         const onFilterChanged = useCallback(() => {
-            setResultsCount(gridOptions.api.getDisplayedRowCount());
-        }, [setResultsCount]);
+            setResultsCount(gridOptions.api.getDisplayedRowCount())
+        }, [setResultsCount])
 
         const onSortChanged = useCallback(() => {
             const isvColumnState = gridOptions.columnApi
                 .getColumnState()
                 .find(({ colId }) => colId === 'isv')
-            ;
+            
 
-            setSortEnabled(isvColumnState.sort !== 'asc');
-        }, [setSortEnabled]);
+            setSortEnabled(isvColumnState.sort !== 'asc')
+        }, [setSortEnabled])
 
         const onGridReady = useCallback(() => {
-            setGridReady(true);
-        }, [setGridReady]);
+            setGridReady(true)
+        }, [setGridReady])
 
         const closeContext = useCallback(() => {
-            setContextMenu(null);
-        }, []);
+            setContextMenu(null)
+        }, [])
 
         useEffect(() => {
             if (online) {
                 loadTablesData.then(({ data, rangesMap }) => {
-                    allDataRef.current = data;
-                    initTablesMapFunction(rangesMap);
-                    setLoadingAllData(false);
-                });
+                    allDataRef.current = data
+                    initTablesMapFunction(rangesMap)
+                    setLoadingAllData(false)
+                })
             }
-        }, [setLoadingAllData, initTablesMapFunction]);
+        }, [setLoadingAllData, initTablesMapFunction])
 
         const onCellClicked = useCallback((data) => {
-            let formsData;
-            const hasForms = wordHasForms(data.data.isv, data.data.partOfSpeech);
-            const isvCol = data.colDef.field === 'isv';
+            let formsData
+            const hasForms = wordHasForms(data.data.isv, data.data.partOfSpeech)
+            const isvCol = data.colDef.field === 'isv'
 
             if (isvCol && hasForms) {
                 formsData = {
                     details: data.data.partOfSpeech,
                     word: data.data.isv,
                     add: data.data.addition,
-                };
+                }
             }
 
             setContextMenu({
@@ -238,16 +244,16 @@ const Viewer =
                 formsData,
                 text: removeUnverifiedSymbol(data),
                 googleLink: getGoogleSheetsLink(data.data.id, data.colDef.field),
-            });
-        }, [getGoogleSheetsLink]);
+            })
+        }, [getGoogleSheetsLink])
 
         const onResetFiltersClick = useCallback(() => {
-            gridOptions.api.setFilterModel(null);
-        }, []);
+            gridOptions.api.setFilterModel(null)
+        }, [])
 
         const onResetSortClick = useCallback(() => {
-            gridOptions.columnApi.resetColumnState();
-        }, []);
+            gridOptions.columnApi.resetColumnState()
+        }, [])
 
         useEffect(() => {
             if (
@@ -257,9 +263,9 @@ const Viewer =
                 allDataRef &&
                 allDataRef.current
             ) {
-                setResultsCount(allDataRef.current.length - 1);
+                setResultsCount(allDataRef.current.length - 1)
 
-                initPOSFilterIdTypesMap(allDataRef.current);
+                initPOSFilterIdTypesMap(allDataRef.current)
 
                 gridOptions = {
                     enableBrowserTooltips: true,
@@ -274,11 +280,11 @@ const Viewer =
                     onCellClicked,
                     onBodyScroll: closeContext,
                     onGridReady,
-                };
+                }
 
-                new Grid(containerRef.current, gridOptions);
+                new Grid(containerRef.current, gridOptions)
             }
-        }, [containerRef, allLoaded, closeContext, onCellClicked, onFilterChanged, onGridReady, onSortChanged]);
+        }, [containerRef, allLoaded, closeContext, onCellClicked, onFilterChanged, onGridReady, onSortChanged])
 
         if (!online) {
             return <OfflinePlaceholder className="viewer-offline"/>
@@ -323,7 +329,7 @@ const Viewer =
                     ref={containerRef}
                 />
             </div>
-        );
-    };
+        )
+    }
 
-export default Viewer;
+export default Viewer

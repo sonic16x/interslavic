@@ -1,19 +1,19 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
+import { Component } from 'react'
+import { connect } from 'react-redux'
 
-import { alphabetTypes } from 'consts';
+import { alphabetTypes } from 'consts'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { hideModalDialog, setAlphabetTypeAction } from 'actions';
-import { IMainState } from 'reducers';
+import { hideModalDialog, setAlphabetTypeAction } from 'actions'
+import { IMainState } from 'reducers'
 
-import { getCaseTips } from 'utils/getCaseTips';
-import { getCyrillic } from 'utils/getCyrillic';
-import { getGlagolitic } from 'utils/getGlagolitic';
-import { getLatin } from 'utils/getLatin';
 import {
+    getCaseTips,
+    getCyrillic,
     getGender,
+    getGlagolitic,
+    getLatin,
     getNumeralType,
     getPartOfSpeech,
     getPronounType,
@@ -24,13 +24,11 @@ import {
     isPlural,
     isSingular,
     isSuperlative,
-} from 'utils/wordDetails';
+} from 'utils'
 
-import { LineSelector } from 'components/LineSelector';
-import { Table } from 'components/Table';
-import { Text } from 'components/Text';
+import { LineSelector, Table, Text } from 'components'
 
-import './DetailModal.scss';
+import './DetailModal.scss'
 
 import {
     conjugationVerb,
@@ -38,7 +36,7 @@ import {
     declensionNoun,
     declensionNumeral,
     declensionPronoun
-} from '@interslavic/utils';
+} from '@interslavic/utils'
 
 interface IDetailModalInternal {
     close: () => void;
@@ -53,13 +51,14 @@ interface IDetailModalInternal {
     orderOfCases: string[];
 }
 
+/* eslint-disable max-len */
 class DetailModalInternal extends Component<IDetailModalInternal> {
     public render() {
         if (!this.props.word) {
-            return null;
+            return null
         }
 
-        const pos = getPartOfSpeech(this.props.details);
+        const pos = getPartOfSpeech(this.props.details)
 
         return (
             <>
@@ -78,17 +77,17 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 </div>
                 {this.renderFooter()}
             </>
-        );
+        )
     }
 
     private renderFooter() {
         const options = alphabetTypes
             .filter(({ value }) => this.props.alphabets[value])
             .map((item) => ({ name: t(item.name), value: item.value }))
-        ;
+        
 
         if (options.length === 1) {
-            return null;
+            return null
         }
 
         return (
@@ -99,60 +98,60 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     onSelect={(type) => this.props.setAlphabetType(type)}
                 />
             </footer>
-        );
+        )
     }
 
     private renderTitle(pos: string) {
-        const { details, word, add } = this.props;
-        const arr = [t(pos)];
+        const { details, word, add } = this.props
+        const arr = [t(pos)]
 
         switch (pos) {
             case 'noun': {
-                const gender = getGender(details);
-                const animate = isAnimate(details);
-                arr.push(t('noun-' + gender));
+                const gender = getGender(details)
+                const animate = isAnimate(details)
+                arr.push(t('noun-' + gender))
                 if (gender.match(/masculine/)) {
-                    arr.push(t(animate ? 'noun-animate' : 'noun-inanimate'));
+                    arr.push(t(animate ? 'noun-animate' : 'noun-inanimate'))
                 }
                 if (isIndeclinable(details)) {
-                    arr.push(t('noun-indeclinable'));
+                    arr.push(t('noun-indeclinable'))
                 }
                 if (isPlural(details)) {
-                    arr.push(t('noun-plural'));
+                    arr.push(t('noun-plural'))
                 }
                 if (isSingular(details)) {
-                    arr.push(t('noun-singular'));
+                    arr.push(t('noun-singular'))
                 }
-                break;
+                break
             }
             case 'adjective': {
                 if (isComparative(details)) {
-                    arr.push(t('comparative') + ' ' + t('degree'));
+                    arr.push(t('comparative') + ' ' + t('degree'))
                 } else if (isSuperlative(details)) {
-                    arr.push(t('superlative') + ' ' + t('degree'));
+                    arr.push(t('superlative') + ' ' + t('degree'))
                 }
-                break;
+                break
             }
             case 'verb': {
-                const verbDetails = getVerbDetails(details);
+                const verbDetails = getVerbDetails(details)
                 if (verbDetails) {
-                    arr.push(...verbDetails.map((e) => t('verb-' + e)));
+                    arr.push(...verbDetails.map((e) => t('verb-' + e)))
                 }
-                break;
+                break
             }
             case 'numeral': {
-                const numeralType = getNumeralType(details);
+                const numeralType = getNumeralType(details)
                 if (numeralType) {
-                    arr.push(t('numeral-' + numeralType));
+                    arr.push(t('numeral-' + numeralType))
                 }
-                break;
+                break
             }
             case 'pronoun': {
-                const pronounType = getPronounType(details);
+                const pronounType = getPronounType(details)
                 if (pronounType) {
-                    arr.push(t('pronoun-' + pronounType));
+                    arr.push(t('pronoun-' + pronounType))
                 }
-                break;
+                break
             }
         }
 
@@ -160,59 +159,59 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             <span className="modal-dialog__header-title">
                 {this.formatStr(word)} {this.formatStr(add)} <span className="details">({arr.join(', ')})</span>
             </span>
-        );
+        )
     }
 
     private renderBody() {
-        const fieldIsv = this.props.word;
-        const fieldAddition = this.props.add;
-        const fieldPartOfSpeech = this.props.details;
-        const splitted = fieldIsv.split(',');
+        const fieldIsv = this.props.word
+        const fieldAddition = this.props.add
+        const fieldPartOfSpeech = this.props.details
+        const splitted = fieldIsv.split(',')
         if (splitted.length === 1 && fieldPartOfSpeech.indexOf('m./f.') !== -1 ) {
             return [
                 this.renderWord([fieldIsv, fieldAddition, 'm.'],
                     ['showTitle', 'showGender', 'oneMore'], 0),
                 this.renderWord([fieldIsv, fieldAddition, 'f.'],
                     ['showTitle', 'showGender'], 1),
-            ];
+            ]
         }
 
         return splitted.map((word, i) => {
-            const options = [];
+            const options = []
             if (splitted.length > 1) {
-                options.push('showTitle');
-                if (i < splitted.length - 1) { options.push('oneMore'); }
+                options.push('showTitle')
+                if (i < splitted.length - 1) { options.push('oneMore') }
             }
 
-            return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options, i);
-        });
+            return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options, i)
+        })
     }
 
     private renderWord(rawItem, options: string[], i) {
-        const [ word, add, details ] = rawItem;
-        let wordComponent;
-        let remark = '';
+        const [ word, add, details ] = rawItem
+        let wordComponent
+        let remark = ''
         switch (getPartOfSpeech(details)) {
             case 'noun':
                 if (options.includes('showGender')) {
-                    remark = (details === 'm.' ? ' (' + t('noun-masculine') + ')' : ' (' + t('noun-feminine') + ')');
+                    remark = (details === 'm.' ? ' (' + t('noun-masculine') + ')' : ' (' + t('noun-feminine') + ')')
                 }
-                wordComponent = this.renderNounDetails(word, add, details);
-                break;
+                wordComponent = this.renderNounDetails(word, add, details)
+                break
             case 'adjective':
-                wordComponent = this.renderAdjectiveDetails(word, details);
-                break;
+                wordComponent = this.renderAdjectiveDetails(word, details)
+                break
             case 'verb':
-                wordComponent = this.renderVerbDetails(word, add, details);
-                break;
+                wordComponent = this.renderVerbDetails(word, add, details)
+                break
             case 'numeral':
-                wordComponent = this.renderNumeralDetails(word, details);
-                break;
+                wordComponent = this.renderNumeralDetails(word, details)
+                break
             case 'pronoun':
-                wordComponent = this.renderPronounDetails(word, details);
-                break;
+                wordComponent = this.renderPronounDetails(word, details)
+                break
             default:
-                return '';
+                return ''
         }
 
         return (
@@ -221,37 +220,37 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 {wordComponent}
                 {options.includes('oneMore') ? <hr/> : ''}
             </div>
-        );
+        )
     }
 
     private formatStr(str: string): string {
         if (str === '') {
-            return '';
+            return ''
         } else if (str == null) {
-            return '&mdash;';
+            return '&mdash;'
         } else if (str.match(/&\w+;/g)) {
-            return str;
+            return str
         }
         switch (this.props.alphabetType) {
             case 'latin':
-                return getLatin(str, this.props.flavorisationType);
+                return getLatin(str, this.props.flavorisationType)
             case 'cyrillic':
-                return getCyrillic(str, this.props.flavorisationType);
+                return getCyrillic(str, this.props.flavorisationType)
             case 'glagolitic':
-                return getGlagolitic(str, this.props.flavorisationType);
+                return getGlagolitic(str, this.props.flavorisationType)
         }
     }
 
     private renderVerbDetails(word, add, details) {
-        const data = conjugationVerb(word, add, details);
+        const data = conjugationVerb(word, add, details)
         if (data === null) {
             return (
                 <div>
                     <Text>
-                        {`No data for conjugation this verb`}
+                        {'No data for conjugation this verb'}
                     </Text>
                 </div>
-            );
+            )
         }
         const tableData1 = [
             [
@@ -260,15 +259,15 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${t('imperfect')}@;b`,
                 `${t('future')}@;b`,
             ],
-        ];
+        ]
         const forms1 = [
-            `1sg`,
-            `2sg`,
-            `3sg`,
-            `1pl`,
-            `2pl`,
-            `3pl`,
-        ];
+            '1sg',
+            '2sg',
+            '3sg',
+            '1pl',
+            '2pl',
+            '3pl',
+        ]
         const pronouns1 = [
             'ja',
             'ty',
@@ -276,7 +275,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             'my',
             'vy',
             'oni one',
-        ];
+        ]
         pronouns1.forEach((pronoun, i) => {
             tableData1.push([
                 `${t(forms1[i])}@b`,
@@ -284,16 +283,16 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${this.formatStr(data.present[i])}@`,
                 `${this.formatStr(data.imperfect[i])}@`,
                 `${this.formatStr(data.future[i])}@`,
-            ]);
-        });
+            ])
+        })
         const tableData2 = [
             [
-                `&nbsp@bl;bt;w=2`,
+                '&nbsp@bl;bt;w=2',
                 `${t('perfect')}@;b`,
                 `${t('pluperfect')}@;b`,
                 `${t('conditional')}@;b`,
             ],
-        ];
+        ]
         const forms2 = [
             '1sg',
             '2sg',
@@ -303,7 +302,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             '1pl',
             '2pl',
             '3pl',
-        ];
+        ]
         const pronouns2 = [
             'ja',
             'ty',
@@ -313,28 +312,28 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             'my',
             'vy',
             'oni one',
-        ];
+        ]
         pronouns2.forEach((pronoun, i) => {
             const item = [
                 `${this.formatStr(pronoun)}@`,
                 `${this.formatStr(data.perfect[i])}@`,
                 `${this.formatStr(data.pluperfect[i])}@`,
                 `${this.formatStr(data.conditional[i])}@`,
-            ];
+            ]
             if (forms2[i]) {
-                let str = `${t(forms2[i])}@b`;
+                let str = `${t(forms2[i])}@b`
                 if (forms2[i] === '3sg') {
-                    str += ';h=3';
+                    str += ';h=3'
                 }
-                item.unshift(str);
+                item.unshift(str)
             }
-            tableData2.push(item);
-        });
+            tableData2.push(item)
+        })
 
         const tableData =
             [...tableData1,
                 ['@w=2;bb;bl;br', '@w=3;bl;br'],
-                ...tableData2];
+                ...tableData2]
 
         const tableDataAdd = [
             [
@@ -365,21 +364,21 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${t('verbalNoun')}@b`,
                 this.formatStr(data.gerund),
             ],
-        ];
+        ]
 
         return (
             <>
                 <Table key={0} data={tableData}/>
                 <Table key={2} data={tableDataAdd}/>
             </>
-        );
+        )
     }
 
     private renderAdjectiveDetails(word, details) {
-        const { singular, plural, comparison } = declensionAdjective(word, '', details);
+        const { singular, plural, comparison } = declensionAdjective(word, '', details)
 
-        const tableDataSingular = this.getAdjectiveSingularCasesTable(singular);
-        const tableDataPlural = this.getAdjectivePluralCasesTable(plural);
+        const tableDataSingular = this.getAdjectiveSingularCasesTable(singular)
+        const tableDataPlural = this.getAdjectivePluralCasesTable(plural)
         const tableDataComparison = [
             [
                 `${t('degreesOfComparison')}@b`,
@@ -401,7 +400,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${this.formatStr(comparison.superlative[0])}@`,
                 `${this.formatStr(comparison.superlative[1])}@`,
             ],
-        ];
+        ]
 
         return (
             <>
@@ -409,53 +408,53 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 <Table key={1} data={tableDataPlural}/>
                 <Table key={2} data={tableDataComparison}/>
             </>
-        );
+        )
     }
 
     private renderNounDetails(word, add, details) {
-        const gender = getGender(details);
-        const animate = isAnimate(details);
-        const plural = isPlural(details);
-        const singular = isSingular(details);
-        const indeclinable = isIndeclinable(details);
+        const gender = getGender(details)
+        const animate = isAnimate(details)
+        const plural = isPlural(details)
+        const singular = isSingular(details)
+        const indeclinable = isIndeclinable(details)
 
-        const cases = declensionNoun(word, add, gender, animate, plural, singular, indeclinable);
+        const cases = declensionNoun(word, add, gender, animate, plural, singular, indeclinable)
 
         if (cases === null) {
             return (
                 <div>
                     <Text>
-                        {`No data for declination this word/phrase`}
+                        {'No data for declination this word/phrase'}
                     </Text>
                 </div>
-            );
+            )
         }
 
         const tableDataCases = this.getSimpleCasesTable({
             columns: ['singular', 'plural'],
             cases,
-        });
+        })
 
-        return <Table data={tableDataCases}/>;
+        return <Table data={tableDataCases}/>
     }
 
     private getSimpleCasesTable(paradigmArray) {
-        const tableDataCases = [[ `${t('case')}@b` ]];
+        const tableDataCases = [[ `${t('case')}@b` ]]
         paradigmArray.columns.forEach((col) => {
-            tableDataCases[0].push(t(col) + '@b');
-        });
+            tableDataCases[0].push(t(col) + '@b')
+        })
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in paradigmArray.cases) {
-                const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`);
-                const tableRow = [`${caseName}@b@${this.formatStr(getCaseTips(caseItem, 'noun'))}`];
+                const caseName = t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)
+                const tableRow = [`${caseName}@b@${this.formatStr(getCaseTips(caseItem, 'noun'))}`]
                 paradigmArray.cases[caseItem].forEach((caseForm) => {
-                    tableRow.push(`${this.formatStr(caseForm)}@`);
-                });
-                tableDataCases.push(tableRow);
+                    tableRow.push(`${this.formatStr(caseForm)}@`)
+                })
+                tableDataCases.push(tableRow)
             }
-        });
+        })
 
-        return tableDataCases;
+        return tableDataCases
     }
 
     private getAdjectiveSingularCasesTable(singular) {
@@ -474,41 +473,41 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${t('masculineAnimate')}@b`,
                 `${t('masculineInanimate')}@b`,
             ],
-        ];
+        ]
 
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in singular) {
                 const tableRow = [
                     `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(getCaseTips(caseItem, 'adjectiveSingular'))}`,
-                ];
+                ]
                 switch (caseItem) {
                     case 'nom':
                         tableRow.push(
                             `${this.formatStr(singular[caseItem][0])}@w=2`,
                             `${this.formatStr(singular[caseItem][1])}@`,
                             `${this.formatStr(singular[caseItem][2])}@`,
-                        );
-                        break;
+                        )
+                        break
                     case 'acc':
                         tableRow.push(
                             `${this.formatStr(singular[caseItem][0].split(' / ')[0])}@`,
                             `${this.formatStr(singular[caseItem][0].split(' / ')[1])}@`,
                             `${this.formatStr(singular[caseItem][1])}@`,
                             `${this.formatStr(singular[caseItem][2])}@`,
-                        );
-                        break;
+                        )
+                        break
                     default:
                         tableRow.push(
                             `${this.formatStr(singular[caseItem][0])}@w=3`,
                             `${this.formatStr(singular[caseItem][1])}@`,
-                        );
-                        break;
+                        )
+                        break
                 }
-                table.push(tableRow);
+                table.push(tableRow)
             }
-        });
+        })
 
-        return table;
+        return table
     }
 
     private getAdjectivePluralCasesTable(plural) {
@@ -526,12 +525,12 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${t('masculineAnimate')}@b`,
                 `${t('masculineInanimate')}@b`,
             ],
-        ];
+        ]
         this.props.orderOfCases.forEach((caseItem) => {
             if (caseItem in plural) {
                 const tableRow = [
                     `${t(`case${caseItem[0].toUpperCase()}${caseItem.slice(1)}`)}@b@${this.formatStr(getCaseTips(caseItem, 'adjectivePlural'))}`,
-                ];
+                ]
                 switch (caseItem) {
                     case 'nom':
                     case 'acc':
@@ -539,82 +538,82 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                             `${this.formatStr(plural[caseItem][0].split(' / ')[0])}@`,
                             `${this.formatStr(plural[caseItem][0].split(' / ')[1])}@`,
                             `${this.formatStr(plural[caseItem][1])}@`,
-                        );
-                        break;
+                        )
+                        break
                     default:
                         tableRow.push(
                             `${this.formatStr(plural[caseItem][0])}@w=3`,
-                        );
-                        break;
+                        )
+                        break
                 }
-                table.push(tableRow);
+                table.push(tableRow)
             }
-        });
+        })
 
-        return table;
+        return table
     }
 
     private renderNumeralDetails(word, details) {
-        const numeralType = getNumeralType(details);
-        const numeralParadigm = declensionNumeral(word, numeralType);
+        const numeralType = getNumeralType(details)
+        const numeralParadigm = declensionNumeral(word, numeralType)
         if (numeralParadigm === null) {
             return (
                 <div>
                     <Text>
-                        {`No data for declination this word`}
+                        {'No data for declination this word'}
                     </Text>
                 </div>
-            );
+            )
         }
 
         if (numeralParadigm.type === 'noun') {
-            const tableDataCases = this.getSimpleCasesTable(numeralParadigm);
+            const tableDataCases = this.getSimpleCasesTable(numeralParadigm)
 
-            return <Table data={tableDataCases}/>;
+            return <Table data={tableDataCases}/>
         }
 
         if (numeralParadigm.type === 'adjective') {
-            const tableDataSingular = this.getAdjectiveSingularCasesTable(numeralParadigm.casesSingular);
-            const tableDataPlural = this.getAdjectivePluralCasesTable(numeralParadigm.casesPlural);
+            const tableDataSingular = this.getAdjectiveSingularCasesTable(numeralParadigm.casesSingular)
+            const tableDataPlural = this.getAdjectivePluralCasesTable(numeralParadigm.casesPlural)
 
             return (
                 <>
                     <Table key={0} data={tableDataSingular}/>
                     <Table key={1} data={tableDataPlural}/>
                 </>
-            );
+            )
         }
     }
 
     private renderPronounDetails(word, details) {
-        const pronounType = getPronounType(details);
-        const pronounParadigm = declensionPronoun(word, pronounType);
+        const pronounType = getPronounType(details)
+        const pronounParadigm = declensionPronoun(word, pronounType)
         if (pronounParadigm === null) {
             return (
                 <div>
                     <Text>
-                        {`No data for declination this word`}
+                        {'No data for declination this word'}
                     </Text>
                 </div>
-            );
+            )
         }
 
         if (pronounParadigm.type === 'noun') {
-            const tableDataCases = this.getSimpleCasesTable(pronounParadigm);
+            const tableDataCases = this.getSimpleCasesTable(pronounParadigm)
 
-            return <Table data={tableDataCases}/>;
+            return <Table data={tableDataCases}/>
         }
 
         if (pronounParadigm.type === 'adjective') {
-            const tableDataSingular = this.getAdjectiveSingularCasesTable(pronounParadigm.casesSingular);
-            const tableDataPlural = this.getAdjectivePluralCasesTable(pronounParadigm.casesPlural);
+            const tableDataSingular = this.getAdjectiveSingularCasesTable(pronounParadigm.casesSingular)
+            const tableDataPlural = this.getAdjectivePluralCasesTable(pronounParadigm.casesPlural)
 
             return (
                 <>
                     <Table key={0} data={tableDataSingular}/>
                     <Table key={1} data={tableDataPlural}/>
                 </>
-            );
+            )
         }
     }
 }
@@ -623,7 +622,7 @@ function mapDispatchToProps(dispatch) {
     return {
         close: () => dispatch(hideModalDialog()),
         setAlphabetType: (type) => dispatch(setAlphabetTypeAction(type)),
-    };
+    }
 }
 
 function mapStateToProps({
@@ -634,7 +633,7 @@ function mapStateToProps({
     interfaceLang,
     orderOfCases,
 }: IMainState) {
-    const { word, add, details } = modalDialog.data;
+    const { word, add, details } = modalDialog.data
 
     return {
         word,
@@ -645,7 +644,7 @@ function mapStateToProps({
         flavorisationType,
         interfaceLang,
         orderOfCases,
-    };
+    }
 }
 
-export const DetailModal = connect(mapStateToProps, mapDispatchToProps)(DetailModalInternal as any);
+export const DetailModal = connect(mapStateToProps, mapDispatchToProps)(DetailModalInternal as any)

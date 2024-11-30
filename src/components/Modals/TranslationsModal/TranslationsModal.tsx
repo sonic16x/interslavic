@@ -1,66 +1,70 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { addLangs, langs } from 'consts';
+import { addLangs, langs } from 'consts'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { hideModalDialog } from 'actions';
+import { hideModalDialog } from 'actions'
 
-import { Dictionary } from 'services/dictionary';
+import { Dictionary } from 'services'
 
-import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
-import { useInterfaceLang } from 'hooks/useInterfaceLang';
-import { useModalDialog } from 'hooks/useModalDialog';
-import { useResults } from 'hooks/useResults';
-import { getCyrillic } from 'utils/getCyrillic';
-import { getLatin } from 'utils/getLatin';
-import { getWordStatus } from "utils/getWordStatus";
-import { findIntelligibilityIssues } from "utils/intelligibilityIssues";
+import {
+    useDictionaryLanguages,
+    useInterfaceLang,
+    useModalDialog,
+    useResults,
+} from 'hooks'
+import {
+    findIntelligibilityIssues,
+    getCyrillic,
+    getLatin,
+    getWordStatus,
+} from 'utils'
 
-import { Table } from 'components/Table';
+import { Table } from 'components'
 
-import './TranslationsModal.scss';
+import './TranslationsModal.scss'
 
 function renderTranslate(str: string): string {
     if (str && str[0] === '!') {
-        return `🤖 {${str.slice(1)}}[s]@ts;`;
+        return `🤖 {${str.slice(1)}}[s]@ts;`
     }
 
-    return `${str}@ts`;
+    return `${str}@ts`
 }
 
 export const TranslationsModal =
     () => {
-        const results = useResults();
-        const dispatch = useDispatch();
-        const modalDialog = useModalDialog();
-        const dictionaryLanguages = useDictionaryLanguages();
-        useInterfaceLang();
+        const results = useResults()
+        const dispatch = useDispatch()
+        const modalDialog = useModalDialog()
+        const dictionaryLanguages = useDictionaryLanguages()
+        useInterfaceLang()
 
-        const item = results[modalDialog.data.index];
+        const item = results[modalDialog.data.index]
 
         const onClick = useCallback(() => {
-            dispatch(hideModalDialog());
-        }, [dispatch]);
+            dispatch(hideModalDialog())
+        }, [dispatch])
 
         if (!item) {
-            return null;
+            return null
         }
 
-        const addLangsFiltered = addLangs.filter((lang) => dictionaryLanguages.includes(lang));
+        const addLangsFiltered = addLangs.filter((lang) => dictionaryLanguages.includes(lang))
 
         const allLangs = [
             'isv',
             'en',
             ...langs,
             ...addLangsFiltered,
-        ];
+        ]
 
-        const intelligibility = Dictionary.getField(item.raw, 'intelligibility');
-        const marks = findIntelligibilityIssues(intelligibility);
+        const intelligibility = Dictionary.getField(item.raw, 'intelligibility')
+        const marks = findIntelligibilityIssues(intelligibility)
         const tableData = allLangs.reduce((arr, lang) => {
-            const translate = Dictionary.getField(item.raw, lang).toString();
+            const translate = Dictionary.getField(item.raw, lang).toString()
 
             if (lang === 'isv') {
                 return [
@@ -77,9 +81,9 @@ export const TranslationsModal =
                         `${getCyrillic(item.isv, '3')}@ts`,
                     ],
                     [
-                        `@w=2;S`,
+                        '@w=2;S',
                     ],
-                ];
+                ]
             }
 
             return [
@@ -91,20 +95,20 @@ export const TranslationsModal =
                 (
                     (lang === 'bg' && addLangsFiltered.length) ? (
                         [
-                            `@w=2;S`,
+                            '@w=2;S',
                         ]
                     ) : ([])
                 ),
-            ];
-        }, []);
+            ]
+        }, [])
 
-        const hasMarks = new Set(Object.values(marks).filter(Boolean)).size > 0;
+        const hasMarks = new Set(Object.values(marks).filter(Boolean)).size > 0
         const wordStatus = getWordStatus(item)
         const extraLegend = hasMarks && (<>
             <br/>
                 ⚠️ – {t('translationsLegendIntelligibilityWarning')}.<br/>
                 🚫 – {t('translationsLegendIntelligibilityNone')}.<br/>
-        </>);
+        </>)
 
         return (
             <>
@@ -135,5 +139,5 @@ export const TranslationsModal =
                     </div>
                 </footer>
             </>
-        );
-    };
+        )
+    }

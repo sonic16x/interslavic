@@ -1,14 +1,12 @@
-import { createRef,PureComponent } from 'react';
+import { createRef,PureComponent } from 'react'
 
-import { getCaseTips } from 'utils/getCaseTips';
+import { getCaseTips } from 'utils'
 
-import { Card } from 'components/Card';
-import { Table } from 'components/Table';
-import { Text } from 'components/Text';
+import { Card, Table, Text } from 'components'
 
-import './Grammar.scss';
+import './Grammar.scss'
 
-import tables from './tables.json';
+import tables from './tables.json'
 
 const titles = {
     abeceda: 'Abeceda',
@@ -28,26 +26,26 @@ const titles = {
     glagolica: 'Glagolica',
     primetky: 'Primětky (*)',
     podrobnosti: 'Podrobne pravila (linky)',
-};
+}
 
-
+/* eslint-disable max-len */
 export default class Grammar extends PureComponent {
-    private containerRef;
-    private activeId;
-    private userEvent;
+    private containerRef
+    private activeId
+    private userEvent
     constructor(props) {
-        super(props);
-        this.activeId = 'abeceda';
-        this.containerRef = createRef();
-        this.onScroll = this.onScroll.bind(this);
-        this.onWheel = this.onWheel.bind(this);
+        super(props)
+        this.activeId = 'abeceda'
+        this.containerRef = createRef()
+        this.onScroll = this.onScroll.bind(this)
+        this.onWheel = this.onWheel.bind(this)
     }
     private addCaseTips = (type: string) => (row: any[]) => {
-        const elemArr = row[0].split('@');
-        if(['N','A','G','L','I','D','V'].includes(elemArr[0])) elemArr[2] = getCaseTips(elemArr[0],type);
-        row[0] = elemArr.join('@');
+        const elemArr = row[0].split('@')
+        if(['N','A','G','L','I','D','V'].includes(elemArr[0])) elemArr[2] = getCaseTips(elemArr[0],type)
+        row[0] = elemArr.join('@')
         
-        return row;
+        return row
     }
     public render() {
         return (
@@ -84,23 +82,23 @@ export default class Grammar extends PureComponent {
                                 {Napriměr:}[i] {Gre{k}[k]→gre{č}[k]sky}[B], {pra{h}[k]→pra{š}[k]ny}[B], {Bo{g}[k]→bo{ž}[k]sky}[B], {pro{s}[k]{iti}[p]→pro{š}[k]{u}[p]}[B]`}
                         </Text>
                         <Text indent="0.5rem">
-                            {`{1.}[B,m] Staroslovjanska bukva {ѣ}[k,B] ({ě}[g,B]/{є}[g,B]) se može pisati bez diakritiky kako {ie}[g,B] ili prosto {e}[g,B]. Podobno {č}[k,B], {š}[k,B], {ž}[k,B] se mogut pisati kako {cz}[k,B], {sz}[k,B], {zs}[k,B].`}
+                            {'{1.}[B,m] Staroslovjanska bukva {ѣ}[k,B] ({ě}[g,B]/{є}[g,B]) se može pisati bez diakritiky kako {ie}[g,B] ili prosto {e}[g,B]. Podobno {č}[k,B], {š}[k,B], {ž}[k,B] se mogut pisati kako {cz}[k,B], {sz}[k,B], {zs}[k,B].'}
                         </Text>
                         <Text indent="0.5rem">
-                            {`{2.}[B,m] Staroslovjanska bukva {щ}[k,B] jest na početkah slov kako {šč}[k,B], ale potom kako {č}[k,B] ({Napriměr:}[i] {ščit}[k,B], {pomoč}[k,B], {občina}[k,B], {svěča}[k,B])`}
+                            {'{2.}[B,m] Staroslovjanska bukva {щ}[k,B] jest na početkah slov kako {šč}[k,B], ale potom kako {č}[k,B] ({Napriměr:}[i] {ščit}[k,B], {pomoč}[k,B], {občina}[k,B], {svěča}[k,B])'}
                         </Text>
                         <Text indent="0.5rem">
-                            {`{3.}[B,m] V kirilici možno koristiti ligatury: {шч}[k,B] → {щ}[k,B], {ју}[k,B] → {ю}[k,B], {ја}[k,B] → {я}[k,B]`}
+                            {'{3.}[B,m] V kirilici možno koristiti ligatury: {шч}[k,B] → {щ}[k,B], {ју}[k,B] → {ю}[k,B], {ја}[k,B] → {я}[k,B]'}
                         </Text>
                         <Text>
-                            {`Medžuslovjansky jezyk drži morfologično pravopisanje. Koren slov se piše ravno v vsih padežah. Anglijske, latinske i grečske slova imajut svoje originalno pravopisanje ale s medžuslovjanskymi zakončenjami ({arhitektur}[k,B]{a}[k], {biolog}[k,B]{ija}[k] ...).`}
+                            {'Medžuslovjansky jezyk drži morfologično pravopisanje. Koren slov se piše ravno v vsih padežah. Anglijske, latinske i grečske slova imajut svoje originalno pravopisanje ale s medžuslovjanskymi zakončenjami ({arhitektur}[k,B]{a}[k], {biolog}[k,B]{ija}[k] ...).'}
                         </Text>
                     </Card>
                     <Card title={titles.imeniky} id="imeniky">
                         <Table data={tables.tableBrat.map(this.addCaseTips('noun'))} />
                         <Table data={tables.tableMuz.map(this.addCaseTips('noun'))} />
                         <Text>
-                            {`Mužske objekty, ktore aktivno dělajut někaky proces, sut {žive}[i] (od pytanja KTO?) i po tutoj pričině imajut akuzativ ravny s genitivom.`}
+                            {'Mužske objekty, ktore aktivno dělajut někaky proces, sut {žive}[i] (od pytanja KTO?) i po tutoj pričině imajut akuzativ ravny s genitivom.'}
                         </Text>
                         <Text>
                             {`Ostale objekty sut {nežive}[i] (od pytanja ČTO) i imajut v jednině akuzativ ravny s nominativom.
@@ -117,10 +115,10 @@ export default class Grammar extends PureComponent {
                         <Table data={tables.tableZena.map(this.addCaseTips('noun'))} />
                         <Table data={tables.tableKost.map(this.addCaseTips('noun'))} />
                         <Text>
-                            {`Vse čislovniky zakončene na soglasky –{T}[B] i –{Č}[B] ({PET}[B], {ŠEST}[B], ... {DESET}[B], {TRINADSET}[B], ... {DVADESET}[B], {TYSEČ}[B]) imajut klonjenje kako {KOST}[B] v jednině: {šest, šest-{i}[b], šest-j{u}[p]}[B] ...`}
+                            {'Vse čislovniky zakončene na soglasky –{T}[B] i –{Č}[B] ({PET}[B], {ŠEST}[B], ... {DESET}[B], {TRINADSET}[B], ... {DVADESET}[B], {TYSEČ}[B]) imajut klonjenje kako {KOST}[B] v jednině: {šest, šest-{i}[b], šest-j{u}[p]}[B] ...'}
                         </Text>
                         <Text>
-                            {`Dvojinne slova {OKO}[B], {UHO}[B] imajut dvojinu ravnu s množinoju vzora {KOST}[B] s palatalizovanym korenem: {oč-{i}[b], oč-{ij}[b], oč-{a}[r]m}[B] ... {uš-{i}[b], uš-{i}[b]j, uš-{a}[r]m}[B] ... kde {čj,šj,žj → č,š,ž}[B].`}
+                            {'Dvojinne slova {OKO}[B], {UHO}[B] imajut dvojinu ravnu s množinoju vzora {KOST}[B] s palatalizovanym korenem: {oč-{i}[b], oč-{ij}[b], oč-{a}[r]m}[B] ... {uš-{i}[b], uš-{i}[b]j, uš-{a}[r]m}[B] ... kde {čj,šj,žj → č,š,ž}[B].'}
                         </Text>
                         <Table data={tables.tableSelo.map(this.addCaseTips('noun'))} />
                         <Table data={tables.tableDen.map(this.addCaseTips('noun'))} />
@@ -152,7 +150,7 @@ export default class Grammar extends PureComponent {
                         <br/>
                         <Table data={tables.tableGradacija} />
                         <Text>
-                            {`{skračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]`}
+                            {'{skračenje: tvrd-{ěj}[s]-ši→tvrd-ši krat-{čej}[s]-ši→krat-ši bogat-{ěj}[s]-ši→bogat-ši}[B]'}
                         </Text>
                     </Card>
                     <Card title={titles.glagoly} id="glagoly">
@@ -184,7 +182,7 @@ export default class Grammar extends PureComponent {
                         <Table data={tables.tableByti} />
                         <br/>
                         <Text>
-                            {`{Neredne glagoly VĚDĚTI, DATI, IDTI, JESTI}[k,B]`}
+                            {'{Neredne glagoly VĚDĚTI, DATI, IDTI, JESTI}[k,B]'}
                         </Text>
                         <Text>
                             {`{věděti}[B], věděnje – věm, věš, vě, věmo, věte, vědut ... věděl, věděh ... vědi!, vědite!
@@ -256,60 +254,60 @@ export default class Grammar extends PureComponent {
                     </Card>
                     <Card title={titles.primetky} id="primetky">
                         <Text>
-                            {`1. Dvojina je shranila se nyně jedino v slovenskom i lužičskyh jezykah, tomu vměsto tutoj formy jest rekomendovano koristati množinu.`}
+                            {'1. Dvojina je shranila se nyně jedino v slovenskom i lužičskyh jezykah, tomu vměsto tutoj formy jest rekomendovano koristati množinu.'}
                         </Text>
                         <Text>
-                            {`2. Prosto prošlo vrěme (aorist, imperfect) je shranilo se jedino v česti slovjanskyh jezykov, tomu vměsto njego jest rekomendovano koristati glagol byti + l-particip (pisah → jesm pisal).`}
+                            {'2. Prosto prošlo vrěme (aorist, imperfect) je shranilo se jedino v česti slovjanskyh jezykov, tomu vměsto njego jest rekomendovano koristati glagol byti + l-particip (pisah → jesm pisal).'}
                         </Text>
                     </Card>
                     <Card title={titles.podrobnosti} id="podrobnosti">
                         <Text>
-                            {`Pri stvorjenju tutoj stranice jest upotrěbjeny dokument «Medžuslovjansky jezyk. Abeceda i pravopisanie» (Januar 2018): <a href="http://interslavic-language.org/doc/ns-pregled.pdf" target="_blank">[PDF]</a>`}
+                            {'Pri stvorjenju tutoj stranice jest upotrěbjeny dokument «Medžuslovjansky jezyk. Abeceda i pravopisanie» (Januar 2018): <a href="http://interslavic-language.org/doc/ns-pregled.pdf" target="_blank">[PDF]</a>'}
                         </Text>
                         <Text>
-                            {`Podrobne pravila pravopisanja je možno najdti na oficialnyh sajtah:`}
+                            {'Podrobne pravila pravopisanja je možno najdti na oficialnyh sajtah:'}
                         </Text>
                         <Text>
-                            {`● <a href="http://www.neoslavonic.org" target="_blank">http://www.neoslavonic.org</a>`}
+                            {'● <a href="http://www.neoslavonic.org" target="_blank">http://www.neoslavonic.org</a>'}
                         </Text>
                         <Text>
-                            {`● <a href="http://steen.free.fr/interslavic/grammar.html" target="_blank">http://steen.free.fr/interslavic/grammar.html</a>`}
+                            {'● <a href="http://steen.free.fr/interslavic/grammar.html" target="_blank">http://steen.free.fr/interslavic/grammar.html</a>'}
                         </Text>
                     </Card>
                 </div>
             </div>
-        );
+        )
     }
     private onWheel() {
-        this.userEvent = true;
+        this.userEvent = true
     }
     private onScroll() {
-        const scrollPosition = this.containerRef.current.scrollTop;
-        let activeId;
-        let minDistance = Number.MAX_SAFE_INTEGER;
-        const diff = this.containerRef.current.offsetTop + 100;
-        const distance = {};
-        const titleElements = Object.keys(titles).map((id) => document.getElementById(id));
+        const scrollPosition = this.containerRef.current.scrollTop
+        let activeId
+        let minDistance = Number.MAX_SAFE_INTEGER
+        const diff = this.containerRef.current.offsetTop + 100
+        const distance = {}
+        const titleElements = Object.keys(titles).map((id) => document.getElementById(id))
         titleElements.forEach((item) => {
-            const id = item.getAttribute('id');
-            distance[id] = Math.abs((item.offsetTop - diff) - scrollPosition);
-        });
+            const id = item.getAttribute('id')
+            distance[id] = Math.abs((item.offsetTop - diff) - scrollPosition)
+        })
         for (const id in distance) {
             if (distance[id] < minDistance) {
-                minDistance = distance[id];
-                activeId = id;
+                minDistance = distance[id]
+                activeId = id
             }
         }
         if (activeId !== this.activeId) {
-            document.getElementById(this.getLinkId(this.activeId)).classList.remove('selected');
-            document.getElementById(this.getLinkId(activeId)).classList.add('selected');
-            this.activeId = activeId;
+            document.getElementById(this.getLinkId(this.activeId)).classList.remove('selected')
+            document.getElementById(this.getLinkId(activeId)).classList.add('selected')
+            this.activeId = activeId
             if (this.userEvent) {
                 // location.hash = activeId;
             }
         }
     }
     private getLinkId(id) {
-        return `link_${id}`;
+        return `link_${id}`
     }
 }

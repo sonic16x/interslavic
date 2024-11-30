@@ -1,4 +1,4 @@
-const caseList = ['+Nom','+Gen','+Dat','+Acc','+Ins','+Loc','+Voc'];
+const caseList = ['+Nom','+Gen','+Dat','+Acc','+Ins','+Loc','+Voc']
 
 export function convertCases(caseInfoRaw: string): string {
     const caseInfo = caseInfoRaw
@@ -9,7 +9,7 @@ export function convertCases(caseInfoRaw: string): string {
         .replace('+5', '+Ins')
         .replace('+6', '+Loc')
         .replace('+7', '+Voc')
-        .replace('.', ''); 
+        .replace('.', '') 
 
-    return caseList.includes(caseInfo) ? caseInfo : '';
+    return caseList.includes(caseInfo) ? caseInfo : ''
 }

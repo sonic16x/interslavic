@@ -1,1 +1,1 @@
-export * from './parseI18nString';
+export * from './parseI18nString'

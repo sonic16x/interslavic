@@ -13,7 +13,7 @@
     overflow: auto;
     box-sizing: border-box;
     padding: var(--gap-size-s);
-    border: 1px solid var(--input-border-color);
+    border: var(--border);
     border-radius: var(--border-radius-s);
     appearance: none;
     background: var(--light);

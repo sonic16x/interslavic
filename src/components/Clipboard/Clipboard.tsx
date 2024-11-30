@@ -1,11 +1,11 @@
-import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
+import classNames from 'classnames'
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { setNotificationAction } from 'actions';
+import { setNotificationAction } from 'actions'
 
-import './Clipboard.scss';
+import './Clipboard.scss'
 
 interface IClipboardProps {
     str: string;
@@ -14,13 +14,13 @@ interface IClipboardProps {
 
 export const Clipboard =
     ({ str, className }: IClipboardProps) => {
-        const dispatch = useDispatch();
+        const dispatch = useDispatch()
         const onClick = () => {
             navigator.clipboard.writeText(str).then(() => {
-                const notificationText = t('clipboardCopyNotification', { str });
-                dispatch(setNotificationAction({ text: notificationText }));
-            });
-        };
+                const notificationText = t('clipboardCopyNotification', { str })
+                dispatch(setNotificationAction({ text: notificationText }))
+            })
+        }
 
         return (
             <span
@@ -29,5 +29,5 @@ export const Clipboard =
             >
                 {str}
             </span>
-        );
-    };
+        )
+    }

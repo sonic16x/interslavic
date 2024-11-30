@@ -1,3 +1,3 @@
 export function isOnline() {
-    return navigator.onLine;
+    return navigator.onLine
 }

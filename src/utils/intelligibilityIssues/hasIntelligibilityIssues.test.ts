@@ -1,9 +1,9 @@
-import { hasIntelligibilityIssues } from './hasIntelligibilityIssues';
+import { hasIntelligibilityIssues } from './hasIntelligibilityIssues'
 
 describe('hasIntelligibilityIssues', () => {
     test('should return false for null', () => {
-        expect(hasIntelligibilityIssues(null)).toBe(false);
-    });
+        expect(hasIntelligibilityIssues(null)).toBe(false)
+    })
 
     test.each([
         [true, 0.0, 0.0, 0.0],
@@ -39,6 +39,6 @@ describe('hasIntelligibilityIssues', () => {
         [false, 2, 2, 2],
         // endregion
     ])('should return %s for [%f, %f, %f]', (expected, western, southern, eastern) => {
-        expect(hasIntelligibilityIssues([western, southern, eastern])).toBe(expected);
-    });
-});
+        expect(hasIntelligibilityIssues([western, southern, eastern])).toBe(expected)
+    })
+})

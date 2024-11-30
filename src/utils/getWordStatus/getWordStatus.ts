@@ -1,6 +1,6 @@
-import { ITranslateResult } from "services/dictionary";
+import { ITranslateResult } from 'services'
 
-import { estimateIntelligibility, hasIntelligibilityIssues } from "utils/intelligibilityIssues";
+import { estimateIntelligibility, hasIntelligibilityIssues } from 'utils'
 
 interface IWordStatus {
     icon: string;
@@ -8,7 +8,7 @@ interface IWordStatus {
 }
 
 export const getWordStatus = (item: ITranslateResult): IWordStatus | undefined => {
-    const intelligibilityVector = estimateIntelligibility(item.intelligibility);
+    const intelligibilityVector = estimateIntelligibility(item.intelligibility)
 
     if (item.remove) {
         return {

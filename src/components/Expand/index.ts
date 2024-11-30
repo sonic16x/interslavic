@@ -1,1 +1,1 @@
-export * from './Expand';
+export * from './Expand'

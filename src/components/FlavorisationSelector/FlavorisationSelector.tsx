@@ -1,15 +1,15 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { flavorisationTypeAction } from 'actions';
+import { flavorisationTypeAction } from 'actions'
 
-import { useFlavorisationType } from 'hooks/useFlavorisationType';
+import { useFlavorisationType } from 'hooks'
 
-import { Selector } from 'components/Selector';
+import { Selector } from 'components'
 
-import './FlavorisationSelector.scss';
+import './FlavorisationSelector.scss'
 
 const flavorisationTypes = [
     {
@@ -32,19 +32,19 @@ const flavorisationTypes = [
         name: 'flavSouthern',
         value: 'J',
     },
-];
+]
 
 export const FlavorisationSelector =
     () => {
-        const dispatch = useDispatch();
-        const flavorisationType = useFlavorisationType();
+        const dispatch = useDispatch()
+        const flavorisationType = useFlavorisationType()
         const options = flavorisationTypes.map(({ name, value }) => ({
             name: t(name),
             value,
-        }));
+        }))
         const onSelect = useCallback((type) => {
-            dispatch(flavorisationTypeAction(type));
-        }, [dispatch]);
+            dispatch(flavorisationTypeAction(type))
+        }, [dispatch])
 
         return (
             <Selector
@@ -54,5 +54,5 @@ export const FlavorisationSelector =
                 value={flavorisationType}
                 label={t('flavorisation')}
             />
-        );
-    };
+        )
+    }

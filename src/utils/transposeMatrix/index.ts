@@ -1,1 +1,1 @@
-export * from './transposeMatrix';
+export * from './transposeMatrix'

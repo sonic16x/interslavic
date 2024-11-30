@@ -1,1 +1,1 @@
-export * from './markFluentVowel';
+export * from './markFluentVowel'

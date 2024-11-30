@@ -1,1 +1,1 @@
-export * from './isScrollBarVisible';
+export * from './isScrollBarVisible'

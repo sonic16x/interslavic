@@ -1,19 +1,19 @@
-import { getPartOfSpeech } from 'utils/wordDetails';
+import { getPartOfSpeech } from 'utils'
 
 export function wordHasForms(isv: string, details: string) {
-    const pos = getPartOfSpeech(details);
+    const pos = getPartOfSpeech(details)
 
     switch (pos) {
         case 'noun':
         case 'numeral':
         case 'pronoun':
             if (isv.includes(' ') && isv.match(/[^,] [^\[]/)) {
-                return false;
+                return false
             }
         case 'adjective':
         case 'verb':
-            return true;
+            return true
         default:
-            return false;
+            return false
     }
 }

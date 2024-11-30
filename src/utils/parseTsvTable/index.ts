@@ -1,1 +1,1 @@
-export * from './parseTsvTable';
+export * from './parseTsvTable'

@@ -1,10 +1,8 @@
-import { Component } from 'react';
+import { Component } from 'react'
 
-import { Clipboard } from 'components/Clipboard';
-import { parseStr } from 'components/Text';
-import { Tips } from 'components/Tips';
+import { Clipboard, parseStr, Tips } from 'components'
 
-import './Table.scss';
+import './Table.scss'
 
 interface ITableProps {
     data: string[][];
@@ -16,30 +14,30 @@ export class Table extends Component<ITableProps> {
             <table className="table">
                 <tbody>{this.renderBody()}</tbody>
             </table>
-        );
+        )
     }
 
     private parseItem(raw): { str: string, attrs: any, tips: string } {
         // use negative lookahead for @] to avoid splitting by @ inside []
-        let [str, rawAttrs, tips] = raw.split(/@(?!])/);
-        str = parseStr(str);
-        rawAttrs ??= '';
-        tips ??= '';
+        let [str, rawAttrs, tips] = raw.split(/@(?!])/)
+        str = parseStr(str)
+        rawAttrs ??= ''
+        tips ??= ''
 
-        const attrs = {};
+        const attrs = {}
         rawAttrs.split(';').forEach((rawExp) => {
-            const exp = rawExp.split('=');
+            const exp = rawExp.split('=')
             if (exp.length === 1) {
-                exp.push(true);
+                exp.push(true)
             }
-            attrs[exp[0]] = exp[1];
-        });
+            attrs[exp[0]] = exp[1]
+        })
 
         return {
             str,
             attrs,
             tips,
-        };
+        }
     }
 
     private getClassName(attrs: any) {
@@ -64,7 +62,7 @@ export class Table extends Component<ITableProps> {
                         >
                             <Tips str={str} tips={tips}/>
                         </td>
-                    );
+                    )
                 } else if (str.includes('<') || str.includes('&')) {
                     return (
                         <td
@@ -75,7 +73,7 @@ export class Table extends Component<ITableProps> {
                             style={{ width: attrs.sw }}
                             dangerouslySetInnerHTML={{ __html: str }}
                         />
-                    );
+                    )
                 } else {
                     return (
                         <td
@@ -87,12 +85,12 @@ export class Table extends Component<ITableProps> {
                         >
                             <Clipboard str={str}/>
                         </td>
-                    );
+                    )
                 }
-            });
+            })
     }
 
     private renderBody() {
-        return this.props.data.map((row, i) => <tr key={i}>{this.renderRow(row)}</tr>);
+        return this.props.data.map((row, i) => <tr key={i}>{this.renderRow(row)}</tr>)
     }
 }

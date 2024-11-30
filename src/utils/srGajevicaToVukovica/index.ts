@@ -1,1 +1,1 @@
-export * from './srGajevicaToVukovica';
+export * from './srGajevicaToVukovica'

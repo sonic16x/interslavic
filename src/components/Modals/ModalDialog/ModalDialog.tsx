@@ -1,59 +1,59 @@
-import classNames from 'classnames';
-import { useCallback, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import classNames from 'classnames'
+import { useCallback, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { hideModalDialog } from 'actions';
-import { MODAL_DIALOG_TYPES } from 'reducers';
+import { hideModalDialog } from 'actions'
+import { MODAL_DIALOG_TYPES } from 'reducers'
 
-import { useModalDialog } from 'hooks/useModalDialog';
+import { useModalDialog } from 'hooks'
 
-import { DetailModal } from 'components/Modals/DetailModal';
-import { TranslationsModal } from 'components/Modals/TranslationsModal';
-import { WordErrorModal } from 'components/Modals/WordErrorModal';
+import { DetailModal } from 'components/Modals/DetailModal'
+import { TranslationsModal } from 'components/Modals/TranslationsModal'
+import { WordErrorModal } from 'components/Modals/WordErrorModal'
 
-import './ModalDialog.scss';
+import './ModalDialog.scss'
 
 function getModalDialog(type: MODAL_DIALOG_TYPES) {
     switch (type) {
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION:
-            return <TranslationsModal />;
+            return <TranslationsModal />
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS:
-            return <DetailModal />;
+            return <DetailModal />
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR:
-            return <WordErrorModal />;
+            return <WordErrorModal />
         default:
-            return null;
+            return null
     }
 }
 
 export const ModalDialog =
     () => {
-        const { type, show } = useModalDialog();
-        const content = show ? getModalDialog(type) : null;
-        const dispatch = useDispatch();
+        const { type, show } = useModalDialog()
+        const content = show ? getModalDialog(type) : null
+        const dispatch = useDispatch()
         const onKeyPress = useCallback(({ code }) => {
             if (code === 'Escape') {
-                dispatch(hideModalDialog());
+                dispatch(hideModalDialog())
             }
-        }, [dispatch]);
+        }, [dispatch])
         const onBackdropClick = useCallback(() => {
-            dispatch(hideModalDialog());
-        }, [dispatch]);
+            dispatch(hideModalDialog())
+        }, [dispatch])
 
         useEffect(() => {
-            window.addEventListener('keyup', onKeyPress);
+            window.addEventListener('keyup', onKeyPress)
 
             return () => {
-                window.removeEventListener('keyup', onKeyPress);
-            };
-        }, [onKeyPress]);
+                window.removeEventListener('keyup', onKeyPress)
+            }
+        }, [onKeyPress])
 
         return (
             <div className={classNames('modal-dialog-container', { show })}>
                 <div className="modal-dialog-back" onClick={onBackdropClick}/>
-                <div className="modal-dialog">
+                <dialog className="modal-dialog">
                     {content}
-                </div>
+                </dialog>
             </div>
-        );
-    };
+        )
+    }

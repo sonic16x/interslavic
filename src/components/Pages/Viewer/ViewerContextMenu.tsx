@@ -1,18 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { setNotificationAction, showModalDialog } from 'actions';
-import { MODAL_DIALOG_TYPES } from 'reducers';
+import { setNotificationAction, showModalDialog } from 'actions'
+import { MODAL_DIALOG_TYPES } from 'reducers'
 
-import { getPartOfSpeech } from 'utils/wordDetails';
+import { getPartOfSpeech } from 'utils'
 
-import { Button } from 'components/Button';
+import { Button } from 'components'
 
-import './ViewerContextMenu.scss';
+import './ViewerContextMenu.scss'
 
-import ContextMenuCloseIcon from './images/context-menu-close-icon.svg';
+import ContextMenuCloseIcon from './images/context-menu-close-icon.svg'
 
 export interface IViewerContextMenu {
     buttonRef: HTMLElement;
@@ -27,64 +27,64 @@ export interface IViewerContextMenu {
 }
 
 export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsData }: IViewerContextMenu) => {
-    const dispatch = useDispatch();
-    const [pos, setPos] = useState<{left: number, top: number}>(null);
-    const contextMenuRef = useRef<HTMLDivElement>();
+    const dispatch = useDispatch()
+    const [pos, setPos] = useState<{left: number, top: number}>(null)
+    const contextMenuRef = useRef<HTMLDivElement>()
 
     useEffect(() => {
         if (buttonRef && contextMenuRef && contextMenuRef.current) {
-            const contextBox = contextMenuRef.current.getBoundingClientRect();
-            const box = buttonRef.getBoundingClientRect();
-            const windowHeight = document.body.clientHeight;
-            const isBottom = box.y + box.height + contextBox.height > windowHeight;
+            const contextBox = contextMenuRef.current.getBoundingClientRect()
+            const box = buttonRef.getBoundingClientRect()
+            const windowHeight = document.body.clientHeight
+            const isBottom = box.y + box.height + contextBox.height > windowHeight
 
             setPos({
                 left: box.x,
                 top: isBottom ? box.y - contextBox.height - box.height * 2.1 : box.y - box.height,
-            });
+            })
         }
-    }, [buttonRef, contextMenuRef]);
+    }, [buttonRef, contextMenuRef])
 
     const onClipboardClick = useCallback(() => {
         navigator.clipboard.writeText(text).then(() => {
             const notificationText = t('clipboardCopyNotification', {
                 str: text,
-            });
-            dispatch(setNotificationAction({ text: notificationText }));
-            onClose();
-        });
-    }, [text, onClose, dispatch]);
+            })
+            dispatch(setNotificationAction({ text: notificationText }))
+            onClose()
+        })
+    }, [text, onClose, dispatch])
 
     const onKeyPress = useCallback(({ code }) => {
         if (code === 'Escape') {
-            onClose();
+            onClose()
         }
-    }, [onClose]);
+    }, [onClose])
 
     const onWindowClick = useCallback((event) => {
         if (!contextMenuRef.current.contains(event.target)) {
-            event.stopPropagation();
-            onClose();
+            event.stopPropagation()
+            onClose()
         }
-    }, [contextMenuRef, onClose]);
+    }, [contextMenuRef, onClose])
 
     useEffect(() => {
-        window.addEventListener('keyup', onKeyPress);
-        window.addEventListener('click', onWindowClick, true);
+        window.addEventListener('keyup', onKeyPress)
+        window.addEventListener('click', onWindowClick, true)
 
         return () => {
-            window.removeEventListener('keyup', onKeyPress);
-            window.removeEventListener('click', onWindowClick, true);
-        };
-    }, [onKeyPress, onWindowClick]);
+            window.removeEventListener('keyup', onKeyPress)
+            window.removeEventListener('click', onWindowClick, true)
+        }
+    }, [onKeyPress, onWindowClick])
 
     const showDetail = useCallback(() => {
         dispatch(showModalDialog({
             type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
             data: formsData,
-        }));
-        onClose();
-    }, [formsData, dispatch, onClose]);
+        }))
+        onClose()
+    }, [formsData, dispatch, onClose])
 
     return (
         <div
@@ -124,5 +124,5 @@ export const ViewerContextMenu = ({ buttonRef, text, googleLink, onClose, formsD
                 </span>
             )}
         </div>
-    );
-};
+    )
+}

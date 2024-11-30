@@ -1,1 +1,1 @@
-export * from './removeExclamationMark';
+export * from './removeExclamationMark'

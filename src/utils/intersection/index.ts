@@ -1,1 +1,1 @@
-export * from './intersection';
+export * from './intersection'

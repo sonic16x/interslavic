@@ -1,1 +1,1 @@
-export * from './FlavorisationSelector';
+export * from './FlavorisationSelector'

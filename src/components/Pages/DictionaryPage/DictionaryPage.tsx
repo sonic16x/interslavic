@@ -1,7 +1,6 @@
-import { Controls } from 'components/Controls';
-import { Results } from 'components/Results';
+import { Controls, Results } from 'components'
 
-import './DictionaryPage.scss';
+import './DictionaryPage.scss'
 
 export const DictionaryPage =
     () => (
@@ -9,4 +8,4 @@ export const DictionaryPage =
             <Controls/>
             <Results/>
         </div>
-    );
+    )

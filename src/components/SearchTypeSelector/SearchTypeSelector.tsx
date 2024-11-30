@@ -1,15 +1,15 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { searchTypeAction } from 'actions';
+import { searchTypeAction } from 'actions'
 
-import { useSearchType } from 'hooks/useSearchType';
+import { useSearchType } from 'hooks'
 
-import { LineSelector } from '../LineSelector';
+import { LineSelector } from '../LineSelector'
 
-import './SearchTypeSelector.scss';
+import './SearchTypeSelector.scss'
 
 const searchTypes = [
     {
@@ -28,19 +28,19 @@ const searchTypes = [
         name: 'searchTypeAny',
         value: 'some',
     },
-];
+]
 
 export const SearchTypeSelector =
     () => {
-        const dispatch = useDispatch();
-        const searchType = useSearchType();
+        const dispatch = useDispatch()
+        const searchType = useSearchType()
         const onSelect = useCallback((searchType) => {
-            dispatch(searchTypeAction(searchType));
-        }, [dispatch]);
+            dispatch(searchTypeAction(searchType))
+        }, [dispatch])
         const options = searchTypes.map((item) => ({
             name: t(item.name),
             value: item.value,
-        }));
+        }))
 
         return (
             <LineSelector
@@ -49,5 +49,5 @@ export const SearchTypeSelector =
                 value={searchType}
                 onSelect={onSelect}
             />
-        );
-    };
+        )
+    }

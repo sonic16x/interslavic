@@ -1,1 +1,1 @@
-export * from './getLatin';
+export * from './getLatin'

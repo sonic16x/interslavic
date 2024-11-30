@@ -1,5 +1,5 @@
-import { Header } from './Header';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Header } from './Header'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     title: 'Components/Header',
@@ -10,13 +10,13 @@ const meta = {
     },
     argTypes: {},
     args: {},
-} satisfies Meta<typeof Header>;
+} satisfies Meta<typeof Header>
 
-export default meta;
+export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
 
     },
-};
+}

@@ -1,1 +1,1 @@
-export { getWordStatus } from './getWordStatus';
+export { getWordStatus } from './getWordStatus'

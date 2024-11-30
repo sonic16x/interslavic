@@ -1,1 +1,1 @@
-export const isMainTable = (tableNumber) => tableNumber === 0;
+export const isMainTable = (tableNumber) => tableNumber === 0

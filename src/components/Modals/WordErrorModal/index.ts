@@ -1,1 +1,1 @@
-export * from './WordErrorModal';
+export * from './WordErrorModal'

@@ -1,1 +1,1 @@
-export * from './getCyrillic';
+export * from './getCyrillic'

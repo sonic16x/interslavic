@@ -1,6 +1,6 @@
-import { Ref, useEffect, useRef, useState } from 'react';
+import { Ref, useEffect, useRef, useState } from 'react'
 
-declare const IntersectionObserver: any;
+declare const IntersectionObserver: any
 
 interface IIntersectHookParams {
     root?: HTMLElement;
@@ -11,34 +11,39 @@ interface IIntersectHookParams {
 
 type IntersectHookResult = [Ref<any>, any];
 
-export function useIntersect({ root = null, rootMargin, threshold = 0, onShown }: IIntersectHookParams): IntersectHookResult {
-    const [entry, updateEntry] = useState({});
-    const [node, setNode] = useState(null);
+export function useIntersect({
+    root = null,
+    rootMargin,
+    threshold = 0,
+    onShown,
+}: IIntersectHookParams): IntersectHookResult {
+    const [entry, updateEntry] = useState({})
+    const [node, setNode] = useState(null)
 
     const observer = useRef(
         new IntersectionObserver(([entry]) => {
-            updateEntry(entry);
+            updateEntry(entry)
             if (entry.intersectionRatio >= threshold) {
-                onShown(entry);
+                onShown(entry)
             }
         }, {
             root,
             rootMargin,
             threshold,
         }),
-    );
+    )
 
     useEffect(
         () => {
-            const { current: currentObserver } = observer;
-            currentObserver.disconnect();
+            const { current: currentObserver } = observer
+            currentObserver.disconnect()
 
-            if (node) { currentObserver.observe(node); }
+            if (node) { currentObserver.observe(node) }
 
-            return () => currentObserver.disconnect();
+            return () => currentObserver.disconnect()
         },
         [node, root, rootMargin, threshold, onShown],
-    );
+    )
 
-    return [setNode, entry];
+    return [setNode, entry]
 }

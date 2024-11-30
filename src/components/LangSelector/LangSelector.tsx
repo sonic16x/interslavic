@@ -1,18 +1,17 @@
-import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
+import classNames from 'classnames'
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { langAction } from 'actions';
+import { langAction } from 'actions'
 
-import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
-import { useLang } from 'hooks/useLang';
+import { useDictionaryLanguages, useLang } from 'hooks'
 
-import { Selector } from 'components/Selector';
+import { Selector } from 'components'
 
-import './LangSelector.scss';
+import './LangSelector.scss'
 
-import DirectionIcon from './images/direction-icon.svg';
+import DirectionIcon from './images/direction-icon.svg'
 
 interface ILangPart {
     dir: string;
@@ -22,20 +21,20 @@ interface ILangPart {
 
 const LangPart =
     ({ lang, dir, onSelect }: ILangPart) => {
-        const langs = useDictionaryLanguages();
+        const langs = useDictionaryLanguages()
 
         if (lang === 'isv') {
             return (
                 <div className="lang-selector__isv">
                     {t('isvLang')}
                 </div>
-            );
+            )
         }
 
         const options = ['en', ...langs].map((value) => ({
             name: t(`${value}Lang`),
             value,
-        }));
+        }))
 
         return (
             <Selector
@@ -45,20 +44,20 @@ const LangPart =
                 value={lang}
                 onSelect={(value: string) => {
                     if (dir === 'from') {
-                        onSelect(value);
+                        onSelect(value)
                     }
                     if (dir === 'to') {
-                        onSelect(value);
+                        onSelect(value)
                     }
                 }}
             />
-        );
-    };
+        )
+    }
 
 export const LangSelector =
     () => {
-        const { from, to } = useLang();
-        const dispatch = useDispatch();
+        const { from, to } = useLang()
+        const dispatch = useDispatch()
 
         return (
             <div className="lang-selector">
@@ -91,5 +90,5 @@ export const LangSelector =
                     }))}
                 />
             </div>
-        );
-    };
+        )
+    }

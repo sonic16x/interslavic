@@ -1,32 +1,32 @@
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
 
-import { setInitialPage } from 'routing';
+import { setInitialPage } from 'routing'
 
-import { Main } from 'components/Main';
+import { Main } from 'components'
 
-import './index.scss';
+import './index.scss'
 
 import { store } from './store'
 
 declare global {
-    const VERSION: string;
+    const VERSION: string
     // eslint-disable-next-line
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
     }
 }
 
-setInitialPage();
+setInitialPage()
 
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-    navigator.serviceWorker.register(`sw.js`, { scope: '.' });
+    navigator.serviceWorker.register('sw.js', { scope: '.' })
 }
 
-const root = createRoot(document.getElementById('app'));
+const root = createRoot(document.getElementById('app'))
 
 root.render(
     <Provider store={store}>
         <Main />
     </Provider>
-);
+)

@@ -1,1 +1,1 @@
-export * from './dictionary-test';
+export * from './dictionary-test'

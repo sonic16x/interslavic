@@ -1,1 +1,1 @@
-export * from './getAllDataFromResults';
+export * from './getAllDataFromResults'

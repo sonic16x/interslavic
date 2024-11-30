@@ -1,1 +1,1 @@
-export const getColumnName = (column) => column[0];
+export const getColumnName = (column) => column[0]

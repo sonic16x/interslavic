@@ -1,5 +1,5 @@
-import { ResultsEmpty } from './ResultsEmpty';
-import type { Meta, StoryObj } from '@storybook/react';
+import { ResultsEmpty } from './ResultsEmpty'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     title: 'Components/ResultsEmpty',
@@ -13,19 +13,19 @@ const meta = {
 
     },
     args: { },
-} satisfies Meta<typeof ResultsEmpty>;
+} satisfies Meta<typeof ResultsEmpty>
 
-export default meta;
+export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
 
     },
-};
+}
 
 export const ShowReset: Story = {
     args: {
         showReset: true
     },
-};
+}

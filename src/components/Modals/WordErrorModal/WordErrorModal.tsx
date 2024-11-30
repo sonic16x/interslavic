@@ -1,65 +1,69 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { captchaSiteKey, wordErrorsTypes, wordErrorTextMaxLength } from 'consts';
+import { captchaSiteKey, wordErrorsTypes, wordErrorTextMaxLength } from 'consts'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { hideModalDialog, setNotificationAction } from 'actions';
+import { hideModalDialog, setNotificationAction } from 'actions'
 
-import { useClientId } from 'hooks/useClientId';
-import { useInterfaceLang } from 'hooks/useInterfaceLang';
-import { useLang } from 'hooks/useLang';
-import { useModalDialog } from 'hooks/useModalDialog';
-import { isOnline } from 'utils/isOnline';
+import {
+    useClientId,
+    useInterfaceLang,
+    useLang,
+    useModalDialog,
+} from 'hooks'
+import { isOnline } from 'utils'
 
-import { Button } from 'components/Button';
-import { Confirm } from 'components/Confirm';
-import { OfflinePlaceholder } from 'components/OfflinePlaceholder';
-import { Selector } from 'components/Selector';
-import { Spinner } from 'components/Spinner';
-import { Textarea } from 'components/Textarea';
+import {
+    Button,
+    Confirm,
+    OfflinePlaceholder,
+    Selector,
+    Spinner,
+    Textarea,
+} from 'components'
 
-import './WordErrorModal.scss';
+import './WordErrorModal.scss'
 
 export const WordErrorModal = () => {
-    useInterfaceLang();
-    const online = isOnline();
-    const dispatch = useDispatch();
-    const [textValue, setTextValue] = useState<string>('');
-    const [captchaToken, setCaptchaToken] = useState<string>('');
-    const [errorType, setErrorType] = useState<string>('translate');
-    const [isLoading, setLoader] = useState<boolean>(false);
-    const [isConfirm, setConfirm] = useState<boolean>(false);
-    const [firstSubmit, setFirstSubmit] = useState<boolean>(true);
-    const [textareaError, setTextareaError] = useState<string>('');
-    const [captchaError, setCaptchaError] = useState<boolean>(false);
-    const modal = useModalDialog();
-    const lang = useLang();
-    const clientId = useClientId();
+    useInterfaceLang()
+    const online = isOnline()
+    const dispatch = useDispatch()
+    const [textValue, setTextValue] = useState<string>('')
+    const [captchaToken, setCaptchaToken] = useState<string>('')
+    const [errorType, setErrorType] = useState<string>('translate')
+    const [isLoading, setLoader] = useState<boolean>(false)
+    const [isConfirm, setConfirm] = useState<boolean>(false)
+    const [firstSubmit, setFirstSubmit] = useState<boolean>(true)
+    const [textareaError, setTextareaError] = useState<string>('')
+    const [captchaError, setCaptchaError] = useState<boolean>(false)
+    const modal = useModalDialog()
+    const lang = useLang()
+    const clientId = useClientId()
 
-    const onConfirmCancel = useCallback(() => setConfirm(false), [isConfirm, setConfirm]);
+    const onConfirmCancel = useCallback(() => setConfirm(false), [isConfirm, setConfirm])
 
     const onTextChange = useCallback((text) => {
-        setTextValue(text);
+        setTextValue(text)
         if (textareaError && text !== 0) {
-            setTextareaError('');
+            setTextareaError('')
         }
-    }, [textareaError, textValue, setTextValue]);
+    }, [textareaError, textValue, setTextValue])
 
     const onCloseClick = useCallback(() => {
         if (!isConfirm && textValue.length !== 0) {
-            return setConfirm(true);
+            return setConfirm(true)
         } else {
-            dispatch(hideModalDialog());
+            dispatch(hideModalDialog())
         }
-    }, [dispatch, textValue, isConfirm, setConfirm]);
+    }, [dispatch, textValue, isConfirm, setConfirm])
 
     const onTextareaBlur = useCallback(() => {
         if (textValue.length === 0) {
-            setTextareaError(t('wordErrorEmptyTextValidation'));
+            setTextareaError(t('wordErrorEmptyTextValidation'))
         }
-    }, [textValue]);
+    }, [textValue])
 
     useEffect(() => {
         if (online) {
@@ -67,16 +71,16 @@ export const WordErrorModal = () => {
                 sitekey: captchaSiteKey,
                 theme: 'light',
                 callback: (token) => {
-                    setCaptchaToken(token);
-                    setCaptchaError(false);
+                    setCaptchaToken(token)
+                    setCaptchaError(false)
                 },
-            });
+            })
         }
-    }, []);
+    }, [])
 
     const onSendClick = useCallback(() => {
         if (captchaToken && textValue) {
-            setLoader(true);
+            setLoader(true)
             const bodyData = {
                 ...modal.data,
                 lang: `${lang.from}-${lang.to}`,
@@ -84,7 +88,7 @@ export const WordErrorModal = () => {
                 errorType,
                 text: textValue,
                 captchaToken,
-            };
+            }
 
             const fetchOptions = {
                 method: 'POST',
@@ -93,47 +97,47 @@ export const WordErrorModal = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(bodyData),
-            };
+            }
 
             fetch('https://interslavic-dictionary.com/api/word-error', fetchOptions)
                 .then((res) => {
                     if (res.status !== 200) {
-                        return Promise.reject(res.status);
+                        return Promise.reject(res.status)
                     }
 
-                    return res.json();
+                    return res.json()
                 })
                 .then(() => {
-                    dispatch(hideModalDialog());
+                    dispatch(hideModalDialog())
                     dispatch(setNotificationAction({
                         text: t('wordErrorSent'),
-                    }));
+                    }))
                 })
                 .catch(() => {
-                    dispatch(hideModalDialog());
+                    dispatch(hideModalDialog())
                     dispatch(setNotificationAction({
                         text: t('wordErrorSentRejected'),
                         type: 'error',
-                    }));
+                    }))
                 })
-            ;
+            
         } else {
             if (!textValue) {
-                setTextareaError(t('wordErrorEmptyTextValidation'));
+                setTextareaError(t('wordErrorEmptyTextValidation'))
             }
 
             if (!captchaToken) {
-                setCaptchaError(true);
+                setCaptchaError(true)
             }
 
-            setFirstSubmit(false);
+            setFirstSubmit(false)
         }
-    }, [dispatch, captchaToken, modal.data, setLoader, isLoading, textValue, captchaToken]);
+    }, [dispatch, captchaToken, modal.data, setLoader, isLoading, textValue, captchaToken])
 
     const options = wordErrorsTypes.map((value) => ({
         name: t(`${value}ErrorType`),
         value,
-    }));
+    }))
 
     return (
         <>
@@ -214,5 +218,5 @@ export const WordErrorModal = () => {
                 />
             </footer>
         </>
-    );
-};
+    )
+}

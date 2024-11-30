@@ -1,1 +1,1 @@
-export * from './removeBrackets';
+export * from './removeBrackets'

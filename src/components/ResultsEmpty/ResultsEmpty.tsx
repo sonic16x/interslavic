@@ -1,10 +1,10 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { posFilterAction } from 'actions';
+import { posFilterAction } from 'actions'
 
-import './ResultsEmpty.scss';
+import './ResultsEmpty.scss'
 
 interface IResultsEmptyProps {
     showReset?: boolean;
@@ -12,7 +12,7 @@ interface IResultsEmptyProps {
 
 export const ResultsEmpty =
     ({ showReset }: IResultsEmptyProps) => {
-        const dispatch = useDispatch();
+        const dispatch = useDispatch()
 
         return (
             <div className="results-empty" data-testid="result-empty">
@@ -31,5 +31,5 @@ export const ResultsEmpty =
                     </button>
                 )}
             </div>
-        );
-    };
+        )
+    }

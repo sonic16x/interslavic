@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import { IMainState } from 'reducers';
+import { IMainState } from 'reducers'
 
 export function useLang() {
-    return useSelector((state: IMainState) => state.lang);
+    return useSelector((state: IMainState) => state.lang)
 }

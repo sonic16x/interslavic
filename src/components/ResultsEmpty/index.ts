@@ -1,1 +1,1 @@
-export * from './ResultsEmpty';
+export * from './ResultsEmpty'

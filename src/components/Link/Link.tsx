@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import './Link.scss';
+import './Link.scss'
 
 interface ILinkProps {
     href: string;
@@ -21,7 +21,7 @@ export const Link = (
         children,
     }: ILinkProps,
 ) => {
-    const clsName = classNames(['link', className]);
+    const clsName = classNames(['link', className])
 
     return (
         <a
@@ -33,5 +33,5 @@ export const Link = (
         >
             {children}
         </a>
-    );
-};
+    )
+}

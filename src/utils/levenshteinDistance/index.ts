@@ -1,1 +1,1 @@
-export * from './levenshteinDistance';
+export * from './levenshteinDistance'

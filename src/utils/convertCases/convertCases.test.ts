@@ -1,4 +1,4 @@
-import { convertCases } from 'utils/convertCases';
+import { convertCases } from 'utils'
 
 describe('convertCases', () => {
     test.each([
@@ -10,8 +10,8 @@ describe('convertCases', () => {
         ['+6', '+Loc'],
         ['+7', '+Voc']
     ])('should convert "%s" to "%s"', (input, expected) => {
-        expect(convertCases(input)).toBe(expected);
-    });
+        expect(convertCases(input)).toBe(expected)
+    })
     
     test.each([
         ['+Nom.', '+Nom'],
@@ -22,10 +22,10 @@ describe('convertCases', () => {
         ['+Loc.', '+Loc'],
         ['+Voc.', '+Voc']
     ])('should remove dot from "%s"', (input, expected) => {
-        expect(convertCases(input)).toBe(expected);
-    });
+        expect(convertCases(input)).toBe(expected)
+    })
     
     test('should convert unknown abbreviations to an empty string', () => {
-        expect(convertCases('+ABCD')).toBe('');
-    });
-});
+        expect(convertCases('+ABCD')).toBe('')
+    })
+})

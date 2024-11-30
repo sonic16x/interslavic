@@ -1,10 +1,10 @@
 declare module '*.svg' {
-    const content: any;
+    const content: any
 
-    export default content;
+    export default content
 }
 
-declare const FB: any;
-declare const IS_COM: boolean;
-declare const PR_NUMBER: string;
-declare const Az: any;
+declare const FB: any
+declare const IS_COM: boolean
+declare const PR_NUMBER: string
+declare const Az: any

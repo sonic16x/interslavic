@@ -1,19 +1,18 @@
-import { tablesData } from 'consts';
-import { REP_LINK } from 'consts';
+import { REP_LINK, tablesData } from 'consts'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { getTablePublicUrl } from 'utils/getTablePublicUrl';
+import { getTablePublicUrl } from 'utils'
 
-import { Link } from 'components/Link';
+import { Link } from 'components'
 
-import './About.scss';
+import './About.scss'
 
 export const About =
     () => {
-        const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
-        const email = 'cherebedov.sergey@gmail.com';
-        const source = 'http://steen.free.fr/interslavic';
+        const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId)
+        const email = 'cherebedov.sergey@gmail.com'
+        const source = 'http://steen.free.fr/interslavic'
         const version = [VERSION, PR_NUMBER].filter((item) => item && item.length).join('-')
 
         return (
@@ -118,5 +117,5 @@ export const About =
                     <div className="about-page__release-date">v{version}</div>
                 </div>
             </div>
-        );
-    };
+        )
+    }

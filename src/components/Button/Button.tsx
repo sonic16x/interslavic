@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import './Button.scss';
+import './Button.scss'
 
 interface IButtonProps {
     size?: 'S' | 'M' | 'L';
@@ -27,7 +27,7 @@ export const Button = (
         className,
     }: IButtonProps,
 ) => {
-    const clsName = classNames(['button', `button-${size}`, type, className], { disabled, fill });
+    const clsName = classNames(['button', `button-${size}`, type, className], { disabled, fill })
 
     if (href) {
         return (
@@ -39,7 +39,7 @@ export const Button = (
             >
                 {title}
             </a>
-        );
+        )
     }
 
     return (
@@ -50,5 +50,5 @@ export const Button = (
         >
             {title}
         </button>
-    );
-};
+    )
+}

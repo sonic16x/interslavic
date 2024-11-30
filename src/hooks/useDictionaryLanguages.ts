@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import { IMainState } from 'reducers';
+import { IMainState } from 'reducers'
 
 export function useDictionaryLanguages() {
-    return useSelector((state: IMainState) => state.dictionaryLanguages);
+    return useSelector((state: IMainState) => state.dictionaryLanguages)
 }
