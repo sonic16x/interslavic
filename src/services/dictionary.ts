@@ -308,7 +308,8 @@ class DictionaryClass {
 
         [
             'isv-src',
-            ...this.langsList,
+            'isv',
+            // ...this.langsList,
         ].forEach((lang) => {
             searchIndex[lang] = Array.from(this.splittedMap[lang].keys()).map((key: string) => [
                 key,
