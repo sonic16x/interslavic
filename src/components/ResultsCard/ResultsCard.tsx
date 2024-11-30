@@ -182,13 +182,9 @@ export const ResultsCard =
                     {item.to !== 'isv' ? (
                         <Clipboard str={item.translate} />
                     ) : renderOriginal(item, alphabets, caseQuestions)}
-                    {'\u00A0'}
                     <WordStatus item={item} onClick={showTranslations}/>
                     {item.to === 'isv' && short && (
-                        <>
-                            &nbsp;
-                            <span className="results-card__details">{item.details}</span>
-                        </>
+                        <span className="results-card__details">{item.details}</span>
                     )}
                 </div>
                 {!short && (

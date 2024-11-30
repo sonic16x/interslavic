@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.25.0",
+  "version": "1.25.1",
   "description": "Interslavic Dictionary",
   "license": "MIT",
   "author": {
@@ -27,8 +27,8 @@
     "test:dictionary-update-shanshot": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false tsx -r tsconfig-paths/register ./src/services/dictionary-test"
   },
   "pre-commit": [
-    "lint:fix",
-    "stylelint:fix"
+    "lint",
+    "stylelint"
   ],
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "25.2.0",
