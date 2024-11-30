@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.24.5",
+  "version": "1.25.0",
   "description": "Interslavic Dictionary",
   "license": "MIT",
   "author": {
@@ -8,8 +8,10 @@
   },
   "main": "./dist/worker.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js && node build-manifest.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "build-storybook": "storybook build",
+    "build-manifest": "node scripts/build-manifest.js",
+    "build-sitemap": "node scripts/build-sitemap.js",
     "deploy-api": "wrangler deploy ./src/server/index.ts --name api --compatibility-date 2024-11-12",
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.config.dev.js --progress",
     "generate-dictionary": "tsx -r tsconfig-paths/register ./src/services/generateDictionary.ts",

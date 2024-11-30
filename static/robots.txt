@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /viewer
+
+Sitemap: https://interslavic-dictionary/sitemap.xml
