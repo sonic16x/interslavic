@@ -40,6 +40,8 @@ const LangPart =
             <Selector
                 testId="lang-selector"
                 className="lang-selector__another"
+                label={dir}
+                hideLabel
                 options={options}
                 value={lang}
                 onSelect={(value: string) => {

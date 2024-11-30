@@ -7,6 +7,12 @@
   color: var(--dark);
   white-space: nowrap;
 
+  &.hide-label {
+    label {
+      display: none;
+    }
+  }
+
   &__title {
     font-size: 18px;
   }

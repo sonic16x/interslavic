@@ -143,6 +143,7 @@ const MenuItem = ({
             className={classNames('menu-item', { active, 'badge': hasBadge })}
             onClick={onClick}
             data-sub-title={subTitle}
+            href={`/${value}`}
         >
             {t(title)}
         </a>

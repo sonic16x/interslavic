@@ -14,13 +14,14 @@ interface ISelectorProps {
     value?: string;
     label?: string;
     testId?: string;
+    hideLabel?: boolean;
 }
 
-export const Selector = ({ onSelect, options, className, value, label, testId }: ISelectorProps) => {
+export const Selector = ({ onSelect, options, className, value, label, testId, hideLabel }: ISelectorProps) => {
     const id = label ? label.toLowerCase().replace(/ /, '_') : null
 
     return (
-        <div className={classNames('selector', className)}>
+        <div className={classNames('selector', className, { 'hide-label': hideLabel })}>
             {label && <label className="selector__title" htmlFor={id}>{label}</label>}
             <select
                 data-testid={testId}
