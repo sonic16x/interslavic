@@ -13,8 +13,15 @@ import { Settings } from 'components/Pages/Settings'
 
 import './Router.scss'
 
-const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar'))
-const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'))
+const Grammar = lazy(
+    () => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar')
+)
+const TranslatorPage = lazy(
+    () => import(/* webpackChunkName: "translatorComponent" */'components/Pages/TranslatorPage/TranslatorPage')
+)
+const Viewer = lazy(
+    () => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer')
+)
 
 function renderPageContent(page: string) {
     switch (page) {
@@ -27,6 +34,12 @@ function renderPageContent(page: string) {
         case 'dictionary':
             return (
                 <DictionaryPage/>
+            )
+        case 'translator':
+            return (
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <TranslatorPage/>
+                </Suspense>
             )
         case 'viewer':
             return (
