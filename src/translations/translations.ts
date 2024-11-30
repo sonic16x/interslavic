@@ -1,16 +1,18 @@
-import translations from 'translations/data.json';
+import translations from 'translations/data.json'
 
-import { createTaggedTemplate } from "utils/createTaggedTemplate";
-import { getCyrillic } from 'utils/getCyrillic';
-import { getGlagolitic } from 'utils/getGlagolitic';
-import { getLatin } from 'utils/getLatin';
-import { parseI18nString } from "utils/parseI18nString";
+import {
+    createTaggedTemplate,
+    getCyrillic,
+    getGlagolitic,
+    getLatin,
+    parseI18nString,
+} from 'utils'
 
-let currentLang;
+let currentLang
 
-const toLatin = createTaggedTemplate((s) => getLatin(String(s), '3'), 'strings');
-const toCyrillic = createTaggedTemplate((s) => getCyrillic(String(s), '3'), 'strings');
-const toGlagolitic = createTaggedTemplate((s) => getGlagolitic(String(s), '3'), 'strings');
+const toLatin = createTaggedTemplate((s) => getLatin(String(s), '3'), 'strings')
+const toCyrillic = createTaggedTemplate((s) => getCyrillic(String(s), '3'), 'strings')
+const toGlagolitic = createTaggedTemplate((s) => getGlagolitic(String(s), '3'), 'strings')
 
 interface ITranslateParams {
     [key: string]: string;
@@ -19,44 +21,44 @@ interface ITranslateParams {
 function replaceParams(str, params?: ITranslateParams) {
     return Object.keys(params).reduce((acc, paramKey) => (
         acc.replace(/[{}]/g, '').replace(new RegExp(`__${paramKey}__`, 'g'), params[paramKey])
-    ), str);
+    ), str)
 }
 
 function tRaw(key) {
-    const [lang, alphabet] = currentLang.split('-');
+    const [lang, alphabet] = currentLang.split('-')
     if (!translations[key]) {
-        return key;
+        return key
     } else if (translations[key][lang]) {
         if (lang === 'isv') {
-            const parsed = parseI18nString(translations[key].isv);
+            const parsed = parseI18nString(translations[key].isv)
             // transliteration & flavorisation of isv word
             switch (alphabet) {
                 case 'Latn':
-                    return toLatin(...parsed);
+                    return toLatin(...parsed)
                 case 'Cyrl':
-                    return toCyrillic(...parsed);
+                    return toCyrillic(...parsed)
                 case 'Glag':
-                    return toGlagolitic(...parsed);
+                    return toGlagolitic(...parsed)
             }
         } else {
-            return translations[key][lang];
+            return translations[key][lang]
         }
     } else if (translations[key].en) {
-        return translations[key].en;
+        return translations[key].en
     } else {
-        return key;
+        return key
     }
 }
 
 export function t(key, params?: ITranslateParams) {
-    const rawTranslate = tRaw(key);
+    const rawTranslate = tRaw(key)
     if (params) {
-        return replaceParams(rawTranslate, params);
+        return replaceParams(rawTranslate, params)
     } else {
-        return rawTranslate;
+        return rawTranslate
     }
 }
 
 export function setLang(lang) {
-    currentLang = lang;
+    currentLang = lang
 }

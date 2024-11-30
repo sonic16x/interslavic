@@ -12,7 +12,7 @@
   &__input {
     width: 100%;
     padding: 8px 16px;
-    border: 1px solid var(--input-border-color);
+    border: var(--border);
     border-radius: var(--border-radius-s);
     background: var(--light);
     color: var(--dark);
@@ -21,7 +21,7 @@
     line-height: 30px;
 
     &:focus {
-      outline: 2px solid var(--primary-color);
+      outline: var(--outline);
     }
 
     &:not([value=""]) {

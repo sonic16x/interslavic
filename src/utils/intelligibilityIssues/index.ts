@@ -1,3 +1,3 @@
-export * from './estimateIntelligibility';
-export * from './findIntelligibilityIssues';
-export * from './hasIntelligibilityIssues';
+export * from './estimateIntelligibility'
+export * from './findIntelligibilityIssues'
+export * from './hasIntelligibilityIssues'

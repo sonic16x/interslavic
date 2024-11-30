@@ -1,1 +1,1 @@
-export * from './filterNiqqud';
+export * from './filterNiqqud'

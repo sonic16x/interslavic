@@ -1,30 +1,30 @@
-const REGEXP = /^!?(\w+)(.?)/;
+const REGEXP = /^!?(\w+)(.?)/
 
-const EMPTY = {};
+const EMPTY = {}
 
 export function findIntelligibilityIssues(sameInLanguages: string): Record<string, string> {
     const result = (sameInLanguages || '').split(' ').reduce((acc, tag) => {
-        const [, lang, mark] = tag.match(REGEXP) || [];
-        const emoji = translateToEmoji(mark);
+        const [, lang, mark] = tag.match(REGEXP) || []
+        const emoji = translateToEmoji(mark)
         if (lang && emoji) {
-            acc[lang] = translateToEmoji(mark);
+            acc[lang] = translateToEmoji(mark)
         }
 
-        return acc;
-    }, {});
+        return acc
+    }, {})
 
-    return Object.keys(result).length ? result : EMPTY;
+    return Object.keys(result).length ? result : EMPTY
 }
 
 function translateToEmoji(mark) {
     switch (mark) {
         case '-':
-            return '🚫';
+            return '🚫'
         case '~':
-            return '⚠️';
+            return '⚠️'
         case '+':
-            return '✅';
+            return '✅'
         default:
-            return '';
+            return ''
     }
 }

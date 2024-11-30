@@ -1,12 +1,12 @@
-import * as fs from 'fs';
+import * as fs from 'fs'
 
-import { Dictionary } from "services/dictionary";
+import { Dictionary } from 'services'
 
-import basicData from './basic.json';
-import { deepDiffMapper } from "./deepDiffMapper";
-import testSnapshot from './snapshot.json';
+import basicData from './basic.json'
+import { deepDiffMapper } from './deepDiffMapper'
+import testSnapshot from './snapshot.json'
 
-Dictionary.init(basicData.wordList, basicData.searchIndex);
+Dictionary.init(basicData.wordList, basicData.searchIndex)
 
 const snapshot = {}
 
@@ -15,20 +15,20 @@ const langsPairs = [
     'en-isv',
 ]
 
-const makeSnapshot = process.env.UPDATE_SNAPSHOT;
+const makeSnapshot = process.env.UPDATE_SNAPSHOT
 
 langsPairs.forEach((langsPair) => {
-    const [from, to] = langsPair.split('-');
+    const [from, to] = langsPair.split('-')
 
-    snapshot[langsPair] = {};
+    snapshot[langsPair] = {}
 
     basicData.wordList.slice(1).forEach((line, i) => {
         if (i % 1000 === 0) {
             // eslint-disable-next-line no-console
-            console.info('PROGRESS', langsPair, (100 * i / basicData.wordList.length).toFixed(1) + '%');
+            console.info('PROGRESS', langsPair, (100 * i / basicData.wordList.length).toFixed(1) + '%')
         }
 
-        const flavorisationType = '3';
+        const flavorisationType = '3'
         const alphabets = {
             cyrillic: true,
             glagolitic: false,
@@ -44,12 +44,19 @@ langsPairs.forEach((langsPair) => {
             searchType: 'full'
         })
 
-        snapshot[langsPair][line[0]] = Dictionary.formatTranslate(results, from, to, flavorisationType, alphabets, true);
+        snapshot[langsPair][line[0]] = Dictionary.formatTranslate(
+            results,
+            from,
+            to,
+            flavorisationType,
+            alphabets,
+            true,
+        )
     })
 })
 
 if (makeSnapshot) {
-    fs.writeFileSync('./src/services/dictionary-test/snapshot.json', JSON.stringify(snapshot));
+    fs.writeFileSync('./src/services/dictionary-test/snapshot.json', JSON.stringify(snapshot))
 } else {
     langsPairs.forEach((langsPair) => {
         Object.keys(snapshot[langsPair]).forEach((id) => {

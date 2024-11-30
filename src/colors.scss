@@ -27,6 +27,7 @@ body {
   --input-border-color: #E0E0E0;
   --shadow: 0 8px 16px rgb(0 0 0 / 5%);
   --border: 1px solid var(--input-border-color);
+  --outline: 2px solid var(--primary-color);
   --table-highlighted-cell: #81D4FA;
   --table-border-color: var(--gray-9);
   --overlay-color: #000;
@@ -50,6 +51,7 @@ body {
   --input-border-color: #444;
   --shadow: 0 8px 16px rgb(0 0 0 / 5%);
   --border: 1px solid var(--input-border-color);
+  --outline: 2px solid var(--primary-color);
   --table-highlighted-cell: #1976D2;
   --table-border-color: var(--gray-9);
   --overlay-color: #000;

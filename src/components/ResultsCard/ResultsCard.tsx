@@ -1,29 +1,33 @@
-import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
+import classNames from 'classnames'
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { setNotificationAction, showModalDialog } from 'actions';
-import { MODAL_DIALOG_TYPES } from 'reducers';
+import { setNotificationAction, showModalDialog } from 'actions'
+import { MODAL_DIALOG_TYPES } from 'reducers'
 
-import { Dictionary, ITranslateResult } from 'services/dictionary';
+import { Dictionary, ITranslateResult } from 'services'
 
-import { useAlphabets } from 'hooks/useAlphabets';
-import { useCaseQuestions } from 'hooks/useCaseQuestions';
-import { useLang } from 'hooks/useLang';
-import { getWordStatus } from "utils/getWordStatus";
-import { toQueryString } from 'utils/toQueryString';
-import { getPartOfSpeech } from 'utils/wordDetails';
-import { wordHasForms } from 'utils/wordHasForms';
+import {
+    useAlphabets,
+    useCaseQuestions,
+    useLang,
+} from 'hooks'
+import {
+    getPartOfSpeech,
+    getWordStatus,
+    toQueryString,
+    wordHasForms,
+} from 'utils'
 
-import { Clipboard } from 'components/Clipboard';
+import { Clipboard } from 'components/Clipboard'
 
-import './ResultsCard.scss';
+import './ResultsCard.scss'
 
-import ErrorIcon from './images/error-icon.svg';
-import FormsIcon from './images/forms-icon.svg';
-import ShareIcon from './images/share-icon.svg';
-import TranslationsIcon from './images/translations-icon.svg';
+import ErrorIcon from './images/error-icon.svg'
+import FormsIcon from './images/forms-icon.svg'
+import ShareIcon from './images/share-icon.svg'
+import TranslationsIcon from './images/translations-icon.svg'
 
 interface IResultsCardProps {
     item: ITranslateResult;
@@ -32,29 +36,29 @@ interface IResultsCardProps {
 }
 
 function renderOriginal(item, alphabets, caseQuestions) {
-    let latin = item.original;
+    let latin = item.original
     if (item.add) {
-        latin += ` ${item.add}`;
+        latin += ` ${item.add}`
     }
 
-    let cyrillic = item.originalCyr;
+    let cyrillic = item.originalCyr
     if (item.addCyr) {
-        cyrillic += ` ${item.addCyr}`;
+        cyrillic += ` ${item.addCyr}`
     }
 
-    let gla = item.originalGla;
+    let gla = item.originalGla
     if (item.addGla) {
-        gla += ` ${item.addGla}`;
+        gla += ` ${item.addGla}`
     }
 
-    const result = [];
+    const result = []
 
     if (alphabets.latin) {
         result.push({
             str: latin,
             caseInfo: caseQuestions && item.caseInfo,
             lang: 'isv-Latin',
-        });
+        })
     }
 
     if (alphabets.cyrillic) {
@@ -62,7 +66,7 @@ function renderOriginal(item, alphabets, caseQuestions) {
             str: cyrillic,
             caseInfo: item.caseInfoCyr,
             lang: 'isv-Cyrl',
-        });
+        })
     }
 
     if (alphabets.glagolitic) {
@@ -70,7 +74,7 @@ function renderOriginal(item, alphabets, caseQuestions) {
             str: gla,
             caseInfo: item.caseInfoGla,
             lang: 'isv-Glag',
-        });
+        })
     }
 
     return (
@@ -81,14 +85,14 @@ function renderOriginal(item, alphabets, caseQuestions) {
                         <Clipboard str={str} />
                         {caseInfo && <span className="caseInfo">({caseInfo})</span>}
                     </span>
-                );
+                )
             })} 
             {!caseQuestions && item.caseInfo &&
                 <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span>
             }
             {item.ipa && <span className="ipa">[{item.ipa}]</span>}
         </>
-    );
+    )
 }
 
 const WordStatus = ({ item, onClick }: { item: ITranslateResult, onClick: () => void }) => {
@@ -104,24 +108,24 @@ const WordStatus = ({ item, onClick }: { item: ITranslateResult, onClick: () => 
             >
                 {wordStatus.icon}
             </button>
-        );
+        )
     }
 }
 
 export const ResultsCard =
     ({ item, short, index }: IResultsCardProps) => {
-        const alphabets = useAlphabets();
-        const caseQuestions = useCaseQuestions();
-        const pos = getPartOfSpeech(item.details);
-        const dispatch = useDispatch();
-        const lang = useLang();
+        const alphabets = useAlphabets()
+        const caseQuestions = useCaseQuestions()
+        const pos = getPartOfSpeech(item.details)
+        const dispatch = useDispatch()
+        const lang = useLang()
 
         const showTranslations = () => {
             dispatch(showModalDialog({
                 type: MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION,
                 data: { index },
-            }));
-        };
+            }))
+        }
 
         const showWordErrorModal = () => {
             dispatch(showModalDialog({
@@ -131,8 +135,8 @@ export const ResultsCard =
                     isvWord: item.original,
                     translatedWord: item.translate,
                 },
-            }));
-        };
+            }))
+        }
 
         const showDetail = () => {
             dispatch(showModalDialog({
@@ -142,29 +146,29 @@ export const ResultsCard =
                     add: Dictionary.getField(item.raw, 'addition'),
                     details: Dictionary.getField(item.raw, 'partOfSpeech'),
                 },
-            }));
-        };
+            }))
+        }
 
         const shareWord = () => {
-            const { origin, pathname } = window.location;
+            const { origin, pathname } = window.location
             const query = toQueryString({
                 text: `id${item.id}`,
                 lang: `${lang.from}-${lang.to}`,
-            });
+            })
 
-            const url = `${origin}${pathname}?${query}`;
+            const url = `${origin}${pathname}?${query}`
 
             if (navigator.share) {
                 navigator.share({
                     url,
-                });
+                })
             } else {
                 navigator.clipboard.writeText(url).then(() => {
                     const notificationText = t('wordLinkCopied', {
                         str: url,
-                    });
-                    dispatch(setNotificationAction({ text: notificationText }));
-                });
+                    })
+                    dispatch(setNotificationAction({ text: notificationText }))
+                })
             }
         }
 
@@ -244,5 +248,5 @@ export const ResultsCard =
                     {!short && (item.checked ? t('verified') : t('autoTranslation'))}
                 </div>
             </div>
-        );
-    };
+        )
+    }

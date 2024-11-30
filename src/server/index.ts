@@ -1,5 +1,5 @@
-import { handleRequest } from "./handleRequest";
-import { responseError } from "./responseError";
+import { handleRequest } from './handleRequest'
+import { responseError } from './responseError'
 
 export default {
     async fetch(request, env) {

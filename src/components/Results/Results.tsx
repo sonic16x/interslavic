@@ -1,54 +1,54 @@
-import classNames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import classNames from 'classnames'
+import { useEffect, useRef, useState } from 'react'
 
-import { tablesData } from 'consts';
+import { tablesData } from 'consts'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { Dictionary, ITranslateResult } from 'services/dictionary';
+import { Dictionary, ITranslateResult } from 'services'
 
-import { useFromText } from 'hooks/useFromText';
-import { useLang } from 'hooks/useLang';
-import { usePosFilter } from 'hooks/usePosFilter';
-import { useResults } from 'hooks/useResults';
-import { useScrollbarWidth } from 'hooks/useScrollbarWidth';
-import { useShortCardView } from 'hooks/useShortCardView';
-import { getTablePublicUrl } from 'utils/getTablePublicUrl';
-import { isScrollBarVisible } from 'utils/isScrollBarVisible';
+import {
+    useFromText,
+    useLang,
+    usePosFilter,
+    useResults,
+    useScrollbarWidth,
+    useShortCardView,
+} from 'hooks'
+import { getTablePublicUrl, isScrollBarVisible } from 'utils'
 
-import { ResultsCard } from 'components/ResultsCard';
-import { ResultsEmpty } from 'components/ResultsEmpty';
+import { ResultsCard, ResultsEmpty } from 'components'
 
-import './Results.scss';
+import './Results.scss'
 
 export const Results =
     () => {
-        const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId);
-        const results = useResults();
-        const posFilter = usePosFilter();
-        const lang = useLang();
-        const containerRef = useRef<HTMLDivElement>();
-        const fromText = useFromText();
-        const short = useShortCardView();
-        const empty = results.length === 0 && fromText.length !== 0;
-        const scrollWidth = useScrollbarWidth();
-        const [scrollIsVisible, setScrollBarVisible] = useState(false);
+        const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId)
+        const results = useResults()
+        const posFilter = usePosFilter()
+        const lang = useLang()
+        const containerRef = useRef<HTMLDivElement>()
+        const fromText = useFromText()
+        const short = useShortCardView()
+        const empty = results.length === 0 && fromText.length !== 0
+        const scrollWidth = useScrollbarWidth()
+        const [scrollIsVisible, setScrollBarVisible] = useState(false)
 
         useEffect(() => {
-            setScrollBarVisible(isScrollBarVisible(containerRef));
-        }, [containerRef, setScrollBarVisible, results.length]);
+            setScrollBarVisible(isScrollBarVisible(containerRef))
+        }, [containerRef, setScrollBarVisible, results.length])
 
         if (!results || !results.length) {
             if (empty) {
                 return (
                     <ResultsEmpty showReset={posFilter !== ''}/>
-                );
+                )
             }
 
-            return null;
+            return null
         }
 
-        const translatedPart = Dictionary.getPercentsOfTranslated()[lang.from === 'isv' ? lang.to : lang.from];
+        const translatedPart = Dictionary.getPercentsOfTranslated()[lang.from === 'isv' ? lang.to : lang.from]
 
         return (
             <div
@@ -70,10 +70,10 @@ export const Results =
                 {results.some((item) => !item.checked) && (
                     <div className="results__message-for-users">
                         {t('notVerifiedText').replace('part%', `${translatedPart}%`)}
-                        {` `}
+                        {' '}
                         <a target="_blank" href={worksheetUrl} rel="noreferrer">{t('notVerifiedTableLinkText')}</a>
                     </div>
                 )}
             </div>
-        );
-    };
+        )
+    }

@@ -11,7 +11,7 @@ export const alphabetTypes = [
         name: 'glagolitic',
         value: 'glagolitic',
     },
-];
+]
 
 export const langs = [
     'ru',
@@ -25,7 +25,7 @@ export const langs = [
     'sr',
     'mk',
     'bg',
-];
+]
 
 export const addLangs = [
     'de',
@@ -42,7 +42,7 @@ export const addLangs = [
     'it',
     'he',
     'da',
-];
+]
 
 export const initialFields = [
     'id',
@@ -54,23 +54,23 @@ export const initialFields = [
     'sameInLanguages',
     'genesis',
     'intelligibility',
-];
+]
 
 export const initialAddFields = [
     'type',
     'sameInLanguages',
     'genesis',
-];
+]
 
 export const basicFields = [
     ...initialFields,
     ...langs,
-];
+]
 
 export const validFields = [
     ...basicFields,
     ...addLangs,
-];
+]
 
 export interface ITableData {
     spreadsheetId: string;
@@ -89,9 +89,9 @@ export const tablesData: ITableData[] = [
         sheetId: '2005431854',
         fields: addLangs,
     },
-];
+]
 
-export const tableColumnsLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+export const tableColumnsLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
 export const wordErrorsTypes = [
     'translate',
@@ -99,6 +99,69 @@ export const wordErrorsTypes = [
     'interslavic',
 ]
 
-export const captchaSiteKey = '0x4AAAAAAAz3DWhwL4ABSW4W';
-export const wordErrorTextMaxLength = 120;
+export const captchaSiteKey = '0x4AAAAAAAz3DWhwL4ABSW4W'
+export const wordErrorTextMaxLength = 120
 export const REP_LINK = 'https://github.com/sonic16x/interslavic'
+
+export const interfaceLanguageList = [
+    {
+        name: 'English',
+        value: 'en',
+    },
+    {
+        name: 'Medžuslovjansky',
+        value: 'isv-Latn',
+    },
+    {
+        name: 'Меджусловјанскы',
+        value: 'isv-Cyrl',
+    },
+    {
+        name: 'Ⰿⰵⰴⰶⱆⱄⰾⱁⰲⰺⰰⱀⱄⰽⱐⰹ',
+        value: 'isv-Glag',
+    },
+    {
+        name: 'Русский',
+        value: 'ru',
+    },
+    {
+        name: 'Українська',
+        value: 'uk',
+    },
+    {
+        name: 'Беларуская',
+        value: 'be',
+    },
+    {
+        name: 'Polski',
+        value: 'pl',
+    },
+    {
+        name: 'Česky',
+        value: 'cs',
+    },
+    {
+        name: 'Slovenský',
+        value: 'sk',
+    },
+    {
+        name: 'Slovenščina',
+        value: 'sl',
+    },
+    {
+        name: 'Hrvatski',
+        value: 'hr',
+    },
+    {
+        name: 'Српски',
+        value: 'sr',
+    },
+    {
+        name: 'Македонски',
+        value: 'mk',
+    },
+    {
+        name: 'Български',
+        value: 'bg',
+    },
+]

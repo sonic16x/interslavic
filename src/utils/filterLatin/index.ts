@@ -1,1 +1,1 @@
-export * from './filterLatin';
+export * from './filterLatin'

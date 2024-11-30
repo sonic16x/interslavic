@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import React from 'react';
+import classNames from 'classnames'
+import React from 'react'
 
-import './Expand.scss';
+import './Expand.scss'
 
-import ExpandIcon from './images/expand-icon.svg';
+import ExpandIcon from './images/expand-icon.svg'
 
 interface IExpandProps {
     className?: string;
@@ -43,4 +43,4 @@ export const Expand = (
             </button>
         </div>
     </div>
-);
+)

@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import { IMainState } from 'reducers';
+import { IMainState } from 'reducers'
 
 export function useClientId() {
-    return useSelector((state: IMainState) => state.clientId);
+    return useSelector((state: IMainState) => state.clientId)
 }

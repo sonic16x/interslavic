@@ -1,1 +1,1 @@
-export * from './getGlagolitic';
+export * from './getGlagolitic'

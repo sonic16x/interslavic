@@ -1,33 +1,34 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { fetchDictionary } from 'services/fetchDictionary';
+import { fetchDictionary } from 'services'
 
-import { useDarkTheme } from 'hooks/useDarkTheme';
-import { useDictionaryLanguages } from 'hooks/useDictionaryLanguages';
+import { useDarkTheme, useDictionaryLanguages } from 'hooks'
 
-import { Header } from 'components/Header';
-import { Loader } from 'components/Loader';
-import { ModalDialog } from 'components/Modals/ModalDialog';
-import { Notification } from 'components/Notification';
-import { Router } from 'components/Router';
+import {
+    Header,
+    Loader,
+    ModalDialog,
+    Notification,
+    Router,
+} from 'components'
 
-import './Main.scss';
+import './Main.scss'
 
 export const Main =
     () => {
-        const dispatch = useDispatch();
-        const dictionaryLanguages = useDictionaryLanguages();
-        const isDarkTheme = useDarkTheme();
-        const theme = isDarkTheme ? 'dark' : 'light';
+        const dispatch = useDispatch()
+        const dictionaryLanguages = useDictionaryLanguages()
+        const isDarkTheme = useDarkTheme()
+        const theme = isDarkTheme ? 'dark' : 'light'
 
         useEffect(() => {
             document.getElementById('app').className='color-theme--' + theme;
 
             (async () => {
-                await fetchDictionary(dispatch, dictionaryLanguages);
+                await fetchDictionary(dispatch, dictionaryLanguages)
             })()
-        }, [dispatch, dictionaryLanguages, theme]);
+        }, [dispatch, dictionaryLanguages, theme])
 
         return (
             <>
@@ -37,5 +38,5 @@ export const Main =
                 <ModalDialog/>
                 <Notification/>
             </>
-        );
-    };
+        )
+    }

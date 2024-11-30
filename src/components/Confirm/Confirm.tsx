@@ -1,8 +1,8 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import { Button } from 'components/Button';
+import { Button } from 'components'
 
-import './Confirm.scss';
+import './Confirm.scss'
 
 interface IConfirmProps {
     className?: string;
@@ -49,4 +49,4 @@ export const Confirm = (
             </div>
         </div>
     )
-};
+}

@@ -1,6 +1,6 @@
-import { Checkbox } from './Checkbox';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import { Checkbox } from './Checkbox'
+import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
 
 const meta = {
     title: 'Components/Checkbox',
@@ -13,9 +13,9 @@ const meta = {
 
     },
     args: { onChange: fn() },
-} satisfies Meta<typeof Checkbox>;
+} satisfies Meta<typeof Checkbox>
 
-export default meta;
+export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Checked: Story = {
@@ -23,11 +23,11 @@ export const Checked: Story = {
         title: 'Checkbox',
         checked: true,
     },
-};
+}
 
 export const Unchecked: Story = {
     args: {
         title: 'Checkbox',
         checked: false,
     },
-};
+}

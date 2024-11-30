@@ -1,25 +1,29 @@
-import classNames from 'classnames';
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import classNames from 'classnames'
+import { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { fromTextAction, setSearchExpand } from 'actions';
+import { fromTextAction, setSearchExpand } from 'actions'
 
-import { useFromText } from 'hooks/useFromText';
-import { useLang } from 'hooks/useLang';
-import { useSearchExpanded } from 'hooks/useSearchExpanded';
-import { useShortCardView } from 'hooks/useShortCardView';
-import { toBCP47 } from 'utils/bcp47';
+import {
+    useFromText,
+    useLang,
+    useSearchExpanded,
+    useShortCardView,
+} from 'hooks'
+import { toBCP47 } from 'utils'
 
-import { Expand } from 'components/Expand';
-import { FlavorisationSelector } from 'components/FlavorisationSelector';
-import { InputText } from 'components/InputText';
-import { LangSelector } from 'components/LangSelector';
-import { POSSelector } from 'components/POSSelector';
-import { SearchTypeSelector } from 'components/SearchTypeSelector';
+import {
+    Expand,
+    FlavorisationSelector,
+    InputText,
+    LangSelector,
+    POSSelector,
+    SearchTypeSelector,
+} from 'components'
 
-import './Controls.scss';
+import './Controls.scss'
 
 interface IControlsProps {
     expanded?: boolean;
@@ -27,20 +31,20 @@ interface IControlsProps {
 
 export const Controls =
     ({ expanded }: IControlsProps) => {
-        const dispatch = useDispatch();
-        const expand = useSearchExpanded() || expanded;
-        const short = useShortCardView();
+        const dispatch = useDispatch()
+        const expand = useSearchExpanded() || expanded
+        const short = useShortCardView()
 
-        const lang = useLang();
-        const fromText = useFromText();
-        const spellCheck = lang.from !== 'isv';
-        const searchLanguage = toBCP47(lang.from);
+        const lang = useLang()
+        const fromText = useFromText()
+        const spellCheck = lang.from !== 'isv'
+        const searchLanguage = toBCP47(lang.from)
 
         const onChange = useCallback((value) => {
-            dispatch(fromTextAction(value));
-        }, [dispatch]);
+            dispatch(fromTextAction(value))
+        }, [dispatch])
 
-        const onChangeExpand = () => dispatch(setSearchExpand(!expand));
+        const onChangeExpand = () => dispatch(setSearchExpand(!expand))
 
         return (
             <div
@@ -69,5 +73,5 @@ export const Controls =
                     <POSSelector key="posFilter" />
                 </Expand>
             </div>
-        );
-    };
+        )
+    }

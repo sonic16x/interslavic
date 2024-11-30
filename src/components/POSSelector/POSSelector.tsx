@@ -1,15 +1,15 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { posFilterAction } from 'actions';
+import { posFilterAction } from 'actions'
 
-import { usePosFilter } from 'hooks/usePosFilter';
+import { usePosFilter } from 'hooks'
 
-import { Selector } from 'components/Selector';
+import { Selector } from 'components'
 
-import './POSSelector.scss';
+import './POSSelector.scss'
 
 const POSList = [
     {
@@ -52,19 +52,19 @@ const POSList = [
         name: 'interjection',
         value: 'intj',
     },
-];
+]
 
 export const POSSelector =
     () => {
-        const dispatch = useDispatch();
-        const posFilter = usePosFilter();
+        const dispatch = useDispatch()
+        const posFilter = usePosFilter()
         const options = POSList.map(({ name, value }) => ({
             name: t(name),
             value,
-        }));
+        }))
         const onSelect = useCallback((pos) => {
-            dispatch(posFilterAction(pos));
-        }, [dispatch]);
+            dispatch(posFilterAction(pos))
+        }, [dispatch])
 
         return (
             <Selector
@@ -74,5 +74,5 @@ export const POSSelector =
                 value={posFilter}
                 label={t('partOfSpeech')}
             />
-        );
-    };
+        )
+    }

@@ -1,1 +1,1 @@
-export * from './getCaseTips';
+export * from './getCaseTips'

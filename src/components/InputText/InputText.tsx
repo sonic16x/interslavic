@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import './InputText.scss';
+import './InputText.scss'
 
 interface IInputTextProps {
     value?: string;
@@ -35,5 +35,5 @@ export const InputText = ({ value, size = 'M', onChange, placeholder, testId, ..
                 &times;
             </button>
         </div>
-    );
-};
+    )
+}

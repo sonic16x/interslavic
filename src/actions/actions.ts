@@ -1,4 +1,4 @@
-import { IModalDialog } from 'reducers';
+import { IModalDialog } from 'reducers'
 
 export enum ActionTypes {
     LANG = 'LANG',
@@ -32,165 +32,165 @@ export function langAction(data: {from: string, to: string}) {
     return {
         type: ActionTypes.LANG,
         data,
-    };
+    }
 }
 
 export function showModalDialog(data: IModalDialog) {
     return {
         type: ActionTypes.SHOW_MODAL_DIALOG,
         data,
-    };
+    }
 }
 
 export function hideModalDialog() {
     return {
         type: ActionTypes.HIDE_MODAL_DIALOG,
-    };
+    }
 }
 
 export function setNotificationAction(data) {
     return {
         type: ActionTypes.SET_NOTIFICATION,
         data,
-    };
+    }
 }
 
 export function setAlphabetTypeAction(data: number) {
     return {
         type: ActionTypes.ALPHABET_TYPE,
         data,
-    };
+    }
 }
 
 export function setSearchExpand(data) {
     return {
         type: ActionTypes.SET_SEARCH_EXPAND,
         data,
-    };
+    }
 }
 
 export function fromTextAction(data: string) {
     return {
         type: ActionTypes.FROM_TEXT,
         data,
-    };
+    }
 }
 
 export function searchTypeAction(data: string) {
     return {
         type: ActionTypes.SEARCH_TYPE,
         data,
-    };
+    }
 }
 
 export function changeCardViewAction() {
     return {
         type: ActionTypes.CHANGE_CARD_VIEW,
-    };
+    }
 }
 
 export function flavorisationTypeAction(data: string) {
     return {
         type: ActionTypes.FLAVORISATION_TYPE,
         data,
-    };
+    }
 }
 
 export function setPageAction(data: string) {
     return {
         type: ActionTypes.SET_PAGE,
         data,
-    };
+    }
 }
 
 export function isLoadingAction(data: boolean) {
     return {
         type: ActionTypes.IS_LOADING,
         data,
-    };
+    }
 }
 
 export function loadingProgressAction(data: number) {
     return {
         type: ActionTypes.LOADING_PROGRESS,
         data,
-    };
+    }
 }
 
 export function setInterfaceLang(data: string) {
     return {
         type: ActionTypes.SET_INTERFACE_LANG,
         data,
-    };
+    }
 }
 
 export function changeIsvSearchLetters(data: string) {
     return {
         type: ActionTypes.CHANGE_ISV_SEARCH_LETTERS,
         data,
-    };
+    }
 }
 
 export function changeIsvSearchByWordForms(data: boolean) {
     return {
         type: ActionTypes.CHANGE_ISV_SEARCH_BY_WORDFORMS,
         data,
-    };
+    }
 }
 
 export function posFilterAction(data: string) {
     return {
         type: ActionTypes.POS_FILTER,
         data,
-    };
+    }
 }
 
 export function runSearch() {
     return {
         type: ActionTypes.RUN_SEARCH,
-    };
+    }
 }
 
 export function setAlphabets(data) {
     return {
         type: ActionTypes.SET_ALPHABETS,
         data,
-    };
+    }
 }
 
 export function changeOrderOfCases(data) {
     return {
         type: ActionTypes.CHANGE_ORDER_OF_CASES,
         data,
-    };
+    }
 }
 
 export function changeCaseQuestions(data) {
     return {
         type: ActionTypes.CHANGE_CASE_QUESTIONS,
         data,
-    };
+    }
 }
 
 export function changeDictionaryLangAction(data) {
     return {
         type: ActionTypes.DICTIONARY_LANGUAGES,
         data,
-    };
+    }
 }
 
 export function togglePage(data) {
     return {
         type: ActionTypes.TOGGLE_PAGE,
         data,
-    };
+    }
 }
 
 export function setBadges(data) {
     return {
         type: ActionTypes.SET_BADGES,
         data,
-    };
+    }
 }
 
 export function toggleThemeAction(data: 'dark' | 'light') {

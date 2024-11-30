@@ -1,21 +1,20 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { lazy, Suspense, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { setPageAction } from 'actions';
+import { setPageAction } from 'actions'
 
-import { useInterfaceLang } from 'hooks/useInterfaceLang';
-import { usePage } from 'hooks/usePage';
-import { getPageFromPath, getPathFromPage } from 'routing';
-import { toBCP47 } from 'utils/bcp47';
+import { useInterfaceLang, usePage } from 'hooks'
+import { getPageFromPath, getPathFromPage } from 'routing'
+import { toBCP47 } from 'utils'
 
-import { About } from 'components/Pages/About';
-import { DictionaryPage } from 'components/Pages/DictionaryPage';
-import { Settings } from 'components/Pages/Settings';
+import { About } from 'components/Pages/About'
+import { DictionaryPage } from 'components/Pages/DictionaryPage'
+import { Settings } from 'components/Pages/Settings'
 
-import './Router.scss';
+import './Router.scss'
 
-const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar'));
-const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'));
+const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar'))
+const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'))
 
 function renderPageContent(page: string) {
     switch (page) {
@@ -24,67 +23,67 @@ function renderPageContent(page: string) {
                 <Suspense fallback={<div>&nbsp;</div>}>
                     <Grammar/>
                 </Suspense>
-            );
+            )
         case 'dictionary':
             return (
                 <DictionaryPage/>
-            );
+            )
         case 'viewer':
             return (
                 <Suspense fallback={<div>&nbsp;</div>}>
                     <Viewer/>
                 </Suspense>
-            );
+            )
         case 'settings':
             return (
                 <Settings/>
-            );
+            )
         case 'about':
             return (
                 <About/>
-            );
+            )
 
     }
 }
 
 export const Router =
     () => {
-        const dispatch = useDispatch();
-        const interfaceLang = useInterfaceLang();
-        const page = usePage();
-        const [prevPage, setPrevPage] = useState(page);
-        const addClass = page !== prevPage ? 'hide' : 'show';
+        const dispatch = useDispatch()
+        const interfaceLang = useInterfaceLang()
+        const page = usePage()
+        const [prevPage, setPrevPage] = useState(page)
+        const addClass = page !== prevPage ? 'hide' : 'show'
 
         const onTransitionEnd = () => {
             if (page !== prevPage) {
-                setPrevPage(page);
+                setPrevPage(page)
             }
         }
 
         const onChangeUrl = () => {
-            const currentPage = getPageFromPath();
+            const currentPage = getPageFromPath()
 
             if (getPathFromPage(page) !== `/${currentPage}`) {
-                dispatch(setPageAction(currentPage));
+                dispatch(setPageAction(currentPage))
             }
-        };
+        }
 
         useEffect(() => {
-            window.onpopstate = onChangeUrl;
-        }, [onChangeUrl]);
+            window.onpopstate = onChangeUrl
+        }, [onChangeUrl])
 
         useEffect(() => {
             if (typeof document !== 'undefined') {
-                document.documentElement.lang = toBCP47(interfaceLang);
+                document.documentElement.lang = toBCP47(interfaceLang)
             }
-        }, [interfaceLang]);
+        }, [interfaceLang])
 
         return (
-            <div
+            <main
                 className={`animation-container ${addClass} ${prevPage}Route`}
                 onTransitionEnd={onTransitionEnd}
             >
                 {renderPageContent(prevPage)}
-            </div>
-        );
-    };
+            </main>
+        )
+    }

@@ -66,7 +66,9 @@ export default [{
         "no-console": "error",
         "import/first": "off",
         "react/react-in-jsx-scope": "off",
+        "quotes": [2, "single", { "avoidEscape": true }],
         "no-useless-escape": "off",
+        "no-duplicate-imports": "error",
         "no-fallthrough": "off",
         "no-misleading-character-class": "off",
         "react/prop-types": "off",
@@ -79,6 +81,8 @@ export default [{
         }],
 
         "eol-last": ["error", "always"],
+        "max-len": ["error", 120],
+        "semi": ["error", "never"],
         "newline-before-return": ["error"],
 
         indent: ["error", 4, {

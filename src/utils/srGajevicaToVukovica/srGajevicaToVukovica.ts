@@ -32,8 +32,8 @@ export function srGajevicaToVukovica(text: string): string {
             .replace(/v/g, 'в').replace(/V/g, 'В')
             .replace(/z/g, 'з').replace(/Z/g, 'З')
             .replace(/ž/g, 'ж').replace(/Ž/g, 'Ж')
-        ;
+        
     } else {
-        return text;
+        return text
     }
 }

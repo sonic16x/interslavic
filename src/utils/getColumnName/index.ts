@@ -1,1 +1,1 @@
-export * from './getColumnName';
+export * from './getColumnName'

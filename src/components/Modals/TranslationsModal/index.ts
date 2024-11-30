@@ -1,1 +1,1 @@
-export * from './TranslationsModal';
+export * from './TranslationsModal'

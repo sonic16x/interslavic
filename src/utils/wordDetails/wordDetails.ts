@@ -43,7 +43,7 @@ function getArr(str) {
     return str
         .replace(/\.\//g, '/')
         .replace(/ /g, '')
-        .split('.');
+        .split('.')
 }
 
 // Get Part Of Speech
@@ -74,24 +74,24 @@ export const partOfSpeechList: PartOfSpeech[] = [
     'interjection',
     'verb',
     'numeral',
-];
+]
 
 export function getPartOfSpeech(details: string): PartOfSpeech {
-    const arr = getArr(details);
+    const arr = getArr(details)
     if (arr.includes('particle')) {
-        return 'particle';
+        return 'particle'
     }
     if (arr.includes('prefix')) {
-        return 'prefix';
+        return 'prefix'
     }
     if (arr.includes('suffix')) {
-        return 'suffix';
+        return 'suffix'
     }
     if (arr.includes('phrase')) {
-        return 'phrase';
+        return 'phrase'
     }
     if (arr.includes('adj')) {
-        return 'adjective';
+        return 'adjective'
     }
     if (
         arr.includes('f') ||
@@ -99,28 +99,28 @@ export function getPartOfSpeech(details: string): PartOfSpeech {
         arr.includes('m') ||
         arr.includes('m/f')
     ) {
-        return 'noun';
+        return 'noun'
     }
     if (arr.includes('adv')) {
-        return 'adverb';
+        return 'adverb'
     }
     if (arr.includes('conj')) {
-        return 'conjunction';
+        return 'conjunction'
     }
     if (arr.includes('prep')) {
-        return 'preposition';
+        return 'preposition'
     }
     if (arr.includes('pron')) {
-        return 'pronoun';
+        return 'pronoun'
     }
     if (arr.includes('num')) {
-        return 'numeral';
+        return 'numeral'
     }
     if (arr.includes('intj')) {
-        return 'interjection';
+        return 'interjection'
     }
     if (arr.includes('v')) {
-        return 'verb';
+        return 'verb'
     }
 
 }
@@ -133,140 +133,148 @@ export const genderList: Gender[] = [
     'feminine',
     'neuter',
     'masculineOrFeminine',
-];
+]
 
 export function getGender(details: string): Gender {
-    const arr = getArr(details);
+    const arr = getArr(details)
     if (arr.includes('m')) {
-        return 'masculine';
+        return 'masculine'
     }
     if (arr.includes('f')) {
-        return 'feminine';
+        return 'feminine'
     }
     if (arr.includes('m/f')) {
-        return 'masculineOrFeminine';
+        return 'masculineOrFeminine'
     }
 
-    return 'neuter';
+    return 'neuter'
 }
 
 export function isPlural(details: string): boolean {
-    return getArr(details).includes('pl');
+    return getArr(details).includes('pl')
 }
 
 export function isSingular(details: string): boolean {
-    return getArr(details).includes('sg');
+    return getArr(details).includes('sg')
 }
 
 export function isCountable(details: string): boolean {
-    return !isSingular(details) && !isPlural(details);
+    return !isSingular(details) && !isPlural(details)
 }
 
 export function isAnimate(details: string): boolean {
-    return getArr(details).includes('anim');
+    return getArr(details).includes('anim')
 }
 
 export function isIndeclinable(details: string): boolean {
-    return getArr(details).includes('indecl');
+    return getArr(details).includes('indecl')
 }
 
 export function isComparative(details: string): boolean {
-    return getArr(details).includes('comp');
+    return getArr(details).includes('comp')
 }
 
 export function isSuperlative(details: string): boolean {
-    return getArr(details).includes('sup');
+    return getArr(details).includes('sup')
 }
 
 // Numerals
 
 export function getNumeralType(details: string): string {
-    const arr = getArr(details);
+    const arr = getArr(details)
     if (arr.includes('card')) {
-        return 'cardinal';
+        return 'cardinal'
     }
     if (arr.includes('coll')) {
-        return 'collective';
+        return 'collective'
     }
     if (arr.includes('fract')) {
-        return 'fractional';
+        return 'fractional'
     }
     if (arr.includes('subst')) {
-        return 'substantivized';
+        return 'substantivized'
     }
     if (arr.includes('diff')) {
-        return 'differential';
+        return 'differential'
     }
     if (arr.includes('mult')) {
-        return 'multiplicative';
+        return 'multiplicative'
     }
     if (arr.includes('ord')) {
-        return 'ordinal';
+        return 'ordinal'
     }
 }
 
 // Pronouns
 
 export function getPronounType(details: string): string {
-    const arr = getArr(details);
+    const arr = getArr(details)
     if (arr.includes('pers')) {
-        return 'personal';
+        return 'personal'
     }
     if (arr.includes('dem')) {
-        return 'demonstrative';
+        return 'demonstrative'
     }
     if (arr.includes('indef')) {
-        return 'indefinite';
+        return 'indefinite'
     }
     if (arr.includes('refl')) {
-        return 'reflexive';
+        return 'reflexive'
     }
     if (arr.includes('rel')) {
-        return 'relative';
+        return 'relative'
     }
     if (arr.includes('poss')) {
-        return 'possessive';
+        return 'possessive'
     }
     if (arr.includes('int')) {
-        return 'interrogative';
+        return 'interrogative'
     }
     if (arr.includes('neg')) {
-        return 'negative';
+        return 'negative'
     }
     if (arr.includes('univ')) {
-        return 'universal';
+        return 'universal'
     }
 }
 
 // Verbs
 
-export type VerbType = 'intransitive' | 'transitive' | 'auxiliar' | 'reflexive' | 'imperfective' | 'perfective' | 'imperfectiveOrPerfective';
+export type VerbType =
+    'intransitive' |
+    'transitive' |
+    'auxiliar' |
+    'reflexive' |
+    'imperfective' |
+    'perfective' |
+    'imperfectiveOrPerfective'
+    ;
 
 export function getVerbDetails(details: string): VerbType[] {
     const res = getArr(details).map((detail) => {
         switch (detail) {
             case 'intr':
-                return 'intransitive';
+                return 'intransitive'
             case 'tr':
-                return 'transitive';
+                return 'transitive'
             case 'aux':
-                return 'auxiliar';
+                return 'auxiliar'
             case 'refl':
-                return 'reflexive';
+                return 'reflexive'
             case 'ipf':
-                return 'imperfective';
+                return 'imperfective'
             case 'pf':
-                return 'perfective';
+                return 'perfective'
             case 'ipf/pf':
-                return 'imperfectiveOrPerfective';
+                return 'imperfectiveOrPerfective'
             default:
-                return '';
+                return ''
         }
-    }).filter((detail) => detail !== '');
+    }).filter((detail) => detail !== '')
 
     if (!res.includes('auxiliar')) {
-        res.push('main');
+        res.push('main')
     }
 
-    return res;
+    return res
 }

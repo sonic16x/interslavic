@@ -1,1 +1,1 @@
-export * from './POSSelector';
+export * from './POSSelector'

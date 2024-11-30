@@ -1,1 +1,1 @@
-export * from './Tips';
+export * from './Tips'

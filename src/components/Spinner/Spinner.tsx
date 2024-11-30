@@ -1,4 +1,4 @@
-import './Spinner.scss';
+import './Spinner.scss'
 
 interface ISpinnerProps {
     size: string;
@@ -17,4 +17,4 @@ export const Spinner =
         >
             <span />
         </div>
-    );
+    )

@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import './Card.scss';
+import './Card.scss'
 
 interface ICardProps {
     title: string;
@@ -17,4 +17,4 @@ export const Card =
                 {children}
             </div>
         </div>
-    );
+    )

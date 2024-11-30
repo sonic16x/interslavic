@@ -1,4 +1,4 @@
-import { addLangs } from 'consts';
+import { addLangs } from 'consts'
 
 export const CASH_URLS = [
     '/',
@@ -45,4 +45,4 @@ export const CASH_URLS = [
     '/icons/ms-icon-144x144.png',
     '/icons/ms-icon-150x150.png',
     '/icons/ms-icon-310x310.png',
-];
+]

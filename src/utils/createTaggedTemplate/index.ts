@@ -1,1 +1,1 @@
-export * from './createTaggedTemplate';
+export * from './createTaggedTemplate'

@@ -1,5 +1,5 @@
-import { Controls } from './Controls';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Controls } from './Controls'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     title: 'Components/Controls',
@@ -10,19 +10,19 @@ const meta = {
     },
     argTypes: {},
     args: {},
-} satisfies Meta<typeof Controls>;
+} satisfies Meta<typeof Controls>
 
-export default meta;
+export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
 
     },
-};
+}
 
 export const Expanded: Story = {
     args: {
         expanded: true
     },
-};
+}

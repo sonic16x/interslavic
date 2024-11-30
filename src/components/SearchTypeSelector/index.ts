@@ -1,1 +1,1 @@
-export * from './SearchTypeSelector';
+export * from './SearchTypeSelector'

@@ -1,16 +1,16 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import { useLoading } from 'hooks/useLoading';
+import { useLoading } from 'hooks'
 
-import { Spinner } from 'components/Spinner';
+import { Spinner } from 'components'
 
-import './Loader.scss';
+import './Loader.scss'
 
 export const Loader =
     () => {
-        const loading = useLoading();
+        const loading = useLoading()
 
         return (
             <div className={classNames('loader', { loading })}>
@@ -20,5 +20,5 @@ export const Loader =
                 />
                 <span className="loader__title" data-testid="dictionary-loading">{t('loading')}</span>
             </div>
-        );
-    };
+        )
+    }

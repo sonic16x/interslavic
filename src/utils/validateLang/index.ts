@@ -1,1 +1,1 @@
-export * from './validateLang';
+export * from './validateLang'

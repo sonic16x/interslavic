@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import './LineSelector.scss';
+import './LineSelector.scss'
 
 export interface ILineSelectorOption {
     name: string;
@@ -16,8 +16,8 @@ interface ILineSelectorProps {
 
 export const LineSelector =
     ({ className, options, value, onSelect }: ILineSelectorProps) => {
-        const index = options.findIndex((item) => (item.value === value));
-        const length = options.length;
+        const index = options.findIndex((item) => (item.value === value))
+        const length = options.length
 
         return (
             <div className={classNames('lineSelector', className)}>
@@ -38,5 +38,5 @@ export const LineSelector =
                     </span>
                 ))}
             </div>
-        );
-    };
+        )
+    }

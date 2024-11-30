@@ -1,1 +1,1 @@
-export * from './latinToIpa';
+export * from './latinToIpa'

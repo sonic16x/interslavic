@@ -1,6 +1,6 @@
-import { LineSelector } from './LineSelector';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import { LineSelector } from './LineSelector'
+import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
 const meta = {
     title: 'Components/LineSelector',
     component: LineSelector,
@@ -12,9 +12,9 @@ const meta = {
     args: {
         onSelect: fn()
     },
-} satisfies Meta<typeof LineSelector>;
+} satisfies Meta<typeof LineSelector>
 
-export default meta;
+export default meta
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
@@ -29,7 +29,7 @@ export const Default: Story = {
         })),
         value: 'begin'
     },
-};
+}
 
 export const SecondSelected: Story = {
     args: {
@@ -43,5 +43,5 @@ export const SecondSelected: Story = {
         })),
         value: 'entire'
     },
-};
+}
 

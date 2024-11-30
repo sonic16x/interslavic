@@ -1,10 +1,10 @@
-import { setLang } from 'translations';
+import { setLang } from 'translations'
 
-import { ActionTypes } from 'actions';
+import { ActionTypes } from 'actions'
 
-import { Dictionary, ITranslateResult } from 'services/dictionary';
+import { Dictionary, ITranslateResult } from 'services'
 
-import { getPathFromPage, goToPage } from 'routing';
+import { getPathFromPage, goToPage } from 'routing'
 
 export interface IAlphabets {
     latin: boolean;
@@ -69,15 +69,15 @@ export interface IMainState {
 export function mainReducer(state: IMainState, { type, data }) {
     switch (type) {
         case ActionTypes.LANG: {
-            const { fromText, flavorisationType, searchType, posFilter } = state;
-            const lang = data;
+            const { fromText, flavorisationType, searchType, posFilter } = state
+            const lang = data
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
-            });
+            })
 
             if (process.env.NODE_ENV !== 'production') {
                 // eslint-disable-next-line no-console
@@ -88,19 +88,26 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 lang,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    flavorisationType,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
         case ActionTypes.SEARCH_TYPE: {
-            const { flavorisationType, lang, fromText, posFilter } = state;
-            const searchType = data;
+            const { flavorisationType, lang, fromText, posFilter } = state
+            const searchType = data
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
-            });
+            })
 
             if (process.env.NODE_ENV !== 'production') {
                 // eslint-disable-next-line no-console
@@ -111,19 +118,26 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 searchType,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    flavorisationType,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
         case ActionTypes.FROM_TEXT: {
-            const { searchType, flavorisationType, lang, posFilter } = state;
-            const fromText = data;
+            const { searchType, flavorisationType, lang, posFilter } = state
+            const fromText = data
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
-            });
+            })
 
             if (process.env.NODE_ENV !== 'production') {
                 // eslint-disable-next-line no-console
@@ -134,18 +148,25 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 fromText,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    flavorisationType,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
         case ActionTypes.RUN_SEARCH: {
-            const { searchType, flavorisationType, lang, fromText, posFilter } = state;
+            const { searchType, flavorisationType, lang, fromText, posFilter } = state
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
-            });
+            })
 
             if (process.env.NODE_ENV !== 'production') {
                 // eslint-disable-next-line no-console
@@ -155,19 +176,26 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    flavorisationType,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
         case ActionTypes.CHANGE_ISV_SEARCH_LETTERS: {
-            const { searchType, flavorisationType, lang, fromText, posFilter } = state;
-            const isvSearchLetters = Dictionary.changeIsvSearchLetters(data);
+            const { searchType, flavorisationType, lang, fromText, posFilter } = state
+            const isvSearchLetters = Dictionary.changeIsvSearchLetters(data)
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
-            });
+            })
 
             if (process.env.NODE_ENV !== 'production') {
                 // eslint-disable-next-line no-console
@@ -178,20 +206,27 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 isvSearchLetters,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    flavorisationType,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
         case ActionTypes.CHANGE_ISV_SEARCH_BY_WORDFORMS: {
-            const { searchType, flavorisationType, lang, fromText, posFilter } = state;
-            const isvSearchByWordForms = data;
-            Dictionary.setIsvSearchByWordForms(data);
+            const { searchType, flavorisationType, lang, fromText, posFilter } = state
+            const isvSearchByWordForms = data
+            Dictionary.setIsvSearchByWordForms(data)
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType,
-            });
+            })
 
             if (process.env.NODE_ENV !== 'production') {
                 // eslint-disable-next-line no-console
@@ -202,19 +237,26 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...state,
                 isvSearchByWordForms,
                 rawResults,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    flavorisationType,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
 
         case ActionTypes.FLAVORISATION_TYPE: {
-            const { searchType, lang, fromText, posFilter } = state;
+            const { searchType, lang, fromText, posFilter } = state
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
                 flavorisationType: data,
-            });
+            })
 
             if (process.env.NODE_ENV !== 'production') {
                 // eslint-disable-next-line no-console
@@ -224,18 +266,25 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 flavorisationType: data,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, data, state.alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    data,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
         case ActionTypes.POS_FILTER: {
-            const { searchType, lang, fromText, flavorisationType } = state;
+            const { searchType, lang, fromText, flavorisationType } = state
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 flavorisationType,
                 posFilter: data,
-            });
+            })
 
             if (process.env.NODE_ENV !== 'production') {
                 // eslint-disable-next-line no-console
@@ -245,48 +294,55 @@ export function mainReducer(state: IMainState, { type, data }) {
             return {
                 ...state,
                 posFilter: data,
-                results: Dictionary.formatTranslate(rawResults, lang.from, lang.to, flavorisationType, state.alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    flavorisationType,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
         case ActionTypes.SET_PAGE:
-            goToPage(getPathFromPage(data));
+            goToPage(getPathFromPage(data))
 
             return {
                 ...state,
                 page: data,
-            };
+            }
         case ActionTypes.SET_NOTIFICATION:
             return {
                 ...state,
                 notification: data,
-            };
+            }
         case ActionTypes.IS_LOADING:
             return {
                 ...state,
                 isLoading: data,
-            };
+            }
         case ActionTypes.LOADING_PROGRESS:
             return {
                 ...state,
                 loadingProgress: data,
-            };
+            }
         case ActionTypes.ALPHABET_TYPE:
             return {
                 ...state,
                 alphabetType: data,
-            };
+            }
         case ActionTypes.SET_SEARCH_EXPAND:
             return {
                 ...state,
                 searchExpanded: data,
-            };
+            }
         case ActionTypes.SET_INTERFACE_LANG:
-            setLang(data);
+            setLang(data)
 
             return {
                 ...state,
                 interfaceLang: data,
-            };
+            }
         case ActionTypes.SHOW_MODAL_DIALOG:
             return {
                 ...state,
@@ -294,17 +350,17 @@ export function mainReducer(state: IMainState, { type, data }) {
                     ...data,
                     show: true,
                 },
-            };
+            }
         case ActionTypes.CHANGE_CARD_VIEW:
             return {
                 ...state,
                 isShortCardView: !state.isShortCardView,
-            };
+            }
         case ActionTypes.TOGGLE_THEME:
             return {
                 ...state,
                 colorTheme: data,
-            };
+            }
         case ActionTypes.HIDE_MODAL_DIALOG:
             return {
                 ...state,
@@ -312,9 +368,9 @@ export function mainReducer(state: IMainState, { type, data }) {
                     ...state.modalDialog,
                     show: false,
                 },
-            };
+            }
         case ActionTypes.DICTIONARY_LANGUAGES: {
-            const { dictionaryLanguages } = state;
+            const { dictionaryLanguages } = state
 
             return {
                 ...state,
@@ -322,49 +378,63 @@ export function mainReducer(state: IMainState, { type, data }) {
                     dictionaryLanguages.includes(data) ?
                         dictionaryLanguages.filter((lang) => (lang !== data)) :
                         [...dictionaryLanguages, data],
-            };
+            }
         }
         case ActionTypes.SET_ALPHABETS: {
-            let alphabetType = state.alphabetType;
+            let alphabetType = state.alphabetType
             const alphabets = {
                 ...state.alphabets,
                 ...data,
-            };
+            }
 
             if (Object.values(alphabets).every((value) => !value)) {
-                alphabets.latin = true;
+                alphabets.latin = true
             }
 
             if (!alphabets[state.alphabetType]) {
-                alphabetType = Object.keys(alphabets).filter((key) => alphabets[key])[0];
+                alphabetType = Object.keys(alphabets).filter((key) => alphabets[key])[0]
             }
 
             return {
                 ...state,
                 alphabets,
                 alphabetType,
-                results: Dictionary.formatTranslate(state.rawResults, state.lang.from, state.lang.to, state.flavorisationType, alphabets, state.caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    state.rawResults,
+                    state.lang.from,
+                    state.lang.to,
+                    state.flavorisationType,
+                    alphabets,
+                    state.caseQuestions,
+                ),
+            }
         }
 
         case ActionTypes.CHANGE_CASE_QUESTIONS: {
-            const caseQuestions = data;
+            const caseQuestions = data
             
             return {
                 ...state,
                 caseQuestions,
-                results: Dictionary.formatTranslate(state.rawResults, state.lang.from, state.lang.to, state.flavorisationType, state.alphabets, caseQuestions),
-            };
+                results: Dictionary.formatTranslate(
+                    state.rawResults,
+                    state.lang.from,
+                    state.lang.to,
+                    state.flavorisationType,
+                    state.alphabets,
+                    caseQuestions,
+                ),
+            }
         }
 
         case ActionTypes.CHANGE_ORDER_OF_CASES:
             return {
                 ...state,
                 orderOfCases: data,
-            };
+            }
 
         case ActionTypes.TOGGLE_PAGE: {
-            const { enabledPages } = state;
+            const { enabledPages } = state
 
             return {
                 ...state,
@@ -372,15 +442,15 @@ export function mainReducer(state: IMainState, { type, data }) {
                     enabledPages.includes(data) ?
                         enabledPages.filter((page) => (page !== data)) :
                         [...enabledPages, data],
-            };
+            }
         }
         case ActionTypes.SET_BADGES: {
             return {
                 ...state,
                 badges: data,
-            };
+            }
         }
         default:
-            return state;
+            return state
     }
 }

@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import './Selector.scss';
+import './Selector.scss'
 
 export interface ISelectorOption {
     name: string;
@@ -17,7 +17,7 @@ interface ISelectorProps {
 }
 
 export const Selector = ({ onSelect, options, className, value, label, testId }: ISelectorProps) => {
-    const id = label ? label.toLowerCase().replace(/ /, '_') : null;
+    const id = label ? label.toLowerCase().replace(/ /, '_') : null
 
     return (
         <div className={classNames('selector', className)}>
@@ -32,5 +32,5 @@ export const Selector = ({ onSelect, options, className, value, label, testId }:
                 {options.map((option, i) => <option key={i} value={option.value}>{option.name}</option>)}
             </select>
         </div>
-    );
-};
+    )
+}

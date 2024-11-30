@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import './Tips.scss';
+import './Tips.scss'
 
 interface ITipsProps {
     str: string;
@@ -19,5 +19,5 @@ export const Tips =
                     {str}&nbsp;<span className="tipsSymbol" />
                 </span>
             </>
-        );
-    };
+        )
+    }

@@ -1,1 +1,1 @@
-export * from './searchStrategies';
+export * from './searchStrategies'

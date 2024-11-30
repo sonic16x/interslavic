@@ -1,7 +1,7 @@
-import classNames from 'classnames';
-import { useEffect, useRef } from 'react';
+import classNames from 'classnames'
+import { useEffect, useRef } from 'react'
 
-import './Textarea.scss';
+import './Textarea.scss'
 
 interface ITextareaProps {
     value?: string;
@@ -21,26 +21,28 @@ function getLinesHeight(count, size) {
         'S': 18,
         'M': 20,
         'L': 14,
-    };
+    }
 
-    return sizes[size] * count + 8 * 2;
+    return sizes[size] * count + 8 * 2
 }
 
-export const Textarea = ({ value, error, size = 'M', className, onChange, autoresize, placeholder, ...otherProps }: ITextareaProps) => {
-    const textareaRef = useRef(null);
+export const Textarea = ({
+    value, error, size = 'M', className, onChange, autoresize, placeholder, ...otherProps
+}: ITextareaProps) => {
+    const textareaRef = useRef(null)
 
-    const minLines = 2;
-    const maxLines = 6;
-    const minHeight = getLinesHeight(minLines, size);
-    const maxHeight = getLinesHeight(maxLines, size);
+    const minLines = 2
+    const maxLines = 6
+    const minHeight = getLinesHeight(minLines, size)
+    const maxHeight = getLinesHeight(maxLines, size)
 
     useEffect(() => {
         if (textareaRef && textareaRef.current && autoresize) {
-            textareaRef.current.style.height = '';
-            const height = Math.min(Math.max(textareaRef.current.scrollHeight, minHeight), maxHeight) + 2;
-            textareaRef.current.style.height = `${height}px`;
+            textareaRef.current.style.height = ''
+            const height = Math.min(Math.max(textareaRef.current.scrollHeight, minHeight), maxHeight) + 2
+            textareaRef.current.style.height = `${height}px`
         }
-    }, [value, textareaRef, autoresize]);
+    }, [value, textareaRef, autoresize])
 
     return (
         <div
@@ -60,5 +62,5 @@ export const Textarea = ({ value, error, size = 'M', className, onChange, autore
                 {...otherProps}
             />
         </div>
-    );
-};
+    )
+}

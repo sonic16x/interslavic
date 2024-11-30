@@ -1,36 +1,36 @@
-import classNames from 'classnames';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import classNames from 'classnames'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { setNotificationAction } from 'actions';
+import { setNotificationAction } from 'actions'
 
-import { useNotification } from 'hooks/useNotification';
+import { useNotification } from 'hooks'
 
-import './Notification.scss';
+import './Notification.scss'
 
 export const Notification =
     () => {
-        const dispatch = useDispatch();
-        const notification = useNotification();
-        const [isVisible, setVisible] = useState(true);
-        const [timer, setTimer] = useState(null);
-        const hasNotification = !!notification;
+        const dispatch = useDispatch()
+        const notification = useNotification()
+        const [isVisible, setVisible] = useState(true)
+        const [timer, setTimer] = useState(null)
+        const hasNotification = !!notification
 
         useEffect(() => {
             if (!hasNotification || !isVisible) {
-                return;
+                return
             }
 
             if (timer) {
-                clearTimeout(timer);
+                clearTimeout(timer)
             }
 
             const timerId = setTimeout(() => {
-                dispatch(setNotificationAction(''));
-            }, 2000);
+                dispatch(setNotificationAction(''))
+            }, 2000)
 
-            setTimer(timerId);
-        }, [hasNotification, dispatch]);
+            setTimer(timerId)
+        }, [hasNotification, dispatch])
 
         return (
             <div className="notification-container">
@@ -39,10 +39,10 @@ export const Notification =
                     onClick={() => setVisible(false)}
                     onTransitionEnd={() => {
                         if (!isVisible) {
-                            dispatch(setNotificationAction(null));
-                            setVisible(true);
+                            dispatch(setNotificationAction(null))
+                            setVisible(true)
                             if (timer) {
-                                clearTimeout(timer);
+                                clearTimeout(timer)
                             }
                         }
                     }}
@@ -50,5 +50,5 @@ export const Notification =
                     {notification?.text}
                 </div>
             </div>
-        );
-    };
+        )
+    }

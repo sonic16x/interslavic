@@ -1,1 +1,1 @@
-export * from './getTablePublicUrl';
+export * from './getTablePublicUrl'

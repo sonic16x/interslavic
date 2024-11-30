@@ -1,1 +1,1 @@
-export * from './isMainTable';
+export * from './isMainTable'

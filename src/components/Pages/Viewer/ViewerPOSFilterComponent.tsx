@@ -1,8 +1,8 @@
-import classNames from 'classnames';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import classNames from 'classnames'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { createRoot } from 'react-dom/client'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
 import {
     getGender,
@@ -15,13 +15,13 @@ import {
     isIndeclinable,
     isPlural,
     isSingular,
-} from 'utils/wordDetails';
+} from 'utils'
 
-import { Checkbox } from 'components/Checkbox';
+import { Checkbox } from 'components'
 
-import './ViewerPOSFilterComponent.scss';
+import './ViewerPOSFilterComponent.scss'
 
-import ExpandSubListIcon from './images/expand-sub-list-icon.svg';
+import ExpandSubListIcon from './images/expand-sub-list-icon.svg'
 
 const globalFiltersState = {
     noun: {
@@ -81,7 +81,7 @@ const globalFiltersState = {
     prefix: true,
     suffix: true,
     phrase: true,
-};
+}
 
 const splitLineKeys = [
     'noun-animate',
@@ -90,47 +90,47 @@ const splitLineKeys = [
 
     'verb-imperfective',
     'verb-main',
-];
+]
 
 const fixAllFalse = (value: any, group: string[]) => {
     if (group.filter((key) => value[key]).length === 0) {
         group.forEach((key) => {
-            value[key] = true;
-        });
+            value[key] = true
+        })
     }
-};
+}
 
 const setFiltersAll = (value: boolean) => Object.keys(globalFiltersState).forEach((key) => {
     if (typeof globalFiltersState[key] === 'boolean') {
-        globalFiltersState[key] = value;
+        globalFiltersState[key] = value
     } else {
         Object.keys(globalFiltersState[key]).forEach((subKey) => {
-            globalFiltersState[key][subKey] = value;
-        });
+            globalFiltersState[key][subKey] = value
+        })
     }
-});
+})
 
 const getAllCheckedLength = () => {
     return Object.keys(globalFiltersState).filter((key) => {
-        const value = globalFiltersState[key];
+        const value = globalFiltersState[key]
         if (typeof value === 'boolean') {
-            return value;
+            return value
         } else {
-            return Object.values(value).filter(Boolean).length !== 0;
+            return Object.values(value).filter(Boolean).length !== 0
         }
-    }).length;
-};
+    }).length
+}
 
 const getAllCheckedPartLength = () => {
     return Object.keys(globalFiltersState).filter((key) => {
-        const value = globalFiltersState[key];
+        const value = globalFiltersState[key]
         if (typeof value === 'boolean') {
-            return value;
+            return value
         } else {
-            return Object.values(value).filter(Boolean).length === Object.keys(value).length;
+            return Object.values(value).filter(Boolean).length === Object.keys(value).length
         }
-    }).length;
-};
+    }).length
+}
 
 interface IWordTypes {
     pos: string;
@@ -139,18 +139,18 @@ interface IWordTypes {
     type?: string;
 }
 
-const idTypesMap = new Map<string, IWordTypes>();
+const idTypesMap = new Map<string, IWordTypes>()
 
 export function initPOSFilterIdTypesMap(data: string[][]) {
-    const header = data.slice(0, 1)[0];
-    const idIndex = header.indexOf('id');
-    const detailsIndex = header.indexOf('partOfSpeech');
+    const header = data.slice(0, 1)[0]
+    const idIndex = header.indexOf('id')
+    const detailsIndex = header.indexOf('partOfSpeech')
 
     data.slice(1).forEach((line) => {
-        const id = line[idIndex];
-        const details = line[detailsIndex];
-        const pos = getPartOfSpeech(details);
-        const obj: IWordTypes = { pos };
+        const id = line[idIndex]
+        const details = line[detailsIndex]
+        const pos = getPartOfSpeech(details)
+        const obj: IWordTypes = { pos }
 
         switch (pos) {
             case 'noun':
@@ -161,73 +161,79 @@ export function initPOSFilterIdTypesMap(data: string[][]) {
                     singular: isSingular(details),
                     countable: isCountable(details),
                     indeclinable: isIndeclinable(details),
-                };
-                break;
+                }
+                break
             case 'verb':
-                obj.verbTypes = getVerbDetails(details);
-                break;
+                obj.verbTypes = getVerbDetails(details)
+                break
             case 'numeral':
-                obj.type = getNumeralType(details);
-                break;
+                obj.type = getNumeralType(details)
+                break
             case 'pronoun':
-                obj.type = getPronounType(details);
-                break;
+                obj.type = getPronounType(details)
+                break
         }
 
-        idTypesMap.set(id, obj);
-    });
+        idTypesMap.set(id, obj)
+    })
 }
 
 function getTypesById(id: string) {
-    return idTypesMap.get(id);
+    return idTypesMap.get(id)
 }
 
 const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, resetEvent: (callback: any) => void }) => {
-    const [rerender, setRerender] = useState(false);
-    const expandedState = useRef(new Map(Object.keys(globalFiltersState).filter((key) => typeof globalFiltersState[key] !== 'boolean').map((key) => [key, false])));
+    const [rerender, setRerender] = useState(false)
+    const expandedState = useRef(
+        new Map(
+            Object.keys(globalFiltersState)
+                .filter((key) => typeof globalFiltersState[key] !== 'boolean')
+                .map((key) => [key, false])
+        )
+    )
 
     const filterResetCallback = useCallback(() => {
-        setFiltersAll(true);
-        setRerender((rerender) => !rerender);
-    }, [setRerender]);
+        setFiltersAll(true)
+        setRerender((rerender) => !rerender)
+    }, [setRerender])
 
     useEffect(() => {
-        resetEvent(filterResetCallback);
-    }, [resetEvent, filterResetCallback]);
+        resetEvent(filterResetCallback)
+    }, [resetEvent, filterResetCallback])
 
     useEffect(() => {
-        agParams.filterChangedCallback();
-    }, [rerender, agParams]);
+        agParams.filterChangedCallback()
+    }, [rerender, agParams])
 
-    const allCheckedLength = getAllCheckedLength();
-    const allChecked = allCheckedLength !== 0;
-    const allPart = Object.keys(globalFiltersState).length !== getAllCheckedPartLength();
+    const allCheckedLength = getAllCheckedLength()
+    const allChecked = allCheckedLength !== 0
+    const allPart = Object.keys(globalFiltersState).length !== getAllCheckedPartLength()
 
     const onChange = useCallback((key: string, subKey?: string) => {
         if (key === 'all') {
-            const allCheckedLength = getAllCheckedLength();
+            const allCheckedLength = getAllCheckedLength()
 
-            setFiltersAll(allCheckedLength === 0);
-            setRerender(!rerender);
+            setFiltersAll(allCheckedLength === 0)
+            setRerender(!rerender)
             
-            return;
+            return
         }
-        const value = globalFiltersState[key];
+        const value = globalFiltersState[key]
 
         if (typeof subKey === 'undefined') {
-            const hasFilter = typeof value !== 'boolean';
+            const hasFilter = typeof value !== 'boolean'
             if (hasFilter) {
-                const subKeys = Object.keys(value);
-                const newValue = subKeys.filter((subKey) => value[subKey]).length === 0;
+                const subKeys = Object.keys(value)
+                const newValue = subKeys.filter((subKey) => value[subKey]).length === 0
 
                 Object.keys(value).forEach((subKey) => {
-                    value[subKey] = newValue;
-                });
+                    value[subKey] = newValue
+                })
             } else {
-                globalFiltersState[key] = !globalFiltersState[key];
+                globalFiltersState[key] = !globalFiltersState[key]
             }
         } else {
-            value[subKey] = !value[subKey];
+            value[subKey] = !value[subKey]
 
             if (key === 'noun') {
                 fixAllFalse(value, [
@@ -235,23 +241,23 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
                     'feminine',
                     'neuter',
                     'masculineOrFeminine',
-                ]);
+                ])
 
                 fixAllFalse(value, [
                     'inanimate',
                     'animate',
-                ]);
+                ])
 
                 fixAllFalse(value, [
                     'countable',
                     'singular',
                     'plural',
-                ]);
+                ])
 
                 fixAllFalse(value, [
                     'indeclinable',
                     'declinable',
-                ]);
+                ])
             }
 
             if (key === 'verb') {
@@ -259,28 +265,28 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
                     'intransitive',
                     'transitive',
                     'reflexive',
-                ]);
+                ])
 
                 fixAllFalse(value, [
                     'imperfective',
                     'perfective',
                     'imperfectiveOrPerfective',
-                ]);
+                ])
 
                 fixAllFalse(value, [
                     'main',
                     'auxiliar',
-                ]);
+                ])
             }
         }
 
-        setRerender(!rerender);
-    }, [rerender]);
+        setRerender(!rerender)
+    }, [rerender])
 
     const onExpandClick = useCallback((key) => {
-        expandedState.current.set(key, !expandedState.current.get(key));
-        setRerender(!rerender);
-    }, [rerender]);
+        expandedState.current.set(key, !expandedState.current.get(key))
+        setRerender(!rerender)
+    }, [rerender])
 
     return (
         <>
@@ -296,12 +302,12 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
                     onChange={() => (onChange('all'))}
                 />
                 {Object.keys(globalFiltersState).map((key) => {
-                    const value = globalFiltersState[key];
-                    const subFilter = typeof value !== 'boolean';
-                    const subFilterKeys = Object.keys(value);
-                    const subFilterValuesLength = Object.values(value).filter(Boolean).length;
-                    const checked = subFilter ? subFilterValuesLength !== 0 : value;
-                    const part = subFilter && subFilterValuesLength !== subFilterKeys.length;
+                    const value = globalFiltersState[key]
+                    const subFilter = typeof value !== 'boolean'
+                    const subFilterKeys = Object.keys(value)
+                    const subFilterValuesLength = Object.values(value).filter(Boolean).length
+                    const checked = subFilter ? subFilterValuesLength !== 0 : value
+                    const part = subFilter && subFilterValuesLength !== subFilterKeys.length
 
                     return (
                         <>
@@ -344,24 +350,24 @@ const POSFilterComponentReact = ({ agParams, resetEvent }: { agParams: any, rese
                                 </div>
                             )}
                         </>
-                    );
+                    )
                 })}
             </div>
         </>
-    );
-};
+    )
+}
 
 export class ViewerPOSFilterComponent {
-    private agParams: any;
-    private mainElement: HTMLDivElement;
-    private resetCallback: () => void;
+    private agParams: any
+    private mainElement: HTMLDivElement
+    private resetCallback: () => void
 
     public init(agParams) {
-        this.agParams = agParams;
-        this.mainElement = document.createElement('div');
-        this.mainElement.className = 'viewer-pos-filter';
+        this.agParams = agParams
+        this.mainElement = document.createElement('div')
+        this.mainElement.className = 'viewer-pos-filter'
 
-        this.resetEvent = this.resetEvent.bind(this);
+        this.resetEvent = this.resetEvent.bind(this)
 
         createRoot(this.mainElement).render(
             <POSFilterComponentReact agParams={agParams} resetEvent={this.resetEvent} />
@@ -369,24 +375,24 @@ export class ViewerPOSFilterComponent {
     }
 
     public doesFilterPass({ data }) {
-        const id = data.id;
-        const { pos, nounTypes, verbTypes, type } = getTypesById(id);
-        const value: any = globalFiltersState[pos];
+        const id = data.id
+        const { pos, nounTypes, verbTypes, type } = getTypesById(id)
+        const value: any = globalFiltersState[pos]
 
         if (typeof pos === 'undefined') {
-            return true;
+            return true
         }
 
         if (typeof value === 'boolean') {
-            return value;
+            return value
         }
 
         if (Object.values(value).filter(Boolean).length === 0) {
-            return false;
+            return false
         }
 
         if (Object.values(value).filter(Boolean).length === Object.keys(value).length) {
-            return true;
+            return true
         }
 
         switch (pos) {
@@ -398,86 +404,86 @@ export class ViewerPOSFilterComponent {
                     singular,
                     countable,
                     indeclinable,
-                } = nounTypes;
+                } = nounTypes
 
                 // gender
                 if (!value[gender]) {
-                    return false;
+                    return false
                 }
 
                 // animate
                 if (!value.animate && animate) {
-                    return false;
+                    return false
                 }
 
                 if (!value.inanimate && !animate) {
-                    return false;
+                    return false
                 }
 
                 // plural
                 if (!value.plural && plural) {
-                    return false;
+                    return false
                 }
 
                 if (!value.singular && singular) {
-                    return false;
+                    return false
                 }
 
                 if (!value.countable && countable) {
-                    return false;
+                    return false
                 }
 
                 // indeclinable
                 if (!value.indeclinable && indeclinable) {
-                    return false;
+                    return false
                 }
 
                 if (!value.declinable && !indeclinable) {
-                    return false;
+                    return false
                 }
 
-                return true;
+                return true
             }
             case 'verb': {
                 for (const verbType of verbTypes) {
                     if (!value[verbType]) {
-                        return false;
+                        return false
                     }
                 }
 
-                return true;
+                return true
             }
             case 'pronoun':
             case 'numeral':
-                return value[type];
+                return value[type]
         }
 
-        return true;
+        return true
     }
 
     public isFilterActive() {
-        const allCheckedLength = getAllCheckedLength();
-        const allChecked = allCheckedLength !== 0;
-        const allPart = Object.keys(globalFiltersState).length !== getAllCheckedPartLength();
+        const allCheckedLength = getAllCheckedLength()
+        const allChecked = allCheckedLength !== 0
+        const allPart = Object.keys(globalFiltersState).length !== getAllCheckedPartLength()
 
-        return !allChecked || allPart;
+        return !allChecked || allPart
     }
 
     public setModel(model) {
         if (!model && this.resetCallback) {
-            this.resetCallback();
+            this.resetCallback()
         }
     }
 
     public getModel() {
-        return JSON.stringify(globalFiltersState);
+        return JSON.stringify(globalFiltersState)
     }
 
     public getGui() {
-        return this.mainElement;
+        return this.mainElement
     }
 
     private resetEvent(callback) {
-        this.resetCallback = callback;
+        this.resetCallback = callback
     }
 }

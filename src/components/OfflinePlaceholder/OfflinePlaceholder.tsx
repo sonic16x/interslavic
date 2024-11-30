@@ -1,10 +1,10 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import { t } from 'translations';
+import { t } from 'translations'
 
-import './OfflinePlaceholder.scss';
+import './OfflinePlaceholder.scss'
 
-import CrossedCLoudIcon from './images/crossed-cloud-icon.svg';
+import CrossedCLoudIcon from './images/crossed-cloud-icon.svg'
 
 interface IOfflinePlaceholder {
     className?: string;
@@ -18,4 +18,4 @@ export const OfflinePlaceholder =
             <h4>{t('offline-title')}</h4>
             <h5>{t('offline-message')}</h5>
         </div>
-    );
+    )

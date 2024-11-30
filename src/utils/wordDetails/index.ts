@@ -1,1 +1,1 @@
-export * from './wordDetails';
+export * from './wordDetails'

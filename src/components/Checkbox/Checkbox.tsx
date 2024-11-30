@@ -1,9 +1,9 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import './Checkbox.scss';
+import './Checkbox.scss'
 
-import CheckedIcon from './images/checked-icon.svg';
-import PartCheckedIcon from './images/part-checked-icon.svg';
+import CheckedIcon from './images/checked-icon.svg'
+import PartCheckedIcon from './images/part-checked-icon.svg'
 
 interface ICheckboxProps {
     className?: string;
@@ -16,7 +16,7 @@ interface ICheckboxProps {
 
 export const Checkbox =
     ({ className, title, checked, onChange, disabled, part }: ICheckboxProps) => {
-        const id = `id_${title.toLowerCase()}`;
+        const id = `id_${title.toLowerCase()}`
 
         return (
             <div className={classNames('checkbox', className, { disabled, checked })}>
@@ -43,5 +43,5 @@ export const Checkbox =
                     {title}
                 </label>
             </div>
-        );
-    };
+        )
+    }

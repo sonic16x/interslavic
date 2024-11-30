@@ -1,1 +1,1 @@
-export * from './DictionaryPage';
+export * from './DictionaryPage'

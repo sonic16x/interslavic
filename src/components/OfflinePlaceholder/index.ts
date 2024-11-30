@@ -1,1 +1,1 @@
-export * from './OfflinePlaceholder';
+export * from './OfflinePlaceholder'

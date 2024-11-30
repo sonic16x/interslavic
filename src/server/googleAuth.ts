@@ -1,15 +1,15 @@
-import { toQueryString } from 'utils/toQueryString';
+import { toQueryString } from 'utils'
 
 // Function to encode an object with base64
 function objectToBase64url(object) {
     return arrayBufferToBase64Url(
         new TextEncoder().encode(JSON.stringify(object)),
-    );
+    )
 }
 
 // Function to encode array buffer with base64
 function arrayBufferToBase64Url(buffer) {
-    const arrayBuffer = new Uint8Array(buffer);
+    const arrayBuffer = new Uint8Array(buffer)
 
     // eslint-disable-next-line
     // @ts-ignore
@@ -17,19 +17,19 @@ function arrayBufferToBase64Url(buffer) {
         .replace(/=/g, '')
         .replace(/\+/g, '-')
         .replace(/\//g, '_')
-    ;
+    
 }
 
 // Function to convert string to array buffer
 function str2ab(str) {
-    const buf = new ArrayBuffer(str.length);
-    const bufView = new Uint8Array(buf);
+    const buf = new ArrayBuffer(str.length)
+    const bufView = new Uint8Array(buf)
 
     for (let i = 0, strLen = str.length; i < strLen; i++) {
-        bufView[i] = str.charCodeAt(i);
+        bufView[i] = str.charCodeAt(i)
     }
 
-    return buf;
+    return buf
 }
 
 export async function googleAuth(googleServiceAccountEmail, googlePrivateKey) {
@@ -39,15 +39,15 @@ export async function googleAuth(googleServiceAccountEmail, googlePrivateKey) {
         alg: 'RS256',
         // JWT token format is mandatory for Google
         typ: 'JWT',
-    });
+    })
 
     // Step 2 - Create the JWT claim set and encode to base64
 
     // Define the time the assertion was issued
-    const assertionTime = Math.round(Date.now() / 1000);
+    const assertionTime = Math.round(Date.now() / 1000)
 
     // Define the expiration time of the assertion, maximum 1 minute
-    const expiryTime = assertionTime + 60;
+    const expiryTime = assertionTime + 60
 
     // JWT claim payload
     const googleJwtClaimset = objectToBase64url({
@@ -56,10 +56,10 @@ export async function googleAuth(googleServiceAccountEmail, googlePrivateKey) {
         'aud': 'https://oauth2.googleapis.com/token',
         'exp': expiryTime,
         'iat': assertionTime,
-    });
+    })
 
     // Combine the JWT header + claim and convert to byte array for signing
-    const googleJwtCombined = str2ab(`{${googleJwtHeader}}.{${googleJwtClaimset}}`);
+    const googleJwtCombined = str2ab(`{${googleJwtHeader}}.{${googleJwtClaimset}}`)
 
     // Step 3 - Sign the combined googleJwtHeader and googleJwtClaimset
 
@@ -71,10 +71,10 @@ export async function googleAuth(googleServiceAccountEmail, googlePrivateKey) {
         .replace('-----BEGIN PRIVATE KEY-----', '')
         .replace('-----END PRIVATE KEY-----', '')
         .replace(/(\r\n|\n|\r)/gm, '')
-    ;
+    
 
     // base64 decode the string to get the binary data
-    const privateKeyBinary = str2ab(atob(privateKeyCleaned));
+    const privateKeyBinary = str2ab(atob(privateKeyCleaned))
 
     // Import the private key into the crypto store
     // eslint-disable-next-line
@@ -88,20 +88,20 @@ export async function googleAuth(googleServiceAccountEmail, googlePrivateKey) {
         },
         false,
         ['sign'],
-    );
+    )
 
     // Sign the googleJwtHeader and googleJwtClaimset
     const rawToken = await crypto.subtle.sign(
         { name: 'RSASSA-PKCS1-V1_5' },
         signingKey,
         googleJwtCombined,
-    );
+    )
 
     // Convert the signature to Base64URL format
-    const googleJwtSigned = arrayBufferToBase64Url(rawToken);
+    const googleJwtSigned = arrayBufferToBase64Url(rawToken)
 
     // Combine the headers with signature
-    const combinedHeadersSigned = `{${googleJwtHeader}}.{${googleJwtClaimset}}.{${googleJwtSigned}}`;
+    const combinedHeadersSigned = `{${googleJwtHeader}}.{${googleJwtClaimset}}.{${googleJwtSigned}}`
 
     // Step 4 - Send the request
 
@@ -109,7 +109,7 @@ export async function googleAuth(googleServiceAccountEmail, googlePrivateKey) {
     const googleJwtPayload = toQueryString({
         grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
         assertion: combinedHeadersSigned,
-    });
+    })
 
     // Make the OAUTH request
     const response = await fetch('https://oauth2.googleapis.com/token', {
@@ -120,11 +120,11 @@ export async function googleAuth(googleServiceAccountEmail, googlePrivateKey) {
             'Host': 'oauth2.googleapis.com',
         },
         body: googleJwtPayload,
-    });
+    })
 
     // Grab the JSON from the response
-    const res: any = await response.json();
+    const res: any = await response.json()
 
     // Capture the access token
-    return res.access_token;
+    return res.access_token
 }

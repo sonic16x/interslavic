@@ -1,5 +1,5 @@
-import { ResultsCard } from './ResultsCard';
-import type { Meta, StoryObj } from '@storybook/react';
+import { ResultsCard } from './ResultsCard'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     title: 'Components/ResultsCard',
@@ -11,45 +11,80 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
-} satisfies Meta<typeof ResultsCard>;
+} satisfies Meta<typeof ResultsCard>
 
-export default meta;
+export default meta
 type Story = StoryObj<typeof meta>;
 
 const enIsvItemMock = {
-    "translate": "cat, tom-cat",
-    "original": "kot",
-    "add": "",
-    "caseInfo": "",
-    "details": "m.anim.",
-    "ipa": "kɔt",
-    "id": "1093",
-    "checked": true,
-    "raw": ["1093", "kot", "", "m.anim.", "cat, tom-cat", "кот", "кот", "кіт", "kot, kocur", "kocour, kot", "kocúr, kot", "!Mačka", "mačak, mačor", "мачак, мачор", "мачор", "котарак", "!"],
-    "from": "en",
-    "to": "isv",
-    "isv": "kot",
-    "originalCyr": "кот",
-    "addCyr": "",
-    "caseInfoCyr": ""
+    'translate': 'cat, tom-cat',
+    'original': 'kot',
+    'add': '',
+    'caseInfo': '',
+    'details': 'm.anim.',
+    'ipa': 'kɔt',
+    'id': '1093',
+    'checked': true,
+    'raw': [
+        '1093',
+        'kot',
+        '',
+        'm.anim.',
+        'cat, tom-cat',
+        'кот',
+        'кот',
+        'кіт',
+        'kot, kocur',
+        'kocour, kot',
+        'kocúr, kot',
+        '!Mačka',
+        'mačak, mačor',
+        'мачак, мачор',
+        'мачор',
+        'котарак',
+        '!',
+    ],
+    'from': 'en',
+    'to': 'isv',
+    'isv': 'kot',
+    'originalCyr': 'кот',
+    'addCyr': '',
+    'caseInfoCyr': ''
 }
 
 const isvEnItemMock = {
-    "translate": "cat, tom-cat",
-    "original": "kot",
-    "add": "",
-    "caseInfo": "",
-    "details": "m.anim.",
-    "ipa": "kɔt",
-    "id": "1093",
-    "checked": true,
-    "raw": ["1093", "kot", "", "m.anim.", "cat, tom-cat", "кот", "кот", "кіт", "kot, kocur", "kocour, kot", "kocúr, kot", "!Mačka", "mačak, mačor", "мачак, мачор", "мачор", "котарак", "!"],
-    "from": "isv",
-    "to": "en",
-    "isv": "kot",
-    "originalCyr": "кот",
-    "addCyr": "",
-    "caseInfoCyr": ""
+    'translate': 'cat, tom-cat',
+    'original': 'kot',
+    'add': '',
+    'caseInfo': '',
+    'details': 'm.anim.',
+    'ipa': 'kɔt',
+    'id': '1093',
+    'checked': true,
+    'raw': ['1093',
+        'kot',
+        '',
+        'm.anim.',
+        'cat, tom-cat',
+        'кот',
+        'кот',
+        'кіт',
+        'kot, kocur',
+        'kocour, kot',
+        'kocúr, kot',
+        '!Mačka',
+        'mačak, mačor',
+        'мачак, мачор',
+        'мачор',
+        'котарак',
+        '!',
+    ],
+    'from': 'isv',
+    'to': 'en',
+    'isv': 'kot',
+    'originalCyr': 'кот',
+    'addCyr': '',
+    'caseInfoCyr': ''
 }
 
 export const EnIsv: Story = {
@@ -58,7 +93,7 @@ export const EnIsv: Story = {
         short: false,
         index: 0,
     },
-};
+}
 
 
 export const IsvEn: Story = {
@@ -67,7 +102,7 @@ export const IsvEn: Story = {
         short: false,
         index: 0,
     },
-};
+}
 
 export const NotVerified: Story = {
     args: {
@@ -78,7 +113,7 @@ export const NotVerified: Story = {
         short: false,
         index: 0,
     },
-};
+}
 
 export const Short: Story = {
     args: {
@@ -86,7 +121,7 @@ export const Short: Story = {
         short: true,
         index: 0,
     },
-};
+}
 
 export const ShortNotVerified: Story = {
     args: {
@@ -97,4 +132,4 @@ export const ShortNotVerified: Story = {
         short: true,
         index: 0,
     },
-};
+}

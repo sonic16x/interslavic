@@ -1,1 +1,1 @@
-export * from './objectSetToString';
+export * from './objectSetToString'

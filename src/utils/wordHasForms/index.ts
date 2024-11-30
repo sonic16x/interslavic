@@ -1,1 +1,1 @@
-export * from './wordHasForms';
+export * from './wordHasForms'
