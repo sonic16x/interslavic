@@ -387,7 +387,7 @@ class DictionaryClass {
             filterPartOfSpeech = [[posFilter]]
         }
 
-        const distMap = new WeakMap()
+        const distMap = new Map()
         const results = this.getWordList()
             .filter((item) => {
                 const word = this.getField(item, lang)
