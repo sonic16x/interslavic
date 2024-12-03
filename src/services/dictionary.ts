@@ -239,6 +239,7 @@ class DictionaryClass {
                                 .splittedMap['isv-src']
                                 .get(id)
                                 .map((word) => this.searchPrepare(lang, word))
+                                .filter((item, i, ar) => ar.indexOf(item) === i)
                             
                             break
                         case 'isv-src':
@@ -246,6 +247,7 @@ class DictionaryClass {
                                 .splitWords(fromField)
                                 .concat(getWordForms(item))
                                 .map((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
+                                .filter((item, i, ar) => ar.indexOf(item) === i)
                             
                             break
                         default:
@@ -652,7 +654,7 @@ class DictionaryClass {
         }
     }
     public splitWords(text: string): string[] {
-        return text.includes(';') ? text.split(';') : text.split(',')
+        return (text.includes(';') ? text.split(';') : text.split(',')).map(e => e.trim())
     }
     private getSplittedField(from: string, item: string[]): string[] {
         const key = this.getField(item, 'id')
