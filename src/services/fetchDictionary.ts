@@ -2,7 +2,7 @@ import { addLangs } from 'consts'
 
 import { isLoadingAction, runSearch } from 'actions'
 
-import { Dictionary } from 'services'
+import { Dictionary, SearchIndex, WordList } from 'services'
 
 async function fetchStat() {
     return fetch('data/translateStatistic.json').then((res) => res.json()).then((data) => data)
@@ -14,7 +14,12 @@ async function fetchLangs(langList: string[]) {
     )
 }
 
-async function fetchBasic() {
+export interface IBasicData {
+    wordList: WordList,
+    searchIndex?: SearchIndex,
+}
+
+async function fetchBasic(): Promise<IBasicData> {
     return await fetch('data/basic.json').then((res) => res.json())
 }
 

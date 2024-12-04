@@ -1,10 +1,13 @@
 import * as fs from 'fs'
 
-import { Dictionary } from 'services'
+import { Dictionary, IBasicData } from 'services'
 
-import basicData from './basic.json'
+import testData from './basic.json'
 import { deepDiffMapper } from './deepDiffMapper'
 import testSnapshot from './snapshot.json'
+
+const basicData = testData as unknown as IBasicData
+
 
 Dictionary.init(basicData.wordList, basicData.searchIndex)
 

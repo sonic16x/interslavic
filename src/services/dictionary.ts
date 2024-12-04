@@ -158,6 +158,9 @@ export interface ITranslateResult {
 export const ISV_SRC = 'isv-src'
 export const ISV = 'isv'
 
+export type WordList = string[][]
+export type SearchIndex = Record<string, Array<[string, string[]]>>
+
 class DictionaryClass {
     public static getInstance(): DictionaryClass {
         if (!DictionaryClass.instance) {
@@ -173,7 +176,7 @@ class DictionaryClass {
     private langsList: string[]
     private headerIndexes: Map<string, number>
     private percentsOfChecked: {[lang: string]: string}
-    private words: string[][]
+    private words: WordList
     private splittedMap: {[lang: string]: Map<string, string[]>}
     private isvSearchLetters: { from: string[], to: string[] }
     private isvSearchByWordForms: boolean
@@ -188,9 +191,9 @@ class DictionaryClass {
     }
 
     public init(
-        wordList: string[][],
-        searchIndex?: any | false,
-        percentsOfChecked?: any,
+        wordList: WordList,
+        searchIndex?: SearchIndex,
+        percentsOfChecked?: Record<string, string>,
     ): number {
         let startInitTime = 0
 
@@ -284,7 +287,7 @@ class DictionaryClass {
 
         return initTime
     }
-    public addLang(wordList: string[], searchIndex?: any) {
+    public addLang(wordList: string[], searchIndex?: SearchIndex) {
         const lang = wordList[0]
 
         if (this.hasLang(lang)) {
@@ -303,7 +306,7 @@ class DictionaryClass {
     public hasLang(lang): boolean {
         return this.headerIndexes.has(lang)
     }
-    public getWordList(): string[][] {
+    public getWordList(): WordList {
         return this.words
     }
     public getWord(wordId: string) {
@@ -311,7 +314,7 @@ class DictionaryClass {
             return this.words.filter((line) => this.getField(line, 'id') === wordId)[0]
         }
     }
-    public getIndex() {
+    public getIndex(): SearchIndex {
         const searchIndex = {};
 
         [
@@ -326,7 +329,7 @@ class DictionaryClass {
 
         return searchIndex
     }
-    public translate(translateParams: ITranslateParams, showTime = true): [string[][], number] {
+    public translate(translateParams: ITranslateParams, showTime = true): [WordList, number] {
         const {
             inputText,
             from,
@@ -517,7 +520,7 @@ class DictionaryClass {
     }
 
     public formatTranslate(
-        results: string[][],
+        results: WordList,
         from: string,
         to: string,
         flavorisationType: string,
