@@ -4,6 +4,7 @@ import { IAlphabets } from 'reducers'
 
 import {
     convertCases,
+    deduplicate,
     filterLatin,
     filterNiqqud,
     getCaseTips,
@@ -235,20 +236,22 @@ class DictionaryClass {
 
                     switch (lang) {
                         case 'isv':
-                            splittedField = this
-                                .splittedMap['isv-src']
-                                .get(id)
-                                .map((word) => this.searchPrepare(lang, word))
-                                .filter((item, i, ar) => ar.indexOf(item) === i)
-                            
+                            splittedField = deduplicate(
+                                this
+                                    .splittedMap['isv-src']
+                                    .get(id)
+                                    .map((word) => this.searchPrepare(lang, word))
+                            )
+
                             break
                         case 'isv-src':
-                            splittedField = this
-                                .splitWords(fromField)
-                                .concat(getWordForms(item))
-                                .map((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
-                                .filter((item, i, ar) => ar.indexOf(item) === i)
-                            
+                            splittedField = deduplicate(
+                                this
+                                    .splitWords(fromField)
+                                    .concat(getWordForms(item))
+                                    .map((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
+                            )
+
                             break
                         default:
                             splittedField = this.splitWords(fromField).map((word) => this.searchPrepare(lang, word))
