@@ -155,6 +155,9 @@ export interface ITranslateResult {
     remove?: boolean;
 }
 
+export const ISV_SRC = 'isv-src'
+export const ISV = 'isv'
+
 class DictionaryClass {
     public static getInstance(): DictionaryClass {
         if (!DictionaryClass.instance) {
@@ -198,7 +201,7 @@ class DictionaryClass {
         this.header = wordList[0]
 
         this.langsList = [
-            'isv',
+            ISV,
             'en',
             ...langs,
             ...addLangs,
@@ -210,7 +213,7 @@ class DictionaryClass {
         const needIndex = [];
 
         [
-            'isv-src',
+            ISV_SRC,
             ...this.langsList,
         ].forEach((lang) => {
             if (searchIndex && searchIndex[lang]) {
@@ -226,7 +229,7 @@ class DictionaryClass {
                 const id = `${this.getField(item, 'id')}`
 
                 needIndex.forEach((lang) => {
-                    let fromField = this.getField(item, lang === 'isv-src' ? 'isv' : lang)
+                    let fromField = this.getField(item, lang === ISV_SRC ? ISV : lang)
 
                     fromField = removeBrackets(fromField, '[', ']')
                     fromField = removeBrackets(fromField, '(', ')')
@@ -235,21 +238,21 @@ class DictionaryClass {
                     let splittedField
 
                     switch (lang) {
-                        case 'isv':
+                        case ISV:
                             splittedField = deduplicate(
                                 this
-                                    .splittedMap['isv-src']
+                                    .splittedMap[ISV_SRC]
                                     .get(id)
                                     .map((word) => this.searchPrepare(lang, word))
                             )
 
                             break
-                        case 'isv-src':
+                        case ISV_SRC:
                             splittedField = deduplicate(
                                 this
                                     .splitWords(fromField)
                                     .concat(getWordForms(item))
-                                    .map((word) => this.searchPrepare('isv-src', getLatin(word, '2')))
+                                    .map((word) => this.searchPrepare(ISV_SRC, getLatin(word, '2')))
                             )
 
                             break
@@ -312,7 +315,7 @@ class DictionaryClass {
         const searchIndex = {};
 
         [
-            'isv-src',
+            ISV_SRC,
             ...this.langsList,
         ].forEach((lang) => {
             searchIndex[lang] = Array.from(this.splittedMap[lang].keys()).map((key: string) => [
@@ -348,11 +351,11 @@ class DictionaryClass {
 
         const inputOptions = inputText.split(' -').map((option) => option.trim())
         const inputWord = inputOptions.shift()
-        const lang = from === 'isv' ? to : from
-        const inputIsvPrepared = this.inputPrepare('isv', inputWord)
+        const lang = from === ISV ? to : from
+        const inputIsvPrepared = this.inputPrepare(ISV, inputWord)
         const inputLangPrepared = this.inputPrepare(lang, inputWord)
 
-        if (from === 'isv' && !inputIsvPrepared) {
+        if (from === ISV && !inputIsvPrepared) {
             return [[], 0]
         }
 
@@ -366,10 +369,10 @@ class DictionaryClass {
         const twoWaySearch = inputOptions.some((o) => o === 'b')
 
         let isvText = ''
-        if (from === 'isv' || twoWaySearch) {
+        if (from === ISV || twoWaySearch) {
             isvText = inputWord
             isvText = this.applyIsvSearchLetters(getLatin(isvText, flavorisationType, true), flavorisationType)
-            isvText = this.inputPrepare('isv-src', isvText)
+            isvText = this.inputPrepare(ISV_SRC, isvText)
         }
         // option -end - search by ending of word
         if (inputOptions.some((option) => option.trim() === 'end')) {
@@ -377,7 +380,7 @@ class DictionaryClass {
         }
 
         // option -etym - hard search by etymological orthography for Isv
-        const hardEtymSearch = from === 'isv' && (inputOptions.some((o) => o === 'etym'))
+        const hardEtymSearch = from === ISV && (inputOptions.some((o) => o === 'etym'))
 
         // filter by part of speech
         let filterPartOfSpeech = []
@@ -402,19 +405,19 @@ class DictionaryClass {
                 }
 
                 let filterResult = false
-                if (from === 'isv' || twoWaySearch) {
+                if (from === ISV || twoWaySearch) {
                     // hardEtymSearch - hard etymological search for isv, otherwise - simple search
                     // when isvSearchByWordForms = false OR entered 1 symbol - searching without word forms
-                    let splittedField = this.getSplittedField(hardEtymSearch ? 'isv-src' : 'isv', item)
+                    let splittedField = this.getSplittedField(hardEtymSearch ? ISV_SRC : ISV, item)
                     if ( !this.isvSearchByWordForms || inputIsvPrepared.length === 1 ) {
-                        const wordsCount = this.getField(item, 'isv').split(',').length
+                        const wordsCount = this.getField(item, ISV).split(',').length
                         splittedField = splittedField.slice(0, wordsCount)
                     }
                     filterResult = splittedField.some((chunk) => (
                         searchTypes[searchType](chunk, hardEtymSearch ? inputWord : inputIsvPrepared)
                     ))
                 }
-                if (to === 'isv' || twoWaySearch) {
+                if (to === ISV || twoWaySearch) {
                     const splittedField = this.getSplittedField(lang, item)
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared))
@@ -437,19 +440,19 @@ class DictionaryClass {
             .filter((item) => {
                 let filterResult = true
                 // search in isv with search sensitive letters
-                if ((from === 'isv' || twoWaySearch) &&
+                if ((from === ISV || twoWaySearch) &&
                    !hardEtymSearch && (flavorisationType === '2' || flavorisationType === '3') &&
                     this.isvSearchLetters.to.some((letter) => inputIsvPrepared.includes(letter))) {
-                    let splittedField = this.getSplittedField('isv-src', item)
+                    let splittedField = this.getSplittedField(ISV_SRC, item)
                     if ( !this.isvSearchByWordForms || inputIsvPrepared.length === 1 ) {
-                        const wordsCount = this.getField(item, 'isv').split(',').length
+                        const wordsCount = this.getField(item, ISV).split(',').length
                         splittedField = splittedField.slice(0, wordsCount)
                     }
                     filterResult = splittedField.some((chunk) => (
                         searchTypes[searchType](this.applyIsvSearchLetters(chunk, flavorisationType), isvText)
                     ))
                 }
-                if (!filterResult && (to === 'isv' || twoWaySearch)) {
+                if (!filterResult && (to === ISV || twoWaySearch)) {
                     const splittedField = this.getSplittedField(lang, item)
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared))
@@ -467,7 +470,7 @@ class DictionaryClass {
                 }
                 let dist = splittedField
                     .reduce((acc, item) => {
-                        const lDist = levenshteinDistance(from === 'isv' ? inputIsvPrepared : inputLangPrepared,
+                        const lDist = levenshteinDistance(from === ISV ? inputIsvPrepared : inputLangPrepared,
                             this.searchPrepare(from, item))
                         if (lDist < acc) {
                             return lDist
@@ -485,7 +488,7 @@ class DictionaryClass {
                     }
                     const dist2 = splittedField
                         .reduce((acc, item) => {
-                            const lDist = levenshteinDistance(from === 'isv' ? inputLangPrepared : inputIsvPrepared,
+                            const lDist = levenshteinDistance(from === ISV ? inputLangPrepared : inputIsvPrepared,
                                 this.searchPrepare(to, item))
                             if (lDist < acc) {
                                 return lDist
@@ -522,7 +525,7 @@ class DictionaryClass {
         caseQuestions?: boolean
     ): ITranslateResult[] {
         return results.map((item) => {
-            const isvRaw = this.getField(item, 'isv')
+            const isvRaw = this.getField(item, ISV)
             const remove = isvRaw.startsWith('!')
             const isv = removeBrackets(
                 removeExclamationMark(isvRaw), '[', ']'
@@ -535,7 +538,7 @@ class DictionaryClass {
             if(caseInfo && caseQuestions) {
                 caseInfo = getCaseTips(caseInfo.slice(1),'nounShort')
             }
-            const translate = this.getField(item, (from === 'isv' ? to : from))
+            const translate = this.getField(item, (from === ISV ? to : from))
             const formattedItem: ITranslateResult = {
                 translate: removeExclamationMark(translate),
                 original: getLatin(isv, flavorisationType),
@@ -616,7 +619,7 @@ class DictionaryClass {
             .replace(/,/g, '')
             .replace(/[ʼ’]/g, "'")
 
-        if (lang !== 'isv-src') {
+        if (lang !== ISV_SRC) {
             lowerCaseText = lowerCaseText.replace(/[\u0300-\u036f]/g, '')
         } else {
             lowerCaseText = lowerCaseText
@@ -626,9 +629,9 @@ class DictionaryClass {
             
         }
         switch (lang) {
-            case 'isv-src':
+            case ISV_SRC:
                 return lowerCaseText
-            case 'isv':
+            case ISV:
                 return this.isvToEngLatin(lowerCaseText)
             case 'cs':
             case 'pl':
@@ -665,7 +668,7 @@ class DictionaryClass {
         return this.splittedMap[from].get(key)
     }
     private applyIsvSearchLetters(text: string, flavorisationType: string): string {
-        text = this.searchPrepare('isv-src', text)
+        text = this.searchPrepare(ISV_SRC, text)
         isvReplacebleLetters
             .filter((replacement) =>
                 !this.isvSearchLetters.from.includes(replacement[0]) ||

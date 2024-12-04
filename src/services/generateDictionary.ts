@@ -2,7 +2,7 @@ import * as fs from 'fs'
 
 import { addLangs, initialAddFields, initialFields,langs } from 'consts'
 
-import { Dictionary, loadTablesData } from 'services'
+import { Dictionary, ISV, ISV_SRC, loadTablesData } from 'services'
 
 import { getColumnName, transposeMatrix } from 'utils'
 
@@ -34,8 +34,8 @@ loadTablesData.then(({ data, columns }) => {
     ]
 
     const searchIndexBasic = [
-        'isv-src',
-        'isv',
+        ISV_SRC,
+        ISV,
         'en',
         ...langs,
     ].reduce((searchIndexObj, lang) => {
