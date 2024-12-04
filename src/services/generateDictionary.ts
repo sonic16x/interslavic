@@ -26,7 +26,12 @@ loadTablesData.then(({ data, columns }) => {
         }
     })
 
-    const basicData = transposeMatrix<string>(basicDataTransposed)//.sort((a, b) => a[1].localeCompare(b[1]))
+    let basicData = transposeMatrix<string>(basicDataTransposed)
+
+    basicData = [
+        basicData[0],
+        ...basicData.slice(1).sort((a, b) => a[1].localeCompare(b[1])),
+    ]
 
     const searchIndexBasic = [
         'isv-src',
