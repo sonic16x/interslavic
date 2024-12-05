@@ -1,6 +1,7 @@
 export * from './bcp47'
 export * from './convertCases'
 export * from './createTaggedTemplate'
+export * from './deduplicate'
 export * from './filterLatin'
 export * from './filterNiqqud'
 export * from './getAllDataFromResults'

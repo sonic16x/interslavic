@@ -37,4 +37,8 @@
       border: 2px solid var(--invalid-color);
     }
   }
+
+  &:not(.error) textarea:focus {
+    outline: var(--outline);
+  }
 }

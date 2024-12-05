@@ -2,9 +2,11 @@ import * as fs from 'fs'
 
 import { addLangs, initialAddFields, initialFields,langs } from 'consts'
 
-import { Dictionary, loadTablesData } from 'services'
+import { Dictionary, ISV, ISV_SRC, loadTablesData } from 'services'
 
 import { getColumnName, transposeMatrix } from 'utils'
+
+import { gzipSizeSync } from 'gzip-size'
 
 
 loadTablesData.then(({ data, columns }) => {
@@ -24,11 +26,16 @@ loadTablesData.then(({ data, columns }) => {
         }
     })
 
-    const basicData = transposeMatrix(basicDataTransposed)
+    let basicData = transposeMatrix<string>(basicDataTransposed)
+
+    basicData = [
+        basicData[0],
+        ...basicData.slice(1).sort((a, b) => a[1].localeCompare(b[1])),
+    ]
 
     const searchIndexBasic = [
-        'isv-src',
-        'isv',
+        ISV_SRC,
+        ISV,
         'en',
         ...langs,
     ].reduce((searchIndexObj, lang) => {
@@ -48,6 +55,10 @@ loadTablesData.then(({ data, columns }) => {
 
     fs.writeFileSync('./static/data/basic.json', jsonDataStr)
     fs.writeFileSync('./static/data/translateStatistic.json', translateStatisticStr)
+
+    const sizeMB = gzipSizeSync(jsonDataStr) / 1000000
+    // eslint-disable-next-line no-console
+    console.info(`basic.json g-zip size: ${sizeMB.toFixed(2)} MB`)
 
     addLangs.forEach((lang) => {
         const langDataTransposed = [
