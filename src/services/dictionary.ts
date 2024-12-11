@@ -323,7 +323,7 @@ class DictionaryClass {
         ].forEach((lang) => {
             searchIndex[lang] = Array.from(this.splittedMap[lang].keys()).map((key: string) => [
                 key,
-                this.splittedMap[lang].get(key),
+                this.splittedMap[lang].get(key).sort(),
             ]).sort((a, b) => a[1][0].localeCompare(b[1][0]))
         })
 
