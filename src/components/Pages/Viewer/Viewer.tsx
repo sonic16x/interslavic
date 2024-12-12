@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model'
 import { Grid, GridOptions,ModuleRegistry  } from '@ag-grid-community/core'
 
-import { addLangs, initialFields, langs,validFields } from 'consts'
+import { ADD_LANGS, EN, initialFields, ISV, LANGS, validFields } from 'consts'
 
 import { t } from 'translations'
 
@@ -48,9 +48,9 @@ const getFieldWidth = (field: string): number => {
 const customSort = (field: string) => {
     if (field === 'id') {
         return (a: number, b: number) => a - b
-    } else if (field === 'isv') {
+    } else if (field === ISV) {
         return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), 'sk')
-    } else if (field === 'en' || langs.includes(field) || addLangs.includes(field)) {
+    } else if (field === EN || LANGS.includes(field) || ADD_LANGS.includes(field)) {
         return (a: string, b: string) => removeExclamationMark(a).localeCompare(removeExclamationMark(b), `${field}`)
     } else {
         return undefined
@@ -58,7 +58,7 @@ const customSort = (field: string) => {
 }
 
 const customFilterParams = (field: string) => {
-    if (field === 'isv' || field === 'en' || langs.includes(field) || addLangs.includes(field)) {
+    if (field === ISV || field === EN || LANGS.includes(field) || ADD_LANGS.includes(field)) {
         return {
             filterOptions: [
                 'equals', 'notEqual', 'contains', 'notContains', 'startsWith', 'endsWith',
@@ -164,7 +164,7 @@ const prepareColumnDefs = (displayFields) => {
                 pinned: initialFields.includes(field) ? 'left' : false,
                 lockPinned: initialFields.includes(field),
                 cellClass: initialFields.includes(field) ? 'lock-pinned' : '',
-                headerTooltip: ['isv', ...langs, ...addLangs].includes(field) ? t(`${field}Lang`) : field,
+                headerTooltip: ['isv', ...LANGS, ...ADD_LANGS].includes(field) ? t(`${field}Lang`) : field,
                 tooltipField: field,
                 width: getFieldWidth(field),
                 cellStyle: getCellStyle,

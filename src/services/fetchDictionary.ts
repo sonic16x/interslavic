@@ -1,4 +1,4 @@
-import { addLangs } from 'consts'
+import { ADD_LANGS } from 'consts'
 
 import { isLoadingAction, runSearch } from 'actions'
 
@@ -38,7 +38,7 @@ export async function fetchDictionary(dispatch, langList: string[]) {
 
     const stat = await fetchStat()
     const basicData = await fetchBasic()
-    const langsData = await fetchLangs(langList.filter((lang) => addLangs.includes(lang)))
+    const langsData = await fetchLangs(langList.filter((lang) => ADD_LANGS.includes(lang)))
 
     langsData.forEach((langData) => {
         basicData.searchIndex = {

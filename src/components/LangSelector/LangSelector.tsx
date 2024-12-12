@@ -1,6 +1,8 @@
 import classNames from 'classnames'
 import { useDispatch } from 'react-redux'
 
+import { EN, ISV } from 'consts'
+
 import { t } from 'translations'
 
 import { langAction } from 'actions'
@@ -23,7 +25,7 @@ const LangPart =
     ({ lang, dir, onSelect }: ILangPart) => {
         const langs = useDictionaryLanguages()
 
-        if (lang === 'isv') {
+        if (lang === ISV) {
             return (
                 <div className="lang-selector__isv">
                     {t('isvLang')}
@@ -31,7 +33,7 @@ const LangPart =
             )
         }
 
-        const options = ['en', ...langs].map((value) => ({
+        const options = [EN, ...langs].map((value) => ({
             name: t(`${value}Lang`),
             value,
         }))
@@ -75,7 +77,7 @@ export const LangSelector =
                     data-testid="change-direction"
                     type="button"
                     aria-label="Change translation direction"
-                    className={classNames('lang-selector__change-dir-button', { rotate: from === 'isv' })}
+                    className={classNames('lang-selector__change-dir-button', { rotate: from === ISV })}
                     onClick={() => dispatch(langAction({
                         from: to,
                         to: from,

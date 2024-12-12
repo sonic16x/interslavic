@@ -1,10 +1,10 @@
-import { addLangs, langs } from 'consts'
+import { ADD_LANGS, EN,LANGS } from 'consts'
 
 export function validateLang(lang: string): boolean {
     const validLangs: string[] = [
-        'en',
-        ...langs,
-        ...addLangs,
+        EN,
+        ...LANGS,
+        ...ADD_LANGS,
     ].reduce((acc, lang) => [...acc, `isv-${lang}`, `${lang}-isv`], [])
 
     return Boolean(lang && validLangs.includes(lang))
