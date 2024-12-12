@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { addLangs, interfaceLanguageList } from 'consts'
+import { ADD_LANGS, EN, interfaceLanguageList } from 'consts'
 
 import { t } from 'translations'
 
@@ -211,7 +211,7 @@ export const Settings =
                     )}
                 </h6>
                 <div className={classNames('settings__add-langs', { 'settings__add-langs-loading': isLoading })}>
-                    {addLangs.map((lang, i) => {
+                    {ADD_LANGS.map((lang, i) => {
                         const checked = dictionaryLanguages.includes(lang)
 
                         return (
@@ -225,7 +225,7 @@ export const Settings =
 
                                     if (checked && from === lang) {
                                         dispatch(langAction({
-                                            from: 'en',
+                                            from: EN,
                                             to,
                                         }))
                                     }
@@ -233,7 +233,7 @@ export const Settings =
                                     if (checked && to === lang) {
                                         dispatch(langAction({
                                             from,
-                                            to: 'en',
+                                            to: EN,
                                         }))
                                     }
 

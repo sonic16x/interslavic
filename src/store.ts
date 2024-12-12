@@ -1,4 +1,4 @@
-import { langs } from './consts'
+import { EN, ISV,LANGS } from './consts'
 import { localStorageMiddleware } from './middlewares/localStorageMiddleware'
 import { urlParamsMiddleware } from './middlewares/urlParamsMiddleware'
 import { IMainState, mainReducer } from './reducers'
@@ -11,8 +11,8 @@ import md5 from 'md5'
 
 export const defaultState: IMainState = {
     lang: {
-        from: 'en',
-        to: 'isv',
+        from: EN,
+        to: ISV,
     },
     interfaceLang: getPreferredLanguage(),
     colorTheme: getPreferredTheme(),
@@ -26,7 +26,7 @@ export const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     posFilter: '',
-    dictionaryLanguages: langs,
+    dictionaryLanguages: LANGS,
     flavorisationType: '3',
     alphabetType: 'latin',
     page: 'dictionary',
@@ -54,10 +54,10 @@ function getInitialState(): IMainState {
     try {
         const savedState = JSON.parse(localStorage.getItem('reduxState')) || {}
 
-        if (savedState.lang.from !== 'isv' && savedState.lang.to !== 'isv') {
+        if (savedState.lang.from !== ISV && savedState.lang.to !== ISV) {
             savedState.lang = {
-                from: 'en',
-                to: 'isv',
+                from: EN,
+                to: ISV,
             }
         }
 
@@ -68,7 +68,7 @@ function getInitialState(): IMainState {
         if (validateLang(lang)) {
             const [from, to] = lang.split('-')
 
-            const loadedLangs = ['en', ...savedState.dictionaryLanguages]
+            const loadedLangs = [EN, ...savedState.dictionaryLanguages]
 
             if (loadedLangs.includes(from) || loadedLangs.includes(to)) {
                 savedState.lang = {

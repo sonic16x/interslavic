@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { addLangs, langs } from 'consts'
+import { ADD_LANGS, EN, ISV, LANGS } from 'consts'
 
 import { t } from 'translations'
 
@@ -52,12 +52,12 @@ export const TranslationsModal =
             return null
         }
 
-        const addLangsFiltered = addLangs.filter((lang) => dictionaryLanguages.includes(lang))
+        const addLangsFiltered = ADD_LANGS.filter((lang) => dictionaryLanguages.includes(lang))
 
         const allLangs = [
-            'isv',
-            'en',
-            ...langs,
+            ISV,
+            EN,
+            ...LANGS,
             ...addLangsFiltered,
         ]
 

@@ -13,7 +13,11 @@ export const alphabetTypes = [
     },
 ]
 
-export const langs = [
+export const ISV_SRC = 'isv-src'
+export const ISV = 'isv'
+export const EN = 'en'
+
+export const LANGS = [
     'ru',
     'be',
     'uk',
@@ -27,7 +31,7 @@ export const langs = [
     'bg',
 ]
 
-export const addLangs = [
+export const ADD_LANGS = [
     'de',
     'nl',
     'eo',
@@ -64,12 +68,12 @@ export const initialAddFields = [
 
 export const basicFields = [
     ...initialFields,
-    ...langs,
+    ...LANGS,
 ]
 
 export const validFields = [
     ...basicFields,
-    ...addLangs,
+    ...ADD_LANGS,
 ]
 
 export interface ITableData {
@@ -87,7 +91,7 @@ export const tablesData: ITableData[] = [
     {
         spreadsheetId: '1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY',
         sheetId: '2005431854',
-        fields: addLangs,
+        fields: ADD_LANGS,
     },
 ]
 

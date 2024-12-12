@@ -1,4 +1,4 @@
-import { addLangs,langs } from 'consts'
+import { ADD_LANGS, EN,ISV, ISV_SRC, LANGS } from 'consts'
 
 import { IAlphabets } from 'reducers'
 
@@ -155,9 +155,6 @@ export interface ITranslateResult {
     remove?: boolean;
 }
 
-export const ISV_SRC = 'isv-src'
-export const ISV = 'isv'
-
 export type WordList = string[][]
 export type SearchIndex = Record<string, Array<[string, string[]]>>
 
@@ -205,9 +202,9 @@ class DictionaryClass {
 
         this.langsList = [
             ISV,
-            'en',
-            ...langs,
-            ...addLangs,
+            EN,
+            ...LANGS,
+            ...ADD_LANGS,
         ].filter((lang) => this.header.includes(lang))
 
         this.headerIndexes = new Map(this.header.map((item, i: number) => [this.header[i], i]))

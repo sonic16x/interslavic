@@ -1,10 +1,10 @@
-import { addLangs } from 'consts'
+import { ADD_LANGS } from 'consts'
 
 export const CASH_URLS = [
     '/',
     '/data/basic.json',
     '/data/translateStatistic.json',
-    ...addLangs.map((lang) => `/data/${lang}.json`),
+    ...ADD_LANGS.map((lang) => `/data/${lang}.json`),
     '/grammarComponent.js',
     '/index.js',
     '/sw.js',

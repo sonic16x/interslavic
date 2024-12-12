@@ -8,6 +8,8 @@ import {
     parseI18nString,
 } from 'utils'
 
+import { ISV } from '../consts'
+
 let currentLang
 
 const toLatin = createTaggedTemplate((s) => getLatin(String(s), '3'), 'strings')
@@ -29,7 +31,7 @@ function tRaw(key) {
     if (!translations[key]) {
         return key
     } else if (translations[key][lang]) {
-        if (lang === 'isv') {
+        if (lang === ISV) {
             const parsed = parseI18nString(translations[key].isv)
             // transliteration & flavorisation of isv word
             switch (alphabet) {

@@ -1,8 +1,8 @@
 import * as fs from 'fs'
 
-import { addLangs, initialAddFields, initialFields,langs } from 'consts'
+import { ADD_LANGS, EN, initialAddFields, initialFields, ISV, ISV_SRC, LANGS } from 'consts'
 
-import { Dictionary, ISV, ISV_SRC, loadTablesData } from 'services'
+import { Dictionary, loadTablesData } from 'services'
 
 import { getColumnName, transposeMatrix } from 'utils'
 
@@ -21,23 +21,25 @@ loadTablesData.then(({ data, columns }) => {
     columns.forEach((column: string[]) => {
         const fieldName = getColumnName(column)
 
-        if (initialFilteredFields.includes(fieldName) || langs.includes(fieldName)) {
+        if (initialFilteredFields.includes(fieldName) || LANGS.includes(fieldName)) {
             basicDataTransposed.push(column)
         }
     })
 
     let basicData = transposeMatrix<string>(basicDataTransposed)
 
+    const sortIndex = basicData[0].indexOf(EN)
+
     basicData = [
         basicData[0],
-        ...basicData.slice(1).sort((a, b) => a[1].localeCompare(b[1])),
+        ...basicData.slice(1).sort((a, b) => a[sortIndex].localeCompare(b[sortIndex])),
     ]
 
     const searchIndexBasic = [
         ISV_SRC,
         ISV,
-        'en',
-        ...langs,
+        EN,
+        ...LANGS,
     ].reduce((searchIndexObj, lang) => {
         searchIndexObj[lang] = searchIndex[lang]
 
@@ -60,7 +62,7 @@ loadTablesData.then(({ data, columns }) => {
     // eslint-disable-next-line no-console
     console.info(`basic.json g-zip size: ${sizeMB.toFixed(2)} MB`)
 
-    addLangs.forEach((lang) => {
+    ADD_LANGS.forEach((lang) => {
         const langDataTransposed = [
             columns.find(([fieldName]) => fieldName === lang),
         ]
