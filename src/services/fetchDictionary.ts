@@ -1,11 +1,21 @@
 import { ADD_LANGS } from 'consts'
 
-import { isLoadingAction, runSearch } from 'actions'
-
 import { Dictionary, SearchIndex, WordList } from 'services'
 
+async function fetchPreloaded(url: string): Promise<unknown> {
+    if (INTERSLAVIC_PRELOAD && INTERSLAVIC_PRELOAD[url]) {
+        return await INTERSLAVIC_PRELOAD[url].then((data) => {
+            INTERSLAVIC_PRELOAD[url] = null
+
+            return data
+        })
+    } else {
+        return await fetch(url).then((res) => res.json())
+    }
+}
+
 async function fetchStat() {
-    return fetch('data/translateStatistic.json').then((res) => res.json()).then((data) => data)
+    return await fetchPreloaded('data/translateStatistic.json') as Promise<Record<string, string>>
 }
 
 async function fetchLangs(langList: string[]) {
@@ -20,7 +30,7 @@ export interface IBasicData {
 }
 
 async function fetchBasic(): Promise<IBasicData> {
-    return await fetch('data/basic.json').then((res) => res.json())
+    return await fetchPreloaded('data/basic.json') as Promise<IBasicData>
 }
 
 export async function fetchLang(lang) {
@@ -33,7 +43,7 @@ export async function fetchLang(lang) {
     Dictionary.addLang(wordList, searchIndex)
 }
 
-export async function fetchDictionary(dispatch, langList: string[]) {
+export async function fetchDictionary(langList: string[]) {
     const startFidTime = performance.now()
 
     const stat = await fetchStat()
@@ -51,10 +61,6 @@ export async function fetchDictionary(dispatch, langList: string[]) {
     })
 
     const initTime = Dictionary.init(basicData.wordList, basicData.searchIndex, stat)
-
-    // dispatch(loadingProgressAction(100));
-    dispatch(isLoadingAction(false))
-    dispatch(runSearch())
 
     const fidTime = Math.round(performance.now() - startFidTime)
 

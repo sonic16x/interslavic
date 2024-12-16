@@ -29,6 +29,11 @@
         content="It is a dictionary of the Interslavic language with translations into most of the Slavic languages, as well as into English, German and others. The project is being developed by a community of fans of this zonal constructed language.">
 </head>
 <body>
+<script>
+  window.INTERSLAVIC_PRELOAD = {}
+  INTERSLAVIC_PRELOAD['data/basic.json'] = fetch('data/basic.json').then((res) => res.json())
+  INTERSLAVIC_PRELOAD['data/translateStatistic.json'] = fetch('data/translateStatistic.json').then((res) => res.json())
+</script>
 <noscript>
   <h1>Interslavic Wordbook</h1>
   <p>To use the site "Interslavic Dictionary", please enable javascript in your browser.</p>
@@ -59,5 +64,12 @@
   <a href="https://github.com/sonic16x/interslavic">https://github.com/sonic16x/interslavic</a>
 </noscript>
 <div id="app"></div>
+<script>
+  const theme = JSON.parse(localStorage.getItem('reduxState'))?.colorTheme
+
+  if (theme) {
+    document.getElementById('app').className = `color-theme--${theme}`
+  }
+</script>
 </body>
 </html>

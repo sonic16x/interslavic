@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
+import { isLoadingAction, runSearch } from 'actions'
+
 import { fetchDictionary } from 'services'
 
 import { useDarkTheme, useDictionaryLanguages } from 'hooks'
@@ -23,12 +25,17 @@ export const Main =
         const theme = isDarkTheme ? 'dark' : 'light'
 
         useEffect(() => {
-            document.getElementById('app').className='color-theme--' + theme;
+            document.getElementById('app').className = `color-theme--${theme}`
+        }, [theme])
 
+        useEffect(() => {
             (async () => {
-                await fetchDictionary(dispatch, dictionaryLanguages)
+                await fetchDictionary(dictionaryLanguages)
+
+                dispatch(isLoadingAction(false))
+                dispatch(runSearch())
             })()
-        }, [dispatch, dictionaryLanguages, theme])
+        }, [dictionaryLanguages])
 
         return (
             <>
