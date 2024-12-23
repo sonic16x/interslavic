@@ -245,7 +245,6 @@ class DictionaryClass {
                                     .get(id)
                                     .map((word) => this.searchPrepare(lang, word))
                             )
-
                             break
                         case ISV_SRC:
                             splittedField = deduplicate(
@@ -320,8 +319,8 @@ class DictionaryClass {
         ].forEach((lang) => {
             searchIndex[lang] = Array.from(this.splittedMap[lang].keys()).map((key: string) => [
                 key,
-                this.splittedMap[lang].get(key).sort(),
-            ]).sort((a, b) => a[1][0].localeCompare(b[1][0]))
+                this.splittedMap[lang].get(key)
+            ])
         })
 
         return searchIndex
@@ -399,7 +398,6 @@ class DictionaryClass {
         const results = this.getWordList()
             .filter((item) => {
                 const word = this.getField(item, lang)
-
                 if (!word || word === '!') {
                     return false
                 }
