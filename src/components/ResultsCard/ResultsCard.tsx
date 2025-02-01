@@ -14,9 +14,11 @@ import {
     useLang,
 } from 'hooks'
 import {
+    expandAbbr,
     getPartOfSpeech,
     getWordStatus,
     toQueryString,
+    translateAbbr,
     wordHasForms,
 } from 'utils'
 
@@ -184,11 +186,18 @@ export const ResultsCard =
                     ) : renderOriginal(item, alphabets, caseQuestions)}
                     <WordStatus item={item} onClick={showTranslations}/>
                     {item.to === 'isv' && short && (
-                        <span className="results-card__details">{item.details}</span>
+                        <>
+                            &nbsp;
+                            <abbr title={expandAbbr(t, item.details)} className="results-card__details">
+                                {translateAbbr(t, item.details)}
+                            </abbr>
+                        </>
                     )}
                 </div>
                 {!short && (
-                    <span className="results-card__details">{item.details}</span>
+                    <abbr title={expandAbbr(t, item.details)} className="results-card__details">
+                        {translateAbbr(t, item.details)}
+                    </abbr>
                 )}
                 <div className="results-card__bottom">
                     <div className="results-card__original">
@@ -196,7 +205,9 @@ export const ResultsCard =
                             <Clipboard str={item.translate} />
                         ) : renderOriginal(item, alphabets, caseQuestions)}
                         {item.to !== 'isv' && short && (
-                            <span className="results-card__details">{item.details}</span>
+                            <abbr title={expandAbbr(t, item.details)} className="results-card__details">
+                                {translateAbbr(t, item.details)}
+                            </abbr>
                         )}
                     </div>
                     <div className="results-card__actions">
