@@ -9,7 +9,7 @@
   "main": "./dist/worker.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "postbuild": "node ssr.js",
+    "postbuild": "node scripts/post-build.js",
     "build-storybook": "storybook build",
     "build-manifest": "node scripts/build-manifest.js",
     "build-sitemap": "node scripts/build-sitemap.js",
