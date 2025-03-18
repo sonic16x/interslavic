@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 
 import { setInitialPage } from 'routing'
@@ -23,10 +23,19 @@ if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js', { scope: '.' })
 }
 
-const root = createRoot(document.getElementById('app'))
+const rootElement = document.getElementById('app')
 
-root.render(
-    <Provider store={store}>
-        <Main />
-    </Provider>
-)
+if (rootElement.children.length === 0) {
+    createRoot(rootElement).render(
+        <Provider store={store}>
+            <Main />
+        </Provider>
+    )
+} else {
+    hydrateRoot(
+        rootElement,
+        <Provider store={store}>
+            <Main />
+        </Provider>
+    )
+}
