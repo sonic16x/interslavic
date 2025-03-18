@@ -25,7 +25,7 @@ import { fetchLang } from 'services'
 import {
     useAlphabets,
     useCaseQuestions,
-    useDarkTheme,
+    useColorTheme,
     useDictionaryLanguages,
     useEnabledPages,
     useInterfaceLang,
@@ -57,7 +57,7 @@ export const Settings =
         const alphabets = useAlphabets()
         const isvSearchLetters = useIsvSearchLetters()
         const isShortCardView = useShortCardView()
-        const isDarkTheme = useDarkTheme()
+        const isDarkTheme = useColorTheme() === 'dark'
         const isvSearchByWordForms = useIsvSearchByWordForms()
         const caseQuestions = useCaseQuestions()
         const orderOfCases = useOrderOfCases()

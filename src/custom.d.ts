@@ -8,4 +8,3 @@ declare const FB: any
 declare const IS_COM: boolean
 declare const PR_NUMBER: string
 declare const Az: any
-declare const INTERSLAVIC_PRELOAD: Record<string, Promise<unknown>>

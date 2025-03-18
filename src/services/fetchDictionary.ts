@@ -2,20 +2,8 @@ import { ADD_LANGS } from 'consts'
 
 import { Dictionary, SearchIndex, WordList } from 'services'
 
-async function fetchPreloaded(url: string): Promise<unknown> {
-    if (INTERSLAVIC_PRELOAD && INTERSLAVIC_PRELOAD[url]) {
-        return await INTERSLAVIC_PRELOAD[url].then((data) => {
-            INTERSLAVIC_PRELOAD[url] = null
-
-            return data
-        })
-    } else {
-        return await fetch(url).then((res) => res.json())
-    }
-}
-
 async function fetchStat() {
-    return await fetchPreloaded('data/translateStatistic.json') as Promise<Record<string, string>>
+    return await fetch('data/translateStatistic.json').then((res) => res.json()) as Promise<Record<string, string>>
 }
 
 async function fetchLangs(langList: string[]) {
@@ -30,7 +18,7 @@ export interface IBasicData {
 }
 
 async function fetchBasic(): Promise<IBasicData> {
-    return await fetchPreloaded('data/basic.json') as Promise<IBasicData>
+    return await fetch('data/basic.json').then((res) => res.json()) as Promise<IBasicData>
 }
 
 export async function fetchLang(lang) {
@@ -46,9 +34,11 @@ export async function fetchLang(lang) {
 export async function fetchDictionary(langList: string[]) {
     const startFidTime = performance.now()
 
-    const stat = await fetchStat()
-    const basicData = await fetchBasic()
-    const langsData = await fetchLangs(langList.filter((lang) => ADD_LANGS.includes(lang)))
+    const [stat, basicData, langsData] = await Promise.all([
+        fetchStat(),
+        fetchBasic(),
+        fetchLangs(langList.filter((lang) => ADD_LANGS.includes(lang)))
+    ])
 
     langsData.forEach((langData) => {
         basicData.searchIndex = {
