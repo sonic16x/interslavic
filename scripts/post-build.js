@@ -9,11 +9,6 @@ const DIST_FOLDER = path.join(__dirname, '../dist')
 const BASE_URL = `http://localhost:${PORT}`
 const WAIT_SELECTOR = '.animation-container'
 const ROUTES = [
-    '/viewer',
-    '/viewer',
-    '/grammar',
-    '/settings',
-    '/about',
     '/',
 ]
 
