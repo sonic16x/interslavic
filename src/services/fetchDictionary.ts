@@ -34,9 +34,11 @@ export async function fetchLang(lang) {
 export async function fetchDictionary(langList: string[]) {
     const startFidTime = performance.now()
 
-    const stat = await fetchStat()
-    const basicData = await fetchBasic()
-    const langsData = await fetchLangs(langList.filter((lang) => ADD_LANGS.includes(lang)))
+    const [stat, basicData, langsData] = await Promise.all([
+        fetchStat(),
+        fetchBasic(),
+        fetchLangs(langList.filter((lang) => ADD_LANGS.includes(lang)))
+    ])
 
     langsData.forEach((langData) => {
         basicData.searchIndex = {
