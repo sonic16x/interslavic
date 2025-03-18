@@ -1,16 +1,13 @@
 <!doctype html>
 <html lang="en" style="height: 100%">
 <head>
-  <script>
-    window.INTERSLAVIC_PRELOAD = {}
-    INTERSLAVIC_PRELOAD['data/basic.json'] = fetch('data/basic.json').then((res) => res.json())
-    INTERSLAVIC_PRELOAD['data/translateStatistic.json'] = fetch('data/translateStatistic.json').then((res) => res.json())
-  </script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha" defer></script>
   <script src="is_com.js" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#272727">
+  <link rel="prefetch" href="data/basic.json">
+  <link rel="prefetch" href="data/translateStatistic.json">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
@@ -64,12 +61,5 @@
   <a href="https://github.com/sonic16x/interslavic">https://github.com/sonic16x/interslavic</a>
 </noscript>
 <div id="app"></div>
-<script defer>
-  const theme = JSON.parse(localStorage.getItem('reduxState'))?.colorTheme
-
-  if (theme) {
-    document.getElementById('app').className = `color-theme--${theme}`
-  }
-</script>
 </body>
 </html>
