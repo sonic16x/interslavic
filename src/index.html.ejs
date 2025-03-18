@@ -61,5 +61,12 @@
   <a href="https://github.com/sonic16x/interslavic">https://github.com/sonic16x/interslavic</a>
 </noscript>
 <div id="app"></div>
+<script defer>
+  const theme = JSON.parse(localStorage.getItem('reduxState'))?.colorTheme
+
+  if (theme) {
+    document.getElementById('app').className = `color-theme--${theme}`
+  }
+</script>
 </body>
 </html>
