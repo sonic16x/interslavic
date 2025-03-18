@@ -24,18 +24,14 @@ if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
 }
 
 const rootElement = document.getElementById('app')
+const appComponent = (
+    <Provider store={store}>
+        <Main />
+    </Provider>
+)
 
 if (rootElement.children.length === 0) {
-    createRoot(rootElement).render(
-        <Provider store={store}>
-            <Main />
-        </Provider>
-    )
+    createRoot(rootElement).render(appComponent)
 } else {
-    hydrateRoot(
-        rootElement,
-        <Provider store={store}>
-            <Main />
-        </Provider>
-    )
+    hydrateRoot(rootElement, appComponent)
 }

@@ -9,6 +9,7 @@
   "main": "./dist/worker.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "postbuild": "node ssr.js",
     "build-storybook": "storybook build",
     "build-manifest": "node scripts/build-manifest.js",
     "build-sitemap": "node scripts/build-sitemap.js",
@@ -89,8 +90,10 @@
     "jest": "^29.7.0",
     "jsdom": "^25.0.1",
     "mini-css-extract-plugin": "^2.9.2",
+    "node-static": "^0.7.11",
     "postcss-loader": "^8.1.1",
     "pre-commit": "^1.2.2",
+    "puppeteer": "^24.4.0",
     "react-transform-hmr": "^1.0.4",
     "sass": "^1.81.0",
     "sass-loader": "^16.0.3",
