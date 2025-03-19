@@ -9,13 +9,22 @@ import { useColorTheme, useDictionaryLanguages } from 'hooks'
 
 import {
     Header,
-    Loader,
     ModalDialog,
     Notification,
     Router,
 } from 'components'
 
 import './Main.scss'
+
+const hideLoader = () => {
+    const loaderElement = document.getElementById('loader') as HTMLDivElement
+    const transitionEnd = () => {
+        loaderElement.removeEventListener('transitionend', transitionEnd)
+        loaderElement.remove()
+    }
+    loaderElement.addEventListener('transitionend', transitionEnd)
+    loaderElement.style.opacity = '0'
+}
 
 export const Main =
     () => {
@@ -24,13 +33,14 @@ export const Main =
         const theme = useColorTheme()
 
         useLayoutEffect(() => {
-            document.getElementById('app').className = `color-theme--${theme}`
+            document.body.className = `color-theme--${theme}`
         }, [theme])
 
         useEffect(() => {
             fetchDictionary(dictionaryLanguages).then(() => {
                 dispatch(isLoadingAction(false))
                 dispatch(runSearch())
+                hideLoader()
             })
         }, [dictionaryLanguages])
 
@@ -38,7 +48,6 @@ export const Main =
             <>
                 <Header/>
                 <Router/>
-                <Loader/>
                 <ModalDialog/>
                 <Notification/>
             </>
