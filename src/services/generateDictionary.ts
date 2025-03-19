@@ -20,7 +20,6 @@ loadTablesData.then(({ data, columns }) => {
 
     columns.forEach((column: string[]) => {
         const fieldName = getColumnName(column)
-
         if (initialFilteredFields.includes(fieldName) || LANGS.includes(fieldName)) {
             basicDataTransposed.push(column)
         }
@@ -66,7 +65,6 @@ loadTablesData.then(({ data, columns }) => {
         const langDataTransposed = [
             columns.find(([fieldName]) => fieldName === lang),
         ]
-
         const langData = transposeMatrix(langDataTransposed)
 
         const jsonDataStr = JSON.stringify({

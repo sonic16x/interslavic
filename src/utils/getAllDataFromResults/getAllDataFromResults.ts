@@ -37,7 +37,6 @@ export const getAllDataFromResults = (results: string[]): IAllData => {
 
             if (idMap.has(lineId)) {
                 const existingLine = idMap.get(lineId)
-
                 idMap.set(lineId, [...existingLine, ...line])
             } else {
                 idMap.set(lineId, line)
@@ -47,8 +46,7 @@ export const getAllDataFromResults = (results: string[]): IAllData => {
 
     const sortedWordList = Array
         .from(idMap.values())
-        .sort((a, b) => parseInt(getLineId(a), 10) - parseInt(getLineId(b), 10))
-    
+        //.sort((a, b) => parseInt(getLineId(a), 10) - parseInt(getLineId(b), 10))
 
     const columns = transposeMatrix(sortedWordList)
         .filter((column: string[]) => {
