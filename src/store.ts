@@ -23,6 +23,7 @@ export const defaultState: IMainState = {
     },
     isvSearchByWordForms: true,
     caseQuestions: true,
+    displayImperfect: false,
     fromText: '',
     searchType: 'begin',
     posFilter: '',

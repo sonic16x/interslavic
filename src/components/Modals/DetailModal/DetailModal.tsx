@@ -49,6 +49,7 @@ interface IDetailModalInternal {
     interfaceLang: string;
     setAlphabetType: (type: string) => void;
     orderOfCases: string[];
+    displayImperfect: boolean;
 }
 
 /* eslint-disable max-len */
@@ -256,7 +257,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             [
                 '&nbsp@bl;bt;w=2',
                 `${t('present')}@;b`,
-                `${t('imperfect')}@;b`,
+                ...(this.props.displayImperfect ? [`${t('imperfect')}@;b`] : []),
                 `${t('future')}@;b`,
             ],
         ]
@@ -281,7 +282,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 `${t(forms1[i])}@b`,
                 `${this.formatStr(pronoun)}@`,
                 `${this.formatStr(data.present[i])}@`,
-                `${this.formatStr(data.imperfect[i])}@`,
+                ...(this.props.displayImperfect ? [`${this.formatStr(data.imperfect[i])}@`] : []),
                 `${this.formatStr(data.future[i])}@`,
             ])
         })
@@ -289,7 +290,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             [
                 '&nbsp@bl;bt;w=2',
                 `${t('perfect')}@;b`,
-                `${t('pluperfect')}@;b`,
+                ...(this.props.displayImperfect ? [`${t('pluperfect')}@;b`] : []),
                 `${t('conditional')}@;b`,
             ],
         ]
@@ -317,7 +318,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             const item = [
                 `${this.formatStr(pronoun)}@`,
                 `${this.formatStr(data.perfect[i])}@`,
-                `${this.formatStr(data.pluperfect[i])}@`,
+                ...(this.props.displayImperfect ? [`${this.formatStr(data.pluperfect[i])}@`] : []),
                 `${this.formatStr(data.conditional[i])}@`,
             ]
             if (forms2[i]) {
@@ -632,6 +633,7 @@ function mapStateToProps({
     alphabets,
     interfaceLang,
     orderOfCases,
+    displayImperfect,
 }: IMainState) {
     const { word, add, details } = modalDialog.data
 
@@ -644,6 +646,7 @@ function mapStateToProps({
         flavorisationType,
         interfaceLang,
         orderOfCases,
+        displayImperfect,
     }
 }
 

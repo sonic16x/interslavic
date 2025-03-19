@@ -10,6 +10,7 @@ import {
     changeCardViewAction,
     changeCaseQuestions,
     changeDictionaryLangAction,
+    changeDisplayImperfect,
     changeIsvSearchByWordForms,
     changeIsvSearchLetters,
     changeOrderOfCases,
@@ -27,6 +28,7 @@ import {
     useCaseQuestions,
     useColorTheme,
     useDictionaryLanguages,
+    useDisplayImperfect,
     useEnabledPages,
     useInterfaceLang,
     useIsvSearchByWordForms,
@@ -60,6 +62,7 @@ export const Settings =
         const isDarkTheme = useColorTheme() === 'dark'
         const isvSearchByWordForms = useIsvSearchByWordForms()
         const caseQuestions = useCaseQuestions()
+        const displayImperfect = useDisplayImperfect()
         const orderOfCases = useOrderOfCases()
         const dictionaryLanguages = useDictionaryLanguages()
         const enabledPages = useEnabledPages()
@@ -199,6 +202,13 @@ export const Settings =
                     title={t('caseQuestionsForPrepositions')}
                     checked={caseQuestions}
                     onChange={() => dispatch(changeCaseQuestions(!caseQuestions))}
+                />
+                <hr/>
+                <Checkbox
+                    className="bold"
+                    title={t('showImperfectAndPluperfect')}
+                    checked={displayImperfect}
+                    onChange={() => dispatch(changeDisplayImperfect(!displayImperfect))}
                 />
                 <hr />
                 <h6 className="settings__add-langs-title">
