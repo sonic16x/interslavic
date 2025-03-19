@@ -240,9 +240,11 @@ export const ResultsCard =
                         )}
                     </div>
                 </div>
-                <div className={classNames('results-card__status-badge', { verified: item.checked })}>
-                    {!short && (item.checked ? t('verified') : t('autoTranslation'))}
-                </div>
+                {!item.checked && (
+                    <div className={classNames('results-card__status-badge', { verified: item.checked })}>
+                        {!short && (item.checked ? t('verified') : t('autoTranslation'))}
+                    </div>
+                )}
             </div>
         )
     }
