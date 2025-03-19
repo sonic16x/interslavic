@@ -157,7 +157,7 @@
           color: var(--primary-color-fg);
           font-size: var(--text-xs);
           line-height: var(--text-xs-line);
-          transition: transform .1s ease-in-out;
+          transition: transform var(--animation-duration) ease-in-out;
 
           &:active {
             transform: scale(.9);
@@ -181,7 +181,7 @@
     /* inline text-like button */
     cursor: pointer;
     font: inherit;
-    transition: transform .1s ease-in-out;
+    transition: transform var(--animation-duration) ease-in-out;
 
     &:hover {
       transform: scale(1.3);

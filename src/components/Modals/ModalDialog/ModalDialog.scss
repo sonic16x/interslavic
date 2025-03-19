@@ -69,7 +69,7 @@
       font-weight: 700;
       line-height: 24px;
       outline: none;
-      transition: 100ms color ease-in-out;
+      transition: var(--animation-duration) color ease-in-out;
 
       &:hover {
         color: var(--muted-text-color);

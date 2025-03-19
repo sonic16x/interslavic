@@ -13,7 +13,7 @@
     background: var(--primary-color);
     box-shadow: var(--shadow);
     pointer-events: none;
-    transition: margin-left 0.1s ease-in-out;
+    transition: margin-left var(--animation-duration) ease-in-out;
   }
 
   .item {
@@ -23,7 +23,7 @@
     font-weight: 500;
     line-height: 40px;
     text-align: center;
-    transition: color 0.1s ease-in-out;
+    transition: color var(--animation-duration) ease-in-out;
 
     &.active {
       color: var(--primary-color-fg);

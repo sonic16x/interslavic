@@ -20,7 +20,7 @@
   font-size: 18px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.1s ease-in-out;
+  transition: opacity var(--animation-duration) ease-in-out;
 
   &.error {
     background: var(--invalid-color);
