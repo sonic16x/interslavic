@@ -20,7 +20,7 @@
     margin-right: var(--gap-size-s);
     cursor: pointer;
     line-height: 16px;
-    transition: background-color .1s ease-in-out;
+    transition: background-color var(--animation-duration) ease-in-out;
   }
 
   &__label {

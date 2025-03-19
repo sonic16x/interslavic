@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.26.0",
+  "version": "1.26.1",
   "description": "Interslavic Dictionary",
   "license": "MIT",
   "author": {
@@ -33,12 +33,12 @@
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "25.2.0",
     "@ag-grid-community/core": "25.2.0",
-    "@interslavic/utils": "^3.4.0",
+    "@interslavic/utils": "3.4.0",
     "@reduxjs/toolkit": "^2.6.1",
     "classnames": "2.5.1",
     "md5": "2.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-redux": "9.2.0",
     "redux": "5.0.1"
   },

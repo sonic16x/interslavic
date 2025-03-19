@@ -55,7 +55,7 @@
     font-weight: 600;
     line-height: 30px;
     outline: none;
-    transition: background 200ms;
+    transition: background var(--animation-duration);
 
     &:focus {
       outline: 0;

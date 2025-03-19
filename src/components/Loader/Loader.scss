@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--light);
+  backdrop-filter: blur(5px);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--animation-duration) ease-in-out;

@@ -9,7 +9,7 @@
   background: var(--light);
   box-shadow: var(--shadow);
   opacity: 1;
-  transition: opacity .08s ease-in-out;
+  transition: opacity var(--animation-duration) ease-in-out;
 
   &__text {
     padding-right: 22px;

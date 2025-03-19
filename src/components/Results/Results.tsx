@@ -9,7 +9,7 @@ import { Dictionary, ITranslateResult } from 'services'
 
 import {
     useFromText,
-    useLang,
+    useLang, useLoading,
     usePosFilter,
     useResults,
     useScrollbarWidth,
@@ -33,13 +33,14 @@ export const Results =
         const empty = results.length === 0 && fromText.length !== 0
         const scrollWidth = useScrollbarWidth()
         const [scrollIsVisible, setScrollBarVisible] = useState(false)
+        const loading = useLoading()
 
         useEffect(() => {
             setScrollBarVisible(isScrollBarVisible(containerRef))
         }, [containerRef, setScrollBarVisible, results.length])
 
         if (!results || !results.length) {
-            if (empty) {
+            if (empty && !loading) {
                 return (
                     <ResultsEmpty showReset={posFilter !== ''}/>
                 )

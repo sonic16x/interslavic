@@ -20,28 +20,33 @@ import LogoIcon from './images/logo-icon.svg'
 
 export const Header =
     () => {
+        useInterfaceLang()
+
         const dispatch = useDispatch()
         const page = usePage()
         const badges = useBadges()
-        useInterfaceLang()
         const [menuIsVisible, setMenuIsVisible] = useState(false)
         const [mobile, setMobile] = useState(false)
-        const [full, setFull] = useState(false)
+        const [menuAnim, setMenuAnim] = useState(false)
         const collapseMenu = useCallback(() => setMenuIsVisible(false), [setMenuIsVisible])
         const enabledPages = useEnabledPages()
         const navRef = useRef<HTMLDivElement>()
         const logoRef = useRef<HTMLDivElement>()
+        const navRefWidth = useRef<number>(0)
 
         const onResize = useCallback(() => {
             if (navRef && navRef.current && logoRef && logoRef.current) {
                 const windowWidth = document.body.clientWidth
                 const logoWidth = logoRef.current.getBoundingClientRect().width
-                const navWidth = navRef.current.getBoundingClientRect().width
-                const full = windowWidth > 1050
-                const mobile = !full && logoWidth + navWidth + 20 > windowWidth
+
+                if (!navRefWidth.current) {
+                    navRefWidth.current = navRef.current.getBoundingClientRect().width
+                }
+
+                const full = windowWidth > 1052
+                const mobile = !full && ((logoWidth + navRefWidth.current + 20) > windowWidth)
 
                 setMobile(mobile)
-                setFull(full)
             }
         }, [navRef, logoRef])
 
@@ -67,7 +72,7 @@ export const Header =
 
         return (
             <header
-                className={classNames('header', 'color-theme--light', { active: menuIsVisible, mobile, full })}
+                className={classNames('header', 'color-theme--light', { active: menuIsVisible, mobile })}
             >
                 <h1
                     className="logo"
@@ -90,12 +95,15 @@ export const Header =
                     type="button"
                     className={classNames('show-menu-button', { 'expanded': menuIsVisible, 'badge': showBadges })}
                     aria-label="Menu button"
-                    onClick={() => setMenuIsVisible(!menuIsVisible)}
+                    onClick={() => {
+                        setMenuIsVisible(!menuIsVisible)
+                        setMenuAnim(true)
+                    }}
                 >
                     <span className={classNames('lines', { active: menuIsVisible })}/>
                 </button>
                 <nav
-                    className={classNames('menu', { active: menuIsVisible })}
+                    className={classNames('menu', { active: menuIsVisible, anim: menuAnim })}
                     ref={navRef}
                 >
                     {filteredPages.map((({ title, value, subTitle }) => (
