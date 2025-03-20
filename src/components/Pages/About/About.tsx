@@ -13,7 +13,7 @@ export const About =
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId)
         const email = 'cherebedov.sergey@gmail.com'
         const source = 'http://steen.free.fr/interslavic'
-        const version = [VERSION, PR_NUMBER].filter((item) => item && item.length).join('-')
+        const version = [__VERSION__, __PR_NUMBER__].filter((item) => item && item.length).join('-')
 
         return (
             <div className="about-page">

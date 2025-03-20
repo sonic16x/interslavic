@@ -1,3 +1,5 @@
+import { ISV } from 'consts'
+
 import translations from 'translations/data.json'
 
 import {
@@ -7,8 +9,6 @@ import {
     getLatin,
     parseI18nString,
 } from 'utils'
-
-import { ISV } from '../consts'
 
 let currentLang
 
