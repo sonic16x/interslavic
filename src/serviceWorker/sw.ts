@@ -10,7 +10,9 @@ self.addEventListener('install', (event: any) => {
 })
 
 self.addEventListener('fetch', (event: any) => {
-    if (event.request.method !== 'GET') {
+    const url = new URL(event.request.url)
+
+    if (event.request.method !== 'GET' || url.protocol === 'chrome-extension:') {
         return
     }
 
