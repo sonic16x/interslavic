@@ -395,7 +395,7 @@ class DictionaryClass {
         }
 
         const distMap = new Map()
-        const results = this.getWordList()
+        const rawResults = this.getWordList()
             .filter((item) => {
                 const word = this.getField(item, lang)
                 if (!word || word === '!') {
@@ -458,7 +458,10 @@ class DictionaryClass {
                 
                 return filterResult
             })
-            .map((item) => {
+            .map((originItem) => {
+                // Need to fix redux error, when load new lang (mutable rawResults between dispatches)
+                const item = originItem.slice(0)
+
                 let splittedField = this.getSplittedField(from, item)
                 if (inputWord.length === 1) {
                     splittedField = splittedField.slice(0, 1)
@@ -504,14 +507,14 @@ class DictionaryClass {
             .slice(0, 50)
         
 
-        const translateTime = Math.round(performance.now() - startTranslateTime) // @TODO: send to GA
+        const translateTime = Math.round(performance.now() - startTranslateTime)
 
         if (process.env.NODE_ENV !== 'production' && showTime) {
             // eslint-disable-next-line no-console
             console.log('TRANSLATE', `${translateTime}ms`)
         }
 
-        return [results, translateTime]
+        return [rawResults, translateTime]
     }
 
     public formatTranslate(
