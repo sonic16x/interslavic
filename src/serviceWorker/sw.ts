@@ -16,6 +16,12 @@ self.addEventListener('fetch', (event: any) => {
         return
     }
 
+    if (url.pathname === 'is_com.js') {
+        event.respondWith(fetch(event.request))
+
+        return
+    }
+
     // Try to find data in cache
     event.respondWith(
         caches
