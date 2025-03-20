@@ -4,12 +4,13 @@ import { ADD_LANGS, EN, initialAddFields, initialFields, ISV, ISV_SRC, LANGS } f
 
 import { Dictionary, loadTablesData } from 'services'
 
-import { getColumnName, transposeMatrix } from 'utils'
+import { getColumnName, sortColumns, transposeMatrix } from 'utils'
 
 import { gzipSizeSync } from 'gzip-size'
 
 
 loadTablesData.then(({ data, columns }) => {
+    const sortedColumns = sortColumns(columns, EN)
     Dictionary.init(data)
 
     const searchIndex = Dictionary.getIndex()
@@ -18,7 +19,7 @@ loadTablesData.then(({ data, columns }) => {
     const basicDataTransposed = []
     const initialFilteredFields = initialFields.filter((field) => !initialAddFields.includes(field))
 
-    columns.forEach((column: string[]) => {
+    sortedColumns.forEach((column: string[]) => {
         const fieldName = getColumnName(column)
 
         if (initialFilteredFields.includes(fieldName) || LANGS.includes(fieldName)) {
@@ -26,14 +27,7 @@ loadTablesData.then(({ data, columns }) => {
         }
     })
 
-    let basicData = transposeMatrix<string>(basicDataTransposed)
-
-    const sortIndex = basicData[0].indexOf(EN)
-
-    basicData = [
-        basicData[0],
-        ...basicData.slice(1).sort((a, b) => a[sortIndex].localeCompare(b[sortIndex])),
-    ]
+    const basicData = transposeMatrix<string>(basicDataTransposed)
 
     const searchIndexBasic = [
         ISV_SRC,
@@ -64,7 +58,7 @@ loadTablesData.then(({ data, columns }) => {
 
     ADD_LANGS.forEach((lang) => {
         const langDataTransposed = [
-            columns.find(([fieldName]) => fieldName === lang),
+            sortedColumns.find(([fieldName]) => fieldName === lang),
         ]
 
         const langData = transposeMatrix(langDataTransposed)

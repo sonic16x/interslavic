@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.27.1",
+  "version": "1.27.2",
   "description": "Interslavic Dictionary",
   "license": "MIT",
   "author": {
@@ -9,24 +9,26 @@
   "main": "./dist/worker.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build-storybook": "storybook build",
     "build-manifest": "node scripts/build-manifest.js",
     "build-sitemap": "node scripts/build-sitemap.js",
+    "build-storybook": "storybook build",
     "deploy-api": "wrangler deploy ./src/server/index.ts --name api --compatibility-date 2024-11-12",
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.config.dev.js --progress",
     "generate-dictionary": "tsx -r tsconfig-paths/register ./src/services/generateDictionary.ts",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
-    "stylelint": "stylelint \"**/*.scss\"",
-    "stylelint:fix": "stylelint \"**/*.scss\" --fix",
+    "sort-package-json": "sort-package-json",
     "start": "npm run dev",
     "storybook": "storybook dev -p 6006",
-    "test:pw": "playwright test",
-    "test:unit": "jest --logHeapUsage --coverage --config jest-config.json",
+    "stylelint": "stylelint \"**/*.scss\"",
+    "stylelint:fix": "stylelint \"**/*.scss\" --fix",
     "test:dictionary": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false tsx -r tsconfig-paths/register ./src/services/dictionary-test",
-    "test:dictionary-update-shanshot": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false tsx -r tsconfig-paths/register ./src/services/dictionary-test"
+    "test:dictionary-update-shanshot": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false tsx -r tsconfig-paths/register ./src/services/dictionary-test",
+    "test:pw": "playwright test",
+    "test:unit": "jest --logHeapUsage --coverage --config jest-config.json"
   },
   "pre-commit": [
+    "sort-package-json",
     "lint",
     "stylelint"
   ],
@@ -94,6 +96,7 @@
     "react-transform-hmr": "^1.0.4",
     "sass": "^1.81.0",
     "sass-loader": "^16.0.3",
+    "sort-package-json": "^3.0.0",
     "storybook": "^8.6.7",
     "storybook-addon-sass-postcss": "^0.3.2",
     "style-loader": "^4.0.0",

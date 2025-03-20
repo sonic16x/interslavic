@@ -14,7 +14,7 @@ import {
     changeIsvSearchByWordForms,
     changeIsvSearchLetters,
     changeOrderOfCases,
-    langAction,
+    langAction, runSearch,
     setAlphabets,
     setInterfaceLang,
     togglePage,
@@ -248,6 +248,7 @@ export const Settings =
                                     }
 
                                     dispatch(changeDictionaryLangAction(lang))
+                                    dispatch(runSearch())
                                     setLoading(false)
                                 }}
                             />
