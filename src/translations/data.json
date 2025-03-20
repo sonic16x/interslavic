@@ -1758,7 +1758,7 @@
   "perfect": {
     "en": "perfect",
     "isv": "perfekt",
-    "ru": "прошлое сов.",
+    "ru": "прошедшее сов.",
     "uk": "докон. минулий",
     "be": "прошлы законч.",
     "pl": "przeszły dok.",
@@ -2759,6 +2759,21 @@
     "sr": "Покажи падежна питања уместо назива падежа код предлога и глагола",
     "mk": "Покажи падежни прашања наместо имиња на падежите при предлози и глаголи",
     "bg": "Покажи падежни въпроси вместо имена на падежите при предлози и глаголи"
+  },
+  "showImperfectAndPluperfect": {
+    "en": "Show additional verb tenses (imperfect and pluperfect)",
+    "isv": "Pokazyvati dodatne glagolne časy (imperfekt i pluskvamperfekt)",
+    "ru": "Отображать дополнительные времена глаголов (несовершенное прошедшее и предпрошедшее время)",
+    "uk": "Показувати додаткові часові форми дієслів (недоконаний минулий і плюперфектний час)",
+    "be": "Паказваць дадатковыя часы дзеясловаў (прошлы незакончаны і запрошлы час)",
+    "pl": "Pokaż dodatkowe czasy gramatyczne (czas przeszły niedokonany i czas zaprzeszły)",
+    "cs": "Zobrazit další slovesné časy (minulý čas nedokonavý a předminulý čas)",
+    "sk": "Zobraziť ďalšie slovesné časy (minulý čas nedokonavý a predminulý čas)",
+    "sl": "Pokazati dodatne glagolske čase (nepopolni preteklik in predpreteklik)",
+    "hr": "Prikazati dodatna glagolska vremena (imperfekt i pluskvamperfekt)",
+    "sr": "Покажи додатна глаголска времена (имперфекат и плусквамперфекат)",
+    "mk": "Покажи дополнителни глаголски времиња (минато несвршено и предминато време)",
+    "bg": "Покажи допълнителни глаголни времена (минало несвършено и минало предварително)"
   },
   "close": {
     "en": "Close",

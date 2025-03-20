@@ -46,6 +46,7 @@ export interface IMainState {
     };
     isvSearchByWordForms: boolean;
     caseQuestions: boolean;
+    displayImperfect: boolean;
     fromText: string;
     searchType: string;
     posFilter: string;
@@ -426,13 +427,20 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ),
             }
         }
-
+        
         case ActionTypes.CHANGE_ORDER_OF_CASES:
             return {
                 ...state,
                 orderOfCases: data,
             }
 
+        case ActionTypes.CHANGE_DISPLAY_IMPERFECT: {
+            return {
+                ...state,
+                displayImperfect: data,
+            }
+        }
+            
         case ActionTypes.TOGGLE_PAGE: {
             const { enabledPages } = state
 

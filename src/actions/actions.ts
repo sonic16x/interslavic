@@ -22,6 +22,7 @@ export enum ActionTypes {
     CHANGE_CARD_VIEW = 'CHANGE_CARD_VIEW',
     CHANGE_ORDER_OF_CASES = 'CHANGE_ORDER_OF_CASES',
     CHANGE_CASE_QUESTIONS = 'CHANGE_CASE_QUESTIONS',
+    CHANGE_DISPLAY_IMPERFECT = 'CHANGE_DISPLAY_IMPERFECT',
     DICTIONARY_LANGUAGES = 'DICTIONARY_LANGUAGES',
     TOGGLE_PAGE = 'TOGGLE_PAGE',
     SET_BADGES = 'SET_BADGES',
@@ -168,6 +169,13 @@ export function changeOrderOfCases(data) {
 export function changeCaseQuestions(data) {
     return {
         type: ActionTypes.CHANGE_CASE_QUESTIONS,
+        data,
+    }
+}
+
+export function changeDisplayImperfect(data) {
+    return {
+        type: ActionTypes.CHANGE_DISPLAY_IMPERFECT,
         data,
     }
 }
