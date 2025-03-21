@@ -16,7 +16,7 @@ self.addEventListener('fetch', (event: any) => {
         return
     }
 
-    if (url.pathname === '/is_com.js' || url.pathname.startsWith('/api')) {
+    if (url.pathname === '/is_com.js' || url.pathname === '/is-com.json' || url.pathname.startsWith('/api')) {
         event.respondWith(fetch(event.request))
 
         return

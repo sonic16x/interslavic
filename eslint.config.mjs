@@ -94,13 +94,14 @@ export default [{
 
         "simple-import-sort/imports": ["error", {
             groups: [["^(fs)(/.*|$)"], [
-                "^(react|redux|react-redux|react-dom|lodash|classnames)(/.*|$)",
+                "^(react|redux|react-redux|react-dom|lodash|classnames|vite|fs|@storybook)(/.*|$)",
                 "^(@ag-grid-community|node-fetch)(/.*|$)",
             ], ["^(consts)(/.*|$)"], ["^(translations)(/.*|$)"], ["^(actions|reducers)(/.*|$)"], ["^(services)(/.*|$)"], ["^(sw|hooks|legacy|middlewares|routing|utils)(/.*|$)"], ["^(components)(/.*|$)"], ["^\\.\\.(?!/?$)", "^\\.\\./?$"], ["^.+\\.s?css$"]],
         }],
 
-        "object-curly-spacing": ["error", "always"],
         "@typescript-eslint/no-empty-function": "off",
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "object-curly-spacing": ["error", "always"],
 
         "@typescript-eslint/naming-convention": ["error", {
             selector: "interface",

@@ -1,5 +1,6 @@
-import { ResultsCard } from './ResultsCard'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { ResultsCard } from './ResultsCard'
 
 const meta = {
     title: 'Components/ResultsCard',

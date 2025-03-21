@@ -1,4 +1,4 @@
-const caseList = ['+Nom','+Gen','+Dat','+Acc','+Ins','+Loc','+Voc']
+const caseList = ['+Nom', '+Gen', '+Dat', '+Acc', '+Ins', '+Loc', '+Voc']
 
 export function convertCases(caseInfoRaw: string): string {
     const caseInfo = caseInfoRaw

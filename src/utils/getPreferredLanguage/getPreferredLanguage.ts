@@ -1,4 +1,4 @@
-import { EN,interfaceLanguageList } from 'consts'
+import { EN, interfaceLanguageList } from 'consts'
 
 import { intersection } from 'utils'
 

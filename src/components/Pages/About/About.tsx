@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import { REP_LINK, tablesData } from 'consts'
 
 import { t } from 'translations'
@@ -10,10 +12,17 @@ import './About.scss'
 
 export const About =
     () => {
+        const [isCom, setIsCom] = useState(false)
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId)
         const email = 'cherebedov.sergey@gmail.com'
         const source = 'http://steen.free.fr/interslavic'
         const version = [__VERSION__, __PR_NUMBER__].filter((item) => item && item.length).join('-')
+
+        useEffect(() => {
+            fetch('is-com.json')
+                .then((res) => res.json())
+                .then((data: { isCom: boolean }) => setIsCom(data?.isCom))
+        }, [])
 
         return (
             <div className="about-page">
@@ -32,11 +41,11 @@ export const About =
                         <div className="about-page__author">
                             {t('aboutAuthorSergeyCherebedov')}:
                             <a target="_blank" rel="noreferrer" href="https://github.com/sonic16x">GitHub</a>
-                            {IS_COM && (
+                            {isCom && (
                                 <a target="_blank" rel="noreferrer"
                                     href="https://www.linkedin.com/in/scherebedov/">LinkedIn</a>
                             )}
-                            {IS_COM && (
+                            {isCom && (
                                 <Link
                                     href="https://www.facebook.com/profile.php?id=100009366550621"
                                     target="_blank"
@@ -51,7 +60,7 @@ export const About =
                         <div className="about-page__author">
                             {t('aboutAuthorDenisShabalin')}:
                             <a target="_blank" rel="noreferrer" href="https://github.com/ru-danko">GitHub</a>
-                            {IS_COM && (
+                            {isCom && (
                                 <Link
                                     href="https://www.facebook.com/d.y.shabalin"
                                     target="_blank"
@@ -75,7 +84,7 @@ export const About =
                         <hr/>
                         <h6>{t('aboutOurFriends')}</h6>
                         <div className="about-page__community-links">
-                            {IS_COM && (
+                            {isCom && (
                                 <Link
                                     title="Interslavic Facebook"
                                     href="https://www.facebook.com/groups/interslavic"
@@ -85,7 +94,7 @@ export const About =
                                     Facebook community
                                 </Link>
                             )}
-                            {IS_COM && (
+                            {isCom && (
                                 <a
                                     title="Interslavic Discord"
                                     href="https://discord.com/invite/n3saqm27QW"

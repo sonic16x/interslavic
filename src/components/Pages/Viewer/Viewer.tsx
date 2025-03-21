@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model'
-import { Grid, GridOptions,ModuleRegistry  } from '@ag-grid-community/core'
+import { Grid, GridOptions, ModuleRegistry } from '@ag-grid-community/core'
 
 import { ADD_LANGS, EN, initialFields, ISV, LANGS, validFields } from 'consts'
 
@@ -218,7 +218,7 @@ const Viewer =
 
         useEffect(() => {
             if (online) {
-                loadTablesData.then(({ data, rangesMap }) => {
+                loadTablesData().then(({ data, rangesMap }) => {
                     allDataRef.current = data
                     initTablesMapFunction(rangesMap)
                     setLoadingAllData(false)

@@ -9,7 +9,7 @@ import { getColumnName, sortColumns, transposeMatrix } from 'utils'
 import { gzipSizeSync } from 'gzip-size'
 
 
-loadTablesData.then(({ data, columns }) => {
+loadTablesData().then(({ data, columns }) => {
     const sortedColumns = sortColumns(columns, EN)
     Dictionary.init(data)
 

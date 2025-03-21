@@ -1,4 +1,4 @@
-const fs = require('fs')
+import * as fs from 'fs'
 
 const nowDate = (new Date()).toISOString().split('T')[0]
 

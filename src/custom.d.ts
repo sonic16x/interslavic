@@ -5,5 +5,4 @@ declare module '*.svg' {
 }
 
 declare const FB: any
-declare const IS_COM: boolean
 declare const Az: any

@@ -1,4 +1,4 @@
-import { ADD_LANGS, EN,LANGS } from 'consts'
+import { ADD_LANGS, EN, LANGS } from 'consts'
 
 export function validateLang(lang: string): boolean {
     const validLangs: string[] = [

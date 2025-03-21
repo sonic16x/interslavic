@@ -1,4 +1,4 @@
-import { EN, ISV,LANGS } from './consts'
+import { EN, ISV, LANGS } from './consts'
 import { localStorageMiddleware } from './middlewares/localStorageMiddleware'
 import { urlParamsMiddleware } from './middlewares/urlParamsMiddleware'
 import { IMainState, mainReducer } from './reducers'

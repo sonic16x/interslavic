@@ -1,6 +1,7 @@
-import { LineSelector } from './LineSelector'
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
+
+import { LineSelector } from './LineSelector'
 const meta = {
     title: 'Components/LineSelector',
     component: LineSelector,
