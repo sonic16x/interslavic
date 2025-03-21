@@ -96,7 +96,7 @@ export default defineConfig({
     },
     define: {
         __VERSION__: JSON.stringify(VERSION),
-        __PR_NUMBER__: JSON.stringify(process.env.PR_NUMBER || '123'),
+        __PR_NUMBER__: JSON.stringify(process.env.PR_NUMBER),
         __PRODUCTION__: JSON.stringify(process.env.NODE_ENV === 'development'),
     },
     resolve: {
