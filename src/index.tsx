@@ -8,7 +8,6 @@ import { Main } from 'components'
 import './index.scss'
 
 import { store } from './store'
-import { Workbox } from 'workbox-window'
 
 declare global {
     const __PRODUCTION__: boolean
@@ -22,10 +21,8 @@ declare global {
 
 setInitialPage()
 
-if ('serviceWorker' in navigator) {
-    const wb = new Workbox('/sw.js')
-
-    wb.register()
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js', { scope: '.' })
 }
 
 const root = createRoot(document.getElementById('app'))

@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.28.3",
+  "version": "1.28.4",
   "description": "Interslavic Dictionary",
   "license": "MIT",
   "author": {
@@ -9,8 +9,10 @@
   "main": "./dist/worker.js",
   "scripts": {
     "build": "vite build",
+    "build-manifest": "node scripts/build-manifest.js",
     "build-sitemap": "node scripts/build-sitemap.js",
     "build-storybook": "storybook build",
+    "build-sw": "vite build --config vite-sw.config.js",
     "deploy-api": "wrangler deploy ./src/server/index.ts --name api --compatibility-date 2024-11-12",
     "dev": "vite",
     "generate-dictionary": "tsx -r tsconfig-paths/register ./src/services/generateDictionary.ts",
@@ -42,9 +44,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-redux": "9.2.0",
-    "redux": "5.0.1",
-    "vite-plugin-svgr": "^4.3.0",
-    "workbox-window": "^7.3.0"
+    "redux": "5.0.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
@@ -95,7 +95,8 @@
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "vite": "^6.2.2",
-    "vite-plugin-pwa": "^0.21.1",
+    "vite-plugin-svgr": "^4.3.0",
+    "vite-plugin-top-level-await": "^1.5.0",
     "wrangler": "^3.89.0"
   },
   "optionalDependencies": {
