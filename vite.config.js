@@ -41,30 +41,32 @@ function getPwaConfig() {
         workboxOptions: {
             globPatterns: PRECACHE_URLS,
         },
-        includeAssets: [
-            "**/*",
-        ],
         workbox: {
             runtimeCaching: [
                 {
-                    urlPattern: ({ request }) => !url.pathname.startsWith("/api/") && url.pathname !== "/is_com.js",
-                    handler: "StaleWhileRevalidate",
-                    options: {
-                        cacheName: `static-cache-${VERSION}`,
-                    },
-                },
-                {
-                    urlPattern: ({ url }) => url.pathname.startsWith("/api/"),
+                    urlPattern: /\/api\/.*/,
                     handler: "NetworkOnly",
                     options: {
                         cacheName: `network-only-${VERSION}`,
                     },
                 },
                 {
-                    urlPattern: ({ url }) => url.pathname === "/is_com.js",
+                    urlPattern: /\/is_com\.js/,
                     handler: "NetworkFirst",
                     options: {
                         cacheName: `network-first-${VERSION}`,
+                        networkTimeoutSeconds: 10,
+                    },
+                },
+                {
+                    urlPattern: /\.(?:js|css|html|json|ico|png|jpg|jpeg|svg|webp)$/,
+                    handler: "StaleWhileRevalidate",
+                    options: {
+                        cacheName: `static-cache-${VERSION}`,
+                        expiration: {
+                            maxEntries: 60,
+                            maxAgeSeconds: 60 * 60 * 24 * 30,
+                        },
                     },
                 },
             ],
