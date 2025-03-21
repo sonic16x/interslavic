@@ -21,10 +21,6 @@ declare global {
 
 setInitialPage()
 
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js', { scope: '.' })
-}
-
 const root = createRoot(document.getElementById('app'))
 
 root.render(

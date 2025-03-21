@@ -137,7 +137,6 @@ jobs:
         run: |
           npm run generate-dictionary
           npm run build
-          npm run build-manifest
 
       - name: Publish to Cloudflare Pages
         id: deploy

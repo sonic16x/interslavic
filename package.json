@@ -9,7 +9,6 @@
   "main": "./dist/worker.js",
   "scripts": {
     "build": "vite build",
-    "build-manifest": "node scripts/build-manifest.js",
     "build-sitemap": "node scripts/build-sitemap.js",
     "build-storybook": "storybook build",
     "deploy-api": "wrangler deploy ./src/server/index.ts --name api --compatibility-date 2024-11-12",
@@ -95,6 +94,7 @@
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "vite": "^6.2.2",
+    "vite-plugin-pwa": "^0.21.1",
     "wrangler": "^3.89.0"
   },
   "optionalDependencies": {
