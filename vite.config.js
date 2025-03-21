@@ -52,10 +52,9 @@ function getPwaConfig() {
                 },
                 {
                     urlPattern: /\/is_com\.js/,
-                    handler: "NetworkFirst",
+                    handler: "NetworkOnly",
                     options: {
                         cacheName: `network-first-${VERSION}`,
-                        networkTimeoutSeconds: 10,
                     },
                 },
                 {
