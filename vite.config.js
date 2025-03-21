@@ -42,19 +42,21 @@ function getPwaConfig() {
             globPatterns: PRECACHE_URLS,
         },
         workbox: {
+            clientsClaim: true,
+            skipWaiting: true,
             runtimeCaching: [
                 {
                     urlPattern: /\/api\/.*/,
                     handler: "NetworkOnly",
                     options: {
-                        cacheName: `network-only-${VERSION}`,
+                        cacheName: `api-${VERSION}`,
                     },
                 },
                 {
                     urlPattern: /\/is_com\.js/,
                     handler: "NetworkOnly",
                     options: {
-                        cacheName: `network-first-${VERSION}`,
+                        cacheName: `is-com-${VERSION}`,
                     },
                 },
                 {
