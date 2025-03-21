@@ -1,59 +1,16 @@
-import type { StorybookConfig } from "@storybook/react-webpack5";
-import path from "path";
-
-const webpackDevConfig = require('../webpack.config.dev.js');
 
 
-const config: StorybookConfig = {
+const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
-    "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-onboarding",
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    "storybook-addon-sass-postcss",
   ],
   framework: {
-    name: '@storybook/react-webpack5',
-    options: {
-      builder: {
-        useSWC: true
-      }
-    }
+    name: '@storybook/react-vite', // Используем Vite вместо Webpack
+    options: {},
   },
-  swc: () => ({
-    jsc: {
-      transform: {
-        react: {
-          runtime: 'automatic'
-        }
-      }
-    }
-  }),
-  webpackFinal: async config => {
-    const imageRule = config.module?.rules?.find(rule => {
-      const test = (rule as { test: RegExp }).test
-
-      if (!test) {
-        return false
-      }
-
-      return test.test('.svg')
-    }) as { [key: string]: any }
-
-    imageRule.exclude = /\.svg$/
-
-    config.module?.rules?.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack']
-    })
-
-    config.resolve.modules.push('src')
-    config.plugins.push(webpackDevConfig.plugins[1])
-    config.plugins.push(webpackDevConfig.plugins[2])
-
-    return config
-  }
 };
 export default config;

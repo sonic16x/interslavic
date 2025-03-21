@@ -4,7 +4,7 @@ import { CASH_URLS } from './cashUrls'
 self.addEventListener('install', (event: any) => {
     event.waitUntil(
         caches
-            .open(VERSION)
+            .open(__VERSION__)
             .then((cache) => cache.addAll(CASH_URLS))
     )
 })
@@ -16,7 +16,7 @@ self.addEventListener('fetch', (event: any) => {
         return
     }
 
-    if (url.pathname === 'is_com.js') {
+    if (url.pathname === '/is_com.js' || url.pathname.startsWith('/api')) {
         event.respondWith(fetch(event.request))
 
         return
@@ -31,7 +31,7 @@ self.addEventListener('fetch', (event: any) => {
                 const network = fetch(event.request)
                     .then((response) => (
                         caches
-                            .open(VERSION)
+                            .open(__VERSION__)
                             .then((cache) => cache.put(event.request, response.clone())) // Update cache
                             .then(() => response)
                     ))
@@ -44,7 +44,7 @@ self.addEventListener('fetch', (event: any) => {
     // Update cache in background
     event.waitUntil(
         caches
-            .open(VERSION)
+            .open(__VERSION__)
             .then((cache) => (
                 fetch(event.request).then((response) =>
                     cache.put(event.request, response.clone())
@@ -60,7 +60,7 @@ self.addEventListener('activate', (event: any) => {
             .keys()
             .then((keys) => Promise.all(
                 keys
-                    .filter((key) => key !== VERSION)
+                    .filter((key) => key !== __VERSION__)
                     .map((key) => caches.delete(key))
             ))
     )

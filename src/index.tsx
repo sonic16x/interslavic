@@ -10,7 +10,9 @@ import './index.scss'
 import { store } from './store'
 
 declare global {
-    const VERSION: string
+    const __PRODUCTION__: boolean
+    const __VERSION__: string
+    const __PR_NUMBER__: string
     // eslint-disable-next-line
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
