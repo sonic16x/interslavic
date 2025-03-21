@@ -1,29 +1,7 @@
-import {defineConfig} from 'vite'
-
-import react from '@vitejs/plugin-react'
-import svgr from 'vite-plugin-svgr'
-import { visualizer } from 'rollup-plugin-visualizer'
-
+import { defineConfig } from 'vite';
+import path from 'path';
 
 export default defineConfig({
-    publicDir: 'static',
-    plugins: [
-        react(),
-        svgr({
-            svgrOptions: {exportType: 'default'},
-            include: '**/*.svg',
-        }),
-        visualizer({
-            filename: 'report.html',
-            gzipSize: true,
-        }),
-    ],
-    build: {
-        outDir: 'dist',
-    },
-    server: {
-        port: 3000,
-    },
     define: {
         __VERSION__: JSON.stringify(require('./package.json').version),
         __PR_NUMBER__: JSON.stringify(process.env.PR_NUMBER),
@@ -42,4 +20,19 @@ export default defineConfig({
             'hooks': '/src/hooks',
         },
     },
-})
+    build: {
+        emptyOutDir: false,
+        outDir: 'dist',
+        lib: {
+            entry: path.resolve(__dirname, 'src/serviceWorker/sw.ts'),
+            name: 'ServiceWorker',
+            formats: ['iife'],
+            fileName: () => 'sw.js',
+        },
+        rollupOptions: {
+            output: {
+                inlineDynamicImports: true,
+            },
+        },
+    },
+});
