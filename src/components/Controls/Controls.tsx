@@ -17,12 +17,12 @@ import { toBCP47 } from 'utils'
 
 import {
     Expand,
-    FlavorisationSelector,
     InputText,
     LangSelector,
     POSSelector,
     SearchTypeSelector,
 } from 'components'
+import { FlavorisationSelector } from 'components/FlavorisationSelector'
 
 import './Controls.scss'
 
