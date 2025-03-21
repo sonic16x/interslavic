@@ -60,6 +60,9 @@ jobs:
       - name: Generate dictionary
         run: npm run generate-dictionary
 
+      - name: Build
+        run: npm run build
+
       - name: Test
         run: npm run test:pw
 

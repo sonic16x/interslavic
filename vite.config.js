@@ -34,6 +34,38 @@ function getManifest() {
     return manifest
 }
 
+function getPwaConfig() {
+    return {
+        registerType: "autoUpdate",
+        manifest: getManifest(),
+        workboxOptions: {
+            globPatterns: PRECACHE_URLS,
+        },
+        workbox: {
+            runtimeCaching: [
+                {
+                    urlPattern: ({ request }) => request.destination !== "document",
+                    handler: "StaleWhileRevalidate",
+                    options: {
+                        cacheName: `static-cache-${VERSION}`,
+                        expiration: {
+                            maxEntries: 200,
+                            maxAgeSeconds: 60 * 60 * 24 * 30,
+                        },
+                    },
+                },
+                {
+                    urlPattern: ({ url }) => url.pathname.startsWith("/api/") || url.pathname === "/is_com.js",
+                    handler: "NetworkOnly",
+                    options: {
+                        cacheName: `network-only-${VERSION}`,
+                    },
+                },
+            ],
+        },
+    }
+}
+
 export default defineConfig({
     publicDir: 'static',
     plugins: [
@@ -46,35 +78,7 @@ export default defineConfig({
             filename: 'stats.html',
             gzipSize: true,
         }),
-        VitePWA({
-            registerType: "autoUpdate",
-            manifest: getManifest(),
-            workboxOptions: {
-                globPatterns: PRECACHE_URLS,
-            },
-            workbox: {
-                runtimeCaching: [
-                    {
-                        urlPattern: ({ request }) => request.destination !== "document",
-                        handler: "StaleWhileRevalidate",
-                        options: {
-                            cacheName: `static-cache-${VERSION}`,
-                            expiration: {
-                                maxEntries: 200,
-                                maxAgeSeconds: 60 * 60 * 24 * 30,
-                            },
-                        },
-                    },
-                    {
-                        urlPattern: ({ url }) => url.pathname.startsWith("/api/") || url.pathname === "/is_com.js",
-                        handler: "NetworkOnly",
-                        options: {
-                            cacheName: `network-only-${VERSION}`,
-                        },
-                    },
-                ],
-            },
-        }),
+        VitePWA(getPwaConfig()),
     ],
     build: {
         outDir: 'dist',
