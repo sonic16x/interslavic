@@ -22,11 +22,11 @@ import {
     Button,
     Checkbox,
     Expand,
-    FlavorisationSelector,
     LangSelector,
     LineSelector,
     Textarea,
 } from 'components'
+import { FlavorisationSelector } from 'components/FlavorisationSelector'
 
 import './TranslatorPage.scss'
 
@@ -239,5 +239,3 @@ export const TranslatorPage = () => {
         </div>
     )
 }
-
-export default TranslatorPage

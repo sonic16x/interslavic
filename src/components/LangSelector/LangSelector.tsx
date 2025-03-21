@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 
-import { t } from 'translations'
+import { ISV } from 'consts'
 
-import { EN, ISV } from 'consts'
+import { t } from 'translations'
 
 import { Selector } from 'components/Selector'
 
@@ -30,7 +30,7 @@ const LangPart =
             )
         }
 
-        const options = [EN, ...langs].map((value) => ({
+        const options = [...langs].map((value) => ({
             name: t(`${value}Lang`),
             value,
         }))
