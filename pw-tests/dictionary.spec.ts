@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Dictionary', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/');
+    await page.goto('http://localhost:4173/');
 
     await expect(page.getByTestId('dictionary-loading')).toBeVisible();
     await expect(page.getByTestId('main-title')).toBeVisible();

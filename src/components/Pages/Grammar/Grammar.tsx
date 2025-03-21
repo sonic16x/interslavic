@@ -2,7 +2,8 @@ import { createRef,PureComponent } from 'react'
 
 import { getCaseTips } from 'utils'
 
-import { Card, Table, Text } from 'components'
+import { Card, Text } from 'components'
+import { Table } from 'components/Table'
 
 import './Grammar.scss'
 
