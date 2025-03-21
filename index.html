@@ -1,65 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" style="height: 100%">
-<head>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha" defer></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#272727">
-  <link rel="preload" href="data/basic.json" as="fetch" type="application/json" crossorigin="anonymous">
-  <link rel="preload" href="data/translateStatistic.json" as="fetch" type="application/json" crossorigin="anonymous">
-  <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Interslavic Dictionary">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
-  <link rel="manifest" href="manifest.json">
-  <title>Interslavic Dictionary</title>
-  <meta name="Description"
-        content="It is a dictionary of the Interslavic language with translations into most of the Slavic languages, as well as into English, German and others. The project is being developed by a community of fans of this zonal constructed language.">
-</head>
-<body>
-<noscript>
-  <h1>Interslavic Wordbook</h1>
-  <p>To use the site "Interslavic Dictionary", please enable javascript in your browser.</p>
-  <h3>About the project</h3>
-  <p>It is a dictionary of the Interslavic language with translations into most of the Slavic languages, as well as
-    into English, German and others. The project is being developed by a community of fans of this zonal constructed
-    language.</p>
-  <h3>The project's name in different languages:</h3>
-  <ul>
-    <li lang="en">Interslavic Wordbook</li>
-    <li lang="isv-Latn">Medžuslovjansky slovnik</li>
-    <li lang="isv-Cyrl">Меджусловјанскы словник</li>
-    <li lang="ru">Межславянский словарь</li>
-    <li lang="uk">Міжслов'янський словник</li>
-    <li lang="be">Міжславянскі слоўнік</li>
-    <li lang="pl">Słownik międzysłowiański</li>
-    <li lang="cs">Mezislovanský slovník</li>
-    <li lang="sk">Medzislovanský slovník</li>
-    <li lang="sl">Medslovanski slovar</li>
-    <li lang="hr">Međuslavenski rječnik</li>
-    <li lang="bs">Međuslavenski rječnik</li>
-    <li lang="cnr">Međuslavenski rječnik</li>
-    <li lang="sr">Међусловенски речник</li>
-    <li lang="mk">Меѓусловенски речник</li>
-    <li lang="bg">Междуславянски речник</li>
-  </ul>
-  <h3>Source code:</h3>
-  <a href="https://github.com/sonic16x/interslavic">https://github.com/sonic16x/interslavic</a>
-</noscript>
-<div id="app"></div>
-<script type="module" src="/src/index.tsx"></script>
-</body>
+  <head>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha" defer=""></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#272727">
+    <link rel="preload" href="data/basic.json" as="fetch" type="application/json" crossorigin="anonymous">
+    <link rel="preload" href="data/translateStatistic.json" as="fetch" type="application/json" crossorigin="anonymous">
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Interslavic Dictionary">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap">
+    <link rel="manifest" href="manifest.json">
+    <title>Interslavic Dictionary</title>
+    <meta name="Description" content="It is a dictionary of the Interslavic language with translations into most of the Slavic languages, as well as into English, German and others. The project is being developed by a community of fans of this zonal constructed language.">
+    <link rel="icon" type="image/png" sizes="196x196" href="icons/favicon-196.png">
+    <meta name="msapplication-square70x70logo" content="icons/mstile-icon-128.png">
+    <meta name="msapplication-square150x150logo" content="icons/mstile-icon-270.png">
+    <meta name="msapplication-square310x310logo" content="icons/mstile-icon-558.png">
+    <meta name="msapplication-wide310x150logo" content="icons/mstile-icon-558-270.png">
+    <link rel="apple-touch-icon" href="icons/apple-icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  </head>
+  <body>
+    <noscript>
+      <h1>Interslavic Dictionary</h1>
+      <p>To use the site "Interslavic Dictionary", please enable javascript in your browser.</p>
+      <h3>About the project</h3>
+      <p>It is a dictionary of the Interslavic language with translations into most of the Slavic languages, as well as
+        into English, German and others. The project is being developed by a community of fans of this zonal constructed
+        language.</p>
+      <h3>The project's name in different languages:</h3>
+      <ul>
+        <li lang="en">Interslavic Dictionary</li>
+        <li lang="isv-Latn">Medžuslovjansky slovnik</li>
+        <li lang="isv-Cyrl">Меджусловјанскы словник</li>
+        <li lang="ru">Межславянский словарь</li>
+        <li lang="uk">Міжслов'янський словник</li>
+        <li lang="be">Міжславянскі слоўнік</li>
+        <li lang="pl">Słownik międzysłowiański</li>
+        <li lang="cs">Mezislovanský slovník</li>
+        <li lang="sk">Medzislovanský slovník</li>
+        <li lang="sl">Medslovanski slovar</li>
+        <li lang="hr">Međuslavenski rječnik</li>
+        <li lang="bs">Međuslavenski rječnik</li>
+        <li lang="cnr">Međuslavenski rječnik</li>
+        <li lang="sr">Међусловенски речник</li>
+        <li lang="mk">Меѓусловенски речник</li>
+        <li lang="bg">Междуславянски речник</li>
+      </ul>
+      <h3>Source code:</h3>
+      <a href="https://github.com/sonic16x/interslavic">https://github.com/sonic16x/interslavic</a>
+    </noscript>
+    <div id="app"></div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
 </html>
