@@ -75,7 +75,7 @@ export default defineConfig({
             include: '**/*.svg',
         }),
         visualizer({
-            filename: 'stats.html',
+            filename: 'report.html',
             gzipSize: true,
         }),
         VitePWA(getPwaConfig()),
