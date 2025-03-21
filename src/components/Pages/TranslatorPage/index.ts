@@ -1,1 +1,2 @@
-export * from './TranslatorPage'
+import { TranslatorPage } from './TranslatorPage'
+export default TranslatorPage
