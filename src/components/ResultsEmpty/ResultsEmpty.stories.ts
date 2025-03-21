@@ -1,5 +1,6 @@
-import { ResultsEmpty } from './ResultsEmpty'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { ResultsEmpty } from './ResultsEmpty'
 
 const meta = {
     title: 'Components/ResultsEmpty',

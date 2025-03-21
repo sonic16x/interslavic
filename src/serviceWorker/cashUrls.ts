@@ -1,15 +1,10 @@
 import { ADD_LANGS } from 'consts'
 
 export const CASH_URLS = [
-    '/',
     '/data/basic.json',
     '/data/translateStatistic.json',
     ...ADD_LANGS.map((lang) => `/data/${lang}.json`),
-    '/grammarComponent.js',
-    '/index.js',
     '/sw.js',
-    '/styles/grammarComponent.css',
-    '/styles/index.css',
     '/icons/android-icon-36x36.png',
     '/icons/android-icon-48x48.png',
     '/icons/android-icon-72x72.png',

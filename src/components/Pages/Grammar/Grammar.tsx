@@ -1,4 +1,4 @@
-import { createRef,PureComponent } from 'react'
+import { createRef, PureComponent } from 'react'
 
 import { getCaseTips } from 'utils'
 
@@ -43,7 +43,7 @@ export default class Grammar extends PureComponent {
     }
     private addCaseTips = (type: string) => (row: any[]) => {
         const elemArr = row[0].split('@')
-        if(['N','A','G','L','I','D','V'].includes(elemArr[0])) elemArr[2] = getCaseTips(elemArr[0],type)
+        if(['N', 'A', 'G', 'L', 'I', 'D', 'V'].includes(elemArr[0])) elemArr[2] = getCaseTips(elemArr[0], type)
         row[0] = elemArr.join('@')
         
         return row

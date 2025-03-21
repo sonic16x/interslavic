@@ -1,4 +1,4 @@
-import { ADD_LANGS, EN,ISV, ISV_SRC, LANGS } from 'consts'
+import { ADD_LANGS, EN, ISV, ISV_SRC, LANGS } from 'consts'
 
 import { IAlphabets } from 'reducers'
 
@@ -535,9 +535,9 @@ class DictionaryClass {
             const id = this.getField(item, 'id')
             const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || []
             const add = addArray.find((elem) => !elem.startsWith('(+')) || ''
-            let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1,-1) || '')
+            let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1, -1) || '')
             if(caseInfo && caseQuestions) {
-                caseInfo = getCaseTips(caseInfo.slice(1),'nounShort')
+                caseInfo = getCaseTips(caseInfo.slice(1), 'nounShort')
             }
             const translate = this.getField(item, (from === ISV ? to : from))
             const formattedItem: ITranslateResult = {

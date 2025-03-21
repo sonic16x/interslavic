@@ -20,7 +20,7 @@ export function urlParamsMiddleware({ getState }) {
 
         const { protocol, host, pathname } = window.location
         const path = `${protocol}//${host}${pathname}${query}`
-        window.history.pushState({ path },'', path)
+        window.history.pushState({ path }, '', path)
 
         return result
     }

@@ -24,8 +24,13 @@
     ]
   },
   "include": [
+    "vite.config.ts",
+    "vite-sw.config.ts",
     "src/**/*.ts",
-    "src/**/*.tsx"
+    "src/**/*.tsx",
+    "scripts/**/*.ts",
+    ".storybook/**/*.tsx",
+    ".storybook/**/*.ts"
   ],
   "exclude": [
     "node_modules"

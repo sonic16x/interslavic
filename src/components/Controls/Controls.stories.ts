@@ -1,5 +1,6 @@
-import { Controls } from './Controls'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { Controls } from './Controls'
 
 const meta = {
     title: 'Components/Controls',
