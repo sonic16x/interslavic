@@ -257,7 +257,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             [
                 '&nbsp@bl;bt;w=2',
                 `${t('present')}@;b`,
-                ...(this.props.displayImperfect ? [`${t('imperfect')}@;b`] : []),
+                ...(this.props.displayImperfect ? [`${t('simplePast')}@;b`] : []),
                 `${t('future')}@;b`,
             ],
         ]
@@ -289,7 +289,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         const tableData2 = [
             [
                 '&nbsp@bl;bt;w=2',
-                `${t('perfect')}@;b`,
+                `${t(this.props.displayImperfect ? 'perfect' : 'past')}@;b`,
                 ...(this.props.displayImperfect ? [`${t('pluperfect')}@;b`] : []),
                 `${t('conditional')}@;b`,
             ],
