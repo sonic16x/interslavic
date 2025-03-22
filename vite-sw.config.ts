@@ -18,6 +18,7 @@ export default defineConfig({
             'routing': '/src/routing',
             'actions': '/src/actions',
             'consts': '/src/consts',
+            'legacy': '/src/legacy',
             'utils': '/src/utils',
             'hooks': '/src/hooks',
         },
