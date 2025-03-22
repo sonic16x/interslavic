@@ -4,17 +4,82 @@ on:
     branches:
       - master
 jobs:
-  lint:
-    name: Lint
+  setup:
+    name: Setup (Install Dependencies)
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Get version from package.json
+        id: package-version
+        run: |
+          VERSION=$(jq -r .version package.json)
+          echo "Version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: node-modules-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ steps.package-version.outputs.version }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-${{ steps.package-version.outputs.version }}-
+            ${{ runner.os }}-node-modules-
+
+      - name: Install dependencies
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: setup
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: NPM install
-        run: npm ci
+      - name: Use Cached Dependencies
+        run: npm ci --prefer-offline
+
+      - name: pr-number-action
+        id: pr_number
+        uses: kkak10/pr-number-action@v1.3
+
+      - name: Build
+        env:
+          NODE_ENV: production
+          PR_NUMBER: ${{ github.event.number }}
+        run: |
+          npm run generate-dictionary
+          npm run build
+          npm run build-sw
+          npm run build-manifest
+
+      - name: Upload dist folder as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ github.run_id }}
+          path: dist/
+          retention-days: 1
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Use Cached Dependencies
+        run: npm ci --prefer-offline
 
       - name: Lint
         run: npm run lint
@@ -25,14 +90,15 @@ jobs:
   test:
     name: Tests:units
     runs-on: ubuntu-latest
+    needs: setup
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: NPM install
-        run: npm ci
+      - name: Use Cached Dependencies
+        run: npm ci --prefer-offline
 
       - name: Test
         run: npm run test:unit
@@ -45,23 +111,24 @@ jobs:
   pw-test:
     name: Tests:playwright
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: NPM install
-        run: npm ci
+      - name: Use Cached Dependencies
+        run: npm ci --prefer-offline
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Generate dictionary
-        run: npm run generate-dictionary
-
-      - name: Build
-        run: npm run build
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-${{ github.run_id }}
+          path: dist/
 
       - name: Test
         run: npm run test:pw
@@ -73,39 +140,10 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-  generate-dictionary:
-    name: Generate dictionary
+  deploy-demo:
+    name: Deploy demo
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - name: NPM install
-        run: npm ci
-
-      - name: Generate dictionary
-        run: npm run generate-dictionary
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - name: NPM install
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-  build-and-deploy-demo:
-    name: Create demo
-    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -126,22 +164,14 @@ jobs:
           state: pending
           environment: demo
 
-      - name: pr-number-action
-        id: pr_number
-        uses: kkak10/pr-number-action@v1.3
+      - name: Use Cached Dependencies
+        run: npm ci --prefer-offline
 
-      - name: NPM install
-        run: npm ci
-
-      - name: Build
-        env:
-          NODE_ENV: production
-          PR_NUMBER: ${{ github.event.number }}
-        run: |
-          npm run generate-dictionary
-          npm run build
-          npm run build-sw
-          npm run build-manifest
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-${{ github.run_id }}
+          path: dist/
 
       - name: Publish to Cloudflare Pages
         id: deploy
@@ -157,4 +187,4 @@ jobs:
           state: success
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          environment_url: https://pr-${{ steps.pr_number.outputs.pr }}.interslavic-dictionary.pages.dev/
+          environment_url: https://pr-${{ github.event.number }}.interslavic-dictionary.pages.dev/
