@@ -22,6 +22,7 @@ import {
     wordHasForms,
 } from 'utils'
 
+import { Abbr } from 'components'
 import { Clipboard } from 'components/Clipboard'
 
 import './ResultsCard.scss'
@@ -188,16 +189,18 @@ export const ResultsCard =
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;
-                            <abbr title={expandAbbr(t, item.details)} className="results-card__details">
-                                {translateAbbr(t, item.details)}
-                            </abbr>
+                            <Abbr
+                                title={expandAbbr(t, item.details)}
+                                shortTitle={translateAbbr(t, item.details)}
+                            />
                         </>
                     )}
                 </div>
                 {!short && (
-                    <abbr title={expandAbbr(t, item.details)} className="results-card__details">
-                        {translateAbbr(t, item.details)}
-                    </abbr>
+                    <Abbr
+                        title={expandAbbr(t, item.details)}
+                        shortTitle={translateAbbr(t, item.details)}
+                    />
                 )}
                 <div className="results-card__bottom">
                     <div className="results-card__original">
@@ -205,9 +208,10 @@ export const ResultsCard =
                             <Clipboard str={item.translate} />
                         ) : renderOriginal(item, alphabets, caseQuestions)}
                         {item.to !== 'isv' && short && (
-                            <abbr title={expandAbbr(t, item.details)} className="results-card__details">
-                                {translateAbbr(t, item.details)}
-                            </abbr>
+                            <Abbr
+                                title={expandAbbr(t, item.details)}
+                                shortTitle={translateAbbr(t, item.details)}
+                            />
                         )}
                     </div>
                     <div className="results-card__actions">

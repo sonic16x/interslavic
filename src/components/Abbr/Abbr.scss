@@ -1,0 +1,30 @@
+.abbr {
+  position: relative;
+  color: var(--muted-text-color);
+  cursor: pointer;
+  font-size: var(--text-m);
+  line-height: var(--text-m-line);
+  text-decoration: underline;
+
+  .full {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: -100%;
+    display: flex;
+    width: fit-content;
+    padding: 8px;
+    border-radius: var(--border-radius-s);
+    background: var(--dark);
+    box-shadow: var(--shadow);
+    color: var(--light);
+    opacity: 0;
+    transform: translateX(55%);
+    transition: opacity var(--animation-duration) ease-in-out;
+    word-break: normal;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+}
