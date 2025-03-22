@@ -1,0 +1,30 @@
+.hint {
+  width: fit-content;
+  color: var(--muted-text-color);
+  cursor: pointer;
+  font-size: var(--text-m);
+  line-height: var(--text-m-line);
+  text-decoration: underline;
+}
+
+.hint-global {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  width: fit-content;
+  max-width: 256px;
+  height: fit-content;
+  padding: 8px;
+  border-radius: var(--border-radius-s);
+  background: var(--dark);
+  box-shadow: var(--shadow);
+  color: var(--light);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity var(--animation-duration) ease-in-out;
+  word-break: normal;
+
+  &.visible {
+    opacity: 1;
+  }
+}

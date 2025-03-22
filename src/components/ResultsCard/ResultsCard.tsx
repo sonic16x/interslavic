@@ -22,8 +22,7 @@ import {
     wordHasForms,
 } from 'utils'
 
-import { Abbr } from 'components'
-import { Clipboard } from 'components/Clipboard'
+import { Clipboard, Hint } from 'components'
 
 import './ResultsCard.scss'
 
@@ -189,7 +188,7 @@ export const ResultsCard =
                     {item.to === 'isv' && short && (
                         <>
                             &nbsp;
-                            <Abbr
+                            <Hint
                                 title={expandAbbr(t, item.details)}
                                 shortTitle={translateAbbr(t, item.details)}
                             />
@@ -197,7 +196,7 @@ export const ResultsCard =
                     )}
                 </div>
                 {!short && (
-                    <Abbr
+                    <Hint
                         title={expandAbbr(t, item.details)}
                         shortTitle={translateAbbr(t, item.details)}
                     />
@@ -208,7 +207,7 @@ export const ResultsCard =
                             <Clipboard str={item.translate} />
                         ) : renderOriginal(item, alphabets, caseQuestions)}
                         {item.to !== 'isv' && short && (
-                            <Abbr
+                            <Hint
                                 title={expandAbbr(t, item.details)}
                                 shortTitle={translateAbbr(t, item.details)}
                             />
