@@ -221,6 +221,9 @@ export function getPronounType(details: string): string {
     if (arr.includes('refl')) {
         return 'reflexive'
     }
+    if (arr.includes('rec')) {
+        return 'reciprocal'
+    }
     if (arr.includes('rel')) {
         return 'relative'
     }
