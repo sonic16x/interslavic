@@ -47,10 +47,6 @@ jobs:
       - name: Use Cached Dependencies
         run: npm ci --prefer-offline
 
-      - name: pr-number-action
-        id: pr_number
-        uses: kkak10/pr-number-action@v1.3
-
       - name: Build
         env:
           NODE_ENV: production
@@ -179,7 +175,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_AUTH_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=pr-${{ steps.pr_number.outputs.pr }}
+          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=pr-${{ github.event.number }}
 
       - name: Deployment success
         uses: chrnorm/deployment-status@releases/v1
