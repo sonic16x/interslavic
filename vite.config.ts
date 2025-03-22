@@ -5,9 +5,6 @@ import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import svgr from 'vite-plugin-svgr'
 
-// eslint-disable-next-line no-console
-console.log('Version', version)
-
 export default defineConfig({
     publicDir: 'static',
     plugins: [
