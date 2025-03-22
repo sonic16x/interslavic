@@ -20,7 +20,8 @@ describe('expandAbbr', () => {
         ['intj.', ['interjection']],
         ['m.', ['noun', 'noun-masculine', 'noun-inanimate']],
         ['m./f.', ['noun', 'noun-masculineOrFeminine', 'noun-inanimate']],
-        ['m.indecl./f.indecl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-indeclinable']], // TODO: should be 'noun-masculineOrFeminine'
+        // TODO: should be 'noun-masculineOrFeminine'
+        ['m.indecl./f.indecl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-indeclinable']],
         ['m.anim.', ['noun', 'noun-masculine', 'noun-animate']],
         ['m.anim.indecl.', ['noun', 'noun-masculine', 'noun-animate', 'noun-indeclinable']],
         ['m.indecl.', ['noun', 'noun-masculine', 'noun-inanimate', 'noun-indeclinable']],

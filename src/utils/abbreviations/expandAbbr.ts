@@ -1,6 +1,5 @@
-import type { t as TranslateFn } from 'translations'
-
 import { analyzeAbbr } from './analyzeAbbr'
+import type { t as TranslateFn } from 'translations'
 
 export function expandAbbr(t: typeof TranslateFn, abbr: string): string {
     const analyzed = analyzeAbbr(abbr)

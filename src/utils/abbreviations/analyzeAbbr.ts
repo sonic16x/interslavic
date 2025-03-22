@@ -12,8 +12,6 @@ import {
     isSuperlative
 } from 'utils'
 
-import { t } from 'translations'
-
 export function analyzeAbbr(abbr: string): string[] {
     const pos = getPartOfSpeech(abbr)
     if (!pos) {
