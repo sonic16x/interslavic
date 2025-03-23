@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import './Hint.scss'
@@ -21,18 +21,23 @@ export const Hint = ({
     const [visible, setVisible] = useState<boolean>(false)
     const [show, setShow] = useState<boolean>(false)
     const rect = ref?.current?.getBoundingClientRect()
-    const mouseRef = useRef<boolean>(false)
+    const hasHover = useMemo(() => window.matchMedia('(hover: hover)').matches, [])
 
     const hideElement = () => {
         setVisible(false)
     }
 
     useEffect(() => {
-        document.addEventListener('scroll', hideElement, true)
+        if (!hasHover) {
+            document.addEventListener('scroll', hideElement, true)
+            document.addEventListener('click', hideElement, true)
+        }
 
         return () => {
-            document.removeEventListener('scroll', hideElement, true)
-            document.removeEventListener('click', hideElement, true)
+            if (!hasHover) {
+                document.removeEventListener('scroll', hideElement, true)
+                document.removeEventListener('click', hideElement, true)
+            }
         }
     }, [])
 
@@ -47,7 +52,7 @@ export const Hint = ({
             ref={ref}
             className={cn('hint', className)}
             onClick={() => {
-                if (!mouseRef.current) {
+                if (!hasHover) {
                     setShow(true)
                     setTimeout(hideElement, hideTimeout)
 
@@ -56,10 +61,15 @@ export const Hint = ({
                 }
             }}
             onMouseEnter={() => {
-                mouseRef.current = true
-                setShow(true)
+                if (hasHover) {
+                    setShow(true)
+                }
             }}
-            onMouseLeave={hideElement}
+            onMouseLeave={() => {
+                if (hasHover) {
+                    hideElement()
+                }
+            }}
         >
             {shortTitle}
             {show && createPortal(
