@@ -61,7 +61,7 @@ export class Table extends Component<ITableProps> {
                             style={{ width: attrs.sw }}
                         >
                             <Hint
-                                className="full-width"
+                                className="with-tips"
                                 shortTitle={str}
                                 title={tips}
                             />

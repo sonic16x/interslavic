@@ -11,20 +11,24 @@ interface IHintProps {
     hideTimeout?: number
 }
 
-export const Hint = ({ title, shortTitle, className, hideTimeout = 1500 }: IHintProps) => {
+export const Hint = ({
+    title,
+    shortTitle,
+    className,
+    hideTimeout = 1500,
+}: IHintProps) => {
     const ref = useRef<HTMLDivElement>(null)
     const [visible, setVisible] = useState<boolean>(false)
     const [show, setShow] = useState<boolean>(false)
     const rect = ref?.current?.getBoundingClientRect()
+    const mouseRef = useRef<boolean>(false)
 
     const hideElement = () => {
-        // setShow(false)
         setVisible(false)
     }
 
     useEffect(() => {
         document.addEventListener('scroll', hideElement, true)
-        document.addEventListener('click', hideElement, true)
 
         return () => {
             document.removeEventListener('scroll', hideElement, true)
@@ -39,13 +43,23 @@ export const Hint = ({ title, shortTitle, className, hideTimeout = 1500 }: IHint
     }, [show])
 
     return (
-        <div
+        <span
             ref={ref}
             className={cn('hint', className)}
             onClick={() => {
-                setShow(true)
-                setTimeout(hideElement, hideTimeout)
+                if (!mouseRef.current) {
+                    setShow(true)
+                    setTimeout(hideElement, hideTimeout)
+
+                    document.addEventListener('click', hideElement, true)
+
+                }
             }}
+            onMouseEnter={() => {
+                mouseRef.current = true
+                setShow(true)
+            }}
+            onMouseLeave={hideElement}
         >
             {shortTitle}
             {show && createPortal(
@@ -67,6 +81,6 @@ export const Hint = ({ title, shortTitle, className, hideTimeout = 1500 }: IHint
                 ),
                 document.getElementById('app')
             )}
-        </div>
+        </span>
     )
 }
