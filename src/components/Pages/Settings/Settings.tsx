@@ -221,12 +221,12 @@ export const Settings =
                     )}
                 </h6>
                 <div className={classNames('settings__add-langs', { 'settings__add-langs-loading': isLoading })}>
-                    {ADD_LANGS.map((lang, i) => {
+                    {ADD_LANGS.map((lang) => {
                         const checked = dictionaryLanguages.includes(lang)
 
                         return (
                             <Checkbox
-                                key={i}
+                                key={lang}
                                 title={t(`${lang}Lang`)}
                                 checked={checked}
                                 onChange={async () => {

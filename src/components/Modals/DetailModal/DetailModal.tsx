@@ -110,9 +110,9 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         if (splitted.length === 1 && fieldPartOfSpeech.indexOf('m./f.') !== -1 ) {
             return [
                 this.renderWord([fieldIsv, fieldAddition, 'm.'],
-                    ['showTitle', 'showGender', 'oneMore'], 0),
+                    ['showTitle', 'showGender', 'oneMore']),
                 this.renderWord([fieldIsv, fieldAddition, 'f.'],
-                    ['showTitle', 'showGender'], 1),
+                    ['showTitle', 'showGender']),
             ]
         }
 
@@ -123,11 +123,11 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                 if (i < splitted.length - 1) { options.push('oneMore') }
             }
 
-            return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options, i)
+            return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options)
         })
     }
 
-    private renderWord(rawItem, options: string[], i) {
+    private renderWord(rawItem, options: string[]) {
         const [ word, add, details ] = rawItem
         let wordComponent
         let remark = ''
@@ -155,7 +155,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         }
 
         return (
-            <div className="word" key={i}>
+            <div className="word" key={word}>
                 {options.includes('showTitle') ? <h6>{this.formatStr(word)}{remark}</h6> : ''}
                 {wordComponent}
                 {options.includes('oneMore') ? <hr/> : ''}
