@@ -4,7 +4,7 @@
   max-width: 1024px;
   box-sizing: border-box;
   flex-shrink: 0;
-  padding: 24px 20px 20px;
+  padding: 16px 16px 24px;
   border-radius: var(--border-radius-s);
   margin-bottom: var(--gap-size);
   background: var(--light);
@@ -62,8 +62,8 @@
 
   &__status-badge {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 6px;
+    right: 6px;
     padding: 2px 4px;
     border-radius: var(--border-radius-s);
     background: var(--invalid-color);
@@ -79,8 +79,8 @@
 
   &__actions {
     position: absolute;
-    right: 5px;
-    bottom: 5px;
+    right: 4px;
+    bottom: 4px;
   }
 
   &__action-button {
