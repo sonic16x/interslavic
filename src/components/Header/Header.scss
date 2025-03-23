@@ -125,7 +125,7 @@
       content: attr(data-sub-title);
       font-size: 10px;
       opacity: 0.8;
-      transition: opacity var(--animation-duration) linear;
+      transition: opacity var(--animation-duration) ease-in-out;
     }
 
     &:hover {

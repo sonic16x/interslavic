@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.28.8",
+  "version": "1.29.0",
   "description": "Interslavic Dictionary",
   "license": "MIT",
   "author": {
@@ -14,7 +14,7 @@
     "build-storybook": "storybook build",
     "build-sw": "vite build --config vite-sw.config.ts",
     "deploy-api": "wrangler deploy ./src/server/index.ts --name api --compatibility-date 2024-11-12",
-    "dev": "vite",
+    "dev": "vite --host",
     "generate-dictionary": "tsx ./src/services/generateDictionary.ts",
     "generate-icons": "pwa-asset-generator ./icon.svg -i ./index.html -m ./src/manifest.json -c -f -o=false -v=icons -w -e=false ./static/icons",
     "lint": "eslint src/**/*.{ts,tsx} scripts/**/*.ts vite.config.ts vite-sw.config.ts .storybook/**/*.{ts,tsx}",

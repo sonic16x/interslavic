@@ -28,9 +28,9 @@ function replaceParams(str, params?: ITranslateParams) {
 
 function tRaw(key) {
     const [lang, alphabet] = currentLang.split('-')
-    if (!translations[key]) {
+    if (translations[key] == null) {
         return key
-    } else if (translations[key][lang]) {
+    } else if (translations[key][lang] != null) {
         if (lang === ISV) {
             const parsed = parseI18nString(translations[key].isv)
             // transliteration & flavorisation of isv word
@@ -45,7 +45,7 @@ function tRaw(key) {
         } else {
             return translations[key][lang]
         }
-    } else if (translations[key].en) {
+    } else if (translations[key].en != null) {
         return translations[key].en
     } else {
         return key

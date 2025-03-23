@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import { Clipboard, parseStr, Tips } from 'components'
+import { Clipboard, Hint, parseStr } from 'components'
 
 import './Table.scss'
 
@@ -60,7 +60,11 @@ export class Table extends Component<ITableProps> {
                             rowSpan={attrs.h}
                             style={{ width: attrs.sw }}
                         >
-                            <Tips str={str} tips={tips}/>
+                            <Hint
+                                className="with-tips"
+                                shortTitle={str}
+                                title={tips}
+                            />
                         </td>
                     )
                 } else if (str.includes('<') || str.includes('&')) {

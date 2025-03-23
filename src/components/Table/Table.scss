@@ -8,6 +8,11 @@
   line-height: 1.4;
   text-align: start;
 
+  .with-tips {
+    width: 100%;
+    color: var(--dark);
+  }
+
   th,
   td {
     height: 10px;

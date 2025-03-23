@@ -13,21 +13,13 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Get version from package.json
-        id: package-version
-        run: |
-          VERSION=$(jq -r .version package.json)
-          echo "Version: $VERSION"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
       - name: Cache node_modules
-        uses: actions/cache@v3
         id: node-modules-cache
+        uses: actions/cache@v3
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ steps.package-version.outputs.version }}-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-modules-${{ steps.package-version.outputs.version }}-
             ${{ runner.os }}-node-modules-
 
       - name: Install dependencies
@@ -47,10 +39,6 @@ jobs:
       - name: Use Cached Dependencies
         run: npm ci --prefer-offline
 
-      - name: pr-number-action
-        id: pr_number
-        uses: kkak10/pr-number-action@v1.3
-
       - name: Build
         env:
           NODE_ENV: production
@@ -64,7 +52,7 @@ jobs:
       - name: Upload dist folder as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dist-${{ github.run_id }}
+          name: dist-${{ github.event.number }}
           path: dist/
           retention-days: 1
 
@@ -127,7 +115,7 @@ jobs:
       - name: Download dist artifact
         uses: actions/download-artifact@v4
         with:
-          name: dist-${{ github.run_id }}
+          name: dist-${{ github.event.number }}
           path: dist/
 
       - name: Test
@@ -170,7 +158,7 @@ jobs:
       - name: Download dist artifact
         uses: actions/download-artifact@v4
         with:
-          name: dist-${{ github.run_id }}
+          name: dist-${{ github.event.number }}
           path: dist/
 
       - name: Publish to Cloudflare Pages
@@ -179,7 +167,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_AUTH_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=pr-${{ steps.pr_number.outputs.pr }}
+          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=pr-${{ github.event.number }}
 
       - name: Deployment success
         uses: chrnorm/deployment-status@releases/v1
