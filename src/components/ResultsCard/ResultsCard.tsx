@@ -186,13 +186,10 @@ export const ResultsCard =
                     ) : renderOriginal(item, alphabets, caseQuestions)}
                     <WordStatus item={item} onClick={showTranslations}/>
                     {item.to === 'isv' && short && (
-                        <>
-                            &nbsp;
-                            <Hint
-                                title={expandAbbr(t, item.details)}
-                                shortTitle={translateAbbr(t, item.details)}
-                            />
-                        </>
+                        <Hint
+                            title={expandAbbr(t, item.details)}
+                            shortTitle={translateAbbr(t, item.details)}
+                        />
                     )}
                 </div>
                 {!short && (
