@@ -28,9 +28,9 @@ export const LineSelector =
                         marginLeft: `calc(100% / ${length} * ${index})`,
                     }}
                 />
-                {options.map((item, i) => (
+                {options.map((item) => (
                     <span
-                        key={i}
+                        key={item.name}
                         className={classNames('item', { active: value === item.value })}
                         onClick={() => onSelect(item.value)}
                     >

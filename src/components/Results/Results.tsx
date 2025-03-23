@@ -37,7 +37,7 @@ export const Results =
 
         useEffect(() => {
             setScrollBarVisible(isScrollBarVisible(containerRef))
-        }, [containerRef, setScrollBarVisible, results.length])
+        }, [containerRef, results.length])
 
         if (!results || !results.length) {
             if (empty && !loading) {
@@ -64,7 +64,7 @@ export const Results =
                     <ResultsCard
                         item={item}
                         short={short}
-                        key={index}
+                        key={item.id}
                         index={index}
                     />
                 ))}

@@ -60,10 +60,10 @@ export default class Grammar extends PureComponent {
                     <h4 className="grammar__title">Osnovna gramatika medžuslovjanskogo jezyka</h4>
                     <br/>
                     <Card title="Sodržanje" id="content" className="grammar__content">
-                        {Object.keys(titles).map((id, i) => (
+                        {Object.keys(titles).map((id) => (
                             <a
                                 className="list-group-item link"
-                                key={i}
+                                key={id}
                                 id={this.getLinkId(id)}
                                 onClick={() => this.userEvent = false}
                                 href={`#${id}`}

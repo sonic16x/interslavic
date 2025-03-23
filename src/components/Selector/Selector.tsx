@@ -30,7 +30,7 @@ export const Selector = ({ onSelect, options, className, value, label, testId, h
                 className="selector__select"
                 onChange={(e: any) => onSelect(options[e.currentTarget.selectedIndex].value)}
             >
-                {options.map((option, i) => <option key={i} value={option.value}>{option.name}</option>)}
+                {options.map((option) => <option key={option.name} value={option.value}>{option.name}</option>)}
             </select>
         </div>
     )

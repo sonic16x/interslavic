@@ -19,7 +19,7 @@
     "generate-icons": "pwa-asset-generator ./icon.svg -i ./index.html -m ./src/manifest.json -c -f -o=false -v=icons -w -e=false ./static/icons",
     "lint": "eslint src/**/*.{ts,tsx} scripts/**/*.ts vite.config.ts vite-sw.config.ts .storybook/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} scripts/**/*.ts vite.config.ts vite-sw.config.ts .storybook/**/*.{ts,tsx} --fix",
-    "preview": "vite preview",
+    "preview": "vite preview --host",
     "sort-package-json": "sort-package-json",
     "start": "npm run dev",
     "storybook": "storybook dev -p 6006",

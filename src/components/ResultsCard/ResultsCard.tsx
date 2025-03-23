@@ -81,9 +81,9 @@ function renderOriginal(item, alphabets, caseQuestions) {
 
     return (
         <>
-            {result.map(({ str, caseInfo }, i) => {
+            {result.map(({ str, caseInfo }) => {
                 return (
-                    <span className="word" key={i}>
+                    <span className="word" key={str}>
                         <Clipboard str={str} />
                         {caseInfo && <span className="caseInfo">({caseInfo})</span>}
                     </span>
