@@ -25,7 +25,7 @@ export enum MODAL_DIALOG_TYPES {
 
 export interface IModalDialog {
     type: MODAL_DIALOG_TYPES;
-    data: any;
+    data: Record<string, string>;
     show?: boolean;
 }
 

@@ -78,31 +78,6 @@
     }
   }
 
-  &__actions {
-    position: absolute;
-    right: 4px;
-    bottom: 4px;
-  }
-
-  &__action-button {
-    border: none;
-    background: none;
-    color: var(--primary-color);
-    cursor: pointer;
-    font-size: var(--text-s);
-    line-height: var(--text-s-line);
-    outline: none;
-
-    @media (width <= 395px) {
-      font-size: var(--text-xs);
-      line-height: var(--text-xs-line);
-    }
-
-    &.hide {
-      display: none;
-    }
-  }
-
   &.short {
     overflow: hidden;
     padding: 8px;
@@ -138,36 +113,6 @@
 
         &.verified {
           display: none;
-        }
-      }
-
-      &__actions {
-        position: initial;
-        display: flex;
-        margin-right: -4px;
-        margin-bottom: -4px;
-
-        button {
-          display: flex;
-          width: 24px;
-          height: 24px;
-          align-items: center;
-          justify-content: center;
-          padding: 0;
-          border-radius: var(--border-radius-s);
-          background: var(--primary-color);
-          color: var(--primary-color-fg);
-          font-size: var(--text-xs);
-          line-height: var(--text-xs-line);
-          transition: transform var(--animation-duration) ease-in-out;
-
-          &:active {
-            transform: scale(.9);
-          }
-
-          &:not(:first-child) {
-            margin-left: 4px;
-          }
         }
       }
     }
