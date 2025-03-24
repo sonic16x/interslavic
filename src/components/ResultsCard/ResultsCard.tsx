@@ -131,7 +131,7 @@ export const ResultsCard =
                 tabIndex={index}
                 data-testid={`result-${index}`}
             >
-                <div className="results-card__translate">
+                <div className="results-card__text translate">
                     {item.to !== 'isv' ? (
                         <Clipboard str={item.translate} />
                     ) : (
@@ -157,7 +157,7 @@ export const ResultsCard =
                     />
                 )}
                 <div className="results-card__bottom">
-                    <div className="results-card__original">
+                    <div className="results-card__text original">
                         {item.to === 'isv' ? (
                             <Clipboard str={item.translate} />
                         ) : (

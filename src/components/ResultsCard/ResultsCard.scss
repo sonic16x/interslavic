@@ -18,15 +18,18 @@
     outline: 4px solid var(--primary-color);
   }
 
-  &__translate {
+  &__text {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: start;
     color: var(--dark);
-    font-size: var(--text-l);
     font-weight: 600;
     gap: 4px;
+  }
+
+  .translate {
+    font-size: var(--text-l);
     line-height: var(--text-l-line);
   }
 
@@ -58,8 +61,7 @@
     line-height: var(--text-m-line);
   }
 
-  &__original {
-    color: var(--dark);
+  .original {
     font-size: var(--text-m);
     line-height: var(--text-m-line);
 
@@ -102,7 +104,7 @@
         color: var(--muted-text-color);
       }
 
-      &__translate {
+      .translate {
         .results-card__details {
           font-weight: 500;
         }
