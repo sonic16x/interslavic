@@ -39,7 +39,7 @@
     gap: 4px;
   }
 
-  .word + .word::before {
+  .word:first-child::after {
     padding-left: 2px;
     content: "/";
     font-weight: 400;

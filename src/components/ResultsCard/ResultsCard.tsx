@@ -86,7 +86,7 @@ const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: IResults
                         {caseInfo && <span className="caseInfo">({caseInfo})</span>}
                     </span>
                 )
-            })} 
+            })}
             {!caseQuestions && item.caseInfo &&
                 <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span>
             }
