@@ -20,7 +20,9 @@
 
   &__translate {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: start;
     color: var(--dark);
     font-size: var(--text-l);
     font-weight: 600;
@@ -28,8 +30,14 @@
     line-height: var(--text-l-line);
   }
 
+  .word {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
   .word + .word::before {
-    padding: 0 2px;
+    padding-left: 2px;
     content: "/";
     font-weight: 400;
   }
@@ -95,8 +103,6 @@
       }
 
       &__translate {
-        flex-wrap: wrap;
-
         .results-card__details {
           font-weight: 500;
         }

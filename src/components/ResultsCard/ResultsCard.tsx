@@ -32,9 +32,10 @@ interface IResultsCardOriginalProps {
     item: ITranslateResult;
     alphabets: IAlphabets;
     caseQuestions: boolean;
+    short: boolean;
 }
 
-const ResultsCardOriginal = ({ item, alphabets, caseQuestions }: IResultsCardOriginalProps) => {
+const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: IResultsCardOriginalProps) => {
     let latin = item.original
     if (item.add) {
         latin += ` ${item.add}`
@@ -89,7 +90,7 @@ const ResultsCardOriginal = ({ item, alphabets, caseQuestions }: IResultsCardOri
             {!caseQuestions && item.caseInfo &&
                 <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span>
             }
-            {item.ipa && <span className="ipa">[{item.ipa}]</span>}
+            {!short && item.ipa && <span className="ipa">[{item.ipa}]</span>}
         </>
     )
 }
@@ -134,7 +135,12 @@ export const ResultsCard =
                     {item.to !== 'isv' ? (
                         <Clipboard str={item.translate} />
                     ) : (
-                        <ResultsCardOriginal item={item} alphabets={alphabets} caseQuestions={caseQuestions}/>
+                        <ResultsCardOriginal
+                            item={item}
+                            alphabets={alphabets}
+                            caseQuestions={caseQuestions}
+                            short={short}
+                        />
                     )}
                     <WordStatus item={item} onClick={showTranslations}/>
                     {item.to === 'isv' && short && (
@@ -155,7 +161,12 @@ export const ResultsCard =
                         {item.to === 'isv' ? (
                             <Clipboard str={item.translate} />
                         ) : (
-                            <ResultsCardOriginal item={item} alphabets={alphabets} caseQuestions={caseQuestions}/>
+                            <ResultsCardOriginal
+                                item={item}
+                                alphabets={alphabets}
+                                caseQuestions={caseQuestions}
+                                short={short}
+                            />
                         )}
                         {item.to !== 'isv' && short && (
                             <Hint
