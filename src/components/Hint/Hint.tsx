@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import './Hint.scss'
@@ -23,24 +23,15 @@ export const Hint = ({
     const [show, setShow] = useState<boolean>(false)
     const anchorRect = anchorRef?.current?.getBoundingClientRect()
     const hintRect = hintRef?.current?.getBoundingClientRect()
-    const hasHover = useMemo(() => window.matchMedia('(hover: hover)').matches, [])
 
     const hideElement = () => {
         setVisible(false)
     }
 
     useEffect(() => {
-        if (!hasHover) {
-            document.addEventListener('scroll', hideElement, true)
-            document.addEventListener('click', hideElement, true)
-        }
+        document.addEventListener('click', hideElement, true)
 
-        return () => {
-            if (!hasHover) {
-                document.removeEventListener('scroll', hideElement, true)
-                document.removeEventListener('click', hideElement, true)
-            }
-        }
+        return () => document.removeEventListener('click', hideElement, true)
     }, [])
 
     useEffect(() => {
@@ -54,23 +45,8 @@ export const Hint = ({
             ref={anchorRef}
             className={cn('hint', className)}
             onClick={() => {
-                if (!hasHover) {
-                    setShow(true)
-                    setTimeout(hideElement, hideTimeout)
-
-                    document.addEventListener('click', hideElement, true)
-
-                }
-            }}
-            onMouseEnter={() => {
-                if (hasHover) {
-                    setShow(true)
-                }
-            }}
-            onMouseLeave={() => {
-                if (hasHover) {
-                    hideElement()
-                }
+                setShow(true)
+                setTimeout(hideElement, hideTimeout)
             }}
         >
             {shortTitle}
