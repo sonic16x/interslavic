@@ -21,8 +21,12 @@ async function fetchWordList(): Promise<WordList> {
     return await fetch('data/wordList.json').then((res) => res.json()) as Promise<WordList>
 }
 
-async function fetchSearchIndex(): Promise<SearchIndex> {
-    return await fetch('data/searchIndex.json').then((res) => res.json()) as Promise<SearchIndex>
+async function fetchSearchIndexIsv(): Promise<SearchIndex> {
+    return await fetch('data/searchIndexIsv.json').then((res) => res.json()) as Promise<SearchIndex>
+}
+
+async function fetchSearchIndexOther(): Promise<SearchIndex> {
+    return await fetch('data/searchIndexOther.json').then((res) => res.json()) as Promise<SearchIndex>
 }
 
 export async function fetchLang(lang) {
@@ -38,16 +42,20 @@ export async function fetchLang(lang) {
 export async function fetchDictionary(langList: string[]) {
     const startFidTime = performance.now()
 
-    const [stat, wordList, searchIndex, langsData] = await Promise.all([
+    const [stat, wordList, searchIndexIsv, searchIndexOther, langsData] = await Promise.all([
         fetchStat(),
         fetchWordList(),
-        fetchSearchIndex(),
+        fetchSearchIndexIsv(),
+        fetchSearchIndexOther(),
         fetchLangs(langList.filter((lang) => ADD_LANGS.includes(lang)))
     ])
 
     const basicData: IBasicData = {
         wordList,
-        searchIndex,
+        searchIndex: {
+            ...searchIndexIsv,
+            ...searchIndexOther,
+        },
     }
 
     langsData.forEach((langData) => {
