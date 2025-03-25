@@ -89,7 +89,7 @@
     @media (width <= 450px) {
       min-width: 90vw;
 
-      td {
+      td, td span {
         font-size: 2.5vw !important;
       }
     }

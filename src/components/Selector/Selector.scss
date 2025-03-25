@@ -9,7 +9,8 @@
 
   &.hide-label {
     label {
-      display: none;
+      position: absolute;
+      opacity: 0;
     }
   }
 

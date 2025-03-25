@@ -1,0 +1,30 @@
+.results-card-check-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 2px 4px;
+  border-radius: var(--border-radius-s);
+  background: var(--invalid-color);
+  color: var(--status-badge-color);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  line-height: var(--text-xs-line);
+
+  &.verified {
+    background: var(--valid-color);
+  }
+
+  &.short {
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border-radius: 0;
+    background: linear-gradient(45deg, var(--transperent) 0%, var(--transperent) 50%, var(--invalid-color) 50%, var(--invalid-color) 100%);
+
+    &.verified {
+      display: none;
+    }
+  }
+}

@@ -42,7 +42,7 @@ export const TranslationsModal =
         const dictionaryLanguages = useDictionaryLanguages()
         useInterfaceLang()
 
-        const item = results[modalDialog.data.index]
+        const item = results.find(({ id }) => id === modalDialog.data.id)
 
         const onClick = useCallback(() => {
             dispatch(hideModalDialog())

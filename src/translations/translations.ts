@@ -1,4 +1,4 @@
-import { ISV } from 'consts'
+import { EN, ISV } from 'consts'
 
 import translations from 'translations/data.json'
 
@@ -10,7 +10,7 @@ import {
     parseI18nString,
 } from 'utils'
 
-let currentLang
+let currentLang = EN
 
 const toLatin = createTaggedTemplate((s) => getLatin(String(s), '3'), 'strings')
 const toCyrillic = createTaggedTemplate((s) => getCyrillic(String(s), '3'), 'strings')
@@ -26,13 +26,12 @@ function replaceParams(str, params?: ITranslateParams) {
     ), str)
 }
 
-function tRaw(key) {
+function tRaw(key: string) {
     const [lang, alphabet] = currentLang.split('-')
-    if (translations[key] == null) {
-        return key
-    } else if (translations[key][lang] != null) {
+
+    if (translations[key] && lang in translations[key]) {
         if (lang === ISV) {
-            const parsed = parseI18nString(translations[key].isv)
+            const parsed = parseI18nString(translations[key][ISV])
             // transliteration & flavorisation of isv word
             switch (alphabet) {
                 case 'Latn':
@@ -42,25 +41,28 @@ function tRaw(key) {
                 case 'Glag':
                     return toGlagolitic(...parsed)
             }
-        } else {
-            return translations[key][lang]
         }
-    } else if (translations[key].en != null) {
-        return translations[key].en
-    } else {
-        return key
+
+        return translations[key][lang]
     }
+
+    if (translations[key] && EN in translations[key]) {
+        return translations[key][EN]
+    }
+
+    return key
 }
 
 export function t(key, params?: ITranslateParams) {
     const rawTranslate = tRaw(key)
+
     if (params) {
         return replaceParams(rawTranslate, params)
-    } else {
-        return rawTranslate
     }
+
+    return rawTranslate
 }
 
-export function setLang(lang) {
+export function setLang(lang: string) {
     currentLang = lang
 }

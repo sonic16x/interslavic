@@ -1,0 +1,29 @@
+.results-card-original {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  .words, .word {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .word:not(:last-child)::after {
+    padding-left: 2px;
+    color: var(--muted-text-color);
+    content: "/";
+    font-weight: 400;
+  }
+
+  .ipa {
+    color: var(--muted-text-color);
+    font-weight: 500;
+  }
+
+  .caseInfo {
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.5pt;
+  }
+}
