@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { tablesData } from 'consts'
 
@@ -12,15 +12,14 @@ import {
     useLang, useLoading,
     usePosFilter,
     useResults,
+    useScrollbarWidth,
     useShortCardView,
 } from 'hooks'
-import { getTablePublicUrl } from 'utils'
+import { getTablePublicUrl, isScrollBarVisible } from 'utils'
 
 import { ResultsCard, ResultsEmpty } from 'components'
 
 import './Results.scss'
-
-import { useResultsStyles } from './useResultsStyles'
 
 export const Results =
     () => {
@@ -32,12 +31,13 @@ export const Results =
         const fromText = useFromText()
         const short = useShortCardView()
         const empty = results.length === 0 && fromText.length !== 0
+        const scrollWidth = useScrollbarWidth()
+        const [scrollIsVisible, setScrollBarVisible] = useState(false)
         const loading = useLoading()
-        const resultsStyles = useResultsStyles({
-            containerRef,
-            resultsCount: results.length,
-            short,
-        })
+
+        useEffect(() => {
+            setScrollBarVisible(isScrollBarVisible(containerRef))
+        }, [containerRef, results.length])
 
         if (!results || !results.length) {
             if (empty && !loading) {
@@ -55,7 +55,9 @@ export const Results =
             <div
                 className={classNames('results', { short })}
                 data-testid="results"
-                style={resultsStyles}
+                style={{
+                    paddingLeft: scrollIsVisible ? scrollWidth : 0,
+                }}
                 ref={containerRef}
             >
                 {results.map((item: ITranslateResult, index) => (
