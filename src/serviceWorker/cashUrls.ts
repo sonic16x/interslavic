@@ -2,8 +2,8 @@ import { ADD_LANGS } from 'consts'
 
 export const CASH_URLS = [
     '/',
-    '/data/basic.json',
-    '/data/translateStatistic.json',
-    ...ADD_LANGS.map((lang) => `/data/${lang}.json`),
+    '/data/basic.msgpack',
+    '/data/translateStatistic.msgpack',
+    ...ADD_LANGS.map((lang) => `/data/${lang}.msgpack`),
     '/sw.js',
 ]

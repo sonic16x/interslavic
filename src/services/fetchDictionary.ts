@@ -2,13 +2,28 @@ import { ADD_LANGS } from 'consts'
 
 import { Dictionary, SearchIndex, WordList } from 'services'
 
+import * as msgpack from '@msgpack/msgpack'
+
+
+async function fetchWithAutoParse(url: string, options: RequestInit = {}): Promise<any> {
+    const response = await fetch(url, options)
+
+    if (url.endsWith('.msgpack')) {
+        const arrayBuffer = await response.arrayBuffer()
+
+        return msgpack.decode(new Uint8Array(arrayBuffer))
+    } else {
+        return response.json()
+    }
+}
+
 async function fetchStat() {
-    return await fetch('data/translateStatistic.json').then((res) => res.json()) as Promise<Record<string, string>>
+    return await fetchWithAutoParse('data/translateStatistic.msgpack') as Promise<Record<string, string>>
 }
 
 async function fetchLangs(langList: string[]) {
     return await Promise.all(
-        langList.map((lang) => fetch(`data/${lang}.json`).then((res) => res.json()))
+        langList.map((lang) => fetchWithAutoParse(`data/${lang}.msgpack`))
     )
 }
 
@@ -18,7 +33,7 @@ export interface IBasicData {
 }
 
 async function fetchBasic(): Promise<IBasicData> {
-    return await fetch('data/basic.json').then((res) => res.json()) as Promise<IBasicData>
+    return await fetchWithAutoParse('data/basic.msgpack') as Promise<IBasicData>
 }
 
 export async function fetchLang(lang) {

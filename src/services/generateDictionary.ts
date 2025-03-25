@@ -6,15 +6,14 @@ import { Dictionary, loadTablesData } from 'services'
 
 import { getColumnName, sortColumns, transposeMatrix } from 'utils'
 
-import { gzipSizeSync } from 'gzip-size'
-
+import * as msgpack from '@msgpack/msgpack'
 
 loadTablesData().then(({ data, columns }) => {
     const sortedColumns = sortColumns(columns, EN)
     Dictionary.init(data)
 
     const searchIndex = Dictionary.getIndex()
-    const translateStatisticStr = JSON.stringify(Dictionary.getPercentsOfTranslated())
+    const translateStatisticMsgpack = msgpack.encode(Dictionary.getPercentsOfTranslated())
 
     const basicDataTransposed = []
     const initialFilteredFields = initialFields.filter((field) => !initialAddFields.includes(field))
@@ -40,7 +39,7 @@ loadTablesData().then(({ data, columns }) => {
         return searchIndexObj
     }, {})
 
-    const jsonDataStr = JSON.stringify({
+    const msgpackData = msgpack.encode({
         wordList: basicData,
         searchIndex: searchIndexBasic,
     })
@@ -49,12 +48,8 @@ loadTablesData().then(({ data, columns }) => {
         fs.mkdirSync('./static/data')
     }
 
-    fs.writeFileSync('./static/data/basic.json', jsonDataStr)
-    fs.writeFileSync('./static/data/translateStatistic.json', translateStatisticStr)
-
-    const sizeMB = gzipSizeSync(jsonDataStr) / 1000000
-    // eslint-disable-next-line no-console
-    console.info(`basic.json g-zip size: ${sizeMB.toFixed(2)} MB`)
+    fs.writeFileSync('./static/data/basic.msgpack', msgpackData)
+    fs.writeFileSync('./static/data/translateStatistic.msgpack', translateStatisticMsgpack)
 
     ADD_LANGS.forEach((lang) => {
         const langDataTransposed = [
@@ -63,11 +58,11 @@ loadTablesData().then(({ data, columns }) => {
 
         const langData = transposeMatrix(langDataTransposed)
 
-        const jsonDataStr = JSON.stringify({
+        const msgpackData = msgpack.encode({
             wordList: langData.map(([item]) => item),
             searchIndex: { [lang]: searchIndex[lang] },
         })
 
-        fs.writeFileSync(`./static/data/${lang}.json`, jsonDataStr)
+        fs.writeFileSync(`./static/data/${lang}.msgpack`, msgpackData)
     })
 })
