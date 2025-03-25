@@ -28,27 +28,11 @@ interface IResultsCardProps {
     index: number;
 }
 
-const WordStatus = ({ item, onClick }: { item: ITranslateResult, onClick: () => void }) => {
-    const wordStatus = getWordStatus(item)
-
-    if (wordStatus) {
-        return (
-            <button
-                key="wordStatus"
-                onClick={onClick}
-                className="results-card__status"
-                title={t(wordStatus.text)}
-            >
-                {wordStatus.icon}
-            </button>
-        )
-    }
-}
-
 export const ResultsCard =
     ({ item, short, index }: IResultsCardProps) => {
         const alphabets = useAlphabets()
         const caseQuestions = useCaseQuestions()
+        const wordStatus = getWordStatus(item)
         const dispatch = useDispatch()
 
         const showTranslations = () => {
@@ -75,7 +59,16 @@ export const ResultsCard =
                             short={short}
                         />
                     )}
-                    <WordStatus item={item} onClick={showTranslations}/>
+                    {wordStatus && (
+                        <button
+                            key="wordStatus"
+                            onClick={showTranslations}
+                            className="results-card__status"
+                            title={t(wordStatus.text)}
+                        >
+                            {wordStatus.icon}
+                        </button>
+                    )}
                     {item.to === 'isv' && short && (
                         <Hint
                             title={expandAbbr(t, item.details)}
