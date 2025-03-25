@@ -33,10 +33,17 @@
     line-height: var(--text-l-line);
   }
 
-  .word {
+  .words, .word {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+  }
+
+  .word:not(:last-child)::after {
+    padding-left: 2px;
+    color: var(--muted-text-color);
+    content: "/";
+    font-weight: 400;
   }
 
   .ipa {

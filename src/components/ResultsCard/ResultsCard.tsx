@@ -79,12 +79,14 @@ const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: IResults
 
     return (
         <>
-            {result.map(({ str, caseInfo }) => (
-                <span className="word" key={str}>
-                    <Clipboard str={str}/>
-                    {caseInfo && <span className="caseInfo">({caseInfo})</span>}
-                </span>
-            )).map((item, index) => [item, (<span key={index}>/</span>)]).flat().slice(0, -1)}
+            <span className="words">
+                {result.map(({ str, caseInfo }) => (
+                    <span className="word" key={str}>
+                        <Clipboard str={str}/>
+                        {caseInfo && <span className="caseInfo">({caseInfo})</span>}
+                    </span>
+                ))}
+            </span>
             {!caseQuestions && item.caseInfo &&
                 <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span>
             }
