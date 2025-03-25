@@ -1,10 +1,6 @@
-import classNames from 'classnames'
-import { useDispatch } from 'react-redux'
+import cn from 'classnames'
 
 import { t } from 'translations'
-
-import { showModalDialog } from 'actions'
-import { MODAL_DIALOG_TYPES } from 'reducers'
 
 import { ITranslateResult } from 'services'
 
@@ -14,11 +10,17 @@ import {
 } from 'hooks'
 import {
     expandAbbr,
-    getWordStatus,
     translateAbbr,
 } from 'utils'
 
-import { Clipboard, Hint, ResultsCardActions, ResultsCardOriginal } from 'components'
+import {
+    Clipboard,
+    Hint,
+    ResultsCardActions,
+    ResultsCardCheckBadge,
+    ResultsCardOriginal,
+    ResultsCardWordStatus
+} from 'components'
 
 import './ResultsCard.scss'
 
@@ -32,19 +34,10 @@ export const ResultsCard =
     ({ item, short, index }: IResultsCardProps) => {
         const alphabets = useAlphabets()
         const caseQuestions = useCaseQuestions()
-        const wordStatus = getWordStatus(item)
-        const dispatch = useDispatch()
-
-        const showTranslations = () => {
-            dispatch(showModalDialog({
-                type: MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION,
-                data: { id: item.id },
-            }))
-        }
 
         return (
             <div
-                className={classNames('results-card', { short })}
+                className={cn('results-card', { short })}
                 tabIndex={index}
                 data-testid={`result-${index}`}
             >
@@ -59,16 +52,7 @@ export const ResultsCard =
                             short={short}
                         />
                     )}
-                    {wordStatus && (
-                        <button
-                            key="wordStatus"
-                            onClick={showTranslations}
-                            className="results-card__status"
-                            title={t(wordStatus.text)}
-                        >
-                            {wordStatus.icon}
-                        </button>
-                    )}
+                    <ResultsCardWordStatus item={item} />
                     {item.to === 'isv' && short && (
                         <Hint
                             title={expandAbbr(t, item.details)}
@@ -106,11 +90,7 @@ export const ResultsCard =
                         short={short}
                     />
                 </div>
-                {!item.checked && (
-                    <div className={classNames('results-card__status-badge', { verified: item.checked })}>
-                        {!short && (item.checked ? t('verified') : t('autoTranslation'))}
-                    </div>
-                )}
+                <ResultsCardCheckBadge item={item} short={short}/>
             </div>
         )
     }

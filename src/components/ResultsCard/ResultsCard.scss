@@ -33,33 +33,9 @@
     line-height: var(--text-l-line);
   }
 
-  &__details {
-    color: var(--muted-text-color);
-    font-size: var(--text-m);
-    line-height: var(--text-m-line);
-  }
-
   .original {
     font-size: var(--text-m);
     line-height: var(--text-m-line);
-  }
-
-
-  &__status-badge {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    padding: 2px 4px;
-    border-radius: var(--border-radius-s);
-    background: var(--invalid-color);
-    color: var(--status-badge-color);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    line-height: var(--text-xs-line);
-
-    &.verified {
-      background: var(--valid-color);
-    }
   }
 
   &.short {
@@ -73,47 +49,6 @@
         align-items: flex-end;
         justify-content: space-between;
       }
-
-      &__details {
-        color: var(--muted-text-color);
-      }
-
-      .translate {
-        .results-card__details {
-          font-weight: 500;
-        }
-      }
-
-      &__status-badge {
-        top: 0;
-        right: 0;
-        width: 16px;
-        height: 16px;
-        padding: 0;
-        border-radius: 0;
-        background: linear-gradient(45deg, var(--transperent) 0%, var(--transperent) 50%, var(--invalid-color) 50%, var(--invalid-color) 100%);
-
-        &.verified {
-          display: none;
-        }
-      }
-    }
-  }
-
-  &__status {
-    padding: 0;
-    border: none;
-    margin: 0 0 0 4px;
-    appearance: none;
-    background: none;
-
-    /* inline text-like button */
-    cursor: pointer;
-    font: inherit;
-    transition: transform var(--animation-duration) ease-in-out;
-
-    &:hover {
-      transform: scale(1.3);
     }
   }
 }

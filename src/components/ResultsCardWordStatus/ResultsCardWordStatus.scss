@@ -1,0 +1,16 @@
+.results-card-status {
+  padding: 0;
+  border: none;
+  margin: 0 0 0 4px;
+  appearance: none;
+  background: none;
+
+  /* inline text-like button */
+  cursor: pointer;
+  font: inherit;
+  transition: transform var(--animation-duration) ease-in-out;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}
