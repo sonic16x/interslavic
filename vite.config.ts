@@ -5,25 +5,7 @@ import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import svgr from 'vite-plugin-svgr'
 
-export default defineConfig({
-    publicDir: 'static',
-    plugins: [
-        react(),
-        svgr({
-            svgrOptions: { exportType: 'default' },
-            include: '**/*.svg',
-        }),
-        visualizer({
-            filename: 'report.html',
-            gzipSize: true,
-        }),
-    ],
-    build: {
-        outDir: 'dist',
-    },
-    server: {
-        port: 3000,
-    },
+export const commonConfig = {
     define: {
         __VERSION__: JSON.stringify(version),
         __PR_NUMBER__: JSON.stringify(process.env.PR_NUMBER),
@@ -42,4 +24,39 @@ export default defineConfig({
             'hooks': '/src/hooks',
         },
     },
+}
+
+export default defineConfig({
+    publicDir: 'static',
+    plugins: [
+        react(),
+        svgr({
+            svgrOptions: { exportType: 'default' },
+            include: '**/*.svg',
+        }),
+        visualizer({
+            filename: 'report.html',
+            gzipSize: true,
+        }),
+    ],
+    optimizeDeps: {
+        include: ['react', 'react-dom'],
+    },
+    build: {
+        outDir: 'dist',
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        if (id.includes('react')) return 'react'
+                        if (id.includes('react-dom')) return 'react-dom'
+                    }
+                },
+            },
+        },
+    },
+    server: {
+        port: 3000,
+    },
+    ...commonConfig,
 })

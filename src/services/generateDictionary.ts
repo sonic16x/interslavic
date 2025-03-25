@@ -8,6 +8,11 @@ import { getColumnName, sortColumns, transposeMatrix } from 'utils'
 
 import { gzipSizeSync } from 'gzip-size'
 
+function logSize(name:string, data: string) {
+    const sizeMB = gzipSizeSync(data) / 1000000
+    // eslint-disable-next-line no-console
+    console.info(`${name} g-zip size: ${sizeMB.toFixed(2)} MB`)
+}
 
 loadTablesData().then(({ data, columns }) => {
     const sortedColumns = sortColumns(columns, EN)
@@ -52,9 +57,8 @@ loadTablesData().then(({ data, columns }) => {
     fs.writeFileSync('./static/data/basic.json', jsonDataStr)
     fs.writeFileSync('./static/data/translateStatistic.json', translateStatisticStr)
 
-    const sizeMB = gzipSizeSync(jsonDataStr) / 1000000
-    // eslint-disable-next-line no-console
-    console.info(`basic.json g-zip size: ${sizeMB.toFixed(2)} MB`)
+    logSize('basic.json', jsonDataStr)
+
 
     ADD_LANGS.forEach((lang) => {
         const langDataTransposed = [
@@ -67,6 +71,8 @@ loadTablesData().then(({ data, columns }) => {
             wordList: langData.map(([item]) => item),
             searchIndex: { [lang]: searchIndex[lang] },
         })
+
+        logSize(`${lang}.json`, jsonDataStr)
 
         fs.writeFileSync(`./static/data/${lang}.json`, jsonDataStr)
     })
