@@ -19,3 +19,14 @@
     padding: var(--gap-size-s) 0;
   }
 }
+
+@media (width <= 1024px) {
+  .results {
+    padding-right: var(--gap-size) !important;
+    padding-left: var(--gap-size) !important;
+
+    &.short {
+      padding: var(--gap-size-s) !important;
+    }
+  }
+}

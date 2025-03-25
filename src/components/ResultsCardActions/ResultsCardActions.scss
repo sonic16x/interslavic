@@ -2,8 +2,12 @@
   position: absolute;
   right: 4px;
   bottom: 4px;
+  display: flex;
+  gap: 2px;
 
   .action-button {
+    flex: 0 1 auto;
+    padding: 1px 3px;
     border: none;
     background: none;
     color: var(--primary-color);
