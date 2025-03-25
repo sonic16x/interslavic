@@ -17,16 +17,8 @@ export interface IBasicData {
     searchIndex?: SearchIndex,
 }
 
-async function fetchWordList(): Promise<WordList> {
-    return await fetch('data/wordList.json').then((res) => res.json()) as Promise<WordList>
-}
-
-async function fetchSearchIndexIsv(): Promise<SearchIndex> {
-    return await fetch('data/searchIndexIsv.json').then((res) => res.json()) as Promise<SearchIndex>
-}
-
-async function fetchSearchIndexOther(): Promise<SearchIndex> {
-    return await fetch('data/searchIndexOther.json').then((res) => res.json()) as Promise<SearchIndex>
+async function fetchBasic(): Promise<IBasicData> {
+    return await fetch('data/basic.json').then((res) => res.json()) as Promise<IBasicData>
 }
 
 export async function fetchLang(lang) {
@@ -42,21 +34,11 @@ export async function fetchLang(lang) {
 export async function fetchDictionary(langList: string[]) {
     const startFidTime = performance.now()
 
-    const [stat, wordList, searchIndexIsv, searchIndexOther, langsData] = await Promise.all([
+    const [stat, basicData, langsData] = await Promise.all([
         fetchStat(),
-        fetchWordList(),
-        fetchSearchIndexIsv(),
-        fetchSearchIndexOther(),
+        fetchBasic(),
         fetchLangs(langList.filter((lang) => ADD_LANGS.includes(lang)))
     ])
-
-    const basicData: IBasicData = {
-        wordList,
-        searchIndex: {
-            ...searchIndexIsv,
-            ...searchIndexOther,
-        },
-    }
 
     langsData.forEach((langData) => {
         basicData.searchIndex = {

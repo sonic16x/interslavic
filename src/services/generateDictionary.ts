@@ -45,24 +45,6 @@ loadTablesData().then(({ data, columns }) => {
         return searchIndexObj
     }, {})
 
-    const searchIndexIsv = [
-        ISV_SRC,
-        ISV,
-    ].reduce((searchIndexObj, lang) => {
-        searchIndexObj[lang] = searchIndex[lang]
-
-        return searchIndexObj
-    }, {})
-
-    const searchIndexOther = [
-        EN,
-        ...LANGS,
-    ].reduce((searchIndexObj, lang) => {
-        searchIndexObj[lang] = searchIndex[lang]
-
-        return searchIndexObj
-    }, {})
-
     const jsonDataStr = JSON.stringify({
         wordList: basicData,
         searchIndex: searchIndexBasic,
@@ -72,23 +54,11 @@ loadTablesData().then(({ data, columns }) => {
         fs.mkdirSync('./static/data')
     }
 
-    const wordListStr = JSON.stringify(basicData)
-    const searchIndexStr = JSON.stringify(searchIndexBasic)
-    const searchIndexIsvStr = JSON.stringify(searchIndexIsv)
-    const searchIndexOtherStr = JSON.stringify(searchIndexOther)
-
     fs.writeFileSync('./static/data/basic.json', jsonDataStr)
-    fs.writeFileSync('./static/data/wordList.json', wordListStr)
-    fs.writeFileSync('./static/data/searchIndex.json', searchIndexStr)
-    fs.writeFileSync('./static/data/searchIndexIsv.json', searchIndexIsvStr)
-    fs.writeFileSync('./static/data/searchIndexOther.json', searchIndexOtherStr)
     fs.writeFileSync('./static/data/translateStatistic.json', translateStatisticStr)
 
     logSize('basic.json', jsonDataStr)
-    logSize('wordList.json', wordListStr)
-    logSize('searchIndex.json', searchIndexStr)
-    logSize('searchIndexIsv.json', searchIndexIsvStr)
-    logSize('searchIndexOther.json', searchIndexOtherStr)
+
 
     ADD_LANGS.forEach((lang) => {
         const langDataTransposed = [
@@ -101,6 +71,8 @@ loadTablesData().then(({ data, columns }) => {
             wordList: langData.map(([item]) => item),
             searchIndex: { [lang]: searchIndex[lang] },
         })
+
+        logSize(`${lang}.json`, jsonDataStr)
 
         fs.writeFileSync(`./static/data/${lang}.json`, jsonDataStr)
     })
