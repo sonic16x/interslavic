@@ -17,8 +17,12 @@ export interface IBasicData {
     searchIndex?: SearchIndex,
 }
 
-async function fetchBasic(): Promise<IBasicData> {
-    return await fetch('data/basic.json').then((res) => res.json()) as Promise<IBasicData>
+async function fetchWordList(): Promise<WordList> {
+    return await fetch('data/wordList.json').then((res) => res.json()) as Promise<WordList>
+}
+
+async function fetchSearchIndex(): Promise<SearchIndex> {
+    return await fetch('data/searchIndex.json').then((res) => res.json()) as Promise<SearchIndex>
 }
 
 export async function fetchLang(lang) {
@@ -34,11 +38,17 @@ export async function fetchLang(lang) {
 export async function fetchDictionary(langList: string[]) {
     const startFidTime = performance.now()
 
-    const [stat, basicData, langsData] = await Promise.all([
+    const [stat, wordList, searchIndex, langsData] = await Promise.all([
         fetchStat(),
-        fetchBasic(),
+        fetchWordList(),
+        fetchSearchIndex(),
         fetchLangs(langList.filter((lang) => ADD_LANGS.includes(lang)))
     ])
+
+    const basicData: IBasicData = {
+        wordList,
+        searchIndex,
+    }
 
     langsData.forEach((langData) => {
         basicData.searchIndex = {
