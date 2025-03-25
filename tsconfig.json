@@ -26,6 +26,8 @@
   "include": [
     "vite.config.ts",
     "vite-sw.config.ts",
+    "postcss.config.ts",
+    "playwright.config.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
     "scripts/**/*.ts",
