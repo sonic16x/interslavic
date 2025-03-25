@@ -39,12 +39,6 @@
     gap: 4px;
   }
 
-  .word:first-child::after {
-    padding-left: 2px;
-    content: "/";
-    font-weight: 400;
-  }
-
   .ipa {
     color: var(--muted-text-color);
     font-weight: 500;
