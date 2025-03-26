@@ -17,5 +17,11 @@ export async function getTableHeader(tableId: string, googleAccessToken: string)
 
     const responseJson = await response.json()
 
-    return responseJson.sheets[0].data[0].rowData[0].values.map(({ effectiveValue }) => effectiveValue.stringValue)
+    return responseJson
+        .sheets[0]
+        .data[0]
+        .rowData[0]
+        .values
+        .map(({ effectiveValue }) => effectiveValue?.stringValue)
+        .filter(Boolean)
 }
