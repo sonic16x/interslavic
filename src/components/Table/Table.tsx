@@ -43,7 +43,7 @@ export class Table extends Component<ITableProps> {
     private getClassName(attrs: any) {
         return [
             'custom-text',
-            ...Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h'))
+            ...Object.keys(attrs).filter((w) => (w !== 'w' && w !== 'h' && w !== 'lang'))
         ].join(' ')
     }
 
@@ -87,7 +87,7 @@ export class Table extends Component<ITableProps> {
                             rowSpan={attrs.h}
                             style={{ width: attrs.sw }}
                         >
-                            <Clipboard str={str}/>
+                            <Clipboard str={str} lang={attrs.lang}/>
                         </td>
                     )
                 }
