@@ -13,9 +13,10 @@ interface IResultsCardOriginalProps {
     alphabets: IAlphabets;
     caseQuestions: boolean;
     short: boolean;
+    lang?: string;
 }
 
-export const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: IResultsCardOriginalProps) => {
+export const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short, lang }: IResultsCardOriginalProps) => {
     let latin = item.original
     if (item.add) {
         latin += ` ${item.add}`
@@ -62,7 +63,7 @@ export const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: I
             <span className="words">
                 {result.map(({ str, caseInfo }) => (
                     <span className="word" key={str}>
-                        <Clipboard str={str}/>
+                        <Clipboard str={str} lang={lang} />
                         {caseInfo && <span className="caseInfo">({caseInfo})</span>}
                     </span>
                 ))}

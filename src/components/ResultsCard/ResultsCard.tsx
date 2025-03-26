@@ -43,13 +43,14 @@ export const ResultsCard =
             >
                 <div className="results-card__text translate">
                     {item.to !== 'isv' ? (
-                        <Clipboard str={item.translate} />
+                        <Clipboard str={item.translate} lang={item.to}/>
                     ) : (
                         <ResultsCardOriginal
                             item={item}
                             alphabets={alphabets}
                             caseQuestions={caseQuestions}
                             short={short}
+                            lang={item.to}
                         />
                     )}
                     <ResultsCardWordStatus item={item} />
@@ -69,13 +70,14 @@ export const ResultsCard =
                 <div className="results-card__bottom">
                     <div className="results-card__text original">
                         {item.to === 'isv' ? (
-                            <Clipboard str={item.translate} />
+                            <Clipboard str={item.translate} lang={item.from} />
                         ) : (
                             <ResultsCardOriginal
                                 item={item}
                                 alphabets={alphabets}
                                 caseQuestions={caseQuestions}
                                 short={short}
+                                lang={item.from}
                             />
                         )}
                         {item.to !== 'isv' && short && (
