@@ -26,6 +26,24 @@ import {
 
 import './WordErrorModal.scss'
 
+
+function loadCaptchaScript() {
+    return new Promise((resolve, reject) => {
+        const scriptId = 'turnstile-script'
+        if (document.getElementById(scriptId)) {
+            resolve(true)
+        } else {
+            const script = document.createElement('script')
+            script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha'
+            script.id = scriptId
+            script.async = true
+            script.onload = resolve
+            script.onerror = reject
+            document.body.appendChild(script)
+        }
+    })
+}
+
 export const WordErrorModal = () => {
     useInterfaceLang()
     const online = isOnline()
@@ -67,14 +85,16 @@ export const WordErrorModal = () => {
 
     useEffect(() => {
         if (online) {
-            grecaptcha.render('#recaptcha-element', {
-                sitekey: captchaSiteKey,
-                theme: 'light',
-                callback: (token) => {
-                    setCaptchaToken(token)
-                    setCaptchaError(false)
-                },
-            })
+            loadCaptchaScript().then(() => (
+                grecaptcha.render('#recaptcha-element', {
+                    sitekey: captchaSiteKey,
+                    theme: 'light',
+                    callback: (token) => {
+                        setCaptchaToken(token)
+                        setCaptchaError(false)
+                    },
+                })
+            ))
         }
     }, [])
 
