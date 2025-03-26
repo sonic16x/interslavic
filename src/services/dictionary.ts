@@ -432,7 +432,7 @@ class DictionaryClass {
                         return false
                     }
                 }
-                
+
                 return filterResult
             })
             .filter((item) => {
@@ -455,7 +455,7 @@ class DictionaryClass {
                     filterResult = filterResult ||
                         splittedField.some((chunk) => searchTypes[searchType](chunk, inputLangPrepared))
                 }
-                
+
                 return filterResult
             })
             .map((originItem) => {
@@ -503,9 +503,20 @@ class DictionaryClass {
 
                 return item
             })
-            .sort((a, b) => distMap.get(a) - distMap.get(b))
+            .sort((a, b) => {
+                // compare likeness
+                const dD = distMap.get(a) - distMap.get(b)
+                if (dD) return dD
+
+                // compare voting ranks
+                const dR = this.getRank(a) - this.getRank(b)
+                if (dR) return dR
+
+                // compare target language strings
+                return this.getField(a, to).localeCompare(this.getField(b, to))
+            })
             .slice(0, 50)
-        
+
 
         const translateTime = Math.round(performance.now() - startTranslateTime)
 
@@ -627,7 +638,7 @@ class DictionaryClass {
                 .replace(/t́/g, 'ť')
                 .replace(/d́/g, 'ď')
                 .replace(/[\u0300-\u036f]/g, '')
-            
+
         }
         switch (lang) {
             case ISV_SRC:
@@ -679,6 +690,17 @@ class DictionaryClass {
             })
 
         return text
+    }
+    private getRank(item: string[]): number {
+        const rank = Number.parseInt(this.getField(item, 'type'), 10)
+        // Assume normal rank if unclear (2)
+        if (Number.isNaN(rank)) return 2
+        // Upgrade neologisms (5) to normal rank (2)
+        if (rank === 5) return 2
+        // Do not distinguish between Old Church Slavonic (4) and regionally intelligible (3)
+        if (rank === 4) return 3
+
+        return rank
     }
 }
 

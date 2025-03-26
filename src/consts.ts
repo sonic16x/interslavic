@@ -61,7 +61,6 @@ export const initialFields = [
 ]
 
 export const initialAddFields = [
-    'type',
     'sameInLanguages',
     'genesis',
 ]
