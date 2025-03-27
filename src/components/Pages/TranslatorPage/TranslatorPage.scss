@@ -1,0 +1,72 @@
+.translator {
+  display: flex;
+  max-width: 1024px;
+  box-sizing: border-box;
+  flex-direction: column;
+  border: var(--border);
+  border-radius: 0 0 var(--border-radius-s) var(--border-radius-s);
+  margin: 0 auto;
+  background: var(--light);
+  box-shadow: var(--shadow);
+  overflow-x: hidden;
+
+  .expand__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-size);
+
+    .is-api {
+      margin: var(--gap-size);
+      margin-bottom: 0;
+    }
+  }
+
+  &__lang-selector {
+    display: flex;
+    align-items: center;
+    margin: var(--gap-size) var(--gap-size) 0;
+
+    .lang-selector {
+      width: 100%;
+    }
+  }
+
+  hr {
+    margin: 2px var(--gap-size);
+  }
+
+  &__source-text {
+    margin: var(--gap-size) var(--gap-size) 0 var(--gap-size);
+  }
+
+  &__result-text {
+    margin: var(--gap-size);
+  }
+
+  &__alphabet-selector {
+    margin-bottom: 16px;
+  }
+
+  &__result {
+    &-copy {
+      width: 170px;
+      margin: 0 0 var(--gap-size) var(--gap-size);
+    }
+  }
+
+  &__alphabet-selector,
+  .flavorisation-selector,
+  .translate-results {
+    margin: 0 var(--gap-size);
+
+    &:first-child {
+      margin-top: var(--gap-size);
+    }
+  }
+}
+
+@media (width <= 1024px) {
+  .translator {
+    border-radius: 0;
+  }
+}
