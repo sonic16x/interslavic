@@ -20,9 +20,9 @@ import { getTablePublicUrl, isScrollBarVisible } from 'utils'
 
 import { ResultsCard, ResultsEmpty } from 'components'
 
-import './Results.scss'
+import './ResultsList.scss'
 
-export const Results =
+export const ResultsList =
     () => {
         const alphabets = useAlphabets()
         const caseQuestions = useCaseQuestions()
@@ -56,8 +56,8 @@ export const Results =
 
         return (
             <div
-                className={classNames('results', { short })}
-                data-testid="results"
+                className={classNames('results-list', { short })}
+                data-testid="results-list"
                 style={{
                     paddingLeft: scrollIsVisible ? scrollWidth : 0,
                 }}
@@ -74,7 +74,7 @@ export const Results =
                     />
                 ))}
                 {results.some((item) => !item.checked) && (
-                    <div className="results__message-for-users">
+                    <div className="results-list__message-for-users">
                         {t('notVerifiedText').replace('part%', `${translatedPart}%`)}
                         {' '}
                         <a target="_blank" href={worksheetUrl} rel="noreferrer">{t('notVerifiedTableLinkText')}</a>
