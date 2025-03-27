@@ -1,13 +1,19 @@
-// Add to cache all data
+const updateCache = (type: string) => (
+    fetch('/cacheList.json')
+        .then((response) => response.json()) // Парсим JSON
+        .then((urls) => {
+            // eslint-disable-next-line no-console
+            console.log('urls', type, urls)
+
+            return caches.open(__VERSION__).then((cache) => (
+                cache.addAll(urls)
+            ))
+        })
+)
+
+
 self.addEventListener('install', (event: any) => {
-    fetch('/cacheList.json').then(res => res.json()).then((cacheList) => (
-        event.waitUntil(
-            caches
-                .open(__VERSION__)
-                .then((cache) => cache.addAll(cacheList))
-        )
-    ))
-    
+    event.waitUntil(updateCache('install'))
 })
 
 self.addEventListener('fetch', (event: any) => {
@@ -55,14 +61,13 @@ self.addEventListener('fetch', (event: any) => {
 })
 
 self.addEventListener('activate', (event: any) => {
-    // Delete old cache versions
     event.waitUntil(
-        caches
-            .keys()
+        caches.keys()
             .then((keys) => Promise.all(
                 keys
                     .filter((key) => key !== __VERSION__)
                     .map((key) => caches.delete(key))
             ))
+            .then(() => updateCache('activate'))
     )
 })
