@@ -17,23 +17,33 @@ jobs:
           CF_AUTH_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_PROJECT_NAME: ${{ secrets.CF_PROJECT_NAME }}
+          BRANCH_NAME: pr-${{ github.event.number }}
         run: |
-          BRANCH_NAME="pr-${{ github.event.number }}"
-          echo "Removing deployments for branch: $BRANCH_NAME"
+          deployments=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/${CF_PROJECT_NAME}/deployments?env=preview" \
+            -H "Authorization: Bearer ${CF_AUTH_TOKEN}")
 
-          DEPLOYS=$(curl -s -X GET \
-            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/$CF_PROJECT_NAME/deployments?env=preview" \
-            -H "Authorization: Bearer $CF_AUTH_TOKEN" \
-            | jq -r '.result[] | select(..deployment_trigger.metadata.branch == "'$BRANCH_NAME'") | .id')
+          if [[ $(echo "$deployments" | jq -r '.success') != "true" ]]; then
+            echo "Error fetching deployments"
+            exit 1
+          fi
 
-          if [ -z "$DEPLOYS" ]; then
+          deploy_ids=$(echo "$deployments" | jq -r ".result[] | select(.deployment_trigger.metadata.branch == \"$BRANCH_NAME\") | .id")
+
+          if [[ -z "$deploy_ids" ]]; then
             echo "No deployments found for branch: $BRANCH_NAME"
             exit 0
           fi
 
-          for DEPLOY_ID in $DEPLOYS; do
-            echo "Deleting deployment: $DEPLOY_ID"
-            curl -s -X DELETE \
-              "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/$CF_PROJECT_NAME/deployments/$DEPLOY_ID?force=true" \
-              -H "Authorization: Bearer $CF_AUTH_TOKEN"
+          for deploy_id in $deploy_ids; do
+            echo "Deleting deployment $deploy_id for branch $BRANCH_NAME"
+            delete_response=$(curl -s -X DELETE "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/${CF_PROJECT_NAME}/deployments/${deploy_id}?force=true" \
+              -H "Authorization: Bearer ${CF_AUTH_TOKEN}")
+          
+            if [[ $(echo "$delete_response" | jq -r '.success') == "true" ]]; then
+              echo "Deployment $deploy_id deleted successfully."
+            else
+              echo "Failed to delete deployment $deploy_id."
+            fi
           done
+
+          echo "All deployments for branch $BRANCH_NAME have been removed."
