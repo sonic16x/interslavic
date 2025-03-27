@@ -70,15 +70,15 @@ export const TranslationsModal =
                 return [
                     [
                         `{${t('isvEtymologicLatinLang')}}[B]@ts;b;sw=130px;nowrap`,
-                        `${getLatin(item.isv, '2')}@ts`,
+                        `${getLatin(item.isv, '2')}@ts;lang=isv-Latin`,
                     ],
                     [
                         `{${t('isvLatinLang')}}[B]@ts;b`,
-                        `${getLatin(item.isv, '3')}@ts`,
+                        `${getLatin(item.isv, '3')}@ts;lang=isv-Latin`,
                     ],
                     [
                         `{${t('isvCyrillicLang')}}[B]@ts;b`,
-                        `${getCyrillic(item.isv, '3')}@ts`,
+                        `${getCyrillic(item.isv, '3')}@ts;lang=isv-Cyrl`,
                     ],
                     [
                         '@w=2;S',
@@ -90,7 +90,7 @@ export const TranslationsModal =
                 ...arr,
                 [
                     `{${marks[lang] || ''} ${t(`${lang}Lang`)}}[B]@ts;b`,
-                    renderTranslate(translate),
+                    `${renderTranslate(translate)};lang=${lang}`,
                 ],
                 (
                     (lang === 'bg' && addLangsFiltered.length) ? (

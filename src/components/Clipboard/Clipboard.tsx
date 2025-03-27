@@ -10,10 +10,11 @@ import './Clipboard.scss'
 interface IClipboardProps {
     str: string;
     className?: string;
+    lang?: string;
 }
 
 export const Clipboard =
-    ({ str, className }: IClipboardProps) => {
+    ({ str, className, lang }: IClipboardProps) => {
         const dispatch = useDispatch()
         const onClick = () => {
             navigator.clipboard.writeText(str).then(() => {
@@ -26,6 +27,7 @@ export const Clipboard =
             <span
                 onClick={onClick}
                 className={classNames('clipboard', className)}
+                lang={lang}
             >
                 {str}
             </span>
