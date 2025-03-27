@@ -17,7 +17,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: |
-          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          BRANCH_NAME="pr-${{ github.event.number }}"
           echo "Removing deployments for branch: $BRANCH_NAME"
 
           DEPLOYS=$(curl -s -X GET \
