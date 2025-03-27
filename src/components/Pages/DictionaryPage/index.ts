@@ -1,1 +1,2 @@
-export * from './DictionaryPage'
+import { DictionaryPage } from './DictionaryPage'
+export default DictionaryPage

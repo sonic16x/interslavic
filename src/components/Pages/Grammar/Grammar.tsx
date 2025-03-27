@@ -30,7 +30,7 @@ const titles = {
 }
 
 /* eslint-disable max-len */
-export default class Grammar extends PureComponent {
+export class Grammar extends PureComponent {
     private containerRef
     private activeId
     private userEvent

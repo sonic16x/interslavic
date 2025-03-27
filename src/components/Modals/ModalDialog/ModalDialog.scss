@@ -7,8 +7,7 @@
   flex-direction: column;
   padding: 0;
   border: none;
-  border-radius: var(--border-radius-s);
-  background: var(--light);
+  background: transparent;
   transition: opacity var(--animation-duration) ease-in-out;
 
   &-back {
@@ -46,7 +45,9 @@
     display: flex;
     justify-content: space-between;
     padding: 16px;
+    border-radius: var(--border-radius-s) var(--border-radius-s) 0 0;
     border-bottom: var(--border);
+    background: var(--light);
 
     &-title {
       color: var(--dark);
@@ -104,7 +105,9 @@
   }
 
   &__footer {
+    border-radius: 0 0 var(--border-radius-s) var(--border-radius-s);
     border-top: var(--border);
+    background: var(--light);
     line-height: 1.5;
 
     @media (width <= 450px) {

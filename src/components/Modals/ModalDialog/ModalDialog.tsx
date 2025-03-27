@@ -11,25 +11,31 @@ const DetailModal = lazy(() => import('components/Modals/DetailModal/DetailModal
 const TranslationsModal = lazy(() => import('components/Modals/TranslationsModal/TranslationsModal'))
 const WordErrorModal = lazy(() => import('components/Modals/WordErrorModal/WordErrorModal'))
 
+import { Spinner } from 'components/Spinner'
+
 import './ModalDialog.scss'
 
 function getModalDialog(type: MODAL_DIALOG_TYPES) {
     switch (type) {
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION:
             return (
-                <Suspense fallback={<div>&nbsp;</div>}>
+                <Suspense
+                    fallback={<Spinner size="4em" borderWidth="0.3em" />}
+                >
                     <TranslationsModal/>
                 </Suspense>
             )
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS:
             return (
-                <Suspense fallback={<div>&nbsp;</div>}>
+                <Suspense
+                    fallback={<Spinner size="4em" borderWidth="0.3em" />}
+                >
                     <DetailModal/>
                 </Suspense>
             )
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR:
             return (
-                <Suspense fallback={<div>&nbsp;</div>}>
+                <Suspense fallback={<Spinner size="4em" borderWidth="0.3em" />}>
                     <WordErrorModal/>
                 </Suspense>
             )

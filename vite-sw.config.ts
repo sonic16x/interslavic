@@ -6,7 +6,7 @@ import path from 'path'
 export default defineConfig({
     build: {
         emptyOutDir: false,
-        outDir: 'dist',
+        outDir: 'dist/assets',
         lib: {
             entry: path.resolve(__dirname, 'src/serviceWorker/sw.ts'),
             name: 'ServiceWorker',

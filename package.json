@@ -9,6 +9,7 @@
   "main": "./dist/worker.js",
   "scripts": {
     "build": "vite build",
+    "build-cache-list": "tsx scripts/build-cache-list.ts",
     "build-manifest": "tsx scripts/build-manifest.ts",
     "build-sitemap": "tsx scripts/build-sitemap.ts",
     "build-storybook": "storybook build",

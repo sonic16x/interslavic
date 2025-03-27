@@ -1,12 +1,13 @@
-import { CASH_URLS } from './cashUrls'
-
 // Add to cache all data
 self.addEventListener('install', (event: any) => {
-    event.waitUntil(
-        caches
-            .open(__VERSION__)
-            .then((cache) => cache.addAll(CASH_URLS))
-    )
+    fetch('/cacheList.json').then(res => res.json()).then((cacheList) => (
+        event.waitUntil(
+            caches
+                .open(__VERSION__)
+                .then((cache) => cache.addAll(cacheList))
+        )
+    ))
+    
 })
 
 self.addEventListener('fetch', (event: any) => {
