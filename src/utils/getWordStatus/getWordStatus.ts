@@ -1,6 +1,6 @@
 import { ITranslateResult } from 'services'
 
-import { estimateIntelligibility, hasIntelligibilityIssues } from 'utils'
+import { hasIntelligibilityIssues } from 'utils'
 
 interface IWordStatus {
     icon: string;
@@ -8,8 +8,6 @@ interface IWordStatus {
 }
 
 export const getWordStatus = (item: ITranslateResult): IWordStatus | undefined => {
-    const intelligibilityVector = estimateIntelligibility(item.intelligibility)
-
     if (item.remove) {
         return {
             icon: '⛔️',
@@ -24,7 +22,7 @@ export const getWordStatus = (item: ITranslateResult): IWordStatus | undefined =
         }
     }
 
-    if (hasIntelligibilityIssues(intelligibilityVector)) {
+    if (hasIntelligibilityIssues(item)) {
         return {
             icon: '⚠️',
             text: 'intelligibilityIssues',
