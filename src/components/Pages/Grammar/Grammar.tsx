@@ -55,6 +55,7 @@ export default class Grammar extends PureComponent {
                 onWheel={this.onWheel}
                 onScroll={this.onScroll}
                 ref={this.containerRef}
+                lang="isv"
             >
                 <div className="grammar">
                     <h4 className="grammar__title">Osnovna gramatika medžuslovjanskogo jezyka</h4>
