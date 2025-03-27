@@ -24,7 +24,7 @@ jobs:
           DEPLOYS=$(curl -s -X GET \
             "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/$CF_PROJECT_NAME/deployments?env=preview" \
             -H "Authorization: Bearer $CF_AUTH_TOKEN" \
-            | jq -r '.result[] | select(..deployment_trigger.metadata.branch == "'$BRANCH_NAME'") | .id')
+            | jq -r '.data.result[] | select(.deployment_trigger.metadata.branch == "'$BRANCH_NAME'") | .id')
 
           if [ -z "$DEPLOYS" ]; then
             echo "No deployments found for branch: $BRANCH_NAME"
