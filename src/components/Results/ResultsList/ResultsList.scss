@@ -1,4 +1,4 @@
-.results {
+.results-list {
   display: flex;
   overflow: auto;
   height: 100%;
@@ -21,7 +21,7 @@
 }
 
 @media (width <= 1024px) {
-  .results {
+  .results-list {
     padding-right: var(--gap-size) !important;
     padding-left: var(--gap-size) !important;
 
