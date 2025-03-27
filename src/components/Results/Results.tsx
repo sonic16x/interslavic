@@ -8,6 +8,7 @@ import { t } from 'translations'
 import { Dictionary, ITranslateResult } from 'services'
 
 import {
+    useAlphabets, useCaseQuestions,
     useFromText,
     useLang, useLoading,
     usePosFilter,
@@ -23,6 +24,8 @@ import './Results.scss'
 
 export const Results =
     () => {
+        const alphabets = useAlphabets()
+        const caseQuestions = useCaseQuestions()
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId)
         const results = useResults()
         const posFilter = usePosFilter()
@@ -66,6 +69,8 @@ export const Results =
                         short={short}
                         key={item.id}
                         index={index}
+                        alphabets={alphabets}
+                        caseQuestions={caseQuestions}
                     />
                 ))}
                 {results.some((item) => !item.checked) && (

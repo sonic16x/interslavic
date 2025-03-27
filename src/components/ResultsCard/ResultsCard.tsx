@@ -1,24 +1,15 @@
 import cn from 'classnames'
 
-import { t } from 'translations'
+import { IAlphabets } from 'reducers'
 
 import { ITranslateResult } from 'services'
 
 import {
-    useAlphabets,
-    useCaseQuestions,
-} from 'hooks'
-import {
-    expandAbbr,
-    translateAbbr,
-} from 'utils'
-
-import {
     Clipboard,
-    Hint,
     ResultsCardActions,
     ResultsCardCheckBadge,
     ResultsCardOriginal,
+    ResultsCardPos,
     ResultsCardWordStatus
 } from 'components'
 
@@ -26,73 +17,59 @@ import './ResultsCard.scss'
 
 interface IResultsCardProps {
     item: ITranslateResult;
+    alphabets: IAlphabets;
+    caseQuestions: boolean;
     short: boolean;
     index: number;
 }
 
 export const ResultsCard =
-    ({ item, short, index }: IResultsCardProps) => {
-        const alphabets = useAlphabets()
-        const caseQuestions = useCaseQuestions()
-
-        return (
-            <div
-                className={cn('results-card', { short })}
-                tabIndex={index}
-                data-testid={`result-${index}`}
-            >
-                <div className="results-card__text translate">
-                    {item.to !== 'isv' ? (
-                        <Clipboard str={item.translate} lang={item.to}/>
+    ({ item, alphabets, caseQuestions, short, index }: IResultsCardProps) => (
+        <div
+            className={cn('results-card', { short })}
+            tabIndex={index}
+            data-testid={`result-${index}`}
+        >
+            <div className="results-card__text translate">
+                {item.to !== 'isv' ? (
+                    <Clipboard str={item.translate} lang={item.to} />
+                ) : (
+                    <ResultsCardOriginal
+                        item={item}
+                        alphabets={alphabets}
+                        caseQuestions={caseQuestions}
+                        short={short}
+                    />
+                )}
+                <ResultsCardWordStatus item={item} />
+                {item.to === 'isv' && short && (
+                    <ResultsCardPos details={item.details} />
+                )}
+            </div>
+            {!short && (
+                <ResultsCardPos details={item.details} />
+            )}
+            <div className="results-card__bottom">
+                <div className="results-card__text original">
+                    {item.to === 'isv' ? (
+                        <Clipboard str={item.translate} lang={item.from} />
                     ) : (
                         <ResultsCardOriginal
                             item={item}
                             alphabets={alphabets}
                             caseQuestions={caseQuestions}
                             short={short}
-                            lang={item.to}
                         />
                     )}
-                    <ResultsCardWordStatus item={item} />
-                    {item.to === 'isv' && short && (
-                        <Hint
-                            title={expandAbbr(t, item.details)}
-                            shortTitle={translateAbbr(t, item.details)}
-                        />
+                    {item.to !== 'isv' && short && (
+                        <ResultsCardPos details={item.details} />
                     )}
                 </div>
-                {!short && (
-                    <Hint
-                        title={expandAbbr(t, item.details)}
-                        shortTitle={translateAbbr(t, item.details)}
-                    />
-                )}
-                <div className="results-card__bottom">
-                    <div className="results-card__text original">
-                        {item.to === 'isv' ? (
-                            <Clipboard str={item.translate} lang={item.from} />
-                        ) : (
-                            <ResultsCardOriginal
-                                item={item}
-                                alphabets={alphabets}
-                                caseQuestions={caseQuestions}
-                                short={short}
-                                lang={item.from}
-                            />
-                        )}
-                        {item.to !== 'isv' && short && (
-                            <Hint
-                                title={expandAbbr(t, item.details)}
-                                shortTitle={translateAbbr(t, item.details)}
-                            />
-                        )}
-                    </div>
-                    <ResultsCardActions
-                        item={item}
-                        short={short}
-                    />
-                </div>
-                <ResultsCardCheckBadge item={item} short={short}/>
+                <ResultsCardActions
+                    item={item}
+                    short={short}
+                />
             </div>
-        )
-    }
+            <ResultsCardCheckBadge item={item} short={short}/>
+        </div>
+    )
