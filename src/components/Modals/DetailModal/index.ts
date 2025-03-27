@@ -1,1 +1,2 @@
-export * from './DetailModal'
+import { DetailModal } from './DetailModal'
+export default DetailModal

@@ -1,1 +1,2 @@
-export * from './WordErrorModal'
+import { WordErrorModal } from './WordErrorModal'
+export default WordErrorModal

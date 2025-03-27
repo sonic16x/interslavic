@@ -1,1 +1,2 @@
-export * from './TranslationsModal'
+import { TranslationsModal } from './TranslationsModal'
+export default TranslationsModal

@@ -19,10 +19,10 @@ import {
     findIntelligibilityIssues,
     getCyrillic,
     getLatin,
-    getWordStatus,
 } from 'utils'
+import { getWordStatus } from 'utils/getWordStatus'
 
-import { Table } from 'components'
+import { Table } from 'components/Table'
 
 import './TranslationsModal.scss'
 
@@ -141,5 +141,3 @@ export const TranslationsModal =
             </>
         )
     }
-
-export default TranslationsModal

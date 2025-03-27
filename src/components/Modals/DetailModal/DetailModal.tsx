@@ -24,7 +24,8 @@ import {
     isSingular,
 } from 'utils'
 
-import { LineSelector, Table, Text } from 'components'
+import { LineSelector, Text } from 'components'
+import { Table } from 'components/Table'
 
 import './DetailModal.scss'
 
