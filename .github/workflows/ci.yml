@@ -48,6 +48,7 @@ jobs:
           npm run build
           npm run build-sw
           npm run build-manifest
+          npm run build-cache-list
 
       - name: Upload dist folder as artifact
         uses: actions/upload-artifact@v4

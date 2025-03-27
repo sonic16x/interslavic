@@ -181,7 +181,7 @@ interface IContextState {
     googleLink: string;
 }
 
-const Viewer =
+export const Viewer =
     () => {
         const online = isOnline()
         const allDataRef = useRef<string[][]>()
@@ -331,5 +331,3 @@ const Viewer =
             </div>
         )
     }
-
-export default Viewer

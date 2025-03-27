@@ -240,3 +240,5 @@ export const WordErrorModal = () => {
         </>
     )
 }
+
+export default WordErrorModal

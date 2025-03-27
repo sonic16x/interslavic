@@ -1,12 +1,16 @@
-import { CASH_URLS } from './cashUrls'
+const updateCache = () => (
+    fetch('/cacheList.json')
+        .then((response) => response.json()) // Парсим JSON
+        .then((urls) => (
+            caches.open(__VERSION__).then((cache) => (
+                cache.addAll(urls)
+            ))
+        ))
+)
 
-// Add to cache all data
+
 self.addEventListener('install', (event: any) => {
-    event.waitUntil(
-        caches
-            .open(__VERSION__)
-            .then((cache) => cache.addAll(CASH_URLS))
-    )
+    event.waitUntil(updateCache())
 })
 
 self.addEventListener('fetch', (event: any) => {
@@ -54,14 +58,13 @@ self.addEventListener('fetch', (event: any) => {
 })
 
 self.addEventListener('activate', (event: any) => {
-    // Delete old cache versions
     event.waitUntil(
-        caches
-            .keys()
+        caches.keys()
             .then((keys) => Promise.all(
                 keys
                     .filter((key) => key !== __VERSION__)
                     .map((key) => caches.delete(key))
             ))
+            .then(() => updateCache())
     )
 })

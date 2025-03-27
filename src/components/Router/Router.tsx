@@ -1,46 +1,74 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { setPageAction } from 'actions'
 
-import { useInterfaceLang, usePage } from 'hooks'
+import { useInterfaceLang, useLoading, usePage } from 'hooks'
 import { getPageFromPath, getPathFromPage } from 'routing'
 import { toBCP47 } from 'utils'
 
-import { About } from 'components/Pages/About'
-import { DictionaryPage } from 'components/Pages/DictionaryPage'
-import { Settings } from 'components/Pages/Settings'
+import { Spinner } from 'components'
 
 import './Router.scss'
 
-const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar'))
-const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'))
+const Grammar = lazy(() => import('components/Pages/Grammar'))
+const Viewer = lazy(() => import('components/Pages/Viewer'))
+const About = lazy(() => import('components/Pages/About'))
+const DictionaryPage = lazy(() => import('components/Pages/DictionaryPage'))
+const Settings = lazy(() => import('components/Pages/Settings'))
+
+
+const PageLoader = () => {
+    const loading = useRef(useLoading())
+
+    if (loading.current) {
+        return
+    }
+
+    return (
+        <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }}>
+            <Spinner size="4em" borderWidth="0.3em" />
+        </div>
+    )
+}
 
 function renderPageContent(page: string) {
     switch (page) {
         case 'grammar':
             return (
-                <Suspense fallback={<div>&nbsp;</div>}>
+                <Suspense fallback={<PageLoader />}>
                     <Grammar/>
                 </Suspense>
             )
         case 'dictionary':
             return (
-                <DictionaryPage/>
+                <Suspense fallback={<PageLoader />}>
+                    <DictionaryPage/>
+                </Suspense>
             )
         case 'viewer':
             return (
-                <Suspense fallback={<div>&nbsp;</div>}>
+                <Suspense fallback={<PageLoader />}>
                     <Viewer/>
                 </Suspense>
             )
         case 'settings':
             return (
-                <Settings/>
+                <Suspense fallback={<PageLoader />}>
+                    <Settings/>
+                </Suspense>
             )
         case 'about':
             return (
-                <About/>
+                <Suspense fallback={<PageLoader />}>
+                    <About/>
+                </Suspense>
             )
 
     }

@@ -590,3 +590,5 @@ function mapStateToProps({
 }
 
 export const DetailModal = connect(mapStateToProps, mapDispatchToProps)(DetailModalInternal as any)
+
+export default DetailModal
