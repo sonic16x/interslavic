@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useCallback, useEffect } from 'react'
+import { lazy, Suspense, useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { hideModalDialog } from 'actions'
@@ -7,20 +7,32 @@ import { MODAL_DIALOG_TYPES } from 'reducers'
 
 import { useModalDialog } from 'hooks'
 
-import { DetailModal } from 'components/Modals/DetailModal'
-import { TranslationsModal } from 'components/Modals/TranslationsModal'
-import { WordErrorModal } from 'components/Modals/WordErrorModal'
+const DetailModal = lazy(() => import('components/Modals/DetailModal/DetailModal'))
+const TranslationsModal = lazy(() => import('components/Modals/TranslationsModal/TranslationsModal'))
+const WordErrorModal = lazy(() => import('components/Modals/WordErrorModal/WordErrorModal'))
 
 import './ModalDialog.scss'
 
 function getModalDialog(type: MODAL_DIALOG_TYPES) {
     switch (type) {
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION:
-            return <TranslationsModal />
+            return (
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <TranslationsModal/>
+                </Suspense>
+            )
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS:
-            return <DetailModal />
+            return (
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <DetailModal/>
+                </Suspense>
+            )
         case MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_ERROR:
-            return <WordErrorModal />
+            return (
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <WordErrorModal/>
+                </Suspense>
+            )
         default:
             return null
     }

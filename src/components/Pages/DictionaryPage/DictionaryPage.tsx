@@ -9,3 +9,5 @@ export const DictionaryPage =
             <ResultsList/>
         </div>
     )
+
+export default DictionaryPage

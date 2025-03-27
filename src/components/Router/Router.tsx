@@ -7,14 +7,13 @@ import { useInterfaceLang, usePage } from 'hooks'
 import { getPageFromPath, getPathFromPage } from 'routing'
 import { toBCP47 } from 'utils'
 
-import { About } from 'components/Pages/About'
-import { DictionaryPage } from 'components/Pages/DictionaryPage'
-import { Settings } from 'components/Pages/Settings'
-
 import './Router.scss'
 
-const Grammar = lazy(() => import(/* webpackChunkName: "grammarComponent" */'components/Pages/Grammar/Grammar'))
-const Viewer = lazy(() => import(/* webpackChunkName: "viewerComponent" */'components/Pages/Viewer/Viewer'))
+const Grammar = lazy(() => import('components/Pages/Grammar/Grammar'))
+const Viewer = lazy(() => import('components/Pages/Viewer/Viewer'))
+const About = lazy(() => import('components/Pages/About/About'))
+const DictionaryPage = lazy(() => import('components/Pages/DictionaryPage/DictionaryPage'))
+const Settings = lazy(() => import('components/Pages/Settings/Settings'))
 
 function renderPageContent(page: string) {
     switch (page) {
@@ -26,7 +25,9 @@ function renderPageContent(page: string) {
             )
         case 'dictionary':
             return (
-                <DictionaryPage/>
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <DictionaryPage/>
+                </Suspense>
             )
         case 'viewer':
             return (
@@ -36,11 +37,15 @@ function renderPageContent(page: string) {
             )
         case 'settings':
             return (
-                <Settings/>
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <Settings/>
+                </Suspense>
             )
         case 'about':
             return (
-                <About/>
+                <Suspense fallback={<div>&nbsp;</div>}>
+                    <About/>
+                </Suspense>
             )
 
     }

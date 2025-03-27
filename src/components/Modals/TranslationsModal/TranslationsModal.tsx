@@ -141,3 +141,5 @@ export const TranslationsModal =
             </>
         )
     }
+
+export default TranslationsModal
