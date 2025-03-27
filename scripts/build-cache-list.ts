@@ -5,6 +5,7 @@ const data = fs.readdirSync('./dist/data')
 
 const cacheList = [
     '/',
+    'sw.js',
     ...assets.map((item) => `/assets/${item}`),
     ...data.map((item) => `/data/${item}`),
 ]

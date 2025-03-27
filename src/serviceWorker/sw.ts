@@ -1,19 +1,16 @@
-const updateCache = (type: string) => (
+const updateCache = () => (
     fetch('/cacheList.json')
         .then((response) => response.json()) // Парсим JSON
-        .then((urls) => {
-            // eslint-disable-next-line no-console
-            console.log('urls', type, urls)
-
-            return caches.open(__VERSION__).then((cache) => (
+        .then((urls) => (
+            caches.open(__VERSION__).then((cache) => (
                 cache.addAll(urls)
             ))
-        })
+        ))
 )
 
 
 self.addEventListener('install', (event: any) => {
-    event.waitUntil(updateCache('install'))
+    event.waitUntil(updateCache())
 })
 
 self.addEventListener('fetch', (event: any) => {
@@ -68,6 +65,6 @@ self.addEventListener('activate', (event: any) => {
                     .filter((key) => key !== __VERSION__)
                     .map((key) => caches.delete(key))
             ))
-            .then(() => updateCache('activate'))
+            .then(() => updateCache())
     )
 })
