@@ -14,16 +14,17 @@ jobs:
 
       - name: Remove deployments from Cloudflare Pages
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_AUTH_TOKEN: ${{ secrets.CF_AUTH_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_PROJECT_NAME: ${{ secrets.CF_PROJECT_NAME }}
         run: |
           BRANCH_NAME="pr-${{ github.event.number }}"
           echo "Removing deployments for branch: $BRANCH_NAME"
 
           DEPLOYS=$(curl -s -X GET \
-            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/deployments" \
-            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            | jq -r '.result[] | select(.branch == "'$BRANCH_NAME'") | .id')
+            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/$CF_PROJECT_NAME/deployments?env=preview" \
+            -H "Authorization: Bearer $CF_AUTH_TOKEN" \
+            | jq -r '.result[] | select(..deployment_trigger.metadata.branch == "'$BRANCH_NAME'") | .id')
 
           if [ -z "$DEPLOYS" ]; then
             echo "No deployments found for branch: $BRANCH_NAME"
@@ -33,6 +34,6 @@ jobs:
           for DEPLOY_ID in $DEPLOYS; do
             echo "Deleting deployment: $DEPLOY_ID"
             curl -s -X DELETE \
-              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/deployments/$DEPLOY_ID" \
-              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+              "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/$CF_PROJECT_NAME/deployments/$DEPLOY_ID?force=true" \
+              -H "Authorization: Bearer $CF_AUTH_TOKEN"
           done
