@@ -7,7 +7,7 @@ import { MODAL_DIALOG_TYPES } from 'reducers'
 
 import { ITranslateResult } from 'services'
 
-import { getWordStatus } from 'utils'
+import { getWordStatus } from 'utils/getWordStatus'
 
 import './ResultsCardWordStatus.scss'
 

@@ -7,9 +7,9 @@ import { MODAL_DIALOG_TYPES } from 'reducers'
 
 import { useModalDialog } from 'hooks'
 
-const DetailModal = lazy(() => import('components/Modals/DetailModal/DetailModal'))
-const TranslationsModal = lazy(() => import('components/Modals/TranslationsModal/TranslationsModal'))
-const WordErrorModal = lazy(() => import('components/Modals/WordErrorModal/WordErrorModal'))
+const DetailModal = lazy(() => import('components/Modals/DetailModal'))
+const TranslationsModal = lazy(() => import('components/Modals/TranslationsModal'))
+const WordErrorModal = lazy(() => import('components/Modals/WordErrorModal'))
 
 import { Spinner } from 'components/Spinner'
 
