@@ -51,9 +51,9 @@
 
     &-title {
       color: var(--dark);
-      font-size: 20px;
+      font-size: var(--text-l);
       font-weight: 600;
-      line-height: 24px;
+      line-height: var(--text-l-line);
 
       .details {
         font-style: italic;
@@ -66,9 +66,9 @@
       background: none;
       color: var(--light-gray-color);
       cursor: pointer;
-      font-size: 24px;
+      font-size: var(--text-xl);
       font-weight: 700;
-      line-height: 24px;
+      line-height: var(--text-xl-line);
       outline: none;
       transition: var(--animation-duration) color ease-in-out;
 

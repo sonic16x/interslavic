@@ -123,7 +123,7 @@
       right: 0;
       color: var(--primary-color);
       content: attr(data-sub-title);
-      font-size: 10px;
+      font-size: var(--text-xs);
       opacity: 0.8;
       transition: opacity var(--animation-duration) ease-in-out;
     }

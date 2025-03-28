@@ -18,10 +18,12 @@
 
   .item {
     z-index: 1;
+    display: flex;
     flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
     color: var(--primary-color);
     font-weight: 500;
-    line-height: 40px;
     text-align: center;
     transition: color var(--animation-duration) ease-in-out;
 

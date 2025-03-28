@@ -19,7 +19,7 @@
     border-radius: var(--border-radius-s);
     margin-right: var(--gap-size-s);
     cursor: pointer;
-    line-height: 16px;
+    line-height: var(--text-xs-line);
     transition: background-color var(--animation-duration) ease-in-out;
   }
 

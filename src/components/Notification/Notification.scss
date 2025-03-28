@@ -17,7 +17,7 @@
   background: var(--primary-color);
   box-shadow: var(--shadow);
   color: var(--light);
-  font-size: 18px;
+  font-size: var(--text-ml);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--animation-duration) ease-in-out;
