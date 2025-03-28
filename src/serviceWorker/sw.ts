@@ -20,6 +20,10 @@ self.addEventListener('fetch', (event: any) => {
         return
     }
 
+    // docs.google.com
+    // eslint-disable-next-line no-console
+    console.log('url', url)
+
     if (url.pathname === '/is_com.js' || url.pathname === '/is-com.json' || url.pathname.startsWith('/api')) {
         event.respondWith(fetch(event.request))
 
