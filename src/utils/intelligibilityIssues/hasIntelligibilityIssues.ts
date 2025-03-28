@@ -1,10 +1,17 @@
-import { IntelligibilityVector } from './estimateIntelligibility'
+import { ITranslateResult } from 'services'
 
-export function hasIntelligibilityIssues(vector: IntelligibilityVector | null) {
-    if (!vector) {
-        return false
+import { estimateIntelligibility, IntelligibilityVector } from './estimateIntelligibility'
+
+export function hasIntelligibilityIssues(item: ITranslateResult) {
+    const vector = estimateIntelligibility(item.intelligibility)
+    if (vector) {
+        return hasIntelligibilityIssuesInVector(vector)
     }
 
+    return (item.type > 2 && item.type !== 5)
+}
+
+export function hasIntelligibilityIssuesInVector(vector: IntelligibilityVector): boolean {
     const [western, southern, eastern] = vector
 
     const isolatedToEasternGroup = (western + southern) === 0
