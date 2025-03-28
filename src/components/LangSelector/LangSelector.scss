@@ -7,6 +7,10 @@
     text-transform: capitalize;
   }
 
+  button {
+    color: var(--primary-color);
+  }
+
   &__isv {
     overflow: hidden;
     min-width: 40%;
