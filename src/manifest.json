@@ -27,7 +27,23 @@
       "label": "Desktop app screenshot"
     },
     {
-      "src": "screenshots/android.jpg",
+      "src": "screenshots/android_0.jpg",
+      "sizes": "1440x3200",
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "platform": "android",
+      "label": "Android app screenshot"
+    },
+    {
+      "src": "screenshots/android_1.jpg",
+      "sizes": "1440x3200",
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "platform": "android",
+      "label": "Android app screenshot"
+    },
+    {
+      "src": "screenshots/android_2.jpg",
       "sizes": "1440x3200",
       "type": "image/jpg",
       "form_factor": "narrow",
