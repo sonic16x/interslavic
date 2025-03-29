@@ -52,6 +52,29 @@ const orderOfCasesList = [
     'nom,gen,dat,acc,voc,ins,loc',
 ]
 
+const standardOrthography = [
+    ['ž š č (ж ш ч)', 'ž', 'žšč'],
+    ['ě (є)', 'ě', 'ě'],
+    ['y (ы)', 'y', 'y'],
+]
+
+const etymologicalOrthography = [
+    ['å', 'å', 'å'],
+    ['ę ų', 'ę', 'ęų'],
+    ['ė ȯ', 'ȯ', 'ėȯ'],
+    ['ŕ', 'ŕ', 'ŕ'],
+    ['ĺ ń', 'ĺ', 'ĺń'],
+    ['t́ d́', 'ť', 'ťď'],
+    ['ś ź', 'ś', 'śź'],
+    ['ć', 'ć', 'ć'],
+    ['đ', 'đ', 'đ'],
+]
+
+const orthographySettings: Array<[string, string[][]]> = [
+    ['standardOrthography', standardOrthography],
+    ['etymologicalOrthography', etymologicalOrthography],
+]
+
 export const Settings =
     () => {
         const dispatch = useDispatch()
@@ -96,86 +119,36 @@ export const Settings =
                 />
                 <hr/>
                 <h6>{t('showSlavicWordsInAlphabets')}</h6>
-                <Checkbox
-                    title={t('latin')}
-                    checked={alphabets.latin}
-                    onChange={() => dispatch(setAlphabets({ latin: !alphabets.latin }))}
-                />
-                <Checkbox
-                    title={t('cyrillic')}
-                    checked={alphabets.cyrillic}
-                    onChange={() => dispatch(setAlphabets({ cyrillic: !alphabets.cyrillic }))}
-                />
-                <Checkbox
-                    title={t('glagolitic')}
-                    checked={alphabets.glagolitic}
-                    onChange={() => dispatch(setAlphabets({ glagolitic: !alphabets.glagolitic }))}
-                />
+                {
+                    Object.keys(alphabets).map((alphabet) => (
+                        <Checkbox
+                            key={alphabet}
+                            title={t(alphabet)}
+                            checked={alphabets[alphabet]}
+                            onChange={() => dispatch(setAlphabets({ [alphabet]: !alphabets[alphabet] }))}
+                        />
+                    ))
+                }
                 <hr/>
                 <h6>{t('searchSensitiveLettersForInterslavic')}</h6>
                 <div className="settings__isv-search-letters">
-                    <p>{t('standardOrthography')}</p>
-                    <Checkbox
-                        title="ž š č (ж ш ч)"
-                        checked={isvSearchLetters.from.includes('ž')}
-                        onChange={() => dispatch(changeIsvSearchLetters('žšč'))}
-                    />
-                    <Checkbox
-                        title="ě (є)"
-                        checked={isvSearchLetters.from.includes('ě')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ě'))}
-                    />
-                    <Checkbox
-                        title="y (ы)"
-                        checked={isvSearchLetters.from.includes('y')}
-                        onChange={() => dispatch(changeIsvSearchLetters('y'))}
-                    />
-                    <p>{t('etymologicalOrthography')}</p>
-                    <Checkbox
-                        title="å"
-                        checked={isvSearchLetters.from.includes('å')}
-                        onChange={() => dispatch(changeIsvSearchLetters('å'))}
-                    />
-                    <Checkbox
-                        title="ę ų"
-                        checked={isvSearchLetters.from.includes('ę')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ęų'))}
-                    />
-                    <Checkbox
-                        title="ė ȯ"
-                        checked={isvSearchLetters.from.includes('ȯ')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ėȯ'))}
-                    />
-                    <Checkbox
-                        title="ŕ"
-                        checked={isvSearchLetters.from.includes('ŕ')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ŕ'))}
-                    />
-                    <Checkbox
-                        title="ĺ ń"
-                        checked={isvSearchLetters.from.includes('ĺ')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ĺń'))}
-                    />
-                    <Checkbox
-                        title="t́ d́"
-                        checked={isvSearchLetters.from.includes('ť')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ťď'))}
-                    />
-                    <Checkbox
-                        title="ś ź"
-                        checked={isvSearchLetters.from.includes('ś')}
-                        onChange={() => dispatch(changeIsvSearchLetters('śź'))}
-                    />
-                    <Checkbox
-                        title="ć"
-                        checked={isvSearchLetters.from.includes('ć')}
-                        onChange={() => dispatch(changeIsvSearchLetters('ć'))}
-                    />
-                    <Checkbox
-                        title="đ"
-                        checked={isvSearchLetters.from.includes('đ')}
-                        onChange={() => dispatch(changeIsvSearchLetters('đ'))}
-                    />
+                    {
+                        orthographySettings.map(([title, letters]) => (
+                            <>
+                                <p>{t(title)}</p>
+                                {
+                                    letters.map(([title, value, action]) => (
+                                        <Checkbox
+                                            key={title}
+                                            title={title}
+                                            checked={isvSearchLetters.from.includes(value)}
+                                            onChange={() => dispatch(changeIsvSearchLetters(action))}
+                                        />
+                                    ))
+                                }
+                            </>
+                        ))
+                    }
                 </div>
                 <hr/>
                 <Checkbox
