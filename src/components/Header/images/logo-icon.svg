@@ -1,6 +1,11 @@
 <svg width="45" height="30" viewBox="0 0 45 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M22.5 15L45 30H0L22.5 15Z" fill="#DE1C30"/>
-    <path d="M22.5 15L-1.78814e-06 -5.96046e-07L45 -5.96046e-07L22.5 15Z" fill="#001C89"/>
-    <path d="M22.5 15L45 -1.19209e-06V30L22.5 15Z" fill="white"/>
-    <path d="M22.5 15L-8.9407e-07 30L-8.9407e-07 0L22.5 15Z" fill="#FFDE00"/>
+    <mask id="mask0_733_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="45" height="30">
+        <rect width="45" height="30" rx="2" fill="#D9D9D9"/>
+    </mask>
+    <g mask="url(#mask0_733_2)">
+        <path d="M22.5 15L44.9999 30H0L22.5 15Z" fill="#DE1C30"/>
+        <path d="M22.5 15L7.85956e-05 1.99102e-05L45 1.99102e-05L22.5 15Z" fill="#1E44D8"/>
+        <path d="M22.5 15L45 3.98205e-05V30L22.5 15Z" fill="#FFFFFF"/>
+        <path d="M22.5 15L3.92978e-05 30V0L22.5 15Z" fill="#FDC100"/>
+    </g>
 </svg>
