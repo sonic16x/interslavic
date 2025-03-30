@@ -2,6 +2,12 @@
   "collectCoverageFrom": [
     "<rootDir>/src/**/*.{ts,tsx}"
   ],
+  "collectCoverage": true,
+  "coveragePathIgnorePatterns": [
+    "/node_modules/",
+    "/dist/",
+    "\\.stories\\."
+  ],
   "coverageReporters": [
     "json-summary",
     "lcov",
