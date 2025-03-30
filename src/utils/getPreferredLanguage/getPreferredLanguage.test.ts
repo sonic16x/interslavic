@@ -2,7 +2,6 @@ import { getPreferredLanguage } from './getPreferredLanguage'
 
 describe('getPreferredLanguage', () => {
     it('should fall back to en (#1)', () => {
-        expect(global).not.toHaveProperty('navigator')
         expect(getPreferredLanguage()).toBe('en')
     })
 

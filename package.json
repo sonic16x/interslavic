@@ -1,6 +1,6 @@
 {
   "name": "interslavic",
-  "version": "1.31.0",
+  "version": "1.31.1",
   "description": "Interslavic Dictionary",
   "license": "MIT",
   "author": {
@@ -29,7 +29,7 @@
     "test:dictionary": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false tsx -r tsconfig-paths/register ./src/services/dictionary-test",
     "test:dictionary-update-shanshot": "cross-env NODE_ENV=production UPDATE_SNAPSHOT=false tsx -r tsconfig-paths/register ./src/services/dictionary-test",
     "test:pw": "playwright test",
-    "test:unit": "jest --logHeapUsage --coverage --config jest-config.json"
+    "test:unit": "jest --logHeapUsage --coverage --runInBand --config jest-config.json"
   },
   "pre-commit": [
     "sort-package-json",
