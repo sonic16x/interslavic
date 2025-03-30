@@ -92,9 +92,11 @@ jobs:
       - name: Test
         run: npm run test:unit
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
+      - name: Report
+        uses: kefasjw/lcov-pull-request-report@v1
         with:
+          lcov-file: coverage/lcov.info
+          all-files-minimum-coverage: 10
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
   pw-test:
