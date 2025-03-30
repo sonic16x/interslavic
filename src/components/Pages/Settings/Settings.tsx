@@ -134,7 +134,7 @@ export const Settings =
                 <div className="settings__isv-search-letters">
                     {
                         orthographySettings.map(([title, letters]) => (
-                            <>
+                            <div key={title}>
                                 <p>{t(title)}</p>
                                 {
                                     letters.map(([title, value, action]) => (
@@ -146,7 +146,7 @@ export const Settings =
                                         />
                                     ))
                                 }
-                            </>
+                            </div>
                         ))
                     }
                 </div>

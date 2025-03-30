@@ -594,22 +594,29 @@ class DictionaryClass {
         return item[this.headerIndexes.get(fieldName)]
     }
     public changeIsvSearchLetters(letters: string): {from: string[], to: string[]} {
+        const isvSearchLetters = {
+            from: [...this.isvSearchLetters.from],
+            to: [...this.isvSearchLetters.to],
+        }
+
         for (const letter of letters) {
             isvReplacebleLetters
                 .filter((replacement) => replacement[0] === letter)
                 .map((replacement) => {
-                    const index = this.isvSearchLetters.from.indexOf(replacement[0])
+                    const index = isvSearchLetters.from.indexOf(replacement[0])
                     if (index !== -1) {
-                        this.isvSearchLetters.from.splice(index, 1)
-                        this.isvSearchLetters.to.splice(index, 1)
+                        isvSearchLetters.from.splice(index, 1)
+                        isvSearchLetters.to.splice(index, 1)
                     } else {
-                        this.isvSearchLetters.from.push(replacement[0])
-                        this.isvSearchLetters.to.push(replacement[1])
+                        isvSearchLetters.from.push(replacement[0])
+                        isvSearchLetters.to.push(replacement[1])
                     }
                 })
         }
 
-        return this.isvSearchLetters
+        this.isvSearchLetters = isvSearchLetters
+
+        return isvSearchLetters
     }
     public setIsvSearchLetters(letters: {from: string[], to: string[]}): void {
         this.isvSearchLetters = letters
