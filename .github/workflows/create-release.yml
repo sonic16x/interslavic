@@ -18,11 +18,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Commit version update
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update package.json version
         run: |
           npm version ${{ github.event.inputs.version }} --no-git-tag-version
           git config --global user.name "GitHub Actions"
