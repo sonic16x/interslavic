@@ -43,18 +43,35 @@ jobs:
       - name: Merge PR
         if: steps.create-pr.outputs.pull-request-number != ''
         run: |
-          gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --merge --delete-branch
+          gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --merge --delete-branch --admin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
-      - name: Create release
+      - name: Verify PR merge
+        id: verify-merge
         if: steps.create-pr.outputs.pull-request-number != ''
+        run: |
+          pr_state=$(gh pr view ${{ steps.create-pr.outputs.pull-request-number }} --json state --jq '.state')
+          if [ "$pr_state" = "MERGED" ]; then
+            echo "PR successfully merged"
+            echo "pr_merged=true" >> $GITHUB_OUTPUT
+          else
+            echo "PR was not merged"
+            echo "pr_merged=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release
+        if: steps.verify-merge.outputs.pr_merged == 'true'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ github.event.inputs.version }}
           release_name: v${{ github.event.inputs.version }}
+          body: {{ github.event.inputs.description }}
           draft: false
           prerelease: false
