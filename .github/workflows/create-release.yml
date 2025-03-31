@@ -72,6 +72,6 @@ jobs:
         with:
           tag_name: v${{ github.event.inputs.version }}
           release_name: v${{ github.event.inputs.version }}
-          body: {{ github.event.inputs.description }}
+          body: ${{ github.event.inputs.description }}
           draft: false
           prerelease: false
