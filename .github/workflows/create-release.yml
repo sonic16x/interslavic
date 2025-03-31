@@ -40,6 +40,16 @@ jobs:
           labels: "automated"
           base: "master"
 
+      - name: Approve PR
+        run: |
+          gh api -X POST \
+          "repos/${{ github.repository }}/pulls/${{ steps.create-pr.outputs.pull-request-number }}/reviews" \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -f "event=APPROVE" \
+          -f "body=Automatically approved by GitHub Actions"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Merge PR
         if: steps.create-pr.outputs.pull-request-number != ''
         run: |
