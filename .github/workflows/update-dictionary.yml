@@ -20,6 +20,10 @@ jobs:
         run: |
           npm run generate-dictionary
           npm run build
+          npm run build-sw
+          npm run build-sitemap
+          npm run build-manifest
+          npm run build-cache-list
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
