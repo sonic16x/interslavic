@@ -265,7 +265,7 @@ export class Grammar extends PureComponent {
                     <Card title={titles.podrobnosti} id="podrobnosti">
                         <div className="text-start">
                             <p>
-                                Pri stvorjenju tutoj stranice jest upotrěbjeny dokument «Medžuslovjansky&nbsp;jezyk.&nbsp;Abeceda&nbsp;i&nbsp;pravopisanie»&nbsp;(Januar&nbsp;2018):&nbsp;
+                                Pri stvorjenju tutoj stranice jest upotrěbjeny dokument «Medžuslovjansky jezyk. Abeceda i pravopisanie» (Januar 2018):&nbsp;
                                 <Link
                                     external
                                     href="https://interslavic-language.org/doc/ns-pregled.pdf"
