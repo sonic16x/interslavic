@@ -3,8 +3,10 @@
   height: 100%;
   font-size: var(--text-m);
 
-  p {
-    padding: 5px 0;
+  &__common {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   a {

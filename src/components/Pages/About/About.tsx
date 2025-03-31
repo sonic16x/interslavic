@@ -15,7 +15,7 @@ export const About =
         const [isCom, setIsCom] = useState(false)
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId)
         const email = 'cherebedov.sergey@gmail.com'
-        const source = 'http://steen.free.fr/interslavic'
+        const source = 'https://steen.free.fr/interslavic'
         const version = [__VERSION__, __PR_NUMBER__].filter((item) => item && item.length).join('-')
 
         useEffect(() => {
@@ -30,41 +30,48 @@ export const About =
                     <h4>{t('aboutSmallTitle')}</h4>
                     <div className="about-page__common">
                         <p>{t('aboutInterslavic')}</p>
-                        {t('aboutUsingFrom')} <a target="_blank" rel="noreferrer" href={source}>{source}</a>.
+                        <p>
+                            {t('isoCodeText')}&nbsp;
+                            <Link
+                                title="ISO 639-3 [isv]"
+                                href="https://iso639-3.sil.org/code/isv/"
+                                external
+                            >
+                                isv (ISO 639-3)
+                            </Link>
+                        </p>
+                        {t('aboutUsingFrom')} <Link external href={source}>{source}</Link>
                         <hr/>
                         <p>{t('aboutJoinText')}</p>
-                        <a target="_blank" rel="noreferrer" href={worksheetUrl}>{t('aboutTranslationsTable')}</a>
+                        <Link external href={worksheetUrl}>{t('aboutTranslationsTable')}</Link>
                         <hr/>
                         <i>{t('nonCommercialDisclaimer')}</i>
                         <hr/>
                         <h6>{t('aboutDeveloper')}</h6>
                         <div className="about-page__author">
                             {t('aboutAuthorSergeyCherebedov')}:
-                            <a target="_blank" rel="noreferrer" href="https://github.com/sonic16x">GitHub</a>
+                            <Link external href="https://github.com/sonic16x">GitHub</Link>
                             {isCom && (
-                                <a target="_blank" rel="noreferrer"
-                                    href="https://www.linkedin.com/in/scherebedov/">LinkedIn</a>
+                                <Link external href="https://www.linkedin.com/in/scherebedov/">LinkedIn</Link>
                             )}
                             {isCom && (
                                 <Link
                                     href="https://www.facebook.com/profile.php?id=100009366550621"
-                                    target="_blank"
-                                    rel="noreferrer"
+                                    external
                                 >
                                     Facebook
                                 </Link>
                             )}
-                            <a target="_blank" rel="noreferrer" href={`email:${email}`}>{email}</a>
+                            <Link external href={`email:${email}`}>{email}</Link>
                         </div>
                         <h6>{t('aboutDeveloperCoauthors')}</h6>
                         <div className="about-page__author">
                             {t('aboutAuthorDenisShabalin')}:
-                            <a target="_blank" rel="noreferrer" href="https://github.com/ru-danko">GitHub</a>
+                            <Link external href="https://github.com/ru-danko">GitHub</Link>
                             {isCom && (
                                 <Link
                                     href="https://www.facebook.com/d.y.shabalin"
-                                    target="_blank"
-                                    rel="noreferrer"
+                                    external
                                 >
                                     Facebook
                                 </Link>
@@ -72,15 +79,15 @@ export const About =
                         </div>
                         <div className="about-page__author">
                             {t('aboutAuthorJaroslavSerhieiev')}:
-                            <a target="_blank" rel="noreferrer" href="https://github.com/noomorph">GitHub</a>
-                            <a target="_blank" rel="noreferrer" href="email:noomorph@gmail.com">noomorph@gmail.com</a>
+                            <Link external href="https://github.com/noomorph">GitHub</Link>
+                            <Link external href="email:noomorph@gmail.com">noomorph@gmail.com</Link>
                         </div>
                         <h6>{t('aboutTranslators')}</h6>
                         <div className="about-page__author">
                             {t('aboutTranslatorsText')}
                         </div>
                         <hr/>
-                        {t('aboutSourceCode')} <a target="_blank" rel="noreferrer" href={REP_LINK}>{REP_LINK}</a>
+                        {t('aboutSourceCode')} <Link external href={REP_LINK}>{REP_LINK}</Link>
                         <hr/>
                         <h6>{t('aboutOurFriends')}</h6>
                         <div className="about-page__community-links">
@@ -88,38 +95,41 @@ export const About =
                                 <Link
                                     title="Interslavic Facebook"
                                     href="https://www.facebook.com/groups/interslavic"
-                                    target="_blank"
-                                    rel="noreferrer"
+                                    external
                                 >
                                     Facebook community
                                 </Link>
                             )}
                             {isCom && (
-                                <a
+                                <Link
                                     title="Interslavic Discord"
                                     href="https://discord.com/invite/n3saqm27QW"
-                                    target="_blank"
-                                    rel="noreferrer"
+                                    external
                                 >
                                     Discord server
-                                </a>
+                                </Link>
                             )}
-                            <a
+                            <Link
                                 title="Interslavic Language Portal"
-                                href="http://interslavic-language.org/"
-                                target="_blank"
-                                rel="noreferrer"
+                                href="https://interslavic-language.org/"
+                                external
                             >
                                 interslavic-language.org
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 title="Interslavic journal"
-                                href="http://slovjani.info/"
-                                target="_blank"
-                                rel="noreferrer"
+                                href="https://slovjani.info/"
+                                external
                             >
                                 slovjani.info
-                            </a>
+                            </Link>
+                            <Link
+                                title="interslavic.fun"
+                                href="https://interslavic.fun/"
+                                external
+                            >
+                                interslavic.fun
+                            </Link>
                         </div>
                         <hr/>
                     </div>

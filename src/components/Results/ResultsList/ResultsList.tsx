@@ -18,7 +18,7 @@ import {
 } from 'hooks'
 import { getTablePublicUrl, isScrollBarVisible } from 'utils'
 
-import { ResultsCard, ResultsEmpty } from 'components'
+import { Link, ResultsCard, ResultsEmpty } from 'components'
 
 import './ResultsList.scss'
 
@@ -77,7 +77,9 @@ export const ResultsList =
                     <div className="results-list__message-for-users">
                         {t('notVerifiedText').replace('part%', `${translatedPart}%`)}
                         {' '}
-                        <a target="_blank" href={worksheetUrl} rel="noreferrer">{t('notVerifiedTableLinkText')}</a>
+                        <Link external href={worksheetUrl}>
+                            {t('notVerifiedTableLinkText')}
+                        </Link>
                     </div>
                 )}
             </div>
