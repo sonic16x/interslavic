@@ -5,6 +5,9 @@ on:
       - master
 jobs:
   setup:
+    if: |
+      !contains(github.event.pull_request.title, '[skip ci]') &&
+      !contains(github.event.head_commit.message, '[skip ci]')
     name: Setup (Install Dependencies)
     runs-on: ubuntu-latest
     steps:
