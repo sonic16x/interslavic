@@ -5,9 +5,11 @@ import './Link.scss'
 interface ILinkProps {
     href: string;
     title?: string;
-    target?: string;
+    id?: string;
+    external?: boolean;
     rel?: string;
     className?: string;
+    onClick?: (e: any) => void;
     children?: any;
 }
 
@@ -15,9 +17,10 @@ export const Link = (
     {
         href,
         title,
-        target,
-        rel,
+        id,
+        external = false,
         className,
+        onClick,
         children,
     }: ILinkProps,
 ) => {
@@ -28,8 +31,10 @@ export const Link = (
             className={clsName}
             href={href}
             title={title}
-            target={target}
-            rel={rel}
+            onClick={onClick}
+            id={id}
+            target={external ? '_blank' : '_self'}
+            rel={external ? 'noreferrer' : ''}
         >
             {children}
         </a>

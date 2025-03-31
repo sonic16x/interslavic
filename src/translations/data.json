@@ -224,6 +224,21 @@
     "mk": "Впиши збор",
     "bg": "Въведи дума"
   },
+  "isoCodeText": {
+    "en": "International language code:",
+    "isv": "Medžunarodny kod jezyka:",
+    "ru": "Международный код языка:",
+    "uk": "Міжнародний код мови:",
+    "be": "Міжнародны код мовы:",
+    "pl": "Międzynarodowy kod języka:",
+    "cs": "Mezinárodní jazykový kód:",
+    "sk": "Medzinárodný jazykový kód:",
+    "sl": "Mednarodna jezikovna koda:",
+    "hr": "Međunarodni jezični kod:",
+    "sr": "Међународни код језика:",
+    "mk": "Меѓународен јазичен код",
+    "bg": "Международен езиков код"
+  },
   "searchTypeBegin": {
     "en": "Begin",
     "isv": "Počętok",

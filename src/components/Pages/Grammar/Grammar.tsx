@@ -2,7 +2,7 @@ import { createRef, PureComponent } from 'react'
 
 import { getCaseTips } from 'utils'
 
-import { Card, Text } from 'components'
+import { Card, Link, Text } from 'components'
 import { Table } from 'components/Table'
 
 import './Grammar.scss'
@@ -62,7 +62,7 @@ export class Grammar extends PureComponent {
                     <br/>
                     <Card title="Sodržanje" id="content" className="grammar__content">
                         {Object.keys(titles).map((id) => (
-                            <a
+                            <Link
                                 className="list-group-item link"
                                 key={id}
                                 id={this.getLinkId(id)}
@@ -70,7 +70,7 @@ export class Grammar extends PureComponent {
                                 href={`#${id}`}
                             >
                                 {titles[id]}
-                            </a>
+                            </Link>
                         ))}
                     </Card>
                     <Card title={titles.abeceda} id="abeceda">
@@ -263,23 +263,34 @@ export class Grammar extends PureComponent {
                         </Text>
                     </Card>
                     <Card title={titles.podrobnosti} id="podrobnosti">
-                        <Text>
-                            {'Pri stvorjenju tutoj stranice jest upotrěbjeny dokument «Medžuslovjansky jezyk. Abeceda i pravopisanie» (Januar 2018): <a href="http://interslavic-language.org/doc/ns-pregled.pdf" target="_blank">[PDF]</a>'}
-                        </Text>
-                        <Text>
-                            {'Podrobne pravila pravopisanja je možno najdti na oficialnyh sajtah:'}
-                        </Text>
-                        <Text>
-                            {'● <a href="http://www.neoslavonic.org" target="_blank">http://www.neoslavonic.org</a>'}
-                        </Text>
-                        <Text>
-                            {'● <a href="http://steen.free.fr/interslavic/grammar.html" target="_blank">http://steen.free.fr/interslavic/grammar.html</a>'}
-                        </Text>
+                        <div className="text-start">
+                            <p>
+                                Pri stvorjenju tutoj stranice jest upotrěbjeny dokument «Medžuslovjansky&nbsp;jezyk.&nbsp;Abeceda&nbsp;i&nbsp;pravopisanie»&nbsp;(Januar&nbsp;2018):&nbsp;
+                                <Link
+                                    external
+                                    href="https://interslavic-language.org/doc/ns-pregled.pdf"
+                                    className="inline"
+                                >
+                                    [PDF]
+                                </Link>
+                            </p>
+                            <p>
+                                Podrobne pravila pravopisanja je možno najdti na oficialnyh sajtah:&nbsp;
+                                <Link
+                                    external
+                                    href="http://steen.free.fr/interslavic/grammar.html"
+                                    className="inline"
+                                >
+                                    steen.free.fr/interslavic/grammar.html
+                                </Link>
+                            </p>
+                        </div>
                     </Card>
                 </div>
             </div>
         )
     }
+
     private onWheel() {
         this.userEvent = true
     }
@@ -309,7 +320,7 @@ export class Grammar extends PureComponent {
             }
         }
     }
-    private getLinkId(id) {
+    private getLinkId(id: string): string {
         return `link_${id}`
     }
 }
