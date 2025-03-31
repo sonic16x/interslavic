@@ -54,8 +54,7 @@ function getInitialState(): IMainState {
     let state = defaultState
     try {
         const savedState = JSON.parse(localStorage.getItem('reduxState')) || {}
-
-        if (savedState.lang.from !== ISV && savedState.lang.to !== ISV) {
+        if (savedState.lang && savedState.lang.from !== ISV && savedState.lang.to !== ISV) {
             savedState.lang = {
                 from: EN,
                 to: ISV,

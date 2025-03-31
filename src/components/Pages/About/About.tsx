@@ -15,7 +15,7 @@ export const About =
         const [isCom, setIsCom] = useState(false)
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId)
         const email = 'cherebedov.sergey@gmail.com'
-        const source = 'https://steen.free.fr/interslavic'
+        const source = 'http://steen.free.fr/interslavic'
         const version = [__VERSION__, __PR_NUMBER__].filter((item) => item && item.length).join('-')
 
         useEffect(() => {

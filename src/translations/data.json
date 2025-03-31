@@ -209,7 +209,21 @@
     "mk": "За програмот",
     "bg": "За приложението"
   },
-
+  "typeWordLabel": {
+    "en": "Type word here",
+    "isv": "Vpiši slovo",
+    "ru": "Введите слово",
+    "uk": "Введіть слово",
+    "be": "Увядзіце слова",
+    "pl": "Tu wpisz słowo",
+    "cs": "Zadej slovo",
+    "sk": "Zadaj slovo",
+    "sl": "Tu vpiši besedo",
+    "hr": "Unesi riječ ovdje",
+    "sr": "Упиши реч овде",
+    "mk": "Впиши збор",
+    "bg": "Въведи дума"
+  },
   "isoCodeText": {
     "en": "International language code:",
     "isv": "Medžunarodny kod jezyka:",
