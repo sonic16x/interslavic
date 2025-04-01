@@ -15,13 +15,14 @@ export function validateData(data) {
     const translatedWordIsOk = typeof data.translatedWord === 'string' && data.translatedWord.length > 0
     const langIsOk = validateLang(data.lang)
 
-    return captchaTokenIsOk &&
-        clientIdIsOk &&
-        errorTypeIsOk &&
-        textIsOk &&
-        wordIdIsOk &&
-        isvWord &&
-        translatedWordIsOk &&
+    return [
+        captchaTokenIsOk,
+        clientIdIsOk,
+        errorTypeIsOk,
+        textIsOk,
+        wordIdIsOk,
+        isvWord,
+        translatedWordIsOk,
         langIsOk
-    
+    ].every(Boolean)
 }
