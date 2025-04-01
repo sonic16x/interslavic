@@ -3,7 +3,6 @@ import { defineConfig } from 'vite'
 import { version } from './package.json'
 import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
-import compression from 'vite-plugin-compression'
 import svgr from 'vite-plugin-svgr'
 
 export const commonConfig = {
@@ -37,27 +36,13 @@ export default defineConfig({
         }),
         visualizer({
             filename: 'report.html',
-            brotliSize: true,
-        }),
-        compression({
-            algorithm: 'brotliCompress',
-            ext: '.br',
-            threshold: 1024,
-            compressionOptions: { level: 11 },
-            verbose: true,
-        }),
-        compression({
-            algorithm: 'gzip',
-            ext: '.gz',
-            threshold: 1024,
-            verbose: true,
+            gzipSize: true,
         }),
     ],
     optimizeDeps: {
         include: ['react', 'react-dom'],
     },
     build: {
-        reportCompressedSize: false,
         outDir: 'dist',
         rollupOptions: {
             output: {

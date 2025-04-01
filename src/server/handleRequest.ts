@@ -12,13 +12,13 @@ export async function handleRequest(request, env) {
         return handleOptions(request)
     }
 
-    const data = await request.json()
     const { pathname } = new URL(request.url)
 
     if (!pathname.startsWith('/api/word-error')) {
         return responseError('invalidPath')
     }
 
+    const data = await request.json()
     const dataIsValid = validateData(data)
 
     if (!dataIsValid) {
