@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { captchaSiteKey, wordErrorsTypes, wordErrorTextMaxLength } from 'consts'
+import { captchaSiteKey, DOMAIN, wordErrorsTypes, wordErrorTextMaxLength } from 'consts'
 
 import { t } from 'translations'
 
@@ -119,7 +119,7 @@ export const WordErrorModal = () => {
                 body: JSON.stringify(bodyData),
             }
 
-            fetch('https://interslavic-dictionary.com/api/word-error', fetchOptions)
+            fetch(`https://${DOMAIN}/api/word-error`, fetchOptions)
                 .then((res) => {
                     if (res.status !== 200) {
                         return Promise.reject(res.status)

@@ -1,3 +1,4 @@
+export const DOMAIN = 'interslavic-dictionary.com'
 export const alphabetTypes = [
     {
         name: 'latin',
