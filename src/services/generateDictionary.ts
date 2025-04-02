@@ -70,7 +70,7 @@ loadTablesData().then(async ({ data, columns }) => {
         searchIndex: searchIndexBasic,
     })
 
-    changed = currentData.get('basic') === jsonDataStr
+    changed = currentData.get('basic') !== jsonDataStr
 
     if (!fs.existsSync('./static/data')) {
         fs.mkdirSync('./static/data')
@@ -94,7 +94,7 @@ loadTablesData().then(async ({ data, columns }) => {
             searchIndex: { [lang]: searchIndex[lang] },
         })
 
-        changed = currentData.get(lang) === jsonDataStr
+        changed = currentData.get(lang) !== jsonDataStr
 
         logSize(`${lang}.json`, jsonDataStr)
 
