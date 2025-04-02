@@ -32,11 +32,13 @@ jobs:
           echo "$OUTPUT"
           if echo "$OUTPUT" | grep -q "DATA_NO_CHANGED"; then
             echo "Data has not changed. Stopping workflow."
+            echo "NO_CHANGES=true" >> $GITHUB_ENV
             exit 0
           fi
         shell: bash
 
       - name: Build
+        if: env.NO_CHANGES != 'true'
         run: |
           npm run build
           npm run build-sw
@@ -45,6 +47,7 @@ jobs:
           npm run build-cache-list
 
       - name: Publish to Cloudflare Pages
+        if: env.NO_CHANGES != 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_AUTH_TOKEN }}
@@ -52,6 +55,7 @@ jobs:
           command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=main
 
       - name: Purge cache on Cloudflare
+        if: env.NO_CHANGES != 'true'
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
