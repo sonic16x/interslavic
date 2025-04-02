@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-import { ADD_LANGS, EN, initialAddFields, initialFields, ISV, ISV_SRC, LANGS } from 'consts'
+import { ADD_LANGS, DOMAIN, EN, initialAddFields, initialFields, ISV, ISV_SRC, LANGS } from 'consts'
 
 import { Dictionary, loadTablesData } from 'services'
 
@@ -20,7 +20,7 @@ async function loadCurrentData() {
             'basic',
             ...ADD_LANGS,
         ].map((item) => (
-            fetch(`https://interslavic-dictionary.com/data/${item}.json`)
+            fetch(`https://${DOMAIN}/data/${item}.json`)
                 .then((res) => res.text())
                 .then((dataStr: string) => [item, dataStr])
         ))
@@ -94,7 +94,9 @@ loadTablesData().then(async ({ data, columns }) => {
             searchIndex: { [lang]: searchIndex[lang] },
         })
 
-        changed = currentData.get(lang) !== jsonDataStr
+        if (!changed) {
+            changed = currentData.get(lang) !== jsonDataStr
+        }
 
         logSize(`${lang}.json`, jsonDataStr)
 

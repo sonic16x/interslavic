@@ -32,7 +32,7 @@ jobs:
           echo "$OUTPUT"
           if echo "$OUTPUT" | grep -q "DATA_NO_CHANGED"; then
             echo "Data has not changed. Stopping workflow."
-            exit 1
+            exit 0
           fi
         shell: bash
 
