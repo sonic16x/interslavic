@@ -94,7 +94,7 @@ loadTablesData().then(async ({ data, columns }) => {
             searchIndex: { [lang]: searchIndex[lang] },
         })
 
-        changed = currentData.get('basic') === jsonDataStr
+        changed = currentData.get(lang) === jsonDataStr
 
         logSize(`${lang}.json`, jsonDataStr)
 
