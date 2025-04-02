@@ -14,7 +14,27 @@ function logSize(name:string, data: string) {
     console.info(`${name} g-zip size: ${sizeMB.toFixed(2)} MB`)
 }
 
-loadTablesData().then(({ data, columns }) => {
+async function loadCurrentData() {
+    const allData = await Promise.all(
+        [
+            'basic',
+            ...ADD_LANGS,
+        ].map((item) => (
+            fetch(`https://interslavic-dictionary.com/data/${item}.json`)
+                .then((res) => res.text())
+                .then((dataStr: string) => [item, dataStr])
+        ))
+    )
+
+    return new Map(allData as unknown as [string, string][])
+}
+
+loadTablesData().then(async ({ data, columns }) => {
+    const detectChanges = process.argv.includes('detect-changes')
+
+    const currentData = detectChanges ? await loadCurrentData() : new Map()
+    let changed = false
+
     const sortedColumns = sortColumns(columns, EN)
     Dictionary.init(data)
 
@@ -50,6 +70,8 @@ loadTablesData().then(({ data, columns }) => {
         searchIndex: searchIndexBasic,
     })
 
+    changed = currentData.get('basic') === jsonDataStr
+
     if (!fs.existsSync('./static/data')) {
         fs.mkdirSync('./static/data')
     }
@@ -72,8 +94,15 @@ loadTablesData().then(({ data, columns }) => {
             searchIndex: { [lang]: searchIndex[lang] },
         })
 
+        changed = currentData.get('basic') === jsonDataStr
+
         logSize(`${lang}.json`, jsonDataStr)
 
         fs.writeFileSync(`./static/data/${lang}.json`, jsonDataStr)
     })
+
+    if (detectChanges && !changed) {
+        // eslint-disable-next-line no-console
+        console.info('DATA_NO_CHANGED')
+    }
 })

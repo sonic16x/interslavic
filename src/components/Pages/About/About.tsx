@@ -133,7 +133,10 @@ export const About =
                         </div>
                         <hr/>
                     </div>
-                    <div className="about-page__release-date">v{version}</div>
+                    <div className="about-page__release-date">
+                        <p>v{version}</p>
+                        <p>{__DICTIONARY_UPDATE_TIME}</p>
+                    </div>
                 </div>
             </div>
         )

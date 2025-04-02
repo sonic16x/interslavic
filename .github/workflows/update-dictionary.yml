@@ -7,18 +7,29 @@ jobs:
   update-dictionary:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-          ref: master
+      - name: Checkout latest tag in master
+        run: |
+          git fetch --tags --force
+          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          git checkout $latest_tag
+        shell: bash
 
       - name: NPM install
         run: npm ci
 
+      - name: Generate dictionary and detect changes
+        id: check_data
+        run: |
+          OUTPUT=$(npm run generate-dictionary -- detect-changes)
+          echo "$OUTPUT"
+          if echo "$OUTPUT" | grep -q "DATA_NO_CHANGED"; then
+            echo "Data has not changed. Stopping workflow."
+            exit 1
+          fi
+        shell: bash
+
       - name: Build
         run: |
-          npm run generate-dictionary
           npm run build
           npm run build-sw
           npm run build-sitemap

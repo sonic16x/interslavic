@@ -10,6 +10,7 @@ export const commonConfig = {
         __VERSION__: JSON.stringify(version),
         __PR_NUMBER__: JSON.stringify(process.env.PR_NUMBER),
         __PRODUCTION__: JSON.stringify(process.env.NODE_ENV === 'development'),
+        __DICTIONARY_UPDATE_TIME: JSON.stringify(new Date().toUTCString()),
     },
     resolve: {
         alias: {
