@@ -13,6 +13,7 @@ declare global {
     const __PRODUCTION__: boolean
     const __VERSION__: string
     const __PR_NUMBER__: string
+    const __DICTIONARY_UPDATE_TIME: string
     // eslint-disable-next-line
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION__: any;
