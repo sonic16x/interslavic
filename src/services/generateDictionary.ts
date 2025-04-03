@@ -6,12 +6,15 @@ import { Dictionary, loadTablesData } from 'services'
 
 import { getColumnName, sortColumns, transposeMatrix } from 'utils'
 
+import { sync as brotliSizeSync } from 'brotli-size'
 import { gzipSizeSync } from 'gzip-size'
 
 function logSize(name:string, data: string) {
-    const sizeMB = gzipSizeSync(data) / 1000000
+    const sizeGz = gzipSizeSync(data) / 1000000
+    const sizeBr = brotliSizeSync(data) / 1000000
+
     // eslint-disable-next-line no-console
-    console.info(`${name} g-zip size: ${sizeMB.toFixed(2)} MB`)
+    console.info(`${name} gz / br size: ${sizeGz.toFixed(2)} / ${sizeBr.toFixed(2)} MB`)
 }
 
 async function loadCurrentData() {
