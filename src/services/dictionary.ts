@@ -153,6 +153,15 @@ export interface ITranslateResult {
     new?: boolean;
     intelligibility?: string;
     remove?: boolean;
+    /**
+     * 1 - universally intelligible
+     * 2 - predominantly intelligible
+     * 3 - regionally intelligible
+     * 4 - Church Slavonic
+     * 5 - neologism
+     * 9 - doubtful
+     */
+    type?: number;
 }
 
 export type WordList = string[][]
@@ -559,6 +568,7 @@ class DictionaryClass {
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
+                type: Number(this.getField(item, 'type') || '2'),
                 raw: item,
                 new: id.startsWith('-'),
                 intelligibility: this.getField(item, 'intelligibility'),
