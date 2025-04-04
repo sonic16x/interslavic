@@ -10,6 +10,6 @@ const cacheList = [
     ...assets.map((item) => `/assets/${item}`),
     ...icons.map((item) => `/icons/${item}`),
     ...data.map((item) => `/data/${item}`),
-]
+].filter((item) => !item.endsWith('.br') && !item.endsWith('.gz'))
 
 fs.writeFileSync('./dist/cacheList.json', JSON.stringify(cacheList))
