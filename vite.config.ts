@@ -43,8 +43,14 @@ export default defineConfig({
         compression({
             algorithm: 'brotliCompress',
             ext: '.br',
-            threshold: 1024,
+            threshold: 1,
             compressionOptions: { level: 11 },
+            verbose: true,
+        }),
+        compression({
+            algorithm: 'gzip',
+            ext: '.gz',
+            threshold: 1,
             verbose: true,
         }),
     ],
