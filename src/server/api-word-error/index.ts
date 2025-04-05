@@ -1,1 +1,1 @@
-export { handleRequestApiWordError } from './handleRequestApiWordError'
+export { handleApiWordError } from './handleApiWordError'

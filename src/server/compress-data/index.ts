@@ -1,1 +1,1 @@
-export { handleRequestCompress } from './handleRequestCompress'
+export { handleCompress } from './handleCompress'

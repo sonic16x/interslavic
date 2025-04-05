@@ -1,8 +1,10 @@
-export async function handleRequestCompress(request: Request) {
+import { DOMAIN } from 'consts'
+
+export async function handleCompress(request: Request) {
     const { pathname } = new URL(request.url)
 
     const acceptEncoding = request.headers.get('Accept-Encoding') || '' // gzip, deflate, br, zstd
-    let dataUrl = `https://interslavic-dictionary.com${pathname}`
+    let dataUrl = `https://${DOMAIN}${pathname}`
     let encoding = ''
 
     if (acceptEncoding.includes('br')) {

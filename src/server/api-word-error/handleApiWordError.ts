@@ -7,7 +7,7 @@ import { getTableHeader } from './getTableHeader'
 import { googleAuth } from './googleAuth'
 import { validateData } from './validateData'
 
-export async function handleRequestApiWordError(request: Request, env) {
+export async function handleApiWordError(request: Request, env) {
     const data = await request.json()
     const dataIsValid = validateData(data)
 
