@@ -1,0 +1,1 @@
+export { handleRequestCompress } from './handleRequestCompress'
