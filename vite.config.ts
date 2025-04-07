@@ -67,6 +67,9 @@ export default defineConfig({
                         if (id.includes('react-dom')) return 'react-dom'
                     }
                 },
+                entryFileNames: 'assets/[name].js',
+                chunkFileNames: 'assets/[name].js',
+                assetFileNames: 'assets/[name].[ext]',
             },
         },
     },
