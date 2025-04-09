@@ -80,7 +80,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             })
 
-            if (__PRODUCTION__) {
+            if (!__PRODUCTION__) {
                 // eslint-disable-next-line no-console
                 console.info('TRANSLATE', `${translateTime}ms`)
             }
@@ -110,7 +110,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             })
 
-            if (__PRODUCTION__) {
+            if (!__PRODUCTION__) {
                 // eslint-disable-next-line no-console
                 console.info('TRANSLATE', `${translateTime}ms`)
             }
@@ -140,7 +140,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             })
 
-            if (__PRODUCTION__) {
+            if (!__PRODUCTION__) {
                 // eslint-disable-next-line no-console
                 console.info('TRANSLATE', `${translateTime}ms`)
             }
@@ -169,7 +169,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             })
 
-            if (__PRODUCTION__) {
+            if (!__PRODUCTION__) {
                 // eslint-disable-next-line no-console
                 console.info('TRANSLATE', `${translateTime}ms`)
             }
@@ -198,7 +198,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             })
 
-            if (__PRODUCTION__) {
+            if (!__PRODUCTION__) {
                 // eslint-disable-next-line no-console
                 console.info('TRANSLATE', `${translateTime}ms`)
             }
@@ -229,7 +229,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType,
             })
 
-            if (__PRODUCTION__) {
+            if (!__PRODUCTION__) {
                 // eslint-disable-next-line no-console
                 console.info('TRANSLATE', `${translateTime}ms`)
             }
@@ -259,7 +259,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 flavorisationType: data,
             })
 
-            if (__PRODUCTION__) {
+            if (!__PRODUCTION__) {
                 // eslint-disable-next-line no-console
                 console.info('TRANSLATE', `${translateTime}ms`)
             }
@@ -287,7 +287,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 posFilter: data,
             })
 
-            if (__PRODUCTION__) {
+            if (!__PRODUCTION__) {
                 // eslint-disable-next-line no-console
                 console.info('TRANSLATE', `${translateTime}ms`)
             }

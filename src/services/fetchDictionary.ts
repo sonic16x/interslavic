@@ -54,7 +54,7 @@ export async function fetchDictionary(langList: string[]) {
 
     const fidTime = Math.round(performance.now() - startFidTime)
 
-    if (__PRODUCTION__) {
+    if (!__PRODUCTION__) {
         // eslint-disable-next-line no-console
         console.info('FID', `${fidTime}ms`)
         // eslint-disable-next-line no-console

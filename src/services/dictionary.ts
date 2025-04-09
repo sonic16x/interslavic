@@ -529,7 +529,7 @@ class DictionaryClass {
 
         const translateTime = Math.round(performance.now() - startTranslateTime)
 
-        if (__PRODUCTION__ && showTime) {
+        if (!__PRODUCTION__ && showTime) {
             // eslint-disable-next-line no-console
             console.log('TRANSLATE', `${translateTime}ms`)
         }
