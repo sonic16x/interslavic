@@ -5,3 +5,4 @@ declare module '*.svg' {
 }
 
 declare const Az: any
+declare const H: any
