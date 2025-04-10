@@ -22,19 +22,6 @@ declare global {
 
 setInitialPage()
 
-
-if (__PRODUCTION__) {
-    H.init('jd40j34g', {
-        environment: 'production',
-        version: `v${__VERSION__}`,
-        networkRecording: {
-            enabled: false,
-            recordHeadersAndBody: false,
-            urlBlocklist: [],
-        },
-    })
-}
-
 if (__PRODUCTION__ && 'serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js', { scope: '.' })
 }
