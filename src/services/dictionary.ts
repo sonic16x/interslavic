@@ -32,6 +32,7 @@ import {
     conjugationVerbFlat,
     declensionAdjectiveFlat,
     declensionNounFlat,
+    declensionNounSimple,
     declensionNumeralFlat,
     declensionPronounFlat,
 } from '@interslavic/utils'
@@ -129,6 +130,58 @@ function getWordForms(item): string[] {
             item,
         ]
     }, [])))
+}
+
+/**
+ * Caused by use of fleeting vowels ė and ȯ in masculine nouns.
+ */
+function getAdditionFormFallback(item): string | undefined {
+    const add = Dictionary.getField(item, 'addition')
+    if (add) {
+        return add
+    }
+
+    const details = Dictionary.getField(item, 'partOfSpeech')
+    const pos = getPartOfSpeech(details)
+    if (pos !== 'noun') {
+        return
+    }
+
+    const gender = getGender(details)
+    if (gender === 'neuter') {
+        return
+    }
+
+    if (isPlural(details)) {
+        return
+    }
+
+    const [word, word2] = removeExclamationMark(Dictionary.getField(item, 'isv')).split(',')
+    if (word2) {
+        return
+    }
+
+    const paradigms = gender === 'masculineOrFeminine' ? [
+        declensionNounSimple(word, details, undefined, 'masculine'),
+        declensionNounSimple(word, details, undefined, 'feminine'),
+    ] : [
+        declensionNounSimple(word, details)
+    ]
+
+    for (const result of paradigms) {
+        if (!result) continue
+
+        const { nom: [nom], gen: [gen] } = result
+        if (nom && gen) {
+            const nom1 = nom.slice(0, -1)
+            const gen1 = gen.slice(0, nom1.length)
+            if (nom1 !== gen1) {
+                return `(${gen})`
+            }
+        }
+    }
+
+    return
 }
 
 export interface ITranslateResult {
@@ -553,7 +606,13 @@ class DictionaryClass {
             )
 
             const id = this.getField(item, 'id')
-            const addArray = this.getField(item, 'addition').match(/\(.+?\)/) || []
+            const addArray: string[] = this.getField(item, 'addition').match(/\(.+?\)/) || []
+            if (addArray.length === 0) {
+                const addFallback = getAdditionFormFallback(item)
+                if (addFallback) {
+                    addArray.push(addFallback)
+                }
+            }
             const add = addArray.find((elem) => !elem.startsWith('(+')) || ''
             let caseInfo = convertCases(addArray.find((elem) => elem.startsWith('(+'))?.slice(1, -1) || '')
             if(caseInfo && caseQuestions) {
