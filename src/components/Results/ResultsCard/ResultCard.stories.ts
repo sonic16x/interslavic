@@ -88,11 +88,19 @@ const isvEnItemMock = {
     'caseInfoCyr': ''
 }
 
+const alphabets = {
+    latin: true,
+    cyrillic: true,
+    glagolitic: false,
+}
+
 export const EnIsv: Story = {
     args: {
         item: enIsvItemMock,
         short: false,
         index: 0,
+        alphabets,
+        caseQuestions: true,
     },
 }
 
@@ -102,6 +110,8 @@ export const IsvEn: Story = {
         item: isvEnItemMock,
         short: false,
         index: 0,
+        alphabets,
+        caseQuestions: true,
     },
 }
 
@@ -113,6 +123,8 @@ export const NotVerified: Story = {
         },
         short: false,
         index: 0,
+        alphabets,
+        caseQuestions: true,
     },
 }
 
@@ -121,6 +133,8 @@ export const Short: Story = {
         item: isvEnItemMock,
         short: true,
         index: 0,
+        alphabets,
+        caseQuestions: true,
     },
 }
 
@@ -132,5 +146,7 @@ export const ShortNotVerified: Story = {
         },
         short: true,
         index: 0,
+        alphabets,
+        caseQuestions: true,
     },
 }
