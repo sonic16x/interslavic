@@ -4,9 +4,10 @@ import { useDispatch } from 'react-redux'
 
 import { t } from 'translations'
 
-import { fromTextAction, setSearchExpand } from 'actions'
+import { fromTextAction, langAction, setSearchExpand } from 'actions'
 
 import {
+    useDictionaryLanguages,
     useFromText,
     useLang,
     useSearchExpanded,
@@ -16,12 +17,12 @@ import { toBCP47 } from 'utils'
 
 import {
     Expand,
-    FlavorisationSelector,
     InputText,
     LangSelector,
     POSSelector,
     SearchTypeSelector,
 } from 'components'
+import { FlavorisationSelector } from 'components/FlavorisationSelector'
 
 import './Controls.scss'
 
@@ -36,6 +37,7 @@ export const Controls =
         const short = useShortCardView()
 
         const lang = useLang()
+        const langs = ['en', ...useDictionaryLanguages()]
         const fromText = useFromText()
         const spellCheck = lang.from !== 'isv'
         const searchLanguage = toBCP47(lang.from)
@@ -46,11 +48,20 @@ export const Controls =
 
         const onChangeExpand = () => dispatch(setSearchExpand(!expand))
 
+        const onLangChange = useCallback((newLang) => {
+            dispatch(langAction(newLang))
+        }, [dispatch])
+
+
         return (
             <div
                 className={classNames('controls', { short })}
             >
-                <LangSelector/>
+                <LangSelector
+                    lang={lang}
+                    langs={langs}
+                    onChange={onLangChange}
+                />
                 <InputText
                     testId="search-input"
                     size="L"
