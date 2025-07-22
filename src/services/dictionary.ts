@@ -25,7 +25,7 @@ import {
     removeBrackets,
     removeExclamationMark,
     searchStrategies,
-    srGajevicaToVukovica,
+    transliterateToLanguage,
 } from 'utils'
 
 import {
@@ -695,11 +695,8 @@ class DictionaryClass {
     }
     public inputPrepare(lang: string, text: string): string {
         const preparedText = this.searchPrepare(lang, text)
-        if (lang === 'sr') {
-            return srGajevicaToVukovica(preparedText)
-        } else {
-            return preparedText
-        }
+        
+        return transliterateToLanguage(preparedText, lang)
     }
     public searchPrepare(lang: string, text: string): string {
         let lowerCaseText = text
