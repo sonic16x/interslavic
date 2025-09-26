@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /viewer
 
-Sitemap: https://interslavic-dictionary/sitemap.xml
+Sitemap: https://interslavic-dictionary.com/sitemap.xml
