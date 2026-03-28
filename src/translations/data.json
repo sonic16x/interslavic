@@ -91,7 +91,7 @@
   },
   "verified": {
     "en": "Verified",
-    "isv": "Prověreno",
+    "isv": "Prověrjeno",
     "ru": "Проверено",
     "uk": "Перевірено",
     "be": "Праверана",
@@ -211,7 +211,7 @@
   },
   "typeWordLabel": {
     "en": "Type word here",
-    "isv": "Vpiši slovo",
+    "isv": "Vpišite slovo",
     "ru": "Введите слово",
     "uk": "Введіть слово",
     "be": "Увядзіце слова",
@@ -240,7 +240,7 @@
     "bg": "Международен езиков код:"
   },
   "searchTypeBegin": {
-    "en": "Begin",
+    "en": "Starts with",
     "isv": "Počętok",
     "ru": "Начало",
     "uk": "Початок",
@@ -255,7 +255,7 @@
     "bg": "Начало"
   },
   "searchTypeEntire": {
-    "en": "Entire",
+    "en": "Exact match",
     "isv": "Cělo",
     "ru": "Целиком",
     "uk": "Повністю",
@@ -285,7 +285,7 @@
     "bg": "Край"
   },
   "searchTypeAny": {
-    "en": "Any",
+    "en": "Contains",
     "isv": "Kde-libo",
     "ru": "Где-либо",
     "uk": "Де-небудь",
@@ -346,7 +346,7 @@
   },
   "aboutJoinText": {
     "en": "Please join the work on improving word translations for your native language!",
-    "isv": "Prosimo, prijednjajte se k rabotě nad ulěpšeńjem prěvodov na vaš rodny jezyk!",
+    "isv": "Prosimo, prisjedinjajte se k rabotě nad ulěpšeńjem prěvodov na vaš rodny jezyk!",
     "ru": "Присоединяйтесь к работе над улучшением переводов слов на ваш родной язык!",
     "uk": "Запрошуємо долучитися до роботи з поліпшення перекладів слів вашою рідною мовою!",
     "be": "Далучайцеся да працы над паляпшэннем перакладаў слоў на вашу родную мову!",
@@ -541,7 +541,7 @@
   },
   "notVerifiedText": {
     "en": "Search results contain inaccurate automatic translations. Currently, part% of the words of the selected language are verified. If you speak this language, join the work on improving translations!",
-    "isv": "Rezultaty iskańja sodržajut netočne avtomatične prěvody. Sejčasno jest prověreno {part%} slov izbranogo jezyka. Ako li znajete tutoj jezyk, prijednjajte se k rabotě nad ulěpšeńjem prěvodov!",
+    "isv": "Rezultaty iskańja sodrživajut netočne avtomatične prěvody. Sejčasno jest prověrjeno {part%} slov izbranogo jezyka. Ako li znajete tutoj jezyk, prisjedinjajte se k rabotě nad ulěpšeńjem prěvodov!",
     "ru": "Результаты поиска содержат неточные автоматические переводы. На данный момент проверено part% слов выбранного языка. Если вы знаете этот язык, присоединяйтесь к работе над улучшением переводов!",
     "uk": "Результати пошуку містять неточні автоматичні переклади. Нині part% слів обраної мови є перевіреними . Якщо ви знаєте цю мову, долучайтесь до роботи з поліпшення перекладів!",
     "be": "Вынікі пошуку змяшчаюць недакладныя аўтаматычныя пераклады. На дадзены момант праверана part% слоў абранай мовы. Калі вы ведаеце гэтую мову, далучайцеся да работы над паляпшэннем перакладаў!",
@@ -556,7 +556,7 @@
   },
   "notVerifiedTableLinkText": {
     "en": "The worksheet is located at this link.",
-    "isv": "Rabotna tabela je uměščena на tutom linku.",
+    "isv": "Rabotna tabela je uměščena na tutom linku.",
     "ru": "Рабочая таблица расположена по этой ссылке.",
     "uk": "Робоча таблиця знаходиться за цим посиланням.",
     "be": "Рабочая табліца знаходзіцца па гэтай спасылцы.",
