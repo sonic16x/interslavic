@@ -42,6 +42,7 @@
     "@interslavic/utils": "3.4.0",
     "@reduxjs/toolkit": "2.6.1",
     "classnames": "2.5.1",
+    "dawgjs": "^0.1.4",
     "md5": "2.3.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",

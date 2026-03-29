@@ -2,6 +2,7 @@ import { IModalDialog } from 'reducers'
 
 export enum ActionTypes {
     LANG = 'LANG',
+    TRANSLATOR_LANG = 'TRANSLATOR_LANG',
     FROM_TEXT = 'FROM_TEXT',
     SEARCH_TYPE = 'SEARCH_TYPE',
     FLAVORISATION_TYPE = 'FLAVORISATION_TYPE',
@@ -32,6 +33,12 @@ export enum ActionTypes {
 export function langAction(data: {from: string, to: string}) {
     return {
         type: ActionTypes.LANG,
+        data,
+    }
+}
+export function translatorLangAction(data: {from: string, to: string}) {
+    return {
+        type: ActionTypes.TRANSLATOR_LANG,
         data,
     }
 }

@@ -16,7 +16,7 @@ const Viewer = lazy(() => import('components/Pages/Viewer'))
 const About = lazy(() => import('components/Pages/About'))
 const DictionaryPage = lazy(() => import('components/Pages/DictionaryPage'))
 const Settings = lazy(() => import('components/Pages/Settings'))
-
+const TranslatorPage = lazy(() => import('components/Pages/TranslatorPage'))
 
 const PageLoader = () => {
     const loading = useRef(useLoading())
@@ -50,6 +50,12 @@ function renderPageContent(page: string) {
             return (
                 <Suspense fallback={<PageLoader />}>
                     <DictionaryPage/>
+                </Suspense>
+            )
+        case 'translator':
+            return (
+                <Suspense fallback={<PageLoader />}>
+                    <TranslatorPage/>
                 </Suspense>
             )
         case 'viewer':

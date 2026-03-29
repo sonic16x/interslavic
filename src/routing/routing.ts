@@ -18,6 +18,12 @@ export const pages: IPage[] = [
         path: '/grammar',
     },
     {
+        title: 'translatorTitle',
+        value: 'translator',
+        path: '/translator',
+        subTitle: 'Beta',
+    },
+    {
         title: 'viewerTitle',
         value: 'viewer',
         path: '/viewer',
