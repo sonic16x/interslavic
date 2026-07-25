@@ -10,6 +10,7 @@ import { Dictionary, ITranslateResult } from 'services'
 import {
     useAlphabets, useCaseQuestions,
     useFromText,
+    useIntelligibilityFilter,
     useLang, useLoading,
     usePosFilter,
     useResults,
@@ -29,6 +30,7 @@ export const ResultsList =
         const worksheetUrl = getTablePublicUrl(tablesData[0].spreadsheetId, tablesData[0].sheetId)
         const results = useResults()
         const posFilter = usePosFilter()
+        const intelligibilityFilter = useIntelligibilityFilter()
         const lang = useLang()
         const containerRef = useRef<HTMLDivElement>()
         const fromText = useFromText()
@@ -45,7 +47,7 @@ export const ResultsList =
         if (!results || !results.length) {
             if (empty && !loading) {
                 return (
-                    <ResultsEmpty showReset={posFilter !== ''}/>
+                    <ResultsEmpty showReset={posFilter !== '' || intelligibilityFilter.length > 0}/>
                 )
             }
 

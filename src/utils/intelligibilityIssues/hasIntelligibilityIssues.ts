@@ -1,23 +1,26 @@
 import { ITranslateResult } from 'services'
 
-import { estimateIntelligibility, IntelligibilityVector } from './estimateIntelligibility'
+import { estimateUnintelligibility } from './estimateUnintelligibility'
 
-export function hasIntelligibilityIssues(item: ITranslateResult) {
-    const vector = estimateIntelligibility(item.intelligibility)
-    if (vector) {
-        return hasIntelligibilityIssuesInVector(vector)
-    }
+/**
+ * A word is worth a warning sign when it is not intelligible in a third
+ * of the languages it is judged by, by weight...
+ */
+export const UNINTELLIGIBILITY_RATIO = 1 / 3
 
-    return (item.type > 2 && item.type !== 5)
-}
+/**
+ * ...or when it has a problem, `-` or `~` alike, in 3 of them or more -
+ * however lightly they weigh, such a word cannot be used freely.
+ */
+export const ISSUE_COUNT_THRESHOLD = 3
 
-export function hasIntelligibilityIssuesInVector(vector: IntelligibilityVector): boolean {
-    const [western, southern, eastern] = vector
+/**
+ * Judges the word by the target languages when they are selected, and by all
+ * the Slavic languages otherwise. Words with no marks are never flagged - we
+ * simply do not know anything about them.
+ */
+export function hasIntelligibilityIssues(item: ITranslateResult, targetLangs: string[] = []): boolean {
+    const { lost, total, issues } = estimateUnintelligibility(item.intelligibility, targetLangs)
 
-    const isolatedToEasternGroup = (western + southern) === 0
-    const isolatedToWesternGroup = (southern + eastern) === 0
-    const isolatedToSouthernGroup = (western + eastern) === 0
-    const lowIntelligibility = (western + southern + eastern) < 2
-
-    return isolatedToEasternGroup || isolatedToWesternGroup || isolatedToSouthernGroup || lowIntelligibility
+    return (total > 0 && lost >= total * UNINTELLIGIBILITY_RATIO) || issues >= ISSUE_COUNT_THRESHOLD
 }

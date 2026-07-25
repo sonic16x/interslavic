@@ -7,7 +7,8 @@ import { MODAL_DIALOG_TYPES } from 'reducers'
 
 import { ITranslateResult } from 'services'
 
-import { getWordStatus } from 'utils/getWordStatus'
+import { useIntelligibilityFilter } from 'hooks'
+import { getWordStatuses, getWordStatusText } from 'utils/getWordStatus'
 
 import './ResultsCardWordStatus.scss'
 
@@ -16,7 +17,8 @@ interface IResultsCardWordStatusProps {
 }
 
 export const ResultsCardWordStatus = ({ item }: IResultsCardWordStatusProps) => {
-    const wordStatus = getWordStatus(item)
+    const targetLangs = useIntelligibilityFilter()
+    const wordStatuses = getWordStatuses(item, targetLangs)
     const dispatch = useDispatch()
     const showTranslations = () => {
         dispatch(showModalDialog({
@@ -24,17 +26,15 @@ export const ResultsCardWordStatus = ({ item }: IResultsCardWordStatusProps) => 
             data: { id: item.id },
         }))
     }
-    
-    if (wordStatus) {
-        return (
-            <button
-                key="wordStatus"
-                onClick={showTranslations}
-                className="results-card-status"
-                title={t(wordStatus.text)}
-            >
-                {wordStatus.icon}
-            </button>
-        )
-    }
+
+    return wordStatuses.map((wordStatus) => (
+        <button
+            key={wordStatus.text}
+            onClick={showTranslations}
+            className="results-card-status"
+            title={getWordStatusText(t, wordStatus)}
+        >
+            {wordStatus.icon}
+        </button>
+    ))
 }

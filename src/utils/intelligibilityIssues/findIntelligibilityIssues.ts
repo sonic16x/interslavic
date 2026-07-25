@@ -1,30 +1,20 @@
-const REGEXP = /^!?(\w+)(.?)/
+import { getIntelligibilityMarks, IntelligibilityMark } from './intelligibilityMarks'
 
 const EMPTY = {}
 
+const EMOJI: Record<IntelligibilityMark, string> = {
+    '-': '🚫',
+    '~': '⚠️',
+    '+': '✅',
+}
+
 export function findIntelligibilityIssues(sameInLanguages: string): Record<string, string> {
-    const result = (sameInLanguages || '').split(' ').reduce((acc, tag) => {
-        const [, lang, mark] = tag.match(REGEXP) || []
-        const emoji = translateToEmoji(mark)
-        if (lang && emoji) {
-            acc[lang] = translateToEmoji(mark)
-        }
+    const marks = getIntelligibilityMarks(sameInLanguages)
+    const result = Object.entries(marks).reduce((acc, [lang, mark]) => {
+        acc[lang] = EMOJI[mark]
 
         return acc
     }, {})
 
     return Object.keys(result).length ? result : EMPTY
-}
-
-function translateToEmoji(mark) {
-    switch (mark) {
-        case '-':
-            return '🚫'
-        case '~':
-            return '⚠️'
-        case '+':
-            return '✅'
-        default:
-            return ''
-    }
 }

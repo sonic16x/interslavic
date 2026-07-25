@@ -20,12 +20,13 @@
     margin: var(--gap-size);
   }
 
-  .pos-selector {
+  .intelligibility-selector {
     padding-bottom: 2px;
   }
 
   .search-type-selector,
   .pos-selector,
+  .intelligibility-selector,
   .flavorisation-selector {
     flex: 1 1 auto;
     margin: 0 var(--gap-size);

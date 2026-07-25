@@ -17,6 +17,7 @@ import {
     getPronounType,
     isAnimate,
     isIndeclinable,
+    isIntelligibleInLanguages,
     isPlural,
     isSingular,
     latinToIpa,
@@ -50,6 +51,11 @@ export interface ITranslateParams {
     to: string;
     searchType: string;
     posFilter: string;
+    /**
+     * Target languages: only words that are (or may be) intelligible
+     * for the speakers of every listed language are kept in the results.
+     */
+    intelligibilityFilter?: string[];
     flavorisationType?: string;
 }
 
@@ -206,15 +212,6 @@ export interface ITranslateResult {
     new?: boolean;
     intelligibility?: string;
     remove?: boolean;
-    /**
-     * 1 - universally intelligible
-     * 2 - predominantly intelligible
-     * 3 - regionally intelligible
-     * 4 - Church Slavonic
-     * 5 - neologism
-     * 9 - doubtful
-     */
-    type?: number;
 }
 
 export type WordList = string[][]
@@ -393,6 +390,7 @@ class DictionaryClass {
             from,
             to,
             posFilter,
+            intelligibilityFilter,
             flavorisationType,
         } = translateParams
         let searchType = translateParams.searchType
@@ -456,6 +454,13 @@ class DictionaryClass {
             filterPartOfSpeech = [[posFilter]]
         }
 
+        // filter by intelligibility in the target languages
+        //   option -i, for example "-i pl cs" - words intelligible for Poles and Czechs
+        const optionTargetLangs = inputOptions.find((option) => option.slice(0, 2) === 'i ')
+        const targetLangs = (
+            optionTargetLangs ? optionTargetLangs.slice(2).split(/[ ,]/) : (intelligibilityFilter || [])
+        ).filter(Boolean)
+
         const distMap = new Map()
         const rawResults = this.getWordList()
             .filter((item) => {
@@ -491,6 +496,12 @@ class DictionaryClass {
                         partOfSpeech.push('noun')
                     }
                     if (!filterPartOfSpeech.some((c) => c.every((e) => partOfSpeech.includes(e)))) {
+                        return false
+                    }
+                }
+                // search by intelligibility in the target languages
+                if (filterResult && targetLangs.length) {
+                    if (!isIntelligibleInLanguages(this.getField(item, 'intelligibility'), targetLangs)) {
                         return false
                     }
                 }
@@ -627,7 +638,6 @@ class DictionaryClass {
                 details: this.getField(item, 'partOfSpeech'),
                 ipa: latinToIpa(getLatin(removeBrackets(isv, '[', ']'), flavorisationType)),
                 checked: translate[0] !== '!',
-                type: Number(this.getField(item, 'type') || '2'),
                 raw: item,
                 new: id.startsWith('-'),
                 intelligibility: this.getField(item, 'intelligibility'),

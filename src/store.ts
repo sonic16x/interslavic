@@ -27,6 +27,7 @@ export const defaultState: IMainState = {
     fromText: '',
     searchType: 'begin',
     posFilter: '',
+    intelligibilityFilter: [],
     dictionaryLanguages: LANGS,
     flavorisationType: '3',
     alphabetType: 'latin',
