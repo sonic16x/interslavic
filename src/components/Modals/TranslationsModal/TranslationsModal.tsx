@@ -11,6 +11,7 @@ import { Dictionary } from 'services'
 
 import {
     useDictionaryLanguages,
+    useIntelligibilityFilter,
     useInterfaceLang,
     useModalDialog,
     useResults,
@@ -20,7 +21,7 @@ import {
     getCyrillic,
     getLatin,
 } from 'utils'
-import { getWordStatus } from 'utils/getWordStatus'
+import { getWordStatuses, getWordStatusText } from 'utils/getWordStatus'
 
 import { Table } from 'components/Table'
 
@@ -40,6 +41,7 @@ export const TranslationsModal =
         const dispatch = useDispatch()
         const modalDialog = useModalDialog()
         const dictionaryLanguages = useDictionaryLanguages()
+        const targetLangs = useIntelligibilityFilter()
         useInterfaceLang()
 
         const item = results.find(({ id }) => id === modalDialog.data.id)
@@ -103,7 +105,7 @@ export const TranslationsModal =
         }, [])
 
         const hasMarks = new Set(Object.values(marks).filter(Boolean)).size > 0
-        const wordStatus = getWordStatus(item)
+        const wordStatuses = getWordStatuses(item, targetLangs)
         const extraLegend = hasMarks && (<>
             <br/>
                 ⚠️ – {t('translationsLegendIntelligibilityWarning')}.<br/>
@@ -125,11 +127,11 @@ export const TranslationsModal =
                     </button>
                 </div>
                 <div className="modal-dialog__body">
-                    {wordStatus && (
-                        <div>
-                            {wordStatus.icon}&nbsp;{t(wordStatus.text)}
+                    {wordStatuses.map((wordStatus) => (
+                        <div key={wordStatus.text}>
+                            {wordStatus.icon}&nbsp;{getWordStatusText(t, wordStatus)}
                         </div>
-                    )}
+                    ))}
                     <Table data={tableData}/>
                 </div>
                 <footer className="modal-dialog__footer">

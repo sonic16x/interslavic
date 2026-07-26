@@ -1,0 +1,9 @@
+.intelligibility-selector {
+  .multi-selector__value {
+    width: 50%;
+
+    @media (width <= 450px) {
+      width: 65%;
+    }
+  }
+}

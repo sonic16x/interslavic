@@ -18,6 +18,7 @@ import {
     Expand,
     FlavorisationSelector,
     InputText,
+    IntelligibilitySelector,
     LangSelector,
     POSSelector,
     SearchTypeSelector,
@@ -71,6 +72,7 @@ export const Controls =
                     <SearchTypeSelector key="searchType" />
                     <FlavorisationSelector key="flavorisation" />
                     <POSSelector key="posFilter" />
+                    <IntelligibilitySelector key="intelligibilityFilter" />
                 </Expand>
             </div>
         )

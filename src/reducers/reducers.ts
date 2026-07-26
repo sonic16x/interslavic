@@ -50,6 +50,7 @@ export interface IMainState {
     fromText: string;
     searchType: string;
     posFilter: string;
+    intelligibilityFilter: string[];
     flavorisationType: string;
     dictionaryLanguages: string[];
     page: string;
@@ -70,13 +71,14 @@ export interface IMainState {
 export function mainReducer(state: IMainState, { type, data }) {
     switch (type) {
         case ActionTypes.LANG: {
-            const { fromText, flavorisationType, searchType, posFilter } = state
+            const { fromText, flavorisationType, searchType, posFilter, intelligibilityFilter } = state
             const lang = data
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
+                intelligibilityFilter,
                 flavorisationType,
             })
 
@@ -100,13 +102,14 @@ export function mainReducer(state: IMainState, { type, data }) {
             }
         }
         case ActionTypes.SEARCH_TYPE: {
-            const { flavorisationType, lang, fromText, posFilter } = state
+            const { flavorisationType, lang, fromText, posFilter, intelligibilityFilter } = state
             const searchType = data
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
+                intelligibilityFilter,
                 flavorisationType,
             })
 
@@ -130,13 +133,14 @@ export function mainReducer(state: IMainState, { type, data }) {
             }
         }
         case ActionTypes.FROM_TEXT: {
-            const { searchType, flavorisationType, lang, posFilter } = state
+            const { searchType, flavorisationType, lang, posFilter, intelligibilityFilter } = state
             const fromText = data
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
+                intelligibilityFilter,
                 flavorisationType,
             })
 
@@ -160,12 +164,13 @@ export function mainReducer(state: IMainState, { type, data }) {
             }
         }
         case ActionTypes.RUN_SEARCH: {
-            const { searchType, flavorisationType, lang, fromText, posFilter } = state
+            const { searchType, flavorisationType, lang, fromText, posFilter, intelligibilityFilter } = state
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
+                intelligibilityFilter,
                 flavorisationType,
             })
 
@@ -188,13 +193,14 @@ export function mainReducer(state: IMainState, { type, data }) {
             }
         }
         case ActionTypes.CHANGE_ISV_SEARCH_LETTERS: {
-            const { searchType, flavorisationType, lang, fromText, posFilter } = state
+            const { searchType, flavorisationType, lang, fromText, posFilter, intelligibilityFilter } = state
             const isvSearchLetters = Dictionary.changeIsvSearchLetters(data)
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
+                intelligibilityFilter,
                 flavorisationType,
             })
 
@@ -218,7 +224,7 @@ export function mainReducer(state: IMainState, { type, data }) {
             }
         }
         case ActionTypes.CHANGE_ISV_SEARCH_BY_WORDFORMS: {
-            const { searchType, flavorisationType, lang, fromText, posFilter } = state
+            const { searchType, flavorisationType, lang, fromText, posFilter, intelligibilityFilter } = state
             const isvSearchByWordForms = data
             Dictionary.setIsvSearchByWordForms(data)
             const [rawResults, translateTime] = Dictionary.translate({
@@ -226,6 +232,7 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ...lang,
                 searchType,
                 posFilter,
+                intelligibilityFilter,
                 flavorisationType,
             })
 
@@ -250,12 +257,13 @@ export function mainReducer(state: IMainState, { type, data }) {
         }
 
         case ActionTypes.FLAVORISATION_TYPE: {
-            const { searchType, lang, fromText, posFilter } = state
+            const { searchType, lang, fromText, posFilter, intelligibilityFilter } = state
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 posFilter,
+                intelligibilityFilter,
                 flavorisationType: data,
             })
 
@@ -277,13 +285,44 @@ export function mainReducer(state: IMainState, { type, data }) {
                 ),
             }
         }
-        case ActionTypes.POS_FILTER: {
-            const { searchType, lang, fromText, flavorisationType } = state
+        case ActionTypes.INTELLIGIBILITY_FILTER: {
+            const { searchType, lang, fromText, flavorisationType, posFilter } = state
             const [rawResults, translateTime] = Dictionary.translate({
                 inputText: fromText,
                 ...lang,
                 searchType,
                 flavorisationType,
+                posFilter,
+                intelligibilityFilter: data,
+            })
+
+            if (!__PRODUCTION__) {
+                // eslint-disable-next-line no-console
+                console.info('TRANSLATE', `${translateTime}ms`)
+            }
+
+            return {
+                ...state,
+                intelligibilityFilter: data,
+                rawResults,
+                results: Dictionary.formatTranslate(
+                    rawResults,
+                    lang.from,
+                    lang.to,
+                    flavorisationType,
+                    state.alphabets,
+                    state.caseQuestions,
+                ),
+            }
+        }
+        case ActionTypes.POS_FILTER: {
+            const { searchType, lang, fromText, flavorisationType, intelligibilityFilter } = state
+            const [rawResults, translateTime] = Dictionary.translate({
+                inputText: fromText,
+                ...lang,
+                searchType,
+                flavorisationType,
+                intelligibilityFilter,
                 posFilter: data,
             })
 

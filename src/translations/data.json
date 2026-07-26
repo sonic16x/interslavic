@@ -884,6 +884,36 @@
     "mk": "секоја",
     "bg": "всяка"
   },
+  "targetLanguages": {
+    "en": "Target languages",
+    "isv": "Čeljevy jezyky",
+    "ru": "Целевые языки",
+    "uk": "Цільові мови",
+    "be": "Мэтавыя мовы",
+    "pl": "Języki docelowe",
+    "cs": "Cílové jazyky",
+    "sk": "Cieľové jazyky",
+    "sl": "Ciljni jeziki",
+    "hr": "Ciljani jezici",
+    "sr": "Циљни језици",
+    "mk": "Целни јазици",
+    "bg": "Целеви езици"
+  },
+  "anyLanguage": {
+    "en": "any",
+    "isv": "vsaky",
+    "ru": "любые",
+    "uk": "будь-які",
+    "be": "любыя",
+    "pl": "dowolne",
+    "cs": "jakékoli",
+    "sk": "akékoľvek",
+    "sl": "kateri koli",
+    "hr": "bilo koji",
+    "sr": "било који",
+    "mk": "било кои",
+    "bg": "всякакви"
+  },
   "case": {
     "en": "case",
     "isv": "padež",
@@ -3285,6 +3315,36 @@
     "sr": "Реч није универзално разумљива у свим словенским језицима",
     "mk": "Зборот не е универзално разбирлив во сите словенски јазици",
     "bg": "Думата не е универсално разбираема във всички слаавянски езици"
+  },
+  "intelligibilityIssuesInLanguages": {
+    "en": "The word may be only partially intelligible in",
+    "isv": "Slovo može byti tȯkmo čestično razumlivo v",
+    "ru": "Слово может быть лишь частично понятно в",
+    "uk": "Слово може бути лише частково зрозумілим у",
+    "be": "Слова можа быць толькі часткова зразумелым у",
+    "pl": "Słowo może być tylko częściowo zrozumiałe w",
+    "cs": "Slovo může být jen částečně srozumitelné v",
+    "sk": "Slovo môže byť len čiastočne zrozumiteľné v",
+    "sl": "Beseda je morda le delno razumljiva v",
+    "hr": "Riječ je možda samo djelomično razumljiva u",
+    "sr": "Реч је можда само делимично разумљива у",
+    "mk": "Зборот можеби е само делумно разбирлив во",
+    "bg": "Думата може да е само частично разбираема в"
+  },
+  "intelligibilityUnknownInLanguages": {
+    "en": "There is no intelligibility data for",
+    "isv": "Ne imajemo dannyh o razumlivosti v",
+    "ru": "Нет данных о понятности в",
+    "uk": "Немає даних про зрозумілість у",
+    "be": "Няма даных пра зразумеласць у",
+    "pl": "Brak danych o zrozumiałości w",
+    "cs": "Chybí údaje o srozumitelnosti v",
+    "sk": "Chýbajú údaje o zrozumiteľnosti v",
+    "sl": "Ni podatkov o razumljivosti v",
+    "hr": "Nema podataka o razumljivosti u",
+    "sr": "Нема података о разумљивости у",
+    "mk": "Нема податоци за разбирливоста во",
+    "bg": "Няма данни за разбираемостта в"
   },
   "suggestedNewWord": {
     "en": "The word was recently added and has not yet been approved",
