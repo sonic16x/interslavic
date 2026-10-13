@@ -66,7 +66,10 @@ function getInitialState(): IMainState {
         const lang = urlParams.get('lang')
 
         if (validateLang(lang)) {
-            const [from, to] = lang.split('-')
+            // codes may contain hyphens (rue-x-lemko), so split on the isv side only
+            const [from, to] = lang.startsWith(`${ISV}-`)
+                ? [ISV, lang.slice(ISV.length + 1)]
+                : [lang.slice(0, -(ISV.length + 1)), ISV]
 
             const loadedLangs = [EN, ...savedState.dictionaryLanguages]
 

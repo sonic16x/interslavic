@@ -47,6 +47,7 @@ export const ADD_LANGS = [
     'it',
     'he',
     'da',
+    'rue-x-lemko',
 ]
 
 export const initialFields = [
@@ -92,6 +93,11 @@ export const tablesData: ITableData[] = [
         spreadsheetId: '1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY',
         sheetId: '2005431854',
         fields: ADD_LANGS,
+    },
+    {
+        spreadsheetId: '1N79e_yVHDo-d026HljueuKJlAAdeELAiPzdFzdBuKbY',
+        sheetId: '980776514',
+        fields: ['rue-x-lemko'],
     },
 ]
 

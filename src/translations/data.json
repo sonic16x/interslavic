@@ -2520,6 +2520,21 @@
     "mk": "Дански",
     "bg": "Датски"
   },
+  "rue-x-lemkoLang": {
+    "en": "Lemko Rusyn",
+    "isv": "Lemkovsky",
+    "ru": "Лемковский",
+    "uk": "Лемківська",
+    "be": "Лемкаўская",
+    "pl": "Łemkowski",
+    "cs": "Lemkovština",
+    "sk": "Lemkovčina",
+    "sl": "Lemkovščina",
+    "hr": "Lemkovski",
+    "sr": "Лемковски",
+    "mk": "Лемковски",
+    "bg": "Лемковски"
+  },
   "clipboardCopyNotification": {
     "en": "Text \"{__str__}\" copied to clipboard",
     "isv": "Tekst \"{__str__}\" je skopirovany v bufernu pamet",
