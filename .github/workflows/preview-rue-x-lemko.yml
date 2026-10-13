@@ -1,0 +1,46 @@
+name: Preview rue-x-lemko
+# Daily preview of the Lemko column for its editors.
+# NB: GitHub runs `schedule` only from the default branch, so the cron fires once this
+# file is on master; until then the preview rebuilds on every push to the branch.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rue-x-lemko
+  schedule:
+    - cron: '30 3 * * *'
+concurrency:
+  group: preview-rue-x-lemko
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: rue-x-lemko
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build from the live sheet
+        env:
+          NODE_ENV: production
+        run: |
+          npm run generate-dictionary
+          npm run build
+          npm run build-sw
+          npm run build-manifest
+          npm run build-cache-list
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_AUTH_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy ./dist --project-name=${{ secrets.CF_PROJECT_NAME }} --branch=rue-x-lemko
