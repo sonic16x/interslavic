@@ -13,6 +13,9 @@ import {
 } from 'hooks'
 import {
     getPartOfSpeech,
+    rankLemmas,
+    readerLang,
+    splitLemmas,
     toQueryString,
     wordHasForms,
 } from 'utils'
@@ -34,10 +37,17 @@ export const ResultsCardActions = ({ item, short }: IResultsCardActionsProps) =>
     const dispatch = useDispatch()
     const lang = useLang()
 
+    // lemma indexes in reading order for this reader, "1,0"; the windows switch between them
+    const order = () => {
+        const reader = readerLang(lang)
+
+        return rankLemmas(splitLemmas(item.isv), Dictionary.getField(item.raw, reader), reader).join(',')
+    }
+
     const showTranslations = () => {
         dispatch(showModalDialog({
-            type: MODAL_DIALOG_TYPES.MODAL_DIALOG_TRANSLATION,
-            data: { id: item.id },
+            type: MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY,
+            data: { id: item.id, lemma: order().split(',')[0] || '0', tab: 'translations' },
         }))
     }
 
@@ -52,14 +62,11 @@ export const ResultsCardActions = ({ item, short }: IResultsCardActionsProps) =>
         }))
     }
 
+    // the lemma window on its forms tab, on the lemma this reader reads first
     const showDetail = () => {
         dispatch(showModalDialog({
-            type: MODAL_DIALOG_TYPES.MODAL_DIALOG_WORD_FORMS,
-            data: {
-                word: item.isv,
-                add: Dictionary.getField(item.raw, 'addition'),
-                details: Dictionary.getField(item.raw, 'partOfSpeech'),
-            },
+            type: MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY,
+            data: { id: item.id, lemma: order().split(',')[0] || '0', tab: 'forms' },
         }))
     }
 

@@ -2,7 +2,7 @@ import { memo } from 'react'
 
 import { t } from 'translations'
 
-import { expandAbbr, translateAbbr } from 'utils'
+import { eachLemma, expandAbbr, translateAbbr } from 'utils'
 
 import { Hint } from 'components/Hint'
 
@@ -12,8 +12,8 @@ interface IResultsCardPosProps {
 
 export const ResultsCardPos = memo<IResultsCardPosProps>(({ details }) => (
     <Hint
-        title={expandAbbr(t, details)}
-        shortTitle={translateAbbr(t, details)}
+        title={eachLemma(details).map((item) => expandAbbr(t, item)).join(' / ')}
+        shortTitle={eachLemma(details).map((item) => translateAbbr(t, item)).join(' / ')}
     />
 ))
 

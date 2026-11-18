@@ -8,6 +8,7 @@
   padding: 0;
   border: none;
   background: transparent;
+  outline: none; /* focused on open, as a whole: Tab goes on to its controls */
   transition: opacity var(--animation-duration) ease-in-out;
 
   &-back {
@@ -69,7 +70,6 @@
       font-size: var(--text-xl);
       font-weight: 700;
       line-height: var(--text-xl-line);
-      outline: none;
       transition: var(--animation-duration) color ease-in-out;
 
       &:hover {

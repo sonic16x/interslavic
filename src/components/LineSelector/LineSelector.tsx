@@ -19,6 +19,7 @@ export const LineSelector =
         const index = options.findIndex((item) => (item.value === value))
         const length = options.length
 
+        // buttons: Tab and Enter/Space reach every option; aria-pressed says which one is on
         return (
             <div className={classNames('lineSelector', className)}>
                 <span
@@ -29,13 +30,15 @@ export const LineSelector =
                     }}
                 />
                 {options.map((item) => (
-                    <span
+                    <button
                         key={item.name}
+                        type="button"
                         className={classNames('item', { active: value === item.value })}
+                        aria-pressed={value === item.value}
                         onClick={() => onSelect(item.value)}
                     >
                         {item.name}
-                    </span>
+                    </button>
                 ))}
             </div>
         )

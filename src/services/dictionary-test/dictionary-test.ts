@@ -18,7 +18,10 @@ const langsPairs = [
     'en-isv',
 ]
 
-const makeSnapshot = process.env.UPDATE_SNAPSHOT
+const makeSnapshot = process.env.UPDATE_SNAPSHOT === 'true'
+
+// the bundler defines this global; a plain tsx run does not
+Object.assign(globalThis, { __PRODUCTION__: true })
 
 langsPairs.forEach((langsPair) => {
     const [from, to] = langsPair.split('-')
@@ -66,6 +69,7 @@ if (makeSnapshot) {
             if (JSON.stringify(testSnapshot[langsPair][id]) !== JSON.stringify(snapshot[langsPair][id])) {
                 // eslint-disable-next-line no-console
                 console.error('ERROR', id)
+                process.exitCode = 1
                 const diff = deepDiffMapper.map(
                     testSnapshot[langsPair][id],
                     snapshot[langsPair][id]

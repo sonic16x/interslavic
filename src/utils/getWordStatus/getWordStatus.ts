@@ -1,7 +1,5 @@
 import { ITranslateResult } from 'services'
 
-import { hasIntelligibilityIssues } from 'utils'
-
 interface IWordStatus {
     icon: string;
     text: string;
@@ -19,13 +17,6 @@ export const getWordStatus = (item: ITranslateResult): IWordStatus | undefined =
         return {
             icon: '🌱',
             text: 'suggestedNewWord',
-        }
-    }
-
-    if (hasIntelligibilityIssues(item)) {
-        return {
-            icon: '⚠️',
-            text: 'intelligibilityIssues',
         }
     }
 }
