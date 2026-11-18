@@ -3338,10 +3338,6 @@
     "en": "intelligibility in this language alone: (👍 + ½·🤷) / all",
     "ru": "понятность только для этого языка: (👍 + ½·🤷) / все"
   },
-  "intelligibilityWithMachine": {
-    "en": "include machine answers",
-    "ru": "учитывать машинные ответы"
-  },
   "intelligibilitySum": {
     "en": "All answers for the language",
     "ru": "Все ответы по языку"

@@ -1,7 +1,8 @@
 /**
  * Build time only (generateDictionary): Slovosbor's votes and the machine's -> the `intelligibility` column.
  * Source -> slovosbor's public export (one row per sense × language) -> summed per (row id, lemma),
- * plus the machine's vote (Levenshtein to the row's translation) -> encodeVotes() by the lemma's place in the isv cell.
+ * plus the machine's vote (Levenshtein to the row's translation) where no person answered
+ * -> encodeVotes() by the lemma's place in the isv cell.
  * The machine votes here, not in the browser: the cards would run Levenshtein on every keystroke.
  */
 import { encodeVotes, foldLemma, machineVote, Six, splitLemmas, VOTE_LANGS } from 'utils'
@@ -43,8 +44,9 @@ export function addVotes(wordList: string[][], tsv: string): { matched: number; 
         row[votesCol] = encodeVotes(splitLemmas(row[isvCol] || '').map((lemma) => {
             const six = byLemma.get(`${row[idCol]}\t${foldLemma(lemma)}`)
             matched += six ? 1 : 0
+            // the machine stands in for a language nobody answered; once people answer, it steps aside
             const machine = Object.fromEntries(VOTE_LANGS
-                .map((lang, i) => [lang, machineVote(lemma, row[langCols[i]] || '', lang)])
+                .map((lang, i) => [lang, six?.[lang] ? undefined : machineVote(lemma, row[langCols[i]] || '', lang)])
                 .filter(([, vote]) => vote !== undefined))
 
             return { six: six || {}, machine }

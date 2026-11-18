@@ -216,15 +216,6 @@
   }
 }
 
-/* under the table: the machine's checkbox */
-.intelligibility-modal__source {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: .75em;
-  gap: .25em 1em;
-}
-
 /* every match starts with the same icon slot, so the words line up */
 .intelligibility-modal__match {
   display: inline-flex;
@@ -309,10 +300,6 @@ td.custom-text.tr .results-card-status__pill {
   width: 1.3em;
   height: 1.3em;
   vertical-align: -.3em;
-}
-
-.intelligibility-modal__source .intelligibility-modal__with-machine {
-  margin: 0;
 }
 
 /* the total score: the interval on its own line under it, so the column stays as narrow as the shares */

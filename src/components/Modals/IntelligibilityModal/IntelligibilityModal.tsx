@@ -37,7 +37,7 @@ import {
 } from 'utils'
 import { getWordStatus } from 'utils/getWordStatus'
 
-import { Checkbox, Clipboard, LineSelector } from 'components'
+import { Clipboard, LineSelector } from 'components'
 import DetailModal from 'components/Modals/DetailModal'
 import { scriptLines } from 'components/Results/ResultsCardOriginal/ResultsCardOriginal'
 import { Table } from 'components/Table'
@@ -107,21 +107,17 @@ const Translation = ({ isv, str, lang }: { isv: string, str: string, lang: strin
  * languages, the rest. A Slavic language's closest word to the lemma is bold among several and carries the
  * language's share I_l as the card's pill.
  */
-const TranslationsTable = ({ item, isv, score, withMachine, onPill }: {
-    item: ITranslateResult, isv: string, score: Score, withMachine: boolean, onPill: () => void,
+const TranslationsTable = ({ item, isv, score, onPill }: {
+    item: ITranslateResult, isv: string, score: Score, onPill: () => void,
 }) => {
     const dictionaryLanguages = useDictionaryLanguages()
     const addLangs = ADD_LANGS.filter((lang) => dictionaryLanguages.includes(lang))
     const row = (lang: string) => {
         const str = Dictionary.getField(item.raw, lang)?.toString() || ''
         const machine = str[0] === '!'
-        // without the machine: no machine translations ("!"), no pill the people did not vote for
-        if (machine && !withMachine) {
-            return null
-        }
         let text = machine ? str.slice(1) : str
         const closest = LANGS.includes(lang) && closestTranslation(isv, text, lang)
-        if (closest && (withMachine || score.votes[lang])) {
+        if (closest) {
             const at = text.indexOf(closest.word)
             const several = text.replace(/\([^)]*\)/g, '').split(/[,;]/).length > 1
             const noVotes = band(score.answers, [lang]) === 'none'
@@ -151,7 +147,7 @@ const TranslationsTable = ({ item, isv, score, withMachine, onPill }: {
                     row(EN),
                     ...LANGS.map(row),
                     ...(addLangs.length ? [['@w=2;S'], ...addLangs.map(row)] : []),
-                ].filter(Boolean)}
+                ]}
             />
         </div>
     )
@@ -241,7 +237,6 @@ function useIntelligibility(item: ITranslateResult, index: number, isv: string) 
 
         return {
             score: lemmaScore(votes),
-            peopleOnly: lemmaScore({ ...votes, machine: {} }),
             extras,
             translationOf,
         }
@@ -279,7 +274,7 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
         ? (votes[lang]?.[i] || 0) - reasons(lang, i)
         : extras[lang]?.[i - 3] || 0)
     const cell = (lang: string, i: number) => (i < 3 ? answers[lang][i] - reasons(lang, i) : own(lang, i))
-    // Σ: the row's answers, people and the machine alike (people only when the machine is left out)
+    // Σ: the row's answers, people and the machine alike
     const voters = (lang: string) => COLUMNS.reduce((n, _, i) => n + cell(lang, i), 0)
     // a sum of the machine's votes alone reads in italics, like the votes themselves
     const people = (lang: string) => COLUMNS.reduce((n, _, i) => n + own(lang, i), 0)
@@ -370,8 +365,7 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                             </td>
                             {COLUMNS.map(([c], i) => (
                                 <td key={c} className={`intelligibility-modal__answer ${falseFriend(c)}`}>
-                                    {/* people (+ the machine vote); the machine's lone vote in italics: 1, or 0 for
-                                        people only, so every column adds up to its total */}
+                                    {/* people's answers, or the machine's in italics where nobody answered */}
                                     {bot[lang] === i && !own(lang, i)
                                         ? (
                                             <i
@@ -481,21 +475,7 @@ export const IntelligibilityModal = () => {
     const opened: Record<string, Tab> = { match: 'intelligibility', forms: 'forms' }
     const [tab, setTab] = useState<Tab>(opened[modalDialog.data.tab] || 'translations')
     const isv = lemmas[index] || lemmas[0] || ''
-    const { score, peopleOnly, extras, translationOf } = useIntelligibility(item || ({ raw: [] } as any), index, isv)
-    // on by default; off: the same score without the machine's votes (no translations to compare)
-    const [withMachine, setWithMachine] = useState(true)
-    const shown = withMachine ? score : peopleOnly
-    // under both tables, one state: off hides the machine's votes and its translations alike
-    const machineToggle = (
-        <div className="intelligibility-modal__muted intelligibility-modal__source">
-            <Checkbox
-                className="intelligibility-modal__with-machine"
-                title={t('intelligibilityWithMachine')}
-                checked={withMachine}
-                onChange={() => setWithMachine(!withMachine)}
-            />
-        </div>
-    )
+    const { score, extras, translationOf } = useIntelligibility(item || ({ raw: [] } as any), index, isv)
 
     const onClose = useCallback(() => {
         dispatch(hideModalDialog())
@@ -592,11 +572,9 @@ export const IntelligibilityModal = () => {
                         <TranslationsTable
                             item={item}
                             isv={isv}
-                            score={shown}
-                            withMachine={withMachine}
+                            score={score}
                             onPill={() => setTab('intelligibility')}
                         />
-                        {machineToggle}
                     </>
                 )}
                 {shownTab === 'intelligibility' && (
@@ -604,8 +582,8 @@ export const IntelligibilityModal = () => {
                         <div className="intelligibility-modal__scroll">
                             <IntelligibilityTable
                                 isv={isv}
-                                score={shown}
-                                bot={withMachine ? score.machine : {}}
+                                score={score}
+                                bot={score.machine}
                                 extras={extras}
                                 translationOf={translationOf}
                                 lemmas={lemmas.length ? lemmas : [isv]}
@@ -613,7 +591,6 @@ export const IntelligibilityModal = () => {
                                 onLemma={setIndex}
                             />
                         </div>
-                        {machineToggle}
                     </>
                 )}
                 {shownTab === 'forms' && (

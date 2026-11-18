@@ -16,6 +16,7 @@ describe('addVotes', () => {
         expect(addVotes(wordList, tsv)).toEqual({ matched: 1, unmatched: 1 })
         // uho: bs is not a vote language, the machine's yes only; uško: both senses of ru; the old marks are gone
         expect(decodeVotes(wordList[1][2], 0)).toEqual({ six: {}, machine: { ru: 0 } })
-        expect(decodeVotes(wordList[1][2], 1)).toEqual({ six: { ru: [3, 0, 0, 1, 0, 1] }, machine: { ru: 0 } })
+        // people answered ru for uško: the machine does not vote there
+        expect(decodeVotes(wordList[1][2], 1)).toEqual({ six: { ru: [3, 0, 0, 1, 0, 1] }, machine: {} })
     })
 })
