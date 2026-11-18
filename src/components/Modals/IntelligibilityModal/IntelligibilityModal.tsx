@@ -37,7 +37,7 @@ import {
 } from 'utils'
 import { getWordStatus } from 'utils/getWordStatus'
 
-import { Clipboard, LineSelector } from 'components'
+import { Clipboard, LineSelector, Tooltip } from 'components'
 import DetailModal from 'components/Modals/DetailModal'
 import { scriptLines } from 'components/Results/ResultsCardOriginal/ResultsCardOriginal'
 import { Table } from 'components/Table'
@@ -91,14 +91,17 @@ const Translation = ({ isv, str, lang }: { isv: string, str: string, lang: strin
     const title = kind && t({ yes: 'intelligibilityMatchYes', unsure: 'intelligibilityMatchUnsure',
         no: 'intelligibilityMatchNone' }[kind])
     const shown = kind === 'no' ? <s>{closest.word}</s> : closest?.word || text.split(', ')[0]
+    const tip = [title, machine && t('translationsLegendMachineTranslations')].filter(Boolean).join(' · ')
 
     return (
-        <span className="intelligibility-modal__match" title={title || undefined}>
-            <span className={machine ? 'intelligibility-modal__muted' : undefined}>
-                {machine && <span title={t('translationsLegendMachineTranslations')}><Icon paths={BOT}/> </span>}
-                {shown}
+        <Tooltip content={tip}>
+            <span className="intelligibility-modal__match">
+                <span className={machine ? 'intelligibility-modal__muted' : undefined}>
+                    {machine && <><Icon paths={BOT}/> </>}
+                    {shown}
+                </span>
             </span>
-        </span>
+        </Tooltip>
     )
 }
 
@@ -173,7 +176,7 @@ const pct = (n: number) => `${Math.round(n)}%`
 const points = (percent: number) => (Math.round(percent * 6 / 10 + 1e-9) / 10).toFixed(1)
 /** the points of a language nobody answered for: the score's ½ guess, muted, so the column still adds up */
 const guess = (percent: number) => (
-    <span className="intelligibility-modal__muted" title={t('intelligibilityGuess')}>({points(percent)})</span>
+    <span className="intelligibility-modal__muted">({points(percent)})</span>
 )
 
 const SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹'
@@ -279,12 +282,16 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
     // a sum of the machine's votes alone reads in italics, like the votes themselves
     const people = (lang: string) => COLUMNS.reduce((n, _, i) => n + own(lang, i), 0)
     const sum = (value: number, byPeople: number) => (value && !byPeople
-        ? <i className="intelligibility-modal__machine" title={t('intelligibilityMachineVote')}>{value}</i>
+        ? (
+            <Tooltip content={t('intelligibilityMachineVote')}>
+                <i className="intelligibility-modal__machine">{value}</i>
+            </Tooltip>
+        )
         : value || '')
     const columnPeople = (i: number) => langs.reduce((n, lang) => n + own(lang, i), 0)
     // Interslavic sums up the Slavic languages: the score out of 6, every answer column, every voter
     const totals: ReactNode[] = [
-        percent == null ? guess(total) : points(total),
+        percent == null ? <Tooltip content={t('intelligibilityGuess')}>{guess(total)}</Tooltip> : points(total),
         ...COLUMNS.map((_, i) => langs.reduce((n, lang) => n + cell(lang, i), 0)),
         langs.reduce((n, lang) => n + voters(lang), 0),
     ]
@@ -295,44 +302,43 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                 <thead>
                     <tr>
                         {/* the pills' head: Lucide "globe"; Match stands over the words */}
-                        <th
-                            className="intelligibility-modal__lang"
-                            title={t('intelligibilityLanguage')}
-                            aria-label={t('intelligibilityLanguage')}
-                        >
-                            <Icon paths={GLOBE}/>
-                        </th>
-                        <th title={t('intelligibilityMatchHint')}>{t('intelligibilityMatch')}</th>
-                        {/* the numbers belong to the Match mode: I_l, w_l, the votes */}
-                        <th title={t('intelligibilityShare')}><Sym>Iℓ</Sym></th>
-                        {/* Jan van Steenbergen's six votes: the column links to where he describes them */}
-                        <th className="intelligibility-modal__answer" title={t('intelligibilityContribution')}>
-                            <a
-                                className="intelligibility-modal__steen"
-                                href="https://interslavic.fun/learn/misc/design-criteria#which-roots-to-use"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <Flower answers={answers}/> <Sym>Sℓ</Sym>
-                            </a>
-                        </th>
-                        {COLUMNS.map(([c, icon]) => (
-                            <th
-                                key={c}
-                                className="intelligibility-modal__answer"
-                                title={t(`intelligibility${c}`)}
-                                aria-label={t(`intelligibility${c}`)}
-                            >
-                                <Icon paths={icon}/>
+                        <Tooltip content={t('intelligibilityLanguage')}>
+                            <th className="intelligibility-modal__lang" aria-label={t('intelligibilityLanguage')}>
+                                <Icon paths={GLOBE}/>
                             </th>
+                        </Tooltip>
+                        <Tooltip content={t('intelligibilityMatchHint')}>
+                            <th>{t('intelligibilityMatch')}</th>
+                        </Tooltip>
+                        {/* the numbers belong to the Match mode: I_l, w_l, the votes */}
+                        <Tooltip content={t('intelligibilityShare')}>
+                            <th><Sym>Iℓ</Sym></th>
+                        </Tooltip>
+                        {/* Jan van Steenbergen's six votes: the column links to where he describes them */}
+                        <Tooltip content={t('intelligibilityContribution')}>
+                            <th className="intelligibility-modal__answer">
+                                <a
+                                    className="intelligibility-modal__steen"
+                                    href="https://interslavic.fun/learn/misc/design-criteria#which-roots-to-use"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <Flower answers={answers}/> <Sym>Sℓ</Sym>
+                                </a>
+                            </th>
+                        </Tooltip>
+                        {COLUMNS.map(([c, icon]) => (
+                            <Tooltip key={c} content={t(`intelligibility${c}`)}>
+                                <th className="intelligibility-modal__answer" aria-label={t(`intelligibility${c}`)}>
+                                    <Icon paths={icon}/>
+                                </th>
+                            </Tooltip>
                         ))}
-                        <th
-                            className="intelligibility-modal__answer"
-                            title={t('intelligibilitySum')}
-                            aria-label={t('intelligibilitySum')}
-                        >
-                            Σ
-                        </th>
+                        <Tooltip content={t('intelligibilitySum')}>
+                            <th className="intelligibility-modal__answer" aria-label={t('intelligibilitySum')}>
+                                Σ
+                            </th>
+                        </Tooltip>
                     </tr>
                 </thead>
             )}
@@ -344,9 +350,9 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                         <tr key={lang} className={groupEnd(lang)}>
                             {/* the language in its band's colour, its own cell: it stays while the rest scrolls */}
                             <th className="intelligibility-modal__lang">
-                                <abbr className={`${PILL} ${band(answers, [lang])}`} title={t(`${lang}Lang`)}>
-                                    {lang.toUpperCase()}
-                                </abbr>
+                                <Tooltip content={t(`${lang}Lang`)}>
+                                    <abbr className={`${PILL} ${band(answers, [lang])}`}>{lang.toUpperCase()}</abbr>
+                                </Tooltip>
                             </th>
                             <th lang={lang}>
                                 <Translation isv={isv} str={translationOf(lang)} lang={lang}/>
@@ -355,25 +361,28 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                                 {noVotes ? '—' : pct(share(answers, [lang]) * 100)}
                             </td>
                             {/* the language's points out of 6, S_l = 6 · w_l · I_l; its weight in the tooltip */}
-                            <td
-                                className="intelligibility-modal__answer"
-                                title={`${t('intelligibilityWeight')}: ${fraction(parts[lang]?.fraction || [0, 1])
-                                } → ≤ ${points(100 * (parts[lang]?.weight || 0))}`}
+                            <Tooltip
+                                content={<>
+                                    {t('intelligibilityWeight', {
+                                        weight: fraction(parts[lang]?.fraction || [0, 1]),
+                                        max: points(parts[lang]?.weight || 0), // weight is in %
+                                    })}
+                                    {noVotes && <><br/>{t('intelligibilityGuess')}</>}
+                                </>}
                             >
-                                {/* no answer: the score counts the language at ½, a guess, not a point anyone gave */}
-                                {noVotes ? guess(parts[lang]?.part || 0) : points(parts[lang]?.part || 0)}
-                            </td>
+                                <td className="intelligibility-modal__answer">
+                                    {/* no answer: the score counts the language at ½, a guess, not anyone's point */}
+                                    {noVotes ? guess(parts[lang]?.part || 0) : points(parts[lang]?.part || 0)}
+                                </td>
+                            </Tooltip>
                             {COLUMNS.map(([c], i) => (
                                 <td key={c} className={`intelligibility-modal__answer ${falseFriend(c)}`}>
                                     {/* people's answers, or the machine's in italics where nobody answered */}
                                     {bot[lang] === i && !own(lang, i)
                                         ? (
-                                            <i
-                                                className="intelligibility-modal__machine"
-                                                title={t('intelligibilityMachineVote')}
-                                            >
-                                                {cell(lang, i)}
-                                            </i>
+                                            <Tooltip content={t('intelligibilityMachineVote')}>
+                                                <i className="intelligibility-modal__machine">{cell(lang, i)}</i>
+                                            </Tooltip>
                                         )
                                         : cell(lang, i) || ''}
                                 </td>
@@ -389,12 +398,11 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                 {scripts.map(([lang, name, script], i) => (
                     <tr key={lang}>
                         <th className="intelligibility-modal__lang">
-                            <abbr
-                                className={`${PILL} ${percent == null ? 'none' : shareBand(total / 100)}`}
-                                title={name}
-                            >
-                                ISV
-                            </abbr>
+                            <Tooltip content={name}>
+                                <abbr className={`${PILL} ${percent == null ? 'none' : shareBand(total / 100)}`}>
+                                    ISV
+                                </abbr>
+                            </Tooltip>
                         </th>
                         <th lang={lang}>
                             {/* the synset's lemmas, this one in bold; a click on another steps to it, like ‹ › */}
@@ -422,12 +430,11 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                                 {percent != null && (
                                     <>
                                         {' '}
-                                        <span
-                                            className="intelligibility-modal__range"
-                                            title={t('intelligibilityInterval')}
-                                        >
-                                            ({Math.round(ci[0])}–{pct(ci[1])})
-                                        </span>
+                                        <Tooltip content={t('intelligibilityInterval')}>
+                                            <span className="intelligibility-modal__range">
+                                                ({Math.round(ci[0])}–{pct(ci[1])})
+                                            </span>
+                                        </Tooltip>
                                     </>
                                 )}
                             </td>
@@ -523,14 +530,11 @@ export const IntelligibilityModal = () => {
         const label = neighbour(to)
 
         return (
-            <button
-                className="intelligibility-modal__step"
-                title={label}
-                aria-label={label}
-                onClick={() => setIndex(to)}
-            >
-                <Icon paths={by < 0 ? ['m15 18-6-6 6-6'] : ['m9 18 6-6-6-6']}/>
-            </button>
+            <Tooltip content={label}>
+                <button className="intelligibility-modal__step" aria-label={label} onClick={() => setIndex(to)}>
+                    <Icon paths={by < 0 ? ['m15 18-6-6 6-6'] : ['m9 18 6-6-6-6']}/>
+                </button>
+            </Tooltip>
         )
     }
 

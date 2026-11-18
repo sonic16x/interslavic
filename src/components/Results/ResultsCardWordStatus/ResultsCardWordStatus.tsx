@@ -11,6 +11,8 @@ import { ITranslateResult } from 'services'
 import { decodeVotes, lemmaScore, shareBand, splitLemmas } from 'utils'
 import { getWordStatus } from 'utils/getWordStatus'
 
+import { Tooltip } from 'components/Tooltip'
+
 import './ResultsCardWordStatus.scss'
 
 interface IResultsCardWordStatusProps {
@@ -49,24 +51,25 @@ export const LemmaPill = ({ item, index }: { item: ITranslateResult, index: numb
     const { percent, people, total } = lemmaScore(decodeVotes(item.intelligibility, index))
     const machineOnly = percent != null && !people
     const title = people
-        ? `${percent}% · ${people}`
+        ? t('intelligibilityPill', { percent: String(percent), people: String(people) })
         : t(machineOnly ? 'intelligibilityMachineVote' : 'intelligibilityNotRated')
 
     return (
-        <button
-            className={cn(
-                'results-card-status',
-                'results-card-status__pill',
-                percent == null ? 'none' : shareBand(total / 100),
-            )}
-            title={title}
-            onClick={() => dispatch(showModalDialog({
-                type: MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY,
-                data: { id: item.id, lemma: String(index), tab: 'match' },
-            }))}
-        >
-            {percent == null ? '?' : <>{machineOnly && <Bot/>}{percent}%</>}
-        </button>
+        <Tooltip content={title}>
+            <button
+                className={cn(
+                    'results-card-status',
+                    'results-card-status__pill',
+                    percent == null ? 'none' : shareBand(total / 100),
+                )}
+                onClick={() => dispatch(showModalDialog({
+                    type: MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY,
+                    data: { id: item.id, lemma: String(index), tab: 'match' },
+                }))}
+            >
+                {percent == null ? '?' : <>{machineOnly && <Bot/>}{percent}%</>}
+            </button>
+        </Tooltip>
     )
 }
 
@@ -82,14 +85,11 @@ export const ResultsCardWordStatus = ({ item }: IResultsCardWordStatusProps) => 
 
     if (wordStatus) {
         return (
-            <button
-                key="wordStatus"
-                onClick={showTranslations}
-                className="results-card-status"
-                title={t(wordStatus.text)}
-            >
-                {wordStatus.icon}
-            </button>
+            <Tooltip key="wordStatus" content={t(wordStatus.text)}>
+                <button onClick={showTranslations} className="results-card-status" aria-label={t(wordStatus.text)}>
+                    {wordStatus.icon}
+                </button>
+            </Tooltip>
         )
     }
 }

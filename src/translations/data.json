@@ -3290,6 +3290,10 @@
     "en": "Not rated in Slovosbor yet",
     "ru": "В Словосборе еще не оценено"
   },
+  "intelligibilityPill": {
+    "en": "Intelligibility __percent__% · answers: __people__",
+    "ru": "Понятность __percent__% · ответов: __people__"
+  },
   "intelligibilityYes": {
     "en": "understand",
     "ru": "понимают"
@@ -3315,8 +3319,8 @@
     "ru": "редкое"
   },
   "intelligibilityWeight": {
-    "en": "weight of the language in the score",
-    "ru": "вес языка в оценке"
+    "en": "Weight of the language in the score: __weight__, at most __max__ of 6 votes",
+    "ru": "Вес языка в оценке: __weight__, не больше __max__ из 6 голосов"
   },
   "intelligibilityContribution": {
     "en": "Votes out of 6, as in Jan van Steenbergen's design criteria: six subgroups (Russian; Ukrainian and Belarusian; Polish; Czech and Slovak; Slovene and Serbian/Croatian/Bosnian; Bulgarian and Macedonian), one vote each, split in halves within a group. S = 6 · weight · share",
@@ -3331,8 +3335,8 @@
     "ru": "ответов нет: считается за половину, между «никто не понимает» и «все понимают»"
   },
   "intelligibilityMachineVote": {
-    "en": "machine vote: similarity of the word to the translation",
-    "ru": "машинный голос: сходство слова с переводом"
+    "en": "Machine vote: how close the word is to the translation",
+    "ru": "Голос машины: насколько слово похоже на перевод"
   },
   "intelligibilityShare": {
     "en": "intelligibility in this language alone: (👍 + ½·🤷) / all",

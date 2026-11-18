@@ -1,0 +1,22 @@
+/* the page's colours inverted, above the modal; it does not catch the pointer */
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 16px));
+  padding: 6px 10px;
+  border-radius: var(--border-radius-s);
+  background: var(--dark);
+  box-shadow: var(--shadow);
+  color: var(--light);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+  pointer-events: none;
+  text-align: left;
+  white-space: normal;
+}
