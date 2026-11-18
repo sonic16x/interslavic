@@ -1,0 +1,352 @@
+.intelligibility-modal__icon {
+  width: 1.1em;
+  height: 1.1em;
+  opacity: .75;
+  vertical-align: -.15em;
+}
+
+.intelligibility-modal__summary {
+  min-width: 0;
+  flex: 1;
+  font-size: 1rem;
+}
+
+.intelligibility-modal__word {
+  font-size: 1.5em;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* ‹ › after the word, to the synset's previous and next lemma: a plain grey circle on hover, no border */
+.intelligibility-modal__step {
+  display: inline-flex;
+  width: 1.4em;
+  height: 1.4em;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  margin: 0 .15em;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: .8em;
+  transition: background .15s;
+  vertical-align: middle;
+
+  &:hover,
+  &:focus-visible {
+    background: rgb(127 127 127 / 30%);
+  }
+
+  /* a block in the flex centre: no baseline shift inside the circle */
+  .intelligibility-modal__icon {
+    display: block;
+    opacity: 1;
+    vertical-align: 0;
+  }
+}
+
+/* ‹ hangs into the margin: the chevron's stroke, not its circle, lines up with the text below
+   (the stroke starts 9/24 into the 1.1em icon, centred in the 1.4em circle) */
+.intelligibility-modal__word .intelligibility-modal__step:first-child {
+  margin-left: -.55em;
+}
+
+.intelligibility-modal__muted {
+  font-size: .85em;
+  opacity: .7;
+}
+
+.intelligibility-modal__summary .intelligibility-modal__muted {
+  font-weight: 400;
+}
+
+// the legend wraps instead of stretching the window to 1000px
+.modal-dialog__footer .intelligibility-modal__muted {
+  max-width: 56ch;
+}
+
+.modal-dialog__body {
+  background: var(--light);
+}
+
+// same fills as the card pills; the hairline separates the petals
+.intelligibility-modal__flower {
+  width: 1em;
+  height: 1em;
+  vertical-align: -.125em;
+
+  ellipse {
+    stroke: var(--light);
+    stroke-width: 3;
+
+    &.high {
+      fill: #81c784;
+    }
+
+    &.partial {
+      fill: #ffd54f;
+    }
+
+    &.low {
+      fill: #ef9a9a;
+    }
+
+    &.none {
+      fill: #bdbdbd;
+    }
+  }
+
+  circle {
+    fill: var(--light);
+  }
+}
+
+
+/* the machine's lone vote: an italic digit of the text's size, a little quieter */
+.intelligibility-modal__machine {
+  opacity: .7;
+}
+
+.intelligibility-modal__table {
+  border-collapse: collapse;
+  font-size: .9em;
+
+  th,
+  td {
+    padding: .2em .5em;
+    text-align: left;
+  }
+
+  /* numbers centred; the match on the left and the formula on the right, below */
+  td {
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+
+  tfoot th {
+    font-weight: 400;
+    opacity: 1;
+    text-align: left;
+  }
+
+  /* the heads: a rule between them and the rows */
+  thead th {
+    border-bottom: 1px solid rgb(127 127 127 / 50%);
+    cursor: help;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  /* thin rules between the columns */
+  th + th,
+  th + td,
+  td + th,
+  td + td {
+    border-left: 1px solid rgb(127 127 127 / 20%);
+  }
+
+  tbody th {
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  /* RU before the closest word: small and quiet, the word reads first */
+  .intelligibility-modal__code {
+    display: inline-block;
+    min-width: 2em;
+    font-size: .8em;
+    opacity: .6;
+    text-decoration: none;
+  }
+
+  td[lang] {
+    font-weight: 600;
+    text-align: left;
+  }
+
+  /* the summary row gets air above and below */
+
+  /* the totals: Interslavic's rows under a rule, the sums in bold */
+  tfoot td {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+
+  /* I_l: numbers to the right, so the digits line up */
+  .intelligibility-modal__share {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  tfoot td .intelligibility-modal__muted {
+    font-weight: 400;
+  }
+
+  sub {
+    font-size: .7em;
+  }
+
+  /* the pill and its word read as one cell: no rule between them */
+  .intelligibility-modal__lang + th {
+    border-left: none;
+  }
+
+
+  /* the match reads from the left, like its cells */
+  thead th:nth-child(2) {
+    text-align: left;
+  }
+}
+
+/* the vote table is wider than a phone: it scrolls on its own, the window keeps the screen width */
+.intelligibility-modal__scroll {
+  max-width: calc(100vw - 48px);
+  overflow-x: auto;
+
+  /* only the language pill stays while the rest scrolls: a long phrase must not cover the numbers */
+  .intelligibility-modal__lang {
+    position: sticky;
+    z-index: 1;
+    left: 0;
+    background: var(--light);
+  }
+}
+
+/* under the table: the machine's checkbox */
+.intelligibility-modal__source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: .75em;
+  gap: .25em 1em;
+}
+
+/* every match starts with the same icon slot, so the words line up */
+.intelligibility-modal__match {
+  display: inline-flex;
+  align-items: center;
+  gap: .3em;
+}
+
+.intelligibility-modal__match-icon {
+  display: inline-flex;
+  width: 1em;
+  opacity: .6;
+}
+
+/* the pills of the first column: no card spacing, so the column is as wide as a pill */
+.intelligibility-modal__table td .results-card-status__pill {
+  margin-left: 0;
+}
+
+/* translations wrap; the extra languages sit below a rule */
+.intelligibility-modal__translations {
+  td[lang] {
+    font-weight: 400;
+  }
+
+  tbody .intelligibility-modal__extra th,
+  tbody .intelligibility-modal__extra td {
+    border-top: 1px solid currentcolor;
+  }
+}
+
+.intelligibility-modal__table th[lang] .intelligibility-modal__match {
+  font-weight: 600;
+}
+
+/* the language's code in its band's colour, one width; pill and word read as one cell, no rule between */
+.intelligibility-modal__table .intelligibility-modal__lang {
+  padding-right: 0;
+}
+
+.intelligibility-modal__table .intelligibility-modal__lang .results-card-status__pill {
+  display: inline-block;
+  min-width: 2.2em;
+  margin: 0;
+  cursor: help;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* East | West | South */
+.intelligibility-modal__group-end > * {
+  border-bottom: 1px solid rgb(127 127 127 / 50%);
+}
+
+/* Steenbergen's subgroups within a branch: a fainter, dotted rule */
+.intelligibility-modal__subgroup-end > * {
+  border-bottom: 1px dotted rgb(127 127 127 / 35%);
+}
+
+/* a heavier rule over the total, Interslavic */
+.intelligibility-modal__table tfoot tr:first-child > * {
+  border-top: 2px solid var(--dark); /* the text colour, not currentcolor: 🎭's red stays in its digits */
+}
+
+/* translations in regular weight, so that the lemma's closest word stands out in bold */
+.custom-text.tr {
+  font-weight: 400;
+
+  .B {
+    font-weight: 700;
+  }
+}
+
+/* a share pill among the translations opens the intelligibility tab */
+td.custom-text.tr .results-card-status__pill {
+  margin-left: 0; /* the space before it is enough; the card's margin doubled it */
+  cursor: pointer;
+  white-space: nowrap; /* the bot and the percent stay on one line */
+}
+
+/* the flower by the total score, a little larger than the text */
+.intelligibility-modal__table tfoot .intelligibility-modal__flower {
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: -.3em;
+}
+
+.intelligibility-modal__source .intelligibility-modal__with-machine {
+  margin: 0;
+}
+
+/* the total score: the interval on its own line under it, so the column stays as narrow as the shares */
+.intelligibility-modal__table td.intelligibility-modal__score {
+  text-align: right;
+  white-space: normal;
+}
+
+.intelligibility-modal__nowrap {
+  white-space: nowrap;
+}
+
+.intelligibility-modal__range {
+  display: block;
+  font-size: .8em;
+  font-weight: 400;
+  opacity: .6;
+}
+
+/* 🎭 a false friend: a warning, its numbers in deep orange (readable on light and dark) */
+.intelligibility-modal__table td.intelligibility-modal__false-friend {
+  color: #f4511e;
+}
+
+/* the S_l head: a link to Steenbergen's six votes, reading as a head */
+.intelligibility-modal__steen {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* the people's numbers start at 👍 (after the pill, Match, I_l, S_l): a heavier rule */
+.intelligibility-modal__table thead tr > :nth-child(5),
+.intelligibility-modal__table tbody tr > :nth-child(5),
+.intelligibility-modal__table tfoot tr:first-child > :nth-child(5) {
+  border-left: 2px solid rgb(127 127 127 / 50%);
+}

@@ -27,3 +27,20 @@
     letter-spacing: -0.5pt;
   }
 }
+
+/* a lemma reads as text and opens its window */
+.results-card-original__lemma {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline dotted transparent;
+  text-underline-offset: .2em;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration-color: currentcolor;
+  }
+}

@@ -3,6 +3,7 @@ import * as fs from 'fs'
 import { ADD_LANGS, DOMAIN, EN, initialAddFields, initialFields, ISV, ISV_SRC, LANGS } from 'consts'
 
 import { Dictionary, loadTablesData } from 'services'
+import { addVotes, VOTES_URL } from 'services/slovosborVotes'
 
 import { getColumnName, sortColumns, transposeMatrix } from 'utils'
 
@@ -56,6 +57,15 @@ loadTablesData().then(async ({ data, columns }) => {
     })
 
     const basicData = transposeMatrix<string>(basicDataTransposed)
+
+    // Slovosbor's votes replace the sheet's old intelligibility marks; no votes, no deploy (the pills would go blank)
+    const votesRes = await fetch(VOTES_URL)
+    if (!votesRes.ok) {
+        throw new Error(`${VOTES_URL}: ${votesRes.status}`)
+    }
+    const { matched, unmatched } = addVotes(basicData, await votesRes.text())
+    // eslint-disable-next-line no-console
+    console.info(`slovosbor votes: ${matched} lemmas matched, ${unmatched} not found in their rows`)
 
     const searchIndexBasic = [
         ISV_SRC,

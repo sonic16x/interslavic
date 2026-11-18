@@ -1,10 +1,16 @@
+import { useDispatch } from 'react-redux'
+
 import { t } from 'translations'
 
-import { IAlphabets } from 'reducers'
+import { showModalDialog } from 'actions'
+import { IAlphabets, MODAL_DIALOG_TYPES } from 'reducers'
 
 import { ITranslateResult } from 'services'
 
+import { splitLemmas } from 'utils'
+
 import { Clipboard } from 'components'
+import { LemmaPill, showsLemmaPills } from 'components/Results/ResultsCardWordStatus'
 
 import './ResultsCardOriginal.scss'
 
@@ -15,57 +21,68 @@ interface IResultsCardOriginalProps {
     short: boolean;
 }
 
-export const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: IResultsCardOriginalProps) => {
-    let latin = item.original
-    if (item.add) {
-        latin += ` ${item.add}`
-    }
+/** One line per enabled alphabet, words with their additions; the case questions go next to them. */
+export function scriptLines(item: ITranslateResult, alphabets: IAlphabets, caseQuestions: boolean) {
+    const withAdd = (str: string, add: string) => (add ? `${str} ${add}` : str)
 
-    let cyrillic = item.originalCyr
-    if (item.addCyr) {
-        cyrillic += ` ${item.addCyr}`
-    }
-
-    let gla = item.originalGla
-    if (item.addGla) {
-        gla += ` ${item.addGla}`
-    }
-
-    const result = []
-
-    if (alphabets.latin) {
-        result.push({
-            str: latin,
+    return [
+        alphabets.latin && {
+            str: withAdd(item.original, item.add),
             caseInfo: caseQuestions && item.caseInfo,
             lang: 'isv-Latin',
-        })
-    }
-
-    if (alphabets.cyrillic) {
-        result.push({
-            str: cyrillic,
+        },
+        alphabets.cyrillic && {
+            str: withAdd(item.originalCyr, item.addCyr),
             caseInfo: item.caseInfoCyr,
             lang: 'isv-Cyrl',
-        })
-    }
-
-    if (alphabets.glagolitic) {
-        result.push({
-            str: gla,
+        },
+        alphabets.glagolitic && {
+            str: withAdd(item.originalGla, item.addGla),
             caseInfo: item.caseInfoGla,
             lang: 'isv-Glag',
-        })
-    }
+        },
+    ].filter(Boolean) as { str: string, caseInfo: string | false, lang: string }[]
+}
+
+export const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: IResultsCardOriginalProps) => {
+    const dispatch = useDispatch()
+    const result = scriptLines(item, alphabets, caseQuestions)
+    const pills = showsLemmaPills(item)
+    const count = splitLemmas(item.isv).length
+    // a click on a lemma opens its window (intelligibility, forms); copying moved into the window's header
+    const openLemma = (i: number) => dispatch(showModalDialog({
+        type: MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY,
+        data: { id: item.id, lemma: String(i) },
+    }))
 
     return (
         <span className="results-card-original">
             <span className="words">
-                {result.map(({ str, caseInfo }) => (
-                    <span className="word" key={str}>
-                        <Clipboard str={str} lang="isv" />
-                        {caseInfo && <span className="caseInfo">({caseInfo})</span>}
-                    </span>
-                ))}
+                {result.map(({ str, caseInfo }, row) => {
+                    // every script line splits into its lemmas; the first one also gets a pill after each
+                    const parts = str.split(', ')
+                    const perLemma = parts.length === count
+
+                    return (
+                        <span className="word" key={str}>
+                            {perLemma ? parts.map((part, i) => (
+                                <span key={part}>
+                                    <button
+                                        type="button"
+                                        className="results-card-original__lemma"
+                                        lang="isv"
+                                        onClick={() => openLemma(i)}
+                                    >
+                                        {part}
+                                    </button>
+                                    {row === 0 && pills && <LemmaPill item={item} index={i} />}
+                                    {i < parts.length - 1 && ', '}
+                                </span>
+                            )) : <Clipboard str={str} lang="isv" />}
+                            {caseInfo && <span className="caseInfo">({caseInfo})</span>}
+                        </span>
+                    )
+                })}
             </span>
             {!caseQuestions && item.caseInfo &&
                 <span className="caseInfo">(+{t(`case${item.caseInfo.slice(1)}`)})</span>

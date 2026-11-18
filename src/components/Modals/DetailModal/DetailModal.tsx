@@ -9,6 +9,7 @@ import { hideModalDialog, setAlphabetTypeAction } from 'actions'
 import { IMainState } from 'reducers'
 
 import {
+    eachLemma,
     expandAbbr,
     getCaseTips,
     getCyrillic,
@@ -22,6 +23,9 @@ import {
     isIndeclinable,
     isPlural,
     isSingular,
+    perLemma,
+    removeBrackets,
+    splitLemmas,
 } from 'utils'
 
 import { LineSelector, Text } from 'components'
@@ -49,22 +53,60 @@ interface IDetailModalInternal {
     setAlphabetType: (type: string) => void;
     orderOfCases: string[];
     displayImperfect: boolean;
+    /** lemma indexes in reading order, "1,0"; row order when absent */
+    order?: string;
+    /** inside an expanded card: one lemma, no header and no lemma switcher */
+    embedded?: boolean;
+    lemma?: number;
 }
 
 /* eslint-disable max-len */
-class DetailModalInternal extends Component<IDetailModalInternal> {
+class DetailModalInternal extends Component<IDetailModalInternal, { lemma: number }> {
+    public state = { lemma: this.props.lemma ?? this.order()[0] }
+
+    private order(): number[] {
+        const count = splitLemmas(this.props.word || '').length
+        const order = (this.props.order || '').split(',').filter(Boolean).map(Number)
+
+        return order.length === count ? order : [...Array(count).keys()]
+    }
+
     public render() {
         if (!this.props.details) {
             return null
         }
 
         const { word, add, details } = this.props
+        const lemmas = splitLemmas(word)
+        const i = this.state.lemma
+
+        if (this.props.embedded) {
+            return (
+                <div className="detail-modal--embedded">
+                    {/* the script above the forms: the window's own tabs are at its foot */}
+                    {this.renderFooter()}
+                    {this.renderBody()}
+                </div>
+            )
+        }
 
         return (
             <>
                 <div className="modal-dialog__header">
                     <span className="modal-dialog__header-title">
-                        {this.formatStr(word)} {this.formatStr(add)} <span className="details">({expandAbbr(t, details)})</span>
+                        {lemmas.length > 1 ? (
+                            <>
+                                {this.formatStr(lemmas[i])} {this.formatStr(perLemma(add, i))}{' '}
+                                <span className="details">({expandAbbr(t, perLemma(details, i))})</span>
+                            </>
+                        ) : (
+                            <>
+                                {this.formatStr(word)} {this.formatStr(eachLemma(add).join(', '))}{' '}
+                                <span className="details">
+                                    ({eachLemma(details).map((item) => expandAbbr(t, item)).join(' / ')})
+                                </span>
+                            </>
+                        )}
                     </span>
                     <button
                         className="modal-dialog__header-close"
@@ -75,6 +117,14 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     </button>
                 </div>
                 <div className="modal-dialog__body">
+                    {lemmas.length > 1 && (
+                        <LineSelector
+                            className="detail-modal__lemmas"
+                            options={this.order().map((n) => ({ name: this.formatStr(lemmas[n]), value: String(n) }))}
+                            value={String(i)}
+                            onSelect={(value) => this.setState({ lemma: Number(value) })}
+                        />
+                    )}
                     {this.renderBody()}
                 </div>
                 {this.renderFooter()}
@@ -92,40 +142,37 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
             return null
         }
 
-        return (
-            <footer className="modal-dialog__footer">
-                <LineSelector
-                    options={options}
-                    value={this.props.alphabetType}
-                    onSelect={(type) => this.props.setAlphabetType(type)}
-                />
-            </footer>
+        const selector = (
+            <LineSelector
+                options={options}
+                value={this.props.alphabetType}
+                onSelect={(type) => this.props.setAlphabetType(type)}
+            />
         )
+
+        return this.props.embedded
+            ? <div className="detail-modal__scripts">{selector}</div>
+            : <footer className="modal-dialog__footer">{selector}</footer>
     }
 
     private renderBody() {
         const fieldIsv = this.props.word
         const fieldAddition = this.props.add
         const fieldPartOfSpeech = this.props.details
-        const splitted = fieldIsv.split(',')
+        const splitted = removeBrackets(fieldIsv, '(', ')').split(',')
         if (splitted.length === 1 && fieldPartOfSpeech.indexOf('m./f.') !== -1 ) {
             return [
-                this.renderWord([fieldIsv, fieldAddition, 'm.'],
+                this.renderWord([splitted[0], fieldAddition, 'm.'],
                     ['showTitle', 'showGender', 'oneMore']),
-                this.renderWord([fieldIsv, fieldAddition, 'f.'],
+                this.renderWord([splitted[0], fieldAddition, 'f.'],
                     ['showTitle', 'showGender']),
             ]
         }
 
-        return splitted.map((word, i) => {
-            const options = []
-            if (splitted.length > 1) {
-                options.push('showTitle')
-                if (i < splitted.length - 1) { options.push('oneMore') }
-            }
+        // one lemma at a time, with its own grammar; the switcher above picks it
+        const i = this.state.lemma
 
-            return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options)
-        })
+        return this.renderWord([splitted[i].trim(), perLemma(fieldAddition, i), perLemma(fieldPartOfSpeech, i)], [])
     }
 
     private renderWord(rawItem, options: string[]) {
@@ -574,13 +621,15 @@ function mapStateToProps({
     interfaceLang,
     orderOfCases,
     displayImperfect,
-}: IMainState) {
-    const { word, add, details } = modalDialog.data
+}: IMainState, own: Partial<IDetailModalInternal>) {
+    // an expanded card passes the word itself, the window takes it from the modal state
+    const { word, add, details, order } = own.embedded ? own : modalDialog.data
 
     return {
         word,
         add,
         details,
+        order,
         alphabetType,
         alphabets,
         flavorisationType,
