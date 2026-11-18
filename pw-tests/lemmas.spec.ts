@@ -39,7 +39,7 @@ test.describe('Lemmas of one row', () => {
     await page.getByTestId('search-input').fill('for');
 
     const card = page.locator('[data-testid^="result-"]', { hasText: 'dlja' }).first();
-    await card.locator('.results-card-original__lemma').first().click();
+    await card.locator('.results-card-status__pill').first().click();
     const word = page.locator('.modal-dialog .intelligibility-modal__word');
     await expect(word).toContainText('dlja');
     await expect(word).not.toContainText('+2');
@@ -48,12 +48,18 @@ test.describe('Lemmas of one row', () => {
     }
   });
 
-  test('A click on a lemma opens its window', async ({ page }) => {
+  test('A click on a lemma copies it, as it always did; its pill opens its window', async ({ page }) => {
+    await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
     await page.getByTestId('lang-selector').selectOption('ru');
     await page.getByTestId('search-input').fill('местоимение');
 
     const card = page.locator('[data-testid^="result-"]', { hasText: 'zaimennik' }).first();
-    await card.locator('.results-card-original__lemma', { hasText: 'zaimennik' }).first().click();
+    await card.locator('.clipboard', { hasText: 'zaimennik' }).first().click();
+    // the dialog element is always in the page: no lemma window opened in it
+    await expect(page.locator('.modal-dialog .intelligibility-modal__word')).toHaveCount(0);
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('zaimennik');
+
+    await card.locator('.results-card-status__pill').last().click();
     await expect(page.locator('.modal-dialog .intelligibility-modal__word')).toContainText('zaimennik');
     // ‹ ›, round at both ends
     await expect(page.locator('.modal-dialog .intelligibility-modal__step')).toHaveCount(2);

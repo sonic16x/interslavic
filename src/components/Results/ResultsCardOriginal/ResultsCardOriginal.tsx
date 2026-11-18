@@ -1,9 +1,6 @@
-import { useDispatch } from 'react-redux'
-
 import { t } from 'translations'
 
-import { showModalDialog } from 'actions'
-import { IAlphabets, MODAL_DIALOG_TYPES } from 'reducers'
+import { IAlphabets } from 'reducers'
 
 import { ITranslateResult } from 'services'
 
@@ -45,15 +42,9 @@ export function scriptLines(item: ITranslateResult, alphabets: IAlphabets, caseQ
 }
 
 export const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: IResultsCardOriginalProps) => {
-    const dispatch = useDispatch()
     const result = scriptLines(item, alphabets, caseQuestions)
     const pills = showsLemmaPills(item)
     const count = splitLemmas(item.isv).length
-    // a click on a lemma opens its window (intelligibility, forms); copying moved into the window's header
-    const openLemma = (i: number) => dispatch(showModalDialog({
-        type: MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY,
-        data: { id: item.id, lemma: String(i) },
-    }))
 
     return (
         <span className="results-card-original">
@@ -67,14 +58,8 @@ export const ResultsCardOriginal = ({ item, alphabets, caseQuestions, short }: I
                         <span className="word" key={str}>
                             {perLemma ? parts.map((part, i) => (
                                 <span key={part}>
-                                    <button
-                                        type="button"
-                                        className="results-card-original__lemma"
-                                        lang="isv"
-                                        onClick={() => openLemma(i)}
-                                    >
-                                        {part}
-                                    </button>
+                                    {/* a click copies the lemma, as before; its pill opens the lemma window */}
+                                    <Clipboard str={part} lang="isv" />
                                     {row === 0 && pills && <LemmaPill item={item} index={i} />}
                                     {i < parts.length - 1 && ', '}
                                 </span>
