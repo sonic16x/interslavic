@@ -16,9 +16,12 @@ import {
     useResults,
 } from 'hooks'
 import {
-    findIntelligibilityIssues,
+    band,
+    BAND_MARK,
+    decodeVotes,
     getCyrillic,
     getLatin,
+    lemmaScore,
 } from 'utils'
 import { getWordStatus } from 'utils/getWordStatus'
 
@@ -62,7 +65,9 @@ export const TranslationsModal =
         ]
 
         const intelligibility = Dictionary.getField(item.raw, 'intelligibility')
-        const marks = findIntelligibilityIssues(intelligibility)
+        // ✅ ⚠️ 🚫 per language, of the row's first lemma
+        const { answers } = lemmaScore(decodeVotes(intelligibility))
+        const marks = Object.fromEntries(LANGS.map((lang) => [lang, BAND_MARK[band(answers, [lang])]]))
         const tableData = allLangs.reduce((arr, lang) => {
             const translate = Dictionary.getField(item.raw, lang).toString()
 

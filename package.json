@@ -39,6 +39,7 @@
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "25.2.0",
     "@ag-grid-community/core": "25.2.0",
+    "@interslavic/levenshtein": "^0.1.1",
     "@interslavic/utils": "3.4.0",
     "@reduxjs/toolkit": "2.6.1",
     "classnames": "2.5.1",

@@ -6,6 +6,9 @@ on:
 jobs:
   update-dictionary:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write # an issue when Slovosbor's votes could not be fetched
     steps:
       - name: Checkout latest tag in master
         uses: actions/checkout@v4
@@ -35,10 +38,32 @@ jobs:
         run: |
           OUTPUT=$(npm run generate-dictionary -- detect-changes)
           echo "$OUTPUT"
+          if echo "$OUTPUT" | grep -q "VOTES_STALE"; then
+            echo "VOTES_STALE=true" >> $GITHUB_ENV
+          fi
           if echo "$OUTPUT" | grep -q "DATA_NO_CHANGED"; then
             echo "Data has not changed. Stopping workflow."
             echo "NO_CHANGES=true" >> $GITHUB_ENV
             exit 0
+          fi
+        shell: bash
+
+      # one open issue for the outage, assigned to the votes' maintainer; later nights add a comment to it
+      - name: Report stale Slovosbor votes
+        if: env.VOTES_STALE == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ASSIGNEE: ${{ vars.VOTES_MAINTAINER || 'noomorph' }}
+        run: |
+          TITLE="Slovosbor votes export unavailable"
+          RUN="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          BODY="The nightly dictionary build could not download Slovosbor's votes and kept the deployed ones. Run: $RUN"
+          NUMBER=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$TITLE\" in:title" \
+            --json number --jq '.[0].number')
+          if [ -n "$NUMBER" ]; then
+            gh issue comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body "Still unavailable. Run: $RUN"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" --body "$BODY" --assignee "$ASSIGNEE"
           fi
         shell: bash
 

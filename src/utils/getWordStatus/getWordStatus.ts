@@ -1,6 +1,6 @@
 import { ITranslateResult } from 'services'
 
-import { hasIntelligibilityIssues } from 'utils'
+import { decodeVotes, lemmaScore, shareBand, splitLemmas } from 'utils'
 
 interface IWordStatus {
     icon: string;
@@ -22,7 +22,11 @@ export const getWordStatus = (item: ITranslateResult): IWordStatus | undefined =
         }
     }
 
-    if (hasIntelligibilityIssues(item)) {
+    // a lemma most speakers do not understand
+    const low = splitLemmas(item.isv).some((_, i) => (
+        shareBand(lemmaScore(decodeVotes(item.intelligibility, i)).total / 100) === 'low'
+    ))
+    if (low) {
         return {
             icon: '⚠️',
             text: 'intelligibilityIssues',
