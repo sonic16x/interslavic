@@ -22,7 +22,12 @@
     flex: 1 1 0;
     align-items: center;
     justify-content: center;
+    padding: 0;
+    border: none;
+    background: none;
     color: var(--primary-color);
+    cursor: pointer;
+    font: inherit;
     font-weight: 500;
     text-align: center;
     transition: color var(--animation-duration) ease-in-out;
