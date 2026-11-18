@@ -1,6 +1,6 @@
 import { decodeVotes } from 'utils'
 
-import { addVotes } from './slovosborVotes'
+import { addVotes, keepDeployedVotes } from './slovosborVotes'
 
 describe('addVotes', () => {
     it('puts the export\'s votes on their lemma\'s place in the row, senses summed', () => {
@@ -18,5 +18,15 @@ describe('addVotes', () => {
         expect(decodeVotes(wordList[1][2], 0)).toEqual({ six: {}, machine: { ru: 0 } })
         // people answered ru for uško: the machine does not vote there
         expect(decodeVotes(wordList[1][2], 1)).toEqual({ six: { ru: [3, 0, 0, 1, 0, 1] }, machine: {} })
+    })
+})
+
+describe('keepDeployedVotes', () => {
+    it('keeps the deployed votes by row id, never the sheet\'s old marks', () => {
+        const wordList = [['id', 'intelligibility'], ['7', 'be+ ru+'], ['8', ''], ['9', 'x']]
+        const deployed = [['intelligibility', 'id'], ['3+,1', '7'], ['be+ ru~', '8']]
+
+        expect(keepDeployedVotes(wordList, deployed)).toBe(1)
+        expect(wordList.slice(1).map((row) => row[1])).toEqual(['3+,1', '', ''])
     })
 })

@@ -3,7 +3,7 @@ import * as fs from 'fs'
 import { ADD_LANGS, DOMAIN, EN, initialAddFields, initialFields, ISV, ISV_SRC, LANGS } from 'consts'
 
 import { Dictionary, loadTablesData } from 'services'
-import { addVotes, VOTES_URL } from 'services/slovosborVotes'
+import { addVotes, keepDeployedVotes, VOTES_URL } from 'services/slovosborVotes'
 
 import { getColumnName, sortColumns, transposeMatrix } from 'utils'
 
@@ -58,14 +58,26 @@ loadTablesData().then(async ({ data, columns }) => {
 
     const basicData = transposeMatrix<string>(basicDataTransposed)
 
-    // Slovosbor's votes replace the sheet's old intelligibility marks; no votes, no deploy (the pills would go blank)
-    const votesRes = await fetch(VOTES_URL)
-    if (!votesRes.ok) {
-        throw new Error(`${VOTES_URL}: ${votesRes.status}`)
+    // Slovosbor's votes replace the sheet's old intelligibility marks. Without the export the deployed votes stay,
+    // and the build says so (a GitHub warning; update-dictionary.yml opens an issue on VOTES_STALE)
+    try {
+        const votesRes = await fetch(VOTES_URL)
+        if (!votesRes.ok) {
+            throw new Error(`HTTP ${votesRes.status}`)
+        }
+        const { matched, unmatched } = addVotes(basicData, await votesRes.text())
+        // eslint-disable-next-line no-console
+        console.info(`slovosbor votes: ${matched} lemmas matched, ${unmatched} not found in their rows`)
+    } catch (error) {
+        // no deployed votes either: fail rather than deploy a dictionary without scores
+        const deployed = await fetch(`https://${DOMAIN}/data/basic.json`).then((res) => res.json())
+        const kept = keepDeployedVotes(basicData, deployed.wordList)
+        if (!kept) {
+            throw new Error(`${VOTES_URL} unavailable (${error.message}) and the deployed dictionary has no votes`)
+        }
+        // eslint-disable-next-line no-console
+        console.info(`::warning::VOTES_STALE ${VOTES_URL} unavailable (${error.message}); ${kept} rows keep old votes`)
     }
-    const { matched, unmatched } = addVotes(basicData, await votesRes.text())
-    // eslint-disable-next-line no-console
-    console.info(`slovosbor votes: ${matched} lemmas matched, ${unmatched} not found in their rows`)
 
     const searchIndexBasic = [
         ISV_SRC,

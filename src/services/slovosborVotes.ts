@@ -55,3 +55,24 @@ export function addVotes(wordList: string[][], tsv: string): { matched: number; 
 
     return { matched, unmatched: byLemma.size - matched }
 }
+
+/**
+ * The fallback when the export is unavailable: the `intelligibility` column of the deployed basic.json, by row id.
+ * Only values in the votes format are taken (a deploy from before the votes kept the sheet's "be+ ru~" marks).
+ * Returns how many rows got their votes back.
+ */
+export function keepDeployedVotes(wordList: string[][], deployed: string[][]): number {
+    const column = (list: string[][], name: string) => list[0].indexOf(name)
+    const [idCol, votesCol] = [column(wordList, 'id'), column(wordList, 'intelligibility')]
+    const [oldId, oldVotes] = [column(deployed, 'id'), column(deployed, 'intelligibility')]
+    const byId = new Map(deployed.slice(1)
+        .filter((row) => /^[\d.,|+]*$/.test(row[oldVotes] || ''))
+        .map((row) => [row[oldId], row[oldVotes]]))
+    let kept = 0
+    wordList.slice(1).forEach((row) => {
+        row[votesCol] = byId.get(row[idCol]) ?? ''
+        kept += row[votesCol] ? 1 : 0
+    })
+
+    return kept
+}
