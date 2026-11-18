@@ -316,12 +316,16 @@ td.custom-text.tr .results-card-status__pill {
   display: block;
   font-size: .8em;
   font-weight: 400;
-  opacity: .6;
+  opacity: .75; /* small text: ≥ 4.5:1 in both themes */
 }
 
-/* 🎭 a false friend: a warning, its numbers in deep orange (readable on light and dark) */
+/* 🎭 a false friend: a warning, its numbers in deep orange, ≥ 4.5:1 (darker on light, brighter on dark) */
 .intelligibility-modal__table td.intelligibility-modal__false-friend {
-  color: #f4511e;
+  color: #bf360c;
+
+  .color-theme--dark & {
+    color: #f4511e;
+  }
 }
 
 /* the S_l head: a link to Steenbergen's six votes, reading as a head */

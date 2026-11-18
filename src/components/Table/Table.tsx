@@ -75,6 +75,7 @@ export class Table extends Component<ITableProps> {
                             colSpan={attrs.w}
                             rowSpan={attrs.h}
                             style={{ width: attrs.sw }}
+                            lang={attrs.lang}
                             dangerouslySetInnerHTML={{ __html: str }}
                         />
                     )

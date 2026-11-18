@@ -189,7 +189,7 @@ export const WordErrorModal = () => {
                 </div>
             )}
             <div className="word-error-dialog__header">
-                <div className="word-error-dialog__header-title">
+                <div className="word-error-dialog__header-title" id="modal-dialog-title">
                     {t('wordErrorModalTitle')}
                 </div>
                 <button

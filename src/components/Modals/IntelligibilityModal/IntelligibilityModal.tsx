@@ -71,9 +71,9 @@ const GLOBE = ['M2 12a10 10 0 1 0 20 0a10 10 0 1 0-20 0', 'M12 2a14.5 14.5 0 0 0
 const BOT = ['M12 8V4H8', 'M6 8h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z',
     'M2 14h2', 'M20 14h2', 'M15 13v2', 'M9 13v2']
 /** the same bot as HTML, for the Table's cells: in a pill (machine votes only) and before a machine translation */
-const BOT_SVG = [
+const botSvg = (label: string) => [
     '<svg class="results-card-status__bot" viewBox="0 0 24 24" fill="none" stroke="currentColor"',
-    ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round">',
+    ` stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="${label}">`,
     ...BOT.map((d) => `<path d="${d}"/>`),
     '</svg>',
 ].join('')
@@ -94,12 +94,14 @@ const Translation = ({ isv, str, lang }: { isv: string, str: string, lang: strin
     const tip = [title, machine && t('translationsLegendMachineTranslations')].filter(Boolean).join(' · ')
 
     return (
-        <Tooltip content={tip}>
+        <Tooltip content={tip} pointerOnly>
             <span className="intelligibility-modal__match">
                 <span className={machine ? 'intelligibility-modal__muted' : undefined}>
                     {machine && <><Icon paths={BOT}/> </>}
                     {shown}
                 </span>
+                {/* the cell is in the language: the words in the page's own */}
+                {tip && <span className="sr-only" lang={document.documentElement.lang}> ({tip})</span>}
             </span>
         </Tooltip>
     )
@@ -126,15 +128,20 @@ const TranslationsTable = ({ item, isv, score, onPill }: {
             const noVotes = band(score.answers, [lang]) === 'none'
             // raw HTML: the Table's {text}[class] markup takes no hyphens in a class name
             // the machine alone voted: its Lucide bot inside the pill, as on the card
-            const bot = !score.votes[lang] && score.machine[lang] !== undefined ? BOT_SVG : ''
-            const pill = `<span class="${PILL} ${band(score.answers, [lang])}">${bot}${
-                noVotes ? '—' : pct(share(score.answers, [lang]) * 100)}</span>`
+            const bot = !score.votes[lang] && score.machine[lang] !== undefined
+                ? botSvg(t('intelligibilityMachineVote')) : ''
+            // what the number is, for a screen reader
+            const value = noVotes ? '—' : pct(share(score.answers, [lang]) * 100)
+            const pill = `<span class="sr-only">${t('intelligibilityTitle')}</span><span class="${PILL} ${
+                band(score.answers, [lang])}">${bot}${value}</span>`
             // the closest word may be a variant not spelled as such in the cell: then the pill goes at the end
             text = at < 0 ? `${text} ${pill}` : `${text.slice(0, at)}${
                 several ? `{${closest.word}}[B]` : closest.word} ${pill}${text.slice(at + closest.word.length)}`
         }
 
-        return [`{${t(`${lang}Lang`)}}[B]@ts;b`, `${machine ? `${BOT_SVG} ` : ''}${text}@ts;tr;lang=${lang}`]
+        const mt = machine ? `${botSvg(t('translationsLegendMachineTranslations'))} ` : ''
+
+        return [`{${t(`${lang}Lang`)}}[B]@ts;b`, `${mt}${text}@ts;tr;lang=${lang}`]
     }
 
     return (
@@ -176,7 +183,9 @@ const pct = (n: number) => `${Math.round(n)}%`
 const points = (percent: number) => (Math.round(percent * 6 / 10 + 1e-9) / 10).toFixed(1)
 /** the points of a language nobody answered for: the score's ½ guess, muted, so the column still adds up */
 const guess = (percent: number) => (
-    <span className="intelligibility-modal__muted">({points(percent)})</span>
+    <span className="intelligibility-modal__muted">
+        ({points(percent)})<span className="sr-only"> {t('intelligibilityNoVotes')}</span>
+    </span>
 )
 
 const SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹'
@@ -211,6 +220,25 @@ const COLUMNS: [string, string[]][] = [
     ['Rare', ['M10.5 3 8 9l4 13 4-13-2.5-6', 'M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 '
         + '1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z', 'M2 9h20']],
 ]
+
+/** a machine's vote: italics for the eye, the words for a screen reader; the tooltip for the mouse */
+const MachineVote = ({ value }: { value: ReactNode }) => (
+    <Tooltip content={t('intelligibilityMachineVote')} pointerOnly>
+        <i className="intelligibility-modal__machine">
+            {value}<span className="sr-only"> ({t('intelligibilityMachineVote')})</span>
+        </i>
+    </Tooltip>
+)
+
+/** a language's band-coloured code; a screen reader hears the full name */
+const LangPill = ({ name, className, children }: { name: string, className: string, children: string }) => (
+    <>
+        <Tooltip content={name} pointerOnly>
+            <abbr className={className} aria-hidden="true">{children}</abbr>
+        </Tooltip>
+        <span className="sr-only">{name}</span>
+    </>
+)
 
 const Icon = ({ paths }: { paths: string[] }) => (
     <svg
@@ -281,17 +309,13 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
     const voters = (lang: string) => COLUMNS.reduce((n, _, i) => n + cell(lang, i), 0)
     // a sum of the machine's votes alone reads in italics, like the votes themselves
     const people = (lang: string) => COLUMNS.reduce((n, _, i) => n + own(lang, i), 0)
-    const sum = (value: number, byPeople: number) => (value && !byPeople
-        ? (
-            <Tooltip content={t('intelligibilityMachineVote')}>
-                <i className="intelligibility-modal__machine">{value}</i>
-            </Tooltip>
-        )
-        : value || '')
+    const sum = (value: number, byPeople: number) => (value && !byPeople ? <MachineVote value={value}/> : value || '')
     const columnPeople = (i: number) => langs.reduce((n, lang) => n + own(lang, i), 0)
     // Interslavic sums up the Slavic languages: the score out of 6, every answer column, every voter
     const totals: ReactNode[] = [
-        percent == null ? <Tooltip content={t('intelligibilityGuess')}>{guess(total)}</Tooltip> : points(total),
+        percent == null
+            ? <Tooltip content={t('intelligibilityGuess')} pointerOnly>{guess(total)}</Tooltip>
+            : points(total),
         ...COLUMNS.map((_, i) => langs.reduce((n, lang) => n + cell(lang, i), 0)),
         langs.reduce((n, lang) => n + voters(lang), 0),
     ]
@@ -312,11 +336,14 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                         </Tooltip>
                         {/* the numbers belong to the Match mode: I_l, w_l, the votes */}
                         <Tooltip content={t('intelligibilityShare')}>
-                            <th><Sym>Iℓ</Sym></th>
+                            <th aria-label={t('intelligibilityTitle')}><Sym>Iℓ</Sym></th>
                         </Tooltip>
                         {/* Jan van Steenbergen's six votes: the column links to where he describes them */}
-                        <Tooltip content={t('intelligibilityContribution')}>
-                            <th className="intelligibility-modal__answer">
+                        <th
+                            className="intelligibility-modal__answer"
+                            aria-label={t('intelligibilityContributionShort')}
+                        >
+                            <Tooltip content={t('intelligibilityContribution')}>
                                 <a
                                     className="intelligibility-modal__steen"
                                     href="https://interslavic.fun/learn/misc/design-criteria#which-roots-to-use"
@@ -325,8 +352,8 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                                 >
                                     <Flower answers={answers}/> <Sym>Sℓ</Sym>
                                 </a>
-                            </th>
-                        </Tooltip>
+                            </Tooltip>
+                        </th>
                         {COLUMNS.map(([c, icon]) => (
                             <Tooltip key={c} content={t(`intelligibility${c}`)}>
                                 <th className="intelligibility-modal__answer" aria-label={t(`intelligibility${c}`)}>
@@ -350,9 +377,9 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                         <tr key={lang} className={groupEnd(lang)}>
                             {/* the language in its band's colour, its own cell: it stays while the rest scrolls */}
                             <th className="intelligibility-modal__lang">
-                                <Tooltip content={t(`${lang}Lang`)}>
-                                    <abbr className={`${PILL} ${band(answers, [lang])}`}>{lang.toUpperCase()}</abbr>
-                                </Tooltip>
+                                <LangPill name={t(`${lang}Lang`)} className={`${PILL} ${band(answers, [lang])}`}>
+                                    {lang.toUpperCase()}
+                                </LangPill>
                             </th>
                             <th lang={lang}>
                                 <Translation isv={isv} str={translationOf(lang)} lang={lang}/>
@@ -362,6 +389,7 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                             </td>
                             {/* the language's points out of 6, S_l = 6 · w_l · I_l; its weight in the tooltip */}
                             <Tooltip
+                                pointerOnly
                                 content={<>
                                     {t('intelligibilityWeight', {
                                         weight: fraction(parts[lang]?.fraction || [0, 1]),
@@ -379,11 +407,7 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                                 <td key={c} className={`intelligibility-modal__answer ${falseFriend(c)}`}>
                                     {/* people's answers, or the machine's in italics where nobody answered */}
                                     {bot[lang] === i && !own(lang, i)
-                                        ? (
-                                            <Tooltip content={t('intelligibilityMachineVote')}>
-                                                <i className="intelligibility-modal__machine">{cell(lang, i)}</i>
-                                            </Tooltip>
-                                        )
+                                        ? <MachineVote value={cell(lang, i)}/>
                                         : cell(lang, i) || ''}
                                 </td>
                             ))}
@@ -398,11 +422,12 @@ const IntelligibilityTable = ({ isv, score, bot, extras, translationOf, lemmas, 
                 {scripts.map(([lang, name, script], i) => (
                     <tr key={lang}>
                         <th className="intelligibility-modal__lang">
-                            <Tooltip content={name}>
-                                <abbr className={`${PILL} ${percent == null ? 'none' : shareBand(total / 100)}`}>
-                                    ISV
-                                </abbr>
-                            </Tooltip>
+                            <LangPill
+                                name={name}
+                                className={`${PILL} ${percent == null ? 'none' : shareBand(total / 100)}`}
+                            >
+                                ISV
+                            </LangPill>
                         </th>
                         <th lang={lang}>
                             {/* the synset's lemmas, this one in bold; a click on another steps to it, like ‹ › */}
@@ -493,7 +518,9 @@ export const IntelligibilityModal = () => {
 
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
-            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            // Alt+← is Back; arrows in a field or a select are theirs
+            const own = e.altKey || e.ctrlKey || e.metaKey || (e.target as Element).closest?.('input, select, textarea')
+            if (!own && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
                 step(e.key === 'ArrowLeft' ? -1 : 1)
             }
         }
@@ -545,16 +572,19 @@ export const IntelligibilityModal = () => {
                     <div className="intelligibility-modal__word">
                         {/* the card's own lines, cut to this lemma: "dlja (kogo? čego?) / дља (кого? чего?)" */}
                         {lemmas.length > 1 && arrow(-1)}
-                        {lines.map(({ str, caseInfo, lang }, n) => (
-                            <span key={lang}>
-                                {n ? ' / ' : ''}
-                                <Clipboard str={lemmaOf(str)} lang={lang}/>
-                                {caseInfo && <span className="caseInfo"> ({caseInfo})</span>}
-                            </span>
-                        ))}
-                        {!caseQuestions && item.caseInfo && (
-                            <span className="caseInfo"> (+{t(`case${item.caseInfo.slice(1)}`)})</span>
-                        )}
+                        {/* the window's name: the lemma without the arrows */}
+                        <span id="modal-dialog-title">
+                            {lines.map(({ str, caseInfo, lang }, n) => (
+                                <span key={lang}>
+                                    {n ? ' / ' : ''}
+                                    <Clipboard str={lemmaOf(str)} lang={lang}/>
+                                    {caseInfo && <span className="caseInfo"> ({caseInfo})</span>}
+                                </span>
+                            ))}
+                            {!caseQuestions && item.caseInfo && (
+                                <span className="caseInfo"> (+{t(`case${item.caseInfo.slice(1)}`)})</span>
+                            )}
+                        </span>
                         {lemmas.length > 1 && arrow(1)}
                     </div>
                     {/* what the lemma is: its part of speech in full */}
@@ -564,7 +594,7 @@ export const IntelligibilityModal = () => {
                         </div>
                     )}
                 </div>
-                <button className="modal-dialog__header-close" onClick={onClose} aria-label="Close">
+                <button className="modal-dialog__header-close" onClick={onClose} aria-label={t('close')}>
                     &times;
                 </button>
             </div>

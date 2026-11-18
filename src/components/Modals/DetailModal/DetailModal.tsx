@@ -93,7 +93,7 @@ class DetailModalInternal extends Component<IDetailModalInternal, { lemma: numbe
         return (
             <>
                 <div className="modal-dialog__header">
-                    <span className="modal-dialog__header-title">
+                    <span className="modal-dialog__header-title" id="modal-dialog-title">
                         {lemmas.length > 1 ? (
                             <>
                                 {this.formatStr(lemmas[i])} {this.formatStr(perLemma(add, i))}{' '}

@@ -52,7 +52,9 @@ export const LemmaPill = ({ item, index }: { item: ITranslateResult, index: numb
     const machineOnly = percent != null && !people
     const title = people
         ? t('intelligibilityPill', { percent: String(percent), people: String(people) })
-        : t(machineOnly ? 'intelligibilityMachineVote' : 'intelligibilityNotRated')
+        : machineOnly
+            ? `${t('intelligibilityTitle')} ${percent}% · ${t('intelligibilityMachineVote')}`
+            : t('intelligibilityNotRated')
 
     return (
         <Tooltip content={title}>
@@ -62,6 +64,7 @@ export const LemmaPill = ({ item, index }: { item: ITranslateResult, index: numb
                     'results-card-status__pill',
                     percent == null ? 'none' : shareBand(total / 100),
                 )}
+                aria-label={title}
                 onClick={() => dispatch(showModalDialog({
                     type: MODAL_DIALOG_TYPES.MODAL_DIALOG_INTELLIGIBILITY,
                     data: { id: item.id, lemma: String(index), tab: 'match' },

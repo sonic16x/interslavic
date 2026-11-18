@@ -19,6 +19,8 @@ interface ITooltipProps {
     content: ReactNode
     /** one DOM element: it gets the handlers and aria-describedby, no wrapper around it */
     children: ReactElement<any>
+    /** a data cell whose text already says it (or a hidden text does): no tab stop, no description; mouse and touch */
+    pointerOnly?: boolean
 }
 
 const MARGIN = 8
@@ -34,7 +36,7 @@ let closeOpen: (() => void) | null = null
  * the trigger's rect, above it or below when there is no room, kept inside the viewport.
  * Mouse: hover with a delay. Keyboard: focus. Touch: a tap toggles it on a trigger that does nothing else.
  */
-export const Tooltip = ({ content, children }: ITooltipProps) => {
+export const Tooltip = ({ content, children, pointerOnly }: ITooltipProps) => {
     const id = useId()
     const trigger = useRef<HTMLElement>(null)
     const tip = useRef<HTMLSpanElement>(null)
@@ -133,8 +135,9 @@ export const Tooltip = ({ content, children }: ITooltipProps) => {
         <>
             {cloneElement(children, {
                 ref: trigger,
-                tabIndex: own.tabIndex ?? (FOCUSABLE.includes(children.type as string) ? undefined : 0),
-                'aria-describedby': id,
+                tabIndex: own.tabIndex ?? (pointerOnly || FOCUSABLE.includes(children.type as string) ? undefined : 0),
+                // the same words as the name would be read twice
+                'aria-describedby': pointerOnly || content === own['aria-label'] ? undefined : id,
                 onPointerEnter: chain('onPointerEnter', (e: ReactPointerEvent) => {
                     if (e.pointerType === 'mouse') {
                         clearTimeout(timer.current)
