@@ -27,7 +27,7 @@ export const ResultsCard =
     ({ item, alphabets, caseQuestions, short, index }: IResultsCardProps) => (
         <div
             className={cn('results-card', { short })}
-            tabIndex={index}
+            tabIndex={0}
             data-testid={`result-${index}`}
         >
             <div className="results-card__text translate">

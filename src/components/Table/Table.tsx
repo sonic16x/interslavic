@@ -87,7 +87,7 @@ export class Table extends Component<ITableProps> {
                             rowSpan={attrs.h}
                             style={{ width: attrs.sw }}
                         >
-                            <Clipboard str={str} lang={attrs.lang}/>
+                            <Clipboard str={str} lang={attrs.lang} keyboard={false}/>
                         </td>
                     )
                 }

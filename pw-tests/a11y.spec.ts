@@ -16,8 +16,6 @@ test.beforeAll(async () => {
  * the grey IPA and part-of-speech hint. Everything else serious or critical fails.
  */
 const PRE_EXISTING_CONTRAST = ['class="ipa"', 'class="hint"', 'class="action-button"', 'class="item'];
-/** master's verb button reads "Conjugation" but is named "Declension" */
-const PRE_EXISTING = ['label-content-name-mismatch'];
 
 async function serious(page: Page, include: string) {
   const { violations } = await new AxeBuilder({ page })
@@ -26,7 +24,7 @@ async function serious(page: Page, include: string) {
     .analyze();
 
   return violations
-    .filter((v) => (v.impact === 'serious' || v.impact === 'critical') && !PRE_EXISTING.includes(v.id))
+    .filter((v) => v.impact === 'serious' || v.impact === 'critical')
     .map((v) => ({
       id: v.id,
       nodes: v.nodes
@@ -100,5 +98,15 @@ test.describe('Accessibility', () => {
 
     await page.keyboard.press('Escape');
     await expect(tooltip).toBeHidden();
+  });
+
+  test('Keyboard: Enter on a word copies it, and the status region says so', async ({ page }) => {
+    await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+    const card = await search(page);
+    const word = card.getByRole('button', { name: 'kot', exact: true });
+    await word.focus();
+    await page.keyboard.press('Enter');
+    await expect(page.getByRole('status')).toHaveText('Text "kot" copied to clipboard');
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('kot');
   });
 });
