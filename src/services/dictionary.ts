@@ -20,8 +20,10 @@ import {
     isPlural,
     isSingular,
     latinToIpa,
+    LEMMA_SEPARATOR,
     levenshteinDistance,
     normalize,
+    perLemma,
     removeBrackets,
     removeExclamationMark,
     searchStrategies,
@@ -76,13 +78,16 @@ const isvReplacebleLetters = [
 ]
 
 function getWordForms(item): string[] {
-    const word =  removeExclamationMark(Dictionary.getField(item, 'isv'))
-    const add = Dictionary.getField(item, 'addition')
-    const details = Dictionary.getField(item, 'partOfSpeech')
-    const pos = getPartOfSpeech(details)
+    const word = removeBrackets(removeExclamationMark(Dictionary.getField(item, 'isv')), '(', ')')
+    const rowAdd = Dictionary.getField(item, 'addition')
+    const rowDetails = Dictionary.getField(item, 'partOfSpeech')
+    const pos = getPartOfSpeech(rowDetails)
     const wordForms = []
 
-    word.split(',').map((wordElement) => {
+    word.split(',').map((wordElement, lemmaIndex) => {
+        // every lemma of the row has its own grammar
+        const add = perLemma(rowAdd, lemmaIndex)
+        const details = perLemma(rowDetails, lemmaIndex)
         wordElement = wordElement.trim()
         switch (pos) {
             case 'verb':
@@ -156,7 +161,7 @@ function getAdditionFormFallback(item): string | undefined {
         return
     }
 
-    const [word, word2] = removeExclamationMark(Dictionary.getField(item, 'isv')).split(',')
+    const [word, word2] = removeBrackets(removeExclamationMark(Dictionary.getField(item, 'isv')), '(', ')').split(',')
     if (word2) {
         return
     }
@@ -485,7 +490,7 @@ class DictionaryClass {
                 // seach by part of speach
                 if (filterResult && filterPartOfSpeech.length) {
                     const partOfSpeech = this.getField(item, 'partOfSpeech')
-                        .replace(/[ \/]/g, '').split('.').filter(Boolean)
+                        .replace(/[ \/|]/g, '').split('.').filter(Boolean)
                     if (partOfSpeech.includes('m') || partOfSpeech.includes('n')
                         || partOfSpeech.includes('f')) {
                         partOfSpeech.push('noun')
@@ -601,16 +606,37 @@ class DictionaryClass {
         return results.map((item) => {
             const isvRaw = this.getField(item, ISV)
             const remove = isvRaw.startsWith('!')
-            const isv = removeBrackets(
+            let isv = removeBrackets(
                 removeExclamationMark(isvRaw), '[', ']'
             )
 
             const id = this.getField(item, 'id')
-            const addArray: string[] = this.getField(item, 'addition').match(/\(.+?\)/) || []
-            if (addArray.length === 0) {
+            // one form per lemma is shown as "(djabla, djavla)"; when only some lemmas have one, none is shown
+            const forms = this.getField(item, 'addition').split(LEMMA_SEPARATOR)
+            const addition = forms.length === 1
+                ? forms[0]
+                : forms.every(Boolean) ? `(${forms.map((form) => form.slice(1, -1)).join(', ')})` : ''
+            const addArray: string[] = addition.match(/\(.+?\)/) || []
+            if (addArray.length === 0 && forms.length === 1) {
                 const addFallback = getAdditionFormFallback(item)
                 if (addFallback) {
                     addArray.push(addFallback)
+                }
+            }
+            // Homonym index "bolěti (1)" only links the row to `lemmas`: never shown.
+            isv = isv.replace(/\s*\(\d+\)/g, '')
+            // Case government may sit in the isv cell: "izbaviti (+2)", "vladati (+5), vlåděti (+5)".
+            // Shared by every lemma, it is shown as case info; otherwise it stays next to its lemma.
+            const isvCases = isv.split(',').map((lemma) => lemma.match(/\s*\(\+.+?\)/)?.[0].trim())
+            if (isvCases.some(Boolean)) {
+                // the isv cell is the authority; the old addition may still repeat one of the cases
+                const oldCase = addArray.findIndex((elem) => elem.startsWith('(+'))
+                if (oldCase !== -1) {
+                    addArray.splice(oldCase, 1)
+                }
+                if (isvCases.every((isvCase) => isvCase === isvCases[0])) {
+                    isv = isv.replace(/\s*\(\+.+?\)/g, '')
+                    addArray.push(isvCases[0])
                 }
             }
             const add = addArray.find((elem) => !elem.startsWith('(+')) || ''
