@@ -3,6 +3,7 @@ import * as fs from 'fs'
 import { ADD_LANGS, DOMAIN, EN, initialAddFields, initialFields, ISV, ISV_SRC, LANGS } from 'consts'
 
 import { Dictionary, loadTablesData } from 'services'
+import { addVotes, VOTES_URL } from 'services/slovosborVotes'
 
 import { getColumnName, sortColumns, transposeMatrix } from 'utils'
 
@@ -56,6 +57,19 @@ loadTablesData().then(async ({ data, columns }) => {
     })
 
     const basicData = transposeMatrix<string>(basicDataTransposed)
+
+    // Slovosbor's votes replace the sheet's intelligibility marks where people voted; without the export they stay
+    try {
+        const votesRes = await fetch(VOTES_URL)
+        if (!votesRes.ok) {
+            throw new Error(`HTTP ${votesRes.status}`)
+        }
+        // eslint-disable-next-line no-console
+        console.info(`slovosbor votes: ${addVotes(basicData, await votesRes.text())} rows rated`)
+    } catch (error) {
+        // eslint-disable-next-line no-console
+        console.info(`::warning::${VOTES_URL} unavailable (${error.message}); the sheet's marks stay`)
+    }
 
     const searchIndexBasic = [
         ISV_SRC,
