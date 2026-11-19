@@ -16,6 +16,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
       - name: Cache node_modules
         id: node-modules-cache
         uses: actions/cache@v3
@@ -38,6 +43,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
 
       - name: Use Cached Dependencies
         run: npm ci --prefer-offline
@@ -70,6 +80,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
       - name: Use Cached Dependencies
         run: npm ci --prefer-offline
 
@@ -88,6 +103,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
 
       - name: Use Cached Dependencies
         run: npm ci --prefer-offline
@@ -111,6 +131,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
 
       - name: Use Cached Dependencies
         run: npm ci --prefer-offline
@@ -143,6 +168,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
 
       - uses: mdecoleman/pr-branch-name@v3.0.0
         id: vars
