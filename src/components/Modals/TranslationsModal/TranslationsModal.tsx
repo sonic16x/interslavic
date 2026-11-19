@@ -113,7 +113,7 @@ export const TranslationsModal =
         return (
             <>
                 <div className="modal-dialog__header">
-                    <div className="modal-dialog__header-title">
+                    <div className="modal-dialog__header-title" id="modal-dialog-title">
                         {t('translatesModalTitle')}
                     </div>
                     <button

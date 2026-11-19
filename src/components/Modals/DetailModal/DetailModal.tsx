@@ -63,7 +63,7 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         return (
             <>
                 <div className="modal-dialog__header">
-                    <span className="modal-dialog__header-title">
+                    <span className="modal-dialog__header-title" id="modal-dialog-title">
                         {this.formatStr(word)} {this.formatStr(add)} <span className="details">({expandAbbr(t, details)})</span>
                     </span>
                     <button

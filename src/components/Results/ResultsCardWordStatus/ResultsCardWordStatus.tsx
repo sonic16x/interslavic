@@ -9,6 +9,8 @@ import { ITranslateResult } from 'services'
 
 import { getWordStatus } from 'utils/getWordStatus'
 
+import { Tooltip } from 'components/Tooltip'
+
 import './ResultsCardWordStatus.scss'
 
 interface IResultsCardWordStatusProps {
@@ -27,14 +29,11 @@ export const ResultsCardWordStatus = ({ item }: IResultsCardWordStatusProps) => 
     
     if (wordStatus) {
         return (
-            <button
-                key="wordStatus"
-                onClick={showTranslations}
-                className="results-card-status"
-                title={t(wordStatus.text)}
-            >
-                {wordStatus.icon}
-            </button>
+            <Tooltip key="wordStatus" content={t(wordStatus.text)}>
+                <button onClick={showTranslations} className="results-card-status" aria-label={t(wordStatus.text)}>
+                    {wordStatus.icon}
+                </button>
+            </Tooltip>
         )
     }
 }
