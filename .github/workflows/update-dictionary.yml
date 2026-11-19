@@ -22,6 +22,11 @@ jobs:
         run: git checkout $TAG
         shell: bash
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
       - name: NPM install
         run: npm ci
 

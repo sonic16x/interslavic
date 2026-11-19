@@ -53,7 +53,7 @@
     "@eslint/compat": "^1.2.3",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.15.0",
-    "@playwright/test": "^1.49.0",
+    "@playwright/test": "^1.65.0",
     "@storybook/addon-essentials": "^8.6.7",
     "@storybook/addon-interactions": "^8.6.7",
     "@storybook/addon-onboarding": "^8.6.7",
@@ -87,6 +87,7 @@
     "pre-commit": "^1.2.2",
     "pwa-asset-generator": "^6.4.0",
     "rollup-plugin-visualizer": "^5.14.0",
+    "sass": "^1.81.0",
     "sort-package-json": "^3.0.0",
     "storybook": "^8.6.7",
     "stylelint": "^16.10.0",
@@ -106,5 +107,9 @@
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.36.0"
+  },
+  "engines": {
+    "node": ">=26",
+    "npm": ">=11.18"
   }
 }
