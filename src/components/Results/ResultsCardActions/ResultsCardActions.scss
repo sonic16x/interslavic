@@ -14,7 +14,6 @@
     cursor: pointer;
     font-size: var(--text-s);
     line-height: var(--text-s-line);
-    outline: none;
 
     @media (width <= 395px) {
       font-size: var(--text-xs);

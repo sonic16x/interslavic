@@ -34,7 +34,9 @@ export const Notification =
 
         return (
             <div className="notification-container">
+                {/* a status region: screen readers announce "Copied" without moving focus */}
                 <div
+                    role="status"
                     className={classNames('notification', [notification?.type], { show: isVisible && !!notification })}
                     onClick={() => setVisible(false)}
                     onTransitionEnd={() => {

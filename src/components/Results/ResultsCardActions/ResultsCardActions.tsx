@@ -116,7 +116,7 @@ export const ResultsCardActions = ({ item, short }: IResultsCardActionsProps) =>
                 <button
                     className="action-button"
                     type="button"
-                    aria-label={t('declensions')}
+                    aria-label={pos === 'verb' ? t('conjugation') : t('declensions')}
                     onClick={showDetail}
                 >
                     {short ? (

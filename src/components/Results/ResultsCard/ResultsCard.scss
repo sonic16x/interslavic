@@ -4,7 +4,7 @@
   max-width: 1024px;
   box-sizing: border-box;
   flex-shrink: 0;
-  padding: 16px 16px 24px;
+  padding: 16px 16px 28px; /* the action buttons keep 24px from the text: WCAG target size */
   border-radius: var(--border-radius-s);
   margin-bottom: var(--gap-size);
   background: var(--light);
