@@ -39,8 +39,11 @@
     prefix	prefix
  */
 
+import { perLemma } from '../perLemma'
+
 function getArr(str) {
-    return str
+    // one upos per row: its first lemma answers for the part of speech
+    return perLemma(str)
         .replace(/\.\//g, '/')
         .replace(/ /g, '')
         .split('.')
@@ -250,11 +253,14 @@ export type VerbType =
     'reflexive' |
     'imperfective' |
     'perfective' |
-    'imperfectiveOrPerfective'
+    'imperfectiveOrPerfective' |
+    'main'
     ;
 
 export function getVerbDetails(details: string): VerbType[] {
-    const res = getArr(details).map((detail) => {
+    // "v.tr./intr. ipf.": a verb may be both transitive and intransitive
+    const parts = getArr(details).flatMap((detail) => detail === 'ipf/pf' ? [detail] : detail.split('/'))
+    const res: VerbType[] = parts.map((detail): VerbType | '' => {
         switch (detail) {
             case 'intr':
                 return 'intransitive'

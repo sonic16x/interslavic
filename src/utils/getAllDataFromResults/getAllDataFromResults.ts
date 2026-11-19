@@ -2,6 +2,8 @@ import { tableColumnsLetters, validFields } from 'consts'
 
 import {
     getColumnName,
+    ILemmaIssue,
+    joinLemmas,
     parseTsvTable,
     transposeMatrix,
 } from 'utils'
@@ -15,17 +17,24 @@ export interface IAllData {
     data: string[][];
     columns: string[][];
     rangesMap: IRangeMap[];
+    lemmaIssues: ILemmaIssue[];
 }
 
 const getLineId = (line) => line[0]
 
-export const getAllDataFromResults = (results: string[]): IAllData => {
+/** `lemmas`: TSV of the `lemmas` tab; with it, grammar of the first table comes from there. */
+export const getAllDataFromResults = (results: string[], lemmas?: string): IAllData => {
     const existingFields = new Set()
     const idMap = new Map<string, string[]>()
     const rangesMap: IRangeMap[] = []
+    let lemmaIssues: ILemmaIssue[] = []
 
-    results.map((data) => {
+    results.map((data, tableIndex) => {
         const wordList = parseTsvTable(data.replace(/#/g, ''))
+
+        if (lemmas && tableIndex === 0) {
+            lemmaIssues = joinLemmas(wordList, parseTsvTable(lemmas))
+        }
 
         rangesMap.push({
             header: new Map(wordList[0].map((filed, i) => [filed, tableColumnsLetters[i]])),
@@ -70,5 +79,6 @@ export const getAllDataFromResults = (results: string[]): IAllData => {
         data,
         columns,
         rangesMap,
+        lemmaIssues,
     }
 }

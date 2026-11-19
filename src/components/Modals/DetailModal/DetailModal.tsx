@@ -9,6 +9,7 @@ import { hideModalDialog, setAlphabetTypeAction } from 'actions'
 import { IMainState } from 'reducers'
 
 import {
+    eachLemma,
     expandAbbr,
     getCaseTips,
     getCyrillic,
@@ -22,6 +23,9 @@ import {
     isIndeclinable,
     isPlural,
     isSingular,
+    perLemma,
+    removeBrackets,
+    splitLemmas,
 } from 'utils'
 
 import { LineSelector, Text } from 'components'
@@ -52,19 +56,35 @@ interface IDetailModalInternal {
 }
 
 /* eslint-disable max-len */
-class DetailModalInternal extends Component<IDetailModalInternal> {
+class DetailModalInternal extends Component<IDetailModalInternal, { lemma: number }> {
+    public state = { lemma: 0 }
+
     public render() {
         if (!this.props.details) {
             return null
         }
 
         const { word, add, details } = this.props
+        const lemmas = splitLemmas(word)
+        const i = this.state.lemma
 
         return (
             <>
                 <div className="modal-dialog__header">
                     <span className="modal-dialog__header-title" id="modal-dialog-title">
-                        {this.formatStr(word)} {this.formatStr(add)} <span className="details">({expandAbbr(t, details)})</span>
+                        {lemmas.length > 1 ? (
+                            <>
+                                {this.formatStr(lemmas[i])} {this.formatStr(perLemma(add, i))}{' '}
+                                <span className="details">({expandAbbr(t, perLemma(details, i))})</span>
+                            </>
+                        ) : (
+                            <>
+                                {this.formatStr(word)} {this.formatStr(eachLemma(add).join(', '))}{' '}
+                                <span className="details">
+                                    ({eachLemma(details).map((item) => expandAbbr(t, item)).join(' / ')})
+                                </span>
+                            </>
+                        )}
                     </span>
                     <button
                         className="modal-dialog__header-close"
@@ -75,6 +95,14 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
                     </button>
                 </div>
                 <div className="modal-dialog__body">
+                    {lemmas.length > 1 && (
+                        <LineSelector
+                            className="detail-modal__lemmas"
+                            options={lemmas.map((lemma, n) => ({ name: this.formatStr(lemma), value: String(n) }))}
+                            value={String(i)}
+                            onSelect={(value) => this.setState({ lemma: Number(value) })}
+                        />
+                    )}
                     {this.renderBody()}
                 </div>
                 {this.renderFooter()}
@@ -107,25 +135,20 @@ class DetailModalInternal extends Component<IDetailModalInternal> {
         const fieldIsv = this.props.word
         const fieldAddition = this.props.add
         const fieldPartOfSpeech = this.props.details
-        const splitted = fieldIsv.split(',')
+        const splitted = removeBrackets(fieldIsv, '(', ')').split(',')
         if (splitted.length === 1 && fieldPartOfSpeech.indexOf('m./f.') !== -1 ) {
             return [
-                this.renderWord([fieldIsv, fieldAddition, 'm.'],
+                this.renderWord([splitted[0], fieldAddition, 'm.'],
                     ['showTitle', 'showGender', 'oneMore']),
-                this.renderWord([fieldIsv, fieldAddition, 'f.'],
+                this.renderWord([splitted[0], fieldAddition, 'f.'],
                     ['showTitle', 'showGender']),
             ]
         }
 
-        return splitted.map((word, i) => {
-            const options = []
-            if (splitted.length > 1) {
-                options.push('showTitle')
-                if (i < splitted.length - 1) { options.push('oneMore') }
-            }
+        // one lemma at a time, with its own grammar; the switcher above picks it
+        const i = this.state.lemma
 
-            return this.renderWord([word.trim(), fieldAddition,  fieldPartOfSpeech], options)
-        })
+        return this.renderWord([splitted[i].trim(), perLemma(fieldAddition, i), perLemma(fieldPartOfSpeech, i)], [])
     }
 
     private renderWord(rawItem, options: string[]) {

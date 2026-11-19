@@ -1,7 +1,9 @@
-import { getPartOfSpeech } from 'utils'
+import { getPartOfSpeech, removeBrackets } from 'utils'
 
-export function wordHasForms(isv: string, details: string) {
+export function wordHasForms(isvRaw: string, details: string) {
     const pos = getPartOfSpeech(details)
+    // marks in parentheses, "(1)", "(+2)", "(na)", are not part of the lemma
+    const isv = removeBrackets(isvRaw, '(', ')')
 
     switch (pos) {
         case 'noun':
