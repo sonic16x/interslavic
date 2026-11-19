@@ -53,11 +53,23 @@ interface IDetailModalInternal {
     setAlphabetType: (type: string) => void;
     orderOfCases: string[];
     displayImperfect: boolean;
+    /** lemma indexes in reading order, "1,0"; row order when absent */
+    order?: string;
+    /** inside an expanded card: one lemma, no header and no lemma switcher */
+    embedded?: boolean;
+    lemma?: number;
 }
 
 /* eslint-disable max-len */
 class DetailModalInternal extends Component<IDetailModalInternal, { lemma: number }> {
-    public state = { lemma: 0 }
+    public state = { lemma: this.props.lemma ?? this.order()[0] }
+
+    private order(): number[] {
+        const count = splitLemmas(this.props.word || '').length
+        const order = (this.props.order || '').split(',').filter(Boolean).map(Number)
+
+        return order.length === count ? order : [...Array(count).keys()]
+    }
 
     public render() {
         if (!this.props.details) {
@@ -67,6 +79,16 @@ class DetailModalInternal extends Component<IDetailModalInternal, { lemma: numbe
         const { word, add, details } = this.props
         const lemmas = splitLemmas(word)
         const i = this.state.lemma
+
+        if (this.props.embedded) {
+            return (
+                <div className="detail-modal--embedded">
+                    {/* the script above the forms: the window's own tabs are at its foot */}
+                    {this.renderFooter()}
+                    {this.renderBody()}
+                </div>
+            )
+        }
 
         return (
             <>
@@ -98,7 +120,7 @@ class DetailModalInternal extends Component<IDetailModalInternal, { lemma: numbe
                     {lemmas.length > 1 && (
                         <LineSelector
                             className="detail-modal__lemmas"
-                            options={lemmas.map((lemma, n) => ({ name: this.formatStr(lemma), value: String(n) }))}
+                            options={this.order().map((n) => ({ name: this.formatStr(lemmas[n]), value: String(n) }))}
                             value={String(i)}
                             onSelect={(value) => this.setState({ lemma: Number(value) })}
                         />
@@ -120,15 +142,17 @@ class DetailModalInternal extends Component<IDetailModalInternal, { lemma: numbe
             return null
         }
 
-        return (
-            <footer className="modal-dialog__footer">
-                <LineSelector
-                    options={options}
-                    value={this.props.alphabetType}
-                    onSelect={(type) => this.props.setAlphabetType(type)}
-                />
-            </footer>
+        const selector = (
+            <LineSelector
+                options={options}
+                value={this.props.alphabetType}
+                onSelect={(type) => this.props.setAlphabetType(type)}
+            />
         )
+
+        return this.props.embedded
+            ? <div className="detail-modal__scripts">{selector}</div>
+            : <footer className="modal-dialog__footer">{selector}</footer>
     }
 
     private renderBody() {
@@ -597,13 +621,15 @@ function mapStateToProps({
     interfaceLang,
     orderOfCases,
     displayImperfect,
-}: IMainState) {
-    const { word, add, details } = modalDialog.data
+}: IMainState, own: Partial<IDetailModalInternal>) {
+    // an expanded card passes the word itself, the window takes it from the modal state
+    const { word, add, details, order } = own.embedded ? own : modalDialog.data
 
     return {
         word,
         add,
         details,
+        order,
         alphabetType,
         alphabets,
         flavorisationType,

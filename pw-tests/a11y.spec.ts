@@ -39,38 +39,49 @@ async function search(page: Page) {
   await expect(page.getByTestId('dictionary-loading')).toBeVisible();
   await expect(page.getByTestId('main-title')).toBeVisible();
   await page.getByTestId('search-input').click();
-  await page.getByTestId('search-input').fill('cat');
+  await page.getByTestId('lang-selector').selectOption('ru');
+  await page.getByTestId('search-input').fill('местоимение');
 
-  return page.getByTestId('result-0');
+  return page.locator('[data-testid^="result-"]', { hasText: 'zaimennik' }).first();
 }
 
 test.describe('Accessibility', () => {
   for (const colorScheme of ['light', 'dark'] as const) {
-    test(`axe: the cards and the translations window (${colorScheme})`, async ({ page }) => {
+    test(`axe: the cards and every tab of the lemma window (${colorScheme})`, async ({ page }) => {
       test.skip(!AxeBuilder, '@axe-core/playwright is not installed');
       await page.emulateMedia({ colorScheme });
       const card = await search(page);
-      await expect(card).toContainText('kot');
+      await expect(card.locator('.results-card-status__pill')).toHaveCount(2);
       expect(await serious(page, '#app')).toEqual([]);
 
-      await card.getByRole('button', { name: 'Translations' }).click();
-      await expect(page.locator('.modal-dialog .table')).toBeVisible();
-      expect(await serious(page, '.modal-dialog')).toEqual([]);
+      await card.locator('.results-card-status__pill').last().click();
+      const modal = page.locator('.modal-dialog');
+      const tabs = modal.locator('.intelligibility-modal__tabs button');
+      await expect(tabs).toHaveCount(3);
+      for (let i = 0; i < 3; i++) {
+        await tabs.nth(i).click();
+        await expect(tabs.nth(i)).toHaveAttribute('aria-pressed', 'true');
+        expect(await serious(page, '.modal-dialog'), await tabs.nth(i).innerText()).toEqual([]);
+      }
     });
   }
 
-  test('Keyboard: a card button opens the window, focus stays in it, Escape returns to the button', async ({ page }) => {
+  test('Keyboard: a pill opens the window, focus stays in it, Escape returns to the pill', async ({ page }) => {
     const card = await search(page);
-    const button = card.getByRole('button', { name: 'Translations' });
-    await button.focus();
+    const pill = card.locator('.results-card-status__pill').last();
+    // what the number is, not just "74%"
+    await expect(pill).toHaveAccessibleName(/^Intelligibility \d+%/);
+    await pill.focus();
     await page.keyboard.press('Enter');
 
     const dialog = page.locator('.modal-dialog');
     await expect(dialog).toBeFocused();
-    await expect(dialog).toHaveAccessibleName(/Translations/);
+    await expect(dialog).toHaveAccessibleName(/zaimennik/);
+    const word = dialog.locator('.intelligibility-modal__word');
+    await expect(word).toContainText('zaimennik');
 
     // Tab cycles inside the window, never onto the page under it
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 30; i++) {
       await page.keyboard.press('Tab');
       const inside = await page.evaluate(() => {
         const active = document.activeElement;
@@ -80,16 +91,27 @@ test.describe('Accessibility', () => {
       expect(inside, `Tab ${i + 1}`).toBe(true);
     }
 
+    // the tabs are buttons: Enter switches, aria-pressed follows
+    const translations = dialog.locator('.intelligibility-modal__tabs button', { hasText: 'Translations' });
+    await translations.focus();
+    await page.keyboard.press('Enter');
+    await expect(translations).toHaveAttribute('aria-pressed', 'true');
+    await expect(dialog.locator('.table')).toBeVisible();
+
+    // ← steps to the other lemma (zaimennik is the last one)
+    await page.keyboard.press('ArrowLeft');
+    await expect(word).not.toContainText('zaimennik');
+
     await page.keyboard.press('Escape');
     await expect(page.locator('.modal-dialog-container.show')).toHaveCount(0);
-    await expect(button).toBeFocused();
+    await expect(pill).toBeFocused();
   });
 
   test('Keyboard: the part of speech shows its full name on focus; Escape hides it', async ({ page }) => {
     const card = await search(page);
     const hint = card.locator('.hint').first();
     // Tab, not focus(): the tooltip follows a keyboard focus (:focus-visible), not a programmatic one
-    for (let i = 0; i < 20 && !(await hint.evaluate((el) => el === document.activeElement)); i++) {
+    for (let i = 0; i < 30 && !(await hint.evaluate((el) => el === document.activeElement)); i++) {
       await page.keyboard.press('Tab');
     }
     const tooltip = page.getByRole('tooltip');
@@ -100,13 +122,12 @@ test.describe('Accessibility', () => {
     await expect(tooltip).toBeHidden();
   });
 
-  test('Keyboard: Enter on a word copies it, and the status region says so', async ({ page }) => {
+  test('Keyboard: Enter on a lemma copies it, and the status region says so', async ({ page }) => {
     await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
     const card = await search(page);
-    const word = card.getByRole('button', { name: 'kot', exact: true });
-    await word.focus();
+    await card.getByRole('button', { name: 'zaimennik', exact: true }).focus();
     await page.keyboard.press('Enter');
-    await expect(page.getByRole('status')).toHaveText('Text "kot" copied to clipboard');
-    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('kot');
+    await expect(page.getByRole('status')).toHaveText('Text "zaimennik" copied to clipboard');
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('zaimennik');
   });
 });

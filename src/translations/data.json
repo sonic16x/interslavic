@@ -2400,6 +2400,21 @@
     "mk": "Долнолужички",
     "bg": "Долнолужишки"
   },
+  "misLang": {
+    "en": "Other",
+    "isv": "Drugy",
+    "ru": "Другой",
+    "uk": "Інша",
+    "be": "Іншая",
+    "pl": "Inny",
+    "cs": "Jiný",
+    "sk": "Iný",
+    "sl": "Drug",
+    "hr": "Drugi",
+    "sr": "Други",
+    "mk": "Друг",
+    "bg": "Друг"
+  },
   "hsbLang": {
     "en": "Upper Sorbian",
     "isv": "Gornolužičsky",
@@ -3271,20 +3286,101 @@
     "mk": "Темна тема",
     "bg": "Тъмна тема"
   },
-  "intelligibilityIssues": {
-    "en": "The word is not universally intelligible across Slavic languages",
-    "isv": "Slovo ne je universalno razumlivo vo vsih slovjanskyh jezykah",
-    "ru": "Слово не является универсально понятным во всех славянских языках",
-    "uk": "Слово не є універсально зрозумілим у всіх слов'янських мовах",
-    "be": "Слова не з’яўляецца ўніверсальна зразумелым ва ўсіх славянскіх мовах",
-    "pl": "Słowo nie jest powszechnie zrozumiałe we wszystkich językach słowiańskich",
-    "cs": "Slovo není univerzálně srozumitelné ve všech slovanských jazycích",
-    "sk": "Slovo nie je univerzálne zrozumiteľné vo všetkých slovanských jazykoch",
-    "sl": "Slowo ni univerzalno razumljivo v vseh slovanskih jezikih",
-    "hr": "Riječ nije univerzalno razumljiva u svim slavenskim jezicima",
-    "sr": "Реч није универзално разумљива у свим словенским језицима",
-    "mk": "Зборот не е универзално разбирлив во сите словенски јазици",
-    "bg": "Думата не е универсално разбираема във всички слаавянски езици"
+  "intelligibilityNotRated": {
+    "en": "Not rated in Slovosbor yet",
+    "ru": "В Словосборе еще не оценено"
+  },
+  "intelligibilityPill": {
+    "en": "Intelligibility __percent__% · answers: __people__",
+    "ru": "Понятность __percent__% · ответов: __people__"
+  },
+  "intelligibilityYes": {
+    "en": "understand",
+    "ru": "понимают"
+  },
+  "intelligibilityUnsure": {
+    "en": "unsure",
+    "ru": "не уверены"
+  },
+  "intelligibilityNo": {
+    "en": "don't understand",
+    "ru": "не понимают"
+  },
+  "intelligibilityFalseFriend": {
+    "en": "false friend",
+    "ru": "ложный друг"
+  },
+  "intelligibilityOtherLanguage": {
+    "en": "know from another language",
+    "ru": "знают из другого языка"
+  },
+  "intelligibilityRare": {
+    "en": "rare",
+    "ru": "редкое"
+  },
+  "intelligibilityWeight": {
+    "en": "Weight of the language in the score: __weight__, at most __max__ of 6 votes",
+    "ru": "Вес языка в оценке: __weight__, не больше __max__ из 6 голосов"
+  },
+  "intelligibilityContribution": {
+    "en": "Votes out of 6, as in Jan van Steenbergen's design criteria: six subgroups (Russian; Ukrainian and Belarusian; Polish; Czech and Slovak; Slovene and Serbian/Croatian/Bosnian; Bulgarian and Macedonian), one vote each, split in halves within a group. S = 6 · weight · share",
+    "ru": "Голоса из 6, как в принципах Яна ван Стеенбергена: шесть подгрупп (русский; украинский и белорусский; польский; чешский и словацкий; словенский и сербский/хорватский/боснийский; болгарский и македонский), у каждой один голос, внутри группы делится пополам. S = 6 · вес · доля"
+  },
+  "intelligibilityNoVotes": {
+    "en": "no votes: counted as 50%",
+    "ru": "нет голосов: считается как 50%"
+  },
+  "intelligibilityGuess": {
+    "en": "no answers: counted as half, between “nobody understands” and “everybody understands”",
+    "ru": "ответов нет: считается за половину, между «никто не понимает» и «все понимают»"
+  },
+  "intelligibilityMachineVote": {
+    "en": "Machine vote: how close the word is to the translation",
+    "ru": "Голос машины: насколько слово похоже на перевод"
+  },
+  "intelligibilityShare": {
+    "en": "intelligibility in this language alone: (👍 + ½·🤷) / all",
+    "ru": "понятность только для этого языка: (👍 + ½·🤷) / все"
+  },
+  "intelligibilitySum": {
+    "en": "All answers for the language",
+    "ru": "Все ответы по языку"
+  },
+  "intelligibilityTitle": {
+    "en": "Intelligibility",
+    "ru": "Понятность"
+  },
+  "intelligibilityContributionShort": {
+    "en": "contribution",
+    "ru": "вклад"
+  },
+  "intelligibilityLanguage": {
+    "en": "Language",
+    "ru": "Язык"
+  },
+  "intelligibilityMatch": {
+    "en": "Match",
+    "ru": "Совпадение"
+  },
+  "intelligibilityMatchHint": {
+    "en": "The closest translation and how close it is to the Interslavic word",
+    "ru": "Ближайший перевод и насколько он похож на междуславянское слово"
+  },
+  "intelligibilityMatchYes": {
+    "en": "Similar",
+    "ru": "Похоже"
+  },
+  "intelligibilityMatchUnsure": {
+    "en": "Partly similar",
+    "ru": "Похоже отчасти"
+  },
+  "intelligibilityMatchNone": {
+    "en": "Not similar",
+    "ru": "Не похоже"
+  },
+  "intelligibilityInterval": {
+    "en": "The bracket after the score: with probability p = 0.95 the score of all speakers lies in this range (95% confidence interval over people's and machine votes, weighted by language)",
+    "ru": "Скобка после оценки: с вероятностью p = 0.95 оценка всех носителей лежит в этом диапазоне (95% доверительный интервал по голосам людей и машины с весами языков)"
   },
   "suggestedNewWord": {
     "en": "The word was recently added and has not yet been approved",
